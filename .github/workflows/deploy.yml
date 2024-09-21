@@ -6,7 +6,7 @@ on:
       - main # or your default branch name
 
 env:
-  SERVICE_NAME: www.reading.advantage.com
+  SERVICE_NAME: www-reading-advantage
   REGION: asia-southeast1
 
 jobs:
