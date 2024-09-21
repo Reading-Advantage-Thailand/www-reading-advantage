@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - Reading Advantage Thailand</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header content -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Our Products</h1>
+                <p>Innovative learning solutions for every need</p>
+            </div>
+        </section>
+
+        <section class="b2c-products">
+            <h2>B2C Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <h3>Reading Advantage (RA)</h3>
+                    <p>AI-powered reading comprehension platform for individual learners.</p>
+                    <a href="reading-advantage.html" class="cta-button">Learn More</a>
+                </div>
+                <div class="product-card">
+                    <h3>Codecamp Advantage (CA)</h3>
+                    <p>Interactive coding education platform for aspiring programmers.</p>
+                    <a href="codecamp-advantage.html" class="cta-button">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="b2b-products">
+            <h2>B2B Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <h3>Zhongwen Advantage</h3>
+                    <p>Comprehensive Chinese language learning platform for schools.</p>
+                    <a href="zhongwen-advantage.html" class="cta-button">Learn More</a>
+                </div>
+                <div class="product-card">
+                    <h3>Storytime Advantage</h3>
+                    <p>Early reading platform for K-3 students.</p>
+                    <a href="storytime-advantage.html" class="cta-button">Learn More</a>
+                </div>
+                <div class="product-card">
+                    <h3>Math Advantage</h3>
+                    <p>AI-powered mathematics learning platform.</p>
+                    <a href="math-advantage.html" class="cta-button">Learn More</a>
+                </div>
+                <div class="product-card">
+                    <h3>STEM Advantage</h3>
+                    <p>Comprehensive STEM education platform for schools.</p>
+                    <a href="stem-advantage.html" class="cta-button">Learn More</a>
+                </div>
+                <div class="product-card">
+                    <h3>Science Advantage</h3>
+                    <p>Interactive science learning platform for schools.</p>
+                    <a href="science-advantage.html" class="cta-button">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="tutor-advantage">
+            <h2>Tutor Advantage (TA)</h2>
+            <p>Join our network of tutors and leverage AI-powered content to enhance your teaching.</p>
+            <a href="tutor-advantage.html" class="cta-button">Join Now</a>
+        </section>
+    </main>
+
+    <!-- Footer content -->
+    <div id="footer-placeholder"></div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Load header and footer
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
+</body>
+</html>

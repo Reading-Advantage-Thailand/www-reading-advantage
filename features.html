@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Reading Advantage Thailand</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header content -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Our Features</h1>
+                <p>Cutting-edge technology for enhanced learning</p>
+            </div>
+        </section>
+
+        <section class="feature">
+            <h2>AI-Powered Content</h2>
+            <p>Our advanced AI technologies generate personalized content tailored to each learner's needs and preferences.</p>
+        </section>
+
+        <section class="feature">
+            <h2>Personalized Learning</h2>
+            <p>Our platforms adapt to individual learner needs, providing a customized educational experience for optimal results.</p>
+        </section>
+
+        <section class="feature">
+            <h2>Interactive Exercises</h2>
+            <p>Engage with our interactive simulations, quizzes, and exercises designed to reinforce learning and boost retention.</p>
+        </section>
+
+        <section class="feature">
+            <h2>Progress Tracking</h2>
+            <p>Comprehensive analytics and reporting features allow learners and educators to monitor progress and identify areas for improvement.</p>
+        </section>
+
+        <section class="feature">
+            <h2>Cross-Platform Access</h2>
+            <p>Access our educational content anytime, anywhere with our web, mobile, and tablet applications.</p>
+        </section>
+    </main>
+
+    <!-- Footer content -->
+    <div id="footer-placeholder"></div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Load header and footer
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
+</body>
+</html>
