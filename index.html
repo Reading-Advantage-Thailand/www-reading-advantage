@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <!-- Header content will be loaded here -->
-    </header>
+    <!-- Header content -->
+    <div id="header-placeholder"></div>
 
     <main>
         <section class="hero">
@@ -88,10 +87,19 @@
         </section>
     </main>
 
-    <footer>
-        <!-- Footer content will be loaded here -->
-    </footer>
+    <!-- Footer content -->
+    <div id="footer-placeholder"></div>
 
     <script src="js/main.js"></script>
+    <script>
+        // Load header and footer
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
 </body>
 </html>
