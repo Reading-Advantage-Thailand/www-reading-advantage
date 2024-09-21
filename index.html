@@ -3,103 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reading Advantage Thailand - Empowering Education Through AI</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Reading Advantage (Thailand) - Innovative EdTech Solutions</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f5a623;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #e09400;
+        }
+        
+        .products {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            width: calc(33.33% - 20px);
+            text-align: center;
+        }
+        
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-card p {
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .product-card {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header content -->
-    <div id="header-placeholder"></div>
+    <header>
+        <nav class="container">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Empowering Education Through AI</h1>
-                <p>Revolutionizing learning with cutting-edge AI technology</p>
-                <a href="#" class="cta-button">Get Started</a>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Reading Advantage (Thailand)</h1>
+                <p>Revolutionizing education with AI-enhanced learning solutions</p>
+                <a href="#products" class="cta-button">Explore Our Products</a>
             </div>
         </section>
 
-        <section class="introduction">
-            <h2>Welcome to Reading Advantage Thailand</h2>
-            <p>We're on a mission to transform education using artificial intelligence, making learning more engaging, personalized, and effective for students of all ages.</p>
-        </section>
-
-        <section class="product-highlights">
-            <h2>Our Products</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <h3>Reading Advantage</h3>
-                    <p>AI-powered reading comprehension tool for individual learners.</p>
-                    <a href="#" class="learn-more">Learn More</a>
-                </div>
-                <div class="product-card">
-                    <h3>Codecamp Advantage</h3>
-                    <p>Interactive coding platform for aspiring programmers.</p>
-                    <a href="#" class="learn-more">Learn More</a>
-                </div>
-                <div class="product-card">
-                    <h3>School Platform</h3>
-                    <p>Comprehensive learning management system for educational institutions.</p>
-                    <a href="#" class="learn-more">Learn More</a>
-                </div>
-                <div class="product-card">
-                    <h3>Tutor Advantage (TA)</h3>
-                    <p>AI-assisted tutoring platform for personalized learning experiences.</p>
-                    <a href="#" class="learn-more">Learn More</a>
-                </div>
+        <section id="products" class="products container">
+            <div class="product-card">
+                <h3>Reading Advantage</h3>
+                <p>AI-powered extensive reading platform for enhanced language learning</p>
+                <a href="https://reading.reading-advantage.com" class="cta-button">Learn More</a>
             </div>
-        </section>
-
-        <section class="testimonials">
-            <h2>What Our Users Say</h2>
-            <div class="testimonial-slider">
-                <!-- Add testimonials here -->
+            <div class="product-card">
+                <h3>Tutor Advantage</h3>
+                <p>Comprehensive tutoring platform with AI-generated content and MLM structure</p>
+                <a href="https://tutor.reading-advantage.com" class="cta-button">Learn More</a>
             </div>
-        </section>
-
-        <section class="latest-news">
-            <h2>Latest News & Blog Posts</h2>
-            <div class="news-grid">
-                <div class="news-item">
-                    <h3>New Features Added to Reading Advantage</h3>
-                    <p>We've just released exciting new features to enhance your learning experience...</p>
-                    <a href="#" class="read-more">Read More</a>
-                </div>
-                <div class="news-item">
-                    <h3>Codecamp Advantage: Summer Coding Challenge</h3>
-                    <p>Join our summer coding challenge and win amazing prizes...</p>
-                    <a href="#" class="read-more">Read More</a>
-                </div>
-                <div class="news-item">
-                    <h3>School Platform Update: Improved Analytics</h3>
-                    <p>Our latest update brings powerful new analytics tools for educators...</p>
-                    <a href="#" class="read-more">Read More</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta">
-            <h2>Get Started Today</h2>
-            <div class="cta-buttons">
-                <a href="#" class="cta-button">Sign Up for Free Trial</a>
-                <a href="#" class="cta-button secondary">Request a Demo</a>
+            <div class="product-card">
+                <h3>Codecamp Advantage</h3>
+                <p>Intensive AI-driven coding bootcamp for Next.js, React, and more</p>
+                <a href="https://codecamp.reading-advantage.com" class="cta-button">Learn More</a>
             </div>
         </section>
     </main>
 
-    <!-- Footer content -->
-    <div id="footer-placeholder"></div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Reading Advantage (Thailand). All rights reserved.</p>
+        </div>
+    </footer>
 
-    <script src="js/main.js"></script>
     <script>
-        // Load header and footer
-        fetch('components/header.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-        fetch('components/footer.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+        // Add animation to product cards on scroll
+        const productCards = document.querySelectorAll('.product-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        productCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
     </script>
 </body>
 </html>
