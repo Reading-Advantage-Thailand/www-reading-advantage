@@ -3,40 +3,38 @@ name: Deploy to Google Cloud Run
 on:
   push:
     branches:
-      - main # or your default branch
+      - main # or your default branch name
+
+env:
+  SERVICE_NAME: www.reading.advantage.com
+  REGION: asia-southeast1
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
+      - name: Setup Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.0
         with:
-          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
           project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
-      - name: Build Docker Image
-        run: |
-          IMAGE_NAME=gcr.io/${{ secrets.GCP_PROJECT_ID }}/www.reading-advantage.com
-          docker build -t $IMAGE_NAME .
+      - name: Configure Docker
+        run: gcloud auth configure-docker
 
-      - name: Push Docker Image
+      - name: Build and Push Docker image
         run: |
-          IMAGE_NAME=gcr.io/${{ secrets.GCP_PROJECT_ID }}/www.reading-advantage.com
-          gcloud auth configure-docker --quiet
-          docker push $IMAGE_NAME
+          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }} .
+          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
 
       - name: Deploy to Cloud Run
         run: |
-          SERVICE_NAME=static-site-service
-          IMAGE_NAME=gcr.io/${{ secrets.GCP_PROJECT_ID }}/static-site
-          REGION=us-central1  # Change to your preferred region
-          gcloud run deploy $SERVICE_NAME \
-            --image $IMAGE_NAME \
-            --region $REGION \
+          gcloud run deploy ${{ env.SERVICE_NAME }} \
+            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }} \
             --platform managed \
+            --region ${{ env.REGION }} \
             --allow-unauthenticated
