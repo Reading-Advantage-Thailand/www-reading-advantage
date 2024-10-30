@@ -80,15 +80,41 @@ h1, h2, h3 {
     margin-bottom: 20px;
 }
 
-/* Header Styles */
-header {
-    background-color: var(--picton-blue);
-    padding: 15px 0;
+/* Side Navigation Styles */
+#side-nav {
+    background-color: var(--white);
+    width: 250px;
+    height: 100vh;
     position: fixed;
-    width: 100%;
+    left: 0;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+#side-nav.hidden {
+    transform: translateX(-100%);
+}
+
+@media (max-width: 768px) {
+    #side-nav {
+        transform: translateX(-100%);
+    }
+    #side-nav.active {
+        transform: translateX(0);
+    }
+}
+
+.main-content {
+    margin-left: 250px;
+    transition: margin 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+    }
 }
 
 .header-container {

@@ -1,7 +1,19 @@
-// Mobile navigation toggle
-document.querySelector('.burger-menu').addEventListener('click', function() {
-    this.classList.toggle('active');
-    document.querySelector('.main-nav ul').classList.toggle('active');
+// Mobile menu toggle
+document.getElementById('mobile-menu-button').addEventListener('click', function() {
+    const sideNav = document.getElementById('side-nav');
+    sideNav.classList.toggle('active');
+});
+
+// Close menu when clicking outside on mobile
+document.addEventListener('click', function(e) {
+    const sideNav = document.getElementById('side-nav');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    
+    if (!sideNav.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+        if (window.innerWidth <= 768) {
+            sideNav.classList.remove('active');
+        }
+    }
 });
 
 // Dropdown toggle for both mobile and desktop
