@@ -7,28 +7,27 @@ document.querySelector('.burger-menu').addEventListener('click', function() {
 // Dropdown toggle for both mobile and desktop
 document.querySelectorAll('.dropdown-toggle').forEach(item => {
     item.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-            e.preventDefault();
-            const parent = this.parentElement;
-            parent.classList.toggle('active');
-            
-            // Close other dropdowns
-            document.querySelectorAll('.dropdown').forEach(dropdown => {
-                if (dropdown !== parent) {
-                    dropdown.classList.remove('active');
-                }
-            });
-
-            // Handle click outside to close dropdown
-            const closeDropdown = (event) => {
-                if (!parent.contains(event.target)) {
-                    parent.classList.remove('active');
-                    document.removeEventListener('click', closeDropdown);
-                }
-            };
-            document.addEventListener('click', closeDropdown);
-        }
+        e.preventDefault();
+        const parent = this.parentElement;
+        
+        // Close other dropdowns
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            if (dropdown !== parent) {
+                dropdown.classList.remove('active');
+            }
+        });
+        
+        parent.classList.toggle('active');
     });
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
 });
 
 // Feature cards animation
