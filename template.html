@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title - Reading Advantage (Thailand)</title>
+    
+    <!-- SEO Meta Tags - Update for each page -->
+    <meta name="description" content="Your page description here">
+    <meta name="keywords" content="relevant, keywords, here">
+    
+    <!-- Open Graph Meta Tags - Update for each page -->
+    <meta property="og:title" content="Page Title - Reading Advantage Thailand">
+    <meta property="og:description" content="Your page description here">
+    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:url" content="https://reading-advantage.com/your-page">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-sky-50 text-violet-900">
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
+    
+    <!-- Main Content -->
+    <div class="pt-20">
+        <main>
+            <!-- Hero Section -->
+            <section class="bg-sky-500 text-sky-50 py-20">
+                <div class="container mx-auto px-4">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <h1 class="text-5xl font-bold mb-6">Your Page Title</h1>
+                        <p class="text-xl">Your page subtitle or description here</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Content Section -->
+            <section class="py-16">
+                <div class="container mx-auto px-4">
+                    <!-- Add your main content here -->
+                    <div class="max-w-4xl mx-auto">
+                        <h2 class="text-3xl font-bold mb-6">Section Title</h2>
+                        <p class="text-lg text-gray-700 mb-8">
+                            Your content goes here...
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Optional CTA Section -->
+            <section class="bg-sky-800 text-sky-50 py-16">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-3xl font-bold mb-4">Ready to get started?</h2>
+                    <p class="text-xl mb-8">Your call-to-action message here</p>
+                    <a href="#" class="bg-sky-500 text-sky-50 hover:bg-sky-600 px-6 py-3 rounded-lg font-bold transition-colors">
+                        Call to Action Button
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Load header and footer components
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
+</body>
+</html>
