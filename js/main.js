@@ -21,23 +21,25 @@ document.querySelectorAll('.dropdown-toggle').forEach(item => {
     item.addEventListener('click', function(e) {
         e.preventDefault();
         const parent = this.parentElement;
+        const content = parent.querySelector('.dropdown-content');
         
         // Close other dropdowns
-        document.querySelectorAll('.dropdown').forEach(dropdown => {
-            if (dropdown !== parent) {
-                dropdown.classList.remove('active');
+        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+            if (dropdown !== content) {
+                dropdown.classList.add('hidden');
             }
         });
         
-        parent.classList.toggle('active');
+        // Toggle current dropdown
+        content.classList.toggle('hidden');
     });
 });
 
 // Close dropdown when clicking outside
 document.addEventListener('click', function(e) {
     if (!e.target.closest('.dropdown')) {
-        document.querySelectorAll('.dropdown').forEach(dropdown => {
-            dropdown.classList.remove('active');
+        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+            dropdown.classList.add('hidden');
         });
     }
 });
