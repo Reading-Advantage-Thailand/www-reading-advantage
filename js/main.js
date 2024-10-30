@@ -1,7 +1,25 @@
 // Mobile navigation toggle
 document.querySelector('.burger-menu').addEventListener('click', function() {
     this.classList.toggle('active');
-    document.querySelector('nav ul').classList.toggle('active');
+    document.querySelector('.main-nav ul').classList.toggle('active');
+});
+
+// Dropdown toggle for mobile
+document.querySelectorAll('.dropdown > a').forEach(item => {
+    item.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            const parent = this.parentElement;
+            parent.classList.toggle('active');
+            
+            // Close other dropdowns
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                if (dropdown !== parent) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        }
+    });
 });
 
 // Feature cards animation
