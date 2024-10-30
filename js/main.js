@@ -16,41 +16,6 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Initialize dropdowns - hide all dropdown content initially
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-        dropdown.classList.add('hidden');
-    });
-});
-
-// Dropdown toggle for both mobile and desktop
-document.querySelectorAll('.dropdown-toggle').forEach(item => {
-    item.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const parent = this.parentElement;
-        const content = parent.querySelector('.dropdown-content');
-        
-        // Close other dropdowns
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            if (dropdown !== content) {
-                dropdown.classList.add('hidden');
-            }
-        });
-        
-        // Toggle current dropdown
-        content.classList.toggle('hidden');
-    });
-});
-
-// Close dropdown when clicking outside
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('.dropdown')) {
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            dropdown.classList.add('hidden');
-        });
-    }
-});
 
 // Feature cards animation
 const featureCards = document.querySelectorAll('.feature-card');
