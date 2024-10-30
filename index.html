@@ -14,21 +14,8 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <div class="burger-menu">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <nav class="container">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Header content -->
+    <div id="header-placeholder"></div>
 
     <main>
         <section id="home" class="hero">
@@ -58,12 +45,19 @@
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Reading Advantage (Thailand). All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Footer content -->
+    <div id="footer-placeholder"></div>
 
     <script src="js/main.js"></script>
+    <script>
+        // Load header and footer
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
 </body>
 </html>
