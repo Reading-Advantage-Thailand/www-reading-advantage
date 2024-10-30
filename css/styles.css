@@ -1,8 +1,13 @@
 :root {
-    --primary-color: #4a90e2;
-    --secondary-color: #f5a623;
+    --white: #FFFFFFff;
+    --alice-blue: #F0F6F9ff;
+    --picton-blue: #00ADEFff;
+    --egyptian-blue: #2E3192ff;
+    --lapis-lazuli: #13589Aff;
     --text-color: #333;
-    --bg-color: #f9f9f9;
+    --bg-color: var(--alice-blue);
+    --primary-color: var(--picton-blue);
+    --secondary-color: var(--egyptian-blue);
 }
 
 /* Global Styles */
@@ -246,8 +251,8 @@ header {
 
 /* Hero Section */
 .hero {
-    background-color: #007bff;
-    color: #fff;
+    background-color: var(--egyptian-blue);
+    color: var(--white);
     text-align: center;
     padding: 100px 0;
 }
@@ -316,8 +321,8 @@ header {
 
 /* CTA Section */
 .cta {
-    background-color: #007bff;
-    color: #fff;
+    background-color: var(--lapis-lazuli);
+    color: var(--white);
     text-align: center;
     padding: 60px 0;
 }
@@ -336,8 +341,8 @@ header {
 
 /* Footer Styles */
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--egyptian-blue);
+    color: var(--white);
     padding: 60px 0 30px;
 }
 
