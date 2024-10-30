@@ -16,10 +16,18 @@ document.addEventListener('click', function(e) {
     }
 });
 
+// Initialize dropdowns - hide all dropdown content initially
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+        dropdown.classList.add('hidden');
+    });
+});
+
 // Dropdown toggle for both mobile and desktop
 document.querySelectorAll('.dropdown-toggle').forEach(item => {
     item.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         const parent = this.parentElement;
         const content = parent.querySelector('.dropdown-content');
         
