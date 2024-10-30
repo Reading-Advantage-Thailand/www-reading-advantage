@@ -199,7 +199,7 @@ header {
     pointer-events: none;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown.active .dropdown-content {
     visibility: visible;
     opacity: 1;
     pointer-events: auto;

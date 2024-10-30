@@ -4,8 +4,8 @@ document.querySelector('.burger-menu').addEventListener('click', function() {
     document.querySelector('.main-nav ul').classList.toggle('active');
 });
 
-// Dropdown toggle for mobile
-document.querySelectorAll('.dropdown > a').forEach(item => {
+// Dropdown toggle for both mobile and desktop
+document.querySelectorAll('.dropdown-toggle').forEach(item => {
     item.addEventListener('click', function(e) {
         if (window.innerWidth <= 768) {
             e.preventDefault();
@@ -18,6 +18,15 @@ document.querySelectorAll('.dropdown > a').forEach(item => {
                     dropdown.classList.remove('active');
                 }
             });
+
+            // Handle click outside to close dropdown
+            const closeDropdown = (event) => {
+                if (!parent.contains(event.target)) {
+                    parent.classList.remove('active');
+                    document.removeEventListener('click', closeDropdown);
+                }
+            };
+            document.addEventListener('click', closeDropdown);
         }
     });
 });
