@@ -32,7 +32,7 @@ h1, h2, h3 {
 
 /* Header Styles */
 header {
-    background-color: white;
+    background-color: var(--picton-blue);
     padding: 15px 0;
     position: fixed;
     width: 100%;
