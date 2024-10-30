@@ -11,36 +11,143 @@
     <meta property="og:description" content="Revolutionizing education with AI-enhanced learning solutions">
     <meta property="og:image" content="images/og-image.jpg">
     <meta property="og:url" content="https://reading-advantage.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="bg-gray-50">
     <!-- Header content -->
     <div id="header-placeholder"></div>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <h1>Reading Advantage (Thailand)</h1>
-                <p>Revolutionizing education with AI-enhanced learning solutions</p>
-                <a href="#products" class="cta-button">Explore Our Products</a>
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="text-5xl font-bold mb-6">Transforming Education Through AI Innovation</h1>
+                    <p class="text-xl mb-8">Pioneering personalized learning experiences through advanced AI technology and proven pedagogical methods.</p>
+                    <a href="#products" class="bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition duration-300">Explore Our Solutions</a>
+                </div>
             </div>
         </section>
 
-        <section id="products" class="products container">
-            <div class="product-card">
-                <h3>Reading Advantage</h3>
-                <p>AI-powered extensive reading platform for enhanced language learning</p>
-                <a href="https://reading.reading-advantage.com" class="cta-button">Learn More</a>
+        <!-- Mission & Vision -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-6">Our Mission</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        We're on a mission to revolutionize education in Thailand and Southeast Asia through innovative, AI-enhanced learning solutions. By making quality education more accessible and engaging, we're empowering learners of all backgrounds to reach their full potential.
+                    </p>
+                </div>
             </div>
-            <div class="product-card">
-                <h3>Tutor Advantage</h3>
-                <p>Comprehensive tutoring platform with AI-generated content and MLM structure</p>
-                <a href="https://tutor.reading-advantage.com" class="cta-button">Learn More</a>
+        </section>
+
+        <!-- Company Overview -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold mb-6 text-center">Who We Are</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                        Reading Advantage (Thailand) develops cutting-edge educational technology solutions for both individual learners and educational institutions. We combine advanced AI, proven pedagogical methods, and engaging user experiences to create effective learning platforms across language, STEM, and coding education.
+                    </p>
+                </div>
             </div>
-            <div class="product-card">
-                <h3>Codecamp Advantage</h3>
-                <p>Intensive AI-driven coding bootcamp for Next.js, React, and more</p>
-                <a href="https://codecamp.reading-advantage.com" class="cta-button">Learn More</a>
+        </section>
+
+        <!-- Flagship Product -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center">Our Flagship Product</h2>
+                <div class="max-w-5xl mx-auto bg-blue-50 rounded-xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4 text-blue-800">Reading Advantage</h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>AI-generated content tailored to learner proficiency levels</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Interactive exercises and comprehension questions</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Spaced Repetition System (SRS) for effective learning</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Progress tracking through an engaging XP system</span>
+                                </li>
+                            </ul>
+                            <div class="mt-8">
+                                <a href="https://reading.reading-advantage.com" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">Try Reading Advantage</a>
+                            </div>
+                        </div>
+                        <div class="relative h-64 md:h-auto">
+                            <img src="images/reading-advantage-demo.jpg" alt="Reading Advantage Platform Demo" class="rounded-lg shadow-md object-cover w-full h-full">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Innovation & Technology -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center">Our Technology Stack</h2>
+                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-blue-600 mb-4">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Advanced AI</h3>
+                        <p class="text-gray-600">State-of-the-art AI models for content generation and personalization</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-blue-600 mb-4">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Cloud Infrastructure</h3>
+                        <p class="text-gray-600">Reliable, scalable cloud-based services for seamless learning experiences</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-blue-600 mb-4">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Modern Learning</h3>
+                        <p class="text-gray-600">Integration with proven pedagogical methods for effective education</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Statement -->
+        <section class="py-16 bg-blue-900 text-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-6">Our Commitment</h2>
+                    <p class="text-lg leading-relaxed">
+                        We're dedicated to improving educational outcomes across Thailand and Southeast Asia. Our growing suite of products serves diverse learning needs, from early education through professional development, making quality education accessible to all.
+                    </p>
+                    <div class="mt-8">
+                        <a href="contact.html" class="inline-block bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">Join Our Mission</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
