@@ -4,6 +4,28 @@ document.querySelector('.burger-menu').addEventListener('click', function() {
     document.querySelector('nav ul').classList.toggle('active');
 });
 
+// Feature cards animation
+const featureCards = document.querySelectorAll('.feature-card');
+if (featureCards.length > 0) {
+    const featureObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 100); // Stagger the animations
+            }
+        });
+    }, { threshold: 0.1 });
+
+    featureCards.forEach(card => {
+        card.style.opacity = 0;
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        featureObserver.observe(card);
+    });
+}
+
 // Close menu when clicking outside
 document.addEventListener('click', function(e) {
     if (!e.target.closest('.burger-menu') && !e.target.closest('nav')) {
