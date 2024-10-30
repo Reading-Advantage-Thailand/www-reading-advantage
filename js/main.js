@@ -1,8 +1,16 @@
 // Mobile navigation toggle
-function toggleMobileNav() {
-    const nav = document.querySelector('.main-nav');
-    nav.classList.toggle('active');
-}
+document.querySelector('.burger-menu').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('nav ul').classList.toggle('active');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.burger-menu') && !e.target.closest('nav')) {
+        document.querySelector('.burger-menu')?.classList.remove('active');
+        document.querySelector('nav ul')?.classList.remove('active');
+    }
+});
 
 // Newsletter form submission
 document.querySelector('.newsletter form').addEventListener('submit', async (e) => {
