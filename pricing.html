@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reading Advantage Feature Matrix / เตียบเทียบเปรียบเอียบของ Reading Advantage</title>
@@ -19,28 +20,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        /* Custom styles for tooltips and indicators */
-        .tooltip {
-            @apply invisible absolute z-10 bg-white p-2 rounded shadow-lg text-sm text-gray-700 max-w-xs;
-        }
-        
-        .tooltip-trigger:hover .tooltip {
-            @apply visible;
-        }
-        
-        .check-yes::before {
-            content: "✔";
+        .check::before {
+            content: "✓";
             @apply text-green-600 font-bold;
         }
-        
-        .check-no::before {
-            content: "✘";
-            @apply text-red-600 font-bold;
+        .coming-soon {
+            @apply text-orange-500 italic;
         }
-        
-        .check-some::before {
-            content: "⚬";
-            @apply text-orange-500 font-bold;
+        .feature-name {
+            @apply text-left font-medium;
         }
     </style>
 </head>
@@ -61,11 +49,11 @@
                 </div>
             </section>
 
-            <!-- Comparison Table Section -->
+            <!-- Pricing Table Section -->
             <section class="py-16">
                 <div class="container mx-auto px-4">
                     <div class="max-w-7xl mx-auto">
-                        <p class="text-right mb-4 text-gray-600">Last updated: October 2024 / ล่าสุด: ตุลาคม 2024</p>
+                        <p class="text-right mb-4 text-gray-600">Last updated: October 2024 / ล่าสุดกัน: ตุลาคม 2024</p>
                         
                         <div class="overflow-x-auto">
                             <table class="w-full border-collapse bg-white shadow-lg rounded-lg">
@@ -79,62 +67,155 @@
                                 </thead>
                                 <tbody>
                                     <tr class="hover:bg-sky-50">
-                                        <td class="p-4 border-b text-left font-medium">Price (per student, 12 month license) / ราคา (ต่อนักเรียน, ใบริโออล 12 เดือน)</td>
+                                        <td class="p-4 border-b feature-name">Price (per student, 12 month license) / ราคา (ต่อนักเรียน, ใบริโออล 12 เดือน)</td>
                                         <td class="p-4 border-b text-center">US$36</td>
                                         <td class="p-4 border-b text-center">US$60</td>
                                         <td class="p-4 border-b text-center">US$120</td>
                                     </tr>
-                                    <!-- Core Features -->
                                     <tr class="hover:bg-sky-50">
-                                        <td class="p-4 border-b text-left font-medium">Access to leveled reading materials / เข้าถึงจึดการเข้าถึงที่มีระดับเว็นระดับ</td>
-                                        <td class="p-4 border-b text-center"><span class="text-green-600">✓</span></td>
-                                        <td class="p-4 border-b text-center"><span class="text-green-600">✓</span></td>
-                                        <td class="p-4 border-b text-center"><span class="text-green-600">✓</span></td>
-                                    </tr>
-                                    <!-- Add all other features from the provided list -->
-                                    <!-- Coming Soon Features -->
-                                    <tr class="hover:bg-sky-50">
-                                        <td class="p-4 border-b text-left font-medium">Gamification elements / บันทักการประกอบของเกม</td>
-                                        <td class="p-4 border-b text-center"><span class="text-orange-500 italic">Coming Soon / รอบมี</span></td>
-                                        <td class="p-4 border-b text-center"><span class="text-orange-500 italic">Coming Soon / รอบมี</span></td>
-                                        <td class="p-4 border-b text-center"><span class="text-orange-500 italic">Coming Soon / รอบมี</span></td>
+                                        <td class="p-4 border-b feature-name">Access to leveled reading materials (fiction and non-fiction) / เข้าถึงจึดการเข้าถึงที่มีระดับเว็นระดับ (fiction และ non-fiction)</td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
                                     </tr>
                                     <tr class="hover:bg-sky-50">
-                                        <td class="p-4 border-b">Price (per student/year)<br>ราคา (ต่อนักเรียน/ปี)</td>
-                                        <td class="p-4 border-b text-center font-bold text-sky-700">$60</td>
-                                        <td class="p-4 border-b text-center tooltip-trigger">
-                                            $4.30 - $10
-                                            <div class="tooltip">ราคาอิงจาก $129-$300/ห้อง/ปี สำหรับนักเรียน 30 คน</div>
-                                        </td>
-                                        <td class="p-4 border-b text-center">$40 - $60</td>
-                                        <td class="p-4 border-b text-center">$5 - $10</td>
-                                        <td class="p-4 border-b text-center">$45 - $60</td>
+                                        <td class="p-4 border-b feature-name">Multiple-choice comprehension questions / คำถาถานเพื่อข้องหลายเข้าใจหลายประเด็น</td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
                                     </tr>
-                                    <!-- Additional rows following the same pattern... -->
                                     <tr class="hover:bg-sky-50">
-                                        <td class="p-4 border-b">Fiction / เรื่องแต่ง</td>
-                                        <td class="p-4 border-b text-center tooltip-trigger">
-                                            <span class="check-yes"></span>
-                                            <div class="tooltip">หนังสือเรื่องแต่งหลากหลายประเภท</div>
-                                        </td>
-                                        <td class="p-4 border-b text-center tooltip-trigger">
-                                            <span class="check-yes"></span>
-                                            <div class="tooltip">หนังสืออีบุ๊คแบบแบ่งระดับ</div>
-                                        </td>
-                                        <td class="p-4 border-b text-center tooltip-trigger">
-                                            <span class="check-some"></span>
-                                            <div class="tooltip">เนื้อหาเรื่องแต่งจำกัด</div>
-                                        </td>
-                                        <td class="p-4 border-b text-center tooltip-trigger">
-                                            <span class="check-yes"></span>
-                                            <div class="tooltip">ใช้หนังสือจากห้องสมุดภายนอก</div>
-                                        </td>
-                                        <td class="p-4 border-b text-center tooltip-trigger">
-                                            <span class="check-some"></span>
-                                            <div class="tooltip">บางส่วนเป็นเรื่องแต่ง</div>
-                                        </td>
+                                        <td class="p-4 border-b feature-name">Short-answer questions / คำถาถานตอบสั้นสั้นสั้น</td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
                                     </tr>
-                                    <!-- Continue with remaining rows... -->
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Vocabulary practice / แบบภาษีศัพท์</td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Sentence practice (structure and ordering exercises) / แบบอฝัยคำร้อง</td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Text-to-speech audio support / แปลงอาอกข้อสร้อยนัยความดึ่น</td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Translation support (Thai, Chinese, Vietnamese) / สนับสนุนการแปล (ไทย, จีน, เวียดนาม)</td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Progress tracking and XP system / การติดตามผลหน้าและระบบ XP</td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Flashcard system for vocabulary and sentences / ระบบแฟล็ชการ์ดสำหรับภาษีศัพท์และประโยคในประโยค</td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Classroom management tools for teachers / เครื่องจัดการจัดกลุ่มชั้นแบบห้องเล้ก</td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Student progress tracking and reporting for teachers / การติดตามและรายงานผลการศึกษาให้ครู่สอนเรียน</td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Web-based access on all devices / เข้าถึงผ่านเว็บทุกเสรื่องบนอุปกรณ์</td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Alignment with CEFR / สอดคล้องกับ CEFR</td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Whole-school management capabilities / ความสามารถการจัดกลุ่มให้มีผลของโรงเรียน</td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">AI language assistant for explanations (chatbot) / เรื่องสนับแผมภาษา AI (แช็ตบอต)</td>
+                                        <td class="p-4 border-b text-center"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Ability for teachers to assign specific articles or activities / เรียนสามารถให้ครู่สอนทำแบบกำหนดโดยเรื่องของบทวนข้องเรียน</td>
+                                        <td class="p-4 border-b text-center"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">AI-powered writing feedback and assistance / คำแนะแหละช่วยเสริมหลักสอนด้วย AI</td>
+                                        <td class="p-4 border-b text-center"></td>
+                                        <td class="p-4 border-b text-center"></td>
+                                        <td class="p-4 border-b text-center check"></td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Gamification elements (badges, leaderboards) / บันทักการประกอบของเกม</td>
+                                        <td class="p-4 border-b text-center coming-soon">รอบมี</td>
+                                        <td class="p-4 border-b text-center coming-soon">รอบมี</td>
+                                        <td class="p-4 border-b text-center coming-soon">รอบมี</td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Parent portal for progress monitoring / พอร์ทัลสำหรับเพื่อติดตามผล</td>
+                                        <td class="p-4 border-b text-center coming-soon">รอบมี</td>
+                                        <td class="p-4 border-b text-center coming-soon">รอบมี</td>
+                                        <td class="p-4 border-b text-center coming-soon">รอบมี</td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">AI-generated vocabulary quizzes / แบบทดสอบบภาษีศัพท์ AI</td>
+                                        <td class="p-4 border-b text-center"></td>
+                                        <td class="p-4 border-b text-center coming-soon">รอบมี</td>
+                                        <td class="p-4 border-b text-center coming-soon">รอบมี</td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">AI-driven personalized learning paths / เส้นทางการเรียนแบบเพิ่มแพงแบบจำเพาะ AI</td>
+                                        <td class="p-4 border-b text-center"></td>
+                                        <td class="p-4 border-b text-center"></td>
+                                        <td class="p-4 border-b text-center coming-soon">รอบมี</td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Detailed AI-powered analytics on student performance / การวิเคราะเสร็จด้วย AI ของประหลอกนักเรียน</td>
+                                        <td class="p-4 border-b text-center"></td>
+                                        <td class="p-4 border-b text-center"></td>
+                                        <td class="p-4 border-b text-center coming-soon">รอบมี</td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">AI-generated content tailored to individual student needs / เนื้อหา AI สำหรับเหมาะสำรับให้แต่ไหนไหรของนักเรียนแบบเจาะเริ่มรู้</td>
+                                        <td class="p-4 border-b text-center"></td>
+                                        <td class="p-4 border-b text-center"></td>
+                                        <td class="p-4 border-b text-center coming-soon">รอบมี</td>
+                                    </tr>
+                                    <tr class="hover:bg-sky-50">
+                                        <td class="p-4 border-b feature-name">Virtual AI writing tutor for real-time assistance / เพียงเลิยงเสรียงเขียนแบบสนุนให้เขียนขึ้นจริงในเวลา AI</td>
+                                        <td class="p-4 border-b text-center"></td>
+                                        <td class="p-4 border-b text-center"></td>
+                                        <td class="p-4 border-b text-center coming-soon">รอบมี</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
