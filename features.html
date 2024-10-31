@@ -94,7 +94,7 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
-                                <!-- Grade Range -->
+                                <!-- Each row has hover:bg-gray-50 for better UX -->
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-6 py-4">Grade Range</td>
                                     <td class="px-6 py-4 text-center">4-12</td>
@@ -103,7 +103,6 @@
                                     <td class="px-6 py-4 text-center">K-12</td>
                                     <td class="px-6 py-4 text-center">2-12</td>
                                 </tr>
-                                <!-- Price -->
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-6 py-4">Price (per student/year)</td>
                                     <td class="px-6 py-4 text-center">$60</td>
@@ -112,16 +111,150 @@
                                     <td class="px-6 py-4 text-center">$5 - $10</td>
                                     <td class="px-6 py-4 text-center">$45 - $60</td>
                                 </tr>
-                                <!-- Fiction -->
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-6 py-4">Fiction</td>
-                                    <td class="px-6 py-4 text-center text-green-600">✔</td>
-                                    <td class="px-6 py-4 text-center text-green-600">✔</td>
-                                    <td class="px-6 py-4 text-center text-orange-500">⚬</td>
-                                    <td class="px-6 py-4 text-center text-green-600">✔</td>
-                                    <td class="px-6 py-4 text-center text-orange-500">⚬</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Wide variety of fiction texts">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Leveled eBooks available">✔</td>
+                                    <td class="px-6 py-4 text-center text-orange-500" title="Limited fiction content">⚬</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Uses external library books">✔</td>
+                                    <td class="px-6 py-4 text-center text-orange-500" title="Some fiction content available">⚬</td>
                                 </tr>
-                                <!-- Continue with all other rows following the same pattern -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Nonfiction</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Wide variety of nonfiction texts">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Leveled eBooks available">✔</td>
+                                    <td class="px-6 py-4 text-center text-orange-500" title="Limited nonfiction content">⚬</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Uses external library books">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Focuses on nonfiction content">✔</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Includes Reading Material</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Extensive built-in library">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Large library of eBooks">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Includes reading passages">✔</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Uses external library books">✘</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Provides articles and texts">✔</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Personalization</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="AI-driven content recommendations">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Leveled content based on assessments">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Adaptive learning path">✔</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Limited personalization features">✘</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Differentiated instruction based on level">✔</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Student Choice of Passages</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Students can choose from recommended articles">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Students can choose from leveled eBooks">✔</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Program determines content">✘</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Students choose books from external library">✔</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Content assigned based on level">✘</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Student Choice of Activities</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Various practice activities available">✔</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Activities tied to specific books">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Structured learning path">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Quizzes only">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Structured activities based on content">✘</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Teacher Reporting Tools</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Comprehensive progress and activity reports">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Detailed reading progress reports">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="In-depth skill progress reports">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Reading progress and quiz reports">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Detailed performance and growth reports">✔</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Class Management</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Tools for assignment and progress tracking">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Class roster and assignment features">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Class setup and monitoring tools">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Basic class management features">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Comprehensive class management system">✔</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Whole-School Management</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Tools for school-wide implementation and tracking">✔</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Limited to classroom level">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Limited to classroom level">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Limited to classroom level">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Limited to classroom level">✘</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Device Compatibility</td>
+                                    <td class="px-6 py-4 text-center">Web (all devices)</td>
+                                    <td class="px-6 py-4 text-center">Web, iOS, Android</td>
+                                    <td class="px-6 py-4 text-center">Web, iOS, Android</td>
+                                    <td class="px-6 py-4 text-center">Web, iOS</td>
+                                    <td class="px-6 py-4 text-center">Web, iOS, Android</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Audio Support</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Text-to-speech for all content">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Audio available for all books">✔</td>
+                                    <td class="px-6 py-4 text-center text-orange-500" title="Limited audio support">⚬</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="No built-in audio support">✘</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Audio support for articles">✔</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Vocabulary Practice</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Contextual vocabulary exercises">✔</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Limited to book context">✘</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Structured vocabulary activities">✔</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="No specific vocabulary practice">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Limited to article context">✘</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Sentence Practice</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Sentence structure and ordering exercises">✔</td>
+                                    <td class="px-6 py-4 text-center text-red-600">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600">✘</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">AI Assistant</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="AI-powered writing feedback and language explanations">✔</td>
+                                    <td class="px-6 py-4 text-center text-red-600">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600">✘</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Long-Form Writing Support</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="AI-assisted writing prompts and feedback">✔</td>
+                                    <td class="px-6 py-4 text-center text-red-600">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600">✘</td>
+                                    <td class="px-6 py-4 text-center text-red-600">✘</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">ELL L2 Support</td>
+                                    <td class="px-6 py-4 text-center">Thai, Chinese, Vietnamese</td>
+                                    <td class="px-6 py-4 text-center">Spanish</td>
+                                    <td class="px-6 py-4 text-center">None</td>
+                                    <td class="px-6 py-4 text-center">None</td>
+                                    <td class="px-6 py-4 text-center">Spanish</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Offline Access</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Requires internet connection">✘</td>
+                                    <td class="px-6 py-4 text-center text-orange-500" title="Limited offline access on mobile apps">⚬</td>
+                                    <td class="px-6 py-4 text-center text-orange-500" title="Some offline capabilities in mobile apps">⚬</td>
+                                    <td class="px-6 py-4 text-center text-red-600" title="Requires internet connection">✘</td>
+                                    <td class="px-6 py-4 text-center text-orange-500" title="Limited offline access on mobile apps">⚬</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">Alignment with Educational Standards</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Aligned with CEFR and various national standards">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Aligned with Common Core and state standards">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Aligned with Common Core">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Aligned with Common Core and state standards">✔</td>
+                                    <td class="px-6 py-4 text-center text-green-600" title="Aligned with Common Core and state standards">✔</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
