@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PricingTable } from '@/components/pricing/pricing-table';
+import Hero from '@/components/layout/hero';
 
 export const metadata: Metadata = {
   title: 'Reading Advantage Feature Matrix / เตียบเทียบเปรียบเอียบของ Reading Advantage',
@@ -17,19 +18,21 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <main>
-      {/* Hero Section */}
-      <section className="bg-sky-500 text-sky-50 py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6">
-              Reading Advantage Price Tier Comparison / การเปรียบเทียบราคา Reading Advantage
-            </h1>
-            <p className="text-xl">
-              Choose the perfect plan for your learning journey / เลือกแผนที่เหมาะสมกับการเรียนรู้ของคุณ
-            </p>
-          </div>
-        </div>
-      </section>
+      <Hero 
+        title={
+          <h1 className="text-5xl font-bold mb-6">
+            Reading Advantage Price Tier Comparison<br />
+            <span className="text-4xl">การเปรียบเทียบราคา Reading Advantage</span>
+          </h1>
+        }
+        description={
+          <p className="text-xl">
+            Choose the perfect plan for your learning journey<br />
+            เลือกแผนที่เหมาะสมกับการเรียนรู้ของคุณ
+          </p>
+        }
+        backgroundImage
+      />
 
       {/* Pricing Table Section */}
       <section className="py-16">

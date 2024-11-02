@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ComparisonTable } from '@/components/features/comparison-table';
+import Hero from '@/components/layout/hero';
 
 export const metadata: Metadata = {
   title: 'Features - Reading Advantage Thailand',
@@ -50,15 +51,11 @@ const features = [
 export default function FeaturesPage() {
   return (
     <main>
-      {/* Hero Section */}
-      <section className="bg-sky-500 text-sky-50 py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6">Platform Features</h1>
-            <p className="text-xl">Compare Reading Advantage with other leading reading programs</p>
-          </div>
-        </div>
-      </section>
+      <Hero 
+        title="Platform Features"
+        description="Compare Reading Advantage with other leading reading programs"
+        backgroundImage
+      />
 
       {/* Features Grid Section */}
       <section className="py-16">
