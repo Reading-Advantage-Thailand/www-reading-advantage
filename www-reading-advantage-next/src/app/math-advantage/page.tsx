@@ -1,29 +1,35 @@
-import Hero from "@/components/layout/hero";
-import { PageTransition } from "@/components/layout/page-transition";
-import { FadeIn } from "@/components/layout/fade-in";
-import { ScrollFade } from "@/components/layout/scroll-fade";
+import { Metadata } from "next"
+import Hero from "@/components/layout/hero"
+import { PageTransition } from "@/components/layout/page-transition"
+import { FadeIn } from "@/components/layout/fade-in"
+import { ScrollFade } from "@/components/layout/scroll-fade"
+
+export const metadata: Metadata = {
+  title: "Math Advantage - Reading Advantage Thailand",
+  description: "Revolutionary AI-enhanced math tutoring platform with personalized learning paths and advanced adaptive technology.",
+  openGraph: {
+    title: "Math Advantage - Reading Advantage Thailand",
+    description: "Transform your math learning journey with our AI-enhanced tutoring platform launching in 2025.",
+  },
+}
 
 export default function MathAdvantage() {
-  const heroDescription = (
-    <div>
-      <p className="text-xl mb-6">Revolutionary AI-Enhanced Math Tutoring</p>
-      <p className="text-lg max-w-2xl mx-auto">
-        Experience personalized math tutoring that combines proven teaching methods with advanced AI technology, 
-        adapting to your learning pace and style.
-      </p>
-      <div className="absolute top-4 right-4 bg-yellow-400 text-violet-900 py-2 px-4 rounded-full font-bold">
-        Coming in 2025
-      </div>
-    </div>
-  );
-
   return (
     <PageTransition>
       <main>
         {/* Hero Section */}
         <Hero
-          title="Math Advantage"
-          description={heroDescription}
+          title={
+            <>
+              <h1 className="text-5xl font-bold mb-6">Math Advantage</h1>
+              <div className="absolute top-4 right-4 bg-yellow-400 text-sky-50 px-4 py-2 rounded-full mb-6">
+                Coming in 2025
+              </div>
+              <h2 className="text-2xl font-bold mb-6">Revolutionary AI-Enhanced Math Tutoring</h2>
+            </>
+          }
+          description="Experience personalized math tutoring that combines proven teaching methods with advanced AI technology, adapting to your learning pace and style."
+          backgroundImage={true}
         />
 
         {/* Core Features */}

@@ -28,7 +28,7 @@ const comparisonData: ComparisonRow[] = [
   },
   {
     feature: 'Price (per student/year)',
-    readingAdvantage: { value: '$60' },
+    readingAdvantage: { value: '$36-120' },
     razKids: { value: '$4.30 - $10' },
     lexiaCore5: { value: '$40 - $60' },
     acceleratedReader: { value: '$5 - $10' },

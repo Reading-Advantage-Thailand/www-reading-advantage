@@ -27,14 +27,16 @@
 ## Pending Tasks
 
 - [ ] Update home page and products page content to emphasize customer benefits (comprehensive turnkey curriculum solutions, teacher training, improved student outcomes, improved differentiation, etc.)
-- [ ] Migrate remaining pages
+- [ ] Migrate remaining pages and put under products/
   - [x] Math Advantage
-  - [ ] Science Advantage
+    - [x] fix hero
+  - [x] Science Advantage
   - [ ] STEM Advantage
   - [ ] Storytime Advantage
   - [ ] Zhongwen Advantage
   - [ ] CodeCamp Advantage
 - [ ] Create "Contact Us" page and functionality
+- [ ] Create MDX blogging system
 - [ ] Enhance responsive design
   - [ ] Mobile navigation
   - [ ] Responsive tables
@@ -45,6 +47,7 @@
 - [ ] Implement dark mode
   - [ ] Configure theme switcher
   - [ ] Test all components in dark mode
+- [ ] CI / CD Deploy main to GCP Cloud Run using Github Actions
 - [ ] SEO Optimizations
   - [ ] Meta tags
   - [ ] Open Graph

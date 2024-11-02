@@ -154,7 +154,7 @@ export default function Home() {
                     <div className="mt-8">
                         <Link 
                           href="/contact" 
-                          className="inline-block bg-sky-50 text-sky-800 px-6 py-3 rounded-lg hover:bg-white transition duration-300"
+                          className="inline-block bg-sky-800 text-sky-50 px-6 py-3 rounded-lg hover:bg-white transition duration-300"
                         >
                           Schedule a Demo
                         </Link>
