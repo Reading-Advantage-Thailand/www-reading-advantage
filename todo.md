@@ -28,7 +28,7 @@
 
 - [ ] Update home page and products page content to emphasize customer benefits (comprehensive turnkey curriculum solutions, teacher training, improved student outcomes, improved differentiation, etc.)
 - [ ] Migrate remaining pages
-  - [ ] Math Advantage
+  - [x] Math Advantage
   - [ ] Science Advantage
   - [ ] STEM Advantage
   - [ ] Storytime Advantage
