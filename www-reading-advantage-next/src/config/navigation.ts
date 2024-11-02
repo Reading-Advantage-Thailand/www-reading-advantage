@@ -8,14 +8,14 @@ export const navigationLinks = [
 ] as const;
 
 export const productLinks = [
-  { href: '/math-advantage', label: 'Math Advantage' },
-  { href: '/reading-advantage', label: 'Reading Advantage' },
-  { href: '/science-advantage', label: 'Science Advantage' },
-  { href: '/stem-advantage', label: 'STEM Advantage' },
-  { href: '/storytime-advantage', label: 'Storytime Advantage' },
-  { href: '/zhongwen-advantage', label: 'Zhongwen Advantage' },
-  { href: '/codecamp-advantage', label: 'CodeCamp Advantage' },
-  { href: '/tutor-advantage', label: 'Tutor Advantage' }
+  { href: '/products/math-advantage', label: 'Math Advantage' },
+  { href: '/products/reading-advantage', label: 'Reading Advantage' },
+  { href: '/products/science-advantage', label: 'Science Advantage' },
+  { href: '/products/stem-advantage', label: 'STEM Advantage' },
+  { href: '/products/storytime-advantage', label: 'Storytime Advantage' },
+  { href: '/products/zhongwen-advantage', label: 'Zhongwen Advantage' },
+  { href: '/products/codecamp-advantage', label: 'CodeCamp Advantage' },
+  { href: '/products/tutor-advantage', label: 'Tutor Advantage' }
 ] as const;
 
 export type NavigationLink = (typeof navigationLinks)[number];

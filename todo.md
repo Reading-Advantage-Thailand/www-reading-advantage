@@ -27,7 +27,7 @@
 ## Pending Tasks
 
 - [ ] Update home page and products page content to emphasize customer benefits (comprehensive turnkey curriculum solutions, teacher training, improved student outcomes, improved differentiation, etc.)
-- [ ] Migrate remaining pages and put under products/
+- [x] Migrate remaining pages and put under products/
   - [x] Math Advantage
     - [x] fix hero
   - [x] Science Advantage
@@ -35,8 +35,8 @@
   - [x] Reading Advantage
   - [x] Storytime Advantage
   - [x] Zhongwen Advantage
-  - [ ] CodeCamp Advantage
-  - [ ] Tutor Advantage
+  - [x] CodeCamp Advantage
+  - [x] Tutor Advantage
 - [ ] Create "Contact Us" page and functionality
 - [ ] Create MDX blogging system
 - [ ] Integrate login with Firebase (maybe Google Identity Platform?)
