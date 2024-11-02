@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import Hero from "@/components/layout/hero"
 import { FadeIn } from "@/components/layout/fade-in"
 import { ScrollFade } from "@/components/layout/scroll-fade"
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { div } from "framer-motion/client"
 
 export const metadata: Metadata = {
