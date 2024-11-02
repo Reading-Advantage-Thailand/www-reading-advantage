@@ -86,7 +86,7 @@ export default function TutorAdvantage() {
             asChild
             className="font-semibold"
           >
-            <Link href="/tutor-advantage">Join Our Network</Link>
+            <Link href="/products/tutor-advantage">Join Our Network</Link>
           </Button>
         </div>
       </div>

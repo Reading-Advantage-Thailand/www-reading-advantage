@@ -23,7 +23,7 @@ const products = [
       "Track individual and class progress with detailed analytics dashboard",
       "Seamlessly integrate with your existing curriculum and systems"
     ],
-    href: "/reading-advantage",
+    href: "/products/reading-advantage",
     isFlagship: true
   },
   {
@@ -35,7 +35,7 @@ const products = [
       "Meet national curriculum standards with comprehensive lesson plans",
       "Track skill development across multiple STEM disciplines"
     ],
-    href: "/stem-advantage"
+    href: "/products/stem-advantage"
   },
   {
     title: "Science Advantage",
@@ -46,7 +46,7 @@ const products = [
       "Improve concept retention with interactive demonstrations",
       "Monitor student progress with automated assessments"
     ],
-    href: "/science-advantage"
+    href: "/products/science-advantage"
   },
   {
     title: "Math Advantage",
@@ -57,7 +57,7 @@ const products = [
       "Build confidence with instant feedback and step-by-step solutions",
       "Save time with automated homework grading and progress reports"
     ],
-    href: "/math-advantage"
+    href: "/products/math-advantage"
   },
   {
     title: "Zhongwen Advantage",
@@ -68,7 +68,7 @@ const products = [
       "Master character writing with stroke-order guidance",
       "Enhance cultural understanding with authentic content"
     ],
-    href: "/zhongwen-advantage"
+    href: "/products/zhongwen-advantage"
   },
   {
     title: "Storytime Advantage",
@@ -79,7 +79,7 @@ const products = [
       "Develop phonics skills through guided practice",
       "Track reading progress with detailed parent/teacher reports"
     ],
-    href: "/storytime-advantage"
+    href: "/products/storytime-advantage"
   }
 ]
 
