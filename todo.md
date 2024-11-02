@@ -18,15 +18,15 @@
   - [x] Page transitions (PageTransition component)
   - [x] Component animations (FadeIn component)
   - [x] Scroll animations (ScrollFade component)
+- [x] Create common hero component
+  - [x] Extract shared hero layout and animations
+  - [x] Make content configurable per page
+  - [x] Add the students_at_computers.jpg (public/images) in parallax scrolling effect
+  - [x] Implement in all pages
 
 ## Pending Tasks
 
-- [ ] Update products page content to emphasize customer benefits (comprehensive turnkey curriculum solutions, teacher training, improved student outcomes, improved differentiation, etc.)
-- [ ] Create common hero component
-  - [ ] Extract shared hero layout and animations
-  - [ ] Make content configurable per page
-  - [ ] Add the students_at_computers.jpg (public/images) in parallax scrolling effect
-  - [ ] Implement in all pages
+- [ ] Update home page and products page content to emphasize customer benefits (comprehensive turnkey curriculum solutions, teacher training, improved student outcomes, improved differentiation, etc.)
 - [ ] Migrate remaining pages
   - [ ] Math Advantage
   - [ ] Science Advantage
@@ -34,6 +34,7 @@
   - [ ] Storytime Advantage
   - [ ] Zhongwen Advantage
   - [ ] CodeCamp Advantage
+- [ ] Create "Contact Us" page and functionality
 - [ ] Enhance responsive design
   - [ ] Mobile navigation
   - [ ] Responsive tables

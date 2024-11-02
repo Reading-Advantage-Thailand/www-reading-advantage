@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Hero from '@/components/layout/hero';
 
 export const metadata: Metadata = {
   title: 'About Us - Reading Advantage (Thailand)',
@@ -15,15 +16,11 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main>
-      {/* Hero Section */}
-      <section className="bg-sky-500 text-sky-50 py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6 text-sky-50">Transforming Education in Southeast Asia</h1>
-            <p className="text-xl">Pioneering AI-powered educational solutions for a brighter future</p>
-          </div>
-        </div>
-      </section>
+      <Hero 
+        title="Transforming Education in Southeast Asia"
+        description="Pioneering AI-powered educational solutions for a brighter future"
+        backgroundImage
+      />
 
       {/* Introduction Section */}
       <section className="py-16 bg-white">
