@@ -78,7 +78,7 @@ export default function Home() {
                                 </ul>
                                 <div className="mt-8">
                                     <Link 
-                                      href="https://reading.reading-advantage.com" 
+                                      href="/reading-advantage" 
                                       className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300"
                                     >
                                       Start Your Success Story
