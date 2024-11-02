@@ -20,7 +20,7 @@ export default function ScienceAdvantage() {
         title={
           <>
             <h1 className="text-5xl font-bold mb-6">Science Advantage</h1>
-            <div className="absolute top-4 right-4 bg-yellow-400 text-sky-50 px-4 py-2 rounded-full mb-6">
+            <div className="absolute top-4 right-4 bg-yellow-400 text-sky-900 px-4 py-2 rounded-full mb-6">
               Coming in 2025
             </div>
             <h2 className="text-2xl font-bold mb-6">The Future of K-12 Science Education</h2>

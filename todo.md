@@ -31,12 +31,16 @@
   - [x] Math Advantage
     - [x] fix hero
   - [x] Science Advantage
-  - [ ] STEM Advantage
-  - [ ] Storytime Advantage
-  - [ ] Zhongwen Advantage
+  - [x] STEM Advantage
+  - [x] Reading Advantage
+  - [x] Storytime Advantage
+  - [x] Zhongwen Advantage
   - [ ] CodeCamp Advantage
+  - [ ] Tutor Advantage
 - [ ] Create "Contact Us" page and functionality
 - [ ] Create MDX blogging system
+- [ ] Integrate login with Firebase (maybe Google Identity Platform?)
+- [ ] Internationalize into English / Thai / Simplified Chinese
 - [ ] Enhance responsive design
   - [ ] Mobile navigation
   - [ ] Responsive tables
