@@ -1,8 +1,8 @@
-import ProductHero from "@/components/products/hero"
-import B2BSolutions from "@/components/products/b2b-solutions"
-import B2CSolutions from "@/components/products/b2c-solutions"
-import TutorAdvantage from "@/components/products/tutor-advantage"
-import { Metadata } from "next"
+import ProductHero from "@/components/products/hero";
+import B2BSolutions from "@/components/products/b2b-solutions";
+import B2CSolutions from "@/components/products/b2c-solutions";
+import TutorAdvantage from "@/components/products/tutor-advantage";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Our Products - Reading Advantage Thailand",
