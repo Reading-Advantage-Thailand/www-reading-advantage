@@ -1,19 +1,46 @@
-# Use specific nginx version for stability
-FROM nginx:1.25-alpine
+FROM node:18-alpine AS base
 
-# Copy static files
-COPY . /usr/share/nginx/html
+# Install dependencies only when needed
+FROM base AS deps
+WORKDIR /app
 
-# Remove default nginx config
-RUN rm /etc/nginx/conf.d/default.conf
+# Copy package files
+COPY www-reading-advantage-next/package.json www-reading-advantage-next/package-lock.json ./
 
-# Copy custom nginx config
-COPY nginx.conf /etc/nginx/nginx.conf
+# Install dependencies
+RUN npm ci
 
-# Make port configurable via environment variable
-ENV PORT=8080
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY www-reading-advantage-next .
 
-# Use shell form to expand PORT environment variable
-CMD sh -c "envsubst '\$PORT' < /etc/nginx/nginx.conf > /etc/nginx/nginx.conf.tmp && \
-    mv /etc/nginx/nginx.conf.tmp /etc/nginx/nginx.conf && \
-    nginx -g 'daemon off;'"
+# Build Next.js application
+ENV NEXT_TELEMETRY_DISABLED 1
+RUN npm run build
+
+# Production image, copy all the files and run next
+FROM base AS runner
+WORKDIR /app
+
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
+
+# Don't run production as root
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copy built files
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+ENV HOSTNAME "0.0.0.0"
+
+CMD ["node", "server.js"]
