@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Menu, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -16,12 +16,62 @@ import {
 } from '@/components/ui/sheet';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { navigationLinks, productLinks, NavigationLink, ProductLink } from '@/config/navigation';
+import { useAuth } from '@/contexts/auth-context';
 import Image from 'next/image';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [showProductMenu, setShowProductMenu] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const { user, signOut } = useAuth();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      router.push('/');
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
+
+  const renderAuthButtons = (isMobile = false) => {
+    if (user) {
+      return (
+        <>
+          <div className={isMobile ? "border-t border-sky-400 pt-4 mt-4" : "hidden lg:flex items-center space-x-4"}>
+            <span className="text-sky-50">
+              {user.email}
+            </span>
+            <Button
+              variant="ghost"
+              onClick={handleSignOut}
+              className="text-sky-50 hover:text-white hover:bg-sky-600 transition-colors"
+            >
+              Sign Out
+            </Button>
+          </div>
+        </>
+      );
+    }
+
+    return (
+      <div className={isMobile ? "border-t border-sky-400 pt-4 mt-4" : "hidden lg:flex items-center space-x-4"}>
+        <Link
+          href="/login"
+          className="text-sky-50 hover:text-white transition-colors"
+        >
+          Login
+        </Link>
+        <Link
+          href="/signup"
+          className="bg-sky-800 text-sky-50 px-4 py-2 rounded-lg hover:bg-sky-900 transition-colors"
+        >
+          Sign Up
+        </Link>
+      </div>
+    );
+  };
 
   return (
     <header className="bg-sky-500 text-sky-50 header-shadow fixed w-full top-0 z-50">
@@ -80,22 +130,7 @@ export function Header() {
                     </Link>
                   );
                 })}
-                <div className="border-t border-sky-400 pt-4 mt-4">
-                  <Link
-                    href="/login"
-                    className="block px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    href="/signup"
-                    className="block px-3 py-2 mt-2 bg-sky-600 rounded-lg hover:bg-sky-700 transition-colors text-center"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Sign Up
-                  </Link>
-                </div>
+                {renderAuthButtons(true)}
               </nav>
             </SheetContent>
           </Sheet>
@@ -196,20 +231,7 @@ export function Header() {
             </Select>
 
             {/* Auth buttons */}
-            <div className="hidden lg:flex items-center space-x-4">
-              <Link
-                href="/login"
-                className="text-sky-50 hover:text-white transition-colors"
-              >
-                Login
-              </Link>
-              <Link
-                href="/signup"
-                className="bg-sky-800 text-sky-50 px-4 py-2 rounded-lg hover:bg-sky-900 transition-colors"
-              >
-                Sign Up
-              </Link>
-            </div>
+            {renderAuthButtons()}
           </div>
         </div>
       </div>
