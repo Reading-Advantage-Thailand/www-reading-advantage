@@ -55,6 +55,9 @@
 
 ## Pending Tasks
 
+- [ ] Improve Reading Advantage page
+  - [ ] Embed youtube promo video https://www.youtube.com/watch?v=LH5qgpSYoqs
+  - [ ] Add images from /public/images/reading-advantage
 - [ ] Create MDX blogging system
   - [x] Set up MDX configuration
   - [x] Create blog infrastructure
@@ -92,7 +95,7 @@
     - [ ] Create user profile page
     - [ ] Add password reset functionality
     - [ ] Implement "Remember me" feature
-    - [ ] Add Login with Google button
+    - [x] Add Login with Google button
     - [ ] Add sign-up form
   - [ ] Security & Testing
     - [ ] Set up Firebase security rules
