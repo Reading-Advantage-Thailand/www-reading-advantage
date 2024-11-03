@@ -8,12 +8,12 @@ export const navigationLinks = [
 ] as const;
 
 export const productLinks = [
-  { href: '/products/math-advantage', label: 'Math Advantage' },
   { href: '/products/reading-advantage', label: 'Reading Advantage' },
+  { href: '/products/zhongwen-advantage', label: 'Zhongwen Advantage' },
+  { href: '/products/math-advantage', label: 'Math Advantage' },
   { href: '/products/science-advantage', label: 'Science Advantage' },
   { href: '/products/stem-advantage', label: 'STEM Advantage' },
   { href: '/products/storytime-advantage', label: 'Storytime Advantage' },
-  { href: '/products/zhongwen-advantage', label: 'Zhongwen Advantage' },
   { href: '/products/codecamp-advantage', label: 'CodeCamp Advantage' },
   { href: '/products/tutor-advantage', label: 'Tutor Advantage' }
 ] as const;

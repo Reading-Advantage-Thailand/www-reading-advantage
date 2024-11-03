@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Menu } from 'lucide-react';
+import { Menu, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -15,11 +15,12 @@ import {
   SheetDescription,
 } from '@/components/ui/sheet';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { navigationLinks } from '@/config/navigation';
+import { navigationLinks, productLinks, NavigationLink, ProductLink } from '@/config/navigation';
 import Image from 'next/image';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showProductMenu, setShowProductMenu] = useState(false);
   const pathname = usePathname();
 
   return (
@@ -42,18 +43,43 @@ export function Header() {
                 </SheetDescription>
               </SheetHeader>
               <nav className="flex flex-col gap-4 mt-8">
-                {navigationLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`text-lg px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors ${
-                      pathname === link.href ? 'bg-sky-600' : ''
-                    }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {navigationLinks.map((link: NavigationLink) => {
+                  if (link.href === '/products') {
+                    return (
+                      <div key={link.href}>
+                        <div className={`text-lg px-3 py-2 rounded-lg ${pathname.startsWith('/products') ? 'bg-sky-600' : ''}`}>
+                          {link.label}
+                        </div>
+                        <div className="ml-4 mt-2 flex flex-col gap-2">
+                          {productLinks.map((product: ProductLink) => (
+                            <Link
+                              key={product.href}
+                              href={product.href}
+                              className={`text-base px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors ${
+                                pathname === product.href ? 'bg-sky-600' : ''
+                              }`}
+                              onClick={() => setIsOpen(false)}
+                            >
+                              {product.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  }
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`text-lg px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors ${
+                        pathname === link.href ? 'bg-sky-600' : ''
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
                 <div className="border-t border-sky-400 pt-4 mt-4">
                   <Link
                     href="/login"
@@ -95,23 +121,65 @@ export function Header() {
 
           {/* Main Navigation */}
           <nav className="hidden lg:flex space-x-8">
-            {navigationLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sky-50 hover:text-white transition-colors relative py-2 ${
-                  pathname === link.href ? 'font-medium' : ''
-                }`}
-              >
-                {link.label}
-                {pathname === link.href && (
-                  <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full"
-                    layoutId="underline"
-                  />
-                )}
-              </Link>
-            ))}
+            {navigationLinks.map((link: NavigationLink) => {
+              if (link.href === '/products') {
+                return (
+                  <div
+                    key={link.href}
+                    className="relative group"
+                    onMouseEnter={() => setShowProductMenu(true)}
+                    onMouseLeave={() => setShowProductMenu(false)}
+                  >
+                    <button
+                      className={`text-sky-50 hover:text-white transition-colors relative py-2 flex items-center gap-1 ${
+                        pathname.startsWith('/products') ? 'font-medium' : ''
+                      }`}
+                    >
+                      {link.label}
+                      <ChevronDown className="h-4 w-4" />
+                    </button>
+                    {showProductMenu && (
+                      <div className="absolute top-full left-0 w-64 bg-sky-500 rounded-lg shadow-lg py-2 mt-1">
+                        {productLinks.map((product: ProductLink) => (
+                          <Link
+                            key={product.href}
+                            href={product.href}
+                            className={`block px-4 py-2 hover:bg-sky-600 transition-colors ${
+                              pathname === product.href ? 'bg-sky-600' : ''
+                            }`}
+                          >
+                            {product.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                    {pathname.startsWith('/products') && (
+                      <motion.div
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full"
+                        layoutId="underline"
+                      />
+                    )}
+                  </div>
+                );
+              }
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sky-50 hover:text-white transition-colors relative py-2 ${
+                    pathname === link.href ? 'font-medium' : ''
+                  }`}
+                >
+                  {link.label}
+                  {pathname === link.href && (
+                    <motion.div
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full"
+                      layoutId="underline"
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Right side */}
