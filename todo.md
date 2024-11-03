@@ -35,6 +35,23 @@
   - [x] CodeCamp Advantage
   - [x] Tutor Advantage
 - [x] Create "Contact Us" page and functionality
+- [x] Integrate Firebase Authentication (Core Features)
+  - [x] Project Setup
+    - [x] Add Firebase SDK to Next.js app
+    - [x] Configure Firebase environment variables
+    - [x] Initialize Firebase in the app
+  - [x] Authentication Implementation
+    - [x] Create AuthContext for global auth state
+    - [x] Implement sign in functionality
+    - [x] Add sign out functionality
+    - [x] Create protected routes/middleware
+  - [x] Basic User Interface
+    - [x] Design and implement login page
+    - [x] Add loading states
+  - [x] Security & Error Handling
+    - [x] Implement proper error handling
+    - [x] Add loading states
+    - [x] Set up session persistence
 
 ## Pending Tasks
 
@@ -70,7 +87,22 @@
     - [ ] Add structured data for blog posts
     - [ ] Create dynamic sitemap for blog content
     - [ ] Optimize for social sharing
-- [ ] Integrate login with Firebase (add this app to the Reading Advantage project)
+- [ ] Extended Firebase Authentication Features
+  - [ ] User Interface Enhancements
+    - [ ] Create user profile page
+    - [ ] Add password reset functionality
+    - [ ] Implement "Remember me" feature
+    - [ ] Add Login with Google button
+    - [ ] Add sign-up form
+  - [ ] Security & Testing
+    - [ ] Set up Firebase security rules
+    - [ ] Test authentication flow
+    - [ ] Validate security measures
+    - [ ] Test error scenarios
+  - [ ] User Management
+    - [ ] Implement user role system
+    - [ ] Add user profile management
+    - [ ] Create admin dashboard
 - [ ] Internationalize into English / Thai / Simplified Chinese
 - [ ] Enhance responsive design
   - [ ] Mobile navigation
