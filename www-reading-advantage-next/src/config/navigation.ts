@@ -4,6 +4,7 @@ export const navigationLinks = [
   { href: '/products', label: 'Products' },
   { href: '/features', label: 'Features' },
   { href: '/pricing', label: 'Pricing' },
+  { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' }
 ] as const;
 
