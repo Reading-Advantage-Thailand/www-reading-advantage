@@ -23,10 +23,7 @@
   - [x] Make content configurable per page
   - [x] Add the students_at_computers.jpg (public/images) in parallax scrolling effect
   - [x] Implement in all pages
-
-## Pending Tasks
-
-- [ ] Update home page and products page content to emphasize customer benefits (comprehensive turnkey curriculum solutions, teacher training, improved student outcomes, improved differentiation, etc.)
+- [x] Update home page and products page content to emphasize customer benefits (comprehensive turnkey curriculum solutions, teacher training, improved student outcomes, improved differentiation, etc.)
 - [x] Migrate remaining pages and put under products/
   - [x] Math Advantage
     - [x] fix hero
@@ -37,9 +34,43 @@
   - [x] Zhongwen Advantage
   - [x] CodeCamp Advantage
   - [x] Tutor Advantage
-- [ ] Create "Contact Us" page and functionality
+- [x] Create "Contact Us" page and functionality
+
+## Pending Tasks
+
 - [ ] Create MDX blogging system
-- [ ] Integrate login with Firebase (maybe Google Identity Platform?)
+  - [x] Set up MDX configuration
+  - [x] Create blog infrastructure
+  - [x] Design and implement blog components
+    - [x] Create BlogLayout component
+    - [x] Build BlogList component for post listings
+    - [x] Design BlogCard component for post previews
+    - [ ] Implement BlogHeader component
+    - [ ] Create BlogTags component for categorization
+  - [ ] Add blog features
+    - [ ] Implement pagination for blog listings
+    - [ ] Add category/tag filtering system
+    - [ ] Create RSS feed generation
+    - [ ] Add reading time estimation
+    - [ ] Implement social sharing buttons
+  - [ ] Style blog components
+    - [ ] Design responsive blog post layout
+    - [ ] Style code blocks with syntax highlighting
+    - [ ] Create custom styles for MDX elements
+    - [ ] Implement dark mode support for blog
+  - [ ] Create sample blog posts
+    - [ ] Write documentation for blog post creation
+    - [ ] Create template for new blog posts
+    - [ ] Add initial educational content posts
+  - [ ] Add blog-specific features
+    - [ ] Implement table of contents generation
+    - [ ] Add related posts functionality
+  - [ ] SEO optimization for blog
+    - [ ] Implement blog-specific meta tags
+    - [ ] Add structured data for blog posts
+    - [ ] Create dynamic sitemap for blog content
+    - [ ] Optimize for social sharing
+- [ ] Integrate login with Firebase (add this app to the Reading Advantage project)
 - [ ] Internationalize into English / Thai / Simplified Chinese
 - [ ] Enhance responsive design
   - [ ] Mobile navigation
@@ -85,5 +116,7 @@
 - Framer Motion will be used strategically for meaningful animations
 - Mobile-first approach for all new components
 - Maintaining SEO during migration is crucial
+- use --legacy-peer-deps flag when installing npms
+- use npx shadcn@latest add [component] when installing shadcn components
 
 This todo list will be updated as the migration progresses. Each completed task should be marked with [x] and new tasks can be added as needed.
