@@ -52,12 +52,12 @@
     - [x] Implement proper error handling
     - [x] Add loading states
     - [x] Set up session persistence
+- [x] Improve Reading Advantage page
+  - [x] Embed youtube promo video https://www.youtube.com/watch?v=LH5qgpSYoqs
+  - [x] Add images from /public/images/reading-advantage, resized and with descriptions.
 
 ## Pending Tasks
 
-- [ ] Improve Reading Advantage page
-  - [ ] Embed youtube promo video https://www.youtube.com/watch?v=LH5qgpSYoqs
-  - [ ] Add images from /public/images/reading-advantage
 - [ ] Create MDX blogging system
   - [x] Set up MDX configuration
   - [x] Create blog infrastructure
@@ -107,6 +107,31 @@
     - [ ] Add user profile management
     - [ ] Create admin dashboard
 - [ ] Internationalize into English / Thai / Simplified Chinese
+  - [ ] Set up i18n Infrastructure
+    - [ ] Install and configure next-intl
+    - [ ] Set up language detection and routing
+    - [ ] Create language switcher component
+    - [ ] Implement language persistence
+  - [ ] Content Management
+    - [ ] Create translation files for all languages
+    - [ ] Set up translation management system
+    - [ ] Implement fallback language handling
+    - [ ] Create content validation system
+  - [ ] UI Components
+    - [ ] Update all text components to use translations
+    - [ ] Implement RTL support if needed
+    - [ ] Adapt layouts for different language lengths
+    - [ ] Update forms for multilingual support
+  - [ ] Static Content
+    - [ ] Translate all static pages
+    - [ ] Translate meta tags and SEO content
+    - [ ] Translate error messages
+    - [ ] Localize dates and numbers
+  - [ ] Testing & Validation
+    - [ ] Test language switching
+    - [ ] Validate translations
+    - [ ] Test UI in all languages
+    - [ ] Performance testing for all locales
 - [ ] Enhance responsive design
   - [ ] Mobile navigation
   - [ ] Responsive tables
