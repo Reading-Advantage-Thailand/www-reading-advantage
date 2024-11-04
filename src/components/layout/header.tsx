@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { navigation } from "@/config/navigation";
 import { Menu, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -15,7 +15,6 @@ import {
   SheetDescription,
 } from '@/components/ui/sheet';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { navigationLinks, productLinks, NavigationLink, ProductLink } from '@/config/navigation';
 import { useAuth } from '@/contexts/auth-context';
 import Image from 'next/image';
 
@@ -93,15 +92,18 @@ export function Header() {
                 </SheetDescription>
               </SheetHeader>
               <nav className="flex flex-col gap-4 mt-8">
-                {navigationLinks.map((link: NavigationLink) => {
+                {navigation.map((link) => {
                   if (link.href === '/products') {
                     return (
                       <div key={link.href}>
-                        <div className={`text-lg px-3 py-2 rounded-lg ${pathname.startsWith('/products') ? 'bg-sky-600' : ''}`}>
-                          {link.label}
-                        </div>
+                        <Link
+                          href={link.href}
+                          className={`text-lg px-3 py-2 rounded-lg ${pathname.startsWith('/products') ? 'bg-sky-600' : ''}`}
+                        >
+                          {link.title}
+                        </Link>
                         <div className="ml-4 mt-2 flex flex-col gap-2">
-                          {productLinks.map((product: ProductLink) => (
+                          {link.items?.map((product) => (
                             <Link
                               key={product.href}
                               href={product.href}
@@ -110,7 +112,7 @@ export function Header() {
                               }`}
                               onClick={() => setIsOpen(false)}
                             >
-                              {product.label}
+                              {product.title}
                             </Link>
                           ))}
                         </div>
@@ -126,7 +128,7 @@ export function Header() {
                       }`}
                       onClick={() => setIsOpen(false)}
                     >
-                      {link.label}
+                      {link.title}
                     </Link>
                   );
                 })}
@@ -136,12 +138,7 @@ export function Header() {
           </Sheet>
 
           {/* Logo */}
-          <motion.div
-            className="flex-shrink-0"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <Image
                 src="/images/logo.jpg"
@@ -152,11 +149,11 @@ export function Header() {
                 priority
               />
             </Link>
-          </motion.div>
+          </div>
 
           {/* Main Navigation */}
           <nav className="hidden lg:flex space-x-8">
-            {navigationLinks.map((link: NavigationLink) => {
+            {navigation.map((link) => {
               if (link.href === '/products') {
                 return (
                   <div
@@ -165,17 +162,18 @@ export function Header() {
                     onMouseEnter={() => setShowProductMenu(true)}
                     onMouseLeave={() => setShowProductMenu(false)}
                   >
-                    <button
+                    <Link
+                      href={link.href}
                       className={`text-sky-50 hover:text-white transition-colors relative py-2 flex items-center gap-1 ${
                         pathname.startsWith('/products') ? 'font-medium' : ''
                       }`}
                     >
-                      {link.label}
+                      {link.title}
                       <ChevronDown className="h-4 w-4" />
-                    </button>
-                    {showProductMenu && (
+                    </Link>
+                    {showProductMenu && link.items && (
                       <div className="absolute top-full left-0 w-64 bg-sky-500 rounded-lg shadow-lg py-2 mt-1">
-                        {productLinks.map((product: ProductLink) => (
+                        {link.items.map((product) => (
                           <Link
                             key={product.href}
                             href={product.href}
@@ -183,16 +181,13 @@ export function Header() {
                               pathname === product.href ? 'bg-sky-600' : ''
                             }`}
                           >
-                            {product.label}
+                            {product.title}
                           </Link>
                         ))}
                       </div>
                     )}
                     {pathname.startsWith('/products') && (
-                      <motion.div
-                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full"
-                        layoutId="underline"
-                      />
+                      <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full" />
                     )}
                   </div>
                 );
@@ -205,12 +200,9 @@ export function Header() {
                     pathname === link.href ? 'font-medium' : ''
                   }`}
                 >
-                  {link.label}
+                  {link.title}
                   {pathname === link.href && (
-                    <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full"
-                      layoutId="underline"
-                    />
+                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full" />
                   )}
                 </Link>
               );
