@@ -1,4 +1,6 @@
-import { NavItem } from "@/types/nav"
+import { type NavItem } from "@/types/nav"
+
+export type { NavItem }
 
 export const navigation: NavItem[] = [
   {
@@ -68,3 +70,8 @@ export const navigation: NavItem[] = [
     href: "/contact"
   }
 ]
+
+export const productLinks = navigation[0].items?.map((item: NavItem) => ({
+  label: item.title,
+  href: item.href
+})) || []

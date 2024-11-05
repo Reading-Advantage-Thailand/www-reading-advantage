@@ -1,27 +1,27 @@
-import { getBlogPost } from '@/lib/blog'
-import { BlogHeader } from '@/components/blog/blog-header'
-import { BlogTags } from '@/components/blog/blog-tags'
-import { notFound } from 'next/navigation'
-import { Metadata } from 'next'
+import { getBlogPost } from "@/lib/blog"
+import { BlogHeader } from "@/components/blog/blog-header"
+import { BlogTags } from "@/components/blog/blog-tags"
+import { notFound } from "next/navigation"
+import type { Metadata } from "next"
+import Image from "next/image"
 
-interface Props {
-  params: {
-    slug: string
-  }
+type Props = {
+  params: { slug: string }
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getBlogPost(params.slug)
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const post = await getBlogPost(props.params.slug)
   if (!post) return {}
 
   return {
     title: `${post.title} | Reading Advantage Blog`,
     description: post.excerpt,
+    metadataBase: new URL('http://localhost:3000'),
   }
 }
 
-export default async function BlogPost({ params }: Props) {
-  const post = await getBlogPost(params.slug)
+async function BlogPost(props: Props) {
+  const post = await getBlogPost(props.params.slug)
 
   if (!post) {
     notFound()
@@ -29,11 +29,18 @@ export default async function BlogPost({ params }: Props) {
 
   return (
     <article className="container mx-auto px-4 py-8">
-      <BlogHeader title={post.title} date={post.date} author={post.author} readingTime={post.readingTime} />
+      <BlogHeader 
+        title={post.title} 
+        date={post.date} 
+        author={post.author} 
+        readingTime={post.readingTime} 
+      />
       {post.coverImage && (
-        <img
+        <Image
           src={post.coverImage}
           alt={post.title}
+          width={1200}
+          height={400}
           className="w-full h-64 object-cover rounded-lg mb-8"
         />
       )}
@@ -45,3 +52,5 @@ export default async function BlogPost({ params }: Props) {
     </article>
   )
 }
+
+export default BlogPost

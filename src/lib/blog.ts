@@ -18,31 +18,36 @@ interface BlogFrontmatter {
   coverImage?: string
 }
 
-function validateFrontmatter(data: any): BlogFrontmatter {
-  if (!data.title || typeof data.title !== 'string') {
+function validateFrontmatter(data: unknown): BlogFrontmatter {
+  if (!data || typeof data !== 'object') {
+    throw new Error('Invalid frontmatter data')
+  }
+  
+  const d = data as Record<string, unknown>
+  
+  if (!d.title || typeof d.title !== 'string') {
     throw new Error('Invalid or missing title in frontmatter')
   }
-  if (!data.date || typeof data.date !== 'string') {
+  if (!d.date || typeof d.date !== 'string') {
     throw new Error('Invalid or missing date in frontmatter')
   }
-  if (!data.excerpt || typeof data.excerpt !== 'string') {
+  if (!d.excerpt || typeof d.excerpt !== 'string') {
     throw new Error('Invalid or missing excerpt in frontmatter')
   }
-  if (!data.author || typeof data.author !== 'string') {
+  if (!d.author || typeof d.author !== 'string') {
     throw new Error('Invalid or missing author in frontmatter')
   }
-  if (!Array.isArray(data.tags)) {
-    data.tags = []
-  }
+  
+  const tags = Array.isArray(d.tags) ? d.tags : []
 
   return {
-    title: data.title,
-    date: data.date,
-    excerpt: data.excerpt,
-    author: data.author,
-    tags: data.tags.map(String),
-    readingTime: typeof data.readingTime === 'string' ? data.readingTime : undefined,
-    coverImage: typeof data.coverImage === 'string' ? data.coverImage : undefined,
+    title: d.title,
+    date: d.date,
+    excerpt: d.excerpt,
+    author: d.author,
+    tags: tags.map(String),
+    readingTime: typeof d.readingTime === 'string' ? d.readingTime : undefined,
+    coverImage: typeof d.coverImage === 'string' ? d.coverImage : undefined,
   }
 }
 

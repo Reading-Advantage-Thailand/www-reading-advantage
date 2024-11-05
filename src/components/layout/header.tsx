@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { navigation } from "@/config/navigation";
+import { useState } from "react";
+import { navigation, NavItem } from "@/config/navigation";
 import { Menu, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -13,9 +13,9 @@ import {
   SheetHeader,
   SheetTitle,
   SheetDescription,
-} from '@/components/ui/sheet';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useAuth } from '@/contexts/auth-context';
+} from "@/components/ui/sheet";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useAuth } from "@/contexts/auth-context";
 import Image from 'next/image';
 
 export function Header() {
@@ -103,7 +103,7 @@ export function Header() {
                           {link.title}
                         </Link>
                         <div className="ml-4 mt-2 flex flex-col gap-2">
-                          {link.items?.map((product) => (
+                          {link.items?.map((product: NavItem) => (
                             <Link
                               key={product.href}
                               href={product.href}
@@ -173,7 +173,7 @@ export function Header() {
                     </Link>
                     {showProductMenu && link.items && (
                       <div className="absolute top-full left-0 w-64 bg-sky-500 rounded-lg shadow-lg py-2 mt-1">
-                        {link.items.map((product) => (
+                        {link.items.map((product: NavItem) => (
                           <Link
                             key={product.href}
                             href={product.href}
