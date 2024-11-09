@@ -1,0 +1,60 @@
+{
+  "navigation": {
+    "products": "产品",
+    "features": "功能",
+    "pricing": "价格",
+    "blog": "博客",
+    "about": "关于",
+    "contact": "联系"
+  },
+  "products": {
+    "readingAdvantage": {
+      "title": "Reading Advantage",
+      "description": "AI驱动的阅读理解平台"
+    },
+    "mathAdvantage": {
+      "title": "Math Advantage",
+      "description": "互动数学学习"
+    },
+    "scienceAdvantage": {
+      "title": "Science Advantage",
+      "description": "实践科学教育"
+    },
+    "stemAdvantage": {
+      "title": "STEM Advantage",
+      "description": "综合STEM学习平台"
+    },
+    "zhongwenAdvantage": {
+      "title": "中文优势",
+      "description": "中文学习平台"
+    },
+    "storytimeAdvantage": {
+      "title": "Storytime Advantage",
+      "description": "互动讲故事平台"
+    },
+    "codecampAdvantage": {
+      "title": "CodeCamp Advantage",
+      "description": "通过项目学习编程"
+    },
+    "tutorAdvantage": {
+      "title": "Tutor Advantage",
+      "description": "在线辅导平台"
+    }
+  },
+  "footer": {
+    "company": {
+      "title": "Reading Advantage Thailand",
+      "description": "通过全面的阅读和学习解决方案赋能学生"
+    },
+    "quickLinks": {
+      "title": "快速链接"
+    },
+    "contact": {
+      "title": "联系我们",
+      "email": "邮箱：support@reading-advantage.com",
+      "phone": "电话：+66 634 460 628",
+      "address": "孔敬，泰国"
+    },
+    "copyright": "© {year} Reading Advantage Thailand 版权所有"
+  }
+}
