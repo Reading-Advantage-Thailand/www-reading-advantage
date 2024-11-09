@@ -12,3 +12,12 @@ export function assertValidLocale(locale: unknown): asserts locale is Locale {
     throw new Error(`Invalid locale: ${locale}`);
   }
 }
+
+export default getRequestConfig(async ({locale}) => {
+  assertValidLocale(locale);
+  return {
+    messages: (await import(`../messages/${locale}.json`)).default,
+    timeZone: 'Asia/Bangkok',
+    now: new Date()
+  };
+});

@@ -16,6 +16,8 @@ import {
 } from "@/components/ui/sheet";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useAuth } from "@/contexts/auth-context";
+import { useLocale, useTranslations } from 'next-intl';
+import { useTransition } from 'react';
 import Image from 'next/image';
 
 export function Header() {
@@ -23,15 +25,26 @@ export function Header() {
   const [showProductMenu, setShowProductMenu] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const locale = useLocale();
+  const [isPending, startTransition] = useTransition();
   const { user, signOut } = useAuth();
+  const t = useTranslations('navigation');
+  const p = useTranslations('products');
 
   const handleSignOut = async () => {
     try {
       await signOut();
-      router.push('/');
+      router.push(`/${locale}`);
     } catch (error) {
       console.error('Error signing out:', error);
     }
+  };
+
+  const handleLocaleChange = (newLocale: string) => {
+    const pathWithoutLocale = pathname.split('/').slice(2).join('/');
+    startTransition(() => {
+      router.replace(`/${newLocale}/${pathWithoutLocale}`);
+    });
   };
 
   const renderAuthButtons = (isMobile = false) => {
@@ -47,7 +60,7 @@ export function Header() {
               onClick={handleSignOut}
               className="text-sky-50 hover:text-white hover:bg-sky-600 transition-colors"
             >
-              Sign Out
+              {t('signOut')}
             </Button>
           </div>
         </>
@@ -57,16 +70,16 @@ export function Header() {
     return (
       <div className={isMobile ? "border-t border-sky-400 pt-4 mt-4" : "hidden lg:flex items-center space-x-4"}>
         <Link
-          href="/login"
+          href={`/${locale}/login`}
           className="text-sky-50 hover:text-white transition-colors"
         >
-          Login
+          {t('login')}
         </Link>
         <Link
-          href="/signup"
+          href={`/${locale}/signup`}
           className="bg-sky-800 text-sky-50 px-4 py-2 rounded-lg hover:bg-sky-900 transition-colors"
         >
-          Sign Up
+          {t('signUp')}
         </Link>
       </div>
     );
@@ -81,40 +94,43 @@ export function Header() {
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="lg:hidden text-sky-50 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-400">
                 <Menu className="h-6 w-6" />
-                <span className="sr-only">Open menu</span>
+                <span className="sr-only">{t('openMenu')}</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="bg-sky-500 text-sky-50 border-sky-400">
               <SheetHeader>
-                <SheetTitle className="text-sky-50">Navigation Menu</SheetTitle>
+                <SheetTitle className="text-sky-50">{t('menuTitle')}</SheetTitle>
                 <SheetDescription className="text-sky-200">
-                  Access all pages and features of Reading Advantage Thailand
+                  {t('menuDescription')}
                 </SheetDescription>
               </SheetHeader>
               <nav className="flex flex-col gap-4 mt-8">
-                {navigation.map((link) => {
+                {navigation.map((link: NavItem) => {
                   if (link.href === '/products') {
                     return (
                       <div key={link.href}>
                         <Link
-                          href={link.href}
+                          href={`/${locale}${link.href}`}
                           className={`text-lg px-3 py-2 rounded-lg ${pathname.startsWith('/products') ? 'bg-sky-600' : ''}`}
                         >
-                          {link.title}
+                          {t('products')}
                         </Link>
                         <div className="ml-4 mt-2 flex flex-col gap-2">
-                          {link.items?.map((product: NavItem) => (
-                            <Link
-                              key={product.href}
-                              href={product.href}
-                              className={`text-base px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors ${
-                                pathname === product.href ? 'bg-sky-600' : ''
-                              }`}
-                              onClick={() => setIsOpen(false)}
-                            >
-                              {product.title}
-                            </Link>
-                          ))}
+                          {link.items?.map((product: NavItem) => {
+                            const productKey = String(product.href.split('/').pop());
+                            return (
+                              <Link
+                                key={product.href}
+                                href={`/${locale}${product.href}`}
+                                className={`text-base px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors ${
+                                  pathname === product.href ? 'bg-sky-600' : ''
+                                }`}
+                                onClick={() => setIsOpen(false)}
+                              >
+                                {p(`${productKey}.title`)}
+                              </Link>
+                            );
+                          })}
                         </div>
                       </div>
                     );
@@ -122,13 +138,13 @@ export function Header() {
                   return (
                     <Link
                       key={link.href}
-                      href={link.href}
+                      href={`/${locale}${link.href}`}
                       className={`text-lg px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors ${
                         pathname === link.href ? 'bg-sky-600' : ''
                       }`}
                       onClick={() => setIsOpen(false)}
                     >
-                      {link.title}
+                      {t(link.href.substring(1) || 'home')}
                     </Link>
                   );
                 })}
@@ -139,10 +155,10 @@ export function Header() {
 
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
+            <Link href={`/${locale}`} className="flex items-center">
               <Image
                 src="/images/logo.jpg"
-                alt="Reading Advantage Thailand Logo"
+                alt={t('logoAlt')}
                 width={48}
                 height={48}
                 className="h-12 w-auto rounded-md"
@@ -153,7 +169,7 @@ export function Header() {
 
           {/* Main Navigation */}
           <nav className="hidden lg:flex space-x-8">
-            {navigation.map((link) => {
+            {navigation.map((link: NavItem) => {
               if (link.href === '/products') {
                 return (
                   <div
@@ -163,27 +179,30 @@ export function Header() {
                     onMouseLeave={() => setShowProductMenu(false)}
                   >
                     <Link
-                      href={link.href}
+                      href={`/${locale}${link.href}`}
                       className={`text-sky-50 hover:text-white transition-colors relative py-2 flex items-center gap-1 ${
                         pathname.startsWith('/products') ? 'font-medium' : ''
                       }`}
                     >
-                      {link.title}
+                      {t('products')}
                       <ChevronDown className="h-4 w-4" />
                     </Link>
                     {showProductMenu && link.items && (
                       <div className="absolute top-full left-0 w-64 bg-sky-500 rounded-lg shadow-lg py-2 mt-1">
-                        {link.items.map((product: NavItem) => (
-                          <Link
-                            key={product.href}
-                            href={product.href}
-                            className={`block px-4 py-2 hover:bg-sky-600 transition-colors ${
-                              pathname === product.href ? 'bg-sky-600' : ''
-                            }`}
-                          >
-                            {product.title}
-                          </Link>
-                        ))}
+                        {link.items.map((product: NavItem) => {
+                          const productKey = String(product.href.split('/').pop());
+                          return (
+                            <Link
+                              key={product.href}
+                              href={`/${locale}${product.href}`}
+                              className={`block px-4 py-2 hover:bg-sky-600 transition-colors ${
+                                pathname === product.href ? 'bg-sky-600' : ''
+                              }`}
+                            >
+                              {p(`${productKey}.title`)}
+                            </Link>
+                          );
+                        })}
                       </div>
                     )}
                     {pathname.startsWith('/products') && (
@@ -195,12 +214,12 @@ export function Header() {
               return (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={`/${locale}${link.href}`}
                   className={`text-sky-50 hover:text-white transition-colors relative py-2 ${
                     pathname === link.href ? 'font-medium' : ''
                   }`}
                 >
-                  {link.title}
+                  {t(link.href.substring(1) || 'home')}
                   {pathname === link.href && (
                     <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full" />
                   )}
@@ -212,13 +231,18 @@ export function Header() {
           {/* Right side */}
           <div className="flex items-center space-x-6">
             {/* Language Selector */}
-            <Select defaultValue="en">
+            <Select 
+              defaultValue={locale} 
+              onValueChange={handleLocaleChange}
+              disabled={isPending}
+            >
               <SelectTrigger className="w-[100px] bg-sky-600 border-sky-400 text-sky-50 focus:ring-sky-400 focus:ring-offset-sky-500">
-                <SelectValue placeholder="Language" />
+                <SelectValue placeholder={t('language')} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="en">English</SelectItem>
                 <SelectItem value="th">ภาษาไทย</SelectItem>
+                <SelectItem value="zh">中文</SelectItem>
               </SelectContent>
             </Select>
 

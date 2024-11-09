@@ -1,12 +1,10 @@
-import fs from 'fs'
+import { readFile, readdir } from 'fs/promises'
 import path from 'path'
 import matter from 'gray-matter'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkHtml from 'remark-html'
 import { BlogPost, BlogListItem } from '@/types/blog'
-
-const postsDirectory = path.join(process.cwd(), 'src/app/blog/posts')
 
 interface BlogFrontmatter {
   title: string
@@ -51,10 +49,18 @@ function validateFrontmatter(data: unknown): BlogFrontmatter {
   }
 }
 
-export async function getBlogPost(slug: string): Promise<BlogPost | null> {
+export async function getBlogPost(slug: string, locale: string = 'en'): Promise<BlogPost | null> {
   try {
-    const fullPath = path.join(postsDirectory, `${slug}.md`)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    // First try locale-specific post
+    let fullPath = path.join(process.cwd(), `src/app/${locale}/blog/posts/${slug}.md`)
+    try {
+      await readFile(fullPath, 'utf8')
+    } catch {
+      // If locale-specific post doesn't exist, fall back to default [locale] directory
+      fullPath = path.join(process.cwd(), 'src/app/[locale]/blog/posts', `${slug}.md`)
+    }
+
+    const fileContents = await readFile(fullPath, 'utf8')
     const { data, content } = matter(fileContents)
 
     const frontmatter = validateFrontmatter(data)
@@ -86,14 +92,23 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 // Alias for getAllBlogPosts to maintain compatibility
 export const getAllPosts = getAllBlogPosts
 
-export async function getAllBlogPosts(): Promise<BlogListItem[]> {
-  const fileNames = fs.readdirSync(postsDirectory)
+export async function getAllBlogPosts(locale: string = 'en'): Promise<BlogListItem[]> {
+  // First try locale-specific directory
+  let postsDirectory = path.join(process.cwd(), `src/app/${locale}/blog/posts`)
+  try {
+    await readdir(postsDirectory)
+  } catch {
+    // If locale-specific directory doesn't exist, fall back to default [locale] directory
+    postsDirectory = path.join(process.cwd(), 'src/app/[locale]/blog/posts')
+  }
+
+  const fileNames = await readdir(postsDirectory)
   const allPostsData = await Promise.all(
     fileNames
       .filter(fileName => fileName.endsWith('.md'))
       .map(async fileName => {
         const slug = fileName.replace(/\.md$/, '')
-        const post = await getBlogPost(slug)
+        const post = await getBlogPost(slug, locale)
         if (!post) throw new Error(`Failed to load post ${slug}`)
         return post
       })
@@ -102,8 +117,8 @@ export async function getAllBlogPosts(): Promise<BlogListItem[]> {
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1))
 }
 
-export async function getAllBlogTags(): Promise<string[]> {
-  const posts = await getAllBlogPosts()
+export async function getAllBlogTags(locale: string = 'en'): Promise<string[]> {
+  const posts = await getAllBlogPosts(locale)
   const tags = new Set<string>()
   
   posts.forEach(post => {

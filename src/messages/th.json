@@ -5,38 +5,46 @@
     "pricing": "ราคา",
     "blog": "บล็อก",
     "about": "เกี่ยวกับเรา",
-    "contact": "ติดต่อ"
+    "contact": "ติดต่อ",
+    "login": "เข้าสู่ระบบ",
+    "signUp": "ลงทะเบียน",
+    "signOut": "ออกจากระบบ",
+    "language": "ภาษา",
+    "openMenu": "เปิดเมนู",
+    "menuTitle": "เมนูนำทาง",
+    "menuDescription": "เข้าถึงหน้าและฟีเจอร์ทั้งหมดของ Reading Advantage Thailand",
+    "logoAlt": "โลโก้ Reading Advantage Thailand"
   },
   "products": {
-    "readingAdvantage": {
+    "reading-advantage": {
       "title": "Reading Advantage",
       "description": "แพลตฟอร์มความเข้าใจการอ่านด้วย AI"
     },
-    "mathAdvantage": {
+    "math-advantage": {
       "title": "Math Advantage",
       "description": "การเรียนรู้คณิตศาสตร์แบบโต้ตอบ"
     },
-    "scienceAdvantage": {
+    "science-advantage": {
       "title": "Science Advantage",
       "description": "การศึกษาวิทยาศาสตร์แบบลงมือปฏิบัติ"
     },
-    "stemAdvantage": {
+    "stem-advantage": {
       "title": "STEM Advantage",
       "description": "แพลตฟอร์มการเรียนรู้ STEM แบบบูรณาการ"
     },
-    "zhongwenAdvantage": {
+    "zhongwen-advantage": {
       "title": "Zhongwen Advantage",
       "description": "แพลตฟอร์มการเรียนรู้ภาษาจีน"
     },
-    "storytimeAdvantage": {
+    "storytime-advantage": {
       "title": "Storytime Advantage",
       "description": "แพลตฟอร์มการเล่านิทานแบบโต้ตอบ"
     },
-    "codecampAdvantage": {
+    "codecamp-advantage": {
       "title": "CodeCamp Advantage",
       "description": "เรียนรู้การเขียนโค้ดผ่านโครงงาน"
     },
-    "tutorAdvantage": {
+    "tutor-advantage": {
       "title": "Tutor Advantage",
       "description": "แพลตฟอร์มติวเตอร์ออนไลน์"
     }
