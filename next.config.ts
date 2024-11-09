@@ -1,24 +1,25 @@
-import createMDX from '@next/mdx'
+import createNextIntlPlugin from 'next-intl/plugin';
+import createMDX from '@next/mdx';
+
+const withNextIntl = createNextIntlPlugin();
 
 const withMDX = createMDX({
+  extension: /\.mdx?$/,
   options: {
     remarkPlugins: [],
     rehypePlugins: [],
   },
-})
+});
 
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone' as const,
+  reactStrictMode: true,
   images: {
     domains: ['localhost'],
   },
-  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-  typescript: {
-    // TODO: Re-enable once Next.js App Router types are fixed
-    // See: https://github.com/vercel/next.js/issues/48022
-    ignoreBuildErrors: true,
+  experimental: {
+    mdxRs: true,
   },
-}
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+};
 
-export default withMDX(nextConfig)
+export default withNextIntl(withMDX(nextConfig));
