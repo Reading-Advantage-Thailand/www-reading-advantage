@@ -19,7 +19,7 @@ COPY . .
 # Learn more here: https://nextjs.org/telemetry
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN npm run build
+RUN npm run build --legacy-peer-deps
 
 # Production image, copy all the files and run next
 FROM base AS runner
