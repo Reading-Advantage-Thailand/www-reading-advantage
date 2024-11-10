@@ -1,0 +1,116 @@
+{
+  "navigation": {
+    "products": "Products",
+    "features": "Features",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "language": "Language",
+    "openMenu": "Open menu",
+    "menuTitle": "Navigation Menu",
+    "menuDescription": "Access all pages and features of Reading Advantage Thailand",
+    "logoAlt": "Reading Advantage Thailand Logo"
+  },
+  "products": {
+    "reading-advantage": {
+      "title": "Reading Advantage",
+      "description": "AI-powered reading comprehension platform"
+    },
+    "math-advantage": {
+      "title": "Math Advantage",
+      "description": "Interactive mathematics learning"
+    },
+    "science-advantage": {
+      "title": "Science Advantage",
+      "description": "Hands-on science education"
+    },
+    "stem-advantage": {
+      "title": "STEM Advantage",
+      "description": "Integrated STEM learning platform"
+    },
+    "zhongwen-advantage": {
+      "title": "Zhongwen Advantage",
+      "description": "Chinese language learning platform"
+    },
+    "storytime-advantage": {
+      "title": "Storytime Advantage",
+      "description": "Interactive storytelling platform"
+    },
+    "codecamp-advantage": {
+      "title": "CodeCamp Advantage",
+      "description": "Learn coding through projects"
+    },
+    "tutor-advantage": {
+      "title": "Tutor Advantage",
+      "description": "Online tutoring platform"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Empowering Education Through AI Innovation",
+      "description": "Transform your educational outcomes with our proven AI-powered solutions. Join thousands of successful institutions and learners across Southeast Asia.",
+      "cta": "Discover Your Solution"
+    },
+    "mission": {
+      "title": "Your Success Is Our Mission",
+      "description": "We partner with educational institutions across Thailand and Southeast Asia to deliver measurable improvements in student outcomes. Our comprehensive solutions combine cutting-edge AI technology with proven pedagogical methods, enabling educators to provide truly personalized learning experiences while reducing administrative workload."
+    },
+    "overview": {
+      "title": "Your Complete Education Partner",
+      "description": "Reading Advantage (Thailand) delivers turnkey educational solutions that drive real results. Our comprehensive platform integrates seamlessly with your existing curriculum, providing everything from AI-powered content generation to detailed analytics that help you track and improve student performance. Whether you're a school looking to enhance your curriculum or an individual seeking professional development, we have proven solutions to help you succeed."
+    },
+    "flagship": {
+      "title": "Experience the Advantage",
+      "subtitle": "Reading Advantage",
+      "benefits": {
+        "comprehension": "Improve student comprehension by up to 40% with AI-personalized content",
+        "time": "Save 5+ hours per week with automated lesson planning and grading",
+        "tracking": "Track progress with detailed analytics and actionable insights",
+        "engagement": "Boost engagement with gamified learning and real-time feedback"
+      },
+      "cta": "Start Your Success Story"
+    },
+    "innovation": {
+      "title": "Powered by Innovation",
+      "features": {
+        "learning": {
+          "title": "Intelligent Learning",
+          "description": "Our AI adapts to each student's pace and learning style, ensuring optimal progress and engagement"
+        },
+        "integration": {
+          "title": "Seamless Integration",
+          "description": "Deploy within days, not months, with full support and minimal disruption to your existing systems"
+        },
+        "results": {
+          "title": "Proven Results",
+          "description": "Join institutions achieving 40%+ improvement in student outcomes within the first semester"
+        }
+      }
+    },
+    "impact": {
+      "title": "Ready to Transform Your Institution?",
+      "description": "Join hundreds of successful institutions across Southeast Asia who have already enhanced their educational outcomes with our comprehensive solutions. Whether you're looking to improve student engagement, reduce teacher workload, or boost academic performance, we have a proven path to success.",
+      "cta": "Schedule a Demo"
+    }
+  },
+  "footer": {
+    "company": {
+      "title": "Reading Advantage Thailand",
+      "description": "Empowering students with comprehensive reading and learning solutions."
+    },
+    "quickLinks": {
+      "title": "Quick Links"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "email": "Email: support@reading-advantage.com",
+      "phone": "Phone: +66 634 460 628",
+      "address": "Khonkaen, Thailand"
+    },
+    "copyright": "© {year} Reading Advantage Thailand. All rights reserved."
+  }
+}
