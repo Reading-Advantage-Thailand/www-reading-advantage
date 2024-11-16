@@ -10,6 +10,7 @@ import { zh as sciencePage } from "./pages/products/science-advantage";
 import { zh as stemPage } from "./pages/products/stem-advantage";
 import { zh as storytimePage } from "./pages/products/storytime-advantage";
 import { zh as tutorPage } from "./pages/products/tutor-advantage";
+import { zh as zhongwenPage } from "./pages/products/zhongwen-advantage";
 // components
 import { zh as localeSwitcher } from "./components/locale-switcher";
 import { zh as footer } from './components/footer';
@@ -34,6 +35,7 @@ export default {
             stemAdvantage: stemPage,
             storytimeAdvantage: storytimePage,
             tutorAdvantage: tutorPage,
+            zhongwenAdvantage: zhongwenPage,
         },
     },
     components: {
