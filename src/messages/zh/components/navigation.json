@@ -1,0 +1,25 @@
+{
+  "main": {
+    "products": "产品",
+    "features": "功能",
+    "pricing": "价格",
+    "blog": "博客",
+    "about": "关于",
+    "contact": "联系"
+  },
+  "language": {
+    "selector": "语言",
+    "en": "English",
+    "th": "ไทย",
+    "zh": "中文"
+  },
+  "menu": {
+    "title": "导航菜单",
+    "description": "访问 Reading Advantage Thailand 的所有页面和功能"
+  },
+  "auth": {
+    "login": "登录",
+    "signUp": "注册",
+    "signOut": "退出"
+  }
+}
