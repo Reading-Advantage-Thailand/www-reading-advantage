@@ -45,7 +45,7 @@ async function BlogPost(props: Props) {
         />
       )}
       <div 
-        className="prose max-w-none"
+        className="prose prose-lg max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-a:text-blue-600 prose-strong:text-gray-900 prose-ul:list-disc prose-ol:list-decimal"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
       <BlogTags tags={post.tags} />
