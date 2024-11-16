@@ -1,0 +1,89 @@
+{
+  "hero": {
+    "title": "The Future of Early Literacy Education",
+    "comingSoon": "Coming in 2025",
+    "subtitle": "Complete K-3 Literacy Curriculum",
+    "description": "A complete K-3 literacy curriculum that perfectly balances digital innovation with hands-on learning"
+  },
+  "coreValue": {
+    "title": "Complete Literacy Curriculum Solution",
+    "features": {
+      "structure": {
+        "title": "180-Day Structure",
+        "description": "Comprehensive curriculum aligned with educational standards and designed for classroom success"
+      },
+      "approach": {
+        "title": "Balanced Approach",
+        "description": "Perfect blend of digital tools and traditional hands-on learning methods"
+      },
+      "support": {
+        "title": "Complete Support",
+        "description": "Comprehensive resources for teachers, students, and administrators"
+      }
+    }
+  },
+  "keyFeatures": {
+    "title": "Comprehensive Feature Set",
+    "features": {
+      "digital": {
+        "title": "Digital Components",
+        "items": [
+          "Interactive phonics lessons",
+          "Digital decodable texts",
+          "Progress tracking tools",
+          "Built-in assessments"
+        ]
+      },
+      "physical": {
+        "title": "Physical Materials",
+        "items": [
+          "Printable worksheets",
+          "Hands-on activities",
+          "Take-home resources",
+          "Classroom materials"
+        ]
+      }
+    }
+  },
+  "teacherTools": {
+    "title": "Powerful Teacher Tools",
+    "tools": [
+      {
+        "title": "Lesson Planning",
+        "description": "Comprehensive planning tools and resources",
+        "icon": "📝"
+      },
+      {
+        "title": "Class Management",
+        "description": "Efficient tools for managing student progress",
+        "icon": "👥"
+      },
+      {
+        "title": "Assessment Tools",
+        "description": "Built-in assessment and reporting features",
+        "icon": "📊"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": [
+      {
+        "question": "When will Storytime Advantage launch?",
+        "answer": "Our platform is scheduled to launch in early 2025. Join our waitlist for early access opportunities."
+      },
+      {
+        "question": "What are the technical requirements?",
+        "answer": "Storytime Advantage will be accessible on any modern web browser, with mobile apps available for iOS and Android tablets."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Be the First to Experience Storytime Advantage",
+    "description": "Join our waitlist for early access and exclusive updates",
+    "buttons": {
+      "waitlist": "Join Waitlist",
+      "learnMore": "Learn More"
+    }
+  }
+}

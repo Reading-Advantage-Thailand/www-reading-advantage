@@ -20,6 +20,12 @@ Implement internationalization support for the Reading Advantage website.
    - About page
    - Features page
    - Pricing page and pricing-table component
+   - All product pages
+6. Migrated content from base language files (en.json, th.json, zh.json) to specific component and page files
+   - Navigation content → components/navigation.json
+   - Products content → common.json
+   - Home page content → pages/home.json
+   - Footer content → components/footer.json
 
 ### Implemented Structure
 
@@ -35,29 +41,18 @@ src/messages/
 │       ├── home.json
 │       ├── about.json
 │       ├── features.json
-│       └── pricing.json
-├── th/                 # Thai translations
-│   ├── common.json
-│   ├── components/
-│   │   ├── navigation.json
-│   │   ├── footer.json
-│   │   └── pricing-table.json
-│   └── pages/
-│       ├── home.json
-│       ├── about.json
-│       ├── features.json
-│       └── pricing.json
-└── zh/                 # Chinese translations
-    ├── common.json
-    ├── components/
-    │   ├── navigation.json
-    │   ├── footer.json
-    │   └── pricing-table.json
-    └── pages/
-        ├── home.json
-        ├── about.json
-        ├── features.json
-        └── pricing.json
+│       ├── pricing.json
+│       └── products/
+│           ├── reading-advantage.json
+│           ├── math-advantage.json
+│           ├── science-advantage.json
+│           ├── stem-advantage.json
+│           ├── codecamp-advantage.json
+│           ├── storytime-advantage.json
+│           ├── tutor-advantage.json
+│           └── zhongwen-advantage.json
+├── th/                 # Thai translations (same structure as en/)
+└── zh/                 # Chinese translations (same structure as en/)
 ```
 
 ### Key Naming Conventions
@@ -74,12 +69,15 @@ src/messages/
    - Navigation ✅
 2. Feature Components ✅
    - Pricing Table ✅
-3. Product Pages
-   - Reading Advantage
-   - Math Advantage
-   - Science Advantage
-   - STEM Advantage
-   - Other product pages
+3. Product Pages ✅
+   - Reading Advantage ✓
+   - Math Advantage ✓
+   - Science Advantage ✓
+   - STEM Advantage ✓
+   - CodeCamp Advantage ✓
+   - Storytime Advantage ✓
+   - Tutor Advantage ✓
+   - Zhongwen Advantage ✓
 4. Core Pages
    - Homepage ✅
    - About ✅
@@ -101,7 +99,7 @@ This task implements the Internationalization section from the project roadmap:
   - [x] Features page
   - [x] Pricing page and components
   - [ ] Contact page
-  - [ ] Product pages
+  - [x] Product pages
 - [ ] UI adaptation (next phase)
 
 ## Current Status
@@ -111,9 +109,9 @@ This task implements the Internationalization section from the project roadmap:
 
 ## Next Steps
 
-1. Continue translating remaining pages in this order:
+1. Remove base language files (en.json, th.json, zh.json) as their content has been properly migrated to specific files
+2. Complete remaining translations:
    - Contact page (next)
-   - Product pages
 
 ## Phase 3: Implementation Planning
 

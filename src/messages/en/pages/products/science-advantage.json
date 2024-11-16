@@ -1,0 +1,97 @@
+{
+  "hero": {
+    "title": "Science Advantage",
+    "comingSoon": "Coming in 2025",
+    "subtitle": "The Future of K-12 Science Education",
+    "description": "A comprehensive, NGSS-aligned science curriculum with adaptive learning technology"
+  },
+  "coreValue": {
+    "title": "Transforming Science Education",
+    "features": {
+      "curriculum": {
+        "title": "180-Day Curriculum",
+        "description": "Comprehensive, standards-aligned content for the full academic year"
+      },
+      "ngss": {
+        "title": "NGSS Aligned",
+        "description": "Full coverage of Next Generation Science Standards"
+      },
+      "adaptive": {
+        "title": "Adaptive Learning",
+        "description": "Personalized paths that adjust to student performance"
+      }
+    }
+  },
+  "keyFeatures": {
+    "title": "Comprehensive Features",
+    "sections": {
+      "curriculum": {
+        "title": "Curriculum Coverage",
+        "items": [
+          "Complete K-12 science curriculum",
+          "NGSS core ideas coverage",
+          "Structured daily lessons",
+          "Grade-appropriate progression"
+        ]
+      },
+      "adaptive": {
+        "title": "Adaptive System",
+        "items": [
+          "Three-track difficulty system",
+          "Automatic adjustments",
+          "Personalized learning paths",
+          "Built-in student support"
+        ]
+      },
+      "assessment": {
+        "title": "Assessment Tools",
+        "items": [
+          "Multiple assessment types",
+          "Real-time progress tracking",
+          "Standards alignment",
+          "Automated feedback"
+        ]
+      }
+    }
+  },
+  "targetAudience": {
+    "title": "Designed for Everyone",
+    "groups": {
+      "teachers": {
+        "title": "For Teachers",
+        "items": [
+          "Complete lesson plans",
+          "Class management tools",
+          "Assessment tools",
+          "Progress tracking"
+        ]
+      },
+      "administrators": {
+        "title": "For Administrators",
+        "items": [
+          "NGSS compliance tools",
+          "School-wide analytics",
+          "Implementation support",
+          "Professional development"
+        ]
+      },
+      "districts": {
+        "title": "For Districts",
+        "items": [
+          "District-wide analytics",
+          "Standardization tools",
+          "Training programs",
+          "Implementation support"
+        ]
+      }
+    }
+  },
+  "waitlist": {
+    "title": "Get Early Access",
+    "description": "Join our waitlist to be among the first to experience Science Advantage when it launches in 2025.",
+    "form": {
+      "emailPlaceholder": "Enter your email",
+      "submitButton": "Join Waitlist"
+    }
+  }
+}

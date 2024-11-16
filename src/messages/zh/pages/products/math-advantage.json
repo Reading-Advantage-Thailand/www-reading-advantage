@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "title": "Math Advantage",
+    "comingSoon": "2025年推出",
+    "subtitle": "革命性的AI增强数学辅导",
+    "description": "体验个性化数学辅导，将经过验证的教学方法与先进的AI技术相结合，适应您的学习节奏和风格"
+  },
+  "keyFeatures": {
+    "title": "核心功能",
+    "features": {
+      "problemGeneration": {
+        "title": "智能题目生成",
+        "items": [
+          "匹配您技能水平的定制练习题",
+          "实际应用问题",
+          "渐进式难度调整"
+        ]
+      },
+      "learningPath": {
+        "title": "结构化学习路径",
+        "items": [
+          "\"我做示范，我们一起做，你自己做\"的教学方法",
+          "清晰的概念进阶",
+          "符合教育标准"
+        ]
+      },
+      "aiSupport": {
+        "title": "AI支持",
+        "items": [
+          "个性化解释",
+          "动态可视化",
+          "即时反馈和指导"
+        ]
+      }
+    }
+  },
+  "coverage": {
+    "title": "全面的课程覆盖",
+    "subjects": [
+      "算术",
+      "代数",
+      "几何",
+      "三角函数",
+      "微积分",
+      "统计"
+    ]
+  },
+  "benefits": {
+    "title": "为什么选择Math Advantage？",
+    "items": {
+      "confidence": {
+        "title": "建立信心",
+        "description": "通过结构化的学习路径按照自己的节奏进步"
+      },
+      "availability": {
+        "title": "全天候可用",
+        "description": "随时随地学习"
+      },
+      "support": {
+        "title": "即时支持",
+        "description": "遇到困难时获得即时帮助"
+      },
+      "progress": {
+        "title": "追踪进度",
+        "description": "通过详细分析监控您的进步"
+      }
+    }
+  },
+  "cta": {
+    "title": "准备好改变您的数学学习之旅了吗？",
+    "description": "加入我们的等候名单，成为2025年首批体验Math Advantage的用户",
+    "buttons": {
+      "waitlist": "加入等候名单",
+      "learnMore": "了解更多"
+    }
+  }
+}

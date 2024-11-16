@@ -1,0 +1,19 @@
+{
+  "title": "联系我们",
+  "description": "与我们的团队取得联系。我们随时为您解答有关教育解决方案的任何问题。",
+  "form": {
+    "name": "姓名",
+    "email": "电子邮箱",
+    "company": "公司/组织",
+    "role": {
+      "label": "职务",
+      "placeholder": "例如：教师、管理员、家长"
+    },
+    "product": {
+      "label": "感兴趣的产品",
+      "select_default": "选择产品"
+    },
+    "message": "留言",
+    "submit": "发送消息"
+  }
+}

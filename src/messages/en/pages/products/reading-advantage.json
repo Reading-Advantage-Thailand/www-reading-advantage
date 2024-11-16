@@ -1,0 +1,137 @@
+{
+  "hero": {
+    "title": "AI-Powered Language Learning",
+    "subtitle": "Experience personalized extensive reading with advanced AI technology",
+    "description": "Our AI-powered platform adapts to your learning journey, providing personalized content and interactive activities for optimal language acquisition."
+  },
+  "keyFeatures": {
+    "title": "Key Features",
+    "features": {
+      "library": {
+        "title": "Extensive Article Library",
+        "items": [
+          "Over 3,000 articles available",
+          "60 new pieces added daily",
+          "Content for every learning level"
+        ]
+      },
+      "input": {
+        "title": "Comprehensible Input",
+        "items": [
+          "Audio with sentence highlighting",
+          "Instant translations",
+          "Engaging multimedia content"
+        ]
+      },
+      "interactive": {
+        "title": "Interactive Learning",
+        "items": [
+          "SRS flashcards",
+          "Matching exercises",
+          "Ordering activities"
+        ]
+      }
+    }
+  },
+  "video": {
+    "title": "See Reading Advantage in Action",
+    "expand": "Click to expand",
+    "minimize": "Click to minimize"
+  },
+  "platformFeatures": {
+    "title": "Platform Features",
+    "features": {
+      "articleSelection": {
+        "title": "Extensive Article Selection",
+        "description": "Browse through thousands of articles across various topics and difficulty levels."
+      },
+      "multiLanguage": {
+        "title": "Multi-Language Support",
+        "description": "Switch between English, Thai, Chinese, Vietnamese, and more languages seamlessly."
+      },
+      "aiAssistant": {
+        "title": "AI-Powered Reading Assistant",
+        "description": "Get instant help with vocabulary, grammar, and comprehension through our AI chat system."
+      },
+      "sentenceActivities": {
+        "title": "Interactive Sentence Activities",
+        "description": "Practice sentence structure and grammar through engaging ordering activities."
+      },
+      "wordOrder": {
+        "title": "Word Order Exercises",
+        "description": "Build confidence in sentence construction with interactive word ordering activities."
+      },
+      "flashcards": {
+        "title": "SRS Flashcard System",
+        "description": "Master vocabulary efficiently with our spaced repetition system."
+      }
+    }
+  },
+  "results": {
+    "title": "Proven Results",
+    "subtitle": "Research-Backed Success",
+    "description": "Students using extensive reading programs like Reading Advantage show an average of 1.48 years equivalent progress in middle-proficiency groups.",
+    "stats": {
+      "progress": {
+        "value": "1.48x",
+        "label": "Progress Rate"
+      },
+      "articles": {
+        "value": "3000+",
+        "label": "Articles Available"
+      },
+      "daily": {
+        "value": "60+",
+        "label": "New Articles Daily"
+      }
+    }
+  },
+  "teacherTools": {
+    "title": "Teacher & Admin Tools",
+    "classManagement": {
+      "title": "Class Management",
+      "features": [
+        "Easy student enrollment and grouping",
+        "Assignment creation and tracking",
+        "Printable classroom activities"
+      ]
+    },
+    "analytics": {
+      "title": "Analytics Dashboard",
+      "features": [
+        "Real-time progress monitoring",
+        "Detailed performance reports",
+        "Student engagement metrics"
+      ]
+    }
+  },
+  "technical": {
+    "title": "Technical Excellence",
+    "features": {
+      "ai": {
+        "title": "AI-Powered",
+        "description": "Advanced content generation and adaptation"
+      },
+      "language": {
+        "title": "Multi-Language",
+        "description": "Support for multiple languages and translations"
+      },
+      "cloud": {
+        "title": "Cloud-Based",
+        "description": "Powered by Google Cloud Platform"
+      },
+      "platform": {
+        "title": "Cross-Platform",
+        "description": "Access on any device, anywhere"
+      }
+    }
+  },
+  "cta": {
+    "title": "Transform Your Language Learning Journey",
+    "description": "Start using Reading Advantage today and experience the power of AI-enhanced learning",
+    "buttons": {
+      "signup": "Sign Up Your School",
+      "trial": "Start Free Trial"
+    }
+  }
+}
