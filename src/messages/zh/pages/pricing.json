@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Reading Advantage功能矩阵",
+    "description": "比较Reading Advantage各个套餐的价格和功能"
+  },
+  "hero": {
+    "title": "Reading Advantage价格套餐比较",
+    "description": "选择最适合您学习旅程的计划"
+  },
+  "table": {
+    "lastUpdated": "最后更新：2024年10月",
+    "headers": {
+      "feature": "功能",
+      "basicTier": "基础版",
+      "aiEnhancedTier": "AI增强版",
+      "aiTutorTier": "AI导师版"
+    },
+    "features": {
+      "price": "价格（每位学生，12个月许可）",
+      "leveledReading": "分级阅读材料（小说和非小说）",
+      "multipleChoice": "阅读理解选择题",
+      "shortAnswer": "简答题",
+      "vocabulary": "词汇练习",
+      "sentencePractice": "句子练习（结构和排序练习）",
+      "textToSpeech": "文字转语音支持",
+      "translation": "翻译支持（泰语、中文、越南语）",
+      "progressTracking": "进度跟踪和XP系统",
+      "flashcards": "词汇和句子闪卡系统",
+      "classroomTools": "教师课堂管理工具",
+      "studentProgress": "教师用学生进度跟踪和报告",
+      "webAccess": "所有设备网页访问",
+      "cefrAlignment": "符合CEFR标准",
+      "schoolManagement": "全校管理功能",
+      "aiAssistant": "AI语言助手解释（聊天机器人）",
+      "teacherAssignments": "教师可分配特定文章或活动",
+      "writingFeedback": "AI驱动的写作反馈和辅助",
+      "gamification": "游戏化元素（徽章、排行榜）",
+      "parentPortal": "家长进度监控门户",
+      "aiQuizzes": "AI生成的词汇测验",
+      "aiLearningPaths": "AI驱动的个性化学习路径",
+      "aiAnalytics": "AI提供的详细学生表现分析",
+      "aiContent": "根据个别学生需求定制的AI生成内容",
+      "aiWritingTutor": "实时AI写作导师辅助"
+    },
+    "status": {
+      "comingSoon": "即将推出"
+    }
+  },
+  "cta": {
+    "title": "准备开始了吗？",
+    "description": "联系我们获取免费试用或演示",
+    "button": "申请演示"
+  }
+}
