@@ -3,6 +3,7 @@ import { zh as aboutPage } from "./pages/about";
 import { zh as homePage } from "./pages/home";
 import { zh as contactPage } from "./pages/contact";
 import { zh as featurePage } from "./pages/feature";
+import { zh as codecampPage } from "./pages/products/codecamp-advantage";
 // components
 import { zh as localeSwitcher } from "./components/locale-switcher";
 import { zh as footer } from './components/footer';
@@ -19,6 +20,9 @@ export default {
         home: homePage,
         contact: contactPage,
         feature: featurePage,
+        products: {
+            codecampAdvantage: codecampPage,
+        },
     },
     components: {
         localeSwitcher,
