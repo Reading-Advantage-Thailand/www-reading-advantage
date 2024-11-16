@@ -9,6 +9,7 @@ import { zh as readingPage } from "./pages/products/reading-advantage";
 import { zh as sciencePage } from "./pages/products/science-advantage";
 import { zh as stemPage } from "./pages/products/stem-advantage";
 import { zh as storytimePage } from "./pages/products/storytime-advantage";
+import { zh as tutorPage } from "./pages/products/tutor-advantage";
 // components
 import { zh as localeSwitcher } from "./components/locale-switcher";
 import { zh as footer } from './components/footer';
@@ -32,6 +33,7 @@ export default {
             scienceAdvantage: sciencePage,
             stemAdvantage: stemPage,
             storytimeAdvantage: storytimePage,
+            tutorAdvantage: tutorPage,
         },
     },
     components: {
