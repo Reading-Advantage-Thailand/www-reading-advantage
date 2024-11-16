@@ -59,10 +59,17 @@ src/
 
 ### Blog System
 
-- MDX-based blog implementation
-- Post processing pipeline
-- Category and tag system
+- Enhanced markdown processing pipeline:
+  - GitHub Flavored Markdown (GFM) support via remark-gfm
+  - Automatic heading anchors with rehype-slug
+  - Clickable heading links with rehype-autolink-headings
+  - Proper rendering of lists, tables, and code blocks
+- Styled using @tailwindcss/typography plugin
+- Frontmatter parsing with gray-matter
 - Dynamic routing for blog posts
+- Responsive image handling
+- Reading time calculation
+- Category and tag system
 
 ## Data Flow
 
@@ -97,8 +104,11 @@ src/
 
 ### Content Management
 
-- MDX processing pipeline
-- Markdown transformation
+- Enhanced markdown processing pipeline:
+  - unified/remark/rehype for markdown transformation
+  - remark-gfm for GitHub Flavored Markdown
+  - rehype-slug and rehype-autolink-headings for heading enhancement
+  - @tailwindcss/typography for content styling
 - Syntax highlighting
 - Auto-linking headers
 
@@ -121,6 +131,9 @@ src/
 
 - [x] Set up MDX blog system
 - [x] Implemented basic blog infrastructure
+- [x] Enhanced markdown rendering with GFM support
+- [x] Added proper heading hierarchy and anchor links
+- [x] Improved typography with Tailwind plugin
 - [ ] Advanced blog features in progress
 
 ## Development Workflow

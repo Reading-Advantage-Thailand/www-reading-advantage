@@ -22,6 +22,8 @@
   - Utility-first CSS framework
   - Custom animations via tailwindcss-animate
   - Class merging with tailwind-merge
+  - @tailwindcss/typography for markdown content styling
+  - tailwindcss-animate for animations
 - **shadcn/ui Components**
   - Built on Radix UI primitives
   - Customizable and accessible components
@@ -33,27 +35,20 @@
   - Component animations
   - Scroll-based animations
 
-## Content Management
+## Content Processing
 
-### MDX System
+- MDX for enhanced markdown support
+- remark-gfm for GitHub Flavored Markdown
+- rehype-slug and rehype-autolink-headings for heading anchors
+- gray-matter for frontmatter parsing
 
-- **MDX Integration**
-  - @mdx-js/loader and @mdx-js/react for MDX processing
-  - next-mdx-remote for dynamic MDX content
-  - Markdown processing:
-    - gray-matter for frontmatter
-    - remark-gfm for GitHub Flavored Markdown
-    - rehype plugins for enhanced HTML output
-    - unified for markdown processing pipeline
+## State Management
 
-## Authentication & Backend
+- React Context API
 
-### Firebase Integration
+## Authentication
 
-- **Firebase 11**
-  - Authentication services
-  - User management
-  - Security rules
+- Firebase Authentication
 
 ## Development Tools
 
