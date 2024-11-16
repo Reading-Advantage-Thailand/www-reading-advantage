@@ -3,6 +3,7 @@ import Hero from "@/components/layout/hero"
 import { PageTransition } from "@/components/layout/page-transition"
 import { FadeIn } from "@/components/layout/fade-in"
 import { ScrollFade } from "@/components/layout/scroll-fade"
+import { getScopedI18n } from "@/locales/server"
 
 export const metadata: Metadata = {
   title: "STEM Advantage - Reading Advantage Thailand",
@@ -13,7 +14,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function StemAdvantage() {
+export default async function StemAdvantage() {
+  const t = await getScopedI18n("pages.products.stemAdvantage")
   return (
     <PageTransition>
       <main>
@@ -21,14 +23,14 @@ export default function StemAdvantage() {
         <Hero
           title={
             <>
-              <h1 className="text-5xl font-bold mb-6">Comprehensive K-12 Coding Education</h1>
+              <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
               <div className="absolute top-4 right-4 bg-yellow-400 text-gray-800 px-4 py-2 rounded-full mb-6">
-                Coming in 2025
+                {t("hero.comingSoon")}
               </div>
-              <h2 className="text-2xl font-bold mb-6">75% Coding + 25% STEM Integration</h2>
+              <h2 className="text-2xl font-bold mb-6">{t("hero.subtitle")}</h2>
             </>
           }
-          description="Transform your STEM curriculum with our innovative platform, designed for the modern classroom."
+          description={t("hero.description")}
           backgroundImage={true}
         />
 
@@ -36,35 +38,35 @@ export default function StemAdvantage() {
         <section className="bg-white py-16">
           <div className="container mx-auto px-4">
             <FadeIn>
-              <h2 className="text-3xl font-bold text-center mb-12">Core Features</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("coreFeatures.heading")}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">🎓</div>
-                  <h3 className="text-xl font-bold mb-4 text-center">Progressive Curriculum</h3>
+                  <h3 className="text-xl font-bold mb-4 text-center">{t("coreFeatures.features.0.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
-                    <li>Block-based to text programming</li>
-                    <li>Natural skill progression</li>
-                    <li>180-day learning path</li>
+                    <li>{t("coreFeatures.features.0.points.0")}</li>
+                    <li>{t("coreFeatures.features.0.points.1")}</li>
+                    <li>{t("coreFeatures.features.0.points.2")}</li>
                   </ul>
                 </div>
 
                 <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">💻</div>
-                  <h3 className="text-xl font-bold mb-4 text-center">Interactive Learning</h3>
+                  <h3 className="text-xl font-bold mb-4 text-center">{t("coreFeatures.features.1.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
-                    <li>Real-time coding environment</li>
-                    <li>Immediate feedback</li>
-                    <li>Automated assessment</li>
+                    <li>{t("coreFeatures.features.1.points.0")}</li>
+                    <li>{t("coreFeatures.features.1.points.1")}</li>
+                    <li>{t("coreFeatures.features.1.points.2")}</li>
                   </ul>
                 </div>
 
                 <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">📚</div>
-                  <h3 className="text-xl font-bold mb-4 text-center">Teacher Support</h3>
+                  <h3 className="text-xl font-bold mb-4 text-center">{t("coreFeatures.features.2.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
-                    <li>Comprehensive resources</li>
-                    <li>Classroom management tools</li>
-                    <li>Progress tracking system</li>
+                    <li>{t("coreFeatures.features.2.points.0")}</li>
+                    <li>{t("coreFeatures.features.2.points.1")}</li>
+                    <li>{t("coreFeatures.features.2.points.2")}</li>
                   </ul>
                 </div>
               </div>
@@ -76,20 +78,20 @@ export default function StemAdvantage() {
         <section className="bg-sky-50 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
-              <h2 className="text-3xl font-bold text-center mb-12">Grade-Level Breakdown</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("gradeBreakdown.heading")}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                 {[
                   {
-                    grade: "Grades 3-5",
-                    description: "Introduction to coding through visual blocks and fundamental concepts",
+                    grade: t("gradeBreakdown.grades.0.grade"),
+                    description: t("gradeBreakdown.grades.0.description"),
                   },
                   {
-                    grade: "Grades 6-8",
-                    description: "Transition to text-based coding with practical applications",
+                    grade: t("gradeBreakdown.grades.1.grade"),
+                    description: t("gradeBreakdown.grades.1.description"),
                   },
                   {
-                    grade: "Grades 9-12",
-                    description: "Advanced programming concepts and web development skills",
+                    grade: t("gradeBreakdown.grades.2.grade"),
+                    description: t("gradeBreakdown.grades.2.description"),
                   },
                 ].map((level) => (
                   <div
@@ -109,31 +111,31 @@ export default function StemAdvantage() {
         <section className="bg-sky-800 text-sky-50 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
-              <h2 className="text-3xl font-bold text-center mb-12">Benefits for Everyone</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("benefits.heading")}</h2>
               <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 {[
                   {
-                    title: "For Students",
+                    title: t("benefits.groups.0.title"),
                     benefits: [
-                      "Structured learning path",
-                      "Hands-on coding experience",
-                      "Real-world applications",
+                      t("benefits.groups.0.points.0"),
+                      t("benefits.groups.0.points.1"),
+                      t("benefits.groups.0.points.2"),
                     ],
                   },
                   {
-                    title: "For Teachers",
+                    title: t("benefits.groups.1.title"),
                     benefits: [
-                      "Ready-to-use curriculum",
-                      "Comprehensive resources",
-                      "Progress tracking tools",
+                      t("benefits.groups.1.points.0"),
+                      t("benefits.groups.1.points.1"),
+                      t("benefits.groups.1.points.2"),
                     ],
                   },
                   {
-                    title: "For Schools",
+                    title: t("benefits.groups.2.title"),
                     benefits: [
-                      "Complete STEM solution",
-                      "Web-based accessibility",
-                      "Educational standards alignment",
+                      t("benefits.groups.2.points.0"),
+                      t("benefits.groups.2.points.1"),
+                      t("benefits.groups.2.points.2"),
                     ],
                   },
                 ].map((group) => (
@@ -155,14 +157,13 @@ export default function StemAdvantage() {
         <section className="bg-white py-16">
           <div className="container mx-auto px-4">
             <FadeIn>
-              <h2 className="text-3xl font-bold text-center mb-12">Technical Requirements</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("technicalRequirements.heading")}</h2>
               <div className="max-w-2xl mx-auto bg-sky-50 p-8 rounded-lg shadow-sm">
                 <ul className="space-y-4">
                   {[
-                    "Works on any internet-connected device",
-                    "Web browser-based - no special software needed",
-                    "Cloud-based progress tracking",
-                    "Compatible with major school IT systems",
+                    t("technicalRequirements.points.0"),
+                    t("technicalRequirements.points.1"),
+                    t("technicalRequirements.points.2"),
                   ].map((requirement) => (
                     <li key={requirement} className="flex items-center">
                       <span className="text-green-500 mr-2">✓</span>
@@ -179,20 +180,20 @@ export default function StemAdvantage() {
         <section className="bg-sky-800 text-sky-50 py-16 bg-gradient-to-br from-sky-800 to-violet-900">
           <div className="container mx-auto px-4 text-center">
             <FadeIn>
-              <h2 className="text-3xl font-bold mb-6">Get Started with STEM Advantage</h2>
-              <p className="text-xl mb-8">Join our waitlist to be the first to experience STEM Advantage in 2025</p>
+              <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>
+              <p className="text-xl mb-8">{t("cta.description")}</p>
               <div className="flex justify-center gap-4">
                 <a
                   href="#"
                   className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg font-bold transition-colors"
                 >
-                  Request Early Access
+                  {t("cta.buttons.earlyAccess")}
                 </a>
                 <a
                   href="#"
                   className="bg-white hover:bg-sky-50 text-sky-800 px-8 py-3 rounded-lg font-bold transition-colors"
                 >
-                  School Partnerships
+                  {t("cta.buttons.partnerships")}
                 </a>
               </div>
             </FadeIn>
