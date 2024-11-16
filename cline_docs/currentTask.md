@@ -19,6 +19,7 @@ Implement internationalization support for the Reading Advantage website.
    - Home page
    - About page
    - Features page
+   - Pricing page and pricing-table component
 
 ### Implemented Structure
 
@@ -28,29 +29,35 @@ src/messages/
 │   ├── common.json     # Shared translations
 │   ├── components/     # Component translations
 │   │   ├── navigation.json
-│   │   └── footer.json
+│   │   ├── footer.json
+│   │   └── pricing-table.json
 │   └── pages/         # Page-specific translations
 │       ├── home.json
 │       ├── about.json
-│       └── features.json
+│       ├── features.json
+│       └── pricing.json
 ├── th/                 # Thai translations
 │   ├── common.json
 │   ├── components/
 │   │   ├── navigation.json
-│   │   └── footer.json
+│   │   ├── footer.json
+│   │   └── pricing-table.json
 │   └── pages/
 │       ├── home.json
 │       ├── about.json
-│       └── features.json
+│       ├── features.json
+│       └── pricing.json
 └── zh/                 # Chinese translations
     ├── common.json
     ├── components/
     │   ├── navigation.json
-    │   └── footer.json
+    │   ├── footer.json
+    │   └── pricing-table.json
     └── pages/
         ├── home.json
         ├── about.json
-        └── features.json
+        ├── features.json
+        └── pricing.json
 ```
 
 ### Key Naming Conventions
@@ -65,17 +72,19 @@ src/messages/
    - Header
    - Footer ✅
    - Navigation ✅
-2. Product Pages
+2. Feature Components ✅
+   - Pricing Table ✅
+3. Product Pages
    - Reading Advantage
    - Math Advantage
    - Science Advantage
    - STEM Advantage
    - Other product pages
-3. Core Pages
+4. Core Pages
    - Homepage ✅
    - About ✅
    - Features ✅
-   - Pricing (next)
+   - Pricing ✅
    - Contact
 
 ## Reference to projectRoadmap.md Tasks
@@ -90,20 +99,28 @@ This task implements the Internationalization section from the project roadmap:
   - [x] Home page
   - [x] About page
   - [x] Features page
-  - [ ] Remaining pages
+  - [x] Pricing page and components
+  - [ ] Contact page
+  - [ ] Product pages
 - [ ] UI adaptation (next phase)
 
 ## Current Status
 
 ✅ Phase 1 (Translation Structure) completed
-🚀 Phase 2 (Implementation) in progress
+🚀 Phase 2 (Content Translation) in progress
 
 ## Next Steps
 
 1. Continue translating remaining pages in this order:
-   - Pricing page (next)
-   - Contact page
+   - Contact page (next)
    - Product pages
+
+## Phase 3: Implementation Planning
+
+1. Install and configure i18n system
+2. Update components to use translation keys
+3. Implement language switching
+4. Test translations across all pages
 
 ## Questions to Address
 
