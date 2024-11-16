@@ -4,6 +4,7 @@ import { zh as homePage } from "./pages/home";
 import { zh as contactPage } from "./pages/contact";
 import { zh as featurePage } from "./pages/feature";
 import { zh as codecampPage } from "./pages/products/codecamp-advantage";
+import { zh as mathPage } from "./pages/products/math-advantage";
 // components
 import { zh as localeSwitcher } from "./components/locale-switcher";
 import { zh as footer } from './components/footer';
@@ -22,6 +23,7 @@ export default {
         feature: featurePage,
         products: {
             codecampAdvantage: codecampPage,
+            mathAdvantage: mathPage
         },
     },
     components: {
