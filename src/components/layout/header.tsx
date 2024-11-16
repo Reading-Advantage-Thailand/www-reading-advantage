@@ -14,9 +14,9 @@ import {
   SheetTitle,
   SheetDescription,
 } from "@/components/ui/sheet";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useAuth } from "@/contexts/auth-context";
 import Image from 'next/image';
+import { LocaleSwitcher } from "@/switcher/locale-switcher";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -107,9 +107,8 @@ export function Header() {
                             <Link
                               key={product.href}
                               href={product.href}
-                              className={`text-base px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors ${
-                                pathname === product.href ? 'bg-sky-600' : ''
-                              }`}
+                              className={`text-base px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors ${pathname === product.href ? 'bg-sky-600' : ''
+                                }`}
                               onClick={() => setIsOpen(false)}
                             >
                               {product.title}
@@ -123,9 +122,8 @@ export function Header() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={`text-lg px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors ${
-                        pathname === link.href ? 'bg-sky-600' : ''
-                      }`}
+                      className={`text-lg px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors ${pathname === link.href ? 'bg-sky-600' : ''
+                        }`}
                       onClick={() => setIsOpen(false)}
                     >
                       {link.title}
@@ -164,9 +162,8 @@ export function Header() {
                   >
                     <Link
                       href={link.href}
-                      className={`text-sky-50 hover:text-white transition-colors relative py-2 flex items-center gap-1 ${
-                        pathname.startsWith('/products') ? 'font-medium' : ''
-                      }`}
+                      className={`text-sky-50 hover:text-white transition-colors relative py-2 flex items-center gap-1 ${pathname.startsWith('/products') ? 'font-medium' : ''
+                        }`}
                     >
                       {link.title}
                       <ChevronDown className="h-4 w-4" />
@@ -177,9 +174,8 @@ export function Header() {
                           <Link
                             key={product.href}
                             href={product.href}
-                            className={`block px-4 py-2 hover:bg-sky-600 transition-colors ${
-                              pathname === product.href ? 'bg-sky-600' : ''
-                            }`}
+                            className={`block px-4 py-2 hover:bg-sky-600 transition-colors ${pathname === product.href ? 'bg-sky-600' : ''
+                              }`}
                           >
                             {product.title}
                           </Link>
@@ -196,9 +192,8 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sky-50 hover:text-white transition-colors relative py-2 ${
-                    pathname === link.href ? 'font-medium' : ''
-                  }`}
+                  className={`text-sky-50 hover:text-white transition-colors relative py-2 ${pathname === link.href ? 'font-medium' : ''
+                    }`}
                 >
                   {link.title}
                   {pathname === link.href && (
@@ -212,15 +207,7 @@ export function Header() {
           {/* Right side */}
           <div className="flex items-center space-x-6">
             {/* Language Selector */}
-            <Select defaultValue="en">
-              <SelectTrigger className="w-[100px] bg-sky-600 border-sky-400 text-sky-50 focus:ring-sky-400 focus:ring-offset-sky-500">
-                <SelectValue placeholder="Language" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="en">English</SelectItem>
-                <SelectItem value="th">ภาษาไทย</SelectItem>
-              </SelectContent>
-            </Select>
+            <LocaleSwitcher />
 
             {/* Auth buttons */}
             {renderAuthButtons()}

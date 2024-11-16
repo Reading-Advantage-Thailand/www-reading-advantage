@@ -1,13 +1,16 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { createI18nMiddleware } from 'next-international/middleware'
+import { NextRequest } from 'next/server'
+import { localeConfig } from './config/locale-config'
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function middleware(_request: NextRequest) {
-  // Return the response unchanged
-  return NextResponse.next()
+const I18nMiddleware = createI18nMiddleware({
+  locales: localeConfig.locales,
+  defaultLocale: localeConfig.defaultLocale,
+})
+
+export function middleware(request: NextRequest) {
+  return I18nMiddleware(request)
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
-  matcher: '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  matcher: ['/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)'],
 }
