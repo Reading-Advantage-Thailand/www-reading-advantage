@@ -5,6 +5,7 @@ import { th as contactPage } from './pages/contact';
 import { th as featurePage } from './pages/feature';
 import { th as codecampPage } from './pages/products/codecamp-advantage';
 import { th as mathPage } from './pages/products/math-advantage';
+import { th as readingPage } from './pages/products/reading-advantage';
 // components
 import { th as localeSwitcher } from './components/locale-switcher';
 import { th as footer } from './components/footer';
@@ -23,7 +24,8 @@ export default {
         feature: featurePage,
         products: {
             codecampAdvantage: codecampPage,
-            mathAdvantage: mathPage
+            mathAdvantage: mathPage,
+            readingAdvantage: readingPage,
         },
     },
     components: {
