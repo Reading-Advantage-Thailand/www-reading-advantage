@@ -7,36 +7,38 @@ import { PageTransition } from "@/components/layout/page-transition"
 import { FadeIn } from "@/components/layout/fade-in"
 import { ScrollFade } from "@/components/layout/scroll-fade"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
+import { useScopedI18n } from "@/locales/client"
 
 export default function ReadingAdvantage() {
+  const t = useScopedI18n("pages.products.readingAdvantage")
   const [isVideoExpanded, setIsVideoExpanded] = useState(false);
 
   const features = [
     {
       icon: "📚",
-      title: "Extensive Article Library",
+      title: t("keyFeatures.features.0.title"),
       items: [
-        "Over 3,000 articles available",
-        "60 new pieces added daily",
-        "Content for every learning level",
+        t("keyFeatures.features.0.items.0"),
+        t("keyFeatures.features.0.items.1"),
+        t("keyFeatures.features.0.items.2"),
       ],
     },
     {
       icon: "🎯",
-      title: "Comprehensible Input",
+      title: t("keyFeatures.features.1.title"),
       items: [
-        "Audio with sentence highlighting",
-        "Instant translations",
-        "Engaging multimedia content",
+        t("keyFeatures.features.1.items.0"),
+        t("keyFeatures.features.1.items.1"),
+        t("keyFeatures.features.1.items.2"),
       ],
     },
     {
       icon: "🤖",
-      title: "Interactive Learning",
+      title: t("keyFeatures.features.2.title"),
       items: [
-        "SRS flashcards",
-        "Matching exercises",
-        "Ordering activities",
+        t("keyFeatures.features.2.items.0"),
+        t("keyFeatures.features.2.items.1"),
+        t("keyFeatures.features.2.items.2"),
       ],
     },
   ];
@@ -44,33 +46,33 @@ export default function ReadingAdvantage() {
   const platformFeatures = [
     {
       image: "/images/reading-advantage/choose-your-article.png",
-      title: "Extensive Article Selection",
-      description: "Browse through thousands of articles across various topics and difficulty levels.",
+      title: t("platformFeatures.features.0.title"),
+      description: t("platformFeatures.features.0.description"),
     },
     {
       image: "/images/reading-advantage/language-selector-en-th-zh-vn.png",
-      title: "Multi-Language Support",
-      description: "Switch between English, Thai, Chinese, Vietnamese, and more languages seamlessly.",
+      title: t("platformFeatures.features.1.title"),
+      description: t("platformFeatures.features.1.description"),
     },
     {
       image: "/images/reading-advantage/read-article-and-chat-with-ai.png",
-      title: "AI-Powered Reading Assistant",
-      description: "Get instant help with vocabulary, grammar, and comprehension through our AI chat system.",
+      title: t("platformFeatures.features.2.title"),
+      description: t("platformFeatures.features.2.description"),
     },
     {
       image: "/images/reading-advantage/order-sentence-activity.png",
-      title: "Interactive Sentence Activities",
-      description: "Practice sentence structure and grammar through engaging ordering activities.",
+      title: t("platformFeatures.features.3.title"),
+      description: t("platformFeatures.features.3.description"),
     },
     {
       image: "/images/reading-advantage/order-words-activity.png",
-      title: "Word Order Exercises",
-      description: "Build confidence in sentence construction with interactive word ordering activities.",
+      title: t("platformFeatures.features.4.title"),
+      description: t("platformFeatures.features.4.description"),
     },
     {
       image: "/images/reading-advantage/SRS-flashcard-activity.png",
-      title: "SRS Flashcard System",
-      description: "Master vocabulary efficiently with our spaced repetition system.",
+      title: t("platformFeatures.features.5.title"),
+      description: t("platformFeatures.features.5.description"),
     },
   ];
 
@@ -81,11 +83,11 @@ export default function ReadingAdvantage() {
         <Hero
           title={
             <>
-              <h1 className="text-5xl font-bold mb-6">AI-Powered Language Learning</h1>
-              <h2 className="text-2xl font-bold mb-6">Experience personalized extensive reading with advanced AI technology</h2>
+              <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
+              <h2 className="text-2xl font-bold mb-6">{t("hero.subtitle")}</h2>
             </>
           }
-          description="Our AI-powered platform adapts to your learning journey, providing personalized content and interactive activities for optimal language acquisition."
+          description={t("hero.description")}
           backgroundImage={true}
         />
 
@@ -93,7 +95,7 @@ export default function ReadingAdvantage() {
         <section className="bg-white py-16">
           <div className="container mx-auto px-4">
             <FadeIn>
-              <h2 className="text-3xl font-bold text-center mb-12">Key Features</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("keyFeatures.heading")}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
                 {features.map((feature) => (
                   <Card key={feature.title} className="bg-sky-50">
@@ -119,11 +121,10 @@ export default function ReadingAdvantage() {
         <section className="bg-sky-50 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
-              <h2 className="text-3xl font-bold text-center mb-12">See Reading Advantage in Action</h2>
-              <Card 
-                className={`mx-auto transition-all duration-300 cursor-pointer ${
-                  isVideoExpanded ? 'w-[80%]' : 'max-w-2xl'
-                }`}
+              <h2 className="text-3xl font-bold text-center mb-12">{t("videoSection.heading")}</h2>
+              <Card
+                className={`mx-auto transition-all duration-300 cursor-pointer ${isVideoExpanded ? 'w-[80%]' : 'max-w-2xl'
+                  }`}
                 onClick={() => setIsVideoExpanded(!isVideoExpanded)}
               >
                 <CardContent className="p-0 aspect-video">
@@ -137,7 +138,7 @@ export default function ReadingAdvantage() {
                 </CardContent>
                 <CardFooter className="justify-center py-2">
                   <p className="text-sm text-muted-foreground">
-                    {isVideoExpanded ? 'Click to minimize' : 'Click to expand'}
+                    {isVideoExpanded ? t('videoSection.expanded') : t('videoSection.collapsed')}
                   </p>
                 </CardFooter>
               </Card>
@@ -149,7 +150,7 @@ export default function ReadingAdvantage() {
         <section className="bg-white py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
-              <h2 className="text-3xl font-bold text-center mb-12">Platform Features</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("platformFeatures.heading")}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
                 {platformFeatures.map((feature) => (
                   <Card key={feature.title} className="flex flex-col h-full">
@@ -178,20 +179,20 @@ export default function ReadingAdvantage() {
         <section className="bg-sky-50 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
-              <h2 className="text-3xl font-bold text-center mb-12">Proven Results</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("resultsSection.heading")}</h2>
               <Card className="max-w-4xl mx-auto">
                 <CardHeader>
-                  <CardTitle className="text-2xl text-center">Research-Backed Success</CardTitle>
+                  <CardTitle className="text-2xl text-center">{t("resultsSection.title")}</CardTitle>
                   <CardDescription className="text-lg text-center">
-                    Students using extensive reading programs like Reading Advantage show an average of 1.48 years equivalent progress in middle-proficiency groups.
+                    {t("resultsSection.description")}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                      { value: "1.48x", label: "Progress Rate" },
-                      { value: "3000+", label: "Articles Available" },
-                      { value: "60+", label: "New Articles Daily" },
+                      { value: t("resultsSection.stats.0.value"), label: t("resultsSection.stats.0.label") },
+                      { value: t("resultsSection.stats.1.value"), label: t("resultsSection.stats.1.label") },
+                      { value: t("resultsSection.stats.2.value"), label: t("resultsSection.stats.2.label") },
                     ].map((stat) => (
                       <div key={stat.label} className="text-center">
                         <div className="text-4xl font-bold text-sky-500 mb-2">{stat.value}</div>
@@ -209,29 +210,29 @@ export default function ReadingAdvantage() {
         <section className="bg-white py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
-              <h2 className="text-3xl font-bold text-center mb-12">Teacher & Admin Tools</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("teacherTools.heading")}</h2>
               <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Class Management</CardTitle>
+                    <CardTitle>{t("teacherTools.tools.0.title")}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
-                      <li>• Easy student enrollment and grouping</li>
-                      <li>• Assignment creation and tracking</li>
-                      <li>• Printable classroom activities</li>
+                      <li>{t("teacherTools.tools.0.items.0")}</li>
+                      <li>{t("teacherTools.tools.0.items.1")}</li>
+                      <li>{t("teacherTools.tools.0.items.2")}</li>
                     </ul>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardHeader>
-                    <CardTitle>Analytics Dashboard</CardTitle>
+                    <CardTitle>{t("teacherTools.tools.1.title")}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
-                      <li>• Real-time progress monitoring</li>
-                      <li>• Detailed performance reports</li>
-                      <li>• Student engagement metrics</li>
+                      <li>{t("teacherTools.tools.1.items.0")}</li>
+                      <li>{t("teacherTools.tools.1.items.1")}</li>
+                      <li>{t("teacherTools.tools.1.items.2")}</li>
                     </ul>
                   </CardContent>
                 </Card>
@@ -244,28 +245,28 @@ export default function ReadingAdvantage() {
         <section className="bg-sky-800 text-sky-50 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
-              <h2 className="text-3xl font-bold text-center mb-12">Technical Excellence</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("technicalHighlights.heading")}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
                 {[
                   {
                     icon: "🤖",
-                    title: "AI-Powered",
-                    description: "Advanced content generation and adaptation",
+                    title: t("technicalHighlights.features.0.title"),
+                    description: t("technicalHighlights.features.0.description"),
                   },
                   {
                     icon: "🌐",
-                    title: "Multi-Language",
-                    description: "Support for multiple languages and translations",
+                    title: t("technicalHighlights.features.1.title"),
+                    description: t("technicalHighlights.features.1.description"),
                   },
                   {
                     icon: "☁️",
-                    title: "Cloud-Based",
-                    description: "Powered by Google Cloud Platform",
+                    title: t("technicalHighlights.features.2.title"),
+                    description: t("technicalHighlights.features.2.description"),
                   },
                   {
                     icon: "📱",
-                    title: "Cross-Platform",
-                    description: "Access on any device, anywhere",
+                    title: t("technicalHighlights.features.3.title"),
+                    description: t("technicalHighlights.features.3.description"),
                   },
                 ].map((feature) => (
                   <Card key={feature.title} className="bg-sky-900">
@@ -287,20 +288,20 @@ export default function ReadingAdvantage() {
         <section className="bg-gradient-to-br from-sky-800 to-violet-900 py-16">
           <div className="container mx-auto px-4 text-center text-sky-50">
             <FadeIn>
-              <h2 className="text-3xl font-bold mb-6">Transform Your Language Learning Journey</h2>
-              <p className="text-xl mb-8">Start using Reading Advantage today and experience the power of AI-enhanced learning</p>
+              <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>
+              <p className="text-xl mb-8">{t("cta.description")}</p>
               <div className="flex justify-center gap-4">
                 <a
                   href="#"
                   className="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-lg font-bold transition-colors"
                 >
-                  Sign Up Your School
+                  {t("cta.buttons.signUp")}
                 </a>
                 <a
                   href="#"
                   className="bg-white hover:bg-sky-50 text-sky-800 px-8 py-3 rounded-lg font-bold transition-colors"
                 >
-                  Start Free Trial
+                  {t("cta.buttons.freeTrial")}
                 </a>
               </div>
             </FadeIn>
