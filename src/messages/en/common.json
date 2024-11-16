@@ -1,0 +1,47 @@
+{
+  "actions": {
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "login": "Login",
+    "openMenu": "Open menu",
+    "scheduleDemo": "Schedule a Demo",
+    "discoverMore": "Discover More"
+  },
+  "metadata": {
+    "logoAlt": "Reading Advantage Thailand Logo"
+  },
+  "products": {
+    "reading-advantage": {
+      "title": "Reading Advantage",
+      "description": "AI-powered reading comprehension platform"
+    },
+    "math-advantage": {
+      "title": "Math Advantage",
+      "description": "Interactive mathematics learning"
+    },
+    "science-advantage": {
+      "title": "Science Advantage",
+      "description": "Hands-on science education"
+    },
+    "stem-advantage": {
+      "title": "STEM Advantage",
+      "description": "Integrated STEM learning platform"
+    },
+    "zhongwen-advantage": {
+      "title": "Zhongwen Advantage",
+      "description": "Chinese language learning platform"
+    },
+    "storytime-advantage": {
+      "title": "Storytime Advantage",
+      "description": "Interactive storytelling platform"
+    },
+    "codecamp-advantage": {
+      "title": "CodeCamp Advantage",
+      "description": "Learn coding through projects"
+    },
+    "tutor-advantage": {
+      "title": "Tutor Advantage",
+      "description": "Online tutoring platform"
+    }
+  }
+}

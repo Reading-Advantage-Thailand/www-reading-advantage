@@ -1,0 +1,28 @@
+{
+  "company": {
+    "title": "Reading Advantage Thailand",
+    "description": "Empowering students with comprehensive reading and learning solutions."
+  },
+  "sections": {
+    "quickLinks": {
+      "title": "Quick Links",
+      "products": "Products",
+      "features": "Features",
+      "pricing": "Pricing",
+      "blog": "Blog",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "email": "Email: support@reading-advantage.com",
+      "phone": "Phone: +66 634 460 628",
+      "address": "Khonkaen, Thailand"
+    }
+  },
+  "legal": {
+    "copyright": "© {year} Reading Advantage Thailand. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+}

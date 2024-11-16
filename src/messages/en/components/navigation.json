@@ -1,0 +1,25 @@
+{
+  "main": {
+    "products": "Products",
+    "features": "Features",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "language": {
+    "selector": "Language",
+    "en": "English",
+    "th": "ไทย",
+    "zh": "中文"
+  },
+  "menu": {
+    "title": "Navigation Menu",
+    "description": "Access all pages and features of Reading Advantage Thailand"
+  },
+  "auth": {
+    "login": "Login",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "actions": {
+    "signUp": "ลงทะเบียน",
+    "signOut": "ออกจากระบบ",
+    "login": "เข้าสู่ระบบ",
+    "openMenu": "เปิดเมนู",
+    "scheduleDemo": "นัดหมายการสาธิต",
+    "discoverMore": "ค้นพบเพิ่มเติม"
+  },
+  "metadata": {
+    "logoAlt": "โลโก้ Reading Advantage Thailand"
+  },
+  "products": {
+    "reading-advantage": {
+      "title": "Reading Advantage",
+      "description": "แพลตฟอร์มความเข้าใจการอ่านด้วย AI"
+    },
+    "math-advantage": {
+      "title": "Math Advantage",
+      "description": "การเรียนรู้คณิตศาสตร์แบบโต้ตอบ"
+    },
+    "science-advantage": {
+      "title": "Science Advantage",
+      "description": "การศึกษาวิทยาศาสตร์แบบลงมือปฏิบัติ"
+    },
+    "stem-advantage": {
+      "title": "STEM Advantage",
+      "description": "แพลตฟอร์มการเรียนรู้ STEM แบบบูรณาการ"
+    },
+    "zhongwen-advantage": {
+      "title": "Zhongwen Advantage",
+      "description": "แพลตฟอร์มการเรียนรู้ภาษาจีน"
+    },
+    "storytime-advantage": {
+      "title": "Storytime Advantage",
+      "description": "แพลตฟอร์มการเล่านิทานแบบโต้ตอบ"
+    },
+    "codecamp-advantage": {
+      "title": "CodeCamp Advantage",
+      "description": "เรียนรู้การเขียนโค้ดผ่านโครงงาน"
+    },
+    "tutor-advantage": {
+      "title": "Tutor Advantage",
+      "description": "แพลตฟอร์มติวเตอร์ออนไลน์"
+    }
+  }
+}
