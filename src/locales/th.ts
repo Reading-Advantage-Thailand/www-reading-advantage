@@ -6,6 +6,7 @@ import { th as featurePage } from './pages/feature';
 import { th as codecampPage } from './pages/products/codecamp-advantage';
 import { th as mathPage } from './pages/products/math-advantage';
 import { th as readingPage } from './pages/products/reading-advantage';
+import { th as sciencePage } from './pages/products/science-advantage';
 // components
 import { th as localeSwitcher } from './components/locale-switcher';
 import { th as footer } from './components/footer';
@@ -26,6 +27,7 @@ export default {
             codecampAdvantage: codecampPage,
             mathAdvantage: mathPage,
             readingAdvantage: readingPage,
+            scienceAdvantage: sciencePage,
         },
     },
     components: {
