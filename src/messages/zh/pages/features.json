@@ -1,0 +1,206 @@
+{
+  "metadata": {
+    "title": "功能特点 - Reading Advantage Thailand",
+    "description": "将 Reading Advantage 与其他领先的阅读程序进行比较。了解我们的人工智能驱动平台如何脱颖而出。"
+  },
+  "hero": {
+    "title": "平台功能",
+    "description": "将 Reading Advantage 与其他领先的阅读程序进行比较"
+  },
+  "features": {
+    "grid": [
+      {
+        "emoji": "🤖",
+        "title": "人工智能驱动内容",
+        "description": "我们的先进人工智能技术根据每个学习者的需求和偏好生成个性化内容。"
+      },
+      {
+        "emoji": "👤",
+        "title": "个性化学习",
+        "description": "我们的平台适应个别学习者的需求，提供定制化的教育体验以获得最佳效果。"
+      },
+      {
+        "emoji": "✏️",
+        "title": "互动练习",
+        "description": "参与我们设计的互动模拟、测验和练习，旨在加强学习和提高记忆力。"
+      },
+      {
+        "emoji": "📊",
+        "title": "进度跟踪",
+        "description": "全面的分析和报告功能使学习者和教育者能够监控进度并识别需要改进的领域。"
+      },
+      {
+        "emoji": "📱",
+        "title": "跨平台访问",
+        "description": "通过我们的网页、移动和平板应用程序随时随地访问教育内容。"
+      },
+      {
+        "emoji": "🌐",
+        "title": "全球社区",
+        "description": "与全球学习者连接，分享经验，参与协作学习机会。"
+      }
+    ]
+  },
+  "comparison": {
+    "title": "阅读程序比较",
+    "lastUpdated": "最后更新：2023年10月",
+    "headers": {
+      "feature": "功能",
+      "readingAdvantage": "Reading Advantage",
+      "razKids": "Raz-Kids",
+      "lexiaCore5": "Lexia Core5",
+      "acceleratedReader": "Accelerated Reader",
+      "achieve3000": "Achieve3000"
+    },
+    "features": {
+      "gradeRange": {
+        "label": "年级范围",
+        "readingAdvantage": "4-12",
+        "razKids": "K-5",
+        "lexiaCore5": "K-5",
+        "acceleratedReader": "K-12",
+        "achieve3000": "2-12"
+      },
+      "price": {
+        "label": "价格（每学生/年）",
+        "readingAdvantage": "$36-120",
+        "razKids": "$4.30 - $10",
+        "lexiaCore5": "$40 - $60",
+        "acceleratedReader": "$5 - $10",
+        "achieve3000": "$45 - $60"
+      },
+      "fiction": {
+        "label": "小说",
+        "readingAdvantage": {
+          "value": "✔",
+          "title": "丰富多样的小说文本"
+        },
+        "razKids": {
+          "value": "✔",
+          "title": "分级电子书可用"
+        },
+        "lexiaCore5": {
+          "value": "⚬",
+          "title": "小说内容有限"
+        },
+        "acceleratedReader": {
+          "value": "✔",
+          "title": "使用外部图书馆书籍"
+        },
+        "achieve3000": {
+          "value": "⚬",
+          "title": "提供部分小说内容"
+        }
+      },
+      "nonfiction": {
+        "label": "非小说",
+        "readingAdvantage": {
+          "value": "✔",
+          "title": "丰富多样的非小说文本"
+        },
+        "razKids": {
+          "value": "✔",
+          "title": "分级电子书可用"
+        },
+        "lexiaCore5": {
+          "value": "⚬",
+          "title": "非小说内容有限"
+        },
+        "acceleratedReader": {
+          "value": "✔",
+          "title": "使用外部图书馆书籍"
+        },
+        "achieve3000": {
+          "value": "✔",
+          "title": "专注于非小说内容"
+        }
+      },
+      "readingMaterial": {
+        "label": "包含阅读材料",
+        "readingAdvantage": {
+          "value": "✔",
+          "title": "广泛的内置图书馆"
+        },
+        "razKids": {
+          "value": "✔",
+          "title": "大量电子书库"
+        },
+        "lexiaCore5": {
+          "value": "✔",
+          "title": "包含阅读段落"
+        },
+        "acceleratedReader": {
+          "value": "✘",
+          "title": "使用外部图书馆书籍"
+        },
+        "achieve3000": {
+          "value": "✔",
+          "title": "提供文章和文本"
+        }
+      },
+      "deviceCompatibility": {
+        "label": "设备兼容性",
+        "readingAdvantage": "网页（所有设备）",
+        "razKids": "网页, iOS, Android",
+        "lexiaCore5": "网页, iOS, Android",
+        "acceleratedReader": "网页, iOS",
+        "achieve3000": "网页, iOS, Android"
+      },
+      "audioSupport": {
+        "label": "音频支持",
+        "readingAdvantage": {
+          "value": "✔",
+          "title": "所有内容文字转语音"
+        },
+        "razKids": {
+          "value": "✔",
+          "title": "所有书籍都有音频"
+        },
+        "lexiaCore5": {
+          "value": "⚬",
+          "title": "有限的音频支持"
+        },
+        "acceleratedReader": {
+          "value": "✘",
+          "title": "无内置音频支持"
+        },
+        "achieve3000": {
+          "value": "✔",
+          "title": "文章音频支持"
+        }
+      },
+      "aiAssistant": {
+        "label": "人工智能助手",
+        "readingAdvantage": {
+          "value": "✔",
+          "title": "人工智能驱动的写作反馈和语言解释"
+        },
+        "razKids": {
+          "value": "✘"
+        },
+        "lexiaCore5": {
+          "value": "✘"
+        },
+        "acceleratedReader": {
+          "value": "✘"
+        },
+        "achieve3000": {
+          "value": "✘"
+        }
+      },
+      "ellSupport": {
+        "label": "ELL L2 支持",
+        "readingAdvantage": "泰语、中文、越南语",
+        "razKids": "西班牙语",
+        "lexiaCore5": "无",
+        "acceleratedReader": "无",
+        "achieve3000": "西班牙语"
+      }
+    }
+  },
+  "cta": {
+    "title": "准备体验不同了吗？",
+    "subtitle": "今天就开始您的 Reading Advantage 之旅",
+    "button": "立即开始"
+  }
+}
