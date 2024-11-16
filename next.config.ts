@@ -9,6 +9,7 @@ const withMDX = createMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  transpilePackages: ["next-international", "international-types"],
   output: 'standalone' as const,
   images: {
     domains: ['localhost'],
@@ -18,6 +19,9 @@ const nextConfig = {
     // TODO: Re-enable once Next.js App Router types are fixed
     // See: https://github.com/vercel/next.js/issues/48022
     ignoreBuildErrors: true,
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
   },
 }
 

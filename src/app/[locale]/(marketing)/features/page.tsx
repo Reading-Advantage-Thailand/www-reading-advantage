@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ComparisonTable } from '@/components/features/comparison-table';
 import Hero from '@/components/layout/hero';
+import { getScopedI18n } from '@/locales/server';
 
 export const metadata: Metadata = {
   title: 'Features - Reading Advantage Thailand',
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
   },
 };
 
+type IndexRange = 0 | 1 | 2 | 3 | 4 | 5;
 const features = [
   {
     emoji: '🤖',
@@ -48,12 +50,13 @@ const features = [
   },
 ];
 
-export default function FeaturesPage() {
+export default async function FeaturesPage() {
+  const t = await getScopedI18n("pages.feature");
   return (
     <main>
-      <Hero 
-        title="Platform Features"
-        description="Compare Reading Advantage with other leading reading programs"
+      <Hero
+        title={t('hero.title')}
+        description={t('hero.description')}
         backgroundImage
       />
 
@@ -62,13 +65,13 @@ export default function FeaturesPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {features.map((feature, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
                 <div className="text-4xl mb-4">{feature.emoji}</div>
-                <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-xl font-bold mb-4">{t(`features.${index as IndexRange}.title`)}</h3>
+                <p className="text-gray-600">{t(`features.${index as IndexRange}.description`)}</p>
               </div>
             ))}
           </div>
@@ -81,13 +84,13 @@ export default function FeaturesPage() {
       {/* CTA Section */}
       <section className="bg-sky-800 text-sky-50 py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to experience the difference?</h2>
-          <p className="text-xl mb-8">Start your journey with Reading Advantage today</p>
-          <Link 
+          <h2 className="text-3xl font-bold mb-4">{t('cta.title')}</h2>
+          <p className="text-xl mb-8">{t('cta.description')}</p>
+          <Link
             href="/signup"
             className="bg-sky-500 text-sky-50 hover:bg-sky-600 px-6 py-3 rounded-lg font-bold transition-colors inline-block"
           >
-            Get Started
+            {t('cta.button')}
           </Link>
         </div>
       </section>
