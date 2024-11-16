@@ -3,6 +3,7 @@ import Hero from "@/components/layout/hero"
 import { PageTransition } from "@/components/layout/page-transition"
 import { FadeIn } from "@/components/layout/fade-in"
 import { ScrollFade } from "@/components/layout/scroll-fade"
+import { getScopedI18n } from "@/locales/server"
 
 export const metadata: Metadata = {
   title: "Storytime Advantage - Complete Early Literacy Curriculum | Reading Advantage Thailand",
@@ -13,7 +14,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function StorytimeAdvantage() {
+export default async function StorytimeAdvantage() {
+  const t = await getScopedI18n("pages.products.storytimeAdvantage")
   return (
     <PageTransition>
       <main>
@@ -21,14 +23,14 @@ export default function StorytimeAdvantage() {
         <Hero
           title={
             <>
-              <h1 className="text-5xl font-bold mb-6">The Future of Early Literacy Education</h1>
+              <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
               <div className="absolute top-4 right-4 bg-sky-400 text-white px-4 py-2 rounded-full mb-6">
-                Coming in 2025
+                {t("hero.comingSoon")}
               </div>
-              <h2 className="text-2xl font-bold mb-6">Complete K-3 Literacy Curriculum</h2>
+              <h2 className="text-2xl font-bold mb-6">{t("hero.subtitle")}</h2>
             </>
           }
-          description="A complete K-3 literacy curriculum that perfectly balances digital innovation with hands-on learning"
+          description={t("hero.description")}
           backgroundImage={true}
         />
 
@@ -36,24 +38,24 @@ export default function StorytimeAdvantage() {
         <section className="bg-white py-16">
           <div className="container mx-auto px-4">
             <FadeIn>
-              <h2 className="text-3xl font-bold text-center mb-12">Complete Literacy Curriculum Solution</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("coreValue.heading")}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">📚</div>
-                  <h3 className="text-xl font-bold mb-4 text-center">180-Day Structure</h3>
-                  <p className="text-center">Comprehensive curriculum aligned with educational standards and designed for classroom success</p>
+                  <h3 className="text-xl font-bold mb-4 text-center">{t("coreValue.features.0.title")}</h3>
+                  <p className="text-center">{t("coreValue.features.0.description")}</p>
                 </div>
 
                 <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">⚖️</div>
-                  <h3 className="text-xl font-bold mb-4 text-center">Balanced Approach</h3>
-                  <p className="text-center">Perfect blend of digital tools and traditional hands-on learning methods</p>
+                  <h3 className="text-xl font-bold mb-4 text-center">{t("coreValue.features.1.title")}</h3>
+                  <p className="text-center">{t("coreValue.features.1.description")}</p>
                 </div>
 
                 <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">🤝</div>
-                  <h3 className="text-xl font-bold mb-4 text-center">Complete Support</h3>
-                  <p className="text-center">Comprehensive resources for teachers, students, and administrators</p>
+                  <h3 className="text-xl font-bold mb-4 text-center">{t("coreValue.features.2.title")}</h3>
+                  <p className="text-center">{t("coreValue.features.2.description")}</p>
                 </div>
               </div>
             </FadeIn>
@@ -64,25 +66,25 @@ export default function StorytimeAdvantage() {
         <section className="bg-sky-50 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
-              <h2 className="text-3xl font-bold text-center mb-12">Comprehensive Feature Set</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("keyFeatures.heading")}</h2>
               <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <div className="bg-white rounded-lg p-6 shadow-sm">
-                  <h3 className="text-xl font-bold mb-4">Digital Components</h3>
+                  <h3 className="text-xl font-bold mb-4">{t("keyFeatures.features.0.title")}</h3>
                   <ul className="space-y-3">
-                    <li>• Interactive phonics lessons</li>
-                    <li>• Digital decodable texts</li>
-                    <li>• Progress tracking tools</li>
-                    <li>• Built-in assessments</li>
+                    <li>{t("keyFeatures.features.0.points.0")}</li>
+                    <li>{t("keyFeatures.features.0.points.1")}</li>
+                    <li>{t("keyFeatures.features.0.points.2")}</li>
+                    <li>{t("keyFeatures.features.0.points.3")}</li>
                   </ul>
                 </div>
 
                 <div className="bg-white rounded-lg p-6 shadow-sm">
-                  <h3 className="text-xl font-bold mb-4">Physical Materials</h3>
+                  <h3 className="text-xl font-bold mb-4">{t("keyFeatures.features.1.title")}</h3>
                   <ul className="space-y-3">
-                    <li>• Printable worksheets</li>
-                    <li>• Hands-on activities</li>
-                    <li>• Take-home resources</li>
-                    <li>• Classroom materials</li>
+                    <li>{t("keyFeatures.features.1.points.0")}</li>
+                    <li>{t("keyFeatures.features.1.points.1")}</li>
+                    <li>{t("keyFeatures.features.1.points.2")}</li>
+                    <li>{t("keyFeatures.features.1.points.3")}</li>
                   </ul>
                 </div>
               </div>
@@ -94,22 +96,22 @@ export default function StorytimeAdvantage() {
         <section className="bg-white py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
-              <h2 className="text-3xl font-bold text-center mb-12">Powerful Teacher Tools</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("teacherTools.heading")}</h2>
               <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                 {[
                   {
-                    title: "Lesson Planning",
-                    description: "Comprehensive planning tools and resources",
+                    title: t("teacherTools.tools.0.title"),
+                    description: t("teacherTools.tools.0.description"),
                     icon: "📝"
                   },
                   {
-                    title: "Class Management",
-                    description: "Efficient tools for managing student progress",
+                    title: t("teacherTools.tools.1.title"),
+                    description: t("teacherTools.tools.1.description"),
                     icon: "👥"
                   },
                   {
-                    title: "Assessment Tools",
-                    description: "Built-in assessment and reporting features",
+                    title: t("teacherTools.tools.2.title"),
+                    description: t("teacherTools.tools.2.description"),
                     icon: "📊"
                   }
                 ].map((tool) => (
@@ -128,15 +130,15 @@ export default function StorytimeAdvantage() {
         <section className="bg-sky-50 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
-              <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("faq.heading")}</h2>
               <div className="max-w-3xl mx-auto space-y-6">
                 <div className="bg-white rounded-lg p-6 shadow-sm">
-                  <h3 className="font-bold mb-2">When will Storytime Advantage launch?</h3>
-                  <p>Our platform is scheduled to launch in early 2025. Join our waitlist for early access opportunities.</p>
+                  <h3 className="font-bold mb-2">{t("faq.questions.0.question")}</h3>
+                  <p>{t("faq.questions.0.answer")}</p>
                 </div>
                 <div className="bg-white rounded-lg p-6 shadow-sm">
-                  <h3 className="font-bold mb-2">What are the technical requirements?</h3>
-                  <p>Storytime Advantage will be accessible on any modern web browser, with mobile apps available for iOS and Android tablets.</p>
+                  <h3 className="font-bold mb-2">{t("faq.questions.1.question")}</h3>
+                  <p>{t("faq.questions.1.answer")}</p>
                 </div>
               </div>
             </ScrollFade>
@@ -147,20 +149,20 @@ export default function StorytimeAdvantage() {
         <section className="bg-sky-800 text-sky-50 py-16 bg-gradient-to-br from-sky-800 to-violet-900">
           <div className="container mx-auto px-4 text-center">
             <FadeIn>
-              <h2 className="text-3xl font-bold mb-6">Be the First to Experience Storytime Advantage</h2>
-              <p className="text-xl mb-8">Join our waitlist for early access and exclusive updates</p>
+              <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>
+              <p className="text-xl mb-8">{t("cta.description")}</p>
               <div className="flex justify-center gap-4">
                 <a
                   href="#"
                   className="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-lg font-bold transition-colors"
                 >
-                  Join Waitlist
+                  {t("cta.buttons.joinWaitlist")}
                 </a>
                 <a
                   href="#"
                   className="bg-white hover:bg-sky-50 text-sky-800 px-8 py-3 rounded-lg font-bold transition-colors"
                 >
-                  Learn More
+                  {t("cta.buttons.learnMore")}
                 </a>
               </div>
             </FadeIn>

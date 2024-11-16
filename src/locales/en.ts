@@ -8,6 +8,7 @@ import { en as mathPage } from './pages/products/math-advantage';
 import { en as readingPage } from './pages/products/reading-advantage';
 import { en as sciencePage } from './pages/products/science-advantage';
 import { en as stemPage } from './pages/products/stem-advantage';
+import { en as storytimePage } from './pages/products/storytime-advantage';
 // components
 import { en as localeSwitcher } from './components/locale-switcher';
 import { en as footer } from './components/footer';
@@ -29,7 +30,8 @@ export default {
             mathAdvantage: mathPage,
             readingAdvantage: readingPage,
             scienceAdvantage: sciencePage,
-            stemAdvantage: stemPage
+            stemAdvantage: stemPage,
+            storytimeAdvantage: storytimePage
         },
     },
     components: {
