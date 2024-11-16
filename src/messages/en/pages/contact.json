@@ -1,0 +1,19 @@
+{
+  "title": "Contact Us",
+  "description": "Get in touch with our team. We're here to help with any questions about our educational solutions.",
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "company": "Company/Organization",
+    "role": {
+      "label": "Role",
+      "placeholder": "e.g. Teacher, Administrator, Parent"
+    },
+    "product": {
+      "label": "Product of Interest",
+      "select_default": "Select a product"
+    },
+    "message": "Message",
+    "submit": "Send Message"
+  }
+}

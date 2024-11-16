@@ -1,0 +1,93 @@
+{
+  "hero": {
+    "title": "泰国革命性英语辅导",
+    "comingSoon": "2025年推出",
+    "subtitle": "AI驱动的学习平台",
+    "description": "将AI技术与个性化教学相结合，实现前所未有的学习成果"
+  },
+  "valueProps": {
+    "features": {
+      "aiLearning": {
+        "title": "AI驱动学习",
+        "items": [
+          "跨CEFR级别的自适应内容生成",
+          "个性化学习路径",
+          "自动生成练习内容"
+        ]
+      },
+      "structuredPath": {
+        "title": "结构化学习路径",
+        "items": [
+          "从A1到B2的清晰进阶",
+          "符合CEFR标准的课程",
+          "全面的技能覆盖"
+        ]
+      },
+      "tutorNetwork": {
+        "title": "专业导师网络",
+        "items": [
+          "合格认证的导师",
+          "持续的专业发展",
+          "标准化质量控制"
+        ]
+      }
+    }
+  },
+  "platformFeatures": {
+    "title": "平台功能",
+    "features": [
+      {
+        "title": "互动课程",
+        "description": "包含音频播放和互动练习的引人入胜的内容"
+      },
+      {
+        "title": "翻译辅助",
+        "description": "实时翻译支持，提升理解能力"
+      },
+      {
+        "title": "词汇工具",
+        "description": "有效构建词汇量的游戏和练习"
+      },
+      {
+        "title": "进度跟踪",
+        "description": "详细的分析和进度监控"
+      },
+      {
+        "title": "学生仪表板",
+        "description": "全面查看学习历程和成就"
+      },
+      {
+        "title": "多平台访问",
+        "description": "支持移动和桌面设备"
+      }
+    ]
+  },
+  "trustSignals": {
+    "title": "我们的承诺",
+    "signals": [
+      {
+        "icon": "🔬",
+        "title": "研究支持",
+        "description": "教育方法得到最新研究支持"
+      },
+      {
+        "icon": "🤝",
+        "title": "道德实践",
+        "description": "致力于负责任和道德的教育"
+      },
+      {
+        "icon": "💎",
+        "title": "优质可及",
+        "description": "提供可负担的优质教育"
+      }
+    ]
+  },
+  "cta": {
+    "title": "成为未来的一部分",
+    "description": "加入我们的早期访问计划或申请成为导师",
+    "buttons": {
+      "earlyAccess": "注册早期访问",
+      "applyTutor": "申请成为导师"
+    }
+  }
+}
