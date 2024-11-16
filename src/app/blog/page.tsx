@@ -1,11 +1,23 @@
 import { Metadata } from 'next'
-import { getAllPosts } from '@/lib/blog'
-import { BlogCard } from '@/components/blog/blog-card'
-import { BlogListItem } from '@/types/blog'
+import { getAllPosts } from "@/lib/blog"
+import { BlogCard } from "@/components/blog/blog-card"
+import { BlogListItem } from "@/types/blog"
 
 export const metadata: Metadata = {
   title: 'Blog | Reading Advantage',
-  description: 'Educational insights and updates from Reading Advantage',
+  description: 'Educational insights, learning strategies, and updates from Reading Advantage. Explore our articles about education technology, learning methods, and teaching tips.',
+  openGraph: {
+    title: 'Reading Advantage Blog',
+    description: 'Educational insights, learning strategies, and updates from Reading Advantage',
+    type: 'website',
+    images: ['/images/reading-advantage-demo.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Reading Advantage Blog',
+    description: 'Educational insights, learning strategies, and updates from Reading Advantage',
+    images: ['/images/reading-advantage-demo.png'],
+  },
   metadataBase: new URL('http://localhost:3000'),
 }
 
