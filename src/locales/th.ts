@@ -9,6 +9,7 @@ import { th as readingPage } from './pages/products/reading-advantage';
 import { th as sciencePage } from './pages/products/science-advantage';
 import { th as stemPage } from './pages/products/stem-advantage';
 import { th as storytimePage } from './pages/products/storytime-advantage';
+import { th as tutorPage } from './pages/products/tutor-advantage';
 // components
 import { th as localeSwitcher } from './components/locale-switcher';
 import { th as footer } from './components/footer';
@@ -31,7 +32,8 @@ export default {
             readingAdvantage: readingPage,
             scienceAdvantage: sciencePage,
             stemAdvantage: stemPage,
-            storytimeAdvantage: storytimePage
+            storytimeAdvantage: storytimePage,
+            tutorAdvantage: tutorPage,
         },
     },
     components: {

@@ -3,6 +3,7 @@ import Hero from "@/components/layout/hero"
 import { PageTransition } from "@/components/layout/page-transition"
 import { FadeIn } from "@/components/layout/fade-in"
 import { ScrollFade } from "@/components/layout/scroll-fade"
+import { getScopedI18n } from "@/locales/server"
 
 export const metadata: Metadata = {
   title: "Tutor Advantage - Reading Advantage Thailand",
@@ -13,7 +14,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function TutorAdvantage() {
+export default async function TutorAdvantage() {
+  const t = await getScopedI18n("pages.products.tutorAdvantage")
   return (
     <PageTransition>
       <main>
@@ -21,14 +23,14 @@ export default function TutorAdvantage() {
         <Hero
           title={
             <>
-              <h1 className="text-5xl font-bold mb-6">Revolutionary English Tutoring in Thailand</h1>
+              <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
               <div className="absolute top-4 right-4 bg-yellow-400 text-sky-900 px-4 py-2 rounded-full mb-6">
-                Coming in 2025
+                {t("hero.comingSoon")}
               </div>
-              <h2 className="text-2xl font-bold mb-6">AI-Powered Learning Platform</h2>
+              <h2 className="text-2xl font-bold mb-6">{t("hero.subtitle")}</h2>
             </>
           }
-          description="Combining AI technology with personalized instruction for unprecedented learning outcomes"
+          description={t("hero.description")}
           backgroundImage={true}
         />
 
@@ -39,31 +41,31 @@ export default function TutorAdvantage() {
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">🤖</div>
-                  <h3 className="text-xl font-bold mb-4 text-center">AI-Powered Learning</h3>
+                  <h3 className="text-xl font-bold mb-4 text-center">{t("valuePropositions.features.0.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
-                    <li>Adaptive content generation across CEFR levels</li>
-                    <li>Personalized learning paths</li>
-                    <li>Auto-generated practice content</li>
+                    <li>{t("valuePropositions.features.0.points.0")}</li>
+                    <li>{t("valuePropositions.features.0.points.1")}</li>
+                    <li>{t("valuePropositions.features.0.points.2")}</li>
                   </ul>
                 </div>
 
                 <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">📚</div>
-                  <h3 className="text-xl font-bold mb-4 text-center">Structured Learning Path</h3>
+                  <h3 className="text-xl font-bold mb-4 text-center">{t("valuePropositions.features.1.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
-                    <li>Clear progression from A1 to B2</li>
-                    <li>CEFR-aligned curriculum</li>
-                    <li>Comprehensive skill coverage</li>
+                    <li>{t("valuePropositions.features.1.points.0")}</li>
+                    <li>{t("valuePropositions.features.1.points.1")}</li>
+                    <li>{t("valuePropositions.features.1.points.2")}</li>
                   </ul>
                 </div>
 
                 <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">👩‍🏫</div>
-                  <h3 className="text-xl font-bold mb-4 text-center">Professional Tutor Network</h3>
+                  <h3 className="text-xl font-bold mb-4 text-center">{t("valuePropositions.features.2.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
-                    <li>Qualified and certified tutors</li>
-                    <li>Ongoing professional development</li>
-                    <li>Standardized quality control</li>
+                    <li>{t("valuePropositions.features.2.points.0")}</li>
+                    <li>{t("valuePropositions.features.2.points.1")}</li>
+                    <li>{t("valuePropositions.features.2.points.2")}</li>
                   </ul>
                 </div>
               </div>
@@ -75,32 +77,32 @@ export default function TutorAdvantage() {
         <section className="bg-sky-50 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
-              <h2 className="text-3xl font-bold text-center mb-12">Platform Features</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("platformFeatures.heading")}</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 {[
                   {
-                    title: "Interactive Lessons",
-                    description: "Engaging content with audio playback and interactive exercises",
+                    title: t("platformFeatures.features.0.title"),
+                    description: t("platformFeatures.features.0.description"),
                   },
                   {
-                    title: "Translation Assistance",
-                    description: "Real-time translation support for better comprehension",
+                    title: t("platformFeatures.features.1.title"),
+                    description: t("platformFeatures.features.1.description"),
                   },
                   {
-                    title: "Vocabulary Tools",
-                    description: "Games and exercises for effective vocabulary building",
+                    title: t("platformFeatures.features.2.title"),
+                    description: t("platformFeatures.features.2.description"),
                   },
                   {
-                    title: "Progress Tracking",
-                    description: "Detailed analytics and progress monitoring",
+                    title: t("platformFeatures.features.3.title"),
+                    description: t("platformFeatures.features.3.description"),
                   },
                   {
-                    title: "Student Dashboard",
-                    description: "Comprehensive view of learning journey and achievements",
+                    title: t("platformFeatures.features.4.title"),
+                    description: t("platformFeatures.features.4.description"),
                   },
                   {
-                    title: "Multi-Platform Access",
-                    description: "Available on mobile and desktop devices",
+                    title: t("platformFeatures.features.5.title"),
+                    description: t("platformFeatures.features.5.description"),
                   },
                 ].map((feature) => (
                   <div key={feature.title} className="bg-white p-6 rounded-lg shadow-md">
@@ -117,23 +119,23 @@ export default function TutorAdvantage() {
         <section className="bg-sky-800 text-sky-50 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
-              <h2 className="text-3xl font-bold text-center mb-12">Our Commitment</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">{t("trustSignals.heading")}</h2>
               <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                 {[
                   {
                     icon: "🔬",
-                    title: "Research-Backed",
-                    description: "Educational methodology supported by latest research",
+                    title: t("trustSignals.items.0.title"),
+                    description: t("trustSignals.items.0.description"),
                   },
                   {
                     icon: "🤝",
-                    title: "Ethical Practices",
-                    description: "Commitment to responsible and ethical education",
+                    title: t("trustSignals.items.1.title"),
+                    description: t("trustSignals.items.1.description"),
                   },
                   {
                     icon: "💎",
-                    title: "Accessible Quality",
-                    description: "Affordable access to premium education",
+                    title: t("trustSignals.items.2.title"),
+                    description: t("trustSignals.items.2.description"),
                   },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start space-x-4">
@@ -153,20 +155,20 @@ export default function TutorAdvantage() {
         <section className="bg-sky-800 text-sky-50 py-16 bg-gradient-to-br from-sky-800 to-violet-900">
           <div className="container mx-auto px-4 text-center">
             <FadeIn>
-              <h2 className="text-3xl font-bold mb-6">Be Part of the Future</h2>
-              <p className="text-xl mb-8">Join our early access program or apply to become a tutor</p>
+              <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>
+              <p className="text-xl mb-8">{t("cta.description")}</p>
               <div className="flex justify-center gap-4">
                 <a
                   href="#"
                   className="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-lg font-bold transition-colors"
                 >
-                  Register for Early Access
+                  {t("cta.buttons.register")}
                 </a>
                 <a
                   href="#"
                   className="bg-white hover:bg-sky-50 text-sky-800 px-8 py-3 rounded-lg font-bold transition-colors"
                 >
-                  Apply as Tutor
+                  {t("cta.buttons.apply")}
                 </a>
               </div>
             </FadeIn>
