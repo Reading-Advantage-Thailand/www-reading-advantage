@@ -9,7 +9,7 @@ import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { BlogPost, BlogListItem } from '@/types/blog'
 
-const postsDirectory = path.join(process.cwd(), 'src/app/blog/posts')
+const postsDirectory = path.join(process.cwd(), 'src/app/[locale]/(marketing)/blog/posts')
 
 interface BlogFrontmatter {
   title: string
@@ -25,9 +25,9 @@ function validateFrontmatter(data: unknown): BlogFrontmatter {
   if (!data || typeof data !== 'object') {
     throw new Error('Invalid frontmatter data')
   }
-  
+
   const d = data as Record<string, unknown>
-  
+
   if (!d.title || typeof d.title !== 'string') {
     throw new Error('Invalid or missing title in frontmatter')
   }
@@ -40,7 +40,7 @@ function validateFrontmatter(data: unknown): BlogFrontmatter {
   if (!d.author || typeof d.author !== 'string') {
     throw new Error('Invalid or missing author in frontmatter')
   }
-  
+
   const tags = Array.isArray(d.tags) ? d.tags : []
 
   return {
@@ -111,7 +111,7 @@ export async function getAllBlogPosts(): Promise<BlogListItem[]> {
 export async function getAllBlogTags(): Promise<string[]> {
   const posts = await getAllBlogPosts()
   const tags = new Set<string>()
-  
+
   posts.forEach(post => {
     post.tags.forEach(tag => tags.add(tag))
   })
