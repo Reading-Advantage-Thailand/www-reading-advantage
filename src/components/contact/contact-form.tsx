@@ -1,51 +1,54 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { productLinks } from "@/config/navigation"
+import { useState } from "react";
+import { useScopedI18n } from "@/locales/client";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { productLinks } from "@/config/navigation";
 
 export function ContactForm() {
+  const t = useScopedI18n("components.contactForm");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     product: "",
     company: "",
     role: "",
-    message: ""
-  })
+    message: "",
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
-    }))
-  }
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    
-    const subject = `Contact Form: ${formData.product || 'General Inquiry'}`
+    e.preventDefault();
+
+    const subject = `${t("form.emailSubject")}: ${formData.product || t("form.fields.productPlaceholder")}`;
     const body = `
-Name: ${formData.name}
-Email: ${formData.email}
-Product: ${formData.product}
-Company: ${formData.company}
-Role: ${formData.role}
+${t("form.fields.name")}: ${formData.name}
+${t("form.fields.email")}: ${formData.email}
+${t("form.fields.product")}: ${formData.product}
+${t("form.fields.company")}: ${formData.company}
+${t("form.fields.role")}: ${formData.role}
 
-Message:
+${t("form.fields.message")}:
 ${formData.message}
-    `.trim()
+        `.trim();
 
-    window.location.href = `mailto:contact@readingadvantage.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-  }
+    window.location.href = `mailto:contact@readingadvantage.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
   return (
     <Card className="p-6">
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium mb-2">
-            Name
+            {t("form.fields.name")}
           </label>
           <input
             type="text"
@@ -57,10 +60,10 @@ ${formData.message}
             className="w-full px-3 py-2 border rounded-md"
           />
         </div>
-        
+
         <div>
           <label htmlFor="email" className="block text-sm font-medium mb-2">
-            Email
+            {t("form.fields.email")}
           </label>
           <input
             type="email"
@@ -75,7 +78,7 @@ ${formData.message}
 
         <div>
           <label htmlFor="company" className="block text-sm font-medium mb-2">
-            Company/Organization
+            {t("form.fields.company")}
           </label>
           <input
             type="text"
@@ -90,7 +93,7 @@ ${formData.message}
 
         <div>
           <label htmlFor="role" className="block text-sm font-medium mb-2">
-            Role
+            {t("form.fields.role")}
           </label>
           <input
             type="text"
@@ -100,13 +103,13 @@ ${formData.message}
             onChange={handleChange}
             required
             className="w-full px-3 py-2 border rounded-md"
-            placeholder="e.g. Teacher, Administrator, Parent"
+            placeholder={t("form.fields.rolePlaceholder")}
           />
         </div>
 
         <div>
           <label htmlFor="product" className="block text-sm font-medium mb-2">
-            Product of Interest
+            {t("form.fields.product")}
           </label>
           <select
             id="product"
@@ -115,8 +118,8 @@ ${formData.message}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded-md"
           >
-            <option value="">Select a product</option>
-            {productLinks.map(product => (
+            <option value="">{t("form.fields.productPlaceholder")}</option>
+            {productLinks.map((product) => (
               <option key={product.href} value={product.label}>
                 {product.label}
               </option>
@@ -126,7 +129,7 @@ ${formData.message}
 
         <div>
           <label htmlFor="message" className="block text-sm font-medium mb-2">
-            Message
+            {t("form.fields.message")}
           </label>
           <textarea
             id="message"
@@ -140,9 +143,9 @@ ${formData.message}
         </div>
 
         <Button type="submit" className="w-full">
-          Send Message
+          {t("form.button")}
         </Button>
       </form>
     </Card>
-  )
+  );
 }
