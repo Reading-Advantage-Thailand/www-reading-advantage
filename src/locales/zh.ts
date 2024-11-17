@@ -13,14 +13,14 @@ import { zh as tutorPage } from "./pages/products/tutor-advantage";
 import { zh as zhongwenPage } from "./pages/products/zhongwen-advantage";
 // components
 import { zh as localeSwitcher } from "./components/locale-switcher";
-import { zh as navigation } from './components/navigation';
 import { zh as pricingTable } from './components/pricing-table';
 import { zh as comparisonTable } from './components/comparison-table';
 import { zh as contactForm } from './components/contact-form';
 import { zh as footer } from './components/common/footer';
+import { zh as header } from './components/common/header';
+import { zh as navigation } from './components/common/navigation';
 
 export default {
-    navigation: navigation,
     footer: footer,
     pages: {
         about: aboutPage,
@@ -44,7 +44,9 @@ export default {
         comparisonTable,
         contactForm,
         common: {
-            footer
+            footer,
+            header,
+            navigation,
         }
     }
 } as const  
