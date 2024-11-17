@@ -16,12 +16,82 @@ import {
 } from "@/components/ui/sheet";
 import { useAuth } from "@/contexts/auth-context";
 import Image from 'next/image';
-import { LocaleSwitcher } from "@/switcher/locale-switcher";
 import { useScopedI18n } from "@/locales/client";
+import { LocaleSwitcher } from "@/switcher/locale-switcher";
 
 export function Header() {
-  const t = useScopedI18n("components.common.header");
-  const n = useScopedI18n("components.common.navigation");
+  const h = useScopedI18n("components.common.header");
+  const n = useScopedI18n('components.common.navigation');
+
+  const navigation: NavItem[] = [
+    {
+      title: n("products"),
+      href: "/products",
+      items: [
+        {
+          title: "Reading Advantage",
+          href: "/products/reading-advantage",
+          description: n("itemsDescription.readingAdvantage")
+        },
+        {
+          title: "Math Advantage",
+          href: "/products/math-advantage",
+          description: n("itemsDescription.mathAdvantage")
+        },
+        {
+          title: "Science Advantage",
+          href: "/products/science-advantage",
+          description: n("itemsDescription.scienceAdvantage")
+        },
+        {
+          title: "STEM Advantage",
+          href: "/products/stem-advantage",
+          description: n("itemsDescription.stemAdvantage")
+        },
+        {
+          title: "Zhongwen Advantage",
+          href: "/products/zhongwen-advantage",
+          description: n("itemsDescription.zhongwenAdvantage")
+        },
+        {
+          title: "Storytime Advantage",
+          href: "/products/storytime-advantage",
+          description: n("itemsDescription.storytimeAdvantage")
+        },
+        {
+          title: "CodeCamp Advantage",
+          href: "/products/codecamp-advantage",
+          description: n("itemsDescription.codecampAdvantage")
+        },
+        {
+          title: "Tutor Advantage",
+          href: "/products/tutor-advantage",
+          description: n("itemsDescription.tutorAdvantage")
+        }
+      ]
+    },
+    {
+      title: n("features"),
+      href: "/features"
+    },
+    {
+      title: n("pricing"),
+      href: "/pricing"
+    },
+    {
+      title: n("blog"),
+      href: "/blog"
+    },
+    {
+      title: n("about"),
+      href: "/about"
+    },
+    {
+      title: n("contact"),
+      href: "/contact"
+    }
+  ];
+
   const [isOpen, setIsOpen] = useState(false);
   const [showProductMenu, setShowProductMenu] = useState(false);
   const pathname = usePathname();
@@ -37,43 +107,6 @@ export function Header() {
     }
   };
 
-  const navigation = [
-    {
-      title: n("main.0.title"),
-      href: "/products",
-      items: [
-        { title: n("products.0.title"), href: "/products/reading-advantage" },
-        { title: n("products.1.title"), href: "/products/math-advantage" },
-        { title: n("products.2.title"), href: "/products/science-advantage" },
-        { title: n("products.3.title"), href: "/products/stem-advantage" },
-        { title: n("products.4.title"), href: "/products/zhongwen-advantage" },
-        { title: n("products.5.title"), href: "/products/storytime-advantage" },
-        { title: n("products.6.title"), href: "/products/codecamp-advantage" },
-        { title: n("products.7.title"), href: "/products/tutor-advantage" },
-      ],
-    },
-    {
-      title: n("main.1.title"),
-      href: "/features",
-    },
-    {
-      title: n("main.2.title"),
-      href: "/pricing",
-    },
-    {
-      title: n("main.3.title"),
-      href: "/blog"
-    },
-    {
-      title: n("main.4.title"),
-      href: "/about",
-    },
-    {
-      title: n("main.5.title"),
-      href: "/contact",
-    },
-  ];
-
   const renderAuthButtons = (isMobile = false) => {
     if (user) {
       return (
@@ -87,7 +120,7 @@ export function Header() {
               onClick={handleSignOut}
               className="text-sky-50 hover:text-white hover:bg-sky-600 transition-colors"
             >
-              {t("signOut")}
+              {h("signOut")}
             </Button>
           </div>
         </>
@@ -100,13 +133,13 @@ export function Header() {
           href="/login"
           className="text-sky-50 hover:text-white transition-colors"
         >
-          {t("login")}
+          {h("login")}
         </Link>
         <Link
           href="/signup"
           className="bg-sky-800 text-sky-50 px-4 py-2 rounded-lg hover:bg-sky-900 transition-colors"
         >
-          {t("signUp")}
+          {h("signUp")}
         </Link>
       </div>
     );
@@ -121,50 +154,40 @@ export function Header() {
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="lg:hidden text-sky-50 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-400">
                 <Menu className="h-6 w-6" />
-                <span className="sr-only">{t('openMenu')}</span>
+                <span className="sr-only">{h("openMenu")}</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="bg-sky-500 text-sky-50 border-sky-400">
               <SheetHeader>
-                <SheetTitle className="text-sky-50">{t('navigationMenu')}</SheetTitle>
+                <SheetTitle className="text-sky-50">{h("navigationMenu")}</SheetTitle>
                 <SheetDescription className="text-sky-200">
-                  {t('navigationDescription')}
+                  {h("navigationDescription")}
                 </SheetDescription>
               </SheetHeader>
-              <nav className="hidden lg:flex space-x-8">
+              <nav className="flex flex-col gap-4 mt-8">
                 {navigation.map((link) => {
                   if (link.href === '/products') {
                     return (
-                      <div
-                        key={link.href}
-                        className="relative group"
-                        onMouseEnter={() => setShowProductMenu(true)}
-                        onMouseLeave={() => setShowProductMenu(false)}
-                      >
+                      <div key={link.href}>
                         <Link
                           href={link.href}
-                          className={`text-sky-50 hover:text-white transition-colors relative py-2 flex items-center gap-1 ${pathname.startsWith('/products') ? 'font-medium' : ''}`}
+                          className={`text-lg px-3 py-2 rounded-lg ${pathname.startsWith('/products') ? 'bg-sky-600' : ''}`}
                         >
                           {link.title}
-                          <ChevronDown className="h-4 w-4" />
                         </Link>
-
-                        {showProductMenu && link.items && (
-                          <div className="absolute top-full left-0 w-64 bg-sky-500 rounded-lg shadow-lg py-2 mt-1">
-                            {link.items.map((product) => (
-                              <Link
-                                key={product.href}
-                                href={product.href}
-                                className={`block px-4 py-2 hover:bg-sky-600 transition-colors ${pathname === product.href ? 'bg-sky-600' : ''}`}
-                              >
-                                {product.title}
-                              </Link>
-                            ))}
-                          </div>
-                        )}
-                        {pathname.startsWith('/products') && (
-                          <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full" />
-                        )}
+                        <div className="ml-4 mt-2 flex flex-col gap-2">
+                          {link.items?.map((product: NavItem) => (
+                            <Link
+                              key={product.href}
+                              href={product.href}
+                              className={`text-base px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors ${pathname === product.href ? 'bg-sky-600' : ''
+                                }`}
+                              onClick={() => setIsOpen(false)}
+                            >
+                              {product.title}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     );
                   }
@@ -172,15 +195,15 @@ export function Header() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={`text-sky-50 hover:text-white transition-colors relative py-2 ${pathname === link.href ? 'font-medium' : ''}`}
+                      className={`text-lg px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors ${pathname === link.href ? 'bg-sky-600' : ''
+                        }`}
+                      onClick={() => setIsOpen(false)}
                     >
                       {link.title}
-                      {pathname === link.href && (
-                        <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full" />
-                      )}
                     </Link>
                   );
                 })}
+                {renderAuthButtons(true)}
               </nav>
             </SheetContent>
           </Sheet>
