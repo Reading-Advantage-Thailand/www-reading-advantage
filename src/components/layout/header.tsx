@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { use, useState } from "react";
-import { navigation, NavItem } from "@/config/navigation";
+import { useState } from "react";
+import { NavItem } from "@/config/navigation";
 import { Menu, ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import {
