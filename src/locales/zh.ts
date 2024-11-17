@@ -19,6 +19,9 @@ import { zh as contactForm } from './components/contact-form';
 import { zh as footer } from './components/common/footer';
 import { zh as header } from './components/common/header';
 import { zh as navigation } from './components/common/navigation';
+import { zh as b2b } from './components/products/b2b-solutions';
+import { zh as b2c } from './components/products/b2c-solutions';
+import { zh as tutorAdvantage } from './components/products/tutor-advantage';
 
 export default {
     footer: footer,
@@ -43,6 +46,11 @@ export default {
         pricingTable,
         comparisonTable,
         contactForm,
+        products: {
+            b2bSolutions: b2b,
+            b2cSolutions: b2c,
+            tutorAdvantage,
+        },
         common: {
             footer,
             header,

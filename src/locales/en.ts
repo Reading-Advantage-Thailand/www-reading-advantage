@@ -19,6 +19,9 @@ import { en as contactForm } from './components/contact-form';
 import { en as footer } from './components/common/footer';
 import { en as header } from './components/common/header';
 import { en as navigation } from './components/common/navigation';
+import { en as b2b } from './components/products/b2b-solutions';
+import { en as b2c } from './components/products/b2c-solutions';
+import { en as tutorAdvantage } from './components/products/tutor-advantage';
 
 export default {
     pages: {
@@ -42,10 +45,15 @@ export default {
         pricingTable,
         comparisonTable,
         contactForm,
+        products: {
+            b2bSolutions: b2b,
+            b2cSolutions: b2c,
+            tutorAdvantage,
+        },
         common: {
             footer,
             header,
             navigation,
-        }
+        },
     }
 } as const;

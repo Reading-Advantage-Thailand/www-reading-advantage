@@ -1,87 +1,18 @@
 "use client"
-
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import Link from "next/link"
-import { 
-  BookOpen, 
-  Bot, 
-  Calculator, 
-  Languages, 
+import {
+  BookOpen,
+  Bot,
+  Calculator,
+  Languages,
   BookMarked,
   Beaker
 } from "lucide-react"
+import { useScopedI18n } from "@/locales/client"
 
-const products = [
-  {
-    title: "Reading Advantage for Schools",
-    icon: BookOpen,
-    features: [
-      "Boost reading comprehension scores by up to 40% with personalized AI content",
-      "Save 5+ hours/week with automated lesson planning and grading",
-      "Track individual and class progress with detailed analytics dashboard",
-      "Seamlessly integrate with your existing curriculum and systems"
-    ],
-    href: "/products/reading-advantage",
-    isFlagship: true
-  },
-  {
-    title: "STEM Advantage",
-    icon: Bot,
-    features: [
-      "Increase student engagement with interactive, hands-on STEM projects",
-      "Prepare students for future careers with real-world problem solving",
-      "Meet national curriculum standards with comprehensive lesson plans",
-      "Track skill development across multiple STEM disciplines"
-    ],
-    href: "/products/stem-advantage"
-  },
-  {
-    title: "Science Advantage",
-    icon: Beaker,
-    features: [
-      "Reduce lab setup time by 60% with virtual experiments",
-      "Ensure safety while maintaining hands-on learning experiences",
-      "Improve concept retention with interactive demonstrations",
-      "Monitor student progress with automated assessments"
-    ],
-    href: "/products/science-advantage"
-  },
-  {
-    title: "Math Advantage",
-    icon: Calculator,
-    features: [
-      "Improve math scores by 35% with adaptive learning paths",
-      "Identify and address knowledge gaps with AI diagnostics",
-      "Build confidence with instant feedback and step-by-step solutions",
-      "Save time with automated homework grading and progress reports"
-    ],
-    href: "/products/math-advantage"
-  },
-  {
-    title: "Zhongwen Advantage",
-    icon: Languages,
-    features: [
-      "Accelerate Chinese language acquisition by 50%",
-      "Perfect pronunciation with AI speech recognition",
-      "Master character writing with stroke-order guidance",
-      "Enhance cultural understanding with authentic content"
-    ],
-    href: "/products/zhongwen-advantage"
-  },
-  {
-    title: "Storytime Advantage",
-    icon: BookMarked,
-    features: [
-      "Build strong literacy foundations in early learners",
-      "Increase reading engagement with interactive stories",
-      "Develop phonics skills through guided practice",
-      "Track reading progress with detailed parent/teacher reports"
-    ],
-    href: "/products/storytime-advantage"
-  }
-]
 
 const container = {
   hidden: { opacity: 0 },
@@ -99,21 +30,91 @@ const item = {
 }
 
 export default function B2BSolutions() {
+  const t = useScopedI18n("components.products.b2bSolutions")
+
+  const products = [
+    {
+      title: t("products.readingAdvantage.title"),
+      icon: BookOpen,
+      features: [
+        t("products.readingAdvantage.features.0"),
+        t("products.readingAdvantage.features.1"),
+        t("products.readingAdvantage.features.2"),
+        t("products.readingAdvantage.features.3")
+      ],
+      href: "/products/reading-advantage",
+      isFlagship: true
+    },
+    {
+      title: t("products.stemAdvantage.title"),
+      icon: Bot,
+      features: [
+        t("products.stemAdvantage.features.0"),
+        t("products.stemAdvantage.features.1"),
+        t("products.stemAdvantage.features.2"),
+        t("products.stemAdvantage.features.3")
+      ],
+      href: "/products/stem-advantage"
+    },
+    {
+      title: t("products.scienceAdvantage.title"),
+      icon: Beaker,
+      features: [
+        t("products.scienceAdvantage.features.0"),
+        t("products.scienceAdvantage.features.1"),
+        t("products.scienceAdvantage.features.2"),
+        t("products.scienceAdvantage.features.3")
+      ],
+      href: "/products/science-advantage"
+    },
+    {
+      title: t("products.mathAdvantage.title"),
+      icon: Calculator,
+      features: [
+        t("products.mathAdvantage.features.0"),
+        t("products.mathAdvantage.features.1"),
+        t("products.mathAdvantage.features.2"),
+        t("products.mathAdvantage.features.3")
+      ],
+      href: "/products/math-advantage"
+    },
+    {
+      title: t("products.zhongwenAdvantage.title"),
+      icon: Languages,
+      features: [
+        t("products.zhongwenAdvantage.features.0"),
+        t("products.zhongwenAdvantage.features.1"),
+        t("products.zhongwenAdvantage.features.2"),
+        t("products.zhongwenAdvantage.features.3")
+      ],
+      href: "/products/zhongwen-advantage"
+    },
+    {
+      title: t("products.storytimeAdvantage.title"),
+      icon: BookMarked,
+      features: [
+        t("products.storytimeAdvantage.features.0"),
+        t("products.storytimeAdvantage.features.1"),
+        t("products.storytimeAdvantage.features.2"),
+        t("products.storytimeAdvantage.features.3")
+      ],
+      href: "/products/storytime-advantage"
+    }
+  ]
+
   return (
     <section className="bg-white py-16">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-6">
-            Transform Your Institution with Proven Solutions
+            {t("title")}
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            Our comprehensive curriculum solutions deliver measurable improvements in student outcomes 
-            while reducing administrative workload. Join hundreds of successful institutions already 
-            benefiting from our turnkey educational technology.
+            {t("description")}
           </p>
         </div>
 
-        <motion.div 
+        <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
           variants={container}
           initial="hidden"
@@ -133,7 +134,7 @@ export default function B2BSolutions() {
                   </div>
                   {product.isFlagship && (
                     <span className="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">
-                      Most Popular
+                      {t("mostPopular")}
                     </span>
                   )}
                 </div>
@@ -147,7 +148,7 @@ export default function B2BSolutions() {
                   ))}
                 </ul>
                 <Button asChild className="relative z-10">
-                  <Link href={product.href}>See Success Stories</Link>
+                  <Link href={product.href}>{t("seeSuccessStories")}</Link>
                 </Button>
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50/50" />
               </Card>
