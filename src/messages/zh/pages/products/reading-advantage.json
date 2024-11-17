@@ -92,8 +92,8 @@
       "title": "班级管理",
       "features": [
         "轻松的学生注册和分组",
-        "作业创建和跟踪",
-        "可打印的课堂活动"
+        "浏览特定主题并发送给学生",
+        "轻松查看学生活动"
       ]
     },
     "analytics": {
@@ -117,8 +117,8 @@
         "description": "支持多种语言和翻译"
       },
       "cloud": {
-        "title": "云端基础",
-        "description": "由Google Cloud Platform提供支持"
+        "title": "高可用性云服务",
+        "description": "由Google Cloud Platform提供支持，让您无需担心系统宕机"
       },
       "platform": {
         "title": "跨平台",
