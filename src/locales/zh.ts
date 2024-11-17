@@ -11,6 +11,7 @@ import { zh as stemPage } from "./pages/products/stem-advantage";
 import { zh as storytimePage } from "./pages/products/storytime-advantage";
 import { zh as tutorPage } from "./pages/products/tutor-advantage";
 import { zh as zhongwenPage } from "./pages/products/zhongwen-advantage";
+import { zh as pricingPage } from "./pages/pricing";
 // components
 import { zh as localeSwitcher } from "./components/locale-switcher";
 import { zh as pricingTable } from './components/pricing-table';
@@ -30,6 +31,7 @@ export default {
         home: homePage,
         contact: contactPage,
         feature: featurePage,
+        pricing: pricingPage,
         products: {
             codecampAdvantage: codecampPage,
             mathAdvantage: mathPage,
