@@ -4,29 +4,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Network, Brain, GraduationCap, Clock } from "lucide-react"
-
-const features = [
-  {
-    title: "Network Access",
-    description: "Join our network of education professionals",
-    icon: Network
-  },
-  {
-    title: "AI Resources",
-    description: "Access to AI-powered teaching resources",
-    icon: Brain
-  },
-  {
-    title: "Training",
-    description: "Comprehensive training and support",
-    icon: GraduationCap
-  },
-  {
-    title: "Flexibility",
-    description: "Flexible earning opportunities",
-    icon: Clock
-  }
-]
+import { useScopedI18n } from "@/locales/client"
 
 const container = {
   hidden: { opacity: 0 },
@@ -44,6 +22,31 @@ const item = {
 }
 
 export default function TutorAdvantage() {
+  const t = useScopedI18n("components.products.tutorAdvantage")
+
+  const features = [
+    {
+      title: t("features.0.title"),
+      description: t("features.0.description"),
+      icon: Network
+    },
+    {
+      title: t("features.1.title"),
+      description: t("features.1.description"),
+      icon: Brain
+    },
+    {
+      title: t("features.2.title"),
+      description: t("features.2.description"),
+      icon: GraduationCap
+    },
+    {
+      title: t("features.3.title"),
+      description: t("features.3.description"),
+      icon: Clock
+    }
+  ]
+
   return (
     <section className="bg-sky-800 text-sky-50 py-16">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
@@ -54,13 +57,13 @@ export default function TutorAdvantage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl font-bold mb-6">Tutor Advantage (TA)</h2>
+            <h2 className="text-3xl font-bold mb-6">{t("heading")}</h2>
             <p className="text-xl mb-8">
-              Join our network of education professionals and transform your teaching career.
+              {t("description")}
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
             variants={container}
             initial="hidden"
@@ -80,13 +83,13 @@ export default function TutorAdvantage() {
             ))}
           </motion.div>
 
-          <Button 
-            variant="secondary" 
+          <Button
+            variant="secondary"
             size="lg"
             asChild
             className="font-semibold"
           >
-            <Link href="/products/tutor-advantage">Join Our Network</Link>
+            <Link href="/products/tutor-advantage">{t("joinButton")}</Link>
           </Button>
         </div>
       </div>
