@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PricingTable } from '@/components/pricing/pricing-table';
 import Hero from '@/components/layout/hero';
+import { getScopedI18n } from '@/locales/server';
 
 export const metadata: Metadata = {
   title: 'Reading Advantage Feature Matrix',
@@ -15,18 +16,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const t = await getScopedI18n('pages.pricing');
   return (
     <main>
-      <Hero 
+      <Hero
         title={
           <h1 className="text-5xl font-bold mb-6">
-            Reading Advantage Price Tier Comparison
+            {t('hero.title')}
           </h1>
         }
         description={
           <p className="text-xl">
-            Choose the perfect plan for your learning journey
+            {t('hero.description')}
           </p>
         }
         backgroundImage
@@ -41,14 +43,14 @@ export default function PricingPage() {
 
       {/* CTA Section */}
       <section className="bg-sky-800 text-sky-50 py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
-          <p className="text-xl mb-8">Contact us for a free trial or demo</p>
-          <Link 
+        <div className="conntainer mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">{t('cta.title')}</h2>
+          <p className="text-xl mb-8">{t('cta.description')}</p>
+          <Link
             href="/contact"
             className="bg-sky-500 text-sky-50 hover:bg-sky-600 px-6 py-3 rounded-lg font-bold transition-colors inline-block"
           >
-            Request Demo
+            {t('cta.button')}
           </Link>
         </div>
       </section>
