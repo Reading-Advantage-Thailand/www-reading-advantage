@@ -20,9 +20,9 @@ const nextConfig = {
     // See: https://github.com/vercel/next.js/issues/48022
     ignoreBuildErrors: true,
   },
-  compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
-  },
+  // compiler: {
+  //   removeConsole: process.env.NODE_ENV === "production",
+  // },
 }
 
 export default withMDX(nextConfig)
