@@ -34,7 +34,7 @@
     }
   },
   "video": {
-    "title": "See Reading Advantage in Action",
+    "title": "See Reading Advantage",
     "expand": "Click to expand",
     "minimize": "Click to minimize"
   },
@@ -47,7 +47,7 @@
       },
       "multiLanguage": {
         "title": "Multi-Language Support",
-        "description": "Switch between English, Thai, Chinese, Vietnamese, and more languages seamlessly."
+        "description": "Switch L1 support between English, Thai, Chinese, and Vietnamese seamlessly."
       },
       "aiAssistant": {
         "title": "AI-Powered Reading Assistant",
@@ -92,8 +92,8 @@
       "title": "Class Management",
       "features": [
         "Easy student enrollment and grouping",
-        "Assignment creation and tracking",
-        "Printable classroom activities"
+        "Browse for specific topics to send to students",
+        "Easily view student activity"
       ]
     },
     "analytics": {
@@ -117,12 +117,12 @@
         "description": "Support for multiple languages and translations"
       },
       "cloud": {
-        "title": "Cloud-Based",
-        "description": "Powered by Google Cloud Platform"
+        "title": "Cloud-Based for high availabiliity",
+        "description": "Powered by Google Cloud Platform so you don't have to worry about downtime"
       },
       "platform": {
         "title": "Cross-Platform",
-        "description": "Access on any device, anywhere"
+        "description": "Access on any device, anywhere through the browser"
       }
     }
   },
