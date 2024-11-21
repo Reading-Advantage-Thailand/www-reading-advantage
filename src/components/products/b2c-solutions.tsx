@@ -111,10 +111,10 @@ export default function B2CSolutions() {
           </div>
           <div className="flex gap-4">
             <Button asChild size="lg" className="relative z-10">
-              <Link href="/products/codecamp-advantage">{t("codecamp.applyNow")}</Link>
+              <Link href="/products/codecamp-advantage">{t("codecamp.buttons.primary")}</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="relative z-10">
-              <Link href="/products/codecamp-advantage#curriculum">{t("codecamp.viewCurriculum")}</Link>
+              <Link href="/products/codecamp-advantage#curriculum">{t("codecamp.buttons.secondary")}</Link>
             </Button>
           </div>
           <div className="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50/50" />

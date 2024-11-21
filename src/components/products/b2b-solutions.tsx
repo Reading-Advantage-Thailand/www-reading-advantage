@@ -43,7 +43,8 @@ export default function B2BSolutions() {
         t("products.readingAdvantage.features.3")
       ],
       href: "/products/reading-advantage",
-      isFlagship: true
+      isFlagship: true,
+      buttonText: t("products.readingAdvantage.buttonText")
     },
     {
       title: t("products.stemAdvantage.title"),
@@ -148,7 +149,7 @@ export default function B2BSolutions() {
                   ))}
                 </ul>
                 <Button asChild className="relative z-10">
-                  <Link href={product.href}>{t("seeSuccessStories")}</Link>
+                  <Link href={product.href}>{product.buttonText}</Link>
                 </Button>
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50/50" />
               </Card>
