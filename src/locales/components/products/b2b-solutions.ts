@@ -68,7 +68,7 @@ export const th = {
     seeSuccessStories: "ดูเรื่องราวความสำเร็จ",
     products: {
         readingAdvantage: {
-            title: "Reading Advantage สำหรับโรงเรียน",
+            title: "Reading Advantage for Schools",
             features: {
                 0: "เพิ่มคะแนนความเข้าใจในการอ่านขึ้นถึง 40% ด้วยเนื้อหา AI ที่ปรับให้เหมาะกับแต่ละบุคคล",
                 1: "ประหยัดเวลา 5+ ชั่วโมง/สัปดาห์ ด้วยการวางแผนและให้คะแนนบทเรียนอัตโนมัติ",
@@ -131,7 +131,7 @@ export const zh = {
     seeSuccessStories: "查看成功案例",
     products: {
         readingAdvantage: {
-            title: "学校阅读优势",
+            title: "Reading Advantage for Schools",
             features: {
                 0: "通过个性化AI内容将阅读理解分数提高多达40%",
                 1: "通过自动化课程计划和评分每周节省5+小时",
