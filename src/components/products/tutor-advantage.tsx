@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Image from "next/image"
 import { Network, Brain, GraduationCap, Clock } from "lucide-react"
 import { useScopedI18n } from "@/locales/client"
 
@@ -57,6 +58,14 @@ export default function TutorAdvantage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
+            <div className="w-32 h-32 mx-auto mb-6 relative">
+              <Image
+                src="/images/products/tutor-advantage.png"
+                alt="Tutor Advantage"
+                fill
+                className="object-contain"
+              />
+            </div>
             <h2 className="text-3xl font-bold mb-6">{t("heading")}</h2>
             <p className="text-xl mb-8">
               {t("description")}
