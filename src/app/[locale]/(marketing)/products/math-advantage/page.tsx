@@ -50,7 +50,7 @@ export default async function MathAdvantage() {
             <FadeIn>
               <h2 className="text-3xl font-bold text-center mb-12">{t("keyFeatures.heading")}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg p-6 shadow-sm">
+                <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                   <div className="text-4xl mb-4 text-center">📊</div>
                   <h3 className="text-xl font-bold mb-4 text-center">{t("keyFeatures.smartProblemGeneration.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -60,8 +60,7 @@ export default async function MathAdvantage() {
                   </ul>
                 </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-
+                <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                   <div className="text-4xl mb-4 text-center">🎯</div>
                   <h3 className="text-xl font-bold mb-4 text-center">{t("keyFeatures.structuredLearningPath.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -71,7 +70,7 @@ export default async function MathAdvantage() {
                   </ul>
                 </div>
 
-                <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
+                <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                   <div className="text-4xl mb-4 text-center">🤖</div>
                   <h3 className="text-xl font-bold mb-4 text-center">{t("keyFeatures.aiPoweredSupport.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
