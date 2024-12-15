@@ -68,7 +68,7 @@ export default function B2BSolutions() {
       title: t("products.scienceAdvantage.title"),
       icon: Beaker,
       logo: "/science-advantage.png",
-      bgColor: "bg-red-200",
+      bgColor: "bg-pink-200",
       features: [
         t("products.scienceAdvantage.features.0"),
         t("products.scienceAdvantage.features.1"),
