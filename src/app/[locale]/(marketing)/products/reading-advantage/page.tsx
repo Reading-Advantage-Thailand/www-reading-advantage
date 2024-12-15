@@ -83,22 +83,31 @@ export default function ReadingAdvantage() {
         <Hero
           title={
             <>
+              <div className="flex justify-center mb-8">
+                <Image
+                  src="/reading-advantage.jpg"
+                  alt="Reading Advantage Logo"
+                  width={200}
+                  height={200}
+                  className="rounded-full bg-white p-2"
+                />
+              </div>
               <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
               <h2 className="text-2xl font-bold mb-6">{t("hero.subtitle")}</h2>
             </>
           }
           description={t("hero.description")}
-          backgroundImage={true}
+          className="bg-gradient-to-b from-sky-200 via-sky-300 to-sky-400"
         />
 
         {/* Key Features */}
-        <section className="bg-white py-16">
+        <section className="bg-gradient-to-br from-sky-200 to-sky-300 py-16">
           <div className="container mx-auto px-4">
             <FadeIn>
               <h2 className="text-3xl font-bold text-center mb-12">{t("keyFeatures.heading")}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
                 {features.map((feature) => (
-                  <Card key={feature.title} className="bg-sky-50">
+                  <Card key={feature.title} className="bg-gradient-to-br from-sky-200 to-sky-300 shadow-lg">
                     <CardHeader>
                       <div className="text-4xl mb-4 text-center">{feature.icon}</div>
                       <CardTitle className="text-xl text-center">{feature.title}</CardTitle>
@@ -118,7 +127,7 @@ export default function ReadingAdvantage() {
         </section>
 
         {/* Video Section */}
-        <section className="bg-sky-50 py-16">
+        <section className="bg-gradient-to-br from-sky-300 to-sky-400 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
               <h2 className="text-3xl font-bold text-center mb-12">{t("videoSection.heading")}</h2>
