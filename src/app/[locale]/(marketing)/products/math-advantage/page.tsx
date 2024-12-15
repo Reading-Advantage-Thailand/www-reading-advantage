@@ -40,7 +40,7 @@ export default async function MathAdvantage() {
             <FadeIn>
               <h2 className="text-3xl font-bold text-center mb-12">{t("keyFeatures.heading")}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
+                <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">📊</div>
                   <h3 className="text-xl font-bold mb-4 text-center">{t("keyFeatures.smartProblemGeneration.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -75,7 +75,7 @@ export default async function MathAdvantage() {
         </section>
 
         {/* Subject Coverage */}
-        <section className="bg-sky-50 py-16">
+        <section className="bg-gradient-to-br from-orange-200 to-orange-300 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
               <h2 className="text-3xl font-bold text-center mb-12">{t("subjectCoverage.heading")}</h2>
@@ -103,7 +103,7 @@ export default async function MathAdvantage() {
         </section>
 
         {/* Benefits */}
-        <section className="bg-sky-800 text-sky-50 py-16">
+        <section className="bg-orange-800 text-orange-50 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
               <h2 className="text-3xl font-bold text-center mb-12">{t("benefits.heading")}</h2>
@@ -134,7 +134,7 @@ export default async function MathAdvantage() {
                     <div className="text-4xl">{benefit.icon}</div>
                     <div>
                       <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
-                      <p className="text-sky-100">{benefit.description}</p>
+                      <p className="text-orange-100">{benefit.description}</p>
                     </div>
                   </div>
                 ))}
@@ -144,7 +144,7 @@ export default async function MathAdvantage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-sky-800 text-sky-50 py-16 bg-gradient-to-br from-sky-800 to-violet-900">
+        <section className="bg-orange-800 text-orange-50 py-16 bg-gradient-to-br from-orange-800 to-orange-900">
           <div className="container mx-auto px-4 text-center">
             <FadeIn>
               <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>
@@ -152,13 +152,13 @@ export default async function MathAdvantage() {
               <div className="flex justify-center gap-4">
                 <a
                   href="#"
-                  className="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-lg font-bold transition-colors"
+                  className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-bold transition-colors"
                 >
                   {t("cta.buttons.joinWaitlist")}
                 </a>
                 <a
                   href="#"
-                  className="bg-white hover:bg-sky-50 text-sky-800 px-8 py-3 rounded-lg font-bold transition-colors"
+                  className="bg-white hover:bg-orange-50 text-orange-800 px-8 py-3 rounded-lg font-bold transition-colors"
                 >
                   {t("cta.buttons.learnMore")}
                 </a>
