@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import Image from "next/image"
 import Hero from "@/components/layout/hero"
 import { FadeIn } from "@/components/layout/fade-in"
 import { ScrollFade } from "@/components/layout/scroll-fade"
@@ -22,8 +23,19 @@ export default async function ScienceAdvantage() {
       <Hero
         title={
           <>
-            <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
-            <div className="absolute top-4 right-4 bg-yellow-400 text-sky-900 px-4 py-2 rounded-full mb-6">
+            <div className="flex flex-col items-center mb-8">
+              <div className="w-32 h-32 rounded-full bg-white p-2 mb-6">
+                <Image
+                  src="/science-advantage.png"
+                  alt="Science Advantage Logo"
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
+            </div>
+            <div className="absolute top-4 right-4 bg-red-100 text-red-900 px-4 py-2 rounded-full mb-6">
               {t("hero.comingSoon")}
             </div>
             <h2 className="text-2xl font-bold mb-6">{t("hero.subtitle")}</h2>
@@ -40,17 +52,17 @@ export default async function ScienceAdvantage() {
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl font-bold mb-8">{t("coreValue.heading")}</h2>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="p-6 rounded-lg bg-sky-50">
+                <div className="p-6 rounded-lg bg-red-50 hover:bg-gradient-to-br hover:from-red-100 hover:to-red-200 transition-all duration-300 hover:shadow-lg">
                   <div className="text-4xl mb-4">📚</div>
                   <h3 className="font-bold mb-2">{t("coreValue.features.0.title")}</h3>
                   <p>{t("coreValue.features.0.description")}</p>
                 </div>
-                <div className="p-6 rounded-lg bg-sky-50">
+                <div className="p-6 rounded-lg bg-red-50 hover:bg-gradient-to-br hover:from-red-100 hover:to-red-200 transition-all duration-300 hover:shadow-lg">
                   <div className="text-4xl mb-4">🎯</div>
                   <h3 className="font-bold mb-2">{t("coreValue.features.1.title")}</h3>
                   <p>{t("coreValue.features.1.description")}</p>
                 </div>
-                <div className="p-6 rounded-lg bg-sky-50">
+                <div className="p-6 rounded-lg bg-red-50 hover:bg-gradient-to-br hover:from-red-100 hover:to-red-200 transition-all duration-300 hover:shadow-lg">
                   <div className="text-4xl mb-4">🔄</div>
                   <h3 className="font-bold mb-2">{t("coreValue.features.2.title")}</h3>
                   <p>{t("coreValue.features.2.description")}</p>
@@ -107,12 +119,12 @@ export default async function ScienceAdvantage() {
 
       {/* Target Audience */}
       <ScrollFade>
-        <section className="py-16 bg-sky-800 text-sky-50">
+        <section className="py-16 bg-red-800 text-red-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">{t("targetAudience.heading")}</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <FadeIn>
-                <div className="bg-sky-700 p-8 rounded-lg">
+                <div className="bg-red-700 p-8 rounded-lg">
                   <h3 className="text-xl font-bold mb-4">{t("targetAudience.audiences.0.title")}</h3>
                   <ul className="space-y-2">
                     <li>{t("targetAudience.audiences.0.points.0")}</li>
@@ -123,7 +135,7 @@ export default async function ScienceAdvantage() {
                 </div>
               </FadeIn>
               <FadeIn delay={0.2}>
-                <div className="bg-sky-700 p-8 rounded-lg">
+                <div className="bg-red-700 p-8 rounded-lg">
                   <h3 className="text-xl font-bold mb-4">{t("targetAudience.audiences.1.title")}</h3>
                   <ul className="space-y-2">
                     <li>{t("targetAudience.audiences.1.points.0")}</li>
@@ -134,7 +146,7 @@ export default async function ScienceAdvantage() {
                 </div>
               </FadeIn>
               <FadeIn delay={0.4}>
-                <div className="bg-sky-700 p-8 rounded-lg">
+                <div className="bg-red-700 p-8 rounded-lg">
                   <h3 className="text-xl font-bold mb-4">{t("targetAudience.audiences.2.title")}</h3>
                   <ul className="space-y-2">
                     <li>{t("targetAudience.audiences.2.points.0")}</li>
@@ -165,7 +177,7 @@ export default async function ScienceAdvantage() {
                   />
                   <button
                     type="submit"
-                    className="bg-sky-500 text-sky-50 px-6 py-2 rounded-lg hover:bg-sky-600 transition-colors"
+                    className="bg-red-500 text-red-50 px-6 py-2 rounded-lg hover:bg-red-600 transition-colors"
                   >
                     {t("waitlist.form.button")}
                   </button>
