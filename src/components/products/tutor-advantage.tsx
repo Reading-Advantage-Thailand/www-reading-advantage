@@ -60,7 +60,7 @@ export default function TutorAdvantage() {
           >
             <div className="w-32 h-32 mx-auto mb-6 relative">
               <Image
-                src="/images/products/tutor-advantage.png"
+                src="/tutor-advantage.png"
                 alt="Tutor Advantage"
                 fill
                 className="object-contain"

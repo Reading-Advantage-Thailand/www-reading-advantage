@@ -37,7 +37,7 @@ export default function B2BSolutions() {
     {
       title: t("products.readingAdvantage.title"),
       icon: BookOpen,
-      logo: "/images/products/reading-advantage-logo.png",
+      logo: "/reading-advantage.jpg",
       features: [
         t("products.readingAdvantage.features.0"),
         t("products.readingAdvantage.features.1"),
@@ -51,6 +51,7 @@ export default function B2BSolutions() {
     {
       title: t("products.stemAdvantage.title"),
       icon: Bot,
+      logo: "/stem-advantage.png",
       features: [
         t("products.stemAdvantage.features.0"),
         t("products.stemAdvantage.features.1"),
@@ -64,6 +65,7 @@ export default function B2BSolutions() {
     {
       title: t("products.scienceAdvantage.title"),
       icon: Beaker,
+      logo: "/science-advantage.png",
       features: [
         t("products.scienceAdvantage.features.0"),
         t("products.scienceAdvantage.features.1"),
@@ -77,7 +79,7 @@ export default function B2BSolutions() {
     {
       title: t("products.mathAdvantage.title"),
       icon: Calculator,
-      logo: "/images/products/math-advantage.png",
+      logo: "/math-advantage.png",
       features: [
         t("products.mathAdvantage.features.0"),
         t("products.mathAdvantage.features.1"),
@@ -91,6 +93,7 @@ export default function B2BSolutions() {
     {
       title: t("products.zhongwenAdvantage.title"),
       icon: Languages,
+      logo: "/zhongwen-advantage.png",
       features: [
         t("products.zhongwenAdvantage.features.0"),
         t("products.zhongwenAdvantage.features.1"),
