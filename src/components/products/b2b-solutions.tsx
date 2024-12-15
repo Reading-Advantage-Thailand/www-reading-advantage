@@ -38,7 +38,7 @@ export default function B2BSolutions() {
       title: t("products.readingAdvantage.title"),
       icon: BookOpen,
       logo: "/reading-advantage.jpg",
-      bgColor: "bg-amber-50",
+      bgColor: "bg-sky-300",
       features: [
         t("products.readingAdvantage.features.0"),
         t("products.readingAdvantage.features.1"),
@@ -53,7 +53,7 @@ export default function B2BSolutions() {
       title: t("products.stemAdvantage.title"),
       icon: Bot,
       logo: "/stem-advantage.png",
-      bgColor: "bg-blue-50",
+      bgColor: "bg-indigo-300",
       features: [
         t("products.stemAdvantage.features.0"),
         t("products.stemAdvantage.features.1"),
@@ -68,7 +68,7 @@ export default function B2BSolutions() {
       title: t("products.scienceAdvantage.title"),
       icon: Beaker,
       logo: "/science-advantage.png",
-      bgColor: "bg-green-50",
+      bgColor: "bg-red-200",
       features: [
         t("products.scienceAdvantage.features.0"),
         t("products.scienceAdvantage.features.1"),
@@ -83,7 +83,7 @@ export default function B2BSolutions() {
       title: t("products.mathAdvantage.title"),
       icon: Calculator,
       logo: "/math-advantage.png",
-      bgColor: "bg-purple-50",
+      bgColor: "bg-orange-200",
       features: [
         t("products.mathAdvantage.features.0"),
         t("products.mathAdvantage.features.1"),
@@ -98,7 +98,7 @@ export default function B2BSolutions() {
       title: t("products.zhongwenAdvantage.title"),
       icon: Languages,
       logo: "/zhongwen-advantage.png",
-      bgColor: "bg-red-50",
+      bgColor: "bg-fuchsia-300",
       features: [
         t("products.zhongwenAdvantage.features.0"),
         t("products.zhongwenAdvantage.features.1"),
@@ -132,7 +132,7 @@ export default function B2BSolutions() {
           <h2 className="text-3xl font-bold mb-6">
             {t("title")}
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+          <p className="text-xl text-gray-900 max-w-4xl mx-auto">
             {t("description")}
           </p>
         </div>
