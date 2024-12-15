@@ -42,7 +42,7 @@ export default async function ScienceAdvantage() {
           </>
         }
         description={t("hero.description")}
-        className="bg-gradient-to-b from-red-200 via-red-300 to-red-400"
+        className="bg-gradient-to-b from-red-100 via-red-200 to-red-300"
       />
 
       {/* Core Value Proposition */}
