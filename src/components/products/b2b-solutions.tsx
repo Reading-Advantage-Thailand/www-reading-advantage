@@ -38,6 +38,7 @@ export default function B2BSolutions() {
       title: t("products.readingAdvantage.title"),
       icon: BookOpen,
       logo: "/reading-advantage.jpg",
+      bgColor: "bg-amber-50",
       features: [
         t("products.readingAdvantage.features.0"),
         t("products.readingAdvantage.features.1"),
@@ -52,6 +53,7 @@ export default function B2BSolutions() {
       title: t("products.stemAdvantage.title"),
       icon: Bot,
       logo: "/stem-advantage.png",
+      bgColor: "bg-blue-50",
       features: [
         t("products.stemAdvantage.features.0"),
         t("products.stemAdvantage.features.1"),
@@ -66,6 +68,7 @@ export default function B2BSolutions() {
       title: t("products.scienceAdvantage.title"),
       icon: Beaker,
       logo: "/science-advantage.png",
+      bgColor: "bg-green-50",
       features: [
         t("products.scienceAdvantage.features.0"),
         t("products.scienceAdvantage.features.1"),
@@ -80,6 +83,7 @@ export default function B2BSolutions() {
       title: t("products.mathAdvantage.title"),
       icon: Calculator,
       logo: "/math-advantage.png",
+      bgColor: "bg-purple-50",
       features: [
         t("products.mathAdvantage.features.0"),
         t("products.mathAdvantage.features.1"),
@@ -94,6 +98,7 @@ export default function B2BSolutions() {
       title: t("products.zhongwenAdvantage.title"),
       icon: Languages,
       logo: "/zhongwen-advantage.png",
+      bgColor: "bg-red-50",
       features: [
         t("products.zhongwenAdvantage.features.0"),
         t("products.zhongwenAdvantage.features.1"),
@@ -107,6 +112,7 @@ export default function B2BSolutions() {
     {
       title: t("products.storytimeAdvantage.title"),
       icon: BookMarked,
+      bgColor: "bg-orange-50",
       features: [
         t("products.storytimeAdvantage.features.0"),
         t("products.storytimeAdvantage.features.1"),
@@ -144,7 +150,7 @@ export default function B2BSolutions() {
               variants={item}
               className={product.isFlagship ? "col-span-full lg:col-span-2" : ""}
             >
-              <Card className="p-8 h-full hover:shadow-xl transition-shadow duration-300 relative overflow-hidden">
+              <Card className={`p-8 h-full hover:shadow-xl transition-shadow duration-300 relative overflow-hidden ${product.bgColor}`}>
                 <div className="flex items-center justify-between mb-4">
                   {product.logo ? (
                     <div className="relative z-10 w-24 h-24">

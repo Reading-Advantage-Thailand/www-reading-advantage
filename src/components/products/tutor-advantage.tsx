@@ -49,9 +49,9 @@ export default function TutorAdvantage() {
   ]
 
   return (
-    <section className="bg-sky-800 text-sky-50 py-16">
+    <section className="bg-gradient-to-b from-sky-800 to-sky-900 text-sky-50 py-16">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center bg-sky-800/50 rounded-2xl p-8 backdrop-blur-sm">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ export default function TutorAdvantage() {
               <motion.div
                 key={feature.title}
                 variants={item}
-                className="bg-white/10 p-6 rounded-lg backdrop-blur-sm"
+                className="bg-sky-700/30 p-6 rounded-lg backdrop-blur-sm hover:bg-sky-700/40 transition-colors"
               >
                 <feature.icon className="w-8 h-8 mx-auto mb-3" strokeWidth={1.5} />
                 <h3 className="font-semibold mb-2">{feature.title}</h3>
