@@ -47,7 +47,7 @@ export default async function TutorAdvantage() {
           <div className="container mx-auto px-4">
             <FadeIn>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-green-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-green-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                   <div className="text-4xl mb-4 text-center">🤖</div>
                   <h3 className="text-xl font-bold mb-4 text-center">{t("valuePropositions.features.0.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -57,7 +57,7 @@ export default async function TutorAdvantage() {
                   </ul>
                 </div>
 
-                <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
+                <div className="bg-green-100 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">📚</div>
                   <h3 className="text-xl font-bold mb-4 text-center">{t("valuePropositions.features.1.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -67,7 +67,7 @@ export default async function TutorAdvantage() {
                   </ul>
                 </div>
 
-                <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
+                <div className="bg-green-100 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">👩‍🏫</div>
                   <h3 className="text-xl font-bold mb-4 text-center">{t("valuePropositions.features.2.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -82,7 +82,7 @@ export default async function TutorAdvantage() {
         </section>
 
         {/* Platform Features */}
-        <section className="bg-green-50 py-16">
+        <section className="bg-green-100 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
               <h2 className="text-3xl font-bold text-center mb-12">{t("platformFeatures.heading")}</h2>
@@ -113,7 +113,7 @@ export default async function TutorAdvantage() {
                     description: t("platformFeatures.features.5.description"),
                   },
                 ].map((feature) => (
-                  <div key={feature.title} className="bg-white p-6 rounded-lg shadow-md">
+                  <div key={feature.title} className="bg-green-200 p-6 rounded-lg shadow-md">
                     <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
                     <p>{feature.description}</p>
                   </div>

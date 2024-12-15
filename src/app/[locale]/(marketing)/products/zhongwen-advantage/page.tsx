@@ -24,7 +24,7 @@ export default function ZhongwenAdvantage() {
             <>
               <div className="flex justify-center mb-8">
                 <Image
-                  src="/images/zhongwen-advantage-logo.png"
+                  src="/zhongwen-advantage.png"
                   alt="Zhongwen Advantage Logo"
                   width={200}
                   height={200}
@@ -58,7 +58,7 @@ export default function ZhongwenAdvantage() {
                   </ul>
                 </div>
 
-                <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
+                <div className="bg-fuchsia-100 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">🤖</div>
                   <h3 className="text-xl font-bold mb-4 text-center">Adaptive Technology</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -68,7 +68,7 @@ export default function ZhongwenAdvantage() {
                   </ul>
                 </div>
 
-                <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
+                <div className="bg-fuchsia-100 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">📖</div>
                   <h3 className="text-xl font-bold mb-4 text-center">Comprehensive Content</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -114,12 +114,12 @@ export default function ZhongwenAdvantage() {
                   <h3 className="text-xl font-bold mb-4 text-center">Class Management</h3>
                   <p className="text-center">Comprehensive tools for tracking and managing student progress</p>
                 </div>
-                <div className="bg-sky-50 p-6 rounded-lg shadow-sm">
+                <div className="bg-fuchsia-100 p-6 rounded-lg shadow-sm">
                   <div className="text-4xl mb-4 text-center">📊</div>
                   <h3 className="text-xl font-bold mb-4 text-center">Progress Tracking</h3>
                   <p className="text-center">Detailed analytics and performance insights</p>
                 </div>
-                <div className="bg-sky-50 p-6 rounded-lg shadow-sm">
+                <div className="bg-fuchsia-100 p-6 rounded-lg shadow-sm">
                   <div className="text-4xl mb-4 text-center">📝</div>
                   <h3 className="text-xl font-bold mb-4 text-center">Custom Content</h3>
                   <p className="text-center">Create and assign customized learning materials</p>
@@ -135,11 +135,11 @@ export default function ZhongwenAdvantage() {
             <ScrollFade>
               <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
               <div className="max-w-3xl mx-auto space-y-6">
-                <div className="bg-white p-6 rounded-lg shadow-sm">
+                <div className="bg-fuchsia-300 p-6 rounded-lg shadow-sm">
                   <h3 className="font-bold mb-2">When will Zhongwen Advantage launch?</h3>
                   <p>Our platform is scheduled to launch in early 2025. Join our waitlist for early access opportunities.</p>
                 </div>
-                <div className="bg-white p-6 rounded-lg shadow-sm">
+                <div className="bg-fuchsia-300 p-6 rounded-lg shadow-sm">
                   <h3 className="font-bold mb-2">What are the technical requirements?</h3>
                   <p>Zhongwen Advantage will be accessible on any modern web browser, with mobile apps available for iOS and Android.</p>
                 </div>
@@ -149,7 +149,7 @@ export default function ZhongwenAdvantage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-fuchsia-800 text-fuchsia-50 py-16 bg-gradient-to-br from-fuchsia-800 to-purple-900">
+        <section className="bg-fuchsia-600 text-fuchsia-50 py-16 bg-gradient-to-br from-fuchsia-700 to-fuchsia-900">
           <div className="container mx-auto px-4 text-center">
             <FadeIn>
               <h2 className="text-3xl font-bold mb-6">Be the First to Experience Zhongwen Advantage</h2>
@@ -157,7 +157,7 @@ export default function ZhongwenAdvantage() {
               <div className="flex justify-center gap-4">
                 <a
                   href="#"
-                  className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white px-8 py-3 rounded-lg font-bold transition-colors"
+                  className="bg-fuchsia-400 hover:bg-fuchsia-500 text-white px-8 py-3 rounded-lg font-bold transition-colors"
                 >
                   Join Waitlist
                 </a>

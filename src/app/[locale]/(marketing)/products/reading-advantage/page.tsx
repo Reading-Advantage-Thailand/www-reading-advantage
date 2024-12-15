@@ -294,7 +294,7 @@ export default function ReadingAdvantage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-gradient-to-br from-sky-800 to-violet-900 py-16">
+        <section className="bg-gradient-to-br from-sky-700 to-sky-900 py-16">
           <div className="container mx-auto px-4 text-center text-sky-50">
             <FadeIn>
               <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>

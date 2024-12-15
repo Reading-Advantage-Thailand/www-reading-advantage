@@ -26,7 +26,7 @@ export default async function StemAdvantage() {
             <>
               <div className="flex justify-center mb-8">
                 <Image
-                  src="/images/stem-advantage-logo.png"
+                  src="/stem-advantage.png"
                   alt="STEM Advantage Logo"
                   width={200}
                   height={200}
