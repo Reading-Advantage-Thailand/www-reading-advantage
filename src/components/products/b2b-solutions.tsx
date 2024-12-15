@@ -44,7 +44,7 @@ export default function B2BSolutions() {
       ],
       href: "/products/reading-advantage",
       isFlagship: true,
-      buttonText: t("products.readingAdvantage.buttonText")
+      buttonText: "Learn More"
     },
     {
       title: t("products.stemAdvantage.title"),
@@ -55,7 +55,9 @@ export default function B2BSolutions() {
         t("products.stemAdvantage.features.2"),
         t("products.stemAdvantage.features.3")
       ],
-      href: "/products/stem-advantage"
+      href: "/products/stem-advantage",
+      buttonText: "Learn More"
+
     },
     {
       title: t("products.scienceAdvantage.title"),
@@ -66,7 +68,9 @@ export default function B2BSolutions() {
         t("products.scienceAdvantage.features.2"),
         t("products.scienceAdvantage.features.3")
       ],
-      href: "/products/science-advantage"
+      href: "/products/science-advantage",
+      buttonText: "Learn More"
+
     },
     {
       title: t("products.mathAdvantage.title"),
@@ -77,7 +81,9 @@ export default function B2BSolutions() {
         t("products.mathAdvantage.features.2"),
         t("products.mathAdvantage.features.3")
       ],
-      href: "/products/math-advantage"
+      href: "/products/math-advantage",
+      buttonText: "Learn More"
+
     },
     {
       title: t("products.zhongwenAdvantage.title"),
@@ -88,7 +94,9 @@ export default function B2BSolutions() {
         t("products.zhongwenAdvantage.features.2"),
         t("products.zhongwenAdvantage.features.3")
       ],
-      href: "/products/zhongwen-advantage"
+      href: "/products/zhongwen-advantage",
+      buttonText: "Learn More"
+
     },
     {
       title: t("products.storytimeAdvantage.title"),
@@ -99,7 +107,9 @@ export default function B2BSolutions() {
         t("products.storytimeAdvantage.features.2"),
         t("products.storytimeAdvantage.features.3")
       ],
-      href: "/products/storytime-advantage"
+      href: "/products/storytime-advantage",
+      buttonText: "Learn More"
+
     }
   ]
 
