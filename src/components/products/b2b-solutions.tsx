@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import Link from "next/link"
+import Image from "next/image"
 import {
   BookOpen,
   Bot,
@@ -36,6 +37,7 @@ export default function B2BSolutions() {
     {
       title: t("products.readingAdvantage.title"),
       icon: BookOpen,
+      logo: "/images/products/reading-advantage-logo.png",
       features: [
         t("products.readingAdvantage.features.0"),
         t("products.readingAdvantage.features.1"),
@@ -140,9 +142,20 @@ export default function B2BSolutions() {
             >
               <Card className="p-8 h-full hover:shadow-xl transition-shadow duration-300 relative overflow-hidden">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="relative z-10">
-                    <product.icon className="w-12 h-12 text-blue-600" strokeWidth={1.5} />
-                  </div>
+                  {product.logo ? (
+                    <div className="relative z-10 w-24 h-24">
+                      <Image
+                        src={product.logo}
+                        alt={product.title}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <div className="relative z-10">
+                      <product.icon className="w-12 h-12 text-blue-600" strokeWidth={1.5} />
+                    </div>
+                  )}
                   {product.isFlagship && (
                     <span className="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">
                       {t("mostPopular")}
