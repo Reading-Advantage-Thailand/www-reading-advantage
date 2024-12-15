@@ -77,6 +77,7 @@ export default function B2BSolutions() {
     {
       title: t("products.mathAdvantage.title"),
       icon: Calculator,
+      logo: "/images/products/math-advantage.png",
       features: [
         t("products.mathAdvantage.features.0"),
         t("products.mathAdvantage.features.1"),
