@@ -3,6 +3,7 @@ import Image from "next/image"
 import Hero from "@/components/layout/hero"
 import { FadeIn } from "@/components/layout/fade-in"
 import { ScrollFade } from "@/components/layout/scroll-fade"
+import { PageTransition } from "@/components/layout/page-transition"
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { div } from "framer-motion/client"
 import { getScopedI18n } from "@/locales/server"
@@ -19,30 +20,29 @@ export const metadata: Metadata = {
 export default async function ScienceAdvantage() {
   const t = await getScopedI18n("pages.products.scienceAdvantage")
   return (
-    <main className="flex min-h-screen flex-col">
+    <PageTransition>
+      <main className="min-h-screen">
       <Hero
         title={
           <>
-            <div className="flex flex-col items-center mb-8">
-              <div className="w-32 h-32 rounded-full bg-white p-2 mb-6">
-                <Image
-                  src="/science-advantage.png"
-                  alt="Science Advantage Logo"
-                  width={128}
-                  height={128}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
+            <div className="flex justify-center mb-8">
+              <Image
+                src="/science-advantage.png"
+                alt="Science Advantage Logo"
+                width={200}
+                height={200}
+                className="rounded-full bg-white p-2"
+              />
             </div>
-            <div className="absolute top-4 right-4 bg-red-100 text-red-900 px-4 py-2 rounded-full mb-6">
+            <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
+            <div className="absolute top-4 right-4 bg-red-100 text-red-900 px-4 py-2 rounded-full">
               {t("hero.comingSoon")}
             </div>
             <h2 className="text-2xl font-bold mb-6">{t("hero.subtitle")}</h2>
           </>
         }
         description={t("hero.description")}
-        backgroundImage
+        className="bg-gradient-to-b from-red-200 via-red-300 to-red-400"
       />
 
       {/* Core Value Proposition */}
@@ -188,5 +188,6 @@ export default async function ScienceAdvantage() {
         </section>
       </ScrollFade>
     </main>
+    </PageTransition>
   )
 }
