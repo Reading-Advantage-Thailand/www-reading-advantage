@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import Image from "next/image"
 import Hero from "@/components/layout/hero"
 import { PageTransition } from "@/components/layout/page-transition"
 import { FadeIn } from "@/components/layout/fade-in"
@@ -23,18 +24,24 @@ export default async function StemAdvantage() {
         <Hero
           title={
             <>
-              <div className="flex items-center justify-center gap-4 mb-6">
-                <img src="/images/stem-advantage-logo.png" alt="STEM Advantage Logo" className="h-16 w-auto" />
-                <h1 className="text-5xl font-bold">{t("hero.title")}</h1>
+              <div className="flex justify-center mb-8">
+                <Image
+                  src="/images/stem-advantage-logo.png"
+                  alt="STEM Advantage Logo"
+                  width={200}
+                  height={200}
+                  className="rounded-full bg-white p-2"
+                />
               </div>
-              <div className="absolute top-4 right-4 bg-yellow-400 text-gray-800 px-4 py-2 rounded-full mb-6">
+              <div className="absolute top-4 right-4 bg-yellow-400 text-gray-800 px-4 py-2 rounded-full">
                 {t("hero.comingSoon")}
               </div>
+              <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
               <h2 className="text-2xl font-bold mb-6">{t("hero.subtitle")}</h2>
             </>
           }
           description={t("hero.description")}
-          backgroundImage={true}
+          className="bg-gradient-to-b from-indigo-200 via-indigo-300 to-indigo-400"
         />
 
         {/* Core Features */}
