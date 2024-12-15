@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import Image from "next/image"
 import Hero from "@/components/layout/hero"
 import { PageTransition } from "@/components/layout/page-transition"
 import { FadeIn } from "@/components/layout/fade-in"
@@ -23,6 +24,15 @@ export default async function MathAdvantage() {
         <Hero
           title={
             <>
+              <div className="flex justify-center mb-8">
+                <Image
+                  src="/math-advantage.png"
+                  alt="Math Advantage Logo"
+                  width={200}
+                  height={200}
+                  className="rounded-full bg-white p-2"
+                />
+              </div>
               <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
               <div className="absolute top-4 right-4 bg-yellow-400 text-sky-50 px-4 py-2 rounded-full mb-6">
                 {t("hero.comingSoon")}
@@ -31,7 +41,7 @@ export default async function MathAdvantage() {
             </>
           }
           description={t("hero.description")}
-          backgroundImage={true}
+          className="bg-gradient-to-b from-orange-100 via-orange-200 to-orange-300"
         />
 
         {/* Core Features */}
