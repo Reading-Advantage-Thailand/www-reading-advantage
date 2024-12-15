@@ -23,7 +23,10 @@ export default async function StemAdvantage() {
         <Hero
           title={
             <>
-              <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <img src="/images/stem-advantage-logo.png" alt="STEM Advantage Logo" className="h-16 w-auto" />
+                <h1 className="text-5xl font-bold">{t("hero.title")}</h1>
+              </div>
               <div className="absolute top-4 right-4 bg-yellow-400 text-gray-800 px-4 py-2 rounded-full mb-6">
                 {t("hero.comingSoon")}
               </div>
@@ -40,7 +43,7 @@ export default async function StemAdvantage() {
             <FadeIn>
               <h2 className="text-3xl font-bold text-center mb-12">{t("coreFeatures.heading")}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
+                <div className="bg-indigo-100 rounded-lg p-6 shadow-sm hover:bg-indigo-200 transition-colors">
                   <div className="text-4xl mb-4 text-center">🎓</div>
                   <h3 className="text-xl font-bold mb-4 text-center">{t("coreFeatures.features.0.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -50,7 +53,7 @@ export default async function StemAdvantage() {
                   </ul>
                 </div>
 
-                <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
+                <div className="bg-indigo-100 rounded-lg p-6 shadow-sm hover:bg-indigo-200 transition-colors">
                   <div className="text-4xl mb-4 text-center">💻</div>
                   <h3 className="text-xl font-bold mb-4 text-center">{t("coreFeatures.features.1.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -60,7 +63,7 @@ export default async function StemAdvantage() {
                   </ul>
                 </div>
 
-                <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
+                <div className="bg-indigo-100 rounded-lg p-6 shadow-sm hover:bg-indigo-200 transition-colors">
                   <div className="text-4xl mb-4 text-center">📚</div>
                   <h3 className="text-xl font-bold mb-4 text-center">{t("coreFeatures.features.2.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -75,7 +78,7 @@ export default async function StemAdvantage() {
         </section>
 
         {/* Grade Level Breakdown */}
-        <section className="bg-sky-50 py-16">
+        <section className="bg-indigo-50 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
               <h2 className="text-3xl font-bold text-center mb-12">{t("gradeBreakdown.heading")}</h2>
@@ -108,7 +111,7 @@ export default async function StemAdvantage() {
         </section>
 
         {/* Benefits */}
-        <section className="bg-sky-800 text-sky-50 py-16">
+        <section className="bg-indigo-800 text-indigo-50 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
               <h2 className="text-3xl font-bold text-center mb-12">{t("benefits.heading")}</h2>
@@ -139,9 +142,9 @@ export default async function StemAdvantage() {
                     ],
                   },
                 ].map((group) => (
-                  <div key={group.title} className="bg-sky-700 p-6 rounded-lg">
+                  <div key={group.title} className="bg-indigo-700 p-6 rounded-lg">
                     <h3 className="text-xl font-bold mb-4">{group.title}</h3>
-                    <ul className="list-disc pl-6 space-y-2 text-sky-100">
+                    <ul className="list-disc pl-6 space-y-2 text-indigo-100">
                       {group.benefits.map((benefit) => (
                         <li key={benefit}>{benefit}</li>
                       ))}
@@ -158,7 +161,7 @@ export default async function StemAdvantage() {
           <div className="container mx-auto px-4">
             <FadeIn>
               <h2 className="text-3xl font-bold text-center mb-12">{t("technicalRequirements.heading")}</h2>
-              <div className="max-w-2xl mx-auto bg-sky-50 p-8 rounded-lg shadow-sm">
+              <div className="max-w-2xl mx-auto bg-indigo-100 p-8 rounded-lg shadow-sm">
                 <ul className="space-y-4">
                   {[
                     t("technicalRequirements.points.0"),
@@ -177,7 +180,7 @@ export default async function StemAdvantage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-sky-800 text-sky-50 py-16 bg-gradient-to-br from-sky-800 to-violet-900">
+        <section className="bg-indigo-800 text-indigo-50 py-16 bg-gradient-to-br from-indigo-800 to-indigo-900">
           <div className="container mx-auto px-4 text-center">
             <FadeIn>
               <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>
@@ -191,7 +194,7 @@ export default async function StemAdvantage() {
                 </a>
                 <a
                   href="#"
-                  className="bg-white hover:bg-sky-50 text-sky-800 px-8 py-3 rounded-lg font-bold transition-colors"
+                  className="bg-white hover:bg-indigo-50 text-indigo-800 px-8 py-3 rounded-lg font-bold transition-colors"
                 >
                   {t("cta.buttons.partnerships")}
                 </a>
