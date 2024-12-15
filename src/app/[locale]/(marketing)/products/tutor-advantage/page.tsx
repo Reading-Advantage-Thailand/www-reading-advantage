@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import Image from "next/image"
 import Hero from "@/components/layout/hero"
 import { PageTransition } from "@/components/layout/page-transition"
 import { FadeIn } from "@/components/layout/fade-in"
@@ -22,16 +23,23 @@ export default async function TutorAdvantage() {
         {/* Hero Section */}
         <Hero
           title={
-            <>
+            <div className="text-center">
+              <Image
+                src="/tutor-advantage.png"
+                alt="Tutor Advantage Logo"
+                width={200}
+                height={200}
+                className="mx-auto mb-8"
+              />
               <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
-              <div className="absolute top-4 right-4 bg-yellow-400 text-sky-900 px-4 py-2 rounded-full mb-6">
+              <div className="inline-block bg-yellow-400 text-green-900 px-4 py-2 rounded-full mb-6">
                 {t("hero.comingSoon")}
               </div>
               <h2 className="text-2xl font-bold mb-6">{t("hero.subtitle")}</h2>
-            </>
+            </div>
           }
           description={t("hero.description")}
-          backgroundImage={true}
+          className="bg-gradient-to-br from-green-300 to-green-400"
         />
 
         {/* Value Propositions */}
@@ -39,7 +47,7 @@ export default async function TutorAdvantage() {
           <div className="container mx-auto px-4">
             <FadeIn>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-sky-50 rounded-lg p-6 shadow-sm">
+                <div className="bg-green-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                   <div className="text-4xl mb-4 text-center">🤖</div>
                   <h3 className="text-xl font-bold mb-4 text-center">{t("valuePropositions.features.0.title")}</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -74,7 +82,7 @@ export default async function TutorAdvantage() {
         </section>
 
         {/* Platform Features */}
-        <section className="bg-sky-50 py-16">
+        <section className="bg-green-50 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
               <h2 className="text-3xl font-bold text-center mb-12">{t("platformFeatures.heading")}</h2>
@@ -116,7 +124,7 @@ export default async function TutorAdvantage() {
         </section>
 
         {/* Trust Signals */}
-        <section className="bg-sky-800 text-sky-50 py-16">
+        <section className="bg-green-800 text-green-50 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
               <h2 className="text-3xl font-bold text-center mb-12">{t("trustSignals.heading")}</h2>
@@ -152,7 +160,7 @@ export default async function TutorAdvantage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-sky-800 text-sky-50 py-16 bg-gradient-to-br from-sky-800 to-violet-900">
+        <section className="bg-green-800 text-green-50 py-16 bg-gradient-to-br from-green-700 to-green-900">
           <div className="container mx-auto px-4 text-center">
             <FadeIn>
               <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>
@@ -160,13 +168,13 @@ export default async function TutorAdvantage() {
               <div className="flex justify-center gap-4">
                 <a
                   href="#"
-                  className="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-lg font-bold transition-colors"
+                  className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg font-bold transition-colors"
                 >
                   {t("cta.buttons.register")}
                 </a>
                 <a
                   href="#"
-                  className="bg-white hover:bg-sky-50 text-sky-800 px-8 py-3 rounded-lg font-bold transition-colors"
+                  className="bg-white hover:bg-green-50 text-green-800 px-8 py-3 rounded-lg font-bold transition-colors"
                 >
                   {t("cta.buttons.apply")}
                 </a>
