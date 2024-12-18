@@ -39,7 +39,7 @@ export default function ZhongwenAdvantage() {
             </>
           }
           description="Experience a revolutionary approach to mastering Chinese, combining HSK standards with adaptive learning technology"
-          className="bg-gradient-to-b from-fuchsia-100 via-fuchsia-200 to-fuchsia-300"
+          className="bg-gradient-to-b from-fuchsia-200 to-fuchsia-400"
         />
 
         {/* Key Features */}
@@ -48,7 +48,7 @@ export default function ZhongwenAdvantage() {
             <FadeIn>
               <h2 className="text-3xl font-bold text-center mb-12">Key Features</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div className="bg-fuchsia-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-fuchsia-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                   <div className="text-4xl mb-4 text-center">📚</div>
                   <h3 className="text-xl font-bold mb-4 text-center">Dual-Level Learning System</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -58,7 +58,7 @@ export default function ZhongwenAdvantage() {
                   </ul>
                 </div>
 
-                <div className="bg-fuchsia-100 rounded-lg p-6 shadow-sm">
+                <div className="bg-fuchsia-200 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">🤖</div>
                   <h3 className="text-xl font-bold mb-4 text-center">Adaptive Technology</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -68,7 +68,7 @@ export default function ZhongwenAdvantage() {
                   </ul>
                 </div>
 
-                <div className="bg-fuchsia-100 rounded-lg p-6 shadow-sm">
+                <div className="bg-fuchsia-200 rounded-lg p-6 shadow-sm">
                   <div className="text-4xl mb-4 text-center">📖</div>
                   <h3 className="text-xl font-bold mb-4 text-center">Comprehensive Content</h3>
                   <ul className="text-left list-disc pl-6 space-y-2">
@@ -83,17 +83,17 @@ export default function ZhongwenAdvantage() {
         </section>
 
         {/* Interactive Learning */}
-        <section className="bg-fuchsia-100 py-16">
+        <section className="bg-fuchsia-200 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
               <h2 className="text-3xl font-bold text-center mb-12">Interactive Learning Elements</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div className="bg-white p-6 rounded-lg shadow-sm">
+                <div className="bg-fuchsia-300 p-6 rounded-lg shadow-sm">
                   <div className="text-4xl mb-4 text-center">✍️</div>
                   <h3 className="text-xl font-bold mb-4 text-center">Character Mastery</h3>
                   <p className="text-center">Advanced stroke recognition technology with real-time feedback</p>
                 </div>
-                <div className="bg-white p-6 rounded-lg shadow-sm">
+                <div className="bg-fuchsia-300 p-6 rounded-lg shadow-sm">
                   <div className="text-4xl mb-4 text-center">🗣️</div>
                   <h3 className="text-xl font-bold mb-4 text-center">Pronunciation Perfect</h3>
                   <p className="text-center">Tone recognition exercises with AI-powered feedback</p>
@@ -109,17 +109,17 @@ export default function ZhongwenAdvantage() {
             <ScrollFade>
               <h2 className="text-3xl font-bold text-center mb-12">For Educators</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                <div className="bg-fuchsia-100 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-fuchsia-200 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <div className="text-4xl mb-4 text-center">👥</div>
                   <h3 className="text-xl font-bold mb-4 text-center">Class Management</h3>
                   <p className="text-center">Comprehensive tools for tracking and managing student progress</p>
                 </div>
-                <div className="bg-fuchsia-100 p-6 rounded-lg shadow-sm">
+                <div className="bg-fuchsia-200 p-6 rounded-lg shadow-sm">
                   <div className="text-4xl mb-4 text-center">📊</div>
                   <h3 className="text-xl font-bold mb-4 text-center">Progress Tracking</h3>
                   <p className="text-center">Detailed analytics and performance insights</p>
                 </div>
-                <div className="bg-fuchsia-100 p-6 rounded-lg shadow-sm">
+                <div className="bg-fuchsia-200 p-6 rounded-lg shadow-sm">
                   <div className="text-4xl mb-4 text-center">📝</div>
                   <h3 className="text-xl font-bold mb-4 text-center">Custom Content</h3>
                   <p className="text-center">Create and assign customized learning materials</p>
@@ -130,7 +130,7 @@ export default function ZhongwenAdvantage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="bg-fuchsia-100 py-16">
+        <section className="bg-fuchsia-200 py-16">
           <div className="container mx-auto px-4">
             <ScrollFade>
               <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>

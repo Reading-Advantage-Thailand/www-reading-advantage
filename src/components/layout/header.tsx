@@ -265,7 +265,7 @@ export function Header() {
                           className="block px-4 py-2 hover:bg-sky-600 transition-colors border-b border-sky-400"
                           onClick={() => setShowProductMenu(false)}
                         >
-                          {n("viewAllProducts")}
+                          {n("View All Products")}
                         </Link>
                         {link.items.map((product: NavItem) => (
                           <Link
