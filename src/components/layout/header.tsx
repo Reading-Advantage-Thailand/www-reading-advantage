@@ -266,6 +266,7 @@ export function Header() {
                             href={product.href}
                             className={`block px-4 py-2 hover:bg-sky-600 transition-colors ${pathname === product.href ? 'bg-sky-600' : ''
                               }`}
+                            onClick={() => setShowProductMenu(false)}
                           >
                             {product.title}
                           </Link>
