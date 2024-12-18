@@ -38,7 +38,7 @@ export default function B2BSolutions() {
       title: t("products.readingAdvantage.title"),
       icon: BookOpen,
       logo: "/reading-advantage.jpg",
-      bgColor: "bg-sky-300",
+      bgColor: "bg-sky-400",
       features: [
         t("products.readingAdvantage.features.0"),
         t("products.readingAdvantage.features.1"),
@@ -68,7 +68,7 @@ export default function B2BSolutions() {
       title: t("products.scienceAdvantage.title"),
       icon: Beaker,
       logo: "/science-advantage.png",
-      bgColor: "bg-pink-200",
+      bgColor: "bg-rose-300",
       features: [
         t("products.scienceAdvantage.features.0"),
         t("products.scienceAdvantage.features.1"),
@@ -112,7 +112,8 @@ export default function B2BSolutions() {
     {
       title: t("products.storytimeAdvantage.title"),
       icon: BookMarked,
-      bgColor: "bg-orange-50",
+      logo: "/storytime-advantage.png",
+      bgColor: "bg-amber-300",
       features: [
         t("products.storytimeAdvantage.features.0"),
         t("products.storytimeAdvantage.features.1"),
