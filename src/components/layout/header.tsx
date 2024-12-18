@@ -25,6 +25,10 @@ export function Header() {
 
   const navigation: NavItem[] = [
     {
+      title: n("home"),
+      href: "/"
+    },
+    {
       title: n("products"),
       href: "/products"
     },
