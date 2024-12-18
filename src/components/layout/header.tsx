@@ -260,6 +260,13 @@ export function Header() {
                     </Link>
                     {showProductMenu && link.items && (
                       <div className="absolute top-full left-0 w-64 bg-sky-500 rounded-lg shadow-lg py-2 mt-1">
+                        <Link
+                          href="/products"
+                          className="block px-4 py-2 hover:bg-sky-600 transition-colors border-b border-sky-400"
+                          onClick={() => setShowProductMenu(false)}
+                        >
+                          {n("viewAllProducts")}
+                        </Link>
                         {link.items.map((product: NavItem) => (
                           <Link
                             key={product.href}
