@@ -1,4 +1,5 @@
 export const en = {
+    home: "Home",
     products: "Products",
     features: "Features",
     pricing: "Pricing",
