@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NavItem } from "@/config/navigation";
 import { Menu, ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -94,6 +94,20 @@ export function Header() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [showProductMenu, setShowProductMenu] = useState(false);
+  const productsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (productsRef.current && !productsRef.current.contains(event.target as Node)) {
+        setShowProductMenu(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
   const pathname = usePathname();
   const router = useRouter();
   const { user, signOut } = useAuth();
@@ -230,13 +244,16 @@ export function Header() {
                   <div
                     key={link.href}
                     className="relative group"
-                    onMouseEnter={() => setShowProductMenu(true)}
-                    onMouseLeave={() => setShowProductMenu(false)}
+                    ref={productsRef}
                   >
                     <Link
                       href={link.href}
-                      className={`text-sky-50 hover:text-white transition-colors relative py-2 flex items-center gap-1 ${pathname.startsWith('/products') ? 'font-medium' : ''
+                      className={`text-sky-50 hover:text-white transition-colors relative py-2 flex items-center gap-1 cursor-pointer ${pathname.startsWith('/products') ? 'font-medium' : ''
                         }`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setShowProductMenu(!showProductMenu);
+                      }}
                     >
                       {link.title}
                       <ChevronDown className="h-4 w-4" />
