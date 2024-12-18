@@ -53,7 +53,7 @@ export default function B2BSolutions() {
       title: t("products.stemAdvantage.title"),
       icon: Bot,
       logo: "/stem-advantage.png",
-      bgColor: "bg-indigo-300",
+      bgColor: "bg-indigo-200",
       features: [
         t("products.stemAdvantage.features.0"),
         t("products.stemAdvantage.features.1"),
@@ -68,7 +68,7 @@ export default function B2BSolutions() {
       title: t("products.scienceAdvantage.title"),
       icon: Beaker,
       logo: "/science-advantage.png",
-      bgColor: "bg-rose-300",
+      bgColor: "bg-rose-200",
       features: [
         t("products.scienceAdvantage.features.0"),
         t("products.scienceAdvantage.features.1"),
@@ -83,7 +83,7 @@ export default function B2BSolutions() {
       title: t("products.mathAdvantage.title"),
       icon: Calculator,
       logo: "/math-advantage.png",
-      bgColor: "bg-orange-200",
+      bgColor: "bg-orange-100",
       features: [
         t("products.mathAdvantage.features.0"),
         t("products.mathAdvantage.features.1"),
@@ -98,7 +98,7 @@ export default function B2BSolutions() {
       title: t("products.zhongwenAdvantage.title"),
       icon: Languages,
       logo: "/zhongwen-advantage.png",
-      bgColor: "bg-fuchsia-300",
+      bgColor: "bg-fuchsia-200",
       features: [
         t("products.zhongwenAdvantage.features.0"),
         t("products.zhongwenAdvantage.features.1"),
@@ -113,7 +113,7 @@ export default function B2BSolutions() {
       title: t("products.storytimeAdvantage.title"),
       icon: BookMarked,
       logo: "/storytime-advantage.png",
-      bgColor: "bg-amber-300",
+      bgColor: "bg-amber-200",
       features: [
         t("products.storytimeAdvantage.features.0"),
         t("products.storytimeAdvantage.features.1"),

@@ -49,9 +49,9 @@ export default function TutorAdvantage() {
   ]
 
   return (
-    <section className="bg-gradient-to-b from-emerald-200 to-emerald-400 text-emerald-900 py-16">
+    <section className="bg-gradient-to-b from-emerald-300 to-emerald-500 text-emerald-900 py-16">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
-        <div className="max-w-4xl mx-auto text-center bg-green-300 rounded-2xl p-8 backdrop-blur-sm">
+        <div className="max-w-4xl mx-auto text-center bg-emerald-200 rounded-2xl p-8 backdrop-blur-sm">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
