@@ -38,8 +38,8 @@ export default async function Footer() {
                         <h3 className="font-semibold text-lg mb-4">{t("contactUs.title")}</h3>
                         <ul className="space-y-2 text-slate-400">
                             <li>{t("contactUs.email")}: support@reading-advantage.com</li>
-                            <li>{t("contactUs.phone")}: +66 634 460 628</li>
-                            <li>{t("contactUs.location")}</li>
+                            <li>{t("contactUs.phone")}: +66 099-005-8038</li>
+                            <li>{t("contactUs.location")}: Tiktok @reading.advantage</li>
                         </ul>
                     </div>
                 </div>
