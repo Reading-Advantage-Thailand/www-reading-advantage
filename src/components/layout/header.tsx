@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { NavItem } from "@/config/navigation";
-import { Menu, ChevronDown } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -26,49 +26,7 @@ export function Header() {
   const navigation: NavItem[] = [
     {
       title: n("products"),
-      href: "/products",
-      items: [
-        {
-          title: "Reading Advantage",
-          href: "/products/reading-advantage",
-          description: n("itemsDescription.readingAdvantage")
-        },
-        {
-          title: "Math Advantage",
-          href: "/products/math-advantage",
-          description: n("itemsDescription.mathAdvantage")
-        },
-        {
-          title: "Science Advantage",
-          href: "/products/science-advantage",
-          description: n("itemsDescription.scienceAdvantage")
-        },
-        {
-          title: "STEM Advantage",
-          href: "/products/stem-advantage",
-          description: n("itemsDescription.stemAdvantage")
-        },
-        {
-          title: "Zhongwen Advantage",
-          href: "/products/zhongwen-advantage",
-          description: n("itemsDescription.zhongwenAdvantage")
-        },
-        {
-          title: "Storytime Advantage",
-          href: "/products/storytime-advantage",
-          description: n("itemsDescription.storytimeAdvantage")
-        },
-        {
-          title: "CodeCamp Advantage",
-          href: "/products/codecamp-advantage",
-          description: n("itemsDescription.codecampAdvantage")
-        },
-        {
-          title: "Tutor Advantage",
-          href: "/products/tutor-advantage",
-          description: n("itemsDescription.tutorAdvantage")
-        }
-      ]
+      href: "/products"
     },
     {
       title: n("features"),
@@ -93,21 +51,6 @@ export function Header() {
   ];
 
   const [isOpen, setIsOpen] = useState(false);
-  const [showProductMenu, setShowProductMenu] = useState(false);
-  const productsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (productsRef.current && !productsRef.current.contains(event.target as Node)) {
-        setShowProductMenu(false);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
   const pathname = usePathname();
   const router = useRouter();
   const { user, signOut } = useAuth();
@@ -180,31 +123,6 @@ export function Header() {
               </SheetHeader>
               <nav className="flex flex-col gap-4 mt-8">
                 {navigation.map((link) => {
-                  if (link.href === '/products') {
-                    return (
-                      <div key={link.href}>
-                        <Link
-                          href={link.href}
-                          className={`text-lg px-3 py-2 rounded-lg ${pathname.startsWith('/products') ? 'bg-sky-600' : ''}`}
-                        >
-                          {link.title}
-                        </Link>
-                        <div className="ml-4 mt-2 flex flex-col gap-2">
-                          {link.items?.map((product: NavItem) => (
-                            <Link
-                              key={product.href}
-                              href={product.href}
-                              className={`text-base px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors ${pathname === product.href ? 'bg-sky-600' : ''
-                                }`}
-                              onClick={() => setIsOpen(false)}
-                            >
-                              {product.title}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    );
-                  }
                   return (
                     <Link
                       key={link.href}
@@ -239,53 +157,6 @@ export function Header() {
           {/* Main Navigation */}
           <nav className="hidden lg:flex space-x-8">
             {navigation.map((link) => {
-              if (link.href === '/products') {
-                return (
-                  <div
-                    key={link.href}
-                    className="relative group"
-                    ref={productsRef}
-                  >
-                    <Link
-                      href={link.href}
-                      className={`text-sky-50 hover:text-white transition-colors relative py-2 flex items-center gap-1 cursor-pointer ${pathname.startsWith('/products') ? 'font-medium' : ''
-                        }`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setShowProductMenu(!showProductMenu);
-                      }}
-                    >
-                      {link.title}
-                      <ChevronDown className="h-4 w-4" />
-                    </Link>
-                    {showProductMenu && link.items && (
-                      <div className="absolute top-full left-0 w-64 bg-sky-500 rounded-lg shadow-lg py-2 mt-1">
-                        <Link
-                          href="/products"
-                          className="block px-4 py-2 hover:bg-sky-600 transition-colors border-b border-sky-400"
-                          onClick={() => setShowProductMenu(false)}
-                        >
-                          {n("View All Products")}
-                        </Link>
-                        {link.items.map((product: NavItem) => (
-                          <Link
-                            key={product.href}
-                            href={product.href}
-                            className={`block px-4 py-2 hover:bg-sky-600 transition-colors ${pathname === product.href ? 'bg-sky-600' : ''
-                              }`}
-                            onClick={() => setShowProductMenu(false)}
-                          >
-                            {product.title}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                    {pathname.startsWith('/products') && (
-                      <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full" />
-                    )}
-                  </div>
-                );
-              }
               return (
                 <Link
                   key={link.href}
