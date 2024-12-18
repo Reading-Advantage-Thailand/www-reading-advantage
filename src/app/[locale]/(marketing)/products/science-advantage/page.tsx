@@ -35,14 +35,14 @@ export default async function ScienceAdvantage() {
               />
             </div>
             <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
-            <div className="absolute top-4 right-4 bg-pink-100 text-pink-900 px-4 py-2 rounded-full">
+            <div className="absolute top-4 right-4 bg-rose-100 text-rose-900 px-4 py-2 rounded-full">
               {t("hero.comingSoon")}
             </div>
             <h2 className="text-2xl font-bold mb-6">{t("hero.subtitle")}</h2>
           </>
         }
         description={t("hero.description")}
-        className="bg-gradient-to-b from-pink-100 via-pink-200 to-pink-300"
+        className="bg-gradient-to-b from-rose-200 to-rose-400"
       />
 
       {/* Core Value Proposition */}
@@ -52,17 +52,17 @@ export default async function ScienceAdvantage() {
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl font-bold mb-8">{t("coreValue.heading")}</h2>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="p-6 rounded-lg bg-pink-50 hover:bg-gradient-to-br hover:from-pink-100 hover:to-pink-200 transition-all duration-300 hover:shadow-lg">
+                <div className="p-6 rounded-lg bg-rose-50 hover:bg-gradient-to-br hover:from-rose-100 hover:to-rose-200 transition-all duration-300 hover:shadow-lg">
                   <div className="text-4xl mb-4">📚</div>
                   <h3 className="font-bold mb-2">{t("coreValue.features.0.title")}</h3>
                   <p>{t("coreValue.features.0.description")}</p>
                 </div>
-                <div className="p-6 rounded-lg bg-pink-50 hover:bg-gradient-to-br hover:from-pink-100 hover:to-pink-200 transition-all duration-300 hover:shadow-lg">
+                <div className="p-6 rounded-lg bg-rose-50 hover:bg-gradient-to-br hover:from-rose-100 hover:to-rose-200 transition-all duration-300 hover:shadow-lg">
                   <div className="text-4xl mb-4">🎯</div>
                   <h3 className="font-bold mb-2">{t("coreValue.features.1.title")}</h3>
                   <p>{t("coreValue.features.1.description")}</p>
                 </div>
-                <div className="p-6 rounded-lg bg-pink-50 hover:bg-gradient-to-br hover:from-pink-100 hover:to-pink-200 transition-all duration-300 hover:shadow-lg">
+                <div className="p-6 rounded-lg bg-rose-50 hover:bg-gradient-to-br hover:from-rose-100 hover:to-rose-200 transition-all duration-300 hover:shadow-lg">
                   <div className="text-4xl mb-4">🔄</div>
                   <h3 className="font-bold mb-2">{t("coreValue.features.2.title")}</h3>
                   <p>{t("coreValue.features.2.description")}</p>
@@ -119,12 +119,12 @@ export default async function ScienceAdvantage() {
 
       {/* Target Audience */}
       <ScrollFade>
-        <section className="py-16 bg-pink-800 text-pink-50">
+        <section className="py-16 bg-rose-800 text-rose-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">{t("targetAudience.heading")}</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <FadeIn>
-                <div className="bg-pink-700 p-8 rounded-lg">
+                <div className="bg-rose-700 p-8 rounded-lg">
                   <h3 className="text-xl font-bold mb-4">{t("targetAudience.audiences.0.title")}</h3>
                   <ul className="space-y-2">
                     <li>{t("targetAudience.audiences.0.points.0")}</li>
@@ -135,7 +135,7 @@ export default async function ScienceAdvantage() {
                 </div>
               </FadeIn>
               <FadeIn delay={0.2}>
-                <div className="bg-pink-700 p-8 rounded-lg">
+                <div className="bg-rose-700 p-8 rounded-lg">
                   <h3 className="text-xl font-bold mb-4">{t("targetAudience.audiences.1.title")}</h3>
                   <ul className="space-y-2">
                     <li>{t("targetAudience.audiences.1.points.0")}</li>
@@ -146,7 +146,7 @@ export default async function ScienceAdvantage() {
                 </div>
               </FadeIn>
               <FadeIn delay={0.4}>
-                <div className="bg-pink-700 p-8 rounded-lg">
+                <div className="bg-rose-700 p-8 rounded-lg">
                   <h3 className="text-xl font-bold mb-4">{t("targetAudience.audiences.2.title")}</h3>
                   <ul className="space-y-2">
                     <li>{t("targetAudience.audiences.2.points.0")}</li>
@@ -177,7 +177,7 @@ export default async function ScienceAdvantage() {
                   />
                   <button
                     type="submit"
-                    className="bg-pink-500 text-pink-50 px-6 py-2 rounded-lg hover:bg-pink-600 transition-colors"
+                    className="bg-rose-500 text-rose-50 px-6 py-2 rounded-lg hover:bg-rose-600 transition-colors"
                   >
                     {t("waitlist.form.button")}
                   </button>

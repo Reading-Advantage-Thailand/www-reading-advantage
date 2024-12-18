@@ -41,7 +41,7 @@ export default async function StemAdvantage() {
             </>
           }
           description={t("hero.description")}
-          className="bg-gradient-to-b from-indigo-200 via-indigo-300 to-indigo-400"
+          className="bg-gradient-to-b from-indigo-200 to-indigo-400"
         />
 
         {/* Core Features */}
