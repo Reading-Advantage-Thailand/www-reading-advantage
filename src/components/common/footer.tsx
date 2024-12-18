@@ -1,6 +1,7 @@
 import { getScopedI18n } from '@/locales/server'
 import Link from 'next/link'
 import React from 'react'
+import Image from 'next/image'
 
 export default async function Footer() {
     const t = await getScopedI18n("components.common.footer")
@@ -39,7 +40,13 @@ export default async function Footer() {
                         <ul className="space-y-2 text-slate-400">
                             <li>{t("contactUs.email")}: support@reading-advantage.com</li>
                             <li>{t("contactUs.phone")}: +66 099-005-8038</li>
-                            <li>{t("contactUs.location")}: Tiktok @reading.advantage</li>
+                            <li>{t("contactUs.location")} <br />Tiktok @reading.advantage</li>
+                            <li><Image
+                                    src="/line-qr.jpg"
+                                    width={100}
+                                    height={100}
+                                    alt="Line QR"
+    /></li>
                         </ul>
                     </div>
                 </div>
