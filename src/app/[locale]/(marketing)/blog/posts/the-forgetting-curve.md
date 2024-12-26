@@ -2,7 +2,7 @@
 title: "Understanding Memory: The Science Behind Why We Forget"
 date: "2024-11-16"
 excerpt: "Explore the fascinating science of memory, why our brains forget information, and how spaced repetition can help overcome the forgetting curve."
-coverImage: "/images/forgetting-curve.webp"
+coverImage: "/blog/the-forgetting-curve.webp"
 author: "Reading Advantage Research Team"
 tags: ["Memory Science", "Learning Theory", "Cognitive Psychology"]
 readingTime: "4 min read"
