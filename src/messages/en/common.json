@@ -1,8 +1,5 @@
 {
   "actions": {
-    "signUp": "Sign Up",
-    "signOut": "Sign Out",
-    "login": "Login",
     "openMenu": "Open menu",
     "scheduleDemo": "Schedule a Demo",
     "discoverMore": "Discover More"

@@ -17,9 +17,7 @@
     "title": "导航菜单",
     "description": "访问 Reading Advantage Thailand 的所有页面和功能"
   },
-  "auth": {
-    "login": "登录",
-    "signUp": "注册",
-    "signOut": "退出"
+  "cta": {
+    "contactUs": "联系我们"
   }
 }

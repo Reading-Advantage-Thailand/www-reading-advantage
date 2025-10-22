@@ -1,8 +1,5 @@
 {
   "actions": {
-    "signUp": "ลงทะเบียน",
-    "signOut": "ออกจากระบบ",
-    "login": "เข้าสู่ระบบ",
     "openMenu": "เปิดเมนู",
     "scheduleDemo": "นัดหมายการสาธิต",
     "discoverMore": "ค้นพบเพิ่มเติม"
