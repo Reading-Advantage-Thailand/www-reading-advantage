@@ -21,7 +21,6 @@ npm run lint  # lint checks
 - Next.js 15 + React 19 RC with app router
 - Tailwind CSS + shadcn/ui component library
 - Framer Motion animation primitives
-- Firebase Authentication foundation
 - MDX blogging pipeline (in progress)
 
 ## Workflow
