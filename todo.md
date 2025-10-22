@@ -116,7 +116,15 @@ All new work must be captured through specs in `docs/specs/` and tracked via Git
 - Follow the commands noted in `CLAUDE.md` and `AGENTS.md` for consistent contributions.
 - Use `npx shadcn@latest add <component>` for new shadcn components and `--legacy-peer-deps` when installing npm packages.
 
+## In Progress
 
+- [ ] #11 - S1: Remove Firebase/AuthContext dependencies (feat/11-remove-firebase-authcontext-dependencies)
+  - **Started**: 2025-10-22
+  - **Branch**: feat/11-remove-firebase-authcontext-dependencies
+  - **Specs**: docs/specs/identity/login-removal/spec.md
+  - **Priority**: P0
+  - **Milestone**: S1
+  - **Review Comments**: 2 comments with architecture, verification, and planning suggestions
 
 ## Completed
 

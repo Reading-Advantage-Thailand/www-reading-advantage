@@ -19,9 +19,6 @@
 - Class composition helpers (`clsx`, `class-variance-authority`).
 - Iconography via `lucide-react`.
 
-## Authentication
-- **Firebase Authentication** (email/password, Google SSO) with React Context state management.
-
 ## Tooling & Quality
 - **TypeScript 5** for static typing.
 - **ESLint** with Next.js + TypeScript rules.
