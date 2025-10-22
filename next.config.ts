@@ -23,6 +23,20 @@ const nextConfig = {
   // compiler: {
   //   removeConsole: process.env.NODE_ENV === "production",
   // },
+  async redirects() {
+    return [
+      {
+        source: '/login',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/:locale/login',
+        destination: '/:locale',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default withMDX(nextConfig)
