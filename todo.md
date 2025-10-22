@@ -2,16 +2,14 @@
 
 All new work must be captured through specs in `docs/specs/` and tracked via GitHub issues. This file is a staging area while we convert legacy notes into the spec-driven workflow. Completed historical work from the static-to-Next.js migration is recorded in `docs/migration/2025-10-22-migration.md`.
 
-## In Review
+## Completed
 
-- [ ] #15 - S2: Implement CLI + consolidate datasets
-  - **PR**: #35 - https://github.com/Reading-Advantage-Thailand/www-reading-advantage/pull/35
-  - **Branch**: feat/15-implement-cli-consolidate-datasets
-  - **Submitted**: 2025-10-22
-  - **Status**: Ready for Review
-  - **Auto-merge**: Enabled
+- [x] #15 - S2: Implement CLI + consolidate datasets - PR: #35 - Completed: 2025-10-22 ✅
+  - **Merge Commit**: b765483
+  - **Specs Updated**: docs/specs/experience/localization-maintenance/spec.md
+  - **Sprint**: S2
   - **Changes**: 3 CLI commands, 51 deprecated files removed, comprehensive docs
-  - **Testing**: Build ✅ Lint ✅ CLI ✅
+  - **Branch**: feat/15-implement-cli-consolidate-datasets (deleted)
 
 
 
