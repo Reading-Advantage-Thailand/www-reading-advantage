@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { AuthProvider } from '@/contexts/auth-context';
 import { ReactElement } from "react";
 import { LocaleProvider } from '@/providers/locale-provider';
 
@@ -25,9 +24,7 @@ export default async function RootLayout({ params, children }: { params: Promise
   return (
     <html lang={locale} suppressHydrationWarning={true}>
       <body className={`${inter.className} bg-sky-50 text-sky-900 min-h-screen`}>
-        <AuthProvider>
-          <LocaleProvider locale={locale}>{children}</LocaleProvider>
-        </AuthProvider>
+        <LocaleProvider locale={locale}>{children}</LocaleProvider>
       </body>
     </html>
   );

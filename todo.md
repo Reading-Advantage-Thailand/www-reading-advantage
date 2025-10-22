@@ -87,3 +87,10 @@ All new work must be captured through specs in `docs/specs/` and tracked via Git
 - Use Tailwind CSS + shadcn/ui patterns; see `docs/prd.md` for accessibility and performance targets.
 - Follow the commands noted in `CLAUDE.md` and `AGENTS.md` for consistent contributions.
 - Use `npx shadcn@latest add <component>` for new shadcn components and `--legacy-peer-deps` when installing npm packages.
+
+- [ ] #9 - S1: Remove login/signup UI from navigation (refactor/9-s1-remove-login-signup-ui-from-navigatio)
+  - **Started**: 2025-10-22
+  - **Branch**: refactor/9-s1-remove-login-signup-ui-from-navigatio
+  - **Specs**: docs/specs/identity/login-removal/spec.md
+  - **Priority**: P0
+  - **Milestone**: S1

@@ -87,7 +87,7 @@ export default async function FeaturesPage() {
           <h2 className="text-3xl font-bold mb-4">{t('cta.title')}</h2>
           <p className="text-xl mb-8">{t('cta.description')}</p>
           <Link
-            href="/signup"
+            href="/contact"
             className="bg-sky-500 text-sky-50 hover:bg-sky-600 px-6 py-3 rounded-lg font-bold transition-colors inline-block"
           >
             {t('cta.button')}

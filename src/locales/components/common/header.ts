@@ -9,27 +9,21 @@ export const en = {
     ],
     navigationMenu: "Navigation Menu",
     navigationDescription: "Access all pages and features of Reading Advantage Thailand",
-    signOut: "Sign Out",
-    login: "Login",
-    signUp: "Sign Up",
+    contactUs: "Contact Us",
     openMenu: "Open menu",
 };
 
 export const th = {
     navigationMenu: "เมนูนำทาง",
     navigationDescription: "เข้าถึงทุกหน้าหรือฟีเจอร์ของ Reading Advantage Thailand",
-    signOut: "ออกจากระบบ",
-    login: "เข้าสู่ระบบ",
-    signUp: "สมัครสมาชิก",
+    contactUs: "ติดต่อเรา",
     openMenu: "เปิดเมนู",
 };
 
 export const zh = {
     navigationMenu: "导航菜单",
     navigationDescription: "访问 Reading Advantage Thailand 的所有页面和功能",
-    signOut: "登出",
-    login: "登录",
-    signUp: "注册",
+    contactUs: "联系我们",
     openMenu: "打开菜单",
 };
 
