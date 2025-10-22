@@ -1,6 +1,6 @@
 # Reading Advantage Platform
 
-A modernized marketing and enrollment experience for Reading Advantage and related programs (Math, Science, STEM, Storytime, Zhongwen, CodeCamp, Tutor). The Next.js 15 app router implementation lives in this repository alongside legacy static assets.
+A static marketing experience for Reading Advantage and related programs (Math, Science, STEM, Storytime, Zhongwen, CodeCamp, Tutor). This is a purely static brochure website with no user authentication or accounts. The Next.js 15 app router implementation lives in this repository alongside legacy static assets.
 
 ## Quick Links
 - Product brief: `docs/project-brief.md`

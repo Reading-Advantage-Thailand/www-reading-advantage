@@ -15,22 +15,25 @@
 - Pagination, tagging, related content, and social sharing to increase dwell time.
 - Editorial workflow guidance (draft/review/publish) for future CMS integration.
 
-## 4. Internationalization
+## 4. Authentication [DEPRECATED]
+Authentication was removed in Sprint S1. The site is a static marketing experience with no user login or account functionality. Products requiring authentication are hosted on separate platforms. See docs/specs/identity/login-removal/spec.md for details.
+
+## 5. Internationalization
 - Multilingual routing with language switcher and fallback handling.
 - Translation files stored per locale with tooling guidance for contributors.
 - Content guidelines for localized imagery, testimonials, and regulatory messaging.
 
-## 5. Design System & Accessibility
+## 6. Design System & Accessibility
 - Tailwind + shadcn/ui-based component library with documented usage.
 - Dark mode support and theme switcher.
 - WCAG 2.1 AA compliance, including keyboard navigation, ARIA labeling, and color contrast.
 
-## 6. Performance & SEO
+## 7. Performance & SEO
 - Image optimization (responsive sources, lazy loading).
 - Meta tags, Open Graph, structured data for all key pages and blog posts.
 - Lighthouse targets: Performance ≥ 90, Accessibility ≥ 90, Best Practices ≥ 95, SEO ≥ 95.
 
-## 7. Delivery & Operations
+## 8. Delivery & Operations
 - CI/CD pipeline deploying main branch to Cloud Run or equivalent.
 - Automated tests (unit/component + E2E smoke paths + accessibility checks).
 - Release checklist and rollback strategy.

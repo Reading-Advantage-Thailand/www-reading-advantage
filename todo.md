@@ -2,6 +2,8 @@
 
 All new work must be captured through specs in `docs/specs/` and tracked via GitHub issues. This file is a staging area while we convert legacy notes into the spec-driven workflow. Completed historical work from the static-to-Next.js migration is recorded in `docs/migration/2025-10-22-migration.md`.
 
+
+
 ## Phase 2: Content Verification & Localization Quality (Sprint S2)
 
 ### Sprint S2 – Content Verification & Localization Quality
@@ -117,6 +119,13 @@ All new work must be captured through specs in `docs/specs/` and tracked via Git
 - Use `npx shadcn@latest add <component>` for new shadcn components and `--legacy-peer-deps` when installing npm packages.
 
 ## Completed
+
+- [x] #12 - S1: Update documentation for static experience - PR: TBD - Completed: 2025-10-22 ✅
+  - **Branch**: refactor/12-s1-update-documentation-for-static-exper
+  - **Specs Updated**: docs/specs/identity/login-removal/spec.md
+  - **Sprint**: S1
+  - **Changes**: 4 documentation files updated, release notes created
+  - **Release Notes**: docs/releases/v1.0.0-auth-removal.md
 
 - [x] #11 - S1: Remove Firebase/AuthContext dependencies - PR: #33 - Completed: 2025-10-22 ✅
   - **Merge Commit**: a78e43ac176f02be445641e4f0f29a40b5168e25
