@@ -1,182 +1,89 @@
-# Reading Advantage Website Migration Todo List
+# Workflow Backlog (Temporary)
 
-## Completed Tasks
+All new work must be captured through specs in `docs/specs/` and tracked via GitHub issues. This file is a staging area while we convert legacy notes into the spec-driven workflow. Completed historical work from the static-to-Next.js migration is recorded in `docs/migration/2025-10-22-migration.md`.
 
-- [x] Set up Next.js 15 project with app router
-- [x] Configure shadcn/ui components
-- [x] Migrate core layout structure
-- [x] Set up navigation configuration (src/config/navigation.ts)
-- [x] Create reusable UI components (button, card, select, sheet)
-- [x] Migrate header component to modern version
-- [x] Set up products section components (hero, b2b, b2c, tutor solutions)
-- [x] Implement features page with comparison table
-- [x] Create pricing page with modern pricing table
-- [x] Set up basic global styling (globals.css)
-- [x] Configure custom fonts (Geist)
-- [x] Migrate key images to public directory
-- [x] Add framer-motion animations
-  - [x] Page transitions (PageTransition component)
-  - [x] Component animations (FadeIn component)
-  - [x] Scroll animations (ScrollFade component)
-- [x] Create common hero component
-  - [x] Extract shared hero layout and animations
-  - [x] Make content configurable per page
-  - [x] Add the students_at_computers.jpg (public/images) in parallax scrolling effect
-  - [x] Implement in all pages
-- [x] Update home page and products page content to emphasize customer benefits (comprehensive turnkey curriculum solutions, teacher training, improved student outcomes, improved differentiation, etc.)
-- [x] Migrate remaining pages and put under products/
-  - [x] Math Advantage
-    - [x] fix hero
-  - [x] Science Advantage
-  - [x] STEM Advantage
-  - [x] Reading Advantage
-  - [x] Storytime Advantage
-  - [x] Zhongwen Advantage
-  - [x] CodeCamp Advantage
-  - [x] Tutor Advantage
-- [x] Create "Contact Us" page and functionality
-- [x] Integrate Firebase Authentication (Core Features)
-  - [x] Project Setup
-    - [x] Add Firebase SDK to Next.js app
-    - [x] Configure Firebase environment variables
-    - [x] Initialize Firebase in the app
-  - [x] Authentication Implementation
-    - [x] Create AuthContext for global auth state
-    - [x] Implement sign in functionality
-    - [x] Add sign out functionality
-    - [x] Create protected routes/middleware
-  - [x] Basic User Interface
-    - [x] Design and implement login page
-    - [x] Add loading states
-  - [x] Security & Error Handling
-    - [x] Implement proper error handling
-    - [x] Add loading states
-    - [x] Set up session persistence
-- [x] Improve Reading Advantage page
-  - [x] Embed youtube promo video https://www.youtube.com/watch?v=LH5qgpSYoqs
-  - [x] Add images from /public/images/reading-advantage, resized and with descriptions.
+## content/blogging (spec pending)
+- [ ] Implement BlogHeader component
+- [ ] Create BlogTags component for categorization
+- [ ] Pagination for blog listings
+- [ ] Category/tag filtering system
+- [ ] RSS feed generation
+- [ ] Reading time estimation
+- [ ] Social sharing buttons
+- [ ] Responsive blog post layout polish
+- [ ] Syntax highlighting for code blocks
+- [ ] Custom MDX element styles
+- [ ] Dark mode support within blog
+- [ ] Authoring guide for blog posts
+- [ ] Blog post template
+- [ ] Seed initial educational content posts
+- [ ] Table of contents generation
+- [ ] Related posts recommendations
+- [ ] Blog-specific SEO (meta, structured data, sitemap, social cards)
 
-## Pending Tasks
+## identity/authentication (spec pending)
+- [ ] User profile page
+- [ ] Password reset flow
+- [ ] Remember me functionality
+- [ ] Sign-up form
+- [ ] Firebase security rules review
+- [ ] Authentication flow testing & hardening
+- [ ] Security validation and error handling scenarios
+- [ ] Role-based access control
+- [ ] User profile management UI
+- [ ] Admin dashboard shell
 
-- [ ] Create MDX blogging system
-  - [x] Set up MDX configuration
-  - [x] Create blog infrastructure
-  - [x] Design and implement blog components
-    - [x] Create BlogLayout component
-    - [x] Build BlogList component for post listings
-    - [x] Design BlogCard component for post previews
-    - [ ] Implement BlogHeader component
-    - [ ] Create BlogTags component for categorization
-  - [ ] Add blog features
-    - [ ] Implement pagination for blog listings
-    - [ ] Add category/tag filtering system
-    - [ ] Create RSS feed generation
-    - [ ] Add reading time estimation
-    - [ ] Implement social sharing buttons
-  - [ ] Style blog components
-    - [ ] Design responsive blog post layout
-    - [ ] Style code blocks with syntax highlighting
-    - [ ] Create custom styles for MDX elements
-    - [ ] Implement dark mode support for blog
-  - [ ] Create sample blog posts
-    - [ ] Write documentation for blog post creation
-    - [ ] Create template for new blog posts
-    - [ ] Add initial educational content posts
-  - [ ] Add blog-specific features
-    - [ ] Implement table of contents generation
-    - [ ] Add related posts functionality
-  - [ ] SEO optimization for blog
-    - [ ] Implement blog-specific meta tags
-    - [ ] Add structured data for blog posts
-    - [ ] Create dynamic sitemap for blog content
-    - [ ] Optimize for social sharing
-- [ ] Extended Firebase Authentication Features
-  - [ ] User Interface Enhancements
-    - [ ] Create user profile page
-    - [ ] Add password reset functionality
-    - [ ] Implement "Remember me" feature
-    - [x] Add Login with Google button
-    - [ ] Add sign-up form
-  - [ ] Security & Testing
-    - [ ] Set up Firebase security rules
-    - [ ] Test authentication flow
-    - [ ] Validate security measures
-    - [ ] Test error scenarios
-  - [ ] User Management
-    - [ ] Implement user role system
-    - [ ] Add user profile management
-    - [ ] Create admin dashboard
-- [ ] Internationalize into English / Thai / Simplified Chinese
-  - [ ] Set up i18n Infrastructure
-    - [ ] Install and configure next-intl
-    - [ ] Set up language detection and routing
-    - [ ] Create language switcher component
-    - [ ] Implement language persistence
-  - [ ] Content Management
-    - [ ] Create translation files for all languages
-    - [ ] Set up translation management system
-    - [ ] Implement fallback language handling
-    - [ ] Create content validation system
-  - [ ] UI Components
-    - [ ] Update all text components to use translations
-    - [ ] Implement RTL support if needed
-    - [ ] Adapt layouts for different language lengths
-    - [ ] Update forms for multilingual support
-  - [ ] Static Content
-    - [ ] Translate all static pages
-    - [ ] Translate meta tags and SEO content
-    - [ ] Translate error messages
-    - [ ] Localize dates and numbers
-  - [ ] Testing & Validation
-    - [ ] Test language switching
-    - [ ] Validate translations
-    - [ ] Test UI in all languages
-    - [ ] Performance testing for all locales
-- [ ] Enhance responsive design
-  - [ ] Mobile navigation
-  - [ ] Responsive tables
-  - [ ] Touch interactions
-- [ ] Migrate remaining static assets
-  - [ ] Check for missing images
-  - [ ] Optimize all images
-- [ ] Implement dark mode
-  - [ ] Configure theme switcher
-  - [ ] Test all components in dark mode
-- [ ] CI / CD Deploy main to GCP Cloud Run using Github Actions
-- [ ] SEO Optimizations
-  - [ ] Meta tags
-  - [ ] Open Graph
-  - [ ] Structured data
-- [ ] Performance optimizations
-  - [ ] Image loading strategies
-  - [ ] Component code splitting
-  - [ ] Font loading optimization
-- [ ] Testing
-  - [ ] Component tests
-  - [ ] E2E tests
-  - [ ] Accessibility tests
-- [ ] Documentation
-  - [ ] Component usage
-  - [ ] Styling guidelines
-  - [ ] Development workflow
+## experience/internationalization (spec pending)
+- [ ] Install & configure next-intl (or selected i18n solution)
+- [ ] Language detection & routing strategy
+- [ ] Language switcher component
+- [ ] Language persistence
+- [ ] Translation file organization (EN/TH/ZH)
+- [ ] Translation management workflow
+- [ ] Fallback language handling
+- [ ] Content validation automation
+- [ ] Update UI components to use translations
+- [ ] RTL support assessment
+- [ ] Layout adjustments for varying language lengths
+- [ ] Multilingual form updates
+- [ ] Static content localization (pages, meta, errors, dates, numbers)
+- [ ] i18n testing (switching, accessibility, performance per locale)
 
-## Styling Discussions & Decisions
+## experience/theming & responsiveness (spec pending)
+- [ ] Mobile navigation refinements
+- [ ] Responsive tables & data visualizations
+- [ ] Touch interaction polish
+- [ ] Theme switcher implementation
+- [ ] Dark mode QA across components
 
-- Using Tailwind CSS for utility-first styling
-- Incorporated shadcn/ui for consistent component design
-- Custom Geist font family for modern typography
-- Need to maintain corporate brand colors while modernizing the design
-- Component-level styles will use CSS Modules where needed
-- Plan to use CSS variables for theming support
+## assets & media
+- [ ] Audit remaining static assets
+- [ ] Migrate/optimize missing images
 
-## Notes
+## operations/ci-cd
+- [ ] Configure GitHub Actions -> Cloud Run deployment pipeline
 
-- Migration focuses on modernizing the UI while maintaining core functionality
-- shadcn/ui provides accessible components out of the box
-- Framer Motion will be used strategically for meaningful animations
-- Mobile-first approach for all new components
-- Maintaining SEO during migration is crucial
-- use --legacy-peer-deps flag when installing npms
-- use npx shadcn@latest add [component] when installing shadcn components
+## marketing/seo
+- [ ] Meta tag coverage
+- [ ] Open Graph definitions
+- [ ] Structured data implementation
 
-This todo list will be updated as the migration progresses. Each completed task should be marked with [x] and new tasks can be added as needed.
+## performance
+- [ ] Image loading strategies (responsive sources, lazy loading)
+- [ ] Component-level code splitting
+- [ ] Font loading optimization
+
+## quality/testing
+- [ ] Component/unit tests
+- [ ] E2E smoke tests
+- [ ] Accessibility regression suite
+
+## documentation & workflow
+- [ ] Document component usage
+- [ ] Styling guidelines
+- [ ] Development workflow handoff guide
+
+### Notes & Conventions
+- Use Tailwind CSS + shadcn/ui patterns; see `docs/prd.md` for accessibility and performance targets.
+- Follow the commands noted in `CLAUDE.md` and `AGENTS.md` for consistent contributions.
+- Use `npx shadcn@latest add <component>` for new shadcn components and `--legacy-peer-deps` when installing npm packages.

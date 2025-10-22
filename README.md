@@ -1,110 +1,33 @@
-# Reading Advantage
+# Reading Advantage Platform
 
-A comprehensive educational platform offering various learning solutions including Reading Advantage, Math Advantage, Science Advantage, STEM Advantage, and more.
+A modernized marketing and enrollment experience for Reading Advantage and related programs (Math, Science, STEM, Storytime, Zhongwen, CodeCamp, Tutor). The Next.js 15 app router implementation lives in this repository alongside legacy static assets.
 
-## Project Structure
+## Quick Links
+- Product brief: `docs/project-brief.md`
+- Product requirements: `docs/prd.md`
+- Specs index: `docs/specs/README.md`
+- Sprint planning: `docs/sprint/S0.md`
+- Migration issue: [#8](https://github.com/Reading-Advantage-Thailand/www-reading-advantage/issues/8)
 
-This repository contains two versions of the website:
-
-### Static HTML Version (Root Directory)
-
-- HTML files for each page (`index.html`, `about.html`, etc.)
-- Components in `/components`
-- Styles in `/css`
-- JavaScript in `/js`
-- Images in `/images`
-
-### Next.js Version (`/www-reading-advantage-next`)
-
-- Modern React-based implementation
-- TypeScript support
-- Tailwind CSS for styling
-- Component-based architecture in `/src/components`
-- Page routes in `/src/app`
-
-## Technologies Used
-
-### Static Version
-
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Nginx for deployment
-
-### Next.js Version
-
-- Next.js 14+
-- TypeScript
-- Tailwind CSS
-- React
-- Modern component libraries
-
-## Setup Instructions
-
-### Static Version
-
-1. Clone the repository
-2. Serve the files using any web server
-   ```bash
-   # Example using Python's built-in server
-   python -m http.server
-   ```
-   Or configure with the included `nginx.conf`
-
-### Next.js Version
-
-1. Navigate to the Next.js directory
-   ```bash
-   cd www-reading-advantage-next
-   ```
-2. Install dependencies
-   ```bash
-   npm install
-   ```
-3. Run development server
-   ```bash
-   npm run dev
-   ```
-4. Build for production
-   ```bash
-   npm run build
-   ```
-
-## Features
-
-- Responsive design
-- Modern UI/UX
-- Educational content delivery
-- B2B and B2C solutions
-- Interactive learning tools
-- Pricing plans
-- Product comparisons
-
-## Project Structure
-
-```
-├── Static Version (Root)
-│   ├── components/
-│   ├── css/
-│   ├── js/
-│   ├── images/
-│   └── *.html files
-│
-└── Next.js Version (/www-reading-advantage-next)
-    ├── src/
-    │   ├── app/
-    │   ├── components/
-    │   ├── config/
-    │   └── lib/
-    ├── public/
-    └── package.json
+## Getting Started
+```bash
+npm install
+npm run dev   # starts Next.js 15 app router dev server
+npm run build # production build
+npm run lint  # lint checks
 ```
 
-## Development
+## Tech Highlights
+- Next.js 15 + React 19 RC with app router
+- Tailwind CSS + shadcn/ui component library
+- Framer Motion animation primitives
+- Firebase Authentication foundation
+- MDX blogging pipeline (in progress)
 
-The project is being modernized with a transition from static HTML to Next.js, offering improved performance, better SEO, and enhanced development experience.
+## Workflow
+We follow a spec-driven git workflow. Before starting new work:
+1. Draft/update specs under `docs/specs/` (`init-spec <capability>`).
+2. Plan sprint work in `docs/sprint/` and run `seed-sprint` to generate issues.
+3. Reference the relevant spec + issue in branches, commits, and PRs.
 
-## Deployment
-
-- Static version can be deployed using the included Dockerfile and nginx configuration
-- Next.js version supports various deployment platforms like Vercel, Netlify, or custom servers
+See `CLAUDE.md` and `AGENTS.md` for collaboration expectations. Legacy `todo.md` items will be transitioned into specs/issues during the migration.
