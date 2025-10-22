@@ -4,13 +4,7 @@ All new work must be captured through specs in `docs/specs/` and tracked via Git
 
 ## In Progress
 
-- [ ] #16 - S2: Verify and refresh Home page content (feat/16-home-page-refresh)
-  - **Started**: 2025-10-23
-  - **Branch**: feat/16-home-page-refresh
-  - **Specs**: docs/specs/marketing/content-refresh/spec.md
-  - **Priority**: P0
-  - **Milestone**: S2 - Content Verification & Localization Quality
-  - **Dependencies**: None (shares spec with related refresh issues)
+_(none)_
 
 ## Completed
 
@@ -20,6 +14,13 @@ All new work must be captured through specs in `docs/specs/` and tracked via Git
   - **Sprint**: S2
   - **Changes**: 3 CLI commands, 51 deprecated files removed, comprehensive docs
   - **Branch**: feat/15-implement-cli-consolidate-datasets (deleted)
+
+- [x] #16 - S2: Verify and refresh Home page content - PR: #36 - Completed: 2025-10-23 ✅
+  - **Merge Commit**: 2cc92e85b94c30073f164cfd7f46564920b7af14
+  - **Specs Updated**: docs/specs/marketing/content-refresh/spec.md
+  - **Sprint**: S2
+  - **Changes**: Home page copy/locale refresh, i18n CLI hardening, added CLI tests
+  - **Branch**: feat/16-home-page-refresh (deleted)
 
 
 
