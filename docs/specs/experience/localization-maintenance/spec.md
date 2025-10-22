@@ -97,3 +97,67 @@ The workflow SHALL include documentation and automated checks so contributors kn
 - Decide whether the canonical format will remain TypeScript modules (manipulated via AST) or move to JSON with a lightweight code-generation step. The CLI design SHALL accommodate the chosen format.
 - Consider generating a typed definitions file (`src/i18n/keys.d.ts`) to provide autocomplete and compile-time safety after consolidation.
 - If future CMS integration is planned, the CLI design should keep import/export boundaries clear to ease migration.
+
+## Implementation Notes
+
+### Dataset Consolidation (Completed)
+
+**Active Source:** `src/locales/**` (TypeScript modules)
+**Deprecated Source:** `src/messages/**` (JSON files) - **REMOVED**
+
+The project now uses a single translation source at `src/locales/`. The deprecated `src/messages/` directory has been removed to prevent confusion and ensure a single source of truth.
+
+### CLI Commands
+
+Three CLI commands have been implemented:
+
+1. **`npm run i18n:verify`** - Verifies translation source configuration
+   - Detects active translation dataset from `src/config/locale-config.ts`
+   - Fails if dual sources are detected
+   - Warns if deprecated directories exist
+   - Located: `scripts/i18n-verify.ts`
+
+2. **`npm run i18n:tree`** - Displays translation keys in hierarchical view
+   - Supports `--scope`, `--locale`, and `--contains` filters
+   - Dynamically imports locale modules
+   - Outputs tree structure with translations
+   - Located: `scripts/i18n-tree.ts`
+
+3. **`npm run i18n:update`** - Updates translation values across locales
+   - Updates TypeScript source files using regex
+   - Supports `--dry-run` for previewing changes
+   - Reports missing locale translations
+   - Preserves formatting and surrounding code
+   - Located: `scripts/i18n-update.ts`
+
+### Guardrails
+
+**ESLint Rule:** Added `no-restricted-imports` rule to `.eslintrc.json` that prevents imports from deprecated `src/messages/**` paths with clear error messages directing developers to use `src/locales`.
+
+**CI Integration:** The `i18n:verify` command returns exit code 0 on success and 1 on failure, making it suitable for CI/CD pipeline integration.
+
+### Documentation
+
+Comprehensive CLI usage guide created at `docs/how-to/i18n-cli.md` covering:
+- Command syntax and options
+- Common workflows
+- Best practices
+- Troubleshooting
+- CI/CD integration examples
+
+### Testing
+
+Test suite created at `scripts/__tests__/i18n-cli.test.ts` covering:
+- Verification logic for single vs. dual sources
+- Tree building and filtering
+- Update operations with nested keys
+- Missing locale detection
+- Dry-run behavior
+
+### Technical Implementation
+
+- **Language:** TypeScript with `tsx` runner
+- **File Manipulation:** Regex-based for TypeScript source updates
+- **Module Loading:** Dynamic imports for locale data
+- **Key Resolution:** Multi-strategy file path resolution
+- **Formatting Preservation:** Minimal diffs suitable for code review

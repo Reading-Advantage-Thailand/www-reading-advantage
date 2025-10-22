@@ -120,11 +120,11 @@ All new work must be captured through specs in `docs/specs/` and tracked via Git
 
 ## Completed
 
-- [x] #12 - S1: Update documentation for static experience - PR: TBD - Completed: 2025-10-22 ✅
-  - **Branch**: refactor/12-s1-update-documentation-for-static-exper
+- [x] #12 - S1: Update documentation for static experience - PR: #34 - Completed: 2025-10-22 ✅
+  - **Merge Commit**: 90a9b21
   - **Specs Updated**: docs/specs/identity/login-removal/spec.md
   - **Sprint**: S1
-  - **Changes**: 4 documentation files updated, release notes created
+  - **Changes**: 6 files modified, 1 created (release notes), +127 lines
   - **Release Notes**: docs/releases/v1.0.0-auth-removal.md
 
 - [x] #11 - S1: Remove Firebase/AuthContext dependencies - PR: #33 - Completed: 2025-10-22 ✅
