@@ -146,6 +146,8 @@ npm run i18n:update <key> [options]
 - `--dry-run` - Preview changes without writing files
 - `--help` - Show help message
 
+> ℹ️ The updater now parses locale files with TypeScript’s AST, so only the targeted string literal is rewritten (no regex-based file rewrites).
+
 **Examples:**
 
 1. **Update single locale:**

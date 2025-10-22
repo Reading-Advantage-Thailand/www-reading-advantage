@@ -2,6 +2,16 @@
 
 All new work must be captured through specs in `docs/specs/` and tracked via GitHub issues. This file is a staging area while we convert legacy notes into the spec-driven workflow. Completed historical work from the static-to-Next.js migration is recorded in `docs/migration/2025-10-22-migration.md`.
 
+## In Progress
+
+- [ ] #16 - S2: Verify and refresh Home page content (feat/16-home-page-refresh)
+  - **Started**: 2025-10-23
+  - **Branch**: feat/16-home-page-refresh
+  - **Specs**: docs/specs/marketing/content-refresh/spec.md
+  - **Priority**: P0
+  - **Milestone**: S2 - Content Verification & Localization Quality
+  - **Dependencies**: None (shares spec with related refresh issues)
+
 ## Completed
 
 - [x] #15 - S2: Implement CLI + consolidate datasets - PR: #35 - Completed: 2025-10-22 ✅

@@ -11,7 +11,8 @@
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { resolve, dirname } from 'path';
+import { resolve, relative, sep } from 'path';
+import ts from 'typescript';
 
 interface UpdateOptions {
   key: string;
@@ -128,56 +129,139 @@ function findLocaleFile(key: string, locale: string): string | null {
   return null;
 }
 
-function extractKeySegments(key: string): { namespace: string[]; propertyKey: string } {
-  const parts = key.split('.');
-  const propertyKey = parts[parts.length - 1];
-  const namespace = parts.slice(0, -1);
-  return { namespace, propertyKey };
+function getLocalKeyParts(key: string, filePath: string): string[] {
+  const keyParts = key.split('.');
+  const relativePath = relative(resolve(process.cwd(), LOCALES_DIR), filePath)
+    .replace(/\.ts$/, '');
+  const pathSegments = relativePath.split(sep).filter(Boolean);
+
+  let sliceCount = 0;
+  while (
+    sliceCount < pathSegments.length &&
+    sliceCount < keyParts.length &&
+    keyParts[sliceCount] === pathSegments[sliceCount]
+  ) {
+    sliceCount++;
+  }
+
+  return keyParts.slice(sliceCount);
+}
+
+function isMatchingPropertyName(name: ts.PropertyName, segment: string): boolean {
+  if (ts.isIdentifier(name) || ts.isStringLiteral(name)) {
+    return name.text === segment;
+  }
+
+  if (ts.isNumericLiteral(name)) {
+    return name.text === segment;
+  }
+
+  return false;
+}
+
+function findLocaleObjectLiteral(sourceFile: ts.SourceFile, locale: string): ts.ObjectLiteralExpression | null {
+  for (const statement of sourceFile.statements) {
+    if (!ts.isVariableStatement(statement)) {
+      continue;
+    }
+
+    const isExported = statement.modifiers?.some(mod => mod.kind === ts.SyntaxKind.ExportKeyword);
+    if (!isExported) {
+      continue;
+    }
+
+    for (const decl of statement.declarationList.declarations) {
+      if (
+        ts.isIdentifier(decl.name) &&
+        decl.name.text === locale &&
+        decl.initializer &&
+        ts.isObjectLiteralExpression(decl.initializer)
+      ) {
+        return decl.initializer;
+      }
+    }
+  }
+
+  return null;
+}
+
+function findNestedProperty(
+  objectLiteral: ts.ObjectLiteralExpression,
+  pathSegments: string[]
+): ts.PropertyAssignment | null {
+  let currentObject = objectLiteral;
+
+  for (let i = 0; i < pathSegments.length; i++) {
+    const segment = pathSegments[i];
+    const property = currentObject.properties.find(prop => {
+      if (!ts.isPropertyAssignment(prop)) {
+        return false;
+      }
+
+      return prop.name ? isMatchingPropertyName(prop.name, segment) : false;
+    });
+
+    if (!property || !ts.isPropertyAssignment(property)) {
+      return null;
+    }
+
+    if (i === pathSegments.length - 1) {
+      return property;
+    }
+
+    if (!ts.isObjectLiteralExpression(property.initializer)) {
+      return null;
+    }
+
+    currentObject = property.initializer;
+  }
+
+  return null;
 }
 
 function updateTypeScriptFile(
   filePath: string,
   key: string,
+  locale: string,
   newValue: string,
   dryRun: boolean
 ): { success: boolean; oldValue?: string; error?: string } {
   try {
     const content = readFileSync(filePath, 'utf-8');
-    const { namespace, propertyKey } = extractKeySegments(key);
+    const sourceFile = ts.createSourceFile(filePath, content, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
 
-    // Simple regex-based update for TypeScript object literals
-    // This handles: key: "value" or key: 'value'
-    const keyPattern = new RegExp(
-      `(\\s*${propertyKey}\\s*:\\s*)(['"\`])([^'"\`]*?)\\2`,
-      'g'
-    );
+    const localeObject = findLocaleObjectLiteral(sourceFile, locale);
+    if (!localeObject) {
+      return { success: false, error: `Locale object not found in ${filePath}` };
+    }
 
-    let oldValue: string | undefined;
-    let found = false;
+    const localKeyParts = getLocalKeyParts(key, filePath);
+    if (localKeyParts.length === 0) {
+      return { success: false, error: `Unable to derive key path for ${key}` };
+    }
 
-    const newContent = content.replace(keyPattern, (match, prefix, quote, value) => {
-      oldValue = value;
-      found = true;
-      return `${prefix}${quote}${newValue}${quote}`;
-    });
+    const property = findNestedProperty(localeObject, localKeyParts);
+    if (!property) {
+      return { success: false, error: `Key "${localKeyParts.join('.')}" not found in ${filePath}` };
+    }
 
-    if (!found) {
-      return {
-        success: false,
-        error: `Key "${propertyKey}" not found in ${filePath}`,
-      };
+    if (!ts.isStringLiteralLike(property.initializer)) {
+      return { success: false, error: `Key "${localKeyParts.join('.')}" is not a string literal` };
+    }
+
+    const oldValue = property.initializer.text;
+    const newLiteral = JSON.stringify(newValue);
+
+    const start = property.initializer.getStart(sourceFile);
+    const end = property.initializer.getEnd();
+
+    if (!dryRun) {
+      const updatedContent = content.slice(0, start) + newLiteral + content.slice(end);
+      writeFileSync(filePath, updatedContent, 'utf-8');
     }
 
     if (oldValue === newValue) {
-      return {
-        success: true,
-        oldValue,
-        error: 'Value unchanged',
-      };
-    }
-
-    if (!dryRun) {
-      writeFileSync(filePath, newContent, 'utf-8');
+      return { success: true, oldValue, error: 'Value unchanged' };
     }
 
     return { success: true, oldValue };
@@ -227,7 +311,7 @@ async function main() {
       continue;
     }
 
-    const result = updateTypeScriptFile(localeFile, options.key, value, options.dryRun);
+    const result = updateTypeScriptFile(localeFile, options.key, locale, value, options.dryRun);
 
     if (result.success) {
       if (result.oldValue === value) {
