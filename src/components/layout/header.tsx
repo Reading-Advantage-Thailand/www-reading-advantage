@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { NavItem } from "@/config/navigation";
 import { Menu } from 'lucide-react';
@@ -14,7 +14,6 @@ import {
   SheetTitle,
   SheetDescription,
 } from "@/components/ui/sheet";
-import { useAuth } from "@/contexts/auth-context";
 import Image from 'next/image';
 import { useScopedI18n } from "@/locales/client";
 import { LocaleSwitcher } from "@/switcher/locale-switcher";
@@ -56,51 +55,15 @@ export function Header() {
 
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
-  const { user, signOut } = useAuth();
 
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-      router.push('/');
-    } catch (error) {
-      console.error('Error signing out:', error);
-    }
-  };
-
-  const renderAuthButtons = (isMobile = false) => {
-    if (user) {
-      return (
-        <>
-          <div className={isMobile ? "border-t border-sky-400 pt-4 mt-4" : "hidden lg:flex items-center space-x-4"}>
-            <span className="text-sky-50">
-              {user.email}
-            </span>
-            <Button
-              variant="ghost"
-              onClick={handleSignOut}
-              className="text-sky-50 hover:text-white hover:bg-sky-600 transition-colors"
-            >
-              {h("signOut")}
-            </Button>
-          </div>
-        </>
-      );
-    }
-
+  const renderMarketingCTA = (isMobile = false) => {
     return (
       <div className={isMobile ? "border-t border-sky-400 pt-4 mt-4" : "hidden lg:flex items-center space-x-4"}>
         <Link
-          href="/login"
-          className="text-sky-50 hover:text-white transition-colors"
-        >
-          {h("login")}
-        </Link>
-        <Link
-          href="/signup"
+          href="/contact"
           className="bg-sky-800 text-sky-50 px-4 py-2 rounded-lg hover:bg-sky-900 transition-colors"
         >
-          {h("signUp")}
+          {h("contactUs")}
         </Link>
       </div>
     );
@@ -139,7 +102,7 @@ export function Header() {
                     </Link>
                   );
                 })}
-                {renderAuthButtons(true)}
+                {renderMarketingCTA(true)}
               </nav>
             </SheetContent>
           </Sheet>
@@ -182,8 +145,8 @@ export function Header() {
             {/* Language Selector */}
             <LocaleSwitcher />
 
-            {/* Auth buttons */}
-            {renderAuthButtons()}
+            {/* Marketing CTA */}
+            {renderMarketingCTA()}
           </div>
         </div>
       </div>

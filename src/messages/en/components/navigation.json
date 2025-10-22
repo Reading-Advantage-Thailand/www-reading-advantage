@@ -17,9 +17,7 @@
     "title": "Navigation Menu",
     "description": "Access all pages and features of Reading Advantage Thailand"
   },
-  "auth": {
-    "login": "Login",
-    "signUp": "Sign Up",
-    "signOut": "Sign Out"
+  "cta": {
+    "contactUs": "Contact Us"
   }
 }

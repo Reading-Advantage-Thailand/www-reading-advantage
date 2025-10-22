@@ -1,8 +1,5 @@
 {
   "actions": {
-    "signUp": "注册",
-    "signOut": "退出",
-    "login": "登录",
     "openMenu": "打开菜单",
     "scheduleDemo": "预约演示",
     "discoverMore": "了解更多"
