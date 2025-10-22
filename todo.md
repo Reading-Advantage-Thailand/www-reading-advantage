@@ -116,15 +116,14 @@ All new work must be captured through specs in `docs/specs/` and tracked via Git
 - Follow the commands noted in `CLAUDE.md` and `AGENTS.md` for consistent contributions.
 - Use `npx shadcn@latest add <component>` for new shadcn components and `--legacy-peer-deps` when installing npm packages.
 
-## In Progress
+## In Review
 
-- [ ] #11 - S1: Remove Firebase/AuthContext dependencies (feat/11-remove-firebase-authcontext-dependencies)
-  - **Started**: 2025-10-22
+- [ ] #11 - S1: Remove Firebase/AuthContext dependencies
+  - **PR**: #33 - https://github.com/Reading-Advantage-Thailand/www-reading-advantage/pull/33
+  - **Submitted**: 2025-10-22
+  - **Status**: Awaiting Review
   - **Branch**: feat/11-remove-firebase-authcontext-dependencies
-  - **Specs**: docs/specs/identity/login-removal/spec.md
-  - **Priority**: P0
-  - **Milestone**: S1
-  - **Review Comments**: 2 comments with architecture, verification, and planning suggestions
+  - **Changes**: 12 files modified, 2 deleted, 74 packages removed, -1010 lines
 
 ## Completed
 
