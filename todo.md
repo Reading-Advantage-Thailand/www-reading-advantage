@@ -116,16 +116,14 @@ All new work must be captured through specs in `docs/specs/` and tracked via Git
 - Follow the commands noted in `CLAUDE.md` and `AGENTS.md` for consistent contributions.
 - Use `npx shadcn@latest add <component>` for new shadcn components and `--legacy-peer-deps` when installing npm packages.
 
-## In Progress
 
-- [ ] #10 - S1: Decommission /login route (feat/10-decommission-login-route)
-  - **Started**: 2025-10-22
-  - **Branch**: feat/10-decommission-login-route
-  - **Specs**: docs/specs/identity/login-removal/spec.md
-  - **Priority**: P0
-  - **Milestone**: S1
 
 ## Completed
+
+- [x] #10 - S1: Decommission /login route - PR: #32 - Completed: 2025-10-22 ✅
+  - **Merge Commit**: d10a1b4094dfbf28c91ee7ecff6a8110485fc466
+  - **Specs Updated**: docs/specs/identity/login-removal/spec.md
+  - **Sprint**: S1
 
 - [x] #9 - S1: Remove login/signup UI from navigation - PR: #14 - Completed: 2025-10-22 ✅
   - **Merge Commit**: ced5f147d5e205f970aaf0a52b00a6b2b51a6950
