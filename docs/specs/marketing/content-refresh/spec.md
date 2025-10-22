@@ -15,6 +15,14 @@ Bring every marketing page up to date after a year of roadmap changes, ensuring 
 - **WHEN** the “Home page refresh” issue is in progress
 - **THEN** the assignee SHALL document the Q/A transcript validating each major section (hero promise, program list, testimonials)
 - **AND** unresolved answers SHALL block publication until clarified.
+    - **Decisions (2025-10-23)**:
+        - Hero messaging references AI tools already supporting pioneering schools in Southeast Asia (no “thousands of institutions” claim).
+        - Mission headline centers on student success (“Student Success Is Our Mission”).
+        - Overview headline narrows scope to Reading Advantage as the current focus offering.
+        - Flagship benefits emphasize research-backed twice-weekly extensive reading (up to 40% gains), student-led sessions that reduce planning, transparent dashboards, and learner-choice motivation.
+        - Innovation section titles now highlight research-backed AI, classroom launch support, and trustworthy progress tracking.
+        - Impact statement clarifies “spend less time on paperwork” and focuses on responding to student data insights.
+        - Thai and Simplified Chinese locales SHALL receive matching tone/content updates alongside English copy changes.
 
 #### Scenario: Product page refresh
 - **WHEN** reviewing any Advantage program page

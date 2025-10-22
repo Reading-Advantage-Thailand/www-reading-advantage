@@ -10,12 +10,16 @@
 import { describe, it, expect, beforeEach, afterEach } from '@jest/globals';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, rmSync } from 'fs';
 import { resolve } from 'path';
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 
 const TEST_ROOT = resolve(__dirname, '../__test-workspace__');
 const TEST_CONFIG_PATH = resolve(TEST_ROOT, 'src/config/locale-config.ts');
 const TEST_LOCALES_DIR = resolve(TEST_ROOT, 'src/locales');
 const TEST_MESSAGES_DIR = resolve(TEST_ROOT, 'src/messages');
+const TSX_BIN = process.platform === 'win32'
+  ? resolve(__dirname, '../../node_modules/.bin/tsx.cmd')
+  : resolve(__dirname, '../../node_modules/.bin/tsx');
+const UPDATE_SCRIPT = resolve(__dirname, '..', 'i18n-update.ts');
 
 describe('i18n CLI Tools', () => {
   beforeEach(() => {
@@ -148,55 +152,69 @@ export default {
 
   describe('i18n:update', () => {
     beforeEach(() => {
-      // Create sample locale files
       const headerFile = `
 export const en = {
   cta: "Contact Us",
   menu: "Menu",
 };
+
+export const th = {
+  cta: "ติดต่อเรา",
+  menu: "เมนู",
+};
+
+export const zh = {
+  cta: "联系我们",
+  menu: "菜单",
+};
 `;
       mkdirSync(resolve(TEST_LOCALES_DIR, 'components/common'), { recursive: true });
-      writeFileSync(
-        resolve(TEST_LOCALES_DIR, 'components/common/header.ts'),
-        headerFile
-      );
+      writeFileSync(resolve(TEST_LOCALES_DIR, 'components/common/header.ts'), headerFile);
     });
 
-    it('should update existing keys', () => {
+    const runUpdate = (args: string[]) => {
+      const options = {
+        cwd: TEST_ROOT,
+        env: {
+          ...process.env,
+          NODE_ENV: 'test',
+        },
+        stdio: 'pipe' as const,
+      };
+
+      return execFileSync(TSX_BIN, [UPDATE_SCRIPT, ...args], options);
+    };
+
+    it('updates a single locale string without affecting siblings', () => {
+      runUpdate(['components.common.header.cta', '--value.en', 'Get in Touch']);
+
       const filePath = resolve(TEST_LOCALES_DIR, 'components/common/header.ts');
-      let content = readFileSync(filePath, 'utf-8');
-
-      // Simulate update
-      const oldValue = 'Contact Us';
-      const newValue = 'Get in Touch';
-      content = content.replace(
-        `cta: "${oldValue}"`,
-        `cta: "${newValue}"`
-      );
-
-      writeFileSync(filePath, content);
       const updated = readFileSync(filePath, 'utf-8');
 
-      expect(updated).toContain(newValue);
-      expect(updated).not.toContain(oldValue);
+      expect(updated).toContain('cta: "Get in Touch"');
+      expect(updated).toContain('menu: "Menu"');
+      expect(updated).toContain('cta: "ติดต่อเรา"');
     });
 
-    it('should preserve surrounding content', () => {
+    it('updates multiple locales in one invocation', () => {
+      runUpdate([
+        'components.common.header.cta',
+        '--value.en', 'Get in Touch',
+        '--value.th', 'พูดคุยกับเรา',
+      ]);
+
       const filePath = resolve(TEST_LOCALES_DIR, 'components/common/header.ts');
-      const originalContent = readFileSync(filePath, 'utf-8');
+      const updated = readFileSync(filePath, 'utf-8');
 
-      // Update one key
-      const updatedContent = originalContent.replace(
-        `cta: "Contact Us"`,
-        `cta: "Get in Touch"`
-      );
+      expect(updated).toContain('cta: "Get in Touch"');
+      expect(updated).toContain('cta: "พูดคุยกับเรา"');
+      expect(updated).toContain('cta: "联系我们"');
+    });
 
-      writeFileSync(filePath, updatedContent);
-      const result = readFileSync(filePath, 'utf-8');
-
-      // Verify other keys are unchanged
-      expect(result).toContain('menu: "Menu"');
-      expect(result).toContain('export const en');
+    it('throws when key is missing', () => {
+      expect(() =>
+        runUpdate(['components.common.header.missing', '--value.en', 'Nope'])
+      ).toThrow();
     });
 
     it('should detect missing locales', () => {
