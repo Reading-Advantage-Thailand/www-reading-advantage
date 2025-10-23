@@ -37,6 +37,13 @@ Bring every marketing page up to date after a year of roadmap changes, ensuring 
 - **WHEN** a copy edit is ready
 - **THEN** `npm run i18n:tree` SHALL be used to inspect current keys, and `npm run i18n:update` SHALL apply changes for each locale.
 
+#### Scenario: Products overview refresh
+- **WHEN** the Products overview page is reviewed
+- **THEN** each Advantage program card SHALL surface current positioning, launch markets, and CTA targets validated during discovery.
+- **AND** a Primary Advantage card SHALL be added that links to `/products/primary-advantage`, highlights its grades 3-6 literacy focus, and mirrors the flagship layout treatment used for Reading Advantage.
+- **AND** localized copy updates SHALL roll out to all supported languages in tandem.
+- **AND** Storytime Advantage SHALL be clearly identified as the K-2 literacy pathway, Primary Advantage as grades 3-6, and Reading Advantage as grades 7-12.
+
 ### Requirement: Primary Advantage product page creation
 
 - A new page SHALL be created under the products section using existing layout components (hero, benefits, curriculum highlights, CTA).

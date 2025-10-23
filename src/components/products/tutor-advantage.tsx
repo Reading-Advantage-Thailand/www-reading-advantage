@@ -92,14 +92,17 @@ export default function TutorAdvantage() {
             ))}
           </motion.div>
 
-          <Button
-            variant="secondary"
-            size="lg"
-            asChild
-            className="font-semibold"
-          >
-            <Link href="/products/tutor-advantage">Learn More</Link>
-          </Button>
+          <div className="space-y-3">
+            <Button
+              variant="secondary"
+              size="lg"
+              asChild
+              className="font-semibold"
+            >
+              <Link href="/products/tutor-advantage">{t("joinButton")}</Link>
+            </Button>
+            <p className="text-sm text-emerald-800">{t("joinCaption")}</p>
+          </div>
         </div>
       </div>
     </section>
