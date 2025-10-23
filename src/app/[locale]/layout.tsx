@@ -1,10 +1,7 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import { ReactElement } from "react";
 import { LocaleProvider } from '@/providers/locale-provider';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Reading Advantage (Thailand) - Innovative EdTech Solutions',
@@ -23,7 +20,7 @@ export default async function RootLayout({ params, children }: { params: Promise
   const { locale } = await params
   return (
     <html lang={locale} suppressHydrationWarning={true}>
-      <body className={`${inter.className} bg-sky-50 text-sky-900 min-h-screen`}>
+      <body className="bg-sky-50 text-sky-900 min-h-screen font-sans">
         <LocaleProvider locale={locale}>{children}</LocaleProvider>
       </body>
     </html>
