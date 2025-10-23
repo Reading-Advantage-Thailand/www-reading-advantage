@@ -41,23 +41,27 @@ export default async function ProductsPage() {
         description={t("hero.description")}
         backgroundImage
       />
-      <section className="bg-white py-16">
+      <section className="py-20 modern-section">
         <div className="container px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
           <div className="grid gap-8 md:grid-cols-3">
             {gradeBands.map((band) => (
-              <div key={band.key} className="rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-sm font-semibold uppercase tracking-wide text-sky-700 mb-2">
-                  {band.gradeRange}
+              <div key={band.key} className="group h-full">
+                <div className="h-full p-8 rounded-2xl modern-card border-0 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
+                  <div className="text-sm font-semibold uppercase tracking-wide text-sky-600 mb-3">
+                    {band.gradeRange}
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-sky-700 transition-colors">
+                    {band.title}
+                  </h3>
+                  <p className="text-gray-600 mb-8 leading-relaxed flex-grow">{band.description}</p>
+                  <Link
+                    href={band.href}
+                    className="inline-flex items-center gap-2 font-semibold text-sky-600 hover:text-sky-800 group-hover:gap-3 transition-all duration-300"
+                  >
+                    <span>{band.ctaLabel}</span>
+                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                  </Link>
                 </div>
-                <h3 className="text-2xl font-bold mb-3">{band.title}</h3>
-                <p className="text-gray-600 mb-6">{band.description}</p>
-                <Link
-                  href={band.href}
-                  className="inline-flex items-center gap-2 font-semibold text-sky-700 hover:text-sky-900"
-                >
-                  <span>{band.ctaLabel}</span>
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
               </div>
             ))}
           </div>
