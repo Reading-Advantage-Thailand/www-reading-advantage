@@ -30,101 +30,112 @@ const item = {
   show: { opacity: 1, y: 0 }
 }
 
+const FEATURE_COUNT = 4
+
+type ProductKey =
+  | "primaryAdvantage"
+  | "readingAdvantage"
+  | "stemAdvantage"
+  | "scienceAdvantage"
+  | "mathAdvantage"
+  | "zhongwenAdvantage"
+  | "storytimeAdvantage"
+
+interface ProductConfig {
+  key: ProductKey
+  href: string
+  bgColor: string
+  logo?: string
+  icon?: typeof BookOpen
+  layout?: "feature" | "standard"
+  badgeType?: "new" | "flagship"
+  badgeKey?: string
+}
+
+const productConfigs: ProductConfig[] = [
+  {
+    key: "readingAdvantage",
+    href: "/products/reading-advantage",
+    bgColor: "bg-sky-400",
+    logo: "/reading-advantage.jpg",
+    icon: BookOpen,
+    layout: "feature",
+    badgeKey: "products.readingAdvantage.badge",
+  },
+  {
+    key: "primaryAdvantage",
+    href: "/products/primary-advantage",
+    bgColor: "bg-sky-200",
+    logo: "/primary-advantage logo.png",
+    layout: "standard",
+    badgeType: "new",
+  },
+  {
+    key: "scienceAdvantage",
+    href: "/products/science-advantage",
+    bgColor: "bg-rose-200",
+    logo: "/science-advantage.png",
+    icon: Beaker,
+    badgeKey: "products.scienceAdvantage.badge",
+  },
+  {
+    key: "mathAdvantage",
+    href: "/products/math-advantage",
+    bgColor: "bg-orange-100",
+    logo: "/math-advantage.png",
+    icon: Calculator,
+    badgeKey: "products.mathAdvantage.badge",
+  },
+  {
+    key: "zhongwenAdvantage",
+    href: "/products/zhongwen-advantage",
+    bgColor: "bg-fuchsia-200",
+    logo: "/zhongwen-advantage.png",
+    icon: Languages,
+    badgeKey: "products.zhongwenAdvantage.badge",
+  },
+  {
+    key: "storytimeAdvantage",
+    href: "/products/storytime-advantage",
+    bgColor: "bg-amber-200",
+    logo: "/storytime-advantage.png",
+    icon: BookMarked,
+    badgeKey: "products.storytimeAdvantage.badge",
+  },
+  {
+    key: "stemAdvantage",
+    href: "/products/stem-advantage",
+    bgColor: "bg-indigo-200",
+    logo: "/stem-advantage.png",
+    icon: Bot,
+    badgeKey: "products.stemAdvantage.badge",
+  },
+]
+
 export default function B2BSolutions() {
   const t = useScopedI18n("components.products.b2bSolutions")
 
-  const products = [
-    {
-      title: t("products.readingAdvantage.title"),
-      icon: BookOpen,
-      logo: "/reading-advantage.jpg",
-      bgColor: "bg-sky-400",
-      features: [
-        t("products.readingAdvantage.features.0"),
-        t("products.readingAdvantage.features.1"),
-        t("products.readingAdvantage.features.2"),
-        t("products.readingAdvantage.features.3")
-      ],
-      href: "/products/reading-advantage",
-      isFlagship: true,
-      buttonText: "Learn More"
-    },
-    {
-      title: t("products.stemAdvantage.title"),
-      icon: Bot,
-      logo: "/stem-advantage.png",
-      bgColor: "bg-indigo-200",
-      features: [
-        t("products.stemAdvantage.features.0"),
-        t("products.stemAdvantage.features.1"),
-        t("products.stemAdvantage.features.2"),
-        t("products.stemAdvantage.features.3")
-      ],
-      href: "/products/stem-advantage",
-      buttonText: "Learn More"
+  const products = productConfigs.map((config) => {
+    const title = t(`products.${config.key}.title`)
+    const features = Array.from({ length: FEATURE_COUNT }, (_, index) =>
+      t(`products.${config.key}.features.${index}`)
+    )
 
-    },
-    {
-      title: t("products.scienceAdvantage.title"),
-      icon: Beaker,
-      logo: "/science-advantage.png",
-      bgColor: "bg-rose-200",
-      features: [
-        t("products.scienceAdvantage.features.0"),
-        t("products.scienceAdvantage.features.1"),
-        t("products.scienceAdvantage.features.2"),
-        t("products.scienceAdvantage.features.3")
-      ],
-      href: "/products/science-advantage",
-      buttonText: "Learn More"
-
-    },
-    {
-      title: t("products.mathAdvantage.title"),
-      icon: Calculator,
-      logo: "/math-advantage.png",
-      bgColor: "bg-orange-100",
-      features: [
-        t("products.mathAdvantage.features.0"),
-        t("products.mathAdvantage.features.1"),
-        t("products.mathAdvantage.features.2"),
-        t("products.mathAdvantage.features.3")
-      ],
-      href: "/products/math-advantage",
-      buttonText: "Learn More"
-
-    },
-    {
-      title: t("products.zhongwenAdvantage.title"),
-      icon: Languages,
-      logo: "/zhongwen-advantage.png",
-      bgColor: "bg-fuchsia-200",
-      features: [
-        t("products.zhongwenAdvantage.features.0"),
-        t("products.zhongwenAdvantage.features.1"),
-        t("products.zhongwenAdvantage.features.2"),
-        t("products.zhongwenAdvantage.features.3")
-      ],
-      href: "/products/zhongwen-advantage",
-      buttonText: "Learn More"
-
-    },
-    {
-      title: t("products.storytimeAdvantage.title"),
-      icon: BookMarked,
-      logo: "/storytime-advantage.png",
-      bgColor: "bg-amber-200",
-      features: [
-        t("products.storytimeAdvantage.features.0"),
-        t("products.storytimeAdvantage.features.1"),
-        t("products.storytimeAdvantage.features.2"),
-        t("products.storytimeAdvantage.features.3")
-      ],
-      href: "/products/storytime-advantage",
-      buttonText: "Learn More"
-
+    return {
+      ...config,
+      title,
+      features,
+      gradeRange: t(`products.${config.key}.gradeRange`),
+      badgeLabel:
+        config.badgeKey
+          ? t(config.badgeKey)
+          : config.badgeType === "flagship"
+            ? t("mostPopular")
+            : config.badgeType === "new"
+              ? t(`products.${config.key}.badge`)
+              : undefined,
     }
-  ]
+  })
 
   return (
     <section className="bg-white py-16">
@@ -149,10 +160,10 @@ export default function B2BSolutions() {
             <motion.div
               key={product.title}
               variants={item}
-              className={product.isFlagship ? "col-span-full lg:col-span-2" : ""}
+              className={product.layout === "feature" ? "col-span-full lg:col-span-2" : ""}
             >
-              <Card className={`p-8 h-full hover:shadow-xl transition-shadow duration-300 relative overflow-hidden ${product.bgColor}`}>
-                <div className="flex items-center justify-between mb-4">
+              <Card className={`relative flex h-full flex-col overflow-hidden p-8 transition-shadow duration-300 hover:shadow-xl ${product.bgColor}`}>
+                <div className="mb-4 flex items-center justify-between gap-4">
                   {product.logo ? (
                     <div className="relative z-10 w-24 h-24">
                       <Image
@@ -167,14 +178,19 @@ export default function B2BSolutions() {
                       <product.icon className="w-12 h-12 text-blue-600" strokeWidth={1.5} />
                     </div>
                   )}
-                  {product.isFlagship && (
-                    <span className="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">
-                      {t("mostPopular")}
+                  {product.badgeLabel && (
+                    <span className="bg-white/80 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">
+                      {product.badgeLabel}
                     </span>
                   )}
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{product.title}</h3>
-                <ul className="text-gray-600 mb-6 space-y-2">
+                <div className="mb-3">
+                  <h3 className="text-2xl font-bold">{product.title}</h3>
+                  <p className="text-sm font-semibold uppercase tracking-wide text-gray-700">
+                    {product.gradeRange}
+                  </p>
+                </div>
+                <ul className="mb-6 flex-1 space-y-2 text-gray-600">
                   {product.features.map((feature) => (
                     <li key={feature} className="flex items-start">
                       <span className="mr-2">•</span>
@@ -182,9 +198,11 @@ export default function B2BSolutions() {
                     </li>
                   ))}
                 </ul>
-                <Button asChild className="relative z-10">
-                  <Link href={product.href}>{product.buttonText}</Link>
-                </Button>
+                <div className="mt-auto flex justify-end">
+                  <Button asChild className="relative z-10">
+                    <Link href={product.href}>{t("cta.learnMore")}</Link>
+                  </Button>
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50/50" />
               </Card>
             </motion.div>
