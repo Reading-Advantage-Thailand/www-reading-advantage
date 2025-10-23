@@ -36,8 +36,8 @@ export default function Home() {
                         className="max-w-3xl mx-auto text-center"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true, amount: 0.1 }}
+                        transition={{ duration: 0.3 }}
                     >
                         <h2 className="text-4xl font-bold mb-8 gradient-text">{t('mission.title')}</h2>
                         <p className="text-xl text-gray-700 leading-relaxed">
@@ -57,7 +57,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.3 }}
                     >
                         <h2 className="text-4xl font-bold mb-8">{t('overview.title')}</h2>
                         <p className="text-xl leading-relaxed max-w-3xl mx-auto">
@@ -75,7 +75,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.3 }}
                     >
                         <h2 className="text-4xl font-bold mb-4 gradient-text">{t('flagship.title')}</h2>
                     </motion.div>
@@ -84,7 +84,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
                     >
                         <Card className="modern-card border-0 shadow-modern-lg hover:shadow-glow transition-all duration-500">
                             <CardContent className="p-10">
@@ -135,14 +135,16 @@ export default function Home() {
                                         transition={{ duration: 0.3 }}
                                     >
                                         <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-sky-600/20 rounded-2xl blur-xl" />
-                                        <Image
-                                            src="/images/reading-advantage-demo.png"
-                                            alt="Reading Advantage Platform Demo"
-                                            fill
-                                            sizes="(max-width: 768px) 100vw, 50vw"
-                                            className="rounded-2xl shadow-modern-lg object-cover relative z-10"
-                                            priority
-                                        />
+                                        <div className="relative w-full h-full">
+                                            <Image
+                                                src="/images/reading-advantage-demo.png"
+                                                alt="Reading Advantage Platform Demo"
+                                                fill
+                                                className="rounded-2xl shadow-modern-lg object-cover"
+                                                sizes="(min-width: 768px) 50vw, 100vw"
+                                                priority
+                                            />
+                                        </div>
                                     </motion.div>
                                 </div>
                             </CardContent>
@@ -160,7 +162,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.3 }}
                     >
                         <h2 className="text-4xl font-bold mb-4">{t('innovation.title')}</h2>
                     </motion.div>
@@ -201,10 +203,10 @@ export default function Home() {
                                 key={index}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: feature.delay }}
+                                viewport={{ once: true, amount: 0.1 }}
+                                transition={{ duration: 0.3, delay: feature.delay * 0.5 }}
                             >
-                                <Card className="bg-gradient-to-br from-sky-700/90 to-blue-800/90 backdrop-blur-sm border border-sky-600/30 h-full group hover:scale-105 transition-all duration-300 shadow-modern hover:shadow-modern-lg">
+                                <Card className="bg-sky-700/95 backdrop-blur-sm border border-sky-500/50 h-full group hover:scale-105 transition-all duration-300 shadow-modern hover:shadow-modern-lg">
                                     <CardContent className="p-8 text-center h-full flex flex-col justify-between">
                                         <div>
                                             <div className="text-sky-300 mb-6 flex justify-center group-hover:scale-110 transition-transform">
@@ -230,7 +232,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.3 }}
                     >
                         <h2 className="text-4xl font-bold mb-8 gradient-text">{t('impact.title')}</h2>
                         <p className="text-xl text-gray-700 leading-relaxed mb-12">

@@ -14,6 +14,7 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
+
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   typescript: {
     // TODO: Re-enable once Next.js App Router types are fixed

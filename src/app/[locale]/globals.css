@@ -50,7 +50,7 @@
 }
 
 main {
-  @apply pt-24 pb-12 min-h-screen;
+  @apply pb-12 min-h-screen;
 }
 
 /* Header styles */
