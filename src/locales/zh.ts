@@ -3,6 +3,7 @@ import { zh as aboutPage } from "./pages/about";
 import { zh as homePage } from "./pages/home";
 import { zh as contactPage } from "./pages/contact";
 import { zh as featurePage } from "./pages/feature";
+import { zh as productsOverview } from "./pages/products/overview";
 import { zh as codecampPage } from "./pages/products/codecamp-advantage";
 import { zh as mathPage } from "./pages/products/math-advantage";
 import { zh as readingPage } from "./pages/products/reading-advantage";
@@ -33,6 +34,7 @@ export default {
         feature: featurePage,
         pricing: pricingPage,
         products: {
+            overview: productsOverview,
             codecampAdvantage: codecampPage,
             mathAdvantage: mathPage,
             readingAdvantage: readingPage,

@@ -4,7 +4,13 @@ All new work must be captured through specs in `docs/specs/` and tracked via Git
 
 ## In Progress
 
-_(none)_
+- [ ] #17 - S2: Verify and refresh Products overview page (feat/17-products-overview-refresh)
+  - **Started**: 2025-10-23
+  - **Branch**: feat/17-products-overview-refresh
+  - **Specs**: docs/specs/marketing/content-refresh/spec.md
+  - **Priority**: P0
+  - **Milestone**: S2 - Content Verification & Localization Quality
+  - **Dependencies**: #18 (Primary Advantage product page)
 
 ## Completed
 
