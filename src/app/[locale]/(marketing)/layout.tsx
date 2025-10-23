@@ -14,7 +14,7 @@ export default function MarketingLayout({
         <>
             <Header />
             <PageTransition>
-                <div className="flex flex-col min-h-screen pt-20">
+                <div className="flex flex-col min-h-screen">
                     <main className="flex-1">
                         {children}
                     </main>
