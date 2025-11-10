@@ -2,8 +2,8 @@ export const en = {
     hero: {
         title: "Math Advantage",
         subtitle: "Revolutionary AI-Enhanced Math Tutoring",
-        description: "Experience personalized math tutoring that combines proven teaching methods with advanced AI technology, adapting to your learning pace and style.",
-        comingSoon: "Coming in 2025",
+        description: "Experience personalized math tutoring that combines proven teaching methods with advanced AI technology, adapting to your learning pace and style. Designed for grades 7-12.",
+        comingSoon: "Coming in 2026",
     },
     keyFeatures: {
         heading: "Key Features",
@@ -63,11 +63,8 @@ export const en = {
     },
     cta: {
         heading: "Ready to Transform Your Math Journey?",
-        description: "Join our waitlist to be the first to experience Math Advantage in 2025.",
-        buttons: {
-            joinWaitlist: "Join Waitlist",
-            learnMore: "Learn More",
-        },
+        description: "Join our waitlist to be the first to experience Math Advantage in 2026.",
+        button: "Join Waitlist",
     },
 };
 
@@ -75,8 +72,8 @@ export const th = {
     hero: {
         title: "แมธแอดแวนเทจ",
         subtitle: "การสอนคณิตศาสตร์ที่ปฏิวัติด้วย AI",
-        description: "สัมผัสการสอนคณิตศาสตร์เฉพาะบุคคลด้วย AI ที่ก้าวหน้า พร้อมการปรับตัวตามจังหวะและสไตล์การเรียนรู้ของคุณ",
-        comingSoon: "เปิดตัวในปี 2025",
+        description: "สัมผัสการสอนคณิตศาสตร์เฉพาะบุคคลด้วย AI ที่ก้าวหน้า พร้อมการปรับตัวตามจังหวะและสไตล์การเรียนรู้ของคุณ ออกแบบมาสำหรับชั้นมัธยมศึกษาป.1-ป.6",
+        comingSoon: "เปิดตัวในปี 2026",
     },
     keyFeatures: {
         heading: "คุณสมบัติเด่น",
@@ -136,11 +133,8 @@ export const th = {
     },
     cta: {
         heading: "พร้อมเปลี่ยนเส้นทางการเรียนคณิตศาสตร์ของคุณแล้วหรือยัง?",
-        description: "เข้าร่วมรายชื่อรอเพื่อเป็นคนแรกที่ได้สัมผัสแมธแอดแวนเทจในปี 2025",
-        buttons: {
-            joinWaitlist: "เข้าร่วมรายชื่อรอ",
-            learnMore: "เรียนรู้เพิ่มเติม",
-        },
+        description: "เข้าร่วมรายชื่อรอเพื่อเป็นคนแรกที่ได้สัมผัสแมธแอดแวนเทจในปี 2026",
+        button: "เข้าร่วมรายชื่อรอ",
     },
 };
 
@@ -148,8 +142,8 @@ export const zh = {
     hero: {
         title: "数学优势",
         subtitle: "革命性的 AI 增强数学辅导",
-        description: "体验个性化的数学辅导，结合先进的 AI 技术，适应您的学习节奏和风格。",
-        comingSoon: "2025年推出",
+        description: "体验个性化的数学辅导，结合先进的 AI 技术，适应您的学习节奏和风格。专为7-12年级设计。",
+        comingSoon: "2026年推出",
     },
     keyFeatures: {
         heading: "主要功能",
@@ -209,10 +203,7 @@ export const zh = {
     },
     cta: {
         heading: "准备好改变您的数学旅程了吗？",
-        description: "加入我们的候补名单，成为首批体验数学优势的人",
-        buttons: {
-            joinWaitlist: "加入候补名单",
-            learnMore: "了解更多",
-        },
+        description: "加入我们的候补名单，成为首批体验2026年推出的数学优势的人",
+        button: "加入候补名单",
     },
 };

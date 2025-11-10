@@ -159,18 +159,12 @@ export default async function MathAdvantage() {
             <FadeIn>
               <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>
               <p className="text-xl mb-8">{t("cta.description")}</p>
-              <div className="flex justify-center gap-4">
+              <div className="flex justify-center">
                 <a
-                  href="#"
+                  href="mailto:support@reading-advantage.com?subject=Math Advantage Inquiry&body=Hi team,%0A%0AI'm interested in learning more about Math Advantage for my school/organization.%0A%0APlease provide more information about:%0A- Pricing options%0A- Implementation timeline%0A- Technical requirements%0A%0AThank you!"
                   className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-bold transition-colors"
                 >
-                  {t("cta.buttons.joinWaitlist")}
-                </a>
-                <a
-                  href="#"
-                  className="bg-white hover:bg-orange-50 text-orange-800 px-8 py-3 rounded-lg font-bold transition-colors"
-                >
-                  {t("cta.buttons.learnMore")}
+                  {t("cta.button")}
                 </a>
               </div>
             </FadeIn>
