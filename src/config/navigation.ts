@@ -8,6 +8,11 @@ export const navigation: NavItem[] = [
     href: "/products",
     items: [
       {
+        title: "Primary Advantage",
+        href: "/products/primary-advantage",
+        description: "Grades 3-6 literacy development platform"
+      },
+      {
         title: "Reading Advantage",
         href: "/products/reading-advantage",
         description: "AI-powered reading comprehension platform"
