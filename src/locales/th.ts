@@ -12,6 +12,7 @@ import { th as stemPage } from './pages/products/stem-advantage';
 import { th as storytimePage } from './pages/products/storytime-advantage';
 import { th as tutorPage } from './pages/products/tutor-advantage';
 import { th as zhongwenPage } from './pages/products/zhongwen-advantage';
+import { th as primaryPage } from './pages/products/primary-advantage';
 import { th as pricingPage } from './pages/pricing';
 // components
 import { th as localeSwitcher } from './components/locale-switcher';
@@ -36,6 +37,7 @@ export default {
             overview: productsOverview,
             codecampAdvantage: codecampPage,
             mathAdvantage: mathPage,
+            primaryAdvantage: primaryPage,
             readingAdvantage: readingPage,
             scienceAdvantage: sciencePage,
             stemAdvantage: stemPage,
