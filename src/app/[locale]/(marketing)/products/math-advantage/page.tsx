@@ -161,13 +161,13 @@ export default async function MathAdvantage() {
               <p className="text-xl mb-8">{t("cta.description")}</p>
               <div className="flex justify-center gap-4">
                 <a
-                  href="#"
+                  href="/contact"
                   className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-bold transition-colors"
                 >
                   {t("cta.buttons.joinWaitlist")}
                 </a>
                 <a
-                  href="#"
+                  href="/contact"
                   className="bg-white hover:bg-orange-50 text-orange-800 px-8 py-3 rounded-lg font-bold transition-colors"
                 >
                   {t("cta.buttons.learnMore")}
