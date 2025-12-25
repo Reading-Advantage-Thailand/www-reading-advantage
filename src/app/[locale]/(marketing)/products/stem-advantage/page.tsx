@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import Image from "next/image"
+import Link from "next/link"
 import Hero from "@/components/layout/hero"
 import { getScopedI18n } from "@/locales/server"
 
@@ -189,18 +190,18 @@ export default async function StemAdvantage() {
             <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>
             <p className="text-xl mb-8">{t("cta.description")}</p>
             <div className="flex justify-center gap-4">
-              <a
+              <Link
                 href="/contact"
                 className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg font-bold transition-colors"
               >
                 {t("cta.buttons.earlyAccess")}
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="bg-white hover:bg-indigo-50 text-indigo-800 px-8 py-3 rounded-lg font-bold transition-colors"
               >
                 {t("cta.buttons.partnerships")}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
