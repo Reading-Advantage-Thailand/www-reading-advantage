@@ -1,7 +1,7 @@
 ---
 description: Front-end Developer for www-reading-advantage
 mode: subagent
-model: zai/glm-4.7
+model: zai-coding-plan/glm-4.7
 temperature: 0.2
 tools:
   write: true
