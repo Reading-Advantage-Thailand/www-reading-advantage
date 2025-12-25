@@ -44,16 +44,33 @@ ISSUE_BODY=$(echo "$ISSUE_JSON" | jq -r '.body')
 # 2b. Find all associated spec files
 echo "Finding associated spec files..."
 # This pattern finds all markdown files in docs/specs and docs/changes
-SPEC_FILES=$(echo "$ISSUE_BODY" | grep -o 'docs/\(specs\|changes\)/[^[:space:]`'"'"']*\.md')
+SPEC_FILES=$(echo "$ISSUE_BODY" | grep -o 'docs/\(specs\|changes\)/[^[:space:]`'"'"']*\.md' || true)
 
-# 2c. Construct the Gemini prompt
-GEMINI_PROMPT="I am about to start work on GitHub issue #${ISSUE_NUMBER}. Here is all the context. Please provide a concise, step-by-step implementation plan.
+# 2c. Fetch issue comments
+echo "Fetching issue comments..."
+COMMENTS_JSON=$(gh issue view "$ISSUE_NUMBER" --json comments)
+COMMENTS=$(echo "$COMMENTS_JSON" | jq -r '.comments[] | "### Comment from @\(.author.login)\n\n\(.body)\n"')
+
+# 2d. Construct the Gemini prompt
+GEMINI_PROMPT=""
+
+if [ -n "$PARENT_EPIC_CONTEXT" ]; then
+    GEMINI_PROMPT+="$PARENT_EPIC_CONTEXT\n\n"
+fi
+
+GEMINI_PROMPT+="I am about to start work on GitHub issue #${ISSUE_NUMBER}. Here is all the context. Please provide a concise, step-by-step implementation plan.
 
 **Issue Details:**
 Title: ${ISSUE_TITLE}
 Body:
 ${ISSUE_BODY}
 "
+
+# Add comments to prompt if they exist
+if [ -n "$COMMENTS" ]; then
+    GEMINI_PROMPT+="\n**Issue Comments:**\n${COMMENTS}"
+fi
+
 
 # Add retrospective to prompt if it exists
 if [ -f "RETROSPECTIVE.md" ]; then
@@ -72,6 +89,16 @@ fi
 
 # Add final instruction to prompt
 GEMINI_PROMPT+="\n\nBased on all this context, what are the key steps I should take to implement this feature correctly, keeping in mind past learnings and adhering to the specifications? Provide a clear, actionable plan."
+
+GEMINI_PROMPT+="\n\nCRITICAL INSTRUCTION: You must plan for a Test-Driven Development (TDD) workflow.
+Your plan MUST include these specific steps:
+1. **Reproduction**: Create a standalone reproduction script (e.g., 'repro_issue.sh') or a new test case that FAILS before any code is changed.
+2. **Verification (Fail)**: explicit step to run the repro script and confirm failure.
+3. **Implementation**: The actual code changes.
+4. **Verification (Pass)**: explicit step to run the repro script again to confirm success.
+5. **Cleanup**: Remove the temporary repro script or merge the new test case.
+
+Based on all this context, what are the key steps..."
 
 # 2d. Call Gemini
 echo "------------------------- GEMINI IMPLEMENTATION PLAN -------------------------"

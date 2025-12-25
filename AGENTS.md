@@ -9,6 +9,10 @@ Provide guardrails for AI/human collaborator pairs adopting the git-workflow mig
 - **Implementers**: pick issues via `next-issue`, follow specs, and keep implementation + docs in sync.
 - **Doc Steward**: keeps migration report, sprint files, and TODO alignment current.
 
+## Subagent Usage
+- **Front-end tasks**: Always use the `reading-advantage` subagent for all front-end development on this project.
+- **General tasks**: Use `general` or `explore` subagents for non-front-end work as appropriate.
+
 ## Collaboration Principles
 1. **Spec-first**: No code without an approved spec update (or at minimum a documented delta).
 2. **Single Source of Truth**: `docs/` governs decisions; `todo.md` only tracks residual items awaiting specs.
