@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script idempotently creates or updates a SynthesisFlow agent guide in a markdown file.
+# This script idempotently creates or updates a AgenticDev agent guide in a markdown file.
 
 set -e
 
@@ -30,9 +30,9 @@ done
 # Define the content block to be inserted/updated
 read -r -d '' AGENT_CONTENT << EOM
 <!-- SYNTHESIS_FLOW_START -->
-# SynthesisFlow Agent Guide
+# AgenticDev Agent Guide
 
-This project uses SynthesisFlow, a modular, spec-driven development methodology. The workflow is broken down into several discrete skills located in the `.claude/skills/` directory.
+This project uses AgenticDev, a modular, spec-driven development methodology. The workflow is broken down into several discrete skills located in the `.claude/skills/` directory.
 
 ## Core Philosophy
 1.  **Specs as Code:** All specification changes are proposed and approved via Pull Requests.
@@ -41,6 +41,7 @@ This project uses SynthesisFlow, a modular, spec-driven development methodology.
 4.  **Atomic Issues:** Implementation is done via atomic GitHub Issues, which are executed by the `issue-executor` skill.
 
 ## Available Skillsets
+- **`.claude/skills/skill-lister/`**: For listing all available skills and their descriptions.
 - **`.claude/skills/project-init/`**: For initial project scaffolding.
 - **`.claude/skills/doc-indexer/`**: For real-time documentation discovery.
 - **`.claude/skills/spec-authoring/`**: For proposing and refining new specifications.
@@ -49,7 +50,10 @@ This project uses SynthesisFlow, a modular, spec-driven development methodology.
 - **`.claude/skills/change-integrator/`**: For finalizing and archiving a completed change.
 - **`.claude/skills/agent-integrator/`**: For creating or updating this guide in `AGENTS.md`.
 
+## Getting Started
+
 To begin, always assess the current state by checking the git branch and running the `doc-indexer`.
+1. Run `skill-lister` to see the list of available tools and their descriptions.
 <!-- SYNTHESIS_FLOW_END -->
 EOM
 
@@ -58,7 +62,7 @@ touch "$TARGET_FILE"
 
 # Check if the markers exist in the file
 if grep -q "<!-- SYNTHESIS_FLOW_START -->" "$TARGET_FILE"; then
-    echo "Updating existing SynthesisFlow guide in $TARGET_FILE..."
+    echo "Updating existing AgenticDev guide in $TARGET_FILE..."
     # Use awk to replace the content between the markers
     awk -v content="$AGENT_CONTENT" ' 
         /<!-- SYNTHESIS_FLOW_START -->/ { print content; in_block=1 }
@@ -66,7 +70,7 @@ if grep -q "<!-- SYNTHESIS_FLOW_START -->" "$TARGET_FILE"; then
         !in_block { print }
     ' "$TARGET_FILE" > "${TARGET_FILE}.tmp" && mv "${TARGET_FILE}.tmp" "$TARGET_FILE"
 else
-    echo "Adding SynthesisFlow guide to $TARGET_FILE..."
+    echo "Adding AgenticDev guide to $TARGET_FILE..."
     # Append the content to the end of the file
     echo -e "\n$AGENT_CONTENT" >> "$TARGET_FILE"
 fi

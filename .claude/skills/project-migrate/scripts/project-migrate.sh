@@ -1,6 +1,6 @@
 #!/bin/bash
 # Project Migrate Script
-# Migrates existing (brownfield) projects to SynthesisFlow structure
+# Migrates existing (brownfield) projects to AgenticDev structure
 
 set -e
 
@@ -223,7 +223,7 @@ get_categorization_rationale() {
   case "$category" in
     spec)
       if [ "$file_type" = "spec" ]; then
-        echo "Specification → docs/specs/ (SynthesisFlow source-of-truth)"
+        echo "Specification → docs/specs/ (AgenticDev source-of-truth)"
       elif [ "$file_type" = "adr" ]; then
         echo "ADR → docs/specs/ (architectural decisions are specs)"
       elif [ "$file_type" = "design" ]; then
@@ -241,7 +241,7 @@ get_categorization_rationale() {
       echo "General documentation → docs/"
       ;;
     root)
-      echo "Retrospective → root/RETROSPECTIVE.md (SynthesisFlow convention)"
+      echo "Retrospective → root/RETROSPECTIVE.md (AgenticDev convention)"
       ;;
     preserve)
       echo "README preserved in original location"
@@ -369,7 +369,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 echo "========================================"
-echo " Project Migrate: Brownfield to SynthesisFlow"
+echo " Project Migrate: Brownfield to AgenticDev"
 echo "========================================"
 echo ""
 
@@ -819,7 +819,7 @@ prompt_phase_continue "Phase 4: Backup" \
 create_backup() {
   # Generate timestamped backup directory name
   local timestamp=$(date +%Y%m%d-%H%M%S)
-  BACKUP_DIR=".synthesisflow-backup-${timestamp}"
+  BACKUP_DIR=".agenticdev-backup-${timestamp}"
 
   echo "Creating backup directory: $BACKUP_DIR"
 
@@ -854,9 +854,9 @@ create_backup() {
   # Create backup README with restoration instructions
   echo "Creating backup README..."
   cat > "$BACKUP_DIR/README.md" <<'EOF'
-# SynthesisFlow Migration Backup
+# AgenticDev Migration Backup
 
-This directory contains a backup of your project documentation before SynthesisFlow migration.
+This directory contains a backup of your project documentation before AgenticDev migration.
 
 ## Backup Contents
 
@@ -879,7 +879,7 @@ bash BACKUP_DIR/rollback.sh
 This will:
 1. Create a safety backup of the current state (before rollback)
 2. Restore the original docs/ directory from backup
-3. Remove SynthesisFlow additions (docs/specs/, docs/changes/) if they're empty
+3. Remove AgenticDev additions (docs/specs/, docs/changes/) if they're empty
 4. Preserve any non-empty directories to prevent data loss
 5. Clean up empty directories
 
@@ -917,7 +917,7 @@ If you prefer manual control:
 
 ## Questions?
 
-Refer to the SynthesisFlow documentation or the project-migrate skill documentation.
+Refer to the AgenticDev documentation or the project-migrate skill documentation.
 EOF
 
   # Replace placeholders in README
@@ -931,13 +931,13 @@ EOF
   echo "Generating rollback script..."
   cat > "$BACKUP_DIR/rollback.sh" <<'ROLLBACK_SCRIPT'
 #!/bin/bash
-# SynthesisFlow Migration Rollback Script
+# AgenticDev Migration Rollback Script
 # This script restores your project to its pre-migration state
 
 set -e
 
 echo "========================================"
-echo " SynthesisFlow Migration Rollback"
+echo " AgenticDev Migration Rollback"
 echo "========================================"
 echo ""
 echo "⚠️  WARNING: This will restore your project to its pre-migration state."
@@ -1001,12 +1001,12 @@ fi
 
 echo ""
 
-# Step 3: Remove SynthesisFlow additions (only if they're now empty or were created by migration)
-echo "Step 3: Cleaning up SynthesisFlow-specific directories..."
+# Step 3: Remove AgenticDev additions (only if they're now empty or were created by migration)
+echo "Step 3: Cleaning up AgenticDev-specific directories..."
 
 # Load the migration manifest to determine what was created
 if [ -f "$BACKUP_DIR/migration-manifest.json" ]; then
-  echo "  Using migration manifest to identify SynthesisFlow additions..."
+  echo "  Using migration manifest to identify AgenticDev additions..."
 fi
 
 # Check if docs/specs should be removed (empty or only contains migrated files)
@@ -1049,7 +1049,7 @@ if [ -d "docs" ] && [ -z "$(ls -A docs 2>/dev/null)" ]; then
   rmdir docs
 fi
 
-echo "✓ SynthesisFlow directory cleanup complete"
+echo "✓ AgenticDev directory cleanup complete"
 echo ""
 
 # Step 4: Clean up empty parent directories (but preserve structure)
@@ -1108,7 +1108,7 @@ echo ""
 # Skip backup in dry-run mode
 if [ "$DRY_RUN" = true ]; then
   echo "DRY RUN: Backup would be created here"
-  echo "  Backup directory name would be: .synthesisflow-backup-$(date +%Y%m%d-%H%M%S)"
+  echo "  Backup directory name would be: .agenticdev-backup-$(date +%Y%m%d-%H%M%S)"
   echo "  Would backup: docs/ directory (if exists)"
   echo "  Would include: migration manifest, README, rollback script"
   echo ""
@@ -1128,9 +1128,9 @@ prompt_phase_continue "Phase 5: Migration" \
    Files will be moved to their target locations and links will be updated.
    You'll be prompted to resolve any conflicts that occur."
 
-# Function to create SynthesisFlow directory structure
+# Function to create AgenticDev directory structure
 create_directory_structure() {
-  echo "Creating SynthesisFlow directory structure..."
+  echo "Creating AgenticDev directory structure..."
 
   local dirs=("docs" "docs/specs" "docs/changes")
 
@@ -1205,8 +1205,8 @@ calculate_relative_path() {
   echo "${result}${to_base}"
 }
 
-# Function to update relative links in a markdown file
-update_markdown_links() {
+# Function to update relative links in a markdown file using LLM
+llm_update_markdown_links() {
   local file="$1"
   local old_location="$2"
   local new_location="$3"
@@ -1216,97 +1216,49 @@ update_markdown_links() {
     return 0
   fi
 
-  # Track statistics
-  local links_found=0
-  local links_updated=0
-  local links_broken=0
+  # Get the script directory
+  local script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  local llm_script="$script_dir/correct_links_llm.py"
 
-  # Get directories for path calculations
-  local old_dir=$(dirname "$old_location")
-  local new_dir=$(dirname "$new_location")
+  # Check if LLM script exists
+  if [ ! -f "$llm_script" ]; then
+    echo "    ⚠️  Warning: LLM link correction script not found: $llm_script" >&2
+    echo "      Skipping link correction for $(basename "$file")" >&2
+    return 1
+  fi
 
-  # Create temporary file for updated content
+  # Check if Python 3 is available
+  if ! command -v python3 >/dev/null 2>&1; then
+    echo "    ⚠️  Warning: Python 3 not available for LLM link correction" >&2
+    echo "      Skipping link correction for $(basename "$file")" >&2
+    return 1
+  fi
+
+  # Create temporary file for corrected content
   local temp_file=$(mktemp)
 
-  # Read file line by line and update links
-  while IFS= read -r line; do
-    local updated_line="$line"
-
-    # Find all markdown links: [text](path) and ![alt](path)
-    # Use grep to find lines with links, then process each link
-    if echo "$line" | grep -qE '\[[^]]*\]\([^)]+\)'; then
-      # Extract and process each link on the line using a simpler approach
-      local temp_line="$line"
-      local link_pattern='\[([^]]*)\]\(([^)]+)\)'
-
-      while [[ "$temp_line" =~ $link_pattern ]]; do
-        local link_text="${BASH_REMATCH[1]}"
-        local link_path="${BASH_REMATCH[2]}"
-
-        # Skip absolute URLs (http://, https://, etc.)
-        if [[ "$link_path" =~ ^https?:// ]] || [[ "$link_path" =~ ^mailto: ]] || [[ "$link_path" =~ ^# ]]; then
-          # Remove this match from temp_line to find next link
-          temp_line="${temp_line#*]($link_path)}"
-          continue
-        fi
-
-        links_found=$((links_found + 1))
-
-        # Calculate the absolute path of the linked file from old location
-        local linked_file_abs=""
-        if [[ "$link_path" = /* ]]; then
-          # Absolute path from project root
-          linked_file_abs="$link_path"
-        else
-          # Relative path from old location
-          if [ "$old_dir" = "." ]; then
-            linked_file_abs="$link_path"
-          else
-            linked_file_abs="$old_dir/$link_path"
-          fi
-        fi
-
-        # Normalize path (remove ./ and resolve ..)
-        linked_file_abs=$(echo "$linked_file_abs" | sed 's|/\./|/|g')
-
-        # Calculate new relative path from new location to linked file
-        local new_link_path=$(calculate_relative_path "$new_location" "$linked_file_abs")
-
-        # Update the link in the line if it changed
-        if [ "$link_path" != "$new_link_path" ]; then
-          updated_line=$(echo "$updated_line" | sed "s|]($link_path)|]($new_link_path)|")
-          links_updated=$((links_updated + 1))
-
-          # Validate that the linked file exists
-          if [ ! -f "$linked_file_abs" ] && [ ! -d "$linked_file_abs" ]; then
-            links_broken=$((links_broken + 1))
-            if [ "$DRY_RUN" = false ]; then
-              echo "    ⚠️  Warning: Link target not found: $link_path → $new_link_path (target: $linked_file_abs)" >&2
-            fi
-          fi
-        fi
-
-        # Remove this match from temp_line to find next link
-        temp_line="${temp_line#*]($link_path)}"
-      done
-    fi
-
-    echo "$updated_line" >> "$temp_file"
-  done < "$file"
-
-  # Replace original file with updated content if changes were made
-  if [ "$links_updated" -gt 0 ]; then
-    if [ "$DRY_RUN" = false ]; then
-      mv "$temp_file" "$file"
-      echo "    Updated $links_updated link(s) in $(basename "$file") (found: $links_found, broken: $links_broken)"
-    else
-      echo "    [DRY RUN] Would update $links_updated link(s) in $(basename "$file") (found: $links_found, broken: $links_broken)"
-      rm "$temp_file"
-    fi
+  if [ "$DRY_RUN" = true ]; then
+    echo "    [DRY RUN] Would perform LLM-based link correction on $(basename "$file")"
+    # In dry run mode, just show what would be analyzed
+    echo "      Total links to analyze: $(grep -o '\[[^]]*\]([^)]*)' "$file" | wc -l)"
   else
-    rm "$temp_file"
-    if [ "$links_found" -gt 0 ]; then
-      echo "    No link updates needed in $(basename "$file") ($links_found link(s) already correct)"
+    # Apply LLM-based link correction
+    if cat "$file" | python3 "$llm_script" --file "$file" > "$temp_file" 2>/dev/null; then
+      # Check if any changes were made by comparing files
+      if ! cmp -s "$file" "$temp_file"; then
+        # File was modified, update it
+        mv "$temp_file" "$file"
+        echo "    Applied LLM-based link corrections to $(basename "$file")"
+      else
+        # No changes made
+        rm "$temp_file"
+        echo "    No link corrections needed in $(basename "$file")"
+      fi
+    else
+      # LLM processing failed
+      echo "    ⚠️  Warning: LLM link correction failed for $(basename "$file")" >&2
+      rm -f "$temp_file"
+      return 1
     fi
   fi
 
@@ -1409,7 +1361,7 @@ migrate_file() {
 
 # Function to execute migration
 execute_migration() {
-  echo "Creating SynthesisFlow directory structure..."
+  echo "Creating AgenticDev directory structure..."
   if ! create_directory_structure; then
     echo "⚠️  Error: Failed to create directory structure!"
     return 1
@@ -1453,8 +1405,8 @@ execute_migration() {
     if migrate_file "$file" "$target" true; then
       success_count=$((success_count + 1))
 
-      # Update links in the migrated file
-      update_markdown_links "$target" "$file" "$target"
+      # Update links in the migrated file using LLM
+      llm_update_markdown_links "$target" "$file" "$target"
     else
       error_count=$((error_count + 1))
     fi
@@ -1863,8 +1815,8 @@ validate_migration() {
   local validation_errors=0
   local validation_warnings=0
 
-  # Validation 1: Check SynthesisFlow directory structure exists
-  echo "1. Checking SynthesisFlow directory structure..."
+  # Validation 1: Check AgenticDev directory structure exists
+  echo "1. Checking AgenticDev directory structure..."
   local required_dirs=("docs" "docs/specs" "docs/changes")
   local missing_dirs=0
 
@@ -2050,7 +2002,7 @@ Validation Report Summary
     echo "✅ VALIDATION PASSED"
     echo ""
     echo "All checks passed successfully!"
-    echo "  • SynthesisFlow directory structure exists"
+    echo "  • AgenticDev directory structure exists"
     echo "  • All discovered files accounted for ($discovered_count)"
     echo "  • File counts match expectations"
     echo "  • No broken links detected"
@@ -2098,7 +2050,7 @@ if [ "$DRY_RUN" = true ]; then
   echo "DRY RUN: Validation would execute here"
   echo ""
   echo "Would verify:"
-  echo "  1. SynthesisFlow directory structure exists (docs/, docs/specs/, docs/changes/)"
+  echo "  1. AgenticDev directory structure exists (docs/, docs/specs/, docs/changes/)"
   echo "  2. All source files are in target locations"
   echo "  3. File counts match (discovered: ${#DISCOVERED_FILES[@]}, to migrate: $((${#DISCOVERED_FILES[@]} - in_place_count)))"
   echo "  4. Link integrity (no broken links)"
@@ -2125,7 +2077,7 @@ echo ""
 echo "Next steps:"
 echo "  1. Review migrated files"
 echo "  2. Run doc-indexer to catalog documentation"
-echo "  3. Begin using SynthesisFlow workflow"
+echo "  3. Begin using AgenticDev workflow"
 echo ""
 
 # Display backup information if backup was created
