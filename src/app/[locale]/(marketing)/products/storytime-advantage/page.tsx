@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import Link from "next/link"
 import Hero from "@/components/layout/hero"
 import { getScopedI18n } from "@/locales/server"
 
@@ -148,18 +149,18 @@ export default async function StorytimeAdvantage() {
             <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>
             <p className="text-xl mb-8">{t("cta.description")}</p>
             <div className="flex justify-center gap-4">
-              <a
+              <Link
                 href="/contact"
                 className="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-lg font-bold transition-colors"
               >
                 {t("cta.buttons.joinWaitlist")}
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="bg-white hover:bg-sky-50 text-sky-800 px-8 py-3 rounded-lg font-bold transition-colors"
               >
                 {t("cta.buttons.learnMore")}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

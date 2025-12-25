@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { useState } from "react"
 import Hero from "@/components/layout/hero"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
@@ -166,7 +167,7 @@ export default function ReadingAdvantage() {
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-3">
-                        {feature.items.map((item, itemIndex) => (
+                        {feature.items.map((item) => (
                           <li key={item} className="flex items-start gap-3">
                             <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
                             <span className="text-gray-700 leading-relaxed">{item}</span>
@@ -433,7 +434,7 @@ export default function ReadingAdvantage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </a>
-              <a
+              <Link
                 href="/contact"
                 className="border-2 border-white hover:bg-white hover:text-sky-800 text-white px-10 py-4 rounded-xl font-bold transition-all duration-300 hover:shadow-modern hover:-translate-y-1 inline-flex items-center gap-3"
               >
@@ -441,7 +442,7 @@ export default function ReadingAdvantage() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

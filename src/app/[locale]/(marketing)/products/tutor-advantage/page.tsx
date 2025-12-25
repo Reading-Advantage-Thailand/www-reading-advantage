@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import Image from "next/image"
+import Link from "next/link"
 import Hero from "@/components/layout/hero"
 import { getScopedI18n } from "@/locales/server"
 
@@ -162,18 +163,18 @@ export default async function TutorAdvantage() {
             <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>
             <p className="text-xl mb-8">{t("cta.description")}</p>
             <div className="flex justify-center gap-4">
-              <a
+              <Link
                 href="/contact"
                 className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-lg font-bold transition-colors"
               >
                 {t("cta.buttons.register")}
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="bg-white hover:bg-emerald-50 text-emerald-800 px-8 py-3 rounded-lg font-bold transition-colors"
               >
                 {t("cta.buttons.apply")}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

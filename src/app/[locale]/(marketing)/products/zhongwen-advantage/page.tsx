@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import Image from "next/image"
+import Link from "next/link"
 import Hero from "@/components/layout/hero"
 
 export const metadata: Metadata = {
@@ -151,18 +152,18 @@ export default function ZhongwenAdvantage() {
             <h2 className="text-3xl font-bold mb-6">Be First to Experience Zhongwen Advantage</h2>
             <p className="text-xl mb-8">Join our waitlist for early access and exclusive updates</p>
             <div className="flex justify-center gap-4">
-              <a
+              <Link
                 href="/contact"
                 className="bg-fuchsia-400 hover:bg-fuchsia-500 text-white px-8 py-3 rounded-lg font-bold transition-colors"
               >
                 Join Waitlist
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="bg-white hover:bg-fuchsia-50 text-fuchsia-800 px-8 py-3 rounded-lg font-bold transition-colors"
               >
                 Learn More
-              </a>
+              </Link>
             </div>
           </div>
         </div>
