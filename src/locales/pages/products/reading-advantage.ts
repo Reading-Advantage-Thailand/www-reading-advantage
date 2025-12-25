@@ -2,7 +2,7 @@ export const en = {
     hero: {
         title: "AI-Powered Language Learning",
         subtitle: "Experience personalized extensive reading with advanced AI technology",
-        description: "Our AI-powered platform adapts to your learning journey, providing personalized content and interactive activities for optimal language acquisition.",
+        description: "Our AI-powered platform adapts to your learning journey, providing personalized content and interactive activities for optimal language acquisition. Starting May 2026, Reading Advantage will also offer a comprehensive Blended Learning model with teacher-led classes and student workbooks.",
     },
     keyFeatures: {
         heading: "Key Features",
@@ -133,7 +133,7 @@ export const th = {
     hero: {
         title: "การเรียนรู้ภาษาที่ขับเคลื่อนด้วย AI",
         subtitle: "สัมผัสการอ่านแบบกว้างขวางที่ปรับแต่งเฉพาะบุคคลด้วยเทคโนโลยี AI ที่ล้ำสมัย",
-        description: "แพลตฟอร์มของเราปรับให้เข้ากับการเรียนรู้ของคุณโดยเฉพาะ มอบเนื้อหาและกิจกรรมแบบอินเทอร์แอคทีฟเพื่อการพัฒนาทักษะภาษาอย่างมีประสิทธิภาพ",
+        description: "แพลตฟอร์มของเราปรับให้เข้ากับการเรียนรู้ของคุณโดยเฉพาะมอบเนื้อหาและกิจกรรมแบบอินเทอร์แอคทีฟเพื่อการพัฒนาทักษะภาษาอย่างมีประสิทธิภาพ ตั้งแต่เดือนพฤษภาคม 2026 Reading Advantage จะนำเสนอรูปแบบการเรียนแบบผสมผสาที่ครบถ้วนซึ่งรวมการสอนโดยครูและหนังสือนักเรียน",
     },
     keyFeatures: {
         heading: "คุณสมบัติเด่น",
@@ -264,7 +264,7 @@ export const zh = {
     hero: {
         title: "AI 驱动的语言学习",
         subtitle: "通过先进的 AI 技术体验个性化的广泛阅读",
-        description: "我们的 AI 驱动平台会根据您的学习旅程进行调整，提供个性化内容和互动活动，助力语言学习。",
+        description: "我们的 AI 驱动平台会根据您的学习旅程进行调整，提供个性化内容和互动活动，助力语言学习。2026年5月起，Reading Advantage 还将提供全面的混合学习模式，包括教师主导的课程和学生练习册。",
     },
     keyFeatures: {
         heading: "主要特点",
