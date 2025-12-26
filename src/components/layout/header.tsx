@@ -58,10 +58,10 @@ export function Header() {
 
   const renderMarketingCTA = (isMobile = false) => {
     return (
-      <div className={isMobile ? "border-t border-sky-400 pt-4 mt-4" : "hidden lg:flex items-center space-x-4"}>
+      <div className={isMobile ? "border-t border-white/20 pt-4 mt-4" : "hidden lg:flex items-center space-x-4"}>
         <Link
           href="/contact"
-          className="bg-sky-800 text-sky-50 px-4 py-2 rounded-lg hover:bg-sky-900 transition-colors"
+          className="bg-white text-slate-900 px-4 py-2 rounded-lg hover:bg-white/90 transition-colors font-medium"
         >
           {h("contactUs")}
         </Link>
@@ -70,21 +70,21 @@ export function Header() {
   };
 
   return (
-    <header className="bg-sky-500 text-sky-50 header-shadow fixed w-full top-0 z-50">
+    <header className="bg-gradient-to-r from-sky-500 via-orange-500 to-amber-500 text-white header-shadow fixed w-full top-0 z-50 backdrop-blur-md">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
           {/* Mobile menu button */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden text-sky-50 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-400">
+              <Button variant="ghost" size="icon" className="lg:hidden text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-sky-400">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">{h("openMenu")}</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="bg-sky-500 text-sky-50 border-sky-400">
+            <SheetContent side="left" className="bg-gradient-to-br from-amber-500 via-orange-500 to-sky-500 text-white border-white/20">
               <SheetHeader>
-                <SheetTitle className="text-sky-50">{h("navigationMenu")}</SheetTitle>
-                <SheetDescription className="text-sky-200">
+                <SheetTitle className="text-white">{h("navigationMenu")}</SheetTitle>
+                <SheetDescription className="text-white/80">
                   {h("navigationDescription")}
                 </SheetDescription>
               </SheetHeader>
@@ -94,7 +94,7 @@ export function Header() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={`text-lg px-3 py-2 rounded-lg hover:bg-sky-600 transition-colors ${pathname === link.href ? 'bg-sky-600' : ''
+                      className={`text-lg px-3 py-2 rounded-lg hover:bg-white/20 transition-colors ${pathname === link.href ? 'bg-white/20' : ''
                         }`}
                       onClick={() => setIsOpen(false)}
                     >
@@ -128,12 +128,12 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sky-50 hover:text-white transition-colors relative py-2 ${pathname === link.href ? 'font-medium' : ''
+                  className={`text-white/90 hover:text-white transition-colors relative py-2 ${pathname === link.href ? 'font-medium' : ''
                     }`}
                 >
                   {link.title}
                   {pathname === link.href && (
-                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full" />
+                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white/80 rounded-full" />
                   )}
                 </Link>
               );
