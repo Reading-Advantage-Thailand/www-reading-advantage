@@ -59,6 +59,13 @@ export default {
         "glass-gradient": "linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)",
         "card-gradient": "linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%)",
         "section-gradient": "linear-gradient(180deg, rgba(240, 249, 255, 1) 0%, rgba(224, 242, 254, 1) 100%)",
+        // Warm design gradients with sky blue brand accent
+        "hero-warm": "linear-gradient(135deg, #FFFBEB 0%, #FFEDD5 40%, #E0F2FE 100%)",
+        "warm-accent": "linear-gradient(135deg, #F59E0B 0%, #F97316 100%)",
+        "brand-accent": "linear-gradient(135deg, #38BDF8 0%, #0284C7 100%)",
+        "teal-modern": "linear-gradient(135deg, #14B8A6 0%, #06B6D4 100%)",
+        "soft-warm-to-sky": "linear-gradient(180deg, #FFFBEB 0%, #FFEDD5 50%, #E0F2FE 100%)",
+        "warm-innovation": "linear-gradient(180deg, #FFF7ED 0%, #E0F2FE 100%)",
       },
       boxShadow: {
         "modern": "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
@@ -73,10 +80,12 @@ export default {
       },
       animation: {
         "float": "float 6s ease-in-out infinite",
-        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "gradient": "gradient 8s ease infinite",
+        "gradient-x": "gradient-x 15s ease infinite",
         "slide-up": "slideUp 0.5s ease-out",
         "fade-in": "fadeIn 0.6s ease-out",
+        "bounce-slow": "bounce 3s infinite",
       },
       keyframes: {
         float: {
@@ -84,6 +93,10 @@ export default {
           "50%": { transform: "translateY(-20px)" },
         },
         gradient: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+        "gradient-x": {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
         },
