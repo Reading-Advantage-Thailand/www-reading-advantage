@@ -2,11 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Check } from 'lucide-react';
+import { Check, ArrowRight, Mail, Lightbulb, Rocket, BookOpen } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import Hero from '@/components/layout/hero';
 import { useScopedI18n } from '@/locales/client';
-import { motion } from 'framer-motion';
 
 export default function Home() {
     const t = useScopedI18n('pages.home');
@@ -19,7 +18,7 @@ export default function Home() {
                         <p className="text-xl mb-8">{t('hero.description')}</p>
                         <Link
                             href="/products"
-                            className="bg-sky-50 text-sky-800 px-8 py-3 rounded-lg font-semibold hover:bg-white transition duration-300 inline-block"
+                            className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-amber-600 hover:to-orange-600 transition duration-300 inline-block shadow-lg"
                         >
                             {t('hero.cta')}
                         </Link>
@@ -30,111 +29,65 @@ export default function Home() {
 
             {/* Mission & Vision */}
             <section className="modern-section py-20 relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-50/50 via-transparent to-blue-50/50" />
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-50/60 via-transparent to-sky-50/40" />
                 <div className="container mx-auto px-4 relative z-10">
-                    <motion.div 
-                        className="max-w-3xl mx-auto text-center"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.1 }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <h2 className="text-4xl font-bold mb-8 gradient-text">{t('mission.title')}</h2>
+                    <div className="max-w-3xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
+                        <h2 className="text-4xl font-bold mb-8 warm-text-gradient">{t('mission.title')}</h2>
                         <p className="text-xl text-gray-700 leading-relaxed">
                             {t('mission.description')}
                         </p>
-                    </motion.div>
+                    </div>
                 </div>
                 <div className="modern-divider my-16" />
             </section>
 
             {/* Company Overview */}
-            <section className="py-20 bg-gradient-to-br from-sky-700 via-sky-800 to-blue-900 text-sky-50 relative overflow-hidden">
+            <section className="py-20 bg-gradient-to-br from-amber-600 via-orange-600 to-sky-700 text-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-white/5 backdrop-blur-sm" />
                 <div className="container mx-auto px-4 relative z-10">
-                    <motion.div 
-                        className="max-w-4xl mx-auto text-center"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3 }}
-                    >
+                    <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
                         <h2 className="text-4xl font-bold mb-8">{t('overview.title')}</h2>
-                        <p className="text-xl leading-relaxed max-w-3xl mx-auto">
+                        <p className="text-xl leading-relaxed max-w-3xl mx-auto text-amber-50">
                             {t('overview.description')}
                         </p>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
             {/* Flagship Product */}
-            <section className="py-20 modern-section" id="products">
+            <section className="py-20 bg-white relative" id="products">
                 <div className="container mx-auto px-4">
-                    <motion.div 
-                        className="text-center mb-16"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <h2 className="text-4xl font-bold mb-4 gradient-text">{t('flagship.title')}</h2>
-                    </motion.div>
-                    <motion.div 
-                        className="max-w-5xl mx-auto"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: 0.1 }}
-                    >
-                        <Card className="modern-card border-0 shadow-modern-lg hover:shadow-glow transition-all duration-500">
+                    <div className="text-center mb-16 animate-in fade-in duration-700">
+                        <h2 className="text-4xl font-bold mb-4 warm-text-gradient">{t('flagship.title')}</h2>
+                    </div>
+                    <div className="max-w-6xl mx-auto">
+                        <Card className="warm-card border-0 shadow-modern-lg">
                             <CardContent className="p-10">
                                 <div className="grid md:grid-cols-2 gap-12 items-center">
                                     <div>
-                                        <h3 className="text-3xl font-bold mb-6 text-blue-800">{t('flagship.productTitle')}</h3>
-                                        <ul className="space-y-6">
-                                            <li className="flex items-start group">
-                                                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform">
-                                                    <Check className="w-5 h-5 text-white" />
-                                                </div>
-                                                <span className="text-lg text-gray-700">{t('flagship.benefits.0')}</span>
-                                            </li>
-                                            <li className="flex items-start group">
-                                                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform">
-                                                    <Check className="w-5 h-5 text-white" />
-                                                </div>
-                                                <span className="text-lg text-gray-700">{t('flagship.benefits.1')}</span>
-                                            </li>
-                                            <li className="flex items-start group">
-                                                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform">
-                                                    <Check className="w-5 h-5 text-white" />
-                                                </div>
-                                                <span className="text-lg text-gray-700">{t('flagship.benefits.2')}</span>
-                                            </li>
-                                            <li className="flex items-start group">
-                                                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform">
-                                                    <Check className="w-5 h-5 text-white" />
-                                                </div>
-                                                <span className="text-lg text-gray-700">{t('flagship.benefits.3')}</span>
-                                            </li>
+                                        <h3 className="text-3xl font-bold mb-6 text-amber-700">{t('flagship.productTitle')}</h3>
+                                        <ul className="space-y-4">
+                                            {Array.from({ length: 4 }, (_, i) => (
+                                                <li key={i} className="flex items-start group p-3 rounded-xl hover:bg-amber-50 transition-all duration-300 animate-in fade-in slide-in-from-left-4 duration-500" style={{ animationDelay: `${i * 100}ms` }}>
+                                                    <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                                                        <Check className="w-5 h-5 text-white" />
+                                                    </div>
+                                                    <span className="text-lg text-gray-700">{t(`flagship.benefits.${i}`)}</span>
+                                                </li>
+                                            ))}
                                         </ul>
                                         <div className="mt-10">
                                             <Link
                                                 href="/reading-advantage"
-                                                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-modern hover:shadow-glow hover:-translate-y-1 font-semibold text-lg"
+                                                className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-8 py-4 rounded-xl hover:from-amber-600 hover:to-orange-600 transition-all duration-300 shadow-modern hover:shadow-xl hover:-translate-y-1 font-semibold text-lg"
                                             >
                                                 {t('flagship.cta')}
-                                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                                </svg>
+                                                <ArrowRight className="w-5 h-5" />
                                             </Link>
                                         </div>
                                     </div>
-                                    <motion.div 
-                                        className="relative aspect-[4/3] w-full"
-                                        whileHover={{ scale: 1.02 }}
-                                        transition={{ duration: 0.3 }}
-                                    >
-                                        <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-sky-600/20 rounded-2xl blur-xl" />
+                                    <div className="relative aspect-[4/3] w-full animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-amber-200/50 to-sky-200/50 rounded-2xl blur-xl" />
                                         <div className="relative w-full h-full">
                                             <Image
                                                 src="/images/reading-advantage-demo.png"
@@ -145,115 +98,92 @@ export default function Home() {
                                                 priority
                                             />
                                         </div>
-                                    </motion.div>
+                                    </div>
                                 </div>
                             </CardContent>
                         </Card>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
             {/* Innovation & Technology */}
-            <section className="py-20 bg-gradient-to-br from-sky-600 via-blue-700 to-sky-800 text-sky-50 relative overflow-hidden">
-                <div className="absolute inset-0 bg-white/5 backdrop-blur-sm" />
+            <section className="py-20 bg-gradient-to-br from-amber-50 via-white to-sky-100 relative overflow-hidden">
+                {/* Decorative blobs */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-sky-200/20 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-80 h-80 bg-amber-200/20 rounded-full blur-3xl" />
+
                 <div className="container mx-auto px-4 relative z-10">
-                    <motion.div 
-                        className="text-center mb-16"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <h2 className="text-4xl font-bold mb-4">{t('innovation.title')}</h2>
-                    </motion.div>
-                    <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div className="text-center mb-16 animate-in fade-in duration-700">
+                        <h2 className="text-4xl font-bold mb-4 brand-text-gradient">{t('innovation.title')}</h2>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                         {[
                             {
-                                icon: (
-                                    <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                                    </svg>
-                                ),
+                                icon: <Lightbulb className="w-8 h-8" />,
                                 title: t('innovation.features.0.title'),
                                 description: t('innovation.features.0.description'),
-                                delay: 0
                             },
                             {
-                                icon: (
-                                    <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                                    </svg>
-                                ),
+                                icon: <Rocket className="w-8 h-8" />,
                                 title: t('innovation.features.1.title'),
                                 description: t('innovation.features.1.description'),
-                                delay: 0.1
                             },
                             {
-                                icon: (
-                                    <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                                    </svg>
-                                ),
+                                icon: <BookOpen className="w-8 h-8" />,
                                 title: t('innovation.features.2.title'),
                                 description: t('innovation.features.2.description'),
-                                delay: 0.2
                             }
                         ].map((feature, index) => (
-                            <motion.div
+                            <div
                                 key={index}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.1 }}
-                                transition={{ duration: 0.3, delay: feature.delay * 0.5 }}
+                                className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-sky-100 hover:border-sky-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl animate-in fade-in slide-in-from-bottom-8 duration-700"
+                                style={{ animationDelay: `${index * 150}ms` }}
                             >
-                                <Card className="bg-sky-700/95 backdrop-blur-sm border border-sky-500/50 h-full group hover:scale-105 transition-all duration-300 shadow-modern hover:shadow-modern-lg">
-                                    <CardContent className="p-8 text-center h-full flex flex-col justify-between">
-                                        <div>
-                                            <div className="text-sky-300 mb-6 flex justify-center group-hover:scale-110 transition-transform">
-                                                {feature.icon}
-                                            </div>
-                                            <h3 className="text-xl font-bold mb-4 text-white">{feature.title}</h3>
-                                            <p className="text-sky-100 leading-relaxed">{feature.description}</p>
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            </motion.div>
+                                <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-sky-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg text-white">
+                                    {feature.icon}
+                                </div>
+                                <h3 className="text-xl font-bold text-slate-900 mb-4">{feature.title}</h3>
+                                <p className="text-slate-600 leading-relaxed">{feature.description}</p>
+                            </div>
                         ))}
                     </div>
                 </div>
             </section>
 
             {/* Impact Statement */}
-            <section className="py-20 modern-section relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-white to-blue-50" />
-                <div className="container mx-auto px-4 relative z-10">
-                    <motion.div 
-                        className="max-w-4xl mx-auto text-center"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <h2 className="text-4xl font-bold mb-8 gradient-text">{t('impact.title')}</h2>
-                        <p className="text-xl text-gray-700 leading-relaxed mb-12">
+            <section className="py-24 bg-gradient-to-br from-amber-50 via-white to-sky-50 relative">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 warm-text-gradient">
+                            {t('impact.title')}
+                        </h2>
+                        <p className="text-xl text-slate-600 leading-relaxed mb-12">
                             {t('impact.description')}
                         </p>
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            transition={{ duration: 0.2 }}
+                        <Link
+                            href="mailto:support@reading-advantage.com?subject=Demo Request - Reading Advantage Thailand&body=Hi team,%0A%0AI'm interested in scheduling a demo of your educational platforms. Could you please provide more information about your programs and available demo times?%0A%0AI'm particularly interested in:%0A- [Please specify which program(s) you're interested in]%0A- [Your school/organization name if applicable]%0A- [Preferred demo format: in-person, virtual, or self-guided]%0A%0ALooking forward to hearing from you!%0A%0ABest regards"
+                            className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-12 py-5 rounded-2xl hover:from-amber-600 hover:to-orange-600 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 font-bold text-xl animate-in fade-in duration-700 delay-300 hover:scale-105"
                         >
-                            <Link
-                                href="mailto:support@reading-advantage.com?subject=Demo Request - Reading Advantage Thailand&body=Hi team,%0A%0AI'm interested in scheduling a demo of your educational platforms. Could you please provide more information about your programs and available demo times?%0A%0AI'm particularly interested in:%0A- [Please specify which program(s) you're interested in]%0A- [Your school/organization name if applicable]%0A- [Preferred demo format: in-person, virtual, or self-guided]%0A%0ALooking forward to hearing from you!%0A%0ABest regards"
-                                className="inline-flex items-center gap-3 bg-gradient-to-r from-sky-600 to-blue-700 text-white px-10 py-4 rounded-xl hover:from-sky-700 hover:to-blue-800 transition-all duration-300 shadow-modern hover:shadow-glow hover:-translate-y-1 font-semibold text-lg"
-                            >
-                                {t('impact.cta')}
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                </svg>
-                            </Link>
-                        </motion.div>
-                    </motion.div>
+                            <Mail className="w-6 h-6" />
+                            {t('impact.cta')}
+                        </Link>
+
+                        {/* Trust indicators */}
+                        <div className="mt-16 grid grid-cols-3 gap-8 animate-in fade-in duration-700 delay-500">
+                            <div className="text-center">
+                                <div className="text-4xl font-bold text-amber-600">100+</div>
+                                <div className="text-slate-600">Schools</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-4xl font-bold text-sky-600">50K+</div>
+                                <div className="text-slate-600">Students</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-4xl font-bold text-rose-600">40%</div>
+                                <div className="text-slate-600">Improvement</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>

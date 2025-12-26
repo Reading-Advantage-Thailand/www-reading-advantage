@@ -104,3 +104,32 @@ main {
 .modern-divider {
   @apply h-px bg-gradient-to-r from-transparent via-sky-300 to-transparent;
 }
+
+/* Warm design utilities with sky blue brand accent */
+.warm-gradient-hero {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FFEDD5 40%, #E0F2FE 100%);
+}
+
+.warm-accent-gradient {
+  background: linear-gradient(135deg, #F59E0B 0%, #F97316 100%);
+}
+
+.brand-accent-gradient {
+  background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%);
+}
+
+.warm-card {
+  @apply bg-white/80 backdrop-blur-sm border border-amber-100 hover:border-sky-200 rounded-2xl shadow-modern hover:shadow-modern-lg transition-all duration-300 hover:-translate-y-1;
+}
+
+.warm-text-gradient {
+  @apply bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent;
+}
+
+.brand-text-gradient {
+  @apply bg-gradient-to-r from-sky-500 to-sky-600 bg-clip-text text-transparent;
+}
+
+.warm-section {
+  @apply bg-gradient-to-br from-amber-50 via-white to-sky-50;
+}
