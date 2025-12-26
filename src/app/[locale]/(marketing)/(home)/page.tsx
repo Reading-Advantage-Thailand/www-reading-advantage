@@ -3,12 +3,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Check, ArrowRight, Mail, Lightbulb, Rocket, BookOpen } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
 import Hero from '@/components/layout/hero';
 import { useScopedI18n } from '@/locales/client';
 
 export default function Home() {
     const t = useScopedI18n('pages.home');
+    const benefits = [
+        t('flagship.benefits.0'),
+        t('flagship.benefits.1'),
+        t('flagship.benefits.2'),
+        t('flagship.benefits.3'),
+    ];
     return (
         <main>
             <Hero
@@ -55,53 +60,49 @@ export default function Home() {
             </section>
 
             {/* Flagship Product */}
-            <section className="py-20 bg-white relative" id="products">
+            <section className="py-20 bg-gradient-to-br from-amber-50 via-white to-sky-50 relative" id="products">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16 animate-in fade-in duration-700">
                         <h2 className="text-4xl font-bold mb-4 warm-text-gradient">{t('flagship.title')}</h2>
                     </div>
                     <div className="max-w-6xl mx-auto">
-                        <Card className="warm-card border-0 shadow-modern-lg">
-                            <CardContent className="p-10">
-                                <div className="grid md:grid-cols-2 gap-12 items-center">
-                                    <div>
-                                        <h3 className="text-3xl font-bold mb-6 text-amber-700">{t('flagship.productTitle')}</h3>
-                                        <ul className="space-y-4">
-                                            {Array.from({ length: 4 }, (_, i) => (
-                                                <li key={i} className="flex items-start group p-3 rounded-xl hover:bg-amber-50 transition-all duration-300 animate-in fade-in slide-in-from-left-4 duration-500" style={{ animationDelay: `${i * 100}ms` }}>
-                                                    <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
-                                                        <Check className="w-5 h-5 text-white" />
-                                                    </div>
-                                                    <span className="text-lg text-gray-700">{t(`flagship.benefits.${i}`)}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                        <div className="mt-10">
-                                            <Link
-                                                href="/reading-advantage"
-                                                className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-8 py-4 rounded-xl hover:from-amber-600 hover:to-orange-600 transition-all duration-300 shadow-modern hover:shadow-xl hover:-translate-y-1 font-semibold text-lg"
-                                            >
-                                                {t('flagship.cta')}
-                                                <ArrowRight className="w-5 h-5" />
-                                            </Link>
-                                        </div>
-                                    </div>
-                                    <div className="relative aspect-[4/3] w-full animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
-                                        <div className="absolute inset-0 bg-gradient-to-br from-amber-200/50 to-sky-200/50 rounded-2xl blur-xl" />
-                                        <div className="relative w-full h-full">
-                                            <Image
-                                                src="/images/reading-advantage-demo.png"
-                                                alt="Reading Advantage Platform Demo"
-                                                fill
-                                                className="rounded-2xl shadow-modern-lg object-cover"
-                                                sizes="(min-width: 768px) 50vw, 100vw"
-                                                priority
-                                            />
-                                        </div>
+                        <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-modern-lg overflow-hidden">
+                            <div className="grid md:grid-cols-2 gap-0">
+                                <div className="p-12">
+                                    <h3 className="text-3xl font-bold mb-6 text-amber-700">{t('flagship.productTitle')}</h3>
+                                    <ul className="space-y-4">
+                                        {benefits.map((benefit, i) => (
+                                            <li key={i} className="flex items-start group p-3 rounded-xl hover:bg-amber-50 transition-all duration-300 animate-in fade-in slide-in-from-left-4 duration-500" style={{ animationDelay: `${i * 100}ms` }}>
+                                                <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                                                    <Check className="w-5 h-5 text-white" />
+                                                </div>
+                                                <span className="text-lg text-gray-700">{benefit}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <div className="mt-10">
+                                        <Link
+                                            href="/reading-advantage"
+                                            className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-8 py-4 rounded-xl hover:from-amber-600 hover:to-orange-600 transition-all duration-300 shadow-modern hover:shadow-xl hover:-translate-y-1 font-semibold text-lg"
+                                        >
+                                            {t('flagship.cta')}
+                                            <ArrowRight className="w-5 h-5" />
+                                        </Link>
                                     </div>
                                 </div>
-                            </CardContent>
-                        </Card>
+                                <div className="relative aspect-[4/3] w-full animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-amber-200/50 to-sky-200/50" />
+                                    <Image
+                                        src="/images/reading-advantage-demo.png"
+                                        alt="Reading Advantage Platform Demo"
+                                        fill
+                                        className="relative z-10 object-cover"
+                                        sizes="(min-width: 768px) 50vw, 100vw"
+                                        priority
+                                    />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -136,7 +137,7 @@ export default function Home() {
                         ].map((feature, index) => (
                             <div
                                 key={index}
-                                className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-sky-100 hover:border-sky-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl animate-in fade-in slide-in-from-bottom-8 duration-700"
+                                className="group p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl animate-in fade-in slide-in-from-bottom-8 duration-700"
                                 style={{ animationDelay: `${index * 150}ms` }}
                             >
                                 <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-sky-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg text-white">
