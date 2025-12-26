@@ -70,7 +70,7 @@ export function Header() {
   };
 
   return (
-    <header className="bg-gradient-to-r from-amber-500 via-orange-500 to-sky-500 text-white header-shadow fixed w-full top-0 z-50 backdrop-blur-md">
+    <header className="bg-gradient-to-r from-sky-500 via-orange-500 to-amber-500 text-white header-shadow fixed w-full top-0 z-50 backdrop-blur-md">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
           {/* Mobile menu button */}
