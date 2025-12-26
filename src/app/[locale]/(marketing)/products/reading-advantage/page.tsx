@@ -239,7 +239,7 @@ export default function ReadingAdvantage() {
                 <div className="relative aspect-video rounded-t-3xl overflow-hidden">
                   <iframe
                     className="w-full h-full"
-                    src="https://www.youtube.com/embed/LH5qgpSYoqs"
+                    src="https://www.youtube.com/embed/H-2YCFvMNns"
                     title="Reading Advantage Demo"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
