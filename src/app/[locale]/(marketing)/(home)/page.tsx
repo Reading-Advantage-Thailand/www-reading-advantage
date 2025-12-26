@@ -63,14 +63,16 @@ export default function Home() {
                 {/* Floating product preview */}
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
                     <div className="relative w-[600px] h-[500px]">
-                        <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-sky-400/20 rounded-[40px] blur-2xl" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-sky-400/20 rounded-[40px] blur-2xl z-0" />
                         <Image
-                            src="/images/reading-advantage-demo.png"
+                            src="/images/students_at_computers.jpg"
                             alt="Reading Advantage Platform"
                             fill
                             className="relative z-10 object-cover rounded-[32px] shadow-2xl"
                             priority
                         />
+                        {/* Gradient fade ON TOP of image: 50% white on left, 0% on right */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent rounded-[40px] z-20" />
                     </div>
                 </div>
             </section>
@@ -189,15 +191,14 @@ export default function Home() {
                                 </Link>
                             </div>
 
-                            {/* Image side with gradient overlay */}
-                            <div className="relative min-h-[500px]">
-                                <div className="absolute inset-0 bg-gradient-to-br from-sky-500/20 to-amber-500/20" />
+                            {/* Image side with background matching card */}
+                            <div className="relative min-h-[500px] bg-gradient-to-br from-white to-amber-50 flex items-center justify-center p-8">
                                 <Image
-                                    src="/images/students-at-computers.png"
+                                    src="/images/reading-advantage-demo.png"
                                     alt="Reading Advantage Platform"
-                                    fill
-                                    className="relative z-10 object-cover"
-                                    sizes="(min-width: 1024px) 50vw, 100vw"
+                                    width={600}
+                                    height={500}
+                                    className="relative z-10 object-contain"
                                     priority
                                 />
                             </div>
