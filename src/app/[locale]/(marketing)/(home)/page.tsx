@@ -65,7 +65,7 @@ export default function Home() {
                     <div className="relative w-[600px] h-[500px]">
                         <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-sky-400/20 rounded-[40px] blur-2xl z-0" />
                         <Image
-                            src="/images/students_at_computers.jpg"
+                            src="/images/students-at-board.png"
                             alt="Reading Advantage Platform"
                             fill
                             className="relative z-10 object-cover rounded-[32px] shadow-2xl"
@@ -194,7 +194,7 @@ export default function Home() {
                             {/* Image side with background matching card */}
                             <div className="relative min-h-[500px] bg-gradient-to-br from-white to-amber-50 flex items-center justify-center p-8">
                                 <Image
-                                    src="/images/reading-advantage-demo.png"
+                                    src="/images/students-with-app.png"
                                     alt="Reading Advantage Platform"
                                     width={600}
                                     height={500}
