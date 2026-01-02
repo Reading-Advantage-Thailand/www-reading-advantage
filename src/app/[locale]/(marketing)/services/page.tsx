@@ -7,14 +7,18 @@ import { useScopedI18n } from "@/locales/client";
 
 export default function Services() {
   const t = useScopedI18n("pages.services");
-  const serviceIndexes = [0, 1, 2] as const;
-  const featureIndexes = [0, 1, 2, 3, 4, 5] as const;
-  const services = serviceIndexes.map((serviceIndex) => ({
+  const serviceConfigs = [
+    { featureIndexes: [0, 1, 2, 3, 4, 5] },
+    { featureIndexes: [0, 1, 2, 3, 4, 5] },
+    { featureIndexes: [0, 1, 2, 3, 4, 5] },
+    { featureIndexes: [0, 1, 2, 3] },
+  ] as const;
+  const services = serviceConfigs.map((serviceConfig, serviceIndex) => ({
     name: t(`services.${serviceIndex}.name`),
     status: t(`services.${serviceIndex}.status`),
     statusBadge: t(`services.${serviceIndex}.statusBadge`),
     description: t(`services.${serviceIndex}.description`),
-    features: featureIndexes.map((featureIndex) =>
+    features: serviceConfig.featureIndexes.map((featureIndex) =>
       t(`services.${serviceIndex}.features.${featureIndex}`)
     ),
     cta: t(`services.${serviceIndex}.cta`),
@@ -87,7 +91,7 @@ export default function Services() {
                       {service.status}
                     </div>
 
-                    <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-4 whitespace-pre-line">
                       {service.name}
                     </h3>
 
