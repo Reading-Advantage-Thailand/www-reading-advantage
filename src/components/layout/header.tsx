@@ -32,12 +32,20 @@ export function Header() {
       href: "/products"
     },
     {
+      title: n("services"),
+      href: "/services"
+    },
+    {
       title: n("features"),
       href: "/features"
     },
     {
       title: n("pricing"),
       href: "/pricing"
+    },
+    {
+      title: n("caseStudies"),
+      href: "/case-studies"
     },
     {
       title: n("blog"),

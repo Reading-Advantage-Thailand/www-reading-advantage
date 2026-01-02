@@ -22,11 +22,11 @@ export const en = {
         vision: {
             title: "Our Vision",
             list: {
-                0: "Become the leading educational technology provider in Southeast Asia",
-                1: "Create a comprehensive educational ecosystem serving all learners",
-                2: "Bridge educational gaps through innovative technology",
-                3: "Set new standards for AI-enhanced learning",
-                4: "Drive Thailand's educational development and digital transformation",
+                0: "Innovative edtech solutions for modern Thai classrooms",
+                1: "Empower Thai teachers to deliver native-standard English",
+                2: "Bridge educational gaps through AI-powered tools and rigorous protocols",
+                3: "Set new standards for blended learning in Thailand",
+                4: "Evidence-based approaches grounded in extensive reading research",
             },
         },
         technology: {
@@ -71,6 +71,32 @@ export const en = {
             description:
                 "Our methods are grounded in extensive research on language acquisition, AI in education, and learning science. We continuously evaluate and improve our approaches based on the latest academic findings and real-world results.",
         },
+        bigFour: {
+            title: "The Big 4 Quality Protocol",
+            description: "The System is the Expert: Delivering international results through AI and rigorous fidelity protocols.",
+            list: {
+                0: {
+                    title: "Uninterrupted Reading",
+                    description: "Consistent extensive reading sessions without disruptions for maximum language exposure",
+                },
+                1: {
+                    title: "Student Agency",
+                    description: "Students choose articles that match their interests, driving intrinsic motivation",
+                },
+                2: {
+                    title: "Data-Driven Consensus",
+                    description: "Regular progress reviews based on comprehensive data from student performance",
+                },
+                3: {
+                    title: "Workbook-First AI",
+                    description: "Physical workbooks provide structure while AI adapts to individual learning paths",
+                },
+            },
+        },
+        positioning: {
+            title: "Our Approach",
+            description: "We provide innovative edtech solutions designed specifically for Thai private schools. Our platform addresses real classroom challenges: teacher shortages, large classes (30+ students), and limited device availability. Through our Blended Learning model and comprehensive teacher support, we empower Thai educators to deliver exceptional English instruction.",
+        },
         cta: {
             title: "Ready to transform education?",
             description: "Join us in revolutionizing learning in Southeast Asia",
@@ -103,11 +129,11 @@ export const th = {
         vision: {
             title: "วิสัยทัศน์ของเรา",
             list: {
-                0: "กลายเป็นผู้นำด้านเทคโนโลยีการศึกษาในเอเชียตะวันออกเฉียงใต้",
-                1: "สร้างระบบนิเวศทางการศึกษาที่ครบวงจรสำหรับนักเรียนทุกคน",
-                2: "เชื่อมช่องว่างทางการศึกษาผ่านเทคโนโลยีนวัตกรรม",
-                3: "กำหนดมาตรฐานใหม่สำหรับการเรียนรู้ที่ขับเคลื่อนด้วย AI",
-                4: "ขับเคลื่อนการพัฒนาการศึกษาของไทยและการเปลี่ยนแปลงดิจิทัล",
+                0: "โซลูชันเทคโนโลยีการศึกษาที่นวัตกรรมสำหรับห้องเรียนไทยยุคใหม่",
+                1: "มอบพลังให้ครูไทยสามารถสอนภาษาอังกฤษในระดับมาตรฐานเนทีฟได้",
+                2: "เชื่อมช่องว่างทางการศึกษาด้วยเครื่องมือ AI และโปรโตคอลที่เข้มงวด",
+                3: "กำหนดมาตรฐานใหม่สำหรับการเรียนแบบผสมผสานในประเทศไทย",
+                4: "แนวทางที่อิงบนหลักฐานและมีรากฐานจากงานวิจัยการอ่านแบบกว้างขวาง",
             },
         },
         technology: {
@@ -152,6 +178,32 @@ export const th = {
             description:
                 "วิธีการของเรามีรากฐานมาจากงานวิจัยที่กว้างขวางในด้านการเรียนรู้ภาษา, AI ในการศึกษา, และวิทยาศาสตร์การเรียนรู้ เราประเมินและปรับปรุงแนวทางของเราอย่างต่อเนื่องตามผลการวิจัยล่าสุดและผลลัพธ์จากโลกแห่งความเป็นจริง",
         },
+        bigFour: {
+            title: "โปรโตคอลคุณภาพ Big 4",
+            description: "ระบบคือผู้เชี่ยวชาญ: ส่งมอบผลลัพธ์ระดับสากลผ่าน AI และโปรโตคอลความเที่ยงตรงที่เข้มงวด",
+            list: {
+                0: {
+                    title: "การอ่านอย่างต่อเนื่อง",
+                    description: "เซสชันการอ่านแบบกว้างขวางอย่างสม่ำเสมอโดยไม่มีการขัดจังหวะเพื่อการสัมผัสภาษาสูงสุด",
+                },
+                1: {
+                    title: "อำนาจของนักเรียน",
+                    description: "นักเรียนเลือกบทความที่ตรงกับความสนใจของตน ซึ่งสร้างแรงจูงใจจากภายใน",
+                },
+                2: {
+                    title: "ความเห็นพ้องโดยอาศัยข้อมูล",
+                    description: "การทบทวนความก้าวหน้าอย่างสม่ำเสมอโดยอาศัยข้อมูลครบถ้วนจากผลการเรียนของนักเรียน",
+                },
+                3: {
+                    title: "AI ที่เน้นหนังสือแบบฝึกหัด",
+                    description: "หนังสือแบบฝึกหัดทางกายภาพให้โครงสร้างในขณะที่ AI ปรับให้เข้ากับเส้นทางการเรียนรู้ของแต่ละบุคคล",
+                },
+            },
+        },
+        positioning: {
+            title: "แนวทางของเรา",
+            description: "เรามอบโซลูชันเทคโนโลยีการศึกษาที่นวัตกรรมซึ่งออกแบบมาโดยเฉพาะสำหรับโรงเรียนเอกชนไทย แพลตฟอร์มของเราแก้ไขความท้าทายจริงในห้องเรียน: การขาดแคลนครู ห้องเรียนขนาดใหญ่ (30+ คน) และอุปกรณ์จำกัด ผ่านรูปแบบการเรียนแบบผสมผสานและการสนับสนุนครูอย่างครบถ้วน เรามอบพลังให้ครูไทยสามารถสอนภาษาอังกฤษได้อย่างยอดเยี่ยม",
+        },
         cta: {
             title: "พร้อมที่จะปฏิวัติการศึกษาหรือยัง?",
             description: "เข้าร่วมกับเราในการปฏิวัติการเรียนรู้ในเอเชียตะวันออกเฉียงใต้",
@@ -184,11 +236,11 @@ export const zh = {
         vision: {
             title: "我们的愿景",
             list: {
-                0: "成为东南亚领先的教育技术提供商",
-                1: "创建一个服务所有学习者的综合教育生态系统",
-                2: "通过创新技术弥合教育差距",
-                3: "为AI增强学习设定新标准",
-                4: "推动泰国教育发展与数字化转型",
+                0: "为现代泰国课堂提供创新的教育技术解决方案",
+                1: "赋能泰国教师提供母语标准的英语教学",
+                2: "通过AI工具和严格的协议弥合教育差距",
+                3: "为泰国混合学习设定新标准",
+                4: "基于泛读研究的循证方法",
             },
         },
         technology: {
@@ -232,6 +284,32 @@ export const zh = {
             title: "学术研究基础",
             description:
                 "我们的教学方法基于广泛的语言习得、AI教育和学习科学研究。我们不断评估并根据最新的学术发现和实际效果改进方法。",
+        },
+        bigFour: {
+            title: "Big 4 质量协议",
+            description: "系统即专家：通过AI和严格的忠实度协议交付国际级结果。",
+            list: {
+                0: {
+                    title: "不间断阅读",
+                    description: "持续的泛读会话，无中断，实现最大语言接触",
+                },
+                1: {
+                    title: "学生能动性",
+                    description: "学生选择符合自己兴趣的文章，驱动内在动机",
+                },
+                2: {
+                    title: "数据驱动共识",
+                    description: "基于学生表现的综合数据定期审查进度",
+                },
+                3: {
+                    title: "练习册优先的AI",
+                    description: "实体练习册提供结构，AI适应个性化学习路径",
+                },
+            },
+        },
+        positioning: {
+            title: "我们的方法",
+            description: "我们为泰国私立学校提供专门设计的创新教育技术解决方案。我们的平台应对真实的课堂挑战：教师短缺、大班额（30+学生）和设备有限。通过我们的混合学习模式和全面的教师支持，我们赋能泰国教育工作者提供卓越的英语教学。",
         },
         cta: {
             title: "准备好改变教育了吗？",

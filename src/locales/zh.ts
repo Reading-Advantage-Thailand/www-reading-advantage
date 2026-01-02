@@ -3,6 +3,10 @@ import { zh as aboutPage } from "./pages/about";
 import { zh as homePage } from "./pages/home";
 import { zh as contactPage } from "./pages/contact";
 import { zh as featurePage } from "./pages/feature";
+import { zh as caseStudiesPage } from "./pages/case-studies";
+import { zh as blendedLearningPage } from "./pages/blended-learning";
+import { zh as managedServicePage } from "./pages/managed-service";
+import { zh as servicesPage } from "./pages/services";
 import { zh as productsOverview } from "./pages/products/overview";
 import { zh as codecampPage } from "./pages/products/codecamp-advantage";
 import { zh as mathPage } from "./pages/products/math-advantage";
@@ -27,12 +31,15 @@ import { zh as b2c } from './components/products/b2c-solutions';
 import { zh as tutorAdvantage } from './components/products/tutor-advantage';
 
 export default {
-    footer: footer,
     pages: {
         about: aboutPage,
         home: homePage,
         contact: contactPage,
         feature: featurePage,
+        caseStudies: caseStudiesPage,
+        services: servicesPage,
+        blendedLearning: blendedLearningPage,
+        managedService: managedServicePage,
         pricing: pricingPage,
         products: {
             overview: productsOverview,
@@ -61,6 +68,6 @@ export default {
             footer,
             header,
             navigation,
-        }
+        },
     }
-} as const  
+} as const;  

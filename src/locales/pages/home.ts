@@ -19,8 +19,8 @@ export const en = {
         title: "Experience the Advantage",
         productTitle: "Reading Advantage",
         benefits: {
-            0: "Boost reading comprehension with twice-weekly extensive reading backed by research showing up to 40% gains over traditional English classes, powered by 10,000 engaging articles.",
-            1: "Eliminate weekly lesson planning by letting students drive extensive reading sessions, while comprehensive reports keep you on top of every learner’s progress.",
+            0: "Boost reading comprehension with twice-weekly extensive reading backed by Aka (2019) research. Studies show extensive reading outperforms grammar instruction (~+9.5 points on reading tests).",
+            1: "Eliminate weekly lesson planning by letting students drive extensive reading sessions, while comprehensive reports keep you on top of every learner's progress.",
             2: "Track reading growth with dashboards that clearly surface comprehension, vocabulary, and fluency trends for every class and learner.",
             3: "Keep readers motivated with student-choice activities and immediate comprehension feedback during every session.",
         },
@@ -75,7 +75,7 @@ export const th = {
         title: "สัมผัสข้อได้เปรียบ",
         productTitle: "Reading Advantage",
         benefits: {
-            0: "เพิ่มความเข้าใจการอ่านด้วยการอ่านกว้างสัปดาห์ละสองครั้งที่มีงานวิจัยรองรับว่าช่วยให้ผลการเรียนสูงกว่าการสอนภาษาอังกฤษแบบเดิมถึง 40% พร้อมคลังบทความน่าสนใจกว่า 10,000 ชิ้น",
+            0: "เพิ่มความเข้าใจการอ่านด้วยการอ่านกว้างสัปดาห์ละสองครั้งที่มีงานวิจัยรองรับจาก Aka (2019) งานวิจัยแสดงว่าการอ่านกว้างให้ผลดีกว่าการสอนไวยากรณ์ (~+9.5 คะแนนในการทดสอบการอ่าน)",
             1: "ลดภาระการวางแผนบทเรียนรายสัปดาห์ด้วยการให้นักเรียนขับเคลื่อนการอ่านกว้างเอง พร้อมรายงานครอบคลุมที่ทำให้คุณเห็นความก้าวหน้าของทุกคน",
             2: "ติดตามการเติบโตด้านการอ่านด้วยแดชบอร์ดที่แสดงแนวโน้มความเข้าใจ คำศัพท์ และความคล่องของทุกห้องและทุกคนอย่างชัดเจน",
             3: "รักษาแรงจูงใจของผู้เรียนด้วยกิจกรรมที่เลือกเองและข้อเสนอแนะความเข้าใจแบบทันทีในทุกครั้ง",
@@ -131,7 +131,7 @@ export const zh = {
         title: "体验优势",
         productTitle: "Reading Advantage",
         benefits: {
-            0: "每周两次的泛读实践有研究支持，可比传统英语课堂提升成绩高达40%，并由一万篇精彩文章驱动",
+            0: "每周两次的泛读实践有Aka (2019)研究支持。研究显示泛读比语法教学效果更好（阅读测试分数提升约+9.5分）",
             1: "让学生主导每次泛读活动，不再需要每周备课，并通过全面报告掌握每位学习者的进度",
             2: "利用仪表板清晰呈现每个班级和学生的理解、词汇与流利度趋势，追踪阅读成长",
             3: "通过学生自主选择的活动与即时理解反馈，在每次练习中保持阅读动力",
