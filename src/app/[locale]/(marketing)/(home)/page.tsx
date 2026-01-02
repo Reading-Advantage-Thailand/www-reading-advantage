@@ -122,22 +122,14 @@ export default function Home() {
                             <div className="relative">
                                 <div className="absolute inset-0 bg-white/20 rounded-3xl blur-3xl -translate-y-4 translate-x-4" />
                                 <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
-                                    <div className="grid grid-cols-2 gap-6">
+                                    <div className="grid grid-cols-1 gap-6">
                                         <div className="text-center">
-                                            <div className="text-5xl font-bold text-white mb-2">100+</div>
-                                            <div className="text-amber-100 text-lg">Schools</div>
+                                            <div className="text-4xl font-bold text-white mb-2">10,000+</div>
+                                            <div className="text-amber-100 text-lg">AI-Curated Articles Across 12 CEFR Levels</div>
                                         </div>
                                         <div className="text-center">
-                                            <div className="text-5xl font-bold text-white mb-2">50K+</div>
-                                            <div className="text-amber-100 text-lg">Students</div>
-                                        </div>
-                                        <div className="text-center">
-                                            <div className="text-5xl font-bold text-white mb-2">40%</div>
-                                            <div className="text-amber-100 text-lg">Gains</div>
-                                        </div>
-                                        <div className="text-center">
-                                            <div className="text-5xl font-bold text-white mb-2">10K+</div>
-                                            <div className="text-amber-100 text-lg">Articles</div>
+                                            <div className="text-3xl font-bold text-white mb-2">Evidence-Backed Gains</div>
+                                            <div className="text-amber-100 text-sm">Aka 2019 Research: +9.5 points over grammar instruction</div>
                                         </div>
                                     </div>
                                 </div>
@@ -254,6 +246,115 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* Big 4 Quality Protocol - New Section */}
+            <section className="relative py-32 bg-gradient-to-br from-sky-50 via-white to-amber-50">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-6xl mx-auto">
+                        <div className="text-center mb-16 animate-in fade-in duration-700">
+                            <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
+                                <Sparkles className="w-4 h-4" />
+                                QUALITY GUARANTEE
+                            </div>
+                            <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
+                                The Big 4 Quality Protocol
+                            </h2>
+                            <p className="text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                                The System is the Expert: Delivering international results through AI and rigorous fidelity protocols.
+                            </p>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {[
+                                {
+                                    title: "Uninterrupted Reading",
+                                    description: "Consistent extensive reading sessions without disruptions for maximum language exposure",
+                                },
+                                {
+                                    title: "Student Agency",
+                                    description: "Students choose articles that match their interests, driving intrinsic motivation",
+                                },
+                                {
+                                    title: "Data-Driven Consensus",
+                                    description: "Regular progress reviews based on comprehensive data from student performance",
+                                },
+                                {
+                                    title: "Workbook-First AI",
+                                    description: "Physical workbooks provide structure while AI adapts to individual learning paths",
+                                },
+                            ].map((item, index) => (
+                                <div
+                                    key={item.title}
+                                    className="group bg-white rounded-3xl p-8 border border-sky-100 transition-all duration-300 hover:-translate-y-2 hover:border-amber-300 hover:shadow-xl animate-in fade-in slide-in-from-bottom-8 duration-700"
+                                    style={{ animationDelay: `${index * 100}ms` }}
+                                >
+                                    <div className="w-16 h-16 bg-gradient-to-br from-sky-400 to-amber-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                        <Target className="w-8 h-8 text-white" />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-slate-900 mb-4">{item.title}</h3>
+                                    <p className="text-slate-600 leading-relaxed">{item.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Technology & Target Market - New Section */}
+            <section className="relative py-32 bg-slate-900 text-white overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-sky-900/50 via-amber-900/50 to-slate-900" />
+                <div className="container mx-auto px-4 relative z-10">
+                    <div className="max-w-6xl mx-auto">
+                        <div className="text-center mb-16 animate-in fade-in duration-700">
+                            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+                                Built for Thai Private Schools
+                            </h2>
+                            <p className="text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                                Empower your Thai teachers to deliver Native-Standard English, addressing your unique challenges.
+                            </p>
+                        </div>
+
+                        <div className="grid md:grid-cols-3 gap-8">
+                            {[
+                                {
+                                    title: "Teacher Shortage",
+                                    description: "Comprehensive lesson plans and teacher guides reduce preparation time significantly",
+                                },
+                                {
+                                    title: "Large Classes",
+                                    description: "Individualized learning paths work effectively with 30+ students per class",
+                                },
+                                {
+                                    title: "Limited Devices",
+                                    description: "Blended learning model works with any device-to-student ratio",
+                                },
+                            ].map((item, index) => (
+                                <div
+                                    key={item.title}
+                                    className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/10 transition-all duration-300 hover:border-white/20 hover:bg-white/15 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                                    style={{ animationDelay: `${index * 150}ms` }}
+                                >
+                                    <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-sky-400 rounded-2xl flex items-center justify-center mb-6 shadow-xl">
+                                        <Zap className="w-8 h-8 text-white" />
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
+                                    <p className="text-slate-300 leading-relaxed">{item.description}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="mt-16 text-center animate-in fade-in duration-700 delay-300">
+                            <div className="inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl px-8 py-6">
+                                <Sparkles className="w-8 h-8 text-amber-400" />
+                                <div className="text-left">
+                                    <div className="text-lg text-slate-300">Powered by</div>
+                                    <div className="text-2xl font-bold text-white">Google Gemini & GPT-5 AI</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Impact - Final bold CTA */}
             <section className="relative py-40 bg-gradient-to-br from-amber-500 via-orange-500 to-sky-600 overflow-hidden">
                 <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-amber-400/30 rounded-full blur-[150px]" />
@@ -279,16 +380,16 @@ export default function Home() {
                         {/* Trust badges */}
                         <div className="mt-20 flex flex-wrap justify-center gap-12 animate-in fade-in duration-700 delay-500">
                             <div className="text-center">
-                                <div className="text-5xl font-bold text-white mb-2">100+</div>
-                                <div className="text-amber-100 text-lg">Schools</div>
+                                <div className="text-4xl font-bold text-white mb-2">10,000+</div>
+                                <div className="text-amber-100 text-lg">AI-Curated Articles</div>
                             </div>
                             <div className="text-center">
-                                <div className="text-5xl font-bold text-white mb-2">50K+</div>
-                                <div className="text-amber-100 text-lg">Students</div>
+                                <div className="text-4xl font-bold text-white mb-2">12</div>
+                                <div className="text-amber-100 text-lg">CEFR Levels</div>
                             </div>
                             <div className="text-center">
-                                <div className="text-5xl font-bold text-white mb-2">40%</div>
-                                <div className="text-amber-100 text-lg">Improvement</div>
+                                <div className="text-4xl font-bold text-white mb-2">Big 4</div>
+                                <div className="text-amber-100 text-lg">Quality Protocol</div>
                             </div>
                         </div>
                     </div>

@@ -1,9 +1,11 @@
 export const en = {
     home: "Home",
     products: "Products",
+    services: "Services",
     features: "Features",
     pricing: "Pricing",
     blog: "Blog",
+    caseStudies: "Case Studies",
     about: "About",
     contact: "Contact",
     itemsDescription: {
@@ -21,9 +23,11 @@ export const en = {
 export const th = {
     home: "หน้าแรก",
     products: "ผลิตภัณฑ์",
+    services: "บริการ",
     features: "คุณสมบัติ",
     pricing: "ราคา",
     blog: "บล็อก",
+    caseStudies: "กรณีศึกษา",
     about: "เกี่ยวกับเรา",
     contact: "ติดต่อเรา",
     itemsDescription: {
@@ -41,9 +45,11 @@ export const th = {
 export const zh = {
     home: "首页",
     products: "产品",
+    services: "服务",
     features: "特点",
     pricing: "定价",
     blog: "博客",
+    caseStudies: "案例研究",
     about: "关于",
     contact: "联系",
     itemsDescription: {

@@ -1,170 +1,444 @@
-# Workflow Backlog (Temporary)
+# Primary Advantage Product Page Redesign Plan
 
-All new work must be captured through specs in `docs/specs/` and tracked via GitHub issues. This file is a staging area while we convert legacy notes into the spec-driven workflow. Completed historical work from the static-to-Next.js migration is recorded in `docs/migration/2025-10-22-migration.md`.
+**Product**: Primary Advantage (`/products/primary-advantage`)
+**Status**: Planning Phase
+**Target Audience**: Grades 3-6 students, teachers, school administrators
+**Design Reference**: Home Page & Reading Advantage Page (modern redesign patterns)
 
-## In Progress
+---
 
-- [ ] #17 - S2: Verify and refresh Products overview page (feat/17-products-overview-refresh)
-  - **Started**: 2025-10-23
-  - **Branch**: feat/17-products-overview-refresh
-  - **Specs**: docs/specs/marketing/content-refresh/spec.md
-  - **Priority**: P0
-  - **Milestone**: S2 - Content Verification & Localization Quality
-  - **Dependencies**: #18 (Primary Advantage product page)
+## Overview
 
-## Completed
+Redesign the Primary Advantage product page to match the new site design language featuring:
+- ✅ Bold, full-width sections with organic blob decorations
+- ✅ Cyan-orange gradient color scheme
+- ✅ Lucide-react icons (no emojis)
+- ✅ Tailwind CSS animations only (NO Framer Motion)
+- ✅ Asymmetric layouts (7/5 grid splits)
+- ✅ Inline-built components (no reusable Hero/PageTransition components)
 
-- [x] #15 - S2: Implement CLI + consolidate datasets - PR: #35 - Completed: 2025-10-22 ✅
-  - **Merge Commit**: b765483
-  - **Specs Updated**: docs/specs/experience/localization-maintenance/spec.md
-  - **Sprint**: S2
-  - **Changes**: 3 CLI commands, 51 deprecated files removed, comprehensive docs
-  - **Branch**: feat/15-implement-cli-consolidate-datasets (deleted)
+---
 
-- [x] #16 - S2: Verify and refresh Home page content - PR: #36 - Completed: 2025-10-23 ✅
-  - **Merge Commit**: 2cc92e85b94c30073f164cfd7f46564920b7af14
-  - **Specs Updated**: docs/specs/marketing/content-refresh/spec.md
-  - **Sprint**: S2
-  - **Changes**: Home page copy/locale refresh, i18n CLI hardening, added CLI tests
-  - **Branch**: feat/16-home-page-refresh (deleted)
+## Color Scheme Update
 
+| Section | Current | New |
+|---------|---------|-----|
+| Hero | `cyan-500→600→700` | `from-cyan-500 via-sky-500 to-cyan-600` with orange accents |
+| Key Features | White/cyan accents | `bg-gradient-to-br from-white to-orange-50` |
+| CEFR Alignment | `cyan-100→white→cyan-50` | `bg-gradient-to-br from-cyan-50 via-white to-orange-50` |
+| Platform Features | Light/white | `bg-white` with orange-cyan gradient icon backgrounds |
+| AI Technology | `gray-900→cyan-900→gray-900` | `from-slate-900 via-cyan-900 to-slate-900` |
+| Results | `cyan-600→700→800` | `from-cyan-600 via-sky-700 to-cyan-800` |
+| CTA | `cyan-600→700→800` | `from-cyan-600 via-sky-700 to-orange-600` |
 
+---
 
-## Phase 2: Content Verification & Localization Quality (Sprint S2)
+## Technical Changes Required
 
-### Sprint S2 – Content Verification & Localization Quality
+### ❌ Remove Framer Motion
+```typescript
+// DELETE: import { motion } from "framer-motion"
+// DELETE: PageTransition component
+// DELETE: All <motion.div> wrappers
+// DELETE: whileHover, whileInView, viewport, initial, animate, transition props
+```
 
-**Started**: 2025-10-22
-**Milestone**: S2 - Content Verification & Localization Quality
-**Due**: TBD
+### ❌ Remove Hero Component
+```typescript
+// DELETE: import Hero from "@/components/layout/hero"
+// DELETE: <Hero title={...} description={...} className="..." />
+// REPLACE: Build inline hero section with full control
+```
 
-**Issues Created**:
+### ✅ Replace Emoji Icons with Lucide
+```typescript
+// ADD: import { BookOpen, GraduationCap, Sparkles, ... } from "lucide-react"
+// REPLACE: icon: "📖" → icon: BookOpen
+// REPLACE: icon: "🎯" → icon: Target
+// REPLACE: icon: "🤖" → icon: Sparkles
+```
 
-- [ ] #15 - S2: Implement CLI + consolidate datasets (Specs: localization-maintenance)
-- [ ] #16 - S2: Verify and refresh Home page content (Specs: content-refresh)
-- [ ] #17 - S2: Verify and refresh Products overview page (Specs: content-refresh)
-- [ ] #18 - S2: Create Primary Advantage product page (Specs: content-refresh)
-- [ ] #19 - S2: Verify and refresh Math Advantage page (Specs: content-refresh)
-- [ ] #20 - S2: Verify and refresh Science Advantage page (Specs: content-refresh)
-- [ ] #21 - S2: Verify and refresh STEM Advantage page (Specs: content-refresh)
-- [ ] #22 - S2: Verify and refresh Reading Advantage page (Specs: content-refresh)
-- [ ] #23 - S2: Verify and refresh Storytime Advantage page (Specs: content-refresh)
-- [ ] #24 - S2: Verify and refresh Zhongwen Advantage page (Specs: content-refresh)
-- [ ] #25 - S2: Verify and refresh Tutor Advantage page (Specs: content-refresh)
-- [ ] #26 - S2: Verify and refresh CodeCamp Advantage page (Specs: content-refresh)
-- [ ] #27 - S2: Verify and refresh Pricing page (Specs: content-refresh)
-- [ ] #28 - S2: Verify and refresh Contact page (Specs: content-refresh)
-- [ ] #29 - S2: Verify and refresh Blog landing (Specs: content-refresh)
-- [ ] #30 - S2: Verify and refresh About page (Specs: content-refresh)
-- [ ] #31 - S2: Verify and refresh Features page (Specs: content-refresh)
+### ✅ Update Animations to Standard Tailwind Classes
+```typescript
+// Use these standard patterns:
+- animate-in fade-in slide-in-from-bottom-8 duration-700
+- animate-in fade-in slide-in-from-left-8 duration-700
+- animate-in fade-in slide-in-from-right-8 duration-700 delay-300
+- group-hover:scale-110 transition-transform duration-300
+- hover:-translate-y-3 transition-all duration-300
+- hover:shadow-2xl transition-all duration-300
+```
 
-## content/blogging (spec pending)
-- [ ] Implement BlogHeader component
-- [ ] Create BlogTags component for categorization
-- [ ] Pagination for blog listings
-- [ ] Category/tag filtering system
-- [ ] RSS feed generation
-- [ ] Reading time estimation
-- [ ] Social sharing buttons
-- [ ] Responsive blog post layout polish
-- [ ] Syntax highlighting for code blocks
-- [ ] Custom MDX element styles
-- [ ] Dark mode support within blog
-- [ ] Authoring guide for blog posts
-- [ ] Blog post template
-- [ ] Seed initial educational content posts
-- [ ] Table of contents generation
-- [ ] Related posts recommendations
-- [ ] Blog-specific SEO (meta, structured data, sitemap, social cards)
+---
 
-## identity/authentication (spec pending)
-- [ ] User profile page
-- [ ] Password reset flow
-- [ ] Remember me functionality
-- [ ] Sign-up form
-- [ ] Firebase security rules review
-- [ ] Authentication flow testing & hardening
-- [ ] Security validation and error handling scenarios
-- [ ] Role-based access control
-- [ ] User profile management UI
-- [ ] Admin dashboard shell
+## Section-by-Section Redesign
 
-## experience/internationalization (spec pending)
-- [ ] Install & configure next-intl (or selected i18n solution)
-- [ ] Language detection & routing strategy
-- [ ] Language switcher component
-- [ ] Language persistence
-- [ ] Translation file organization (EN/TH/ZH)
-- [ ] Translation management workflow
-- [ ] Fallback language handling
-- [ ] Content validation automation
-- [ ] Update UI components to use translations
-- [ ] RTL support assessment
-- [ ] Layout adjustments for varying language lengths
-- [ ] Multilingual form updates
-- [ ] Static content localization (pages, meta, errors, dates, numbers)
-- [ ] i18n testing (switching, accessibility, performance per locale)
+### 1. Hero Section
+**File**: `src/app/[locale]/(marketing)/products/primary-advantage/page.tsx`
 
-## experience/theming & responsiveness (spec pending)
-- [ ] Mobile navigation refinements
-- [ ] Responsive tables & data visualizations
-- [ ] Touch interaction polish
-- [ ] Theme switcher implementation
-- [ ] Dark mode QA across components
+**Design Pattern**: Full-width gradient with organic blobs, floating image preview on right
 
-## assets & media
-- [ ] Audit remaining static assets
-- [ ] Migrate/optimize missing images
+**Layout**:
+```
+[Text Content - Left]              [Image Preview - Right]
+- Logo in center (removed - user says not usable)
+- H1: "Primary Advantage" (gradient text: cyan→orange)
+- Badge: "Grades 3-6 Literacy Development"
+- Description text
+- 2 CTA buttons (solid + outlined with Link)
+```
 
-## operations/ci-cd
-- [ ] Configure GitHub Actions -> Cloud Run deployment pipeline
+**Animations**: `animate-in fade-in slide-in-from-bottom-8 duration-700`
 
-## marketing/seo
-- [ ] Meta tag coverage
-- [ ] Open Graph definitions
-- [ ] Structured data implementation
+**Background**: `bg-gradient-to-br from-cyan-500 via-sky-500 to-cyan-600`
+**Decorations**: 3 organic blob divs with blur and animate-pulse/float classes
 
-## performance
-- [ ] Image loading strategies (responsive sources, lazy loading)
-- [ ] Component-level code splitting
-- [ ] Font loading optimization
+---
 
-## quality/testing
-- [ ] Component/unit tests
-- [ ] E2E smoke tests
-- [ ] Accessibility regression suite
+### 2. Key Features Section
+**Design Pattern**: 3-column grid with Lucide icons
 
-## documentation & workflow
-- [ ] Document component usage
-- [ ] Styling guidelines
-- [ ] Development workflow handoff guide
+**Icons**:
+- `BookOpen` - CEFR-Aligned Curriculum
+- `GraduationCap` - Age-Appropriate Design
+- `Sparkles` - AI-Powered Learning
 
-### Notes & Conventions
-- Use Tailwind CSS + shadcn/ui patterns; see `docs/prd.md` for accessibility and performance targets.
-- Follow the commands noted in `CLAUDE.md` and `AGENTS.md` for consistent contributions.
-- Use `npx shadcn@latest add <component>` for new shadcn components and `--legacy-peer-deps` when installing npm packages.
+**Background**: `bg-gradient-to-br from-white to-orange-50`
 
-## Completed
+**Cards**: 
+- `bg-white rounded-3xl p-10 border border-sky-100`
+- `hover:-translate-y-3 hover:border-sky-200 hover:shadow-2xl`
+- Icon background: `bg-gradient-to-br from-sky-400 to-orange-500`
 
-- [x] #12 - S1: Update documentation for static experience - PR: #34 - Completed: 2025-10-22 ✅
-  - **Merge Commit**: 90a9b21
-  - **Specs Updated**: docs/specs/identity/login-removal/spec.md
-  - **Sprint**: S1
-  - **Changes**: 6 files modified, 1 created (release notes), +127 lines
-  - **Release Notes**: docs/releases/v1.0.0-auth-removal.md
+---
 
-- [x] #11 - S1: Remove Firebase/AuthContext dependencies - PR: #33 - Completed: 2025-10-22 ✅
-  - **Merge Commit**: a78e43ac176f02be445641e4f0f29a40b5168e25
-  - **Specs Updated**: docs/specs/identity/login-removal/spec.md
-  - **Sprint**: S1
-  - **Changes**: 10 files modified, 2 deleted, 74 packages removed, -1009 lines
+### 3. CEFR Alignment Section
+**Design Pattern**: Asymmetric layout (7/5 grid split)
 
-- [x] #10 - S1: Decommission /login route - PR: #32 - Completed: 2025-10-22 ✅
-  - **Merge Commit**: d10a1b4094dfbf28c91ee7ecff6a8110485fc466
-  - **Specs Updated**: docs/specs/identity/login-removal/spec.md
-  - **Sprint**: S1
+**Layout**:
+- Left (col-span-7): Text heading and description
+- Right (col-span-5): 4-level cards in grid
 
-- [x] #9 - S1: Remove login/signup UI from navigation - PR: #14 - Completed: 2025-10-22 ✅
-  - **Merge Commit**: ced5f147d5e205f970aaf0a52b00a6b2b51a6950
-  - **Specs Updated**: docs/specs/identity/login-removal/spec.md
-  - **Sprint**: S1
+**Background**: `bg-gradient-to-br from-cyan-50 via-white to-orange-50`
+
+**Cards**:
+- Pre-A1 (Starters)
+- A1 (Movers)
+- A2 (Flyers/KET)
+- B1 (PET)
+
+---
+
+### 4. Blended Learning Section *(NEW)*
+**Design Pattern**: Asymmetric layout highlighting classroom + workbook
+
+**Layout**:
+- Left (col-span-7): Feature list with icons
+- Right (col-span-5): Two stacked images
+
+**Features**:
+- Teacher-led instruction
+- Student workbooks
+- Hands-on practice
+
+**Images**:
+- `classroom-teacher-and-students.png`
+- `student-workbook-mockup.png`
+
+---
+
+### 5. Platform Features Section
+**Design Pattern**: 3-column grid with platform screenshots
+
+**Background**: `bg-gradient-to-br from-cyan-50 via-white to-orange-50`
+
+**Features** (6 total):
+1. Extensive Reading Library
+2. Multi-Language Support
+3. Interactive AI Tutor
+4. Sentence Building Activities
+5. Vocabulary Practice
+6. Spaced Repetition System
+
+**Icon Backgrounds**: `bg-gradient-to-br from-cyan-400 to-orange-400`
+
+---
+
+### 6. AI Technology Section
+**Design Pattern**: 2-column cards with gradient backgrounds
+
+**Background**: Dark `from-slate-900 via-cyan-900 to-slate-900`
+**Cards**: Glass effect `bg-white/10 backdrop-blur-md border border-white/20`
+
+**Features**:
+- Google Gemini (1-on-1 tutoring)
+- GPT-5 Writing Feedback
+
+---
+
+### 7. Results Section
+**Design Pattern**: Dark gradient with 3-column stats
+
+**Background**: `from-cyan-600 via-sky-700 to-cyan-800`
+
+**Stats**:
+- 40% Reading Gains
+- 85% Student Engagement
+- 100% Cloud Availability
+
+**Cards**: Glassmorphism `bg-white/5 backdrop-blur-sm`
+
+---
+
+### 8. Student Experience Section *(NEW)*
+**Design Pattern**: Asymmetric 2-column with images
+
+**Layout**:
+- Left (col-span-7): Text with feature cards
+- Right (col-span-7): Two stacked images
+
+**Features**:
+- Personalized learning paths
+- Progress tracking
+- Adaptive content
+
+**Images**:
+- `students-learning-together.png`
+- `teacher-dashboard-view.png`
+
+---
+
+### 9. Final CTA Section
+**Design Pattern**: Bold gradient with trust badges
+
+**Background**: Vibrant `from-cyan-600 via-sky-700 to-orange-600`
+
+**CTAs**:
+1. `mailto:support@reading-advantage.com?subject=Primary Advantage Inquiry...`
+2. Link to `/contact`
+
+**Trust Badges**:
+- 40% Reading Gains
+- 85% Engagement
+- 100% Cloud
+
+---
+
+## 📸 Required Images
+
+### Directory Structure
+```
+public/images/primary-advantage/
+├── hero-students-with-tablets.png (600×500)
+├── classroom-teacher-and-students.png (3:4 vertical)
+├── student-workbook-mockup.png (3:4 vertical)
+├── platform-desktop-view.png (16:9)
+├── platform-tablet-view.png (2:3)
+├── platform-mobile-view.png (9:16)
+├── students-learning-together.png (1920×1080)
+└── teacher-dashboard-view.png (1920×1080)
+```
+
+### Image Specifications
+
+| Filename | Dimensions | Description |
+|----------|------------|-------------|
+| `hero-students-with-tablets.png` | 600×500px | Primary students (grades 3-6) using tablets/desktop with reading app, ages 9-12 |
+| `classroom-teacher-and-students.png` | 3:4 vertical | Teacher and students working together with tablets/books, modern classroom |
+| `student-workbook-mockup.png` | 3:4 vertical | Student workbook or hands-on learning materials, clear cover design |
+| `platform-desktop-view.png` | 16:9 | Platform on desktop showing article library, clean UI |
+| `platform-tablet-view.png` | 2:3 vertical | Tablet interface showing reading activity |
+| `platform-mobile-view.png` | 9:16 vertical | Mobile app interface, touch-friendly |
+| `students-learning-together.png` | 1920×1080 | Group of students using tablets together, collaborative learning |
+| `teacher-dashboard-view.png` | 1920×1080 | Teacher monitoring student progress on dashboard |
+
+### Optional Enhancement Images
+| Filename | Dimensions | Description |
+|----------|------------|-------------|
+| `ai-chat-interface.png` | 1920×1080 | Student chatting with AI tutor interface |
+| `vocabulary-flashcard.png` | 800×800 | Spaced repetition flashcard |
+| `student-achievement-badge.png` | 800×800 | Certificate/achievement badge |
+
+---
+
+## ❌ Images to Remove (Not Usable)
+
+- `/primary-advantage logo.png` - User confirmed not usable
+- `/images/reading-advantage/choose-your-article.png` - Wrong product
+- `/images/reading-advantage/language-selector-en-th-zh-vn.png` - Wrong product
+- `/images/reading-advantage/read-article-and-chat-with-ai.png` - Wrong product
+- `/images/reading-advantage/order-sentence-activity.png` - Wrong product
+- `/images/reading-advantage/order-words-activity.png` - Wrong product
+- `/images/reading-advantage/SRS-flashcard-activity.png` - Wrong product
+
+---
+
+## Implementation Checklist
+
+### Phase 1: Preparation
+- [ ] Create `public/images/primary-advantage/` directory
+- [ ] Add 8 core images to directory
+- [ ] Verify image dimensions and quality
+
+### Phase 2: Technical Cleanup
+- [ ] Remove Framer Motion imports
+- [ ] Remove PageTransition wrapper
+- [ ] Remove Hero component import
+- [ ] Remove all `motion.div` wrappers
+- [ ] Remove all `whileHover`, `whileInView`, `viewport`, `initial`, `animate`, `transition` props
+
+### Phase 3: Component Refactoring
+- [ ] Build inline hero section (replacing Hero component)
+- [ ] Replace emoji icons with Lucide-react icons
+- [ ] Update all animations to standard Tailwind classes
+- [ ] Update color scheme to cyan-orange gradient
+- [ ] Add new sections: Blended Learning, Student Experience
+
+### Phase 4: Section Implementation
+- [ ] Implement Hero section with floating image
+- [ ] Implement Key Features section (3 columns)
+- [ ] Implement CEFR Alignment section (7/5 asymmetric)
+- [ ] Implement Blended Learning section (NEW, 7/5 asymmetric)
+- [ ] Implement Platform Features section (6 cards)
+- [ ] Implement AI Technology section (2 columns, dark)
+- [ ] Implement Results section (3 stats)
+- [ ] Implement Student Experience section (NEW, 7/5 asymmetric)
+- [ ] Implement Final CTA section with trust badges
+
+### Phase 5: Testing & QA
+- [ ] Test responsive layout on mobile (320px+)
+- [ ] Test responsive layout on tablet (768px+)
+- [ ] Test responsive layout on desktop (1280px+)
+- [ ] Verify all images load correctly
+- [ ] Verify animations are smooth
+- [ ] Verify i18n text displays correctly (EN/TH/ZH)
+- [ ] Test all CTA links (mailto, /contact)
+- [ ] Check for console errors
+- [ ] Run `npm run build` to verify no TypeScript errors
+
+### Phase 6: Documentation
+- [ ] Update `docs/pages/products-primary-advantage.md` with new structure
+- [ ] Update any related specs
+- [ ] Document any breaking changes
+
+---
+
+## Component Structure (After Redesign)
+
+```tsx
+"use client"
+
+import Image from "next/image"
+import Link from "next/link"
+import {
+  BookOpen, GraduationCap, Sparkles, Target,
+  Zap, Monitor, Tablet, Smartphone, Users,
+  Mail, ArrowRight, Check, FileText, Brain
+} from "lucide-react"
+import { useScopedI18n } from "@/locales/client"
+
+export default function PrimaryAdvantage() {
+  const t = useScopedI18n("pages.products.primaryAdvantage")
+
+  return (
+    <main className="overflow-x-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-cyan-500 via-sky-500 to-cyan-600 overflow-hidden">
+        {/* Content */}
+      </section>
+
+      {/* Key Features Section */}
+      <section className="relative py-32 bg-gradient-to-br from-white to-orange-50">
+        {/* 3-column grid with Lucide icons */}
+      </section>
+
+      {/* CEFR Alignment Section */}
+      <section className="relative py-32 bg-gradient-to-br from-cyan-50 via-white to-orange-50">
+        {/* Asymmetric 7/5 layout */}
+      </section>
+
+      {/* Blended Learning Section (NEW) */}
+      <section className="relative py-32 bg-white">
+        {/* Asymmetric 7/5 with classroom images */}
+      </section>
+
+      {/* Platform Features Section */}
+      <section className="relative py-32 bg-white">
+        {/* 6 feature cards */}
+      </section>
+
+      {/* AI Technology Section */}
+      <section className="relative py-32 from-slate-900 via-cyan-900 to-slate-900 text-white">
+        {/* 2-column dark cards */}
+      </section>
+
+      {/* Results Section */}
+      <section className="relative py-32 from-cyan-600 via-sky-700 to-cyan-800 text-white">
+        {/* 3 stats */}
+      </section>
+
+      {/* Student Experience Section (NEW) */}
+      <section className="relative py-32 bg-gradient-to-br from-cyan-50 via-white to-orange-50">
+        {/* Asymmetric 7/5 with experience images */}
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="relative py-40 from-cyan-600 via-sky-700 to-orange-600 text-white">
+        {/* Bold CTA with trust badges */}
+      </section>
+    </main>
+  )
+}
+```
+
+---
+
+## Notes & Conventions
+
+- **No Framer Motion**: Use `tailwindcss-animate` classes only
+- **Client Component**: Page is marked `"use client"` for i18n
+- **Icons**: Use `lucide-react` only (no emojis)
+- **Images**: Use `next/image` with `width`, `height`, `alt`, `priority`, `sizes` props
+- **i18n**: Use `useScopedI18n("pages.products.primaryAdvantage")` for all text
+- **Animations**: Standard patterns: `animate-in fade-in slide-in-from-bottom-8 duration-700`
+- **Hover Effects**: `hover:-translate-y-1 transition-all duration-300`
+- **Responsive**: Use `grid-cols-1 md:grid-cols-3` patterns
+- **Shadows**: Use standard Tailwind `shadow-lg`, `shadow-2xl`
+- **Glass**: Use `backdrop-blur-md bg-white/10` for glass effects
+
+---
+
+## Estimated Time
+
+- **Phase 1 (Preparation)**: 1-2 hours (waiting for images)
+- **Phase 2 (Technical Cleanup)**: 1 hour
+- **Phase 3 (Component Refactoring)**: 2-3 hours
+- **Phase 4 (Section Implementation)**: 4-6 hours
+- **Phase 5 (Testing & QA)**: 1-2 hours
+- **Phase 6 (Documentation)**: 1 hour
+
+**Total**: ~10-15 hours of development time
+
+---
+
+## Dependencies
+
+- ✅ Images must be added to `public/images/primary-advantage/` before implementation
+- ✅ Reading Advantage page reference (already redesigned)
+- ✅ Home page reference (already redesigned)
+- ✅ i18n locale files (already exist in `src/locales/pages/products/primary-advantage.ts`)
+
+---
+
+## Next Steps
+
+1. **Add images** to `public/images/primary-advantage/` directory
+2. **Review plan** and confirm all sections
+3. **Begin implementation** starting with Phase 2 (Technical Cleanup)
+4. **Test thoroughly** on all device sizes
+5. **Update documentation** with final changes
+
+---
+
+**Last Updated**: 2025-12-31
+**Status**: Planning Phase - Awaiting Images

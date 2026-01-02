@@ -3,6 +3,10 @@ import { th as aboutPage } from './pages/about';
 import { th as homePage } from './pages/home';
 import { th as contactPage } from './pages/contact';
 import { th as featurePage } from './pages/feature';
+import { th as caseStudiesPage } from './pages/case-studies';
+import { th as blendedLearningPage } from './pages/blended-learning';
+import { th as managedServicePage } from './pages/managed-service';
+import { th as servicesPage } from './pages/services';
 import { th as productsOverview } from './pages/products/overview';
 import { th as codecampPage } from './pages/products/codecamp-advantage';
 import { th as mathPage } from './pages/products/math-advantage';
@@ -32,6 +36,10 @@ export default {
         home: homePage,
         contact: contactPage,
         feature: featurePage,
+        caseStudies: caseStudiesPage,
+        services: servicesPage,
+        blendedLearning: blendedLearningPage,
+        managedService: managedServicePage,
         pricing: pricingPage,
         products: {
             overview: productsOverview,

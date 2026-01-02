@@ -143,6 +143,48 @@ export default async function AboutPage() {
         </div>
       </section>
 
+      {/* Big 4 Quality Protocol Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6 text-violet-600">{t('sections.bigFour.title')}</h2>
+            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+              {t('sections.bigFour.description')}
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-sky-50 p-6 rounded-lg border border-sky-100">
+                <h3 className="font-bold text-xl mb-3">{t('sections.bigFour.list.0.title')}</h3>
+                <p className="text-gray-700">{t('sections.bigFour.list.0.description')}</p>
+              </div>
+              <div className="bg-sky-50 p-6 rounded-lg border border-sky-100">
+                <h3 className="font-bold text-xl mb-3">{t('sections.bigFour.list.1.title')}</h3>
+                <p className="text-gray-700">{t('sections.bigFour.list.1.description')}</p>
+              </div>
+              <div className="bg-sky-50 p-6 rounded-lg border border-sky-100">
+                <h3 className="font-bold text-xl mb-3">{t('sections.bigFour.list.2.title')}</h3>
+                <p className="text-gray-700">{t('sections.bigFour.list.2.description')}</p>
+              </div>
+              <div className="bg-sky-50 p-6 rounded-lg border border-sky-100">
+                <h3 className="font-bold text-xl mb-3">{t('sections.bigFour.list.3.title')}</h3>
+                <p className="text-gray-700">{t('sections.bigFour.list.3.description')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Positioning Section */}
+      <section className="py-16 bg-sky-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-6">{t('sections.positioning.title')}</h2>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              {t('sections.positioning.description')}
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="bg-sky-800 text-sky-50 py-16">
         <div className="container mx-auto px-4 text-center">

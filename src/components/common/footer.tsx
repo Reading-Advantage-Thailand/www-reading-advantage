@@ -29,6 +29,16 @@ export default async function Footer() {
                                 </Link>
                             </li>
                             <li>
+                                <Link href="/services" className="text-slate-400 hover:text-white transition-colors">
+                                    {t("quickLinks.links.services")}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/case-studies" className="text-slate-400 hover:text-white transition-colors">
+                                    {t("quickLinks.links.caseStudies")}
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href="/contact" className="text-slate-400 hover:text-white transition-colors">
                                     {t("quickLinks.links.contact")}
                                 </Link>

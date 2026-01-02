@@ -6,6 +6,8 @@ export const en = {
         links: {
             about: "About Us",
             products: "Products",
+            services: "Services",
+            caseStudies: "Case Studies",
             contact: "Contact",
         },
     },
@@ -26,6 +28,8 @@ export const th = {
         links: {
             about: "เกี่ยวกับเรา",
             products: "ผลิตภัณฑ์",
+            services: "บริการ",
+            caseStudies: "กรณีศึกษา",
             contact: "ติดต่อเรา",
         },
     },
@@ -46,6 +50,8 @@ export const zh = {
         links: {
             about: "关于我们",
             products: "产品",
+            services: "服务",
+            caseStudies: "案例研究",
             contact: "联系我们",
         },
     },
