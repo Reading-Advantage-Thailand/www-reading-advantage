@@ -1,55 +1,57 @@
-import { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
-import Hero from "@/components/layout/hero"
-import { getScopedI18n } from "@/locales/server"
+import { Metadata } from "next";
+import Link from "next/link";
+import HeroSection from "@/components/marketing/hero-section";
+import { getScopedI18n } from "@/locales/server";
 
 export const metadata: Metadata = {
   title: "STEM Advantage - Reading Advantage Thailand",
-  description: "Transform your STEM curriculum with our innovative 75% coding + 25% STEM integration platform, designed for modern classroom.",
+  description:
+    "Transform your STEM curriculum with our innovative 75% coding + 25% STEM integration platform, designed for modern classroom.",
   openGraph: {
     title: "STEM Advantage - Reading Advantage Thailand",
-    description: "Comprehensive K-12 coding education platform launching in 2025.",
+    description:
+      "Comprehensive K-12 coding education platform launching in 2025.",
   },
-}
+};
 
 export default async function StemAdvantage() {
-  const t = await getScopedI18n("pages.products.stemAdvantage")
+  const t = await getScopedI18n("pages.products.stemAdvantage");
   return (
     <main>
       {/* Hero Section */}
-      <Hero
-        title={
-          <>
-            <div className="flex justify-center mb-8">
-              <Image
-                src="/stem-advantage.png"
-                alt="STEM Advantage Logo"
-                width={200}
-                height={200}
-                className="rounded-full bg-white p-2"
-              />
-            </div>
-            <div className="absolute top-4 right-4 bg-yellow-400 text-gray-800 px-4 py-2 rounded-full">
-              {t("hero.comingSoon")}
-            </div>
-            <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
-            <h2 className="text-2xl font-bold mb-6">{t("hero.subtitle")}</h2>
-          </>
-        }
-        description={t("hero.description")}
-        className="bg-gradient-to-b from-indigo-200 to-indigo-400"
+      <HeroSection
+        title={t("hero.title")}
+        description={`${t("hero.subtitle")} ${t("hero.description")}`}
+        ctaButton={{
+          text: t("cta.buttons.earlyAccess"),
+          href: "/contact",
+          variant: "primary",
+        }}
+        badge={{
+          text: t("hero.comingSoon"),
+          variant: "sky",
+        }}
+        height="medium"
+        alignment="left"
+        floatingImage={{
+          src: "/stem-advantage.png",
+          alt: "STEM Advantage Logo",
+        }}
       />
 
       {/* Core Features */}
       <section className="bg-white py-16">
         <div className="container mx-auto px-4">
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-3xl font-bold text-center mb-12">{t("coreFeatures.heading")}</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">
+              {t("coreFeatures.heading")}
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               <div className="bg-indigo-100 rounded-lg p-6 shadow-sm hover:bg-indigo-200 transition-colors">
                 <div className="text-4xl mb-4 text-center">🎓</div>
-                <h3 className="text-xl font-bold mb-4 text-center">{t("coreFeatures.features.0.title")}</h3>
+                <h3 className="text-xl font-bold mb-4 text-center">
+                  {t("coreFeatures.features.0.title")}
+                </h3>
                 <ul className="text-left list-disc pl-6 space-y-2">
                   <li>{t("coreFeatures.features.0.points.0")}</li>
                   <li>{t("coreFeatures.features.0.points.1")}</li>
@@ -59,7 +61,9 @@ export default async function StemAdvantage() {
 
               <div className="bg-indigo-100 rounded-lg p-6 shadow-sm hover:bg-indigo-200 transition-colors">
                 <div className="text-4xl mb-4 text-center">💻</div>
-                <h3 className="text-xl font-bold mb-4 text-center">{t("coreFeatures.features.1.title")}</h3>
+                <h3 className="text-xl font-bold mb-4 text-center">
+                  {t("coreFeatures.features.1.title")}
+                </h3>
                 <ul className="text-left list-disc pl-6 space-y-2">
                   <li>{t("coreFeatures.features.1.points.0")}</li>
                   <li>{t("coreFeatures.features.1.points.1")}</li>
@@ -69,7 +73,9 @@ export default async function StemAdvantage() {
 
               <div className="bg-indigo-100 rounded-lg p-6 shadow-sm hover:bg-indigo-200 transition-colors">
                 <div className="text-4xl mb-4 text-center">📚</div>
-                <h3 className="text-xl font-bold mb-4 text-center">{t("coreFeatures.features.2.title")}</h3>
+                <h3 className="text-xl font-bold mb-4 text-center">
+                  {t("coreFeatures.features.2.title")}
+                </h3>
                 <ul className="text-left list-disc pl-6 space-y-2">
                   <li>{t("coreFeatures.features.2.points.0")}</li>
                   <li>{t("coreFeatures.features.2.points.1")}</li>
@@ -85,7 +91,9 @@ export default async function StemAdvantage() {
       <section className="bg-indigo-50 py-16">
         <div className="container mx-auto px-4">
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-3xl font-bold text-center mb-12">{t("gradeBreakdown.heading")}</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">
+              {t("gradeBreakdown.heading")}
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               {[
                 {
@@ -118,7 +126,9 @@ export default async function StemAdvantage() {
       <section className="bg-indigo-800 text-indigo-50 py-16">
         <div className="container mx-auto px-4">
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-3xl font-bold text-center mb-12">{t("benefits.heading")}</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">
+              {t("benefits.heading")}
+            </h2>
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {[
                 {
@@ -164,7 +174,9 @@ export default async function StemAdvantage() {
       <section className="bg-white py-16">
         <div className="container mx-auto px-4">
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-3xl font-bold text-center mb-12">{t("technicalRequirements.heading")}</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">
+              {t("technicalRequirements.heading")}
+            </h2>
             <div className="max-w-2xl mx-auto bg-indigo-100 p-8 rounded-lg shadow-sm">
               <ul className="space-y-4">
                 {[
@@ -207,5 +219,5 @@ export default async function StemAdvantage() {
         </div>
       </section>
     </main>
-  )
+  );
 }

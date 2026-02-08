@@ -1,19 +1,20 @@
-import B2BSolutions from "@/components/products/b2b-solutions"
-import B2CSolutions from "@/components/products/b2c-solutions"
-import TutorAdvantage from "@/components/products/tutor-advantage"
-import { getScopedI18n } from "@/locales/server"
-import { Metadata } from "next"
-import Link from "next/link"
-import { ArrowRight, BookMarked, GraduationCap, BookOpen } from "lucide-react"
-import Image from "next/image"
+import B2BSolutions from "@/components/products/b2b-solutions";
+import B2CSolutions from "@/components/products/b2c-solutions";
+import TutorAdvantage from "@/components/products/tutor-advantage";
+import HeroSection from "@/components/marketing/hero-section";
+import { getScopedI18n } from "@/locales/server";
+import { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, BookMarked, GraduationCap, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Our Products - Reading Advantage Thailand",
-  description: "Comprehensive curriculum solutions for schools and specialized programs for individual learners, powered by advanced AI technology.",
-}
+  description:
+    "Comprehensive curriculum solutions for schools and specialized programs for individual learners, powered by advanced AI technology.",
+};
 
 export default async function ProductsPage() {
-  const t = await getScopedI18n("pages.products.overview")
+  const t = await getScopedI18n("pages.products.overview");
 
   const gradeBands = [
     {
@@ -49,49 +50,34 @@ export default async function ProductsPage() {
       description: t("gradeBands.reading.description"),
       ctaLabel: t("gradeBands.reading.ctaLabel"),
     },
-  ]
+  ];
 
   return (
     <main className="flex-1">
       {/* Hero - Warm gradient with floating elements */}
-      <section className="relative min-h-[60vh] flex items-center bg-hero-warm overflow-hidden">
-        {/* Organic blobs */}
-      <div className="absolute top-20 right-10 w-64 h-64 bg-amber-300/40 rounded-full blur-[80px] animate-pulse-slow" aria-hidden="true" />
-      <div className="absolute bottom-20 left-10 w-80 h-80 bg-sky-300/30 rounded-full blur-[100px]" aria-hidden="true" />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-modern-lg">
-              <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-                {t("hero.title")}
-              </h1>
-              <p className="text-xl md:text-2xl text-slate-700 leading-relaxed">
-                {t("hero.description")}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Floating product preview */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
-          <div className="relative w-[500px] h-[400px]">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-sky-400/20 rounded-[32px] blur-2xl z-0" />
-            <Image
-              src="/images/small-group.png"
-              alt="Group of students using Reading Advantage platform on tablets in collaborative learning session"
-              fill
-              sizes="(max-width: 1280px) 100vw, 50vw"
-              className="relative z-10 object-cover rounded-[24px] shadow-2xl"
-              priority
-            />
-            {/* Gradient fade on top of image */}
-            <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/30 to-transparent rounded-[32px] z-20" />
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title={t("hero.title")}
+        description={t("hero.description")}
+        ctaButton={{
+          text: t("cta.viewProgram"),
+          href: "#products",
+          variant: "primary",
+          icon: <ArrowRight className="w-5 h-5" />,
+        }}
+        floatingImage={{
+          src: "/images/small-group.png",
+          alt: "Group of students using Reading Advantage platform on tablets in collaborative learning session",
+          sizes: "(max-width: 1280px) 100vw, 50vw",
+        }}
+        height="medium"
+        alignment="left"
+      />
 
       {/* Grade Bands - Enhanced cards with warm themes */}
-      <section className="relative py-24 warm-section overflow-hidden">
+      <section
+        id="products"
+        className="relative py-24 warm-section overflow-hidden"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid gap-8 md:grid-cols-3">
             {gradeBands.map((band, index) => (
@@ -100,9 +86,13 @@ export default async function ProductsPage() {
                 className="group h-full animate-in fade-in slide-in-from-bottom-8 duration-700"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className={`h-full p-8 rounded-2xl bg-gradient-to-br ${band.bgColor} warm-card border-0`}>
+                <div
+                  className={`h-full p-8 rounded-2xl bg-gradient-to-br ${band.bgColor} warm-card border-0`}
+                >
                   {/* Icon with glow */}
-                  <div className={`w-16 h-16 ${band.badgeColor} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  <div
+                    className={`w-16 h-16 ${band.badgeColor} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <band.icon className="w-8 h-8 text-white" strokeWidth={2} />
                   </div>
 
@@ -127,7 +117,10 @@ export default async function ProductsPage() {
                     className="inline-flex items-center gap-2 font-semibold text-sky-600 hover:text-sky-800 group-hover:gap-3 transition-all duration-300"
                   >
                     <span>{band.ctaLabel}</span>
-                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    <ArrowRight
+                      className="h-5 w-5 group-hover:translate-x-1 transition-transform"
+                      aria-hidden="true"
+                    />
                   </Link>
                 </div>
               </div>
@@ -140,5 +133,5 @@ export default async function ProductsPage() {
       <B2CSolutions />
       <TutorAdvantage />
     </main>
-  )
+  );
 }

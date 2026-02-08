@@ -1,42 +1,43 @@
-import { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
-import Hero from "@/components/layout/hero"
-import { getScopedI18n } from "@/locales/server"
+import { Metadata } from "next";
+import Link from "next/link";
+import HeroSection from "@/components/marketing/hero-section";
+import { getScopedI18n } from "@/locales/server";
 
 export const metadata: Metadata = {
   title: "Tutor Advantage - Reading Advantage Thailand",
-  description: "Revolutionary AI-powered English tutoring platform launching in Thailand in 2025. Combining advanced technology with personalized instruction.",
+  description:
+    "Revolutionary AI-powered English tutoring platform launching in Thailand in 2025. Combining advanced technology with personalized instruction.",
   openGraph: {
     title: "Tutor Advantage - Reading Advantage Thailand",
-    description: "Revolutionary AI-powered English tutoring platform launching in Thailand in 2025",
+    description:
+      "Revolutionary AI-powered English tutoring platform launching in Thailand in 2025",
   },
-}
+};
 
 export default async function TutorAdvantage() {
-  const t = await getScopedI18n("pages.products.tutorAdvantage")
+  const t = await getScopedI18n("pages.products.tutorAdvantage");
   return (
     <main>
       {/* Hero Section */}
-      <Hero
-        title={
-          <div className="text-center">
-            <Image
-              src="/tutor-advantage.png"
-              alt="Tutor Advantage Logo"
-              width={200}
-              height={200}
-              className="mx-auto mb-8"
-            />
-            <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
-            <div className="inline-block bg-yellow-400 text-sky-900 px-4 py-2 rounded-full mb-6">
-              {t("hero.comingSoon")}
-            </div>
-            <h2 className="text-2xl font-bold mb-6">{t("hero.subtitle")}</h2>
-          </div>
-        }
-        description={t("hero.description")}
-        className="bg-gradient-to-br from-sky-100 to-sky-400"
+      <HeroSection
+        title={t("hero.title")}
+        description={`${t("hero.subtitle")} ${t("hero.description")}`}
+        badge={{
+          text: t("hero.comingSoon"),
+          variant: "yellow",
+        }}
+        ctaButton={{
+          text: t("cta.buttons.register"),
+          href: "/contact",
+          variant: "primary",
+        }}
+        height="medium"
+        alignment="left"
+        floatingImage={{
+          src: "/tutor-advantage.png",
+          alt: "Tutor Advantage Logo",
+        }}
+        customGradient="bg-gradient-to-br from-sky-100 to-sky-400"
       />
 
       {/* Value Propositions */}
@@ -46,7 +47,9 @@ export default async function TutorAdvantage() {
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-sky-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="text-4xl mb-4 text-center">🤖</div>
-                <h3 className="text-xl font-bold mb-4 text-center">{t("valuePropositions.features.0.title")}</h3>
+                <h3 className="text-xl font-bold mb-4 text-center">
+                  {t("valuePropositions.features.0.title")}
+                </h3>
                 <ul className="text-left list-disc pl-6 space-y-2">
                   <li>{t("valuePropositions.features.0.points.0")}</li>
                   <li>{t("valuePropositions.features.0.points.1")}</li>
@@ -56,7 +59,9 @@ export default async function TutorAdvantage() {
 
               <div className="bg-sky-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="text-4xl mb-4 text-center">📚</div>
-                <h3 className="text-xl font-bold mb-4 text-center">{t("valuePropositions.features.1.title")}</h3>
+                <h3 className="text-xl font-bold mb-4 text-center">
+                  {t("valuePropositions.features.1.title")}
+                </h3>
                 <ul className="text-left list-disc pl-6 space-y-2">
                   <li>{t("valuePropositions.features.1.points.0")}</li>
                   <li>{t("valuePropositions.features.1.points.1")}</li>
@@ -66,7 +71,9 @@ export default async function TutorAdvantage() {
 
               <div className="bg-sky-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="text-4xl mb-4 text-center">👩‍🏫</div>
-                <h3 className="text-xl font-bold mb-4 text-center">{t("valuePropositions.features.2.title")}</h3>
+                <h3 className="text-xl font-bold mb-4 text-center">
+                  {t("valuePropositions.features.2.title")}
+                </h3>
                 <ul className="text-left list-disc pl-6 space-y-2">
                   <li>{t("valuePropositions.features.2.points.0")}</li>
                   <li>{t("valuePropositions.features.2.points.1")}</li>
@@ -82,7 +89,9 @@ export default async function TutorAdvantage() {
       <section className="bg-sky-100 py-16">
         <div className="container mx-auto px-4">
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-3xl font-bold text-center mb-12">{t("platformFeatures.heading")}</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">
+              {t("platformFeatures.heading")}
+            </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {[
                 {
@@ -110,8 +119,13 @@ export default async function TutorAdvantage() {
                   description: t("platformFeatures.features.5.description"),
                 },
               ].map((feature) => (
-                <div key={feature.title} className="bg-sky-200 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                <div
+                  key={feature.title}
+                  className="bg-sky-200 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                >
+                  <h3 className="text-xl font-semibold mb-3">
+                    {feature.title}
+                  </h3>
                   <p>{feature.description}</p>
                 </div>
               ))}
@@ -124,7 +138,9 @@ export default async function TutorAdvantage() {
       <section className="bg-sky-800 text-sky-50 py-16">
         <div className="container mx-auto px-4">
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-3xl font-bold text-center mb-12">{t("trustSignals.heading")}</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">
+              {t("trustSignals.heading")}
+            </h2>
             <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               {[
                 {
@@ -180,5 +196,5 @@ export default async function TutorAdvantage() {
         </div>
       </section>
     </main>
-  )
+  );
 }

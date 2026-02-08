@@ -2,17 +2,34 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, CheckCircle, BookOpen, Users, Calendar, Zap, Target, TrendingUp, GraduationCap } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle,
+  BookOpen,
+  Users,
+  Calendar,
+  Zap,
+  Target,
+  TrendingUp,
+  GraduationCap,
+} from "lucide-react";
 import { useScopedI18n } from "@/locales/client";
+import HeroSection from "@/components/marketing/hero-section";
 
 export default function BlendedLearning() {
   const t = useScopedI18n("pages.blendedLearning");
   const featureIndexes = [0, 1, 2, 3, 4, 5] as const;
-  const features = featureIndexes.map((featureIndex) => t(`features.items.${featureIndex}`));
+  const features = featureIndexes.map((featureIndex) =>
+    t(`features.items.${featureIndex}`),
+  );
   const challengeIndexes = [0, 1, 2] as const;
-  const challenges = challengeIndexes.map((challengeIndex) => t(`forTeachers.challenges.${challengeIndex}`));
+  const challenges = challengeIndexes.map((challengeIndex) =>
+    t(`forTeachers.challenges.${challengeIndex}`),
+  );
   const levelIndexes = [0, 1, 2, 3, 4] as const;
-  const levels = levelIndexes.map((levelIndex) => t(`levels.levels.${levelIndex}`));
+  const levels = levelIndexes.map((levelIndex) =>
+    t(`levels.levels.${levelIndex}`),
+  );
   const onboardingIndexes = [0, 1, 2] as const;
   const onboardingItems = onboardingIndexes.map((itemIndex) => ({
     icon: t(`onboarding.items.${itemIndex}.icon`),
@@ -28,69 +45,39 @@ export default function BlendedLearning() {
   return (
     <main className="overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600 overflow-hidden">
-        {/* Organic blobs */}
-        <div className="absolute top-32 right-20 w-80 h-80 bg-white/20 rounded-full blur-[100px] animate-pulse-slow" />
-        <div className="absolute bottom-40 left-20 w-96 h-96 bg-sky-300/30 rounded-full blur-[120px] animate-float" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-400/20 rounded-full blur-[150px]" />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white px-4 py-2 rounded-full text-sm font-bold mb-6">
-                <Calendar className="w-4 h-4" />
-                {t("hero.badge")}
-              </div>
-
-              <h1 className="text-6xl md:text-8xl font-bold text-white leading-[1.1] mb-8">
-                {t("hero.title")}
-              </h1>
-
-              <h2 className="text-2xl md:text-3xl text-sky-100 mb-8 font-semibold leading-relaxed">
-                {t("hero.subtitle")}
-              </h2>
-
-              <p className="text-xl md:text-2xl text-sky-100 max-w-3xl mb-12 leading-relaxed">
-                {t("hero.description")}
-              </p>
-
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="#overview"
-                  className="group bg-white text-sky-700 px-10 py-5 rounded-2xl hover:bg-sky-50 transition-all duration-300 shadow-2xl hover:shadow-white/30 hover:-translate-y-1 font-bold text-lg inline-flex items-center gap-3"
-                >
-                  <Target className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                  {t("hero.primaryCta")}
-                  <ArrowRight className="w-6 h-6" />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="bg-white/20 backdrop-blur-sm border-2 border-white text-white px-10 py-5 rounded-2xl hover:bg-white hover:text-sky-700 transition-all duration-300 font-bold text-lg"
-                >
-                  {t("hero.secondaryCta")}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Floating images */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
-          <div className="relative w-[600px] h-[500px]">
-            <div className="absolute inset-0 bg-white/20 rounded-[40px] blur-2xl z-0" />
-            <Image
-              src="/images/blended-learning.png"
-              alt="Blended Learning Model"
-              fill
-              sizes="(max-width: 1280px) 100vw, 50vw"
-              className="relative z-10 object-cover rounded-[32px] shadow-2xl"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-sky-600/90 via-sky-500/40 to-transparent rounded-[40px] z-20" />
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title={t("hero.title")}
+        description={
+          <>
+            <h2 className="text-2xl md:text-3xl text-slate-900 mb-4 font-semibold leading-relaxed">
+              {t("hero.subtitle")}
+            </h2>
+            <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
+              {t("hero.description")}
+            </p>
+          </>
+        }
+        ctaButton={{
+          text: t("hero.primaryCta"),
+          href: "#overview",
+          variant: "white",
+          icon: <ArrowRight className="w-6 h-6" />,
+        }}
+        badge={{
+          text: t("hero.badge"),
+          icon: <Calendar className="w-4 h-4" />,
+          variant: "sky",
+        }}
+        floatingImage={{
+          src: "/images/blended-learning.png",
+          alt: "Blended Learning Model",
+          sizes: "(max-width: 1280px) 100vw, 50vw",
+        }}
+        height="medium"
+        alignment="left"
+        customGradient="bg-gradient-to-br from-sky-50 via-sky-100 to-blue-100"
+        showDecorations={true}
+      />
 
       {/* Overview Section */}
       <section className="relative py-24 bg-white" id="overview">
@@ -109,7 +96,8 @@ export default function BlendedLearning() {
                   {t("overview.description")}
                 </p>
                 <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                  <strong>{t("overview.strong")}</strong> {t("overview.strongText")}
+                  <strong>{t("overview.strong")}</strong>{" "}
+                  {t("overview.strongText")}
                 </p>
               </div>
               <div className="relative">
@@ -229,7 +217,9 @@ export default function BlendedLearning() {
                   className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-white/40 transition-all duration-300 hover:bg-white/20 animate-in fade-in slide-in-from-bottom-8 duration-700"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <div className="text-3xl font-bold text-white mb-2">{level}</div>
+                  <div className="text-3xl font-bold text-white mb-2">
+                    {level}
+                  </div>
                   <div className="w-12 h-1 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full mx-auto" />
                 </div>
               ))}
@@ -238,8 +228,12 @@ export default function BlendedLearning() {
             <div className="inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full px-6 py-4 mb-8">
               <Calendar className="w-6 h-6 text-amber-400" />
               <div className="text-left">
-                <div className="text-sm text-sky-100">{t("levels.availabilityBadge")}</div>
-                <div className="text-lg font-bold text-white">{t("levels.availabilityDate")}</div>
+                <div className="text-sm text-sky-100">
+                  {t("levels.availabilityBadge")}
+                </div>
+                <div className="text-lg font-bold text-white">
+                  {t("levels.availabilityDate")}
+                </div>
               </div>
             </div>
 
@@ -282,8 +276,12 @@ export default function BlendedLearning() {
                   <div className="w-16 h-16 bg-gradient-to-br from-sky-400 to-blue-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                     {onboardingIcons[item.icon] ?? onboardingIcons.Target}
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4">{item.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{item.description}</p>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
               ))}
             </div>
