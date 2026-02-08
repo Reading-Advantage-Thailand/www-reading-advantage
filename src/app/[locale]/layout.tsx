@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { ReactElement } from "react";
+import { ReactNode } from "react";
 import { LocaleProvider } from '@/providers/locale-provider';
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({ params, children }: { params: Promise<{ locale: string }>, children: ReactElement }) {
+export default async function RootLayout({ params, children }: { params: Promise<{ locale: string }>, children: ReactNode }) {
   const { locale } = await params
   return (
     <html lang={locale} suppressHydrationWarning={true}>

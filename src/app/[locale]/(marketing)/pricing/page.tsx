@@ -43,7 +43,7 @@ export default async function PricingPage() {
 
       {/* CTA Section */}
       <section className="bg-sky-800 text-sky-50 py-16">
-        <div className="conntainer mx-auto px-4 text-center">
+        <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">{t('cta.title')}</h2>
           <p className="text-xl mb-8">{t('cta.description')}</p>
           <Link

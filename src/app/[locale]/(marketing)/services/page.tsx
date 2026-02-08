@@ -1,12 +1,10 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Calendar, CheckCircle, Zap } from "lucide-react";
-import { useScopedI18n } from "@/locales/client";
+import { getScopedI18n } from "@/locales/server";
 
-export default function Services() {
-  const t = useScopedI18n("pages.services");
+export default async function Services() {
+  const t = await getScopedI18n("pages.services");
   const serviceConfigs = [
     { featureIndexes: [0, 1, 2, 3, 4, 5] },
     { featureIndexes: [0, 1, 2, 3, 4, 5] },
@@ -14,24 +12,24 @@ export default function Services() {
     { featureIndexes: [0, 1, 2, 3] },
   ] as const;
   const services = serviceConfigs.map((serviceConfig, serviceIndex) => ({
-    name: t(`services.${serviceIndex}.name`),
-    status: t(`services.${serviceIndex}.status`),
-    statusBadge: t(`services.${serviceIndex}.statusBadge`),
-    description: t(`services.${serviceIndex}.description`),
+    name: t(`services.${serviceIndex}.name` as never),
+    status: t(`services.${serviceIndex}.status` as never),
+    statusBadge: t(`services.${serviceIndex}.statusBadge` as never),
+    description: t(`services.${serviceIndex}.description` as never),
     features: serviceConfig.featureIndexes.map((featureIndex) =>
-      t(`services.${serviceIndex}.features.${featureIndex}`)
+      t(`services.${serviceIndex}.features.${featureIndex}` as never)
     ),
-    cta: t(`services.${serviceIndex}.cta`),
-    href: t(`services.${serviceIndex}.href`),
-    image: t(`services.${serviceIndex}.image`),
+    cta: t(`services.${serviceIndex}.cta` as never),
+    href: t(`services.${serviceIndex}.href` as never),
+    image: t(`services.${serviceIndex}.image` as never),
   }));
 
   return (
     <main className="overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-sky-50 via-white to-amber-50">
-        <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-sky-200/30 rounded-full blur-[150px]" />
-        <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-amber-200/30 rounded-full blur-[120px]" />
+      <section className="relative py-24 bg-gradient-to-br from-sky-50 via-white to-amber-50">
+        <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-sky-200/30 rounded-full blur-[150px]" aria-hidden="true" />
+        <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-amber-200/30 rounded-full blur-[120px]" aria-hidden="true" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
@@ -78,8 +76,8 @@ export default function Services() {
                       src={service.image}
                       alt={service.name}
                       fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                   </div>
@@ -125,9 +123,9 @@ export default function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-32 bg-gradient-to-br from-sky-500 via-blue-600 to-sky-700 text-white overflow-hidden">
-        <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-sky-400/30 rounded-full blur-[150px]" />
-        <div className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-blue-400/30 rounded-full blur-[120px]" />
+      <section className="relative py-24 bg-gradient-to-br from-sky-500 via-blue-600 to-sky-700 text-white overflow-hidden">
+        <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-sky-400/30 rounded-full blur-[150px]" aria-hidden="true" />
+        <div className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-blue-400/30 rounded-full blur-[120px]" aria-hidden="true" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Header } from '@/components/layout/header';
-import { PageTransition } from '@/components/layout/page-transition';
 import Footer from '@/components/common/footer';
 
 type MarketingProps = {
@@ -13,14 +12,12 @@ export default function MarketingLayout({
     return (
         <>
             <Header />
-            <PageTransition>
-                <div className="flex flex-col min-h-screen">
-                    <main className="flex-1">
-                        {children}
-                    </main>
-                    <Footer />
-                </div>
-            </PageTransition>
+            <div className="flex flex-col min-h-screen animate-in fade-in duration-500">
+                <main className="flex-1">
+                    {children}
+                </main>
+                <Footer />
+            </div>
         </>
     )
 }

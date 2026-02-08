@@ -1,9 +1,12 @@
 export const en = {
     hero: {
+        badge: "PROVEN RESULTS",
         title: "Case Studies",
         subtitle: "Real Results from Real Schools",
         description: "See how Reading Advantage is transforming English education in Thai schools through measurable outcomes and authentic teacher experiences.",
     },
+    implementationPeriod: "Implementation Period: ",
+    highlights: "Key Highlights:",
     schools: [
         {
             name: "School A (Coming Soon)",
@@ -107,10 +110,13 @@ export const en = {
 
 export const th = {
     hero: {
+        badge: "ผลลัพธ์ที่พิสูจน์แล้ว",
         title: "กรณีศึกษา",
         subtitle: "ผลลัพธ์จริงจากโรงเรียนจริง",
         description: "ดูว่า Reading Advantage กำลังปฏิวัติการศึกษาภาษาอังกฤษในโรงเรียนไทยอย่างไรผ่านผลลัพธ์ที่วัดได้และประสบการณ์ของครูที่แท้จริง",
     },
+    implementationPeriod: "ระยะเวลาการนำไปใช้: ",
+    highlights: "จุดเด่นหลัก:",
     schools: [
         {
             name: "โรงเรียน A (เร็วๆ นี้)",
@@ -214,10 +220,13 @@ export const th = {
 
 export const zh = {
     hero: {
+        badge: "经过验证的结果",
         title: "案例研究",
         subtitle: "来自真实学校的真实结果",
         description: "看看Reading Advantage如何通过可衡量的成果和真实的教师体验，改变泰国学校的英语教育。",
     },
+    implementationPeriod: "实施周期: ",
+    highlights: "主要亮点:",
     schools: [
         {
             name: "学校 A（即将推出）",

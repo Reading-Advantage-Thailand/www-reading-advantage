@@ -56,12 +56,12 @@ export default async function ProductsPage() {
       {/* Hero - Warm gradient with floating elements */}
       <section className="relative min-h-[60vh] flex items-center bg-hero-warm overflow-hidden">
         {/* Organic blobs */}
-        <div className="absolute top-20 right-10 w-64 h-64 bg-amber-300/40 rounded-full blur-[80px] animate-pulse-slow" />
-        <div className="absolute bottom-20 left-10 w-80 h-80 bg-sky-300/30 rounded-full blur-[100px] animate-float" />
+      <div className="absolute top-20 right-10 w-64 h-64 bg-amber-300/40 rounded-full blur-[80px] animate-pulse-slow" aria-hidden="true" />
+      <div className="absolute bottom-20 left-10 w-80 h-80 bg-sky-300/30 rounded-full blur-[100px]" aria-hidden="true" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <div className="hero-glass">
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-modern-lg">
               <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
                 {t("hero.title")}
               </h1>
@@ -78,8 +78,9 @@ export default async function ProductsPage() {
             <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-sky-400/20 rounded-[32px] blur-2xl z-0" />
             <Image
               src="/images/small-group.png"
-              alt="Students using Reading Advantage"
+              alt="Group of students using Reading Advantage platform on tablets in collaborative learning session"
               fill
+              sizes="(max-width: 1280px) 100vw, 50vw"
               className="relative z-10 object-cover rounded-[24px] shadow-2xl"
               priority
             />
@@ -90,7 +91,7 @@ export default async function ProductsPage() {
       </section>
 
       {/* Grade Bands - Enhanced cards with warm themes */}
-      <section className="relative py-20 md:py-32 warm-section overflow-hidden">
+      <section className="relative py-24 warm-section overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid gap-8 md:grid-cols-3">
             {gradeBands.map((band, index) => (
@@ -99,7 +100,7 @@ export default async function ProductsPage() {
                 className="group h-full animate-in fade-in slide-in-from-bottom-8 duration-700"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className={`h-full p-8 rounded-2xl bg-gradient-to-br ${band.bgColor} warm-card border-0 transition-all duration-300 hover:-translate-y-2`}>
+                <div className={`h-full p-8 rounded-2xl bg-gradient-to-br ${band.bgColor} warm-card border-0`}>
                   {/* Icon with glow */}
                   <div className={`w-16 h-16 ${band.badgeColor} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                     <band.icon className="w-8 h-8 text-white" strokeWidth={2} />

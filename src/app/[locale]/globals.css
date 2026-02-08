@@ -50,7 +50,7 @@
 }
 
 main {
-  @apply pb-12 min-h-screen;
+  @apply min-h-screen;
 }
 
 /* Header styles */
@@ -87,14 +87,6 @@ main {
 
 .gradient-text {
   @apply bg-gradient-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent;
-}
-
-.hero-glass {
-  @apply glass-morphism rounded-2xl p-8 shadow-modern-lg;
-}
-
-.floating-element {
-  @apply animate-float;
 }
 
 .modern-section {

@@ -1,12 +1,10 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, TrendingUp, BookOpen, Target, CheckCircle, Users, BarChart3, GraduationCap } from "lucide-react";
-import { useScopedI18n } from "@/locales/client";
+import { getScopedI18n } from "@/locales/server";
 
-export default function CaseStudies() {
-  const t = useScopedI18n("pages.caseStudies");
+export default async function CaseStudies() {
+  const t = await getScopedI18n("pages.caseStudies");
   const schoolIndexes = [0, 1] as const;
   const highlightIndexes = [0, 1, 2, 3] as const;
   const methodIndexes = [0, 1, 2, 3] as const;
@@ -50,15 +48,15 @@ export default function CaseStudies() {
   return (
     <main className="overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-sky-50 via-white to-amber-50">
-        <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-sky-200/30 rounded-full blur-[150px]" />
-        <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-amber-200/30 rounded-full blur-[120px]" />
+      <section className="relative py-24 bg-gradient-to-br from-sky-50 via-white to-amber-50">
+      <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-sky-200/30 rounded-full blur-[150px]" aria-hidden="true" />
+      <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-amber-200/30 rounded-full blur-[120px]" aria-hidden="true" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
             <div className="inline-flex items-center gap-2 bg-sky-100 text-sky-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
               <Target className="w-4 h-4" />
-              PROVEN RESULTS
+              {t("hero.badge")}
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 leading-tight">
               {t("hero.title")}
@@ -92,7 +90,7 @@ export default function CaseStudies() {
                     {school.name}
                   </h2>
                   <p className="text-lg text-slate-600">
-                    Implementation Period: {school.duration}
+                    {t("implementationPeriod")}{school.duration}
                   </p>
                 </div>
 
@@ -101,28 +99,28 @@ export default function CaseStudies() {
                   <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
                     <Image
                       src={index === 0 ? "/images/students-engaging-with-app.png" : "/images/students-with-app.png"}
-                      alt="Students engaging with Reading Advantage app"
+                      alt="Students actively engaged with Reading Advantage app on tablets during classroom activity"
                       fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover"
-                      priority
                     />
                   </div>
                   <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
                     <Image
                       src="/images/teacher-assisting-students.png"
-                      alt="Teacher assisting students"
+                      alt="Teacher providing personalized assistance to students using Reading Advantage platform"
                       fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover"
-                      priority
                     />
                   </div>
                   <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
                     <Image
                       src={index === 0 ? "/images/small-group.png" : "/images/teacher-at-board.png"}
-                      alt="Small group learning session"
+                      alt="Small collaborative group learning session with students working together"
                       fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover"
-                      priority
                     />
                   </div>
                 </div>
@@ -173,7 +171,7 @@ export default function CaseStudies() {
                     {/* Fidelity Score */}
                     <div className="bg-white rounded-2xl p-6 border border-sky-100 shadow-lg">
                       <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center">
+                        <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center">
                           <Target className="w-6 h-6 text-white" />
                         </div>
                         <h4 className="font-bold text-xl text-slate-900">
@@ -193,7 +191,7 @@ export default function CaseStudies() {
                 {/* Highlights */}
                 <div className="grid md:grid-cols-2 gap-6 mb-12">
                   <div>
-                    <h4 className="text-xl font-bold text-slate-900 mb-4">Key Highlights:</h4>
+                    <h4 className="text-xl font-bold text-slate-900 mb-4">{t("highlights")}</h4>
                     <ul className="space-y-3">
                       {school.highlights.map((highlight, i) => (
                         <li key={i} className="flex items-start gap-3">
@@ -229,19 +227,19 @@ export default function CaseStudies() {
                   <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
                     <Image
                       src="/images/teacher-and-dashboard.png"
-                      alt="Teacher dashboard showing student progress"
+                      alt="Teacher analytics dashboard displaying real-time student progress data and performance metrics"
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover"
-                      priority
                     />
                   </div>
                   <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
                     <Image
                       src="/images/workbook-cover.png"
-                      alt="Student workbook"
+                      alt="Physical student workbook with structured reading exercises and guided activities"
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover"
-                      priority
                     />
                   </div>
                 </div>
@@ -254,8 +252,8 @@ export default function CaseStudies() {
       {/* Methodology Section */}
       <section className="relative py-24 bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-sky-900/50 via-amber-900/50 to-slate-900" />
-        <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-[150px]" />
-        <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[120px]" />
+      <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-[150px]" aria-hidden="true" />
+      <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[120px]" aria-hidden="true" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
@@ -288,9 +286,9 @@ export default function CaseStudies() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-32 bg-gradient-to-br from-sky-500 via-blue-600 to-sky-700 text-white overflow-hidden">
-        <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-sky-400/30 rounded-full blur-[150px]" />
-        <div className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-blue-400/30 rounded-full blur-[120px]" />
+      <section className="relative py-24 bg-gradient-to-br from-sky-500 via-blue-600 to-sky-700 text-white overflow-hidden">
+      <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-sky-400/30 rounded-full blur-[150px]" aria-hidden="true" />
+      <div className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-blue-400/30 rounded-full blur-[120px]" aria-hidden="true" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">

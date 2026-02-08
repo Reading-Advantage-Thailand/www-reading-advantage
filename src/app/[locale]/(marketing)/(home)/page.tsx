@@ -18,9 +18,8 @@ export default function Home() {
             {/* Hero - Full, bold, no template feel */}
             <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-amber-50 via-orange-50 to-sky-50">
                 {/* Organic blobs */}
-                <div className="absolute top-32 right-20 w-80 h-80 bg-amber-300/40 rounded-full blur-[100px] animate-pulse-slow" />
-                <div className="absolute bottom-40 left-20 w-96 h-96 bg-sky-300/30 rounded-full blur-[120px] animate-float" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-200/20 rounded-full blur-[150px]" />
+                <div className="absolute top-32 right-20 w-80 h-80 bg-amber-300/40 rounded-full blur-[100px] animate-pulse-slow" aria-hidden="true" />
+                <div className="absolute bottom-40 left-20 w-96 h-96 bg-sky-300/30 rounded-full blur-[120px]" aria-hidden="true" />
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-5xl mx-auto">
@@ -53,7 +52,7 @@ export default function Home() {
                                     href="/contact"
                                     className="bg-white/60 backdrop-blur-sm border-2 border-slate-200 text-slate-700 px-10 py-5 rounded-2xl hover:bg-white hover:border-sky-300 transition-all duration-300 font-bold text-lg"
                                 >
-                                    Get Started
+                                    {t('hero.secondaryCta')}
                                 </Link>
                             </div>
                         </div>
@@ -63,11 +62,12 @@ export default function Home() {
                 {/* Floating product preview */}
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
                     <div className="relative w-[600px] h-[500px]">
-                        <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-sky-400/20 rounded-[40px] blur-2xl z-0" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-sky-400/20 rounded-[40px] blur-2xl z-0" aria-hidden="true" />
                         <Image
                             src="/images/students-at-board.png"
-                            alt="Reading Advantage Platform"
+                            alt="Students gathered at interactive board during Reading Advantage classroom session"
                             fill
+                            sizes="(max-width: 1280px) 100vw, 50vw"
                             className="relative z-10 object-cover rounded-[32px] shadow-2xl"
                             priority
                         />
@@ -78,7 +78,7 @@ export default function Home() {
             </section>
 
             {/* Mission - Full width, bold typography */}
-            <section className="relative py-32 bg-white">
+            <section className="relative py-24 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
                         <div className="inline-block mb-8">
@@ -96,7 +96,7 @@ export default function Home() {
             </section>
 
             {/* Overview - Asymmetric layout with image */}
-            <section className="relative py-32 bg-gradient-to-br from-sky-600 via-orange-600 to-amber-700 overflow-hidden">
+            <section className="relative py-24 bg-gradient-to-br from-sky-600 via-orange-600 to-amber-700 overflow-hidden">
                 <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
 
                 <div className="container mx-auto px-4 relative z-10">
@@ -113,23 +113,23 @@ export default function Home() {
                                     href="/contact"
                                     className="bg-white text-amber-700 px-8 py-4 rounded-2xl hover:bg-amber-50 transition-all duration-300 font-bold text-lg inline-flex items-center gap-2 shadow-xl hover:-translate-y-1"
                                 >
-                                    Partner With Us
+                                    {t('overview.partnerCta')}
                                     <ArrowRight className="w-5 h-5" />
                                 </Link>
                             </div>
                         </div>
                         <div className="lg:col-span-5 animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
                             <div className="relative">
-                                <div className="absolute inset-0 bg-white/20 rounded-3xl blur-3xl -translate-y-4 translate-x-4" />
+                                <div className="absolute inset-0 bg-white/20 rounded-3xl blur-3xl -translate-y-4 translate-x-4" aria-hidden="true" />
                                 <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
                                     <div className="grid grid-cols-1 gap-6">
                                         <div className="text-center">
                                             <div className="text-4xl font-bold text-white mb-2">10,000+</div>
-                                            <div className="text-amber-100 text-lg">AI-Curated Articles Across 12 CEFR Levels</div>
+                                            <div className="text-amber-100 text-lg">{t('overview.stats.articles')}</div>
                                         </div>
                                         <div className="text-center">
-                                            <div className="text-3xl font-bold text-white mb-2">Evidence-Backed Gains</div>
-                                            <div className="text-amber-100 text-sm">Aka 2019 Research: +9.5 points over grammar instruction</div>
+                                            <div className="text-3xl font-bold text-white mb-2">{t('overview.stats.title')}</div>
+                                            <div className="text-amber-100 text-sm">{t('overview.stats.research')}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@ export default function Home() {
             </section>
 
             {/* Flagship - Diagonal split layout */}
-            <section className="relative py-32 bg-gradient-to-br from-amber-50 via-white to-sky-50" id="products">
+            <section className="relative py-24 bg-gradient-to-br from-amber-50 via-white to-sky-50" id="products">
                 <div className="container mx-auto px-4">
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-16 animate-in fade-in duration-700">
@@ -187,11 +187,10 @@ export default function Home() {
                             <div className="relative min-h-[500px] bg-gradient-to-br from-white to-amber-50 flex items-center justify-center p-8">
                                 <Image
                                     src="/images/students-with-app.png"
-                                    alt="Reading Advantage Platform"
+                                    alt="Students using Reading Advantage app on tablets and computers in classroom"
                                     width={600}
                                     height={500}
                                     className="relative z-10 object-contain"
-                                    priority
                                 />
                             </div>
                         </div>
@@ -200,10 +199,10 @@ export default function Home() {
             </section>
 
             {/* Innovation - Horizontal scroll / card-less features */}
-            <section className="relative py-32 bg-slate-900 overflow-hidden">
+            <section className="relative py-24 bg-slate-900 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-sky-900/50 via-amber-900/50 to-orange-900/50" />
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-sky-500/10 rounded-full blur-[100px]" />
-                <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-amber-500/10 rounded-full blur-[80px]" />
+                <div className="absolute top-0 left-1/4 w-96 h-96 bg-sky-500/10 rounded-full blur-[100px]" aria-hidden="true" />
+                <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-amber-500/10 rounded-full blur-[80px]" aria-hidden="true" />
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="text-center mb-20 animate-in fade-in duration-700">
@@ -247,39 +246,39 @@ export default function Home() {
             </section>
 
             {/* Big 4 Quality Protocol - New Section */}
-            <section className="relative py-32 bg-gradient-to-br from-sky-50 via-white to-amber-50">
+            <section className="relative py-24 bg-gradient-to-br from-sky-50 via-white to-amber-50">
                 <div className="container mx-auto px-4">
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-16 animate-in fade-in duration-700">
                             <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
                                 <Sparkles className="w-4 h-4" />
-                                QUALITY GUARANTEE
+                                {t('qualityProtocol.badge')}
                             </div>
                             <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
-                                The Big 4 Quality Protocol
+                                {t('qualityProtocol.title')}
                             </h2>
                             <p className="text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                                The System is the Expert: Delivering international results through AI and rigorous fidelity protocols.
+                                {t('qualityProtocol.description')}
                             </p>
                         </div>
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {[
                                 {
-                                    title: "Uninterrupted Reading",
-                                    description: "Consistent extensive reading sessions without disruptions for maximum language exposure",
+                                    title: t('qualityProtocol.features.0.title'),
+                                    description: t('qualityProtocol.features.0.description'),
                                 },
                                 {
-                                    title: "Student Agency",
-                                    description: "Students choose articles that match their interests, driving intrinsic motivation",
+                                    title: t('qualityProtocol.features.1.title'),
+                                    description: t('qualityProtocol.features.1.description'),
                                 },
                                 {
-                                    title: "Data-Driven Consensus",
-                                    description: "Regular progress reviews based on comprehensive data from student performance",
+                                    title: t('qualityProtocol.features.2.title'),
+                                    description: t('qualityProtocol.features.2.description'),
                                 },
                                 {
-                                    title: "Workbook-First AI",
-                                    description: "Physical workbooks provide structure while AI adapts to individual learning paths",
+                                    title: t('qualityProtocol.features.3.title'),
+                                    description: t('qualityProtocol.features.3.description'),
                                 },
                             ].map((item, index) => (
                                 <div
@@ -300,32 +299,32 @@ export default function Home() {
             </section>
 
             {/* Technology & Target Market - New Section */}
-            <section className="relative py-32 bg-slate-900 text-white overflow-hidden">
+            <section className="relative py-24 bg-slate-900 text-white overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-sky-900/50 via-amber-900/50 to-slate-900" />
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-16 animate-in fade-in duration-700">
                             <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                                Built for Thai Private Schools
+                                {t('thaiSchools.title')}
                             </h2>
                             <p className="text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                                Empower your Thai teachers to deliver Native-Standard English, addressing your unique challenges.
+                                {t('thaiSchools.description')}
                             </p>
                         </div>
 
                         <div className="grid md:grid-cols-3 gap-8">
                             {[
                                 {
-                                    title: "Teacher Shortage",
-                                    description: "Comprehensive lesson plans and teacher guides reduce preparation time significantly",
+                                    title: t('thaiSchools.features.0.title'),
+                                    description: t('thaiSchools.features.0.description'),
                                 },
                                 {
-                                    title: "Large Classes",
-                                    description: "Individualized learning paths work effectively with 30+ students per class",
+                                    title: t('thaiSchools.features.1.title'),
+                                    description: t('thaiSchools.features.1.description'),
                                 },
                                 {
-                                    title: "Limited Devices",
-                                    description: "Blended learning model works with any device-to-student ratio",
+                                    title: t('thaiSchools.features.2.title'),
+                                    description: t('thaiSchools.features.2.description'),
                                 },
                             ].map((item, index) => (
                                 <div
@@ -346,8 +345,8 @@ export default function Home() {
                             <div className="inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl px-8 py-6">
                                 <Sparkles className="w-8 h-8 text-amber-400" />
                                 <div className="text-left">
-                                    <div className="text-lg text-slate-300">Powered by</div>
-                                    <div className="text-2xl font-bold text-white">Google Gemini & GPT-5 AI</div>
+                                    <div className="text-lg text-slate-300">{t('thaiSchools.poweredBy')}</div>
+                                    <div className="text-2xl font-bold text-white">{t('thaiSchools.technology')}</div>
                                 </div>
                             </div>
                         </div>
@@ -356,9 +355,9 @@ export default function Home() {
             </section>
 
             {/* Impact - Final bold CTA */}
-            <section className="relative py-40 bg-gradient-to-br from-amber-500 via-orange-500 to-sky-600 overflow-hidden">
-                <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-amber-400/30 rounded-full blur-[150px]" />
-                <div className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-sky-400/30 rounded-full blur-[120px]" />
+            <section className="relative py-24 bg-gradient-to-br from-amber-500 via-orange-500 to-sky-600 overflow-hidden">
+                <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-amber-400/30 rounded-full blur-[150px]" aria-hidden="true" />
+                <div className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-sky-400/30 rounded-full blur-[120px]" aria-hidden="true" />
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
@@ -381,15 +380,15 @@ export default function Home() {
                         <div className="mt-20 flex flex-wrap justify-center gap-12 animate-in fade-in duration-700 delay-500">
                             <div className="text-center">
                                 <div className="text-4xl font-bold text-white mb-2">10,000+</div>
-                                <div className="text-amber-100 text-lg">AI-Curated Articles</div>
+                                <div className="text-amber-100 text-lg">{t('impact.trustBadges.articles')}</div>
                             </div>
                             <div className="text-center">
                                 <div className="text-4xl font-bold text-white mb-2">12</div>
-                                <div className="text-amber-100 text-lg">CEFR Levels</div>
+                                <div className="text-amber-100 text-lg">{t('impact.trustBadges.cefrLevels')}</div>
                             </div>
                             <div className="text-center">
-                                <div className="text-4xl font-bold text-white mb-2">Big 4</div>
-                                <div className="text-amber-100 text-lg">Quality Protocol</div>
+                                <div className="text-4xl font-bold text-white mb-2">{t('impact.trustBadges.big4')}</div>
+                                <div className="text-amber-100 text-lg">{t('impact.trustBadges.qualityProtocol')}</div>
                             </div>
                         </div>
                     </div>

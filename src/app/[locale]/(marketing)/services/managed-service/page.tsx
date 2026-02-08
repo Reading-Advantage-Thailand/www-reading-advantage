@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Calendar, CheckCircle, Users, Zap, BookOpen, Target, Shield, Clock, TrendingUp } from "lucide-react";
+import { ArrowRight, Calendar, CheckCircle, Users, Zap, BookOpen, Target, Clock, TrendingUp } from "lucide-react";
 import { useScopedI18n } from "@/locales/client";
 
 export default function ManagedService() {
@@ -10,10 +10,6 @@ export default function ManagedService() {
   const featureIndexes = [0, 1, 2, 3, 4] as const;
   const managedFeatures = featureIndexes.map((featureIndex) =>
     t(`features.items.${featureIndex}`)
-  );
-  const overviewIndexes = [0, 1, 2, 3] as const;
-  const overviewItems = overviewIndexes.map((itemIndex) =>
-    t(`overview.items.${itemIndex}`)
   );
   const benefitIndexes = [0, 1, 2, 3] as const;
   const benefitItems = benefitIndexes.map((itemIndex) =>
@@ -23,11 +19,11 @@ export default function ManagedService() {
   return (
     <main className="overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-slate-900 via-purple-900 to-sky-900 overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-slate-900 via-indigo-900 to-sky-900 overflow-hidden">
         {/* Organic blobs */}
-        <div className="absolute top-32 right-20 w-80 h-80 bg-purple-500/20 rounded-full blur-[100px] animate-pulse-slow" />
+        <div className="absolute top-32 right-20 w-80 h-80 bg-indigo-500/20 rounded-full blur-[100px] animate-pulse-slow" />
         <div className="absolute bottom-40 left-20 w-96 h-96 bg-sky-500/20 rounded-full blur-[120px] animate-float" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-400/20 rounded-full blur-[150px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-400/20 rounded-full blur-[150px]" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
@@ -78,10 +74,11 @@ export default function ManagedService() {
               src="/images/teacher-and-dashboard.png"
               alt={t("images.dashboardAlt")}
               fill
+              sizes="(max-width: 1280px) 100vw, 50vw"
               className="relative z-10 object-cover rounded-[32px] shadow-2xl"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 via-purple-800/40 to-transparent rounded-[40px] z-20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/90 via-indigo-800/40 to-transparent rounded-[40px] z-20" />
           </div>
         </div>
       </section>
@@ -92,38 +89,15 @@ export default function ManagedService() {
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-16 items-center animate-in fade-in slide-in-from-bottom-8 duration-700">
               <div>
-                <div className="inline-flex items-center gap-2 bg-sky-100 text-sky-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
-                  <Shield className="w-4 h-4" />
-                  {t("overview.badge")}
-                </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
-                  {t("overview.title")}
-                </h2>
-                <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                  {t("overview.description")}
-                </p>
-                <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                  <strong>{t("overview.strong")}</strong> {t("overview.strongText")}
-                </p>
-                <ul className="space-y-4 mb-8">
-                  {overviewItems.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-slate-700">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-100 to-purple-100 rounded-3xl blur-3xl -translate-y-4 -translate-x-4" />
-                <div className="relative bg-gradient-to-br from-sky-50 to-purple-50 rounded-3xl p-8">
+                <div className="absolute inset-0 bg-gradient-to-br from-sky-100 to-indigo-100 rounded-3xl blur-3xl -translate-y-4 -translate-x-4" />
+                <div className="relative bg-gradient-to-br from-sky-50 to-indigo-50 rounded-3xl p-8">
                   <Image
                     src="/images/teacher-assisting-students.png"
                     alt={t("images.teacherAssistAlt")}
                     width={500}
                     height={400}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="rounded-2xl shadow-xl"
-                    priority
                   />
                 </div>
               </div>
@@ -133,11 +107,11 @@ export default function ManagedService() {
       </section>
 
       {/* Features Grid */}
-      <section className="relative py-24 bg-gradient-to-br from-sky-50 via-white to-purple-50">
+      <section className="relative py-24 bg-gradient-to-br from-sky-50 via-white to-indigo-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-in fade-in duration-700">
-              <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
+              <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
                 <Zap className="w-4 h-4" />
                 {t("features.badge")}
               </div>
@@ -153,10 +127,10 @@ export default function ManagedService() {
               {managedFeatures.map((feature, index) => (
                 <div
                   key={index}
-                  className="group relative bg-white rounded-3xl p-8 border border-sky-100 hover:border-purple-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="group relative bg-white rounded-3xl p-8 border border-sky-100 hover:border-indigo-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-in fade-in slide-in-from-bottom-8 duration-700"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-sky-400 to-purple-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <div className="w-16 h-16 bg-gradient-to-br from-sky-400 to-indigo-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <Users className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-4">{feature}</h3>
@@ -198,8 +172,8 @@ export default function ManagedService() {
                   alt={t("images.smallGroupAlt")}
                   width={500}
                   height={400}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="rounded-3xl shadow-2xl"
-                  priority
                 />
               </div>
             </div>
@@ -208,9 +182,9 @@ export default function ManagedService() {
       </section>
 
       {/* Roadmap Section */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-purple-900 to-sky-900 text-white overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-indigo-900 to-sky-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-white/5 backdrop-blur-sm" />
-        <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[150px]" />
+        <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[150px]" />
         <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-sky-500/10 rounded-full blur-[120px]" />
 
         <div className="container mx-auto px-4 relative z-10">

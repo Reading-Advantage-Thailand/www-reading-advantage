@@ -29,14 +29,14 @@ export default async function TutorAdvantage() {
               className="mx-auto mb-8"
             />
             <h1 className="text-5xl font-bold mb-6">{t("hero.title")}</h1>
-            <div className="inline-block bg-yellow-400 text-emerald-900 px-4 py-2 rounded-full mb-6">
+            <div className="inline-block bg-yellow-400 text-sky-900 px-4 py-2 rounded-full mb-6">
               {t("hero.comingSoon")}
             </div>
             <h2 className="text-2xl font-bold mb-6">{t("hero.subtitle")}</h2>
           </div>
         }
         description={t("hero.description")}
-        className="bg-gradient-to-br from-emerald-100 to-emerald-400"
+        className="bg-gradient-to-br from-sky-100 to-sky-400"
       />
 
       {/* Value Propositions */}
@@ -44,7 +44,7 @@ export default async function TutorAdvantage() {
         <div className="container mx-auto px-4">
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-emerald-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-sky-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="text-4xl mb-4 text-center">🤖</div>
                 <h3 className="text-xl font-bold mb-4 text-center">{t("valuePropositions.features.0.title")}</h3>
                 <ul className="text-left list-disc pl-6 space-y-2">
@@ -54,7 +54,7 @@ export default async function TutorAdvantage() {
                 </ul>
               </div>
 
-              <div className="bg-emerald-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-sky-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="text-4xl mb-4 text-center">📚</div>
                 <h3 className="text-xl font-bold mb-4 text-center">{t("valuePropositions.features.1.title")}</h3>
                 <ul className="text-left list-disc pl-6 space-y-2">
@@ -64,7 +64,7 @@ export default async function TutorAdvantage() {
                 </ul>
               </div>
 
-              <div className="bg-emerald-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-sky-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="text-4xl mb-4 text-center">👩‍🏫</div>
                 <h3 className="text-xl font-bold mb-4 text-center">{t("valuePropositions.features.2.title")}</h3>
                 <ul className="text-left list-disc pl-6 space-y-2">
@@ -79,7 +79,7 @@ export default async function TutorAdvantage() {
       </section>
 
       {/* Platform Features */}
-      <section className="bg-emerald-100 py-16">
+      <section className="bg-sky-100 py-16">
         <div className="container mx-auto px-4">
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <h2 className="text-3xl font-bold text-center mb-12">{t("platformFeatures.heading")}</h2>
@@ -110,7 +110,7 @@ export default async function TutorAdvantage() {
                   description: t("platformFeatures.features.5.description"),
                 },
               ].map((feature) => (
-                <div key={feature.title} className="bg-emerald-200 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div key={feature.title} className="bg-sky-200 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                   <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
                   <p>{feature.description}</p>
                 </div>
@@ -121,7 +121,7 @@ export default async function TutorAdvantage() {
       </section>
 
       {/* Trust Signals */}
-      <section className="bg-emerald-800 text-emerald-50 py-16">
+      <section className="bg-sky-800 text-sky-50 py-16">
         <div className="container mx-auto px-4">
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <h2 className="text-3xl font-bold text-center mb-12">{t("trustSignals.heading")}</h2>
@@ -157,7 +157,7 @@ export default async function TutorAdvantage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-emerald-800 text-emerald-50 py-16 bg-gradient-to-br from-emerald-700 to-emerald-900">
+      <section className="bg-sky-800 text-sky-50 py-16 bg-gradient-to-br from-sky-700 to-sky-900">
         <div className="container mx-auto px-4 text-center">
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>
@@ -165,13 +165,13 @@ export default async function TutorAdvantage() {
             <div className="flex justify-center gap-4">
               <Link
                 href="/contact"
-                className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-lg font-bold transition-colors"
+                className="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-lg font-bold transition-colors"
               >
                 {t("cta.buttons.register")}
               </Link>
               <Link
                 href="/contact"
-                className="bg-white hover:bg-emerald-50 text-emerald-800 px-8 py-3 rounded-lg font-bold transition-colors"
+                className="bg-white hover:bg-sky-50 text-sky-800 px-8 py-3 rounded-lg font-bold transition-colors"
               >
                 {t("cta.buttons.apply")}
               </Link>
