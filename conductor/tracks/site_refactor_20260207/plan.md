@@ -16,17 +16,17 @@ These are quick, high-impact fixes that should be done first because they affect
 
 **Steps:**
 
-- [ ] Open `src/app/[locale]/(marketing)/pricing/page.tsx`
-- [ ] Go to **line 46**. You will see this line:
+- [x] Open `src/app/[locale]/(marketing)/pricing/page.tsx`
+- [x] Go to **line 46**. You will see this line:
   ```tsx
   <div className="conntainer mx-auto px-4 text-center">
   ```
-- [ ] Change `conntainer` to `container` (remove the extra `n`). The line should now read:
+- [x] Change `conntainer` to `container` (remove the extra `n`). The line should now read:
   ```tsx
   <div className="container mx-auto px-4 text-center">
   ```
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/pricing`, scroll down to the blue CTA section at the bottom. The text "Ready to Transform Your Reading Program?" should now be centered in the page with proper margins on each side, not stretching edge-to-edge.
+- [x] Save the file
+- [x] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/pricing`, scroll down to the blue CTA section at the bottom. The text "Ready to Transform Your Reading Program?" should now be centered in the page with proper margins on each side, not stretching edge-to-edge.
 
 ---
 
@@ -38,23 +38,23 @@ These are quick, high-impact fixes that should be done first because they affect
 
 **Steps:**
 
-- [ ] Open `src/app/[locale]/(marketing)/about/page.tsx`
-- [ ] At the top of the file, check if `Link` from `next/link` is already imported. Currently it is **not** imported. Add this import after line 2:
+- [x] Open `src/app/[locale]/(marketing)/about/page.tsx`
+- [x] At the top of the file, check if `Link` from `next/link` is already imported. Currently it is **not** imported. Add this import after line 2:
   ```tsx
   import Link from 'next/link';
   ```
-- [ ] Go to **line 193**. You will see:
+- [x] Go to **line 193**. You will see:
   ```tsx
   <a href="#" className="bg-sky-500 text-sky-50 hover:bg-sky-600 px-6 py-3 rounded-lg font-bold transition-colors inline-block">
   ```
-- [ ] Replace the entire `<a>` tag (lines 193-195) with a Next.js `Link` component pointing to `/contact`:
+- [x] Replace the entire `<a>` tag (lines 193-195) with a Next.js `Link` component pointing to `/contact`:
   ```tsx
   <Link href="/contact" className="bg-sky-500 text-sky-50 hover:bg-sky-600 px-6 py-3 rounded-lg font-bold transition-colors inline-block">
     {t('sections.cta.button')}
   </Link>
   ```
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/about`, scroll to the very bottom blue section. Click the button — it should navigate you to `http://localhost:3000/en/contact`.
+- [x] Save the file
+- [x] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/about`, scroll to the very bottom blue section. Click the button — it should navigate you to `http://localhost:3000/en/contact`.
 
 ---
 
@@ -66,21 +66,21 @@ These are quick, high-impact fixes that should be done first because they affect
 
 **Steps:**
 
-- [ ] Open `next.config.ts` (in the project root, NOT inside `src/`)
-- [ ] Go to **line 22**. You will see:
+- [x] Open `next.config.ts` (in the project root, NOT inside `src/`)
+- [x] Go to **line 22**. You will see:
   ```ts
   ignoreBuildErrors: true,
   ```
-- [ ] Change `true` to `false`:
+- [x] Change `true` to `false`:
   ```ts
   ignoreBuildErrors: false,
   ```
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run build` from the project root. Watch the output carefully. If there are TypeScript errors, they will now show up as red error messages. You need to fix ALL of them before moving on. Common fixes:
+- [x] Save the file
+- [x] **Verify:** Run `npm run build` from the project root. Watch the output carefully. If there are TypeScript errors, they will now show up as red error messages. You need to fix ALL of them before moving on. Common fixes:
   - Missing type annotations → add the correct type
   - Unused imports → remove them
   - Type mismatches → fix the type or cast appropriately
-- [ ] Keep running `npm run build` until it succeeds with zero errors. Fix each error one at a time.
+- [x] Keep running `npm run build` until it succeeds with zero errors. Fix each error one at a time.
 
 **Important:** This task may take longer than others because you might discover multiple type errors. Fix them all — do not skip any.
 
@@ -94,14 +94,14 @@ These are quick, high-impact fixes that should be done first because they affect
 
 **Steps:**
 
-- [ ] Open `next.config.ts`
-- [ ] Go to **lines 14-16**. You will see:
+- [x] Open `next.config.ts`
+- [x] Go to **lines 14-16**. You will see:
   ```ts
   images: {
     domains: ['localhost'],
   },
   ```
-- [ ] Replace `domains` with the modern `remotePatterns` syntax (Next.js 15 prefers this). Change it to:
+- [x] Replace `domains` with the modern `remotePatterns` syntax (Next.js 15 prefers this). Change it to:
   ```ts
   images: {
     remotePatterns: [
@@ -113,12 +113,12 @@ These are quick, high-impact fixes that should be done first because they affect
   },
   ```
   **What this does:** Allows images from any HTTPS domain. If the team knows the exact CDN domains, those can be specified instead of `**` later.
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run build` — it should still succeed without errors.
+- [x] Save the file
+- [x] **Verify:** Run `npm run build` — it should still succeed without errors.
 
 ---
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Critical Bug Fixes' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Critical Bug Fixes' (Protocol in workflow.md)
 
 ---
 
@@ -138,13 +138,13 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
 
 **Steps:**
 
-- [ ] Open `src/app/[locale]/(marketing)/layout.tsx`
-- [ ] **Remove the import** on line 3:
+- [x] Open `src/app/[locale]/(marketing)/layout.tsx`
+- [x] **Remove the import** on line 3:
   ```tsx
   import { PageTransition } from '@/components/layout/page-transition';
   ```
   Delete this entire line.
-- [ ] In the return statement, **remove the `<PageTransition>` wrapper** but KEEP everything inside it. The return should change from:
+- [x] In the return statement, **remove the `<PageTransition>` wrapper** but KEEP everything inside it. The return should change from:
   ```tsx
   return (
       <>
@@ -174,12 +174,12 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
       </>
   )
   ```
-- [ ] Save the file
-- [ ] **Delete the file** `src/components/layout/page-transition.tsx` entirely. You can do this from your terminal:
+- [x] Save the file
+- [x] **Delete the file** `src/components/layout/page-transition.tsx` entirely. You can do this from your terminal:
   ```bash
   rm src/components/layout/page-transition.tsx
   ```
-- [ ] **Verify:** Run `npm run dev` and navigate between pages (e.g., from homepage → about → products). Pages should still load normally. There should be no console errors about missing imports.
+- [x] **Verify:** Run `npm run dev` and navigate between pages (e.g., from homepage → about → products). Pages should still load normally. There should be no console errors about missing imports.
 
 ---
 
@@ -189,17 +189,17 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
 
 **Steps:**
 
-- [ ] First, make sure NO other file imports framer-motion. Run this search from the project root:
+- [x] First, make sure NO other file imports framer-motion. Run this search from the project root:
   ```bash
   grep -r "framer-motion" src/
   ```
   If this command returns ANY results, you need to go fix those files first (remove the framer-motion imports and replace with CSS animations). If it returns nothing, proceed.
-- [ ] Uninstall the package:
+- [x] Uninstall the package:
   ```bash
   npm uninstall framer-motion
   ```
-- [ ] **Verify:** Open `package.json` and confirm that `framer-motion` is no longer listed under `dependencies` or `devDependencies`.
-- [ ] Run `npm run build` to make sure the build still succeeds without framer-motion.
+- [x] **Verify:** Open `package.json` and confirm that `framer-motion` is no longer listed under `dependencies` or `devDependencies`.
+- [x] Run `npm run build` to make sure the build still succeeds without framer-motion.
 
 ---
 
@@ -211,9 +211,9 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
 
 **Steps:**
 
-- [ ] Open `src/app/[locale]/(marketing)/services/page.tsx`
-- [ ] **Remove** the `"use client";` directive on **line 1**. Delete the entire line.
-- [ ] **Change the i18n import** on line 6. Replace:
+- [x] Open `src/app/[locale]/(marketing)/services/page.tsx`
+- [x] **Remove** the `"use client";` directive on **line 1**. Delete the entire line.
+- [x] **Change the i18n import** on line 6. Replace:
   ```tsx
   import { useScopedI18n } from "@/locales/client";
   ```
@@ -222,7 +222,7 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
   import { getScopedI18n } from "@/locales/server";
   ```
   **Why:** Client components use `useScopedI18n` (a React hook). Server components use `getScopedI18n` (an async function).
-- [ ] **Change the function signature** on line 8. Replace:
+- [x] **Change the function signature** on line 8. Replace:
   ```tsx
   export default function Services() {
   ```
@@ -231,7 +231,7 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
   export default async function Services() {
   ```
   **Why:** Server components can be `async` to use `await`.
-- [ ] **Change the i18n call** on line 9. Replace:
+- [x] **Change the i18n call** on line 9. Replace:
   ```tsx
   const t = useScopedI18n("pages.services");
   ```
@@ -239,8 +239,8 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
   ```tsx
   const t = await getScopedI18n("pages.services");
   ```
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/services`. The page should look exactly the same as before. Check the browser console for errors — there should be none.
+- [x] Save the file
+- [x] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/services`. The page should look exactly the same as before. Check the browser console for errors — there should be none.
 
 ---
 
@@ -252,9 +252,9 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
 
 **Steps:**
 
-- [ ] Open `src/app/[locale]/(marketing)/case-studies/page.tsx`
-- [ ] **Remove** the `"use client";` directive on **line 1**
-- [ ] **Change the i18n import** on line 6. Replace:
+- [x] Open `src/app/[locale]/(marketing)/case-studies/page.tsx`
+- [x] **Remove** the `"use client";` directive on **line 1**
+- [x] **Change the i18n import** on line 6. Replace:
   ```tsx
   import { useScopedI18n } from "@/locales/client";
   ```
@@ -262,7 +262,7 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
   ```tsx
   import { getScopedI18n } from "@/locales/server";
   ```
-- [ ] **Change the function signature** on line 8. Replace:
+- [x] **Change the function signature** on line 8. Replace:
   ```tsx
   export default function CaseStudies() {
   ```
@@ -270,7 +270,7 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
   ```tsx
   export default async function CaseStudies() {
   ```
-- [ ] **Change the i18n call** on line 9. Replace:
+- [x] **Change the i18n call** on line 9. Replace:
   ```tsx
   const t = useScopedI18n("pages.caseStudies");
   ```
@@ -278,8 +278,8 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
   ```tsx
   const t = await getScopedI18n("pages.caseStudies");
   ```
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/case-studies`. The page should look exactly the same. No console errors.
+- [x] Save the file
+- [x] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/case-studies`. The page should look exactly the same. No console errors.
 
 ---
 
@@ -293,14 +293,14 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
 
 **Step-by-step for each file:**
 
-- [ ] **`src/app/[locale]/(marketing)/services/page.tsx`**
+- [x] **`src/app/[locale]/(marketing)/services/page.tsx`**
   - Lines ~77-83: The service card images have `priority`. Remove `priority` from all of them. The hero section has no image, so no image needs `priority` on this page.
 
-- [ ] **`src/app/[locale]/(marketing)/case-studies/page.tsx`**
+- [x] **`src/app/[locale]/(marketing)/case-studies/page.tsx`**
   - Lines ~102-127: There are 6+ images in the school sections, ALL with `priority`. Remove `priority` from ALL of them. The hero has no image.
   - Lines ~230-245: Dashboard and workbook images have `priority`. Remove these too.
 
-- [ ] **`src/app/[locale]/(marketing)/products/reading-advantage/page.tsx`**
+- [x] **`src/app/[locale]/(marketing)/products/reading-advantage/page.tsx`**
   - Line ~118: Hero floating image — **keep** `priority` on this one (it's above the fold)
   - Lines ~184-198: Blended learning images — **remove** `priority`
   - Lines ~271-277: Game images — **remove** `priority`
@@ -308,14 +308,14 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
   - Lines ~427-441: Teacher dashboard images — **remove** `priority`
   - Lines ~529-544: Student experience images — **remove** `priority`
 
-- [ ] **`src/app/[locale]/(marketing)/(home)/page.tsx`**
+- [x] **`src/app/[locale]/(marketing)/(home)/page.tsx`**
   - Line ~72: Hero image — **keep** `priority`
   - Line ~194: Flagship section image — **remove** `priority`
 
-- [ ] **`src/app/[locale]/(marketing)/products/page.tsx`**
+- [x] **`src/app/[locale]/(marketing)/products/page.tsx`**
   - Line ~84: Hero floating image — **keep** `priority`
 
-- [ ] **Verify:** Run `npm run build` to ensure no errors. Then run `npm run dev` and check that images still load (they just won't preload — they'll lazy-load instead, which is correct behavior).
+- [x] **Verify:** Run `npm run build` to ensure no errors. Then run `npm run dev` and check that images still load (they just won't preload — they'll lazy-load instead, which is correct behavior).
 
 ---
 
@@ -331,11 +331,11 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
 
 **Steps:**
 
-- [ ] Search the entire `src/` folder for `<Image` tags that have `fill` but no `sizes`. You can use this grep command:
+- [x] Search the entire `src/` folder for `<Image` tags that have `fill` but no `sizes`. You can use this grep command:
   ```bash
   grep -rn "fill" src/ --include="*.tsx" | grep "Image"
   ```
-- [ ] For each `<Image fill>` found, add the appropriate `sizes` prop based on the layout context. For example:
+- [x] For each `<Image fill>` found, add the appropriate `sizes` prop based on the layout context. For example:
   ```tsx
   {/* Before */}
   <Image src="/images/photo.png" alt="Photo" fill className="object-cover" />
@@ -343,17 +343,17 @@ This phase removes the biggest performance bottleneck: the `framer-motion` libra
   {/* After */}
   <Image src="/images/photo.png" alt="Photo" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
   ```
-- [ ] **Key files to check:**
+- [x] **Key files to check:**
   - `src/app/[locale]/(marketing)/case-studies/page.tsx` — many `fill` images in grid layouts (use `33vw`)
   - `src/app/[locale]/(marketing)/products/reading-advantage/page.tsx` — multiple `fill` images
   - `src/app/[locale]/(marketing)/services/page.tsx` — service card images
   - `src/app/[locale]/(marketing)/products/page.tsx` — hero image (use `50vw`)
   - `src/app/[locale]/(marketing)/(home)/page.tsx` — hero image (use `50vw`)
-- [ ] **Verify:** Run `npm run build` — no errors should appear.
+- [x] **Verify:** Run `npm run build` — no errors should appear.
 
 ---
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Performance' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Performance' (Protocol in workflow.md)
 
 ---
 
@@ -371,8 +371,8 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Open `src/app/[locale]/(marketing)/about/page.tsx`
-- [ ] Go to **line 42**. You will see:
+- [x] Open `src/app/[locale]/(marketing)/about/page.tsx`
+- [x] Go to **line 42**. You will see:
   ```tsx
   <h2 className="text-3xl font-bold mb-6 text-violet-500">
   ```
@@ -380,7 +380,7 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
   ```tsx
   <h2 className="text-3xl font-bold mb-6 text-amber-600">
   ```
-- [ ] Go to **line 150**. You will see:
+- [x] Go to **line 150**. You will see:
   ```tsx
   <h2 className="text-4xl font-bold mb-6 text-violet-600">
   ```
@@ -388,8 +388,8 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
   ```tsx
   <h2 className="text-4xl font-bold mb-6 text-sky-700">
   ```
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/about`. The "Our Story" heading should now be amber/orange colored, and "The Big 4 Quality Protocol" heading should be sky blue. No purple anywhere.
+- [x] Save the file
+- [x] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/about`. The "Our Story" heading should now be amber/orange colored, and "The Big 4 Quality Protocol" heading should be sky blue. No purple anywhere.
 
 ---
 
@@ -401,8 +401,8 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Open `src/app/[locale]/(marketing)/contact/page.tsx`
-- [ ] Find the Phone Card section (starts around **line 61**). Replace ALL `emerald` references with `amber`:
+- [x] Open `src/app/[locale]/(marketing)/contact/page.tsx`
+- [x] Find the Phone Card section (starts around **line 61**). Replace ALL `emerald` references with `amber`:
   - Line 61: `from-emerald-50` → `from-amber-50`
   - Line 61: `border-emerald-100` → `border-amber-100`
   - Line 62: `bg-emerald-100` → `bg-amber-100`
@@ -410,8 +410,8 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
   - Line 65: `text-emerald-900` → `text-amber-900`
   - Line 73: `bg-emerald-500` → `bg-amber-500`
   - Line 73: `hover:bg-emerald-600` → `hover:bg-amber-600`
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/contact`. The phone card should now be amber/orange tinted (matching the location card) instead of green. All three cards should look cohesive.
+- [x] Save the file
+- [x] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/contact`. The phone card should now be amber/orange tinted (matching the location card) instead of green. All three cards should look cohesive.
 
 ---
 
@@ -423,8 +423,8 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Open `src/app/[locale]/(marketing)/products/reading-advantage/page.tsx`
-- [ ] **Fix the hero gradient** on **line 69**. Change:
+- [x] Open `src/app/[locale]/(marketing)/products/reading-advantage/page.tsx`
+- [x] **Fix the hero gradient** on **line 69**. Change:
   ```tsx
   <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600 overflow-hidden">
   ```
@@ -432,7 +432,7 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
   ```tsx
   <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-amber-50 via-orange-50 to-sky-100 overflow-hidden">
   ```
-- [ ] **Fix the hero blob colors** on lines 71-73. Change:
+- [x] **Fix the hero blob colors** on lines 71-73. Change:
   ```tsx
   <div className="absolute top-32 right-20 w-80 h-80 bg-white/20 rounded-full blur-[100px] animate-pulse-slow" />
   <div className="absolute bottom-40 left-20 w-96 h-96 bg-sky-300/30 rounded-full blur-[120px] animate-float" />
@@ -444,11 +444,11 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
   <div className="absolute bottom-40 left-20 w-96 h-96 bg-sky-300/30 rounded-full blur-[120px]" aria-hidden="true" />
   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-200/20 rounded-full blur-[150px]" aria-hidden="true" />
   ```
-- [ ] **Fix the hero text colors** since the background is now light (not dark). Update lines 78-87:
+- [x] **Fix the hero text colors** since the background is now light (not dark). Update lines 78-87:
   - `text-white` → `text-slate-900` (h1)
   - `text-sky-50` → `text-slate-700` (h2)
   - `text-sky-100` → `text-slate-600` (p)
-- [ ] **Fix the hero gradient fade** on line 121. Change:
+- [x] **Fix the hero gradient fade** on line 121. Change:
   ```tsx
   <div className="absolute inset-0 bg-gradient-to-r from-sky-600/90 via-sky-500/40 to-transparent rounded-[40px] z-20" />
   ```
@@ -456,7 +456,7 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
   ```tsx
   <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent rounded-[40px] z-20" />
   ```
-- [ ] **Fix the games section gradient** on **line 247**. Change:
+- [x] **Fix the games section gradient** on **line 247**. Change:
   ```tsx
   <section className="relative py-32 bg-gradient-to-br from-purple-50 via-pink-50 to-sky-50">
   ```
@@ -464,7 +464,7 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
   ```tsx
   <section className="relative py-24 bg-gradient-to-br from-amber-50 via-sky-50 to-white">
   ```
-- [ ] **Fix the games badge** on line 251. Change:
+- [x] **Fix the games badge** on line 251. Change:
   ```tsx
   <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
   ```
@@ -472,8 +472,8 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
   ```tsx
   <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
   ```
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/products/reading-advantage`. The page should now use the same warm amber/sky color palette as the homepage. No blue/white hero, no purple/pink games section.
+- [x] Save the file
+- [x] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/products/reading-advantage`. The page should now use the same warm amber/sky color palette as the homepage. No blue/white hero, no purple/pink games section.
 
 ---
 
@@ -487,7 +487,7 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Go through EACH marketing page file and update padding values:
+- [x] Go through EACH marketing page file and update padding values:
 
   **Homepage** (`src/app/[locale]/(marketing)/(home)/page.tsx`):
   - Line 81: `py-32` → `py-24` (Mission section)
@@ -522,8 +522,8 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
   **Contact** (`src/app/[locale]/(marketing)/contact/page.tsx`):
   - All sections use `py-16` or `py-20` — change `py-20` to `py-16` for consistency
 
-- [ ] Save all files
-- [ ] **Verify:** Run `npm run dev` and browse through all pages. Section spacing should feel consistent and rhythmic. No huge gaps or cramped sections.
+- [x] Save all files
+- [x] **Verify:** Run `npm run dev` and browse through all pages. Section spacing should feel consistent and rhythmic. No huge gaps or cramped sections.
 
 ---
 
@@ -535,21 +535,21 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Open `src/app/[locale]/globals.css`
-- [ ] Find **line 52-54**:
+- [x] Open `src/app/[locale]/globals.css`
+- [x] Find **line 52-54**:
   ```css
   main {
     @apply pb-12 min-h-screen;
   }
   ```
-- [ ] The `pb-12` (padding-bottom: 3rem) adds space after every page's `<main>` element. This creates the footer gap. Remove `pb-12`:
+- [x] The `pb-12` (padding-bottom: 3rem) adds space after every page's `<main>` element. This creates the footer gap. Remove `pb-12`:
   ```css
   main {
     @apply min-h-screen;
   }
   ```
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run dev`, check the homepage. The gap between the last colorful section and the footer should now be gone.
+- [x] Save the file
+- [x] **Verify:** Run `npm run dev`, check the homepage. The gap between the last colorful section and the footer should now be gone.
 
 ---
 
@@ -561,22 +561,22 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Open `src/app/[locale]/(marketing)/products/page.tsx`
-- [ ] Go to **line 102**. You will see:
+- [x] Open `src/app/[locale]/(marketing)/products/page.tsx`
+- [x] Go to **line 102**. You will see:
   ```tsx
   <div className={`h-full p-8 rounded-2xl bg-gradient-to-br ${band.bgColor} warm-card border-0 transition-all duration-300 hover:-translate-y-2`}>
   ```
-- [ ] Remove the duplicate `hover:-translate-y-2` (since `.warm-card` already has `hover:-translate-y-1`):
+- [x] Remove the duplicate `hover:-translate-y-2` (since `.warm-card` already has `hover:-translate-y-1`):
   ```tsx
   <div className={`h-full p-8 rounded-2xl bg-gradient-to-br ${band.bgColor} warm-card border-0`}>
   ```
   **Why:** The `.warm-card` class in `globals.css` already includes `transition-all duration-300 hover:-translate-y-1`, so adding `hover:-translate-y-2` creates conflicting transforms.
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/products`. Hover over the grade band cards — they should lift smoothly without jittering or overlapping neighboring cards.
+- [x] Save the file
+- [x] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/products`. Hover over the grade band cards — they should lift smoothly without jittering or overlapping neighboring cards.
 
 ---
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Visual Consistency' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Visual Consistency' (Protocol in workflow.md)
 
 ---
 
@@ -592,12 +592,12 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Open `src/app/[locale]/(marketing)/features/page.tsx`
-- [ ] At the top of the file, add icon imports after the existing imports (around line 5):
+- [x] Open `src/app/[locale]/(marketing)/features/page.tsx`
+- [x] At the top of the file, add icon imports after the existing imports (around line 5):
   ```tsx
   import { Bot, User, Pencil, BarChart3, Smartphone, Globe } from 'lucide-react';
   ```
-- [ ] Replace the `features` array (lines 20-51). Change the `emoji` property to an `icon` property for each feature:
+- [x] Replace the `features` array (lines 20-51). Change the `emoji` property to an `icon` property for each feature:
   ```tsx
   const features = [
     {
@@ -632,7 +632,7 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
     },
   ];
   ```
-- [ ] Update the rendering code on **line 72**. Replace:
+- [x] Update the rendering code on **line 72**. Replace:
   ```tsx
   <div className="text-4xl mb-4">{feature.emoji}</div>
   ```
@@ -642,7 +642,7 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
     <feature.icon className="w-6 h-6 text-white" aria-hidden="true" />
   </div>
   ```
-- [ ] Also fix the array index key on **line 69**. Change:
+- [x] Also fix the array index key on **line 69**. Change:
   ```tsx
   key={index}
   ```
@@ -650,8 +650,8 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
   ```tsx
   key={feature.title}
   ```
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/features`. Each feature card should now show a styled icon (white icon on a gradient background) instead of an emoji.
+- [x] Save the file
+- [x] **Verify:** Run `npm run dev`, open `http://localhost:3000/en/features`. Each feature card should now show a styled icon (white icon on a gradient background) instead of an emoji.
 
 ---
 
@@ -665,11 +665,11 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Search for decorative elements:
+- [x] Search for decorative elements:
   ```bash
   grep -rn "blur-\[" src/app/[locale]/(marketing)/ --include="*.tsx"
   ```
-- [ ] For EACH result, add `aria-hidden="true"` to the element. Example:
+- [x] For EACH result, add `aria-hidden="true"` to the element. Example:
   ```tsx
   {/* Before */}
   <div className="absolute top-32 right-20 w-80 h-80 bg-amber-300/40 rounded-full blur-[100px] animate-pulse-slow" />
@@ -677,14 +677,14 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
   {/* After */}
   <div className="absolute top-32 right-20 w-80 h-80 bg-amber-300/40 rounded-full blur-[100px] animate-pulse-slow" aria-hidden="true" />
   ```
-- [ ] Do this for ALL blur elements across ALL files:
+- [x] Do this for ALL blur elements across ALL files:
   - `(home)/page.tsx` — lines 21-23, 66, 205-206, 360-361
   - `products/reading-advantage/page.tsx` — lines 71-73, 332-333, 647-648
   - `products/page.tsx` — lines 59-60, 78
   - `services/page.tsx` — lines 33-34, 129-130
   - `case-studies/page.tsx` — lines 54-55, 257-258, 292-293
-- [ ] Save all files
-- [ ] **Verify:** This is an invisible change. Run `npm run build` to make sure there are no errors.
+- [x] Save all files
+- [x] **Verify:** This is an invisible change. Run `npm run build` to make sure there are no errors.
 
 ---
 
@@ -694,18 +694,18 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Search for generic alt text:
+- [x] Search for generic alt text:
   ```bash
   grep -rn '"Reading Advantage Platform"' src/ --include="*.tsx"
   ```
-- [ ] Update each instance with descriptive alt text. Examples:
+- [x] Update each instance with descriptive alt text. Examples:
   - Hero images of students: `alt="Students working on Reading Advantage exercises in a classroom"`
   - Dashboard screenshots: `alt="Teacher dashboard showing student reading progress and analytics"`
   - Workbook images: `alt="Student workbook with guided reading exercises"`
   - App screenshots: `alt="Reading Advantage app displayed on a desktop monitor"`
-- [ ] Make sure NO two images on the same page have identical alt text
-- [ ] Save all files
-- [ ] **Verify:** Run `npm run build` — no errors.
+- [x] Make sure NO two images on the same page have identical alt text
+- [x] Save all files
+- [x] **Verify:** Run `npm run build` — no errors.
 
 ---
 
@@ -731,8 +731,8 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Open `src/locales/pages/home.ts`
-- [ ] Find the English (`en`) export object. Add new keys for each hard-coded string. For example, add these under the appropriate section:
+- [x] Open `src/locales/pages/home.ts`
+- [x] Find the English (`en`) export object. Add new keys for each hard-coded string. For example, add these under the appropriate section:
   ```ts
   hero: {
     // ... existing keys ...
@@ -764,14 +764,14 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
     poweredBy: 'Google Gemini & GPT-5 AI',
   },
   ```
-- [ ] Do the same for the Thai (`th`) and Chinese (`zh`) exports in the same file (copy the English values as placeholder — translators will update later)
-- [ ] Open `src/app/[locale]/(marketing)/(home)/page.tsx` and replace each hard-coded string with the corresponding `t()` call:
+- [x] Do the same for the Thai (`th`) and Chinese (`zh`) exports in the same file (copy the English values as placeholder — translators will update later)
+- [x] Open `src/app/[locale]/(marketing)/(home)/page.tsx` and replace each hard-coded string with the corresponding `t()` call:
   - `"Get Started"` → `{t('hero.getStarted')}`
   - `"Partner With Us"` → `{t('overview.partnerCta')}`
   - `"QUALITY GUARANTEE"` → `{t('bigFour.badge')}`
   - etc.
-- [ ] Save both files
-- [ ] **Verify:** Run `npm run dev`, check the homepage. All text should display the same as before (in English). Run `npm run i18n:verify` if available to check for missing keys.
+- [x] Save both files
+- [x] **Verify:** Run `npm run dev`, check the homepage. All text should display the same as before (in English). Run `npm run i18n:verify` if available to check for missing keys.
 
 ---
 
@@ -793,10 +793,10 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Add translation keys to the locale file for each hard-coded string
-- [ ] Replace each hard-coded string in the page with a `t()` call
-- [ ] Save both files
-- [ ] **Verify:** Run `npm run dev`, check the Reading Advantage product page. All text should still display correctly.
+- [x] Add translation keys to the locale file for each hard-coded string
+- [x] Replace each hard-coded string in the page with a `t()` call
+- [x] Save both files
+- [x] **Verify:** Run `npm run dev`, check the Reading Advantage product page. All text should still display correctly.
 
 ---
 
@@ -811,14 +811,14 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Add translation keys to the case studies locale file
-- [ ] Replace hard-coded strings with `t()` calls
-- [ ] Save both files
-- [ ] **Verify:** Run `npm run dev`, check the case studies page.
+- [x] Add translation keys to the case studies locale file
+- [x] Replace hard-coded strings with `t()` calls
+- [x] Save both files
+- [x] **Verify:** Run `npm run dev`, check the case studies page.
 
 ---
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Accessibility & i18n' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 4: Accessibility & i18n' (Protocol in workflow.md)
 
 ---
 
@@ -834,14 +834,14 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Open `tailwind.config.ts`
-- [ ] Go to **line 66**. You will see:
+- [x] Open `tailwind.config.ts`
+- [x] Go to **line 66**. You will see:
   ```ts
   "teal-modern": "linear-gradient(135deg, #14B8A6 0%, #06B6D4 100%)",
   ```
-- [ ] Delete this entire line
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run build` — it should succeed without errors.
+- [x] Delete this entire line
+- [x] Save the file
+- [x] **Verify:** Run `npm run build` — it should succeed without errors.
 
 ---
 
@@ -855,12 +855,12 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] First, check where `.hero-glass` is used:
+- [x] First, check where `.hero-glass` is used:
   ```bash
   grep -rn "hero-glass" src/ --include="*.tsx"
   ```
   It should only be used in `products/page.tsx` line 64.
-- [ ] Open `src/app/[locale]/(marketing)/products/page.tsx`, line 64:
+- [x] Open `src/app/[locale]/(marketing)/products/page.tsx`, line 64:
   ```tsx
   <div className="hero-glass">
   ```
@@ -868,21 +868,21 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
   ```tsx
   <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-modern-lg">
   ```
-- [ ] Open `src/app/[locale]/globals.css` and delete the `.hero-glass` class (lines 92-94):
+- [x] Open `src/app/[locale]/globals.css` and delete the `.hero-glass` class (lines 92-94):
   ```css
   .hero-glass {
     @apply glass-morphism rounded-2xl p-8 shadow-modern-lg;
   }
   ```
   Delete these 3 lines.
-- [ ] Also delete the `.floating-element` class (lines 96-98) since `animate-float` will be removed:
+- [x] Also delete the `.floating-element` class (lines 96-98) since `animate-float` will be removed:
   ```css
   .floating-element {
     @apply animate-float;
   }
   ```
-- [ ] Save both files
-- [ ] **Verify:** Run `npm run dev`, check `http://localhost:3000/en/products`. The hero section should look the same.
+- [x] Save both files
+- [x] **Verify:** Run `npm run dev`, check `http://localhost:3000/en/products`. The hero section should look the same.
 
 ---
 
@@ -892,17 +892,17 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Search for usage:
+- [x] Search for usage:
   ```bash
   grep -rn "shadow-glow" src/ --include="*.tsx"
   ```
-- [ ] If no results (or only results in files you've already changed), remove from `tailwind.config.ts` lines 73-74:
+- [x] If no results (or only results in files you've already changed), remove from `tailwind.config.ts` lines 73-74:
   ```ts
   "glow": "0 0 20px rgba(14, 165, 233, 0.3)",
   "glow-lg": "0 0 40px rgba(14, 165, 233, 0.4)",
   ```
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run build` — should succeed.
+- [x] Save the file
+- [x] **Verify:** Run `npm run build` — should succeed.
 
 ---
 
@@ -917,21 +917,21 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Open `src/app/[locale]/(marketing)/(home)/page.tsx`
+- [x] Open `src/app/[locale]/(marketing)/(home)/page.tsx`
   - Hero section (lines 21-23): Keep the first blob (line 21) with `animate-pulse-slow`. Remove `animate-float` from the second blob (line 22). Delete the third blob (line 23) entirely.
   - Innovation section (lines 205-206): Keep both blobs, remove `animate-pulse-slow` and `animate-float`. They can be static.
   - Impact CTA (lines 360-361): Keep both blobs, make them static (remove animations).
 
-- [ ] Open `src/app/[locale]/(marketing)/products/reading-advantage/page.tsx`
+- [x] Open `src/app/[locale]/(marketing)/products/reading-advantage/page.tsx`
   - Hero blobs (lines 71-73): Already fixed in Task 3.3. Ensure `animate-float` is removed.
   - Platform demo (lines 332-333): Remove animations, keep blobs as static.
   - Final CTA (lines 647-648): Remove animations.
 
-- [ ] Open `src/app/[locale]/(marketing)/products/page.tsx`
+- [x] Open `src/app/[locale]/(marketing)/products/page.tsx`
   - Hero blobs (lines 59-60): Remove `animate-float` from line 60. Keep `animate-pulse-slow` on line 59.
 
-- [ ] Save all files
-- [ ] **Verify:** Run `npm run dev`, browse through pages. Decorative elements should still be visible as subtle background effects but should not be constantly animating.
+- [x] Save all files
+- [x] **Verify:** Run `npm run dev`, browse through pages. Decorative elements should still be visible as subtle background effects but should not be constantly animating.
 
 ---
 
@@ -943,25 +943,25 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Open `next.config.ts`
-- [ ] Find the commented-out block (lines 24-26):
+- [x] Open `next.config.ts`
+- [x] Find the commented-out block (lines 24-26):
   ```ts
   // compiler: {
   //   removeConsole: process.env.NODE_ENV === "production",
   // },
   ```
-- [ ] Uncomment it:
+- [x] Uncomment it:
   ```ts
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
   ```
-- [ ] Save the file
-- [ ] **Verify:** Run `npm run build` — should succeed without errors.
+- [x] Save the file
+- [x] **Verify:** Run `npm run build` — should succeed without errors.
 
 ---
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 5: Cleanup' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 5: Cleanup' (Protocol in workflow.md)
 
 ---
 
@@ -973,9 +973,9 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 **Steps:**
 
-- [ ] Run `npm run build` and confirm it succeeds with zero errors
-- [ ] Confirm `framer-motion` is NOT in `package.json`
-- [ ] Run these searches and confirm zero results:
+- [x] Run `npm run build` and confirm it succeeds with zero errors
+- [x] Confirm `framer-motion` is NOT in `package.json`
+- [x] Run these searches and confirm zero results:
   ```bash
   grep -rn "use client" src/app/[locale]/(marketing)/services/page.tsx
   grep -rn "use client" src/app/[locale]/(marketing)/case-studies/page.tsx
@@ -985,11 +985,11 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
   grep -rn "pink-" src/app/[locale]/(marketing)/ --include="*.tsx"
   grep -rn "framer-motion" src/
   ```
-- [ ] Confirm every `<Image fill>` has a `sizes` prop:
+- [x] Confirm every `<Image fill>` has a `sizes` prop:
   ```bash
   grep -A1 "fill" src/app/[locale]/(marketing)/ -rn --include="*.tsx" | grep -v "sizes"
   ```
-- [ ] Run `npm run dev` and manually check each page for visual correctness:
+- [x] Run `npm run dev` and manually check each page for visual correctness:
   - Homepage: `/en`
   - About: `/en/about`
   - Products: `/en/products`
@@ -1002,4 +1002,4 @@ The site should use ONLY these accent colors: **amber/orange** (warm) and **sky 
 
 ---
 
-- [ ] Task: Conductor - User Manual Verification 'Phase 6: Final Verification' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 6: Final Verification' (Protocol in workflow.md)
