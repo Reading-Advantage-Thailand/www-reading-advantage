@@ -63,7 +63,6 @@ export default {
         "hero-warm": "linear-gradient(135deg, #FFFBEB 0%, #FFEDD5 40%, #E0F2FE 100%)",
         "warm-accent": "linear-gradient(135deg, #F59E0B 0%, #F97316 100%)",
         "brand-accent": "linear-gradient(135deg, #38BDF8 0%, #0284C7 100%)",
-        "teal-modern": "linear-gradient(135deg, #14B8A6 0%, #06B6D4 100%)",
         "soft-warm-to-sky": "linear-gradient(180deg, #FFFBEB 0%, #FFEDD5 50%, #E0F2FE 100%)",
         "warm-innovation": "linear-gradient(180deg, #FFF7ED 0%, #E0F2FE 100%)",
       },

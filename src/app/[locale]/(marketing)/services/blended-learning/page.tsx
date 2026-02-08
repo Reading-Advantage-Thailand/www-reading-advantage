@@ -83,6 +83,7 @@ export default function BlendedLearning() {
               src="/images/blended-learning.png"
               alt="Blended Learning Model"
               fill
+              sizes="(max-width: 1280px) 100vw, 50vw"
               className="relative z-10 object-cover rounded-[32px] shadow-2xl"
               priority
             />
@@ -119,8 +120,8 @@ export default function BlendedLearning() {
                     alt="Student Workbook"
                     width={400}
                     height={300}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="rounded-2xl shadow-xl"
-                    priority
                   />
                 </div>
               </div>
@@ -192,8 +193,8 @@ export default function BlendedLearning() {
                   alt="Teacher leading classroom"
                   width={600}
                   height={400}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="rounded-3xl shadow-2xl"
-                  priority
                 />
               </div>
             </div>

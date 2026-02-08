@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
 
 interface ProductCardProps {
   title: string;
@@ -15,13 +14,9 @@ interface ProductCardProps {
 
 export default function ProductCard({ title, gradeRange, description, href, ctaLabel, index }: ProductCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      whileHover={{ y: -5 }}
-      className="group h-full"
+    <div
+      className="group h-full animate-in fade-in slide-in-from-bottom-8 duration-500 transition-all duration-300 hover:-translate-y-1"
+      style={{ animationDelay: `${index * 100}ms` }}
     >
       <div className="h-full p-8 rounded-2xl modern-card border-0 shadow-card hover:shadow-card-hover transition-all duration-300">
         <div className="text-sm font-semibold uppercase tracking-wide text-sky-600 mb-3">
@@ -39,6 +34,6 @@ export default function ProductCard({ title, gradeRange, description, href, ctaL
           <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
         </Link>
       </div>
-    </motion.div>
+    </div>
   );
 }

@@ -4,6 +4,7 @@ export const en = {
         description:
             "Transform your educational outcomes with AI-powered tools already supporting pioneering schools across Southeast Asia.",
         cta: "Discover Your Solution",
+        secondaryCta: "Get Started",
     },
     mission: {
         title: "Student Success Is Our Mission",
@@ -14,6 +15,12 @@ export const en = {
         title: "Your Reading Advantage Partner",
         description:
             "Reading Advantage (Thailand) delivers turnkey educational solutions that drive real results. Our comprehensive platform integrates seamlessly with your existing curriculum, providing everything from AI-powered content generation to detailed analytics that help you track and improve student performance.",
+        partnerCta: "Partner With Us",
+        stats: {
+            title: "Evidence-Backed Gains",
+            articles: "AI-Curated Articles Across 12 CEFR Levels",
+            research: "Aka 2019 Research: +9.5 points over grammar instruction",
+        },
     },
     flagship: {
         title: "Experience the Advantage",
@@ -46,11 +53,60 @@ export const en = {
             },
         },
     },
+    qualityProtocol: {
+        badge: "QUALITY GUARANTEE",
+        title: "The Big 4 Quality Protocol",
+        description: "The System is the Expert: Delivering international results through AI and rigorous fidelity protocols.",
+        features: {
+            0: {
+                title: "Uninterrupted Reading",
+                description: "Consistent extensive reading sessions without disruptions for maximum language exposure",
+            },
+            1: {
+                title: "Student Agency",
+                description: "Students choose articles that match their interests, driving intrinsic motivation",
+            },
+            2: {
+                title: "Data-Driven Consensus",
+                description: "Regular progress reviews based on comprehensive data from student performance",
+            },
+            3: {
+                title: "Workbook-First AI",
+                description: "Physical workbooks provide structure while AI adapts to individual learning paths",
+            },
+        },
+    },
+    thaiSchools: {
+        title: "Built for Thai Private Schools",
+        description: "Empower your Thai teachers to deliver Native-Standard English, addressing your unique challenges.",
+        features: {
+            0: {
+                title: "Teacher Shortage",
+                description: "Comprehensive lesson plans and teacher guides reduce preparation time significantly",
+            },
+            1: {
+                title: "Large Classes",
+                description: "Individualized learning paths work effectively with 30+ students per class",
+            },
+            2: {
+                title: "Limited Devices",
+                description: "Blended learning model works with any device-to-student ratio",
+            },
+        },
+        poweredBy: "Powered by",
+        technology: "Google Gemini & GPT-5 AI",
+    },
     impact: {
         title: "Ready to Transform Your Institution?",
         description:
             "Join pioneering schools across Southeast Asia modernizing reading instruction with our extensive reading platform. Spend less time on paperwork and more time responding to the student data and needs surfaced by our reports.",
         cta: "Schedule a Demo",
+        trustBadges: {
+            articles: "AI-Curated Articles",
+            cefrLevels: "CEFR Levels",
+            big4: "Big 4",
+            qualityProtocol: "Quality Protocol",
+        },
     },
 };
 
@@ -60,6 +116,7 @@ export const th = {
         description:
             "ยกระดับผลสัมฤทธิ์ทางการเรียนของคุณด้วยเครื่องมือ AI ที่สนับสนุนโรงเรียนบุกเบิกทั่วเอเชียตะวันออกเฉียงใต้อยู่แล้ว",
         cta: "ค้นพบโซลูชันของคุณ",
+        secondaryCta: "เริ่มต้นใช้งาน",
     },
     mission: {
         title: "ภารกิจของเราคือความสำเร็จของนักเรียน",
@@ -70,6 +127,12 @@ export const th = {
         title: "พันธมิตร Reading Advantage ของคุณ",
         description:
             "Reading Advantage (Thailand) นำเสนอโซลูชันการศึกษาแบบครบวงจรที่ขับเคลื่อนผลลัพธ์ที่แท้จริง แพลตฟอร์มของเราผสานรวมกับหลักสูตรที่มีอยู่ของคุณได้อย่างลงตัว โดยให้บริการตั้งแต่การสร้างเนื้อหาด้วย AI ไปจนถึงการวิเคราะห์โดยละเอียดที่ช่วยให้คุณติดตามและปรับปรุงผลการเรียนของนักเรียน",
+        partnerCta: "ร่วมเป็นพันธมิตรกับเรา",
+        stats: {
+            title: "ความก้าวหน้าที่ได้รับการสนับสนุนด้วยหลักฐาน",
+            articles: "บทความที่คัดสรรโดย AI ครอบคลุม 12 ระดับ CEFR",
+            research: "งานวิจัย Aka 2019: คะแนน +9.5 เหนือกว่าการสอนไวยากรณ์",
+        },
     },
     flagship: {
         title: "สัมผัสข้อได้เปรียบ",
@@ -102,11 +165,60 @@ export const th = {
             },
         },
     },
+    qualityProtocol: {
+        badge: "รับประกันคุณภาพ",
+        title: "โปรโตคอลคุณภาพ The Big 4",
+        description: "ระบบคือผู้เชี่ยวชาญ: ส่งมอบผลลัพธ์ระดับสากลผ่าน AI และโปรโตคอลความเที่ยงธรรมที่เข้มงวด",
+        features: {
+            0: {
+                title: "การอ่านโดยไม่ขัดจังหวะ",
+                description: "การอ่านกว้างอย่างสม่ำเสมอโดยไม่มีการหยุดชะงักเพื่อการสัมผัสภาษาสูงสุด",
+            },
+            1: {
+                title: "การมีส่วนร่วมของนักเรียน",
+                description: "นักเรียนเลือกบทความที่ตรงกับความสนใจของพวกเขา ขับเคลื่อนแรงจูงใจภายใน",
+            },
+            2: {
+                title: "ความเห็นพ้องต้องกันโดยข้อมูล",
+                description: "การทบทวนความก้าวหน้าอย่างสม่ำเสมอโดยอิงจากข้อมูลที่ครอบคลุมจากผลการเรียนของนักเรียน",
+            },
+            3: {
+                title: "AI เริ่มจากสมุดงาน",
+                description: "สมุดงานทางกายภาพให้โครงสร้างในขณะที่ AI ปรับตามเส้นทางการเรียนรู้แบบเฉพาะบุคคล",
+            },
+        },
+    },
+    thaiSchools: {
+        title: "สร้างขึ้นสำหรับโรงเรียนเอกชนไทย",
+        description: "เสริมพลังครูไทยของคุณให้สามารถสอนภาษาอังกฤษในระดับมาตรฐานเจ้าของภาษา โดยแก้ไขความท้าทายเฉพาะของคุณ",
+        features: {
+            0: {
+                title: "การขาดแคลนครู",
+                description: "แผนการสอนและคู่มือครูที่ครอบคลุมช่วยลดเวลาเตรียมการสอนอย่างมีนัยสำคัญ",
+            },
+            1: {
+                title: "ห้องเรียนขนาดใหญ่",
+                description: "เส้นทางการเรียนรู้แบบเฉพาะบุคคลทำงานได้อย่างมีประสิทธิภาพกับนักเรียน 30+ คนต่อห้อง",
+            },
+            2: {
+                title: "อุปกรณ์จำกัด",
+                description: "รูปแบบการเรียนรู้แบบผสมผสานทำงานได้กับอัตราส่วนอุปกรณ์ต่อนักเรียนใดๆ",
+            },
+        },
+        poweredBy: "ขับเคลื่อนโดย",
+        technology: "Google Gemini & GPT-5 AI",
+    },
     impact: {
         title: "พร้อมที่จะเปลี่ยนแปลงสถาบันของคุณหรือยัง?",
         description:
             "เข้าร่วมโรงเรียนบุกเบิกทั่วเอเชียตะวันออกเฉียงใต้ที่ยกระดับการสอนการอ่านด้วยแพลตฟอร์มของเรา ใช้เวลาน้อยลงกับงานเอกสารและมากขึ้นกับการตอบสนองข้อมูลและความต้องการของนักเรียนจากรายงาน",
         cta: "นัดหมายการสาธิต",
+        trustBadges: {
+            articles: "บทความที่คัดสรรโดย AI",
+            cefrLevels: "ระดับ CEFR",
+            big4: "Big 4",
+            qualityProtocol: "โปรโตคอลคุณภาพ",
+        },
     },
 };
 
@@ -116,6 +228,7 @@ export const zh = {
         description:
             "使用已服务东南亚领先学校的 AI 工具提升教学成果",
         cta: "探索您的解决方案",
+        secondaryCta: "开始使用",
     },
     mission: {
         title: "学生的成功就是我们的使命",
@@ -126,6 +239,12 @@ export const zh = {
         title: "您的 Reading Advantage 合作伙伴",
         description:
             "Reading Advantage（泰国）提供一站式教育解决方案，带来真正的成果。我们的综合平台无缝集成到您现有的课程中，从AI驱动的内容生成到详细分析，帮助您跟踪和改善学生的表现。",
+        partnerCta: "与我们合作",
+        stats: {
+            title: "有证据支持的进步",
+            articles: "AI 精选文章覆盖 12 个 CEFR 级别",
+            research: "Aka 2019 研究：语法教学高出 +9.5 分",
+        },
     },
     flagship: {
         title: "体验优势",
@@ -156,10 +275,59 @@ export const zh = {
             },
         },
     },
+    qualityProtocol: {
+        badge: "质量保证",
+        title: "Big 4 质量协议",
+        description: "系统即专家：通过 AI 和严格的保真度协议提供国际化成果",
+        features: {
+            0: {
+                title: "不间断阅读",
+                description: "一致的泛读课程，无中断，最大化语言接触",
+            },
+            1: {
+                title: "学生自主性",
+                description: "学生选择符合兴趣的文章，激发内在动机",
+            },
+            2: {
+                title: "数据驱动共识",
+                description: "基于学生表现的全面数据进行定期进度审查",
+            },
+            3: {
+                title: "练习册优先 AI",
+                description: "实体练习册提供结构，AI 适应个人学习路径",
+            },
+        },
+    },
+    thaiSchools: {
+        title: "专为泰国私立学校打造",
+        description: "赋能您的泰国教师提供母语级英语，解决您独特的挑战",
+        features: {
+            0: {
+                title: "师资短缺",
+                description: "全面的课程计划和教师指南显著减少备课时间",
+            },
+            1: {
+                title: "大班教学",
+                description: "个性化学习路径在每班30+学生的情况下也能有效运作",
+            },
+            2: {
+                title: "设备有限",
+                description: "混合学习模式适用于任何设备与学生比例",
+            },
+        },
+        poweredBy: "技术支持",
+        technology: "Google Gemini & GPT-5 AI",
+    },
     impact: {
         title: "准备好转变您的机构了吗？",
         description:
             "与东南亚的先锋学校一起，借助我们的泛读平台升级阅读教学。把时间从纸面工作中解放出来，更多关注报告呈现的学生数据与需求",
         cta: "安排演示",
+        trustBadges: {
+            articles: "AI 精选文章",
+            cefrLevels: "CEFR 级别",
+            big4: "Big 4",
+            qualityProtocol: "质量协议",
+        },
     },
 };

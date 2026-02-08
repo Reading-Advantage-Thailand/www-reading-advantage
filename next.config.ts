@@ -7,23 +7,29 @@ const withMDX = createMDX({
   },
 })
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
   transpilePackages: ["next-international", "international-types"],
   output: 'standalone' as const,
   images: {
-    domains: ['localhost'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
 
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   typescript: {
     // TODO: Re-enable once Next.js App Router types are fixed
     // See: https://github.com/vercel/next.js/issues/48022
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
-  // compiler: {
-  //   removeConsole: process.env.NODE_ENV === "production",
-  // },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
   async redirects() {
     return [
       {

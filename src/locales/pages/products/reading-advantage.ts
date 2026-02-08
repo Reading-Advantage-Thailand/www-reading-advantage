@@ -4,6 +4,15 @@ export const en = {
         subtitle: "Experience personalized extensive reading with advanced AI technology",
         description: "Our AI-powered platform adapts to your learning journey, providing personalized content and interactive activities for optimal language acquisition. Starting May 2026, Reading Advantage will also offer a comprehensive Blended Learning model with teacher-led classes and student workbooks.",
     },
+    blendedLearning: {
+        buttonLabel: "Blended Learning",
+        newBadge: "NEW IN MAY 2026",
+        heading: "Blended Learning",
+        studentWorkbooks: {
+            title: "Student Workbooks",
+            description: "Hands-on practice materials",
+        },
+    },
     keyFeatures: {
         heading: "Key Features",
         features: [
@@ -119,6 +128,33 @@ export const en = {
             },
         ],
     },
+    games: {
+        newBadge: "NEW!",
+        heading: "🎮 Exciting Vocabulary Games",
+        description: "Make learning vocabulary fun with our engaging games!",
+        games: [
+            {
+                title: "Magic Defense",
+                description: "Defend your castles from falling words by typing their correct translations!",
+                image: "/images/gameplay.png",
+            },
+            {
+                title: "RPG Battle",
+                description: "Fight monsters PvP",
+                image: "/images/rpg-battle.png",
+            },
+            {
+                title: "Dragon Flight",
+                description: "Choose the correct gate to gather enough dragons to defeat the boss",
+                image: "/images/dragon-flight.png",
+            },
+            {
+                title: "Wizard vs Zombie",
+                description: "Survive the zombie horde by running to collect magic orbs",
+                image: "/images/wizard-vs-zombie.png",
+            },
+        ],
+    },
     cta: {
         heading: "Transform Your Language Learning Journey",
         description: "Start using Reading Advantage today and experience the power of AI-enhanced learning",
@@ -134,6 +170,15 @@ export const th = {
         title: "การเรียนรู้ภาษาที่ขับเคลื่อนด้วย AI",
         subtitle: "สัมผัสการอ่านแบบกว้างขวางที่ปรับแต่งเฉพาะบุคคลด้วยเทคโนโลยี AI ที่ล้ำสมัย",
         description: "แพลตฟอร์มของเราปรับให้เข้ากับการเรียนรู้ของคุณโดยเฉพาะมอบเนื้อหาและกิจกรรมแบบอินเทอร์แอคทีฟเพื่อการพัฒนาทักษะภาษาอย่างมีประสิทธิภาพ ตั้งแต่เดือนพฤษภาคม 2026 Reading Advantage จะนำเสนอรูปแบบการเรียนแบบผสมผสาที่ครบถ้วนซึ่งรวมการสอนโดยครูและหนังสือนักเรียน",
+    },
+    blendedLearning: {
+        buttonLabel: "การเรียนแบบผสมผสาน",
+        newBadge: "มาใหม่ เดือนพฤษภาคม 2026",
+        heading: "การเรียนแบบผสมผสาน",
+        studentWorkbooks: {
+            title: "หนังสือนักเรียน",
+            description: "เอกสารปฏิบัติแบบฝึกหัด",
+        },
     },
     keyFeatures: {
         heading: "คุณสมบัติเด่น",
@@ -250,6 +295,33 @@ export const th = {
             },
         ],
     },
+    games: {
+        newBadge: "มาใหม่!",
+        heading: "🎮 เกมคำศัพท์ที่น่าสนใจ",
+        description: "ทำให้การเรียนรู้คำศัพท์เป็นเรื่องสนุกด้วยเกมที่น่าตื่นเต้นของเรา!",
+        games: [
+            {
+                title: "Magic Defense",
+                description: "ปกป้องปราสาทของคุณจากคำที่ตกลงมาโดยพิมพ์คำแปลที่ถูกต้อง!",
+                image: "/images/gameplay.png",
+            },
+            {
+                title: "RPG Battle",
+                description: "ต่อสู้กับมอนสเตอร์ PvP",
+                image: "/images/rpg-battle.png",
+            },
+            {
+                title: "Dragon Flight",
+                description: "เลือกประตูที่ถูกต้องเพื่อรวบรวมมังกรให้เพียงพอเพื่อเอาชนะบอส",
+                image: "/images/dragon-flight.png",
+            },
+            {
+                title: "Wizard vs Zombie",
+                description: "รอดชีวิตจากฝูงซอมบี้โดยวิ่งเก็บลูกแก้วเวทมนตร์",
+                image: "/images/wizard-vs-zombie.png",
+            },
+        ],
+    },
     cta: {
         heading: "เปลี่ยนแปลงเส้นทางการเรียนรู้ภาษาของคุณ",
         description: "เริ่มใช้ Reading Advantage วันนี้และสัมผัสพลังของการเรียนรู้ที่ขับเคลื่อนด้วย AI",
@@ -265,6 +337,15 @@ export const zh = {
         title: "AI 驱动的语言学习",
         subtitle: "通过先进的 AI 技术体验个性化的广泛阅读",
         description: "我们的 AI 驱动平台会根据您的学习旅程进行调整，提供个性化内容和互动活动，助力语言学习。2026年5月起，Reading Advantage 还将提供全面的混合学习模式，包括教师主导的课程和学生练习册。",
+    },
+    blendedLearning: {
+        buttonLabel: "混合学习",
+        newBadge: "2026年5月全新推出",
+        heading: "混合学习",
+        studentWorkbooks: {
+            title: "学生练习册",
+            description: "实践练习材料",
+        },
     },
     keyFeatures: {
         heading: "主要特点",
@@ -378,6 +459,33 @@ export const zh = {
             {
                 title: "跨平台",
                 description: "随时随地在任何设备上访问",
+            },
+        ],
+    },
+    games: {
+        newBadge: "全新推出！",
+        heading: "🎮 令人兴奋的词汇游戏",
+        description: "通过我们引人入胜的游戏让学习词汇变得有趣！",
+        games: [
+            {
+                title: "Magic Defense",
+                description: "通过输入正确的翻译来保卫您的城堡免受落下的单词的侵害！",
+                image: "/images/gameplay.png",
+            },
+            {
+                title: "RPG Battle",
+                description: "与怪物 PvP 对战",
+                image: "/images/rpg-battle.png",
+            },
+            {
+                title: "Dragon Flight",
+                description: "选择正确的门，收集足够的龙来击败 BOSS",
+                image: "/images/dragon-flight.png",
+            },
+            {
+                title: "Wizard vs Zombie",
+                description: "通过奔跑收集魔法球来在僵尸潮中生存",
+                image: "/images/wizard-vs-zombie.png",
             },
         ],
     },

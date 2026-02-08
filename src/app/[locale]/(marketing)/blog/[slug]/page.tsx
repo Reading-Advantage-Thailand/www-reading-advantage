@@ -6,11 +6,12 @@ import type { Metadata } from "next"
 import Image from "next/image"
 
 type Props = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-  const post = await getBlogPost(props.params.slug)
+  const { slug } = await props.params
+  const post = await getBlogPost(slug)
   if (!post) return {}
 
   return {
@@ -37,7 +38,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 async function BlogPost(props: Props) {
-  const post = await getBlogPost(props.params.slug)
+  const { slug } = await props.params
+  const post = await getBlogPost(slug)
 
   if (!post) {
     notFound()

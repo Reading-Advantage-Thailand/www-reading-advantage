@@ -125,19 +125,19 @@ const productConfigs = [
 export default function B2BSolutions() {
   const t = useScopedI18n("components.products.b2bSolutions")
 
-  const products = productConfigs.map((config) => {
-    const title = t(`products.${config.key}.title`)
+  const products = (productConfigs as readonly ProductConfig[]).map((config) => {
+    const title = t(`products.${config.key}.title` as never)
     const features = FEATURE_INDEXES.map((featureIndex) =>
-      t(`products.${config.key}.features.${featureIndex}`)
+      t(`products.${config.key}.features.${featureIndex}` as never)
     )
-    const gradeRange = t(`products.${config.key}.gradeRange`)
+    const gradeRange = t(`products.${config.key}.gradeRange` as never)
 
     const badgeLabel = config.badgeKey
       ? t(config.badgeKey)
       : config.badgeType === "flagship"
         ? t("mostPopular")
         : config.badgeType === "new"
-          ? t(`products.${config.key}.badge`)
+          ? t(`products.${config.key}.badge` as never)
           : undefined
 
     return {

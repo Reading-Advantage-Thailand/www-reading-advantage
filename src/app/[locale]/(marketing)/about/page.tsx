@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import Hero from '@/components/layout/hero';
 import { getScopedI18n } from '@/locales/server';
 
@@ -39,7 +40,7 @@ export default async function AboutPage() {
       <section className="py-16 bg-sky-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6 text-violet-500">{t('sections.story.title')}</h2>
+            <h2 className="text-3xl font-bold mb-6 text-amber-600">{t('sections.story.title')}</h2>
             <div className="prose lg:prose-lg text-gray-700">
               <p className="mb-4">
                 {t('sections.story.paragraphs.0')}
@@ -147,7 +148,7 @@ export default async function AboutPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-6 text-violet-600">{t('sections.bigFour.title')}</h2>
+            <h2 className="text-4xl font-bold mb-6 text-sky-700">{t('sections.bigFour.title')}</h2>
             <p className="text-lg text-gray-700 mb-8 leading-relaxed">
               {t('sections.bigFour.description')}
             </p>
@@ -190,9 +191,9 @@ export default async function AboutPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">{t('sections.cta.title')}</h2>
           <p className="text-xl mb-8">{t('sections.cta.description')}</p>
-          <a href="#" className="bg-sky-500 text-sky-50 hover:bg-sky-600 px-6 py-3 rounded-lg font-bold transition-colors inline-block">
+          <Link href="/contact" className="bg-sky-500 text-sky-50 hover:bg-sky-600 px-6 py-3 rounded-lg font-bold transition-colors inline-block">
             {t('sections.cta.button')}
-          </a>
+          </Link>
         </div>
       </section>
     </main>

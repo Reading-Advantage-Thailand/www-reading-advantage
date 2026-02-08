@@ -143,7 +143,7 @@ export default async function StorytimeAdvantage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-sky-800 text-sky-50 py-16 bg-gradient-to-br from-sky-800 to-violet-900">
+      <section className="bg-sky-800 text-sky-50 py-16 bg-gradient-to-br from-sky-800 to-indigo-900">
         <div className="container mx-auto px-4 text-center">
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>

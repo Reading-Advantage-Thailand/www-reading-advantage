@@ -14,7 +14,7 @@ export default async function ContactPage() {
     return (
         <main className="flex min-h-screen flex-col">
             {/* Hero Section */}
-            <div className="bg-gradient-to-br from-sky-50 via-sky-100 to-white py-20 px-4">
+            <div className="bg-gradient-to-br from-sky-50 via-sky-100 to-white py-16 px-4">
                 <div className="container mx-auto">
                     <div className="max-w-3xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
                         <h1 className="text-5xl font-bold text-sky-900 mb-6">
@@ -58,11 +58,11 @@ export default async function ContactPage() {
                         </div>
 
                         {/* Phone Card */}
-                        <div className="bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-in fade-in duration-700 delay-300">
-                            <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6">
-                                <Phone className="w-8 h-8 text-emerald-600" />
+                        <div className="bg-gradient-to-br from-amber-50 to-white border border-amber-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-in fade-in duration-700 delay-300">
+                            <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mb-6">
+                                <Phone className="w-8 h-8 text-amber-600" />
                             </div>
-                            <h3 className="text-xl font-bold text-emerald-900 mb-3">
+                            <h3 className="text-xl font-bold text-amber-900 mb-3">
                                 {t('phone.title')}
                             </h3>
                             <p className="text-slate-600 mb-4">
@@ -70,7 +70,7 @@ export default async function ContactPage() {
                             </p>
                             <a
                                 href="tel:+660990058038"
-                                className="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300"
+                                className="inline-block bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300"
                             >
                                 {t('phone.number')}
                             </a>
