@@ -4,6 +4,7 @@ import { BlogTags } from "@/components/blog/blog-tags"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import Image from "next/image"
+import HeroSection from "@/components/marketing/hero-section"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -46,28 +47,40 @@ async function BlogPost(props: Props) {
   }
 
   return (
-    <article className="container mx-auto px-4 py-8">
-      <BlogHeader 
-        title={post.title} 
-        date={post.date} 
-        author={post.author} 
-        readingTime={post.readingTime} 
+    <main>
+      <HeroSection
+        title={post.title}
+        description={`${post.author} • ${post.readingTime}`}
+        ctaButton={{
+          text: "Back to Blog",
+          href: "/blog",
+          variant: "primary",
+        }}
+        height="medium"
       />
-      {post.coverImage && (
-        <Image
-          src={post.coverImage}
-          alt={post.title}
-          width={1200}
-          height={400}
-          className="w-full h-64 object-cover rounded-lg mb-8"
+      <article className="container mx-auto px-4 py-8">
+        <BlogHeader
+          title={post.title}
+          date={post.date}
+          author={post.author}
+          readingTime={post.readingTime}
         />
-      )}
-      <div 
-        className="prose prose-lg max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-a:text-blue-600 prose-strong:text-gray-900 prose-ul:list-disc prose-ol:list-decimal"
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
-      <BlogTags tags={post.tags} />
-    </article>
+        {post.coverImage && (
+          <Image
+            src={post.coverImage}
+            alt={post.title}
+            width={1200}
+            height={400}
+            className="w-full h-64 object-cover rounded-lg mb-8"
+          />
+        )}
+        <div
+          className="prose prose-lg max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-a:text-blue-600 prose-strong:text-gray-900 prose-ul:list-disc prose-ol:list-decimal"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+        <BlogTags tags={post.tags} />
+      </article>
+    </main>
   )
 }
 

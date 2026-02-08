@@ -1,20 +1,31 @@
 export const en = {
-    hero: {
-        title: "Complete AI-Enhanced Educational Solutions",
-        description: "Comprehensive curriculum solutions for schools and specialized programs for individual learners, powered by advanced AI technology.",
-    },
+  hero: {
+    title: "The Future of Chinese Learning",
+    subtitle: "Revolutionary Chinese Learning Platform",
+    description:
+      "Experience a revolutionary approach to mastering Chinese, combining HSK standards with adaptive learning technology",
+    badge: "Coming Soon",
+    ctaButton: "Join Waitlist",
+  },
 };
 
 export const th = {
-    hero: {
-        title: "โซลูชันการศึกษาที่สมบูรณ์ด้วย AI",
-        description: "โซลูชันหลักสูตรที่ครอบคลุมสำหรับโรงเรียนและโปรแกรมเฉพาะสำหรับผู้เรียนรายบุคคล ขับเคลื่อนด้วยเทคโนโลยี AI ขั้นสูง",
-    },
+  hero: {
+    title: "อนาคตของการเรียนภาษาจีน",
+    subtitle: "แพลตฟอร์มการเรียนรู้ภาษาจีนที่ปฏิวัติวงการ",
+    description:
+      "สัมผัสแนวทางใหม่ในการเชี่ยวชาญภาษาจีน ผสมผสานมาตรฐาน HSK กับเทคโนโลยีการเรียนรู้แบบปรับตัวได้",
+    badge: "เร็วๆ นี้",
+    ctaButton: "ลงชื่อรอ",
+  },
 };
 
 export const zh = {
-    hero: {
-        title: "全面的 AI 增强教育解决方案",
-        description: "为学校提供全面的课程解决方案，为个人学习者提供专门设计的项目，由先进的 AI 技术驱动。",
-    },
+  hero: {
+    title: "中文学习的未来",
+    subtitle: "革命性的中文学习平台",
+    description: "通过结合 HSK 标准与自适应学习技术，体验掌握中文的革命性方法",
+    badge: "即将推出",
+    ctaButton: "加入候补名单",
+  },
 };

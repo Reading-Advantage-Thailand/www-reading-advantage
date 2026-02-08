@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, TrendingUp, BookOpen, Target, CheckCircle, Users, BarChart3, GraduationCap } from "lucide-react";
 import { getScopedI18n } from "@/locales/server";
+import HeroSection from "@/components/marketing/hero-section";
 
 export default async function CaseStudies() {
   const t = await getScopedI18n("pages.caseStudies");
@@ -48,28 +49,22 @@ export default async function CaseStudies() {
   return (
     <main className="overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-sky-50 via-white to-amber-50">
-      <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-sky-200/30 rounded-full blur-[150px]" aria-hidden="true" />
-      <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-amber-200/30 rounded-full blur-[120px]" aria-hidden="true" />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <div className="inline-flex items-center gap-2 bg-sky-100 text-sky-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
-              <Target className="w-4 h-4" />
-              {t("hero.badge")}
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 leading-tight">
-              {t("hero.title")}
-            </h1>
-            <p className="text-2xl text-sky-600 mb-4 font-semibold">
-              {t("hero.subtitle")}
-            </p>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              {t("hero.description")}
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title={t("hero.title")}
+        description={`${t("hero.subtitle")} ${t("hero.description")}`}
+        badge={{
+          text: t("hero.badge"),
+          icon: <Target className="w-4 h-4" />,
+          variant: "sky",
+        }}
+        ctaButton={{
+          text: t("cta.button"),
+          href: "/contact",
+          variant: "primary",
+          icon: <ArrowRight className="w-5 h-5" />,
+        }}
+        height="medium"
+      />
 
       {/* School Case Studies */}
       {schools.map((school, index) => (

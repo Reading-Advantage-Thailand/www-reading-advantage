@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Calendar, CheckCircle, Zap } from "lucide-react";
 import { getScopedI18n } from "@/locales/server";
+import HeroSection from "@/components/marketing/hero-section";
 
 export default async function Services() {
   const t = await getScopedI18n("pages.services");
@@ -17,7 +18,7 @@ export default async function Services() {
     statusBadge: t(`services.${serviceIndex}.statusBadge` as never),
     description: t(`services.${serviceIndex}.description` as never),
     features: serviceConfig.featureIndexes.map((featureIndex) =>
-      t(`services.${serviceIndex}.features.${featureIndex}` as never)
+      t(`services.${serviceIndex}.features.${featureIndex}` as never),
     ),
     cta: t(`services.${serviceIndex}.cta` as never),
     href: t(`services.${serviceIndex}.href` as never),
@@ -27,24 +28,21 @@ export default async function Services() {
   return (
     <main className="overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-sky-50 via-white to-amber-50">
-        <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-sky-200/30 rounded-full blur-[150px]" aria-hidden="true" />
-        <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-amber-200/30 rounded-full blur-[120px]" aria-hidden="true" />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 leading-tight">
-              {t("hero.title")}
-            </h1>
-            <p className="text-2xl text-sky-600 mb-4 font-semibold">
-              {t("hero.subtitle")}
-            </p>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              {t("hero.description")}
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title={t("hero.title")}
+        badge={{
+          text: t("hero.subtitle"),
+          variant: "sky",
+        }}
+        description={t("hero.description")}
+        ctaButton={{
+          text: t("cta.button"),
+          href: "/contact",
+          variant: "primary",
+          icon: <ArrowRight className="w-5 h-5" />,
+        }}
+        height="medium"
+      />
 
       {/* Services Grid */}
       <section className="relative py-24 bg-white">
@@ -59,13 +57,15 @@ export default async function Services() {
                 >
                   {/* Status Badge */}
                   <div className="absolute top-4 right-4">
-                    <div className={`px-3 py-1 rounded-full text-xs font-bold ${
-                      service.statusBadge === "ACTIVE"
-                        ? "bg-green-100 text-green-700"
-                        : service.statusBadge === "COMING SOON"
-                        ? "bg-amber-100 text-amber-700"
-                        : "bg-slate-200 text-slate-700"
-                    }`}>
+                    <div
+                      className={`px-3 py-1 rounded-full text-xs font-bold ${
+                        service.statusBadge === "ACTIVE"
+                          ? "bg-green-100 text-green-700"
+                          : service.statusBadge === "COMING SOON"
+                            ? "bg-amber-100 text-amber-700"
+                            : "bg-slate-200 text-slate-700"
+                      }`}
+                    >
                       {service.statusBadge}
                     </div>
                   </div>
@@ -102,7 +102,9 @@ export default async function Services() {
                       {service.features.map((feature, i) => (
                         <li key={i} className="flex items-start gap-3">
                           <CheckCircle className="w-5 h-5 text-sky-500 flex-shrink-0 mt-0.5" />
-                          <span className="text-slate-700 text-sm leading-relaxed">{feature}</span>
+                          <span className="text-slate-700 text-sm leading-relaxed">
+                            {feature}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -124,8 +126,14 @@ export default async function Services() {
 
       {/* CTA Section */}
       <section className="relative py-24 bg-gradient-to-br from-sky-500 via-blue-600 to-sky-700 text-white overflow-hidden">
-        <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-sky-400/30 rounded-full blur-[150px]" aria-hidden="true" />
-        <div className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-blue-400/30 rounded-full blur-[120px]" aria-hidden="true" />
+        <div
+          className="absolute top-20 left-20 w-[500px] h-[500px] bg-sky-400/30 rounded-full blur-[150px]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-blue-400/30 rounded-full blur-[120px]"
+          aria-hidden="true"
+        />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
