@@ -11,20 +11,13 @@ Priority: **P1** = blocks quality/production, **P2** = degrades DX or UX, **P3**
 ### [P1] Services pages have hard-coded English text (2026-01)
 
 **Files affected:**
+
 - `src/app/[locale]/(marketing)/services/blended-learning/page.tsx`
 - `src/app/[locale]/(marketing)/services/managed-service/page.tsx`
 
 **Problem:** Both pages use `useScopedI18n("pages.services")` but all visible text is still hard-coded English strings. The locale files (`blended-learning.ts`, `managed-service.ts`) are fully written but not wired to the components. Thai and Chinese visitors see English.
 
 **Resolution:** Replace all hard-coded strings with `t("...")` calls using `useScopedI18n("pages.blendedLearning")` and `useScopedI18n("pages.managedService")` respectively. Covered by the `services_development_20260114` track.
-
----
-
-### [P1] Missing test suite — no unit or integration tests exist (2026-01)
-
-**Problem:** The project has no test files (`__tests__/`, `*.test.ts`, `*.spec.ts`). The workflow.md mandates TDD with >80% coverage, but there is no test runner configured (`jest`, `vitest`, or `playwright`). New tracks cannot follow the TDD workflow without first establishing the testing infrastructure.
-
-**Resolution:** Add a test track to scaffold `vitest` (unit) and optionally `playwright` (E2E), then establish baseline coverage before any new feature work begins.
 
 ---
 
@@ -43,6 +36,7 @@ Priority: **P1** = blocks quality/production, **P2** = degrades DX or UX, **P3**
 **Problem:** Several pages remain unnecessarily marked `"use client"` even after the site refactor track. Each `"use client"` boundary forces all child components into the client bundle. The current total JS weight is above target.
 
 **Remaining offenders (as of 2026-02-08):**
+
 - Product pages that only use `useScopedI18n` could be refactored to use the server-side `getScopedI18n` if the locale hook is the only reason for the client directive.
 
 **Resolution:** Audit each `"use client"` page, determine if React state or browser APIs are truly needed, and convert to server component where possible.
@@ -99,13 +93,14 @@ Priority: **P1** = blocks quality/production, **P2** = degrades DX or UX, **P3**
 
 ## Resolved Debt
 
-| Item | Resolved In | Date |
-|------|-------------|------|
-| `conntainer` typo on pricing page | site_refactor_20260207 | 2026-02 |
-| Broken `href="#"` on about page CTA | site_refactor_20260207 | 2026-02 |
-| `ignoreBuildErrors: true` in next.config.ts | site_refactor_20260207 | 2026-02 |
-| Framer Motion `PageTransition` wrapper in marketing layout | site_refactor_20260207 | 2026-02 |
-| `services/page.tsx` unnecessarily `"use client"` | site_refactor_20260207 | 2026-02 |
-| `case-studies/page.tsx` unnecessarily `"use client"` | site_refactor_20260207 | 2026-02 |
-| `features/page.tsx` unnecessarily `"use client"` | site_refactor_20260207 | 2026-02 |
-| Emoji icons on features page (accessibility) | site_refactor_20260207 | 2026-02 |
+| Item                                                       | Resolved In                     | Date    |
+| ---------------------------------------------------------- | ------------------------------- | ------- |
+| `conntainer` typo on pricing page                          | site_refactor_20260207          | 2026-02 |
+| Broken `href="#"` on about page CTA                        | site_refactor_20260207          | 2026-02 |
+| `ignoreBuildErrors: true` in next.config.ts                | site_refactor_20260207          | 2026-02 |
+| Framer Motion `PageTransition` wrapper in marketing layout | site_refactor_20260207          | 2026-02 |
+| `services/page.tsx` unnecessarily `"use client"`           | site_refactor_20260207          | 2026-02 |
+| `case-studies/page.tsx` unnecessarily `"use client"`       | site_refactor_20260207          | 2026-02 |
+| `features/page.tsx` unnecessarily `"use client"`           | site_refactor_20260207          | 2026-02 |
+| Emoji icons on features page (accessibility)               | site_refactor_20260207          | 2026-02 |
+| Missing test suite — no unit/integration tests             | testing_infrastructure_20260408 | 2026-04 |
