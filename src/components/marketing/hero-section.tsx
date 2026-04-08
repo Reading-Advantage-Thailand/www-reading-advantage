@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 export interface HeroProps {
   title: string | ReactNode;
   description: string | ReactNode;
-  ctaButton: {
+  ctaButton?: {
     text: string;
     href: string;
     variant?: "primary" | "secondary" | "white" | "outline";
@@ -30,7 +30,7 @@ export interface HeroProps {
 }
 
 const getButtonVariantStyles = (
-  variant: HeroProps["ctaButton"]["variant"],
+  variant: "primary" | "secondary" | "white" | "outline" | undefined,
 ): string => {
   switch (variant) {
     case "primary":
@@ -155,15 +155,17 @@ export default function HeroSection({
           )}
 
           {/* CTA Button */}
-          <Link
-            href={ctaButton.href}
-            className={`inline-flex items-center gap-2 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${getButtonVariantStyles(ctaButton.variant)} animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200`}
-          >
-            {ctaButton.text}
-            {ctaButton.icon && (
-              <span className="w-5 h-5">{ctaButton.icon}</span>
-            )}
-          </Link>
+          {ctaButton && (
+            <Link
+              href={ctaButton.href}
+              className={`inline-flex items-center gap-2 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${getButtonVariantStyles(ctaButton.variant)} animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200`}
+            >
+              {ctaButton.text}
+              {ctaButton.icon && (
+                <span className="w-5 h-5">{ctaButton.icon}</span>
+              )}
+            </Link>
+          )}
         </div>
 
         {/* Floating Image - Only shown when alignment="left" and on xl screens */}
@@ -178,7 +180,9 @@ export default function HeroSection({
                 className={`absolute inset-0 bg-gradient-to-br from-amber-400/20 to-sky-400/20 blur-2xl z-0 ${imageSize.rounded}`}
               />
               {/* Image and fade: overlay sized by the image's natural height */}
-              <div className={`relative overflow-hidden z-10 ${imageSize.rounded}`}>
+              <div
+                className={`relative overflow-hidden z-10 ${imageSize.rounded}`}
+              >
                 <Image
                   src={floatingImage.src}
                   alt={floatingImage.alt}
