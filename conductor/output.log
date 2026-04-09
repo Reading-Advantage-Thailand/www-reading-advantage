@@ -2,13 +2,12 @@
 > build · minimax-m2.7
 [0m
 [0m→ [0mRead conductor/autonomous_prompt.md
-I'll follow the autonomous conductor workflow. Let me load the conductor skill and read the context files.
 [0m→ [0mSkill "conductor"
 [0m→ [0mRead conductor/tracks.md
+[0m→ [0mRead conductor/lessons-learned.md
 [0m→ [0mRead conductor/tech-debt.md
 [0m✗ [0mread failed
 [91m[1mError: [0mFile not found: /home/daniel-bo/Desktop/www-reading-advantage/conductor/current_directive.md
-[0m→ [0mRead conductor/lessons-learned.md
 [0m
 [0m$ [0mgit status
 On branch main
@@ -17,30 +16,15 @@ Your branch is up to date with 'origin/main'.
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-	modified:   conductor/tracks.md
+	modified:   conductor/output.log
+	modified:   package-lock.json
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-	.opencode/package-lock.json
-	conductor/autonomous_prompt.md
-	conductor/index.md
-	conductor/lessons-learned.md
-	conductor/output.log
-	conductor/review-prompt.md
-	conductor/tech-debt.md
-	conductor/tracks/bazarr_ui_cloning_20260214/
-	conductor/tracks/blog_pagination_20260408/
-	conductor/tracks/product_pages_redesign_20260408/
-	conductor/tracks/prowlarr_ui_cloning_20260214/
-	conductor/tracks/radarr_ui_cloning_20260214/
-	conductor/tracks/seo_metadata_audit_20260408/
-	conductor/tracks/services_i18n_completion_20260408/
-	conductor/tracks/sonarr_ui_cloning_20260214/
-	conductor/tracks/testing_infrastructure_20260408/
+	test-results/
 
 no changes added to commit (use "git add" and/or "git commit -a")
 [0m
-[0m$ [0mgit log -1 --format='%an %ae %s'
-Daniel Bo bodangren@gmail.com Fix hero image clipping and standardize marketing pages
+[0m$ [0mgit log -1 --oneline
+226e4ae Finalize: update tech-debt and lessons-learned docs
 [0m
-Dirty workspace. Committing current changes first.
