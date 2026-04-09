@@ -4,6 +4,21 @@ Retrospective insights captured after completing tracks, PR merges, and developm
 
 ---
 
+## 2026-04-09 — Services Pages i18n Completion (services_i18n_completion_20260408)
+
+### What Happened
+
+- Track was created with spec/plan but work was already completed prior to track creation.
+- Both `blended-learning/page.tsx` and `managed-service/page.tsx` already correctly use `useScopedI18n("pages.blendedLearning")` and `useScopedI18n("pages.managedService")` respectively.
+- All visible text uses `t("...")` calls properly wired to locale files.
+- Build passes with no TypeScript errors; tests pass (8/8).
+
+### Lesson
+
+- Always verify current state before starting a track — the problem may already be solved. Run `npm run build` and inspect the actual page code to confirm before implementing.
+
+---
+
 ## 2026-04 — Testing Infrastructure Setup (testing_infrastructure_20260408)
 
 ### What Went Well

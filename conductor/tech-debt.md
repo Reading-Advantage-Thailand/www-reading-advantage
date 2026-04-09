@@ -8,19 +8,6 @@ Priority: **P1** = blocks quality/production, **P2** = degrades DX or UX, **P3**
 
 ## Open Debt
 
-### [P1] Services pages have hard-coded English text (2026-01)
-
-**Files affected:**
-
-- `src/app/[locale]/(marketing)/services/blended-learning/page.tsx`
-- `src/app/[locale]/(marketing)/services/managed-service/page.tsx`
-
-**Problem:** Both pages use `useScopedI18n("pages.services")` but all visible text is still hard-coded English strings. The locale files (`blended-learning.ts`, `managed-service.ts`) are fully written but not wired to the components. Thai and Chinese visitors see English.
-
-**Resolution:** Replace all hard-coded strings with `t("...")` calls using `useScopedI18n("pages.blendedLearning")` and `useScopedI18n("pages.managedService")` respectively. Covered by the `services_development_20260114` track.
-
----
-
 ### [P2] No `sizes` prop on many `fill` images (2026-02)
 
 **Problem:** Multiple `next/image` components using `layout="fill"` or the `fill` prop lack the `sizes` attribute. Without `sizes`, the browser defaults to `100vw` and downloads the largest image variant even on small viewports.
@@ -93,14 +80,15 @@ Priority: **P1** = blocks quality/production, **P2** = degrades DX or UX, **P3**
 
 ## Resolved Debt
 
-| Item                                                       | Resolved In                     | Date    |
-| ---------------------------------------------------------- | ------------------------------- | ------- |
-| `conntainer` typo on pricing page                          | site_refactor_20260207          | 2026-02 |
-| Broken `href="#"` on about page CTA                        | site_refactor_20260207          | 2026-02 |
-| `ignoreBuildErrors: true` in next.config.ts                | site_refactor_20260207          | 2026-02 |
-| Framer Motion `PageTransition` wrapper in marketing layout | site_refactor_20260207          | 2026-02 |
-| `services/page.tsx` unnecessarily `"use client"`           | site_refactor_20260207          | 2026-02 |
-| `case-studies/page.tsx` unnecessarily `"use client"`       | site_refactor_20260207          | 2026-02 |
-| `features/page.tsx` unnecessarily `"use client"`           | site_refactor_20260207          | 2026-02 |
-| Emoji icons on features page (accessibility)               | site_refactor_20260207          | 2026-02 |
-| Missing test suite — no unit/integration tests             | testing_infrastructure_20260408 | 2026-04 |
+| Item                                                       | Resolved In                       | Date    |
+| ---------------------------------------------------------- | --------------------------------- | ------- |
+| `conntainer` typo on pricing page                          | site_refactor_20260207            | 2026-02 |
+| Broken `href="#"` on about page CTA                        | site_refactor_20260207            | 2026-02 |
+| `ignoreBuildErrors: true` in next.config.ts                | site_refactor_20260207            | 2026-02 |
+| Framer Motion `PageTransition` wrapper in marketing layout | site_refactor_20260207            | 2026-02 |
+| `services/page.tsx` unnecessarily `"use client"`           | site_refactor_20260207            | 2026-02 |
+| `case-studies/page.tsx` unnecessarily `"use client"`       | site_refactor_20260207            | 2026-02 |
+| `features/page.tsx` unnecessarily `"use client"`           | site_refactor_20260207            | 2026-02 |
+| Emoji icons on features page (accessibility)               | site_refactor_20260207            | 2026-02 |
+| Missing test suite — no unit/integration tests             | testing_infrastructure_20260408   | 2026-04 |
+| Services pages hard-coded English text                     | services_i18n_completion_20260408 | 2026-04 |

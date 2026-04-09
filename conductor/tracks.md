@@ -32,9 +32,9 @@ _Link: [./conductor/tracks/testing_infrastructure_20260408/](./conductor/tracks/
 
 ---
 
-### [ ] Track: Services Pages i18n Completion
+### [x] Track: Services Pages i18n Completion
 
-**Status:** Spec Complete | Plan Complete
+**Status:** Completed
 
 **Type:** bug | **Estimated Tasks:** 14
 
