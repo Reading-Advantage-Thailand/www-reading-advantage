@@ -340,3 +340,42 @@ Index: /home/daniel-bo/Desktop/www-reading-advantage/conductor/lessons-learned.m
  
 
 [0m
+[0m$ [0mgit add -A && git commit -m "Close Services Pages i18n track - work already completed (verified)"
+[main b33b4ad] Close Services Pages i18n track - work already completed (verified)
+ 5 files changed, 345 insertions(+), 30 deletions(-)
+[0m
+[0m$ [0mgit push
+To https://github.com/Reading-Advantage-Thailand/www-reading-advantage.git
+   f115990..b33b4ad  main -> main
+[0m
+[0m$ [0mnpm run test 2>&1 | tail -10
+RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+
+ Test Files  2 passed (2)
+      Tests  8 passed (8)
+   Start at  22:34:59
+   Duration  3.10s (transform 215ms, setup 474ms, import 771ms, tests 379ms, environment 3.50s)
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -15
+├ ƒ /[locale]/products/zhongwen-advantage     194 B         110 kB
+├ ƒ /[locale]/services                        194 B         110 kB
+├ ƒ /[locale]/services/blended-learning     3.88 kB         117 kB
+└ ƒ /[locale]/services/managed-service      3.27 kB         117 kB
++ First Load JS shared by all                102 kB
+  ├ chunks/255-9e211aa68d587ed7.js          45.8 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js     54.2 kB
+  └ other shared chunks (total)             2.04 kB
+
+
+ƒ Middleware                                90.3 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+[0m
+[0m$ [0mwc -l conductor/lessons-learned.md conductor/tech-debt.md
+125 conductor/lessons-learned.md
+   94 conductor/tech-debt.md
+  219 total
+[0m
+Build and tests pass. Creating final checkpoint:
