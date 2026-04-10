@@ -17,7 +17,5 @@ vi.mock("@/locales/client", () => ({
 }));
 
 vi.mock("@/locales/server", () => ({
-  getScopedI18n: vi.fn(
-    (scope: string) => async (key: string) => `${scope}.${key}`,
-  ),
+  getScopedI18n: vi.fn((scope: string) => (key: string) => `${scope}.${key}`),
 }));
