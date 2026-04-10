@@ -46,13 +46,15 @@ _Link: [./conductor/tracks/services_i18n_completion_20260408/](./conductor/track
 
 ---
 
-### [ ] Track: Remaining Product Pages Redesign
+### [x] Track: Remaining Product Pages Redesign
 
-**Status:** Spec Complete | Plan Complete
+**Status:** Completed
 
-**Type:** feature | **Estimated Tasks:** 22
+**Type:** feature | **Estimated Tasks:** 22 | **Actual Tasks:** 22
 
 **Description:** Bring the 7 remaining product pages (Math, Science, STEM, Storytime, Zhongwen, CodeCamp, Tutor) up to the new design language established by the Reading Advantage and Primary Advantage redesigns — inline hero sections, Lucide icons, Tailwind-only animations, product-specific gradients.
+
+**Completed:** 2026-04-10
 
 _Link: [./conductor/tracks/product_pages_redesign_20260408/](./conductor/tracks/product_pages_redesign_20260408/)_
 

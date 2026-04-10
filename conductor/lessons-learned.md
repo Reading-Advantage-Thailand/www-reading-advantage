@@ -4,6 +4,24 @@ Retrospective insights captured after completing tracks, PR merges, and developm
 
 ---
 
+## 2026-04-10 — Remaining Product Pages Redesign (product_pages_redesign_20260408)
+
+### What Happened
+
+- Redesigned 7 product pages (Math, Science, STEM, Storytime, Zhongwen, CodeCamp, Tutor) following the new design language.
+- Each page now has an inline hero section with product-specific gradient (emerald/teal for Math, violet/purple for Science, orange/amber for STEM, pink/rose for Storytime, red/rose for Zhongwen, dark slate for CodeCamp, sky/blue for Tutor).
+- All emoji icons replaced with Lucide equivalents.
+- All animations now use tailwindcss-animate patterns.
+- No Framer Motion usage in any of the 7 product pages.
+
+### Lessons
+
+- Testing async server components with @testing-library/react requires additional mocking setup for next-international. The mock in setup.ts needs to return a synchronous function for `getScopedI18n`.
+- Removing unused imports immediately after implementation prevents lint errors from blocking the build.
+- Product-specific gradients help with visual distinction - each product now has a unique color identity.
+
+---
+
 ## 2026-04-10 — Testing Infrastructure Setup (testing_infrastructure_20260408)
 
 ### What Happened
