@@ -1,6 +1,14 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import HeroSection from "@/components/marketing/hero-section";
+import {
+  GraduationCap,
+  Code2,
+  BookOpen,
+  Cpu,
+  Zap,
+  Check,
+  ArrowRight,
+} from "lucide-react";
 import { getScopedI18n } from "@/locales/server";
 
 export const metadata: Metadata = {
@@ -17,150 +25,104 @@ export const metadata: Metadata = {
 export default async function StemAdvantage() {
   const t = await getScopedI18n("pages.products.stemAdvantage");
   return (
-    <main>
-      {/* Hero Section */}
-      <HeroSection
-        title={t("hero.title")}
-        description={`${t("hero.subtitle")} ${t("hero.description")}`}
-        ctaButton={{
-          text: t("cta.buttons.earlyAccess"),
-          href: "/contact",
-          variant: "primary",
-        }}
-        badge={{
-          text: t("hero.comingSoon"),
-          variant: "sky",
-        }}
-        height="medium"
-        alignment="left"
-        floatingImage={{
-          src: "/stem-advantage.png",
-          alt: "STEM Advantage Logo",
-        }}
-      />
+    <main className="overflow-x-hidden">
+      {/* Hero Section - Inline with orange/amber gradient */}
+      <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
+        <div
+          className="absolute top-20 left-20 w-[500px] h-[500px] bg-orange-400/30 rounded-full blur-[150px]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-amber-400/30 rounded-full blur-[120px]"
+          aria-hidden="true"
+        />
+        <div className="container relative z-10 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl py-24">
+          <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
+              {t("hero.comingSoon")}
+            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              {t("hero.title")}
+            </h1>
+            <p className="text-xl md:text-2xl leading-relaxed mb-4 text-orange-50">
+              {t("hero.subtitle")}
+            </p>
+            <p className="text-lg md:text-xl leading-relaxed mb-8 text-orange-100">
+              {t("hero.description")}
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-white text-orange-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg hover:bg-orange-50"
+            >
+              {t("cta.buttons.earlyAccess")}
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Core Features */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-24">
         <div className="container mx-auto px-4">
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              {t("coreFeatures.heading")}
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
+              <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+                {t("coreFeatures.heading")}
+              </span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <div className="bg-indigo-100 rounded-lg p-6 shadow-sm hover:bg-indigo-200 transition-colors">
-                <div className="text-4xl mb-4 text-center">🎓</div>
-                <h3 className="text-xl font-bold mb-4 text-center">
-                  {t("coreFeatures.features.0.title")}
-                </h3>
-                <ul className="text-left list-disc pl-6 space-y-2">
-                  <li>{t("coreFeatures.features.0.points.0")}</li>
-                  <li>{t("coreFeatures.features.0.points.1")}</li>
-                  <li>{t("coreFeatures.features.0.points.2")}</li>
-                </ul>
-              </div>
-
-              <div className="bg-indigo-100 rounded-lg p-6 shadow-sm hover:bg-indigo-200 transition-colors">
-                <div className="text-4xl mb-4 text-center">💻</div>
-                <h3 className="text-xl font-bold mb-4 text-center">
-                  {t("coreFeatures.features.1.title")}
-                </h3>
-                <ul className="text-left list-disc pl-6 space-y-2">
-                  <li>{t("coreFeatures.features.1.points.0")}</li>
-                  <li>{t("coreFeatures.features.1.points.1")}</li>
-                  <li>{t("coreFeatures.features.1.points.2")}</li>
-                </ul>
-              </div>
-
-              <div className="bg-indigo-100 rounded-lg p-6 shadow-sm hover:bg-indigo-200 transition-colors">
-                <div className="text-4xl mb-4 text-center">📚</div>
-                <h3 className="text-xl font-bold mb-4 text-center">
-                  {t("coreFeatures.features.2.title")}
-                </h3>
-                <ul className="text-left list-disc pl-6 space-y-2">
-                  <li>{t("coreFeatures.features.2.points.0")}</li>
-                  <li>{t("coreFeatures.features.2.points.1")}</li>
-                  <li>{t("coreFeatures.features.2.points.2")}</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Grade Level Breakdown */}
-      <section className="bg-indigo-50 py-16">
-        <div className="container mx-auto px-4">
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              {t("gradeBreakdown.heading")}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
-                  grade: t("gradeBreakdown.grades.0.grade"),
-                  description: t("gradeBreakdown.grades.0.description"),
+                  icon: Code2,
+                  title: t("coreFeatures.features.0.title"),
+                  points: [
+                    { text: t("coreFeatures.features.0.points.0"), i: 0 },
+                    { text: t("coreFeatures.features.0.points.1"), i: 1 },
+                    { text: t("coreFeatures.features.0.points.2"), i: 2 },
+                  ],
                 },
                 {
-                  grade: t("gradeBreakdown.grades.1.grade"),
-                  description: t("gradeBreakdown.grades.1.description"),
+                  icon: Cpu,
+                  title: t("coreFeatures.features.1.title"),
+                  points: [
+                    { text: t("coreFeatures.features.1.points.0"), i: 0 },
+                    { text: t("coreFeatures.features.1.points.1"), i: 1 },
+                    { text: t("coreFeatures.features.1.points.2"), i: 2 },
+                  ],
                 },
                 {
-                  grade: t("gradeBreakdown.grades.2.grade"),
-                  description: t("gradeBreakdown.grades.2.description"),
+                  icon: BookOpen,
+                  title: t("coreFeatures.features.2.title"),
+                  points: [
+                    { text: t("coreFeatures.features.2.points.0"), i: 0 },
+                    { text: t("coreFeatures.features.2.points.1"), i: 1 },
+                    { text: t("coreFeatures.features.2.points.2"), i: 2 },
+                  ],
                 },
-              ].map((level) => (
+              ].map((feature, index) => (
                 <div
-                  key={level.grade}
-                  className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                  key={feature.title}
+                  className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-10 border border-orange-100 hover:border-orange-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <h3 className="text-xl font-bold mb-4">{level.grade}</h3>
-                  <p>{level.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="bg-indigo-800 text-indigo-50 py-16">
-        <div className="container mx-auto px-4">
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              {t("benefits.heading")}
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {[
-                {
-                  title: t("benefits.groups.0.title"),
-                  benefits: [
-                    t("benefits.groups.0.points.0"),
-                    t("benefits.groups.0.points.1"),
-                    t("benefits.groups.0.points.2"),
-                  ],
-                },
-                {
-                  title: t("benefits.groups.1.title"),
-                  benefits: [
-                    t("benefits.groups.1.points.0"),
-                    t("benefits.groups.1.points.1"),
-                    t("benefits.groups.1.points.2"),
-                  ],
-                },
-                {
-                  title: t("benefits.groups.2.title"),
-                  benefits: [
-                    t("benefits.groups.2.points.0"),
-                    t("benefits.groups.2.points.1"),
-                    t("benefits.groups.2.points.2"),
-                  ],
-                },
-              ].map((group) => (
-                <div key={group.title} className="bg-indigo-700 p-6 rounded-lg">
-                  <h3 className="text-xl font-bold mb-4">{group.title}</h3>
-                  <ul className="list-disc pl-6 space-y-2 text-indigo-100">
-                    {group.benefits.map((benefit) => (
-                      <li key={benefit}>{benefit}</li>
+                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                    <feature.icon
+                      className="w-8 h-8 text-white"
+                      strokeWidth={2}
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-6 text-slate-900">
+                    {feature.title}
+                  </h3>
+                  <ul className="space-y-3">
+                    {feature.points.map((point) => (
+                      <li key={point.i} className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                        <span className="text-slate-600 leading-relaxed">
+                          {point.text}
+                        </span>
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -170,23 +132,145 @@ export default async function StemAdvantage() {
         </div>
       </section>
 
-      {/* Technical Requirements */}
-      <section className="bg-white py-16">
+      {/* Grade Level Breakdown */}
+      <section className="bg-gradient-to-br from-orange-50 via-amber-50 to-white py-24">
         <div className="container mx-auto px-4">
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              {t("technicalRequirements.heading")}
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
+              <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+                {t("gradeBreakdown.heading")}
+              </span>
             </h2>
-            <div className="max-w-2xl mx-auto bg-indigo-100 p-8 rounded-lg shadow-sm">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  grade: t("gradeBreakdown.grades.0.grade"),
+                  description: t("gradeBreakdown.grades.0.description"),
+                  icon: GraduationCap,
+                },
+                {
+                  grade: t("gradeBreakdown.grades.1.grade"),
+                  description: t("gradeBreakdown.grades.1.description"),
+                  icon: Code2,
+                },
+                {
+                  grade: t("gradeBreakdown.grades.2.grade"),
+                  description: t("gradeBreakdown.grades.2.description"),
+                  icon: Cpu,
+                },
+              ].map((level, index) => (
+                <div
+                  key={level.grade}
+                  className="bg-white rounded-3xl p-10 shadow-lg border border-orange-100 hover:border-orange-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  style={{ animationDelay: `${index * 150}ms` }}
+                >
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                    <level.icon
+                      className="w-7 h-7 text-white"
+                      strokeWidth={2}
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-slate-900">
+                    {level.grade}
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    {level.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="bg-gradient-to-br from-orange-600 via-amber-700 to-orange-700 text-white py-24">
+        <div className="container mx-auto px-4">
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
+            {t("benefits.heading")}
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                icon: Zap,
+                title: t("benefits.groups.0.title"),
+                points: [
+                  { text: t("benefits.groups.0.points.0"), i: 0 },
+                  { text: t("benefits.groups.0.points.1"), i: 1 },
+                  { text: t("benefits.groups.0.points.2"), i: 2 },
+                ],
+              },
+              {
+                icon: BookOpen,
+                title: t("benefits.groups.1.title"),
+                points: [
+                  { text: t("benefits.groups.1.points.0"), i: 0 },
+                  { text: t("benefits.groups.1.points.1"), i: 1 },
+                  { text: t("benefits.groups.1.points.2"), i: 2 },
+                ],
+              },
+              {
+                icon: Cpu,
+                title: t("benefits.groups.2.title"),
+                points: [
+                  { text: t("benefits.groups.2.points.0"), i: 0 },
+                  { text: t("benefits.groups.2.points.1"), i: 1 },
+                  { text: t("benefits.groups.2.points.2"), i: 2 },
+                ],
+              },
+            ].map((group, index) => (
+              <div
+                key={group.title}
+                className="bg-white/10 backdrop-blur-sm rounded-3xl p-10 border border-white/10 hover:border-white/20 transition-all duration-300 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <div className="w-14 h-14 bg-gradient-to-br from-orange-400 to-amber-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                  <group.icon className="w-7 h-7 text-white" strokeWidth={2} />
+                </div>
+                <h3 className="text-xl font-bold mb-6 text-white">
+                  {group.title}
+                </h3>
+                <ul className="space-y-3">
+                  {group.points.map((point) => (
+                    <li key={point.i} className="flex items-start gap-3">
+                      <Check className="w-4 h-4 text-orange-300 mt-1 flex-shrink-0" />
+                      <span className="text-orange-50 leading-relaxed">
+                        {point.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technical Requirements */}
+      <section className="bg-white py-24">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
+              <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+                {t("technicalRequirements.heading")}
+              </span>
+            </h2>
+            <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-10 border border-orange-100">
               <ul className="space-y-4">
                 {[
-                  t("technicalRequirements.points.0"),
-                  t("technicalRequirements.points.1"),
-                  t("technicalRequirements.points.2"),
+                  { text: t("technicalRequirements.points.0"), i: 0 },
+                  { text: t("technicalRequirements.points.1"), i: 1 },
+                  { text: t("technicalRequirements.points.2"), i: 2 },
+                  { text: t("technicalRequirements.points.3"), i: 3 },
                 ].map((requirement) => (
-                  <li key={requirement} className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span>
-                    {requirement}
+                  <li
+                    key={requirement.i}
+                    className="flex items-center gap-4 text-lg"
+                  >
+                    <div className="w-8 h-8 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
+                      <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                    </div>
+                    <span className="text-slate-700">{requirement.text}</span>
                   </li>
                 ))}
               </ul>
@@ -196,21 +280,26 @@ export default async function StemAdvantage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-indigo-800 text-indigo-50 py-16 bg-gradient-to-br from-indigo-800 to-indigo-900">
+      <section className="bg-gradient-to-br from-orange-600 via-amber-600 to-orange-700 text-white py-24">
         <div className="container mx-auto px-4 text-center">
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-3xl font-bold mb-6">{t("cta.heading")}</h2>
-            <p className="text-xl mb-8">{t("cta.description")}</p>
-            <div className="flex justify-center gap-4">
+          <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+              {t("cta.heading")}
+            </h2>
+            <p className="text-2xl mb-12 text-orange-100 max-w-2xl mx-auto">
+              {t("cta.description")}
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/contact"
-                className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg font-bold transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-white text-orange-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg"
               >
                 {t("cta.buttons.earlyAccess")}
+                <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/contact"
-                className="bg-white hover:bg-indigo-50 text-indigo-800 px-8 py-3 rounded-lg font-bold transition-colors"
+                className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-white hover:text-orange-700"
               >
                 {t("cta.buttons.partnerships")}
               </Link>

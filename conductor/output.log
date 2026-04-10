@@ -1010,3 +1010,238 @@ Route (app)                                    Size  First Load JS
    Start at  22:45:07
    Duration  2.44s (transform 240ms, setup 368ms, import 601ms, tests 317ms, environment 2.72s)
 [0m
+[0m$ [0mgit add -A && git commit -m "minimax-m2.7: Phase 2 task 2.2-2.5 - Redesign Math Advantage and Science Advantage pages
+
+- Removed HeroSection; built inline hero sections with product-specific gradients
+- Math Advantage: emerald/teal gradient
+- Science Advantage: violet/purple gradient
+- Replaced all emoji icons with Lucide equivalents
+- Updated animations to tailwindcss-animate patterns
+- Added consistent card styling with hover effects"
+[main f51a298] minimax-m2.7: Phase 2 task 2.2-2.5 - Redesign Math Advantage and Science Advantage pages
+ 4 files changed, 1197 insertions(+), 195 deletions(-)
+[0m
+[0m# [0mTodos
+[x] Phase 1: Audit and Design Token Setup
+[x] Phase 2: Math Advantage and Science Advantage Redesign
+[ ] Phase 3: STEM, Storytime, Zhongwen Redesign
+[ ] Task 3.1: Redesign STEM Advantage page
+[ ] Task 3.2: Redesign Storytime Advantage page
+[ ] Task 3.3: Redesign Zhongwen Advantage page
+[ ] Phase 4: CodeCamp and Tutor Redesign
+[ ] Phase 5: Cross-Page Consistency Check
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -20 && npm test 2>&1
+├ ƒ /[locale]/products/reading-advantage    6.25 kB         120 kB
+├ ƒ /[locale]/products/science-advantage      165 B         106 kB
+├ ƒ /[locale]/products/stem-advantage         195 B         111 kB
+├ ƒ /[locale]/products/storytime-advantage    195 B         111 kB
+├ ƒ /[locale]/products/tutor-advantage        195 B         111 kB
+├ ƒ /[locale]/products/zhongwen-advantage     195 B         111 kB
+├ ƒ /[locale]/services                        195 B         111 kB
+├ ƒ /[locale]/services/blended-learning     3.89 kB         118 kB
+└ ƒ /[locale]/services/managed-service      3.27 kB         117 kB
++ First Load JS shared by all                102 kB
+  ├ chunks/255-9e211aa68d587ed7.js          45.8 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js     54.2 kB
+  └ other shared chunks (total)             2.04 kB
+
+
+ƒ Middleware                                90.3 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+> www-reading-advantage-next@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+
+ Test Files  2 passed (2)
+      Tests  8 passed (8)
+   Start at  22:47:00
+   Duration  3.38s (transform 219ms, setup 502ms, import 822ms, tests 395ms, environment 3.86s)
+[0m
+[0m→ [0mRead src/app/[locale]/(marketing)/products/stem-advantage/page.tsx
+[0m→ [0mRead src/locales/pages/products/stem-advantage.ts[90m [limit=100][0m
+[0m
+[0m← [0mWrite src/app/[locale]/(marketing)/products/stem-advantage/page.tsx
+Wrote file successfully.
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -30
+├ ƒ /[locale]/blog                            193 B         111 kB
+├ ƒ /[locale]/blog/[slug]                     193 B         111 kB
+├ ƒ /[locale]/case-studies                    193 B         111 kB
+├ ƒ /[locale]/contact                         176 B         111 kB
+├ ƒ /[locale]/features                      3.17 kB         114 kB
+├ ƒ /[locale]/pricing                       2.85 kB         113 kB
+├ ƒ /[locale]/products                      7.17 kB         127 kB
+├ ƒ /[locale]/products/codecamp-advantage     176 B         111 kB
+├ ƒ /[locale]/products/math-advantage         168 B         106 kB
+├ ƒ /[locale]/products/primary-advantage    4.48 kB         124 kB
+├ ƒ /[locale]/products/reading-advantage    6.25 kB         120 kB
+├ ƒ /[locale]/products/science-advantage      168 B         106 kB
+├ ƒ /[locale]/products/stem-advantage         168 B         106 kB
+├ ƒ /[locale]/products/storytime-advantage    193 B         111 kB
+├ ƒ /[locale]/products/tutor-advantage        193 B         111 kB
+├ ƒ /[locale]/products/zhongwen-advantage     193 B         111 kB
+├ ƒ /[locale]/services                        193 B         111 kB
+├ ƒ /[locale]/services/blended-learning     3.89 kB         118 kB
+└ ƒ /[locale]/services/managed-service      3.27 kB         117 kB
++ First Load JS shared by all                102 kB
+  ├ chunks/255-9e211aa68d587ed7.js          45.8 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js     54.2 kB
+  └ other shared chunks (total)             2.04 kB
+
+
+ƒ Middleware                                90.3 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+[0m
+[0m# [0mTodos
+[x] Phase 1: Audit and Design Token Setup
+[x] Phase 2: Math Advantage and Science Advantage Redesign
+[ ] Phase 3: STEM, Storytime, Zhongwen Redesign
+[x] Task 3.1: Redesign STEM Advantage page
+[ ] Task 3.2: Redesign Storytime Advantage page
+[ ] Task 3.3: Redesign Zhongwen Advantage page
+[ ] Phase 4: CodeCamp and Tutor Redesign
+[ ] Phase 5: Cross-Page Consistency Check
+[0m
+[0m→ [0mRead src/app/[locale]/(marketing)/products/storytime-advantage/page.tsx
+[0m→ [0mRead src/locales/pages/products/storytime-advantage.ts[90m [limit=100][0m
+[0m
+[0m← [0mWrite src/app/[locale]/(marketing)/products/storytime-advantage/page.tsx
+Wrote file successfully.
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -30
+> www-reading-advantage-next@0.1.0 build
+> next build
+
+ ⚠ The config property `experimental.turbo` is deprecated. Move this setting to `config.turbopack` or run `npx @next/codemod@latest next-experimental-turbo-to-turbopack .`
+   ▲ Next.js 15.5.9
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 8.7s
+   Linting and checking validity of types ...
+
+Failed to compile.
+
+./src/app/[locale]/(marketing)/products/storytime-advantage/page.tsx
+11:3  Error: 'Check' is defined but never used.  @typescript-eslint/no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+[0m
+[0m← [0mEdit src/app/[locale]/(marketing)/products/storytime-advantage/page.tsx
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/products/storytime-advantage/page.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/products/storytime-advantage/page.tsx
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/products/storytime-advantage/page.tsx
+@@ -7,9 +7,8 @@
+   FileText,
+   Users,
+   BarChart3,
+   ArrowRight,
+-  Check,
+   Sparkles,
+ } from "lucide-react";
+ import { getScopedI18n } from "@/locales/server";
+ 
+
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -30
+├ ƒ /[locale]/blog                            191 B         111 kB
+├ ƒ /[locale]/blog/[slug]                     191 B         111 kB
+├ ƒ /[locale]/case-studies                    191 B         111 kB
+├ ƒ /[locale]/contact                         176 B         111 kB
+├ ƒ /[locale]/features                      3.17 kB         114 kB
+├ ƒ /[locale]/pricing                       2.85 kB         113 kB
+├ ƒ /[locale]/products                      7.17 kB         127 kB
+├ ƒ /[locale]/products/codecamp-advantage     176 B         111 kB
+├ ƒ /[locale]/products/math-advantage         170 B         106 kB
+├ ƒ /[locale]/products/primary-advantage    4.48 kB         124 kB
+├ ƒ /[locale]/products/reading-advantage    6.25 kB         120 kB
+├ ƒ /[locale]/products/science-advantage      170 B         106 kB
+├ ƒ /[locale]/products/stem-advantage         170 B         106 kB
+├ ƒ /[locale]/products/storytime-advantage    170 B         106 kB
+├ ƒ /[locale]/products/tutor-advantage        191 B         111 kB
+├ ƒ /[locale]/products/zhongwen-advantage     191 B         111 kB
+├ ƒ /[locale]/services                        191 B         111 kB
+├ ƒ /[locale]/services/blended-learning     3.89 kB         118 kB
+└ ƒ /[locale]/services/managed-service      3.27 kB         117 kB
++ First Load JS shared by all                102 kB
+  ├ chunks/255-9e211aa68d587ed7.js          45.8 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js     54.2 kB
+  └ other shared chunks (total)             2.04 kB
+
+
+ƒ Middleware                                90.3 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+[0m
+[0m# [0mTodos
+[x] Phase 1: Audit and Design Token Setup
+[x] Phase 2: Math Advantage and Science Advantage Redesign
+[ ] Phase 3: STEM, Storytime, Zhongwen Redesign
+[x] Task 3.1: Redesign STEM Advantage page
+[x] Task 3.2: Redesign Storytime Advantage page
+[ ] Task 3.3: Redesign Zhongwen Advantage page
+[ ] Phase 4: CodeCamp and Tutor Redesign
+[ ] Phase 5: Cross-Page Consistency Check
+[0m
+[0m→ [0mRead src/app/[locale]/(marketing)/products/zhongwen-advantage/page.tsx
+[0m✱ [0mGlob "src/locales/**/zhongwen*.ts"[90m 1 match[0m
+[0m→ [0mRead src/locales/pages/products/zhongwen-advantage.ts
+[0m
+[0m← [0mWrite src/app/[locale]/(marketing)/products/zhongwen-advantage/page.tsx
+Wrote file successfully.
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -30
+├ ƒ /[locale]/blog                            186 B         111 kB
+├ ƒ /[locale]/blog/[slug]                     186 B         111 kB
+├ ƒ /[locale]/case-studies                    186 B         111 kB
+├ ƒ /[locale]/contact                         176 B         111 kB
+├ ƒ /[locale]/features                      3.17 kB         114 kB
+├ ƒ /[locale]/pricing                       2.85 kB         113 kB
+├ ƒ /[locale]/products                      7.17 kB         127 kB
+├ ƒ /[locale]/products/codecamp-advantage     176 B         111 kB
+├ ƒ /[locale]/products/math-advantage         173 B         106 kB
+├ ƒ /[locale]/products/primary-advantage    4.48 kB         124 kB
+├ ƒ /[locale]/products/reading-advantage    6.25 kB         120 kB
+├ ƒ /[locale]/products/science-advantage      173 B         106 kB
+├ ƒ /[locale]/products/stem-advantage         173 B         106 kB
+├ ƒ /[locale]/products/storytime-advantage    173 B         106 kB
+├ ƒ /[locale]/products/tutor-advantage        186 B         111 kB
+├ ƒ /[locale]/products/zhongwen-advantage     173 B         106 kB
+├ ƒ /[locale]/services                        186 B         111 kB
+├ ƒ /[locale]/services/blended-learning     3.89 kB         118 kB
+└ ƒ /[locale]/services/managed-service      3.27 kB         117 kB
++ First Load JS shared by all                102 kB
+  ├ chunks/255-9e211aa68d587ed7.js          45.8 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js     54.2 kB
+  └ other shared chunks (total)             2.04 kB
+
+
+ƒ Middleware                                90.3 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+[0m
+[0m$ [0mnpm test 2>&1
+> www-reading-advantage-next@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+
+ Test Files  2 passed (2)
+      Tests  8 passed (8)
+   Start at  22:55:33
+   Duration  2.43s (transform 229ms, setup 382ms, import 597ms, tests 318ms, environment 2.72s)
+[0m
