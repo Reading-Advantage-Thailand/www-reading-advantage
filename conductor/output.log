@@ -40,3 +40,157 @@ drwxrwxr-x  2 daniel-bo daniel-bo 4096 Feb  8 08:42 site_refactor_20260207
 drwxrwxr-x  2 daniel-bo daniel-bo 4096 Feb 14 17:47 sonarr_ui_cloning_20260214
 drwxrwxr-x  2 daniel-bo daniel-bo 4096 Apr  8 20:06 testing_infrastructure_20260408
 [0m
+[0m$ [0mgit add conductor/output.log && git commit -m "minimax-m2.7: checkpoint output.log"
+[main 0294f09] minimax-m2.7: checkpoint output.log
+ 1 file changed, 20 insertions(+), 359 deletions(-)
+[0m
+[0m→ [0mRead conductor/tracks/testing_infrastructure_20260408/plan.md
+[0m→ [0mRead conductor/tracks/testing_infrastructure_20260408/spec.md
+[0m
+[0m$ [0mnpm test 2>&1 | head -30
+> www-reading-advantage-next@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+
+ Test Files  2 passed (2)
+      Tests  8 passed (8)
+   Start at  22:30:50
+   Duration  2.81s (transform 244ms, setup 465ms, import 757ms, tests 324ms, environment 3.25s)
+[0m
+[0m→ [0mRead conductor/tracks/testing_infrastructure_20260408/metadata.json
+[0m✱ [0mGlob "src/**/*.test.ts*"[90m 2 matches[0m
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -20
+├ ƒ /[locale]/products/reading-advantage    6.24 kB         119 kB
+├ ƒ /[locale]/products/science-advantage      180 B         110 kB
+├ ƒ /[locale]/products/stem-advantage         194 B         110 kB
+├ ƒ /[locale]/products/storytime-advantage    194 B         110 kB
+├ ƒ /[locale]/products/tutor-advantage        194 B         110 kB
+├ ƒ /[locale]/products/zhongwen-advantage     194 B         110 kB
+├ ƒ /[locale]/services                        194 B         110 kB
+├ ƒ /[locale]/services/blended-learning     3.88 kB         117 kB
+└ ƒ /[locale]/services/managed-service      3.27 kB         117 kB
++ First Load JS shared by all                102 kB
+  ├ chunks/255-9e211aa68d587ed7.js          45.8 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js     54.2 kB
+  └ other shared chunks (total)             2.04 kB
+
+
+ƒ Middleware                                90.3 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+[0m
+[0m✱ [0mGlob "e2e/**/*.spec.ts"[90m 2 matches[0m
+[0m
+[0m$ [0mls -la playwright.config.ts 2>/dev/null || echo "No playwright.config.ts found"
+-rw-rw-r-- 1 daniel-bo daniel-bo 611 Apr  8 22:50 playwright.config.ts
+[0m
+[0m→ [0mRead conductor/code_styleguides/testing.md
+[0m✱ [0mGlob ".github/workflows/*.yml"[90m 0 matches[0m
+[0m
+[0m$ [0mls -la .github/ 2>/dev/null || echo "No .github directory"
+total 20
+drwxrwxr-x  4 daniel-bo daniel-bo 4096 Oct 22 16:19 .
+drwxrwxr-x 18 daniel-bo daniel-bo 4096 Apr  8 22:55 ..
+drwxrwxr-x  2 daniel-bo daniel-bo 4096 Oct 22 16:19 ISSUE_TEMPLATE
+-rw-rw-r--  1 daniel-bo daniel-bo  438 Oct 22 16:19 pull_request_template.md
+drwxrwxr-x  2 daniel-bo daniel-bo 4096 Oct 22 20:44 workflows
+[0m
+[0m$ [0mls -la .github/workflows/
+total 16
+drwxrwxr-x 2 daniel-bo daniel-bo 4096 Oct 22 20:44 .
+drwxrwxr-x 4 daniel-bo daniel-bo 4096 Oct 22 16:19 ..
+-rw-rw-r-- 1 daniel-bo daniel-bo 1798 Oct 22 20:44 cd.yaml
+-rw-rw-r-- 1 daniel-bo daniel-bo 1274 Apr  8 22:56 ci.yaml
+[0m
+[0m→ [0mRead .github/workflows/ci.yaml
+[0m
+[0m$ [0mnpm run test:e2e 2>&1 | head -40
+> www-reading-advantage-next@0.1.0 test:e2e
+> playwright test
+
+[1A[2K[WebServer]  [33m[1m⚠[22m[39m The config property `experimental.turbo` is deprecated. Move this setting to `config.turbopack` or run `npx @next/codemod@latest next-experimental-turbo-to-turbopack .`
+
+[1A[2K[WebServer]  [33m[1m⚠[22m[39m metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+
+
+Running 3 tests using 2 workers
+
+[1A[2K[1/3] [chromium] › e2e/contact.spec.ts:4:7 › Contact Page › navigates to contact page and shows email contact link
+[1A[2K[2/3] [chromium] › e2e/homepage.spec.ts:4:7 › Homepage › navigates to homepage and shows Reading Advantage heading
+[1A[2K[WebServer]  [33m[1m⚠[22m[39m metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+
+[1A[2K[WebServer] [next-international] The locale 'grid-pattern.svg' is not supported. Defined locales are: [en, th, zh].
+
+[1A[2K[3/3] [chromium] › e2e/homepage.spec.ts:13:7 › Homepage › click Products nav link navigates to products page
+[1A[2K[WebServer] [next-international] The locale 'grid-pattern.svg' is not supported. Defined locales are: [en, th, zh].
+
+[1A[2K[WebServer]  [33m[1m⚠[22m[39m metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+
+[1A[2K  3 passed (42.1s)
+[0m
+The Testing Infrastructure Setup track is complete - all 8 unit tests pass, all 3 E2E tests pass, CI is configured. Let me mark it complete and update the records.
+[0m← [0mEdit conductor/tracks.md
+Index: /home/daniel-bo/Desktop/www-reading-advantage/conductor/tracks.md
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/conductor/tracks.md
++++ /home/daniel-bo/Desktop/www-reading-advantage/conductor/tracks.md
+@@ -19,16 +19,18 @@
+ ---
+ 
+ ## Upcoming Tracks (created 2026-04-08)
+ 
+-### [ ] Track: Testing Infrastructure Setup
++### [x] Track: Testing Infrastructure Setup
+ 
+-**Status:** Spec Complete | Plan Complete
++**Status:** Completed
+ 
+-**Type:** chore | **Estimated Tasks:** 18
++**Type:** chore | **Estimated Tasks:** 18 | **Actual:** 18
+ 
+ **Description:** Install and configure Vitest + Testing Library for unit tests and Playwright for E2E, establishing the TDD foundation required by the project workflow. Currently the project has zero test files.
+ 
++**Completed:** 2026-04-10
++
+ _Link: [./conductor/tracks/testing_infrastructure_20260408/](./conductor/tracks/testing_infrastructure_20260408/)_
+ 
+ ---
+ 
+
+[0m
+[0m← [0mEdit conductor/lessons-learned.md
+Index: /home/daniel-bo/Desktop/www-reading-advantage/conductor/lessons-learned.md
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/conductor/lessons-learned.md
++++ /home/daniel-bo/Desktop/www-reading-advantage/conductor/lessons-learned.md
+@@ -3,8 +3,23 @@
+ Retrospective insights captured after completing tracks, PR merges, and development milestones. Most recent entries at the top.
+ 
+ ---
+ 
++## 2026-04-10 — Testing Infrastructure Setup (testing_infrastructure_20260408)
++
++### What Happened
++
++- Track was already fully implemented when reviewed: Vitest, Playwright, test setup, E2E tests, CI workflow, and testing guide all in place.
++- 8 unit tests passing, 3 E2E tests passing.
++- Build passes, npm test passes, npm run test:e2e passes.
++- No work required — track verified complete.
++
++### Lesson
++
++- Always verify current state before starting implementation. Run the test suite, inspect the CI config, and confirm the guide exists before assuming work is needed.
++
++---
++
+ ## 2026-04-09 — Services Pages i18n Completion (services_i18n_completion_20260408)
+ 
+ ### What Happened
+ 
+
+[0m

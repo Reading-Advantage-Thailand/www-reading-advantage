@@ -4,6 +4,21 @@ Retrospective insights captured after completing tracks, PR merges, and developm
 
 ---
 
+## 2026-04-10 — Testing Infrastructure Setup (testing_infrastructure_20260408)
+
+### What Happened
+
+- Track was already fully implemented when reviewed: Vitest, Playwright, test setup, E2E tests, CI workflow, and testing guide all in place.
+- 8 unit tests passing, 3 E2E tests passing.
+- Build passes, npm test passes, npm run test:e2e passes.
+- No work required — track verified complete.
+
+### Lesson
+
+- Always verify current state before starting implementation. Run the test suite, inspect the CI config, and confirm the guide exists before assuming work is needed.
+
+---
+
 ## 2026-04-09 — Services Pages i18n Completion (services_i18n_completion_20260408)
 
 ### What Happened

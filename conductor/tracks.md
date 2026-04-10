@@ -20,13 +20,15 @@ _Link: [./conductor/tracks/hero_standardization_20260208/](./conductor/tracks/he
 
 ## Upcoming Tracks (created 2026-04-08)
 
-### [ ] Track: Testing Infrastructure Setup
+### [x] Track: Testing Infrastructure Setup
 
-**Status:** Spec Complete | Plan Complete
+**Status:** Completed
 
-**Type:** chore | **Estimated Tasks:** 18
+**Type:** chore | **Estimated Tasks:** 18 | **Actual:** 18
 
 **Description:** Install and configure Vitest + Testing Library for unit tests and Playwright for E2E, establishing the TDD foundation required by the project workflow. Currently the project has zero test files.
+
+**Completed:** 2026-04-10
 
 _Link: [./conductor/tracks/testing_infrastructure_20260408/](./conductor/tracks/testing_infrastructure_20260408/)_
 
