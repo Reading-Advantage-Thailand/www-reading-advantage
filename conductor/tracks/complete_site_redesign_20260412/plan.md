@@ -119,7 +119,7 @@
 
 ### Task 3.1: Fix Reading Advantage Page
 
-- [ ] Check current implementation (`src/app/[locale]/(marketing)/products/reading-advantage/page.tsx`)
+- [~] Check current implementation (`src/app/[locale]/(marketing)/products/reading-advantage/page.tsx`)
 - [ ] Update hero gradient to correct Sky 300/400/900 brand colors
 - [ ] Ensure Reading Advantage logo is prominently displayed
 - [ ] Remove any Framer Motion imports
