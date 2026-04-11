@@ -4617,3 +4617,432 @@ Index: /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing
    Start at  23:05:35
    Duration  3.20s (transform 363ms, setup 722ms, import 1.37s, tests 801ms, environment 4.98s)
 [0m
+[0m$ [0mgit add -A && git commit -m "minimax-m2.7: Phase 3 - Table of Contents: extractHeadings utility, TOC component, integrated into blog post page"
+[main cfe04d7] minimax-m2.7: Phase 3 - Table of Contents: extractHeadings utility, TOC component, integrated into blog post page
+ 10 files changed, 1112 insertions(+), 48 deletions(-)
+ create mode 100644 src/components/blog/table-of-contents.tsx
+ create mode 100644 src/locales/pages/blog.ts
+[0m
+[0m# [0mTodos
+[x] Blog Pagination - Phase 1: Audit current blog listing implementation (Task 1.1)
+[x] Blog Pagination - Phase 1: Create getPaginatedPosts utility with TDD (Task 1.2-1.3)
+[x] Blog Pagination - Phase 1: Create paginated blog listing page (Task 1.4)
+[x] Blog Pagination - Phase 1: Build BlogPagination component (Task 1.5)
+[x] Blog Pagination - Phase 2: Reading time estimate (already implemented)
+[x] Blog Pagination - Phase 3: Table of Contents - extractHeadings utility (Task 3.1-3.2)
+[x] Blog Pagination - Phase 3: TableOfContents component (Task 3.3-3.4)
+[ ] Blog Pagination - Phase 4: Related Posts - getRelatedPosts utility (Task 4.1-4.2)
+[ ] Blog Pagination - Phase 4: Add Related Posts section (Task 4.3)
+[ ] Blog Pagination - Phase 5: Final Build and Check
+[0m
+[0m✗ [0medit failed
+[91m[1mError: [0mCould not find oldString in the file. It must match exactly, including whitespace, indentation, and line endings.
+[0m→ [0mRead src/lib/blog.test.ts[90m [limit=5][0m
+[0m→ [0mRead src/lib/blog.test.ts[90m [offset=1, limit=10][0m
+[0m
+[0m← [0mEdit src/lib/blog.test.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
+@@ -2,8 +2,9 @@
+ import {
+   calculateReadingTime,
+   getPaginatedPosts,
+   extractHeadings,
++  getRelatedPosts,
+ } from "@/lib/blog";
+ 
+ describe("calculateReadingTime", () => {
+   it("returns correct reading time for short content", () => {
+
+[0m
+[0m→ [0mRead src/lib/blog.test.ts[90m [offset=225, limit=20][0m
+[0m
+[0m← [0mEdit src/lib/blog.test.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
+@@ -239,4 +239,74 @@
+     const headings = extractHeadings("");
+     expect(headings).toHaveLength(0);
+   });
+ });
++
++describe("getRelatedPosts", () => {
++  const mockPosts = [
++    {
++      slug: "post-1",
++      title: "Post 1",
++      date: "2024-01-01",
++      excerpt: "Excerpt 1",
++      author: "Author 1",
++      tags: ["tag1", "tag2"],
++      readingTime: "5 min read",
++    },
++    {
++      slug: "post-2",
++      title: "Post 2",
++      date: "2024-01-02",
++      excerpt: "Excerpt 2",
++      author: "Author 2",
++      tags: ["tag1"],
++      readingTime: "3 min read",
++    },
++    {
++      slug: "post-3",
++      title: "Post 3",
++      date: "2024-01-03",
++      excerpt: "Excerpt 3",
++      author: "Author 3",
++      tags: ["tag2"],
++      readingTime: "7 min read",
++    },
++    {
++      slug: "post-4",
++      title: "Post 4",
++      date: "2024-01-04",
++      excerpt: "Excerpt 4",
++      author: "Author 4",
++      tags: ["tag3"],
++      readingTime: "4 min read",
++    },
++  ];
++
++  it("returns posts sharing at least one tag", () => {
++    const result = getRelatedPosts("post-1", ["tag1", "tag2"], mockPosts, 3);
++    expect(result).toHaveLength(2);
++    expect(result.map((p) => p.slug)).toContain("post-2");
++    expect(result.map((p) => p.slug)).toContain("post-3");
++  });
++
++  it("excludes the current post", () => {
++    const result = getRelatedPosts("post-1", ["tag1"], mockPosts, 3);
++    expect(result.map((p) => p.slug)).not.toContain("post-1");
++  });
++
++  it("respects the limit", () => {
++    const result = getRelatedPosts("post-1", ["tag1", "tag2"], mockPosts, 1);
++    expect(result).toHaveLength(1);
++  });
++
++  it("returns empty array when no posts match", () => {
++    const result = getRelatedPosts("post-4", ["nonexistent"], mockPosts, 3);
++    expect(result).toHaveLength(0);
++  });
++
++  it("falls back to most recent posts when no tag matches", () => {
++    const result = getRelatedPosts("post-4", ["nonexistent"], mockPosts, 2);
++    expect(result).toHaveLength(2);
++    expect(result[0].slug).toBe("post-3");
++    expect(result[1].slug).toBe("post-2");
++  });
++});
+
+[0m
+[0m$ [0mnpm test -- src/lib/blog.test.ts 2>&1
+> www-reading-advantage-next@0.1.0 test
+> vitest run src/lib/blog.test.ts
+
+
+ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+ ❯ src/lib/blog.test.ts (22 tests | 5 failed) 25ms
+     × returns posts sharing at least one tag 6ms
+     × excludes the current post 1ms
+     × respects the limit 1ms
+     × returns empty array when no posts match 1ms
+     × falls back to most recent posts when no tag matches 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/blog.test.ts > getRelatedPosts > returns posts sharing at least one tag
+TypeError: getRelatedPosts is not a function
+ ❯ src/lib/blog.test.ts:285:20
+    283|
+    284|   it("returns posts sharing at least one tag", () => {
+    285|     const result = getRelatedPosts("post-1", ["tag1", "tag2"], mockPos…
+       |                    ^
+    286|     expect(result).toHaveLength(2);
+    287|     expect(result.map((p) => p.slug)).toContain("post-2");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  src/lib/blog.test.ts > getRelatedPosts > excludes the current post
+TypeError: getRelatedPosts is not a function
+ ❯ src/lib/blog.test.ts:292:20
+    290|
+    291|   it("excludes the current post", () => {
+    292|     const result = getRelatedPosts("post-1", ["tag1"], mockPosts, 3);
+       |                    ^
+    293|     expect(result.map((p) => p.slug)).not.toContain("post-1");
+    294|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  src/lib/blog.test.ts > getRelatedPosts > respects the limit
+TypeError: getRelatedPosts is not a function
+ ❯ src/lib/blog.test.ts:297:20
+    295|
+    296|   it("respects the limit", () => {
+    297|     const result = getRelatedPosts("post-1", ["tag1", "tag2"], mockPos…
+       |                    ^
+    298|     expect(result).toHaveLength(1);
+    299|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  src/lib/blog.test.ts > getRelatedPosts > returns empty array when no posts match
+TypeError: getRelatedPosts is not a function
+ ❯ src/lib/blog.test.ts:302:20
+    300|
+    301|   it("returns empty array when no posts match", () => {
+    302|     const result = getRelatedPosts("post-4", ["nonexistent"], mockPost…
+       |                    ^
+    303|     expect(result).toHaveLength(0);
+    304|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  src/lib/blog.test.ts > getRelatedPosts > falls back to most recent posts when no tag matches
+TypeError: getRelatedPosts is not a function
+ ❯ src/lib/blog.test.ts:307:20
+    305|
+    306|   it("falls back to most recent posts when no tag matches", () => {
+    307|     const result = getRelatedPosts("post-4", ["nonexistent"], mockPost…
+       |                    ^
+    308|     expect(result).toHaveLength(2);
+    309|     expect(result[0].slug).toBe("post-3");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 17 passed (22)
+   Start at  23:07:16
+   Duration  2.03s (transform 94ms, setup 167ms, import 291ms, tests 25ms, environment 1.26s)
+[0m
+[0m→ [0mRead src/lib/blog.ts[90m [offset=190][0m
+[0m
+[0m← [0mEdit src/lib/blog.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.ts
+@@ -206,4 +206,27 @@
+   }
+ 
+   return headings;
+ }
++
++export function getRelatedPosts(
++  currentSlug: string,
++  currentTags: string[],
++  allPosts: BlogListItem[],
++  limit: number = 3,
++): BlogListItem[] {
++  const filteredPosts = allPosts.filter(
++    (post) =>
++      post.slug !== currentSlug &&
++      post.tags.some((tag) => currentTags.includes(tag)),
++  );
++
++  if (filteredPosts.length > 0) {
++    return filteredPosts.slice(0, limit);
++  }
++
++  const sortedPosts = [...allPosts]
++    .filter((post) => post.slug !== currentSlug)
++    .sort((a, b) => (a.date < b.date ? 1 : -1));
++
++  return sortedPosts.slice(0, limit);
++}
+
+[0m
+[0m$ [0mnpm test -- src/lib/blog.test.ts 2>&1
+> www-reading-advantage-next@0.1.0 test
+> vitest run src/lib/blog.test.ts
+
+
+ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+ ❯ src/lib/blog.test.ts (22 tests | 1 failed) 32ms
+     × returns empty array when no posts match 13ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/blog.test.ts > getRelatedPosts > returns empty array when no posts match
+AssertionError: expected [ { slug: 'post-3', …(6) }, …(2) ] to have a length of +0 but got 3
+
+- Expected
++ Received
+
+- 0
++ 3
+
+ ❯ src/lib/blog.test.ts:303:20
+    301|   it("returns empty array when no posts match", () => {
+    302|     const result = getRelatedPosts("post-4", ["nonexistent"], mockPost…
+    303|     expect(result).toHaveLength(0);
+       |                    ^
+    304|   });
+    305|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 21 passed (22)
+   Start at  23:07:51
+   Duration  2.01s (transform 94ms, setup 163ms, import 295ms, tests 32ms, environment 1.25s)
+[0m
+[0m← [0mEdit src/lib/blog.test.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
+@@ -297,10 +297,10 @@
+   const result = getRelatedPosts("post-1", ["tag1", "tag2"], mockPosts, 1);
+   expect(result).toHaveLength(1);
+ });
+ 
+-it("returns empty array when no posts match", () => {
+-  const result = getRelatedPosts("post-4", ["nonexistent"], mockPosts, 3);
++it("returns empty array when only current post matches", () => {
++  const result = getRelatedPosts("post-1", ["unique-tag"], [mockPosts[0]], 3);
+   expect(result).toHaveLength(0);
+ });
+ 
+ it("falls back to most recent posts when no tag matches", () => {
+
+[0m
+[0m$ [0mnpm test -- src/lib/blog.test.ts 2>&1
+> www-reading-advantage-next@0.1.0 test
+> vitest run src/lib/blog.test.ts
+
+
+ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+
+ Test Files  1 passed (1)
+      Tests  22 passed (22)
+   Start at  23:08:16
+   Duration  2.09s (transform 113ms, setup 166ms, import 307ms, tests 19ms, environment 1.30s)
+[0m
+[0m# [0mTodos
+[x] Blog Pagination - Phase 1: Audit current blog listing implementation (Task 1.1)
+[x] Blog Pagination - Phase 1: Create getPaginatedPosts utility with TDD (Task 1.2-1.3)
+[x] Blog Pagination - Phase 1: Create paginated blog listing page (Task 1.4)
+[x] Blog Pagination - Phase 1: Build BlogPagination component (Task 1.5)
+[x] Blog Pagination - Phase 2: Reading time estimate (already implemented)
+[x] Blog Pagination - Phase 3: Table of Contents - extractHeadings utility (Task 3.1-3.2)
+[x] Blog Pagination - Phase 3: TableOfContents component (Task 3.3-3.4)
+[x] Blog Pagination - Phase 4: Related Posts - getRelatedPosts utility (Task 4.1-4.2)
+[ ] Blog Pagination - Phase 4: Add Related Posts section (Task 4.3)
+[ ] Blog Pagination - Phase 5: Final Build and Check
+[0m
+[0m→ [0mRead src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+[0m
+[0m← [0mEdit src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+@@ -1,12 +1,20 @@
+-import { getBlogPost, extractHeadings } from "@/lib/blog";
++import {
++  getBlogPost,
++  getAllPosts,
++  extractHeadings,
++  getRelatedPosts,
++} from "@/lib/blog";
+ import { BlogHeader } from "@/components/blog/blog-header";
+ import { BlogTags } from "@/components/blog/blog-tags";
++import { BlogCard } from "@/components/blog/blog-card";
+ import { TableOfContents } from "@/components/blog/table-of-contents";
+ import { notFound } from "next/navigation";
+ import type { Metadata } from "next";
++import type { BlogListItem } from "@/types/blog";
+ import Image from "next/image";
+ import HeroSection from "@/components/marketing/hero-section";
++import { useScopedI18n } from "@/locales/client";
+ 
+ type Props = {
+   params: Promise<{ slug: string }>;
+ };
+
+[0m
+[0m← [0mWrite src/components/blog/related-posts.tsx
+Wrote file successfully.
+[0m
+[0m✗ [0medit failed
+[91m[1mError: [0mCould not find oldString in the file. It must match exactly, including whitespace, indentation, and line endings.
+[0m→ [0mRead src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+[0m
+[0m← [0mEdit src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+@@ -5,16 +5,14 @@
+   getRelatedPosts,
+ } from "@/lib/blog";
+ import { BlogHeader } from "@/components/blog/blog-header";
+ import { BlogTags } from "@/components/blog/blog-tags";
+-import { BlogCard } from "@/components/blog/blog-card";
+ import { TableOfContents } from "@/components/blog/table-of-contents";
++import { RelatedPosts } from "@/components/blog/related-posts";
+ import { notFound } from "next/navigation";
+ import type { Metadata } from "next";
+-import type { BlogListItem } from "@/types/blog";
+ import Image from "next/image";
+ import HeroSection from "@/components/marketing/hero-section";
+-import { useScopedI18n } from "@/locales/client";
+ 
+ type Props = {
+   params: Promise<{ slug: string }>;
+ };
+
+[0m
+[0m← [0mEdit src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+@@ -53,8 +53,10 @@
+     notFound();
+   }
+ 
+   const headings = extractHeadings(post.rawContent);
++  const allPosts = await getAllPosts();
++  const relatedPosts = getRelatedPosts(post.slug, post.tags, allPosts, 3);
+ 
+   return (
+     <main>
+       <HeroSection
+@@ -94,8 +96,9 @@
+             <TableOfContents headings={headings} />
+           </div>
+         </div>
+         <BlogTags tags={post.tags} />
++        <RelatedPosts posts={relatedPosts} />
+       </article>
+     </main>
+   );
+ }
+
+[0m
+[0m$ [0mnpm test 2>&1
+> www-reading-advantage-next@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+
+ Test Files  3 passed (3)
+      Tests  30 passed (30)
+   Start at  23:10:12
+   Duration  2.87s (transform 316ms, setup 584ms, import 1.10s, tests 712ms, environment 4.77s)
+[0m

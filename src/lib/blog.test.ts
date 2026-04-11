@@ -3,6 +3,7 @@ import {
   calculateReadingTime,
   getPaginatedPosts,
   extractHeadings,
+  getRelatedPosts,
 } from "@/lib/blog";
 
 describe("calculateReadingTime", () => {
@@ -237,5 +238,75 @@ describe("extractHeadings", () => {
   it("handles empty content", () => {
     const headings = extractHeadings("");
     expect(headings).toHaveLength(0);
+  });
+});
+
+describe("getRelatedPosts", () => {
+  const mockPosts = [
+    {
+      slug: "post-1",
+      title: "Post 1",
+      date: "2024-01-01",
+      excerpt: "Excerpt 1",
+      author: "Author 1",
+      tags: ["tag1", "tag2"],
+      readingTime: "5 min read",
+    },
+    {
+      slug: "post-2",
+      title: "Post 2",
+      date: "2024-01-02",
+      excerpt: "Excerpt 2",
+      author: "Author 2",
+      tags: ["tag1"],
+      readingTime: "3 min read",
+    },
+    {
+      slug: "post-3",
+      title: "Post 3",
+      date: "2024-01-03",
+      excerpt: "Excerpt 3",
+      author: "Author 3",
+      tags: ["tag2"],
+      readingTime: "7 min read",
+    },
+    {
+      slug: "post-4",
+      title: "Post 4",
+      date: "2024-01-04",
+      excerpt: "Excerpt 4",
+      author: "Author 4",
+      tags: ["tag3"],
+      readingTime: "4 min read",
+    },
+  ];
+
+  it("returns posts sharing at least one tag", () => {
+    const result = getRelatedPosts("post-1", ["tag1", "tag2"], mockPosts, 3);
+    expect(result).toHaveLength(2);
+    expect(result.map((p) => p.slug)).toContain("post-2");
+    expect(result.map((p) => p.slug)).toContain("post-3");
+  });
+
+  it("excludes the current post", () => {
+    const result = getRelatedPosts("post-1", ["tag1"], mockPosts, 3);
+    expect(result.map((p) => p.slug)).not.toContain("post-1");
+  });
+
+  it("respects the limit", () => {
+    const result = getRelatedPosts("post-1", ["tag1", "tag2"], mockPosts, 1);
+    expect(result).toHaveLength(1);
+  });
+
+  it("returns empty array when only current post matches", () => {
+    const result = getRelatedPosts("post-1", ["unique-tag"], [mockPosts[0]], 3);
+    expect(result).toHaveLength(0);
+  });
+
+  it("falls back to most recent posts when no tag matches", () => {
+    const result = getRelatedPosts("post-4", ["nonexistent"], mockPosts, 2);
+    expect(result).toHaveLength(2);
+    expect(result[0].slug).toBe("post-3");
+    expect(result[1].slug).toBe("post-2");
   });
 });

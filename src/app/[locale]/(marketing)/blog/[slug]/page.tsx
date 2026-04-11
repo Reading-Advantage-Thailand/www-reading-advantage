@@ -1,7 +1,13 @@
-import { getBlogPost, extractHeadings } from "@/lib/blog";
+import {
+  getBlogPost,
+  getAllPosts,
+  extractHeadings,
+  getRelatedPosts,
+} from "@/lib/blog";
 import { BlogHeader } from "@/components/blog/blog-header";
 import { BlogTags } from "@/components/blog/blog-tags";
 import { TableOfContents } from "@/components/blog/table-of-contents";
+import { RelatedPosts } from "@/components/blog/related-posts";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -48,6 +54,8 @@ async function BlogPost(props: Props) {
   }
 
   const headings = extractHeadings(post.rawContent);
+  const allPosts = await getAllPosts();
+  const relatedPosts = getRelatedPosts(post.slug, post.tags, allPosts, 3);
 
   return (
     <main>
@@ -89,6 +97,7 @@ async function BlogPost(props: Props) {
           </div>
         </div>
         <BlogTags tags={post.tags} />
+        <RelatedPosts posts={relatedPosts} />
       </article>
     </main>
   );

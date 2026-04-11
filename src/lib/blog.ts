@@ -207,3 +207,26 @@ export function extractHeadings(content: string): Heading[] {
 
   return headings;
 }
+
+export function getRelatedPosts(
+  currentSlug: string,
+  currentTags: string[],
+  allPosts: BlogListItem[],
+  limit: number = 3,
+): BlogListItem[] {
+  const filteredPosts = allPosts.filter(
+    (post) =>
+      post.slug !== currentSlug &&
+      post.tags.some((tag) => currentTags.includes(tag)),
+  );
+
+  if (filteredPosts.length > 0) {
+    return filteredPosts.slice(0, limit);
+  }
+
+  const sortedPosts = [...allPosts]
+    .filter((post) => post.slug !== currentSlug)
+    .sort((a, b) => (a.date < b.date ? 1 : -1));
+
+  return sortedPosts.slice(0, limit);
+}
