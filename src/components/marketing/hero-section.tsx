@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 
 export interface HeroProps {
   title: string | ReactNode;
@@ -28,23 +29,6 @@ export interface HeroProps {
   showDecorations?: boolean;
   className?: string;
 }
-
-const getButtonVariantStyles = (
-  variant: "primary" | "secondary" | "white" | "outline" | undefined,
-): string => {
-  switch (variant) {
-    case "primary":
-      return "bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600 shadow-2xl hover:shadow-amber-500/30";
-    case "secondary":
-      return "bg-white/10 backdrop-blur text-white border border-white/20 hover:bg-white/20";
-    case "white":
-      return "bg-white text-sky-900 hover:bg-sky-50 shadow-lg hover:shadow-xl";
-    case "outline":
-      return "border-2 border-sky-500 text-sky-900 hover:bg-sky-50";
-    default:
-      return "bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600 shadow-2xl hover:shadow-amber-500/30";
-  }
-};
 
 const getBadgeVariantStyles = (
   variant?: "amber" | "sky" | "green" | "rose" | "yellow" | "custom",
@@ -92,8 +76,7 @@ export default function HeroSection({
   showDecorations = true,
   className = "",
 }: HeroProps) {
-  const gradientStyles =
-    customGradient || "bg-gradient-to-br from-amber-50 via-orange-50 to-sky-50";
+  const gradientStyles = customGradient || "bg-warm-cream";
   const heightStyles = getHeightStyles(height);
   const alignmentStyles = getAlignmentStyles(alignment);
 
@@ -104,7 +87,7 @@ export default function HeroSection({
 
   return (
     <section
-      className={`relative overflow-hidden ${gradientStyles} text-slate-900 pt-24 ${heightStyles} ${className}`}
+      className={`relative overflow-hidden ${gradientStyles} text-black pt-24 ${heightStyles} ${className}`}
     >
       {/* Decorative background elements */}
       {showDecorations && (
@@ -121,22 +104,37 @@ export default function HeroSection({
       )}
 
       <div className="container relative z-20 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
-        <div
-          className={`relative z-20 max-w-4xl ${alignmentStyles} animate-in fade-in slide-in-from-bottom-8 duration-700`}
-        >
+        <div className={`relative z-20 max-w-4xl ${alignmentStyles}`}>
           {/* Badge */}
           {badge && (
             <div
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-6 animate-in fade-in zoom-in-95 duration-500 ${getBadgeVariantStyles(badge.variant || "amber", badge.customColor)}`}
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-6 ${getBadgeVariantStyles(badge.variant || "amber", badge.customColor)}`}
             >
               {badge.icon && <span className="w-5 h-5">{badge.icon}</span>}
-              <span className="text-sm font-bold">{badge.text}</span>
+              <span
+                className="text-sm font-semibold font-roobert"
+                style={{
+                  fontFamily: "Roobert, Arial, sans-serif",
+                  fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+                  letterSpacing: "1.08px",
+                  textTransform: "uppercase",
+                }}
+              >
+                {badge.text}
+              </span>
             </div>
           )}
 
           {/* Title */}
           {typeof title === "string" ? (
-            <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold mb-6 leading-tight">
+            <h1
+              className="text-5xl md:text-6xl lg:text-8xl font-bold mb-6 leading-tight font-roobert"
+              style={{
+                fontFamily: "Roobert, Arial, sans-serif",
+                fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
+                letterSpacing: "-3.2px",
+              }}
+            >
               {title}
             </h1>
           ) : (
@@ -145,32 +143,53 @@ export default function HeroSection({
 
           {/* Description */}
           {typeof description === "string" ? (
-            <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed mb-8 text-slate-600">
+            <p
+              className="text-xl md:text-2xl lg:text-3xl leading-relaxed mb-8 text-warm-silver font-roobert"
+              style={{
+                fontFamily: "Roobert, Arial, sans-serif",
+                fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+              }}
+            >
               {description}
             </p>
           ) : (
-            <div className="text-xl md:text-2xl lg:text-3xl leading-relaxed mb-8 text-slate-600">
+            <div
+              className="text-xl md:text-2xl lg:text-3xl leading-relaxed mb-8 text-warm-silver font-roobert"
+              style={{
+                fontFamily: "Roobert, Arial, sans-serif",
+                fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+              }}
+            >
               {description}
             </div>
           )}
 
           {/* CTA Button */}
           {ctaButton && (
-            <Link
-              href={ctaButton.href}
-              className={`inline-flex items-center gap-2 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${getButtonVariantStyles(ctaButton.variant)} animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200`}
+            <Button
+              variant={
+                ctaButton.variant === "white"
+                  ? "clay-white"
+                  : ctaButton.variant === "outline"
+                    ? "clay-ghost"
+                    : "clay"
+              }
+              size="lg"
+              asChild
             >
-              {ctaButton.text}
-              {ctaButton.icon && (
-                <span className="w-5 h-5">{ctaButton.icon}</span>
-              )}
-            </Link>
+              <Link href={ctaButton.href}>
+                {ctaButton.text}
+                {ctaButton.icon && (
+                  <span className="w-5 h-5">{ctaButton.icon}</span>
+                )}
+              </Link>
+            </Button>
           )}
         </div>
 
         {/* Floating Image - Only shown when alignment="left" and on xl screens */}
         {floatingImage && alignment === "left" && (
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden xl:block z-10 animate-in fade-in slide-in-from-right-8 duration-700 delay-300 pointer-events-none">
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden xl:block z-10 pointer-events-none">
             <div
               className={`relative ${imageSize.rounded}`}
               style={{ width: `${imageSize.width}px` }}

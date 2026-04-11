@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { useScopedI18n } from "@/locales/client";
 import HeroSection from "@/components/marketing/hero-section";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Home() {
   const t = useScopedI18n("pages.home");
@@ -29,26 +31,45 @@ export default function Home() {
   const secondLine = titleParts.slice(3).join(" ");
 
   const heroTitle = (
-    <h1 className="text-6xl md:text-8xl font-bold text-slate-900 leading-[1.1]">
+    <h1
+      className="text-[80px] font-semibold leading-tight font-roobert"
+      style={{
+        fontFamily: "Roobert, Arial, sans-serif",
+        fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
+        letterSpacing: "-3.2px",
+      }}
+    >
       <span className="block">{firstLine}</span>
-      <span className="block bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
+      <span className="block bg-gradient-to-r from-sky-300 to-sky-500 bg-clip-text text-transparent">
         {secondLine}
       </span>
     </h1>
   );
 
+  const heroDescription = (
+    <p
+      className="text-[20px] font-normal leading-[1.6] text-warm-silver font-roobert"
+      style={{
+        fontFamily: "Roobert, Arial, sans-serif",
+        fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+      }}
+    >
+      {t("hero.description")}
+    </p>
+  );
+
   return (
-    <main className="overflow-x-hidden">
-      {/* Hero - Using HeroSection component */}
+    <main className="overflow-x-hidden bg-warm-cream">
+      {/* Hero - Using HeroSection component with Clay styling */}
       <HeroSection
         title={heroTitle}
-        description={t("hero.description")}
+        description={heroDescription}
         height="tall"
         alignment="left"
         badge={{
           text: t("hero.cta"),
           icon: <Sparkles className="w-4 h-4" />,
-          variant: "amber",
+          variant: "sky",
         }}
         ctaButton={{
           text: t("hero.cta"),
@@ -62,20 +83,35 @@ export default function Home() {
           sizes: "(max-width: 1280px) 100vw, 50vw",
         }}
         showDecorations={true}
+        customGradient="bg-warm-cream"
+        className="pt-20"
       />
 
       {/* Mission - Full width, bold typography */}
-      <section className="relative py-24 bg-white">
+      <section className="relative py-24 bg-warm-cream">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
+          <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-8">
-              <div className="w-20 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mx-auto" />
+              <div className="w-20 h-1 bg-gradient-to-r from-amber-400 to-sky-400 rounded-full mx-auto" />
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-8 leading-tight">
+            <h2
+              className="text-[44px] font-semibold mb-8 leading-tight font-roobert text-black"
+              style={{
+                fontFamily: "Roobert, Arial, sans-serif",
+                fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
+                letterSpacing: "-0.88px",
+              }}
+            >
               {t("mission.title")}
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-sky-500 to-blue-500 rounded-full mx-auto mb-12" />
-            <p className="text-2xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
+            <div className="w-20 h-1 bg-gradient-to-r from-sky-300 to-sky-400 rounded-full mx-auto mb-12" />
+            <p
+              className="text-[18px] leading-[1.6] text-warm-silver font-roobert max-w-3xl mx-auto"
+              style={{
+                fontFamily: "Roobert, Arial, sans-serif",
+                fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+              }}
+            >
               {t("mission.description")}
             </p>
           </div>
@@ -88,24 +124,36 @@ export default function Home() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-7 animate-in fade-in slide-in-from-left-8 duration-700">
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
+            <div className="lg:col-span-7">
+              <h2
+                className="text-[44px] font-semibold mb-8 leading-tight font-roobert text-white"
+                style={{
+                  fontFamily: "Roobert, Arial, sans-serif",
+                  fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
+                  letterSpacing: "-0.88px",
+                }}
+              >
                 {t("overview.title")}
               </h2>
-              <p className="text-2xl text-amber-50 leading-relaxed mb-12">
+              <p
+                className="text-[18px] leading-[1.6] text-amber-50 mb-12 font-roobert"
+                style={{
+                  fontFamily: "Roobert, Arial, sans-serif",
+                  fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+                }}
+              >
                 {t("overview.description")}
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="bg-white text-amber-700 px-8 py-4 rounded-2xl hover:bg-amber-50 transition-all duration-300 font-bold text-lg inline-flex items-center gap-2 shadow-xl hover:-translate-y-1"
-                >
-                  {t("overview.partnerCta")}
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
+                <Button variant="clay-white" asChild>
+                  <Link href="/contact">
+                    {t("overview.partnerCta")}
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </Button>
               </div>
             </div>
-            <div className="lg:col-span-5 animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
+            <div className="lg:col-span-5">
               <div className="relative">
                 <div
                   className="absolute inset-0 bg-white/20 rounded-3xl blur-3xl -translate-y-4 translate-x-4"
@@ -114,18 +162,18 @@ export default function Home() {
                 <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
                   <div className="grid grid-cols-1 gap-6">
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-white mb-2">
+                      <div className="text-4xl font-bold text-white mb-2 font-roobert">
                         10,000+
                       </div>
-                      <div className="text-amber-100 text-lg">
+                      <div className="text-amber-100 text-lg font-roobert">
                         {t("overview.stats.articles")}
                       </div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-white mb-2">
+                      <div className="text-3xl font-bold text-white mb-2 font-roobert">
                         {t("overview.stats.title")}
                       </div>
-                      <div className="text-amber-100 text-sm">
+                      <div className="text-amber-100 text-sm font-roobert">
                         {t("overview.stats.research")}
                       </div>
                     </div>
@@ -138,27 +186,39 @@ export default function Home() {
       </section>
 
       {/* Flagship - Diagonal split layout */}
-      <section
-        className="relative py-24 bg-gradient-to-br from-amber-50 via-white to-sky-50"
-        id="products"
-      >
+      <section className="relative py-24 bg-warm-cream" id="products">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 animate-in fade-in duration-700">
-              <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
+            <div className="text-center mb-16">
+              <h2
+                className="text-[44px] font-semibold mb-6 font-roobert text-black"
+                style={{
+                  fontFamily: "Roobert, Arial, sans-serif",
+                  fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
+                  letterSpacing: "-0.88px",
+                }}
+              >
                 <span className="block">
                   {t("flagship.title").split(" ").slice(0, 2).join(" ")}
                 </span>
-                <span className="block bg-gradient-to-r from-sky-500 to-blue-500 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-sky-400 to-sky-500 bg-clip-text text-transparent">
                   {t("flagship.title").split(" ").slice(2).join(" ")}
                 </span>
               </h2>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-0 rounded-[40px] overflow-hidden shadow-2xl bg-white">
+            <div className="grid lg:grid-cols-2 gap-0 rounded-[40px] overflow-hidden shadow-clay bg-white">
               {/* Benefits side */}
               <div className="p-12 md:p-16 bg-gradient-to-br from-white to-amber-50">
-                <h3 className="text-4xl font-bold text-amber-700 mb-12">
+                <h3
+                  className="text-[32px] font-semibold mb-12 font-roobert text-amber-800"
+                  style={{
+                    fontFamily: "Roobert, Arial, sans-serif",
+                    fontFeatureSettings:
+                      '"ss01", "ss03", "ss10", "ss11", "ss12"',
+                    letterSpacing: "-0.64px",
+                  }}
+                >
                   {t("flagship.productTitle")}
                 </h3>
 
@@ -166,26 +226,31 @@ export default function Home() {
                   {benefits.map((benefit, i) => (
                     <div
                       key={i}
-                      className="flex items-start gap-4 p-6 rounded-2xl hover:bg-white/80 transition-all duration-300 animate-in fade-in slide-in-from-left-4 duration-500"
+                      className="flex items-start gap-4 p-6 rounded-2xl hover:bg-white/80 transition-all duration-300"
                       style={{ animationDelay: `${i * 100}ms` }}
                     >
-                      <div className="w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                      <div className="w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
                         <Check className="w-7 h-7 text-white" />
                       </div>
-                      <p className="text-xl text-slate-700 leading-relaxed">
+                      <p
+                        className="text-[18px] leading-[1.6] text-slate-700 font-roobert"
+                        style={{
+                          fontFamily: "Roobert, Arial, sans-serif",
+                          fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+                        }}
+                      >
                         {benefit}
                       </p>
                     </div>
                   ))}
                 </div>
 
-                <Link
-                  href="/reading-advantage"
-                  className="mt-12 inline-flex items-center gap-3 bg-gradient-to-r from-sky-500 to-blue-500 text-white px-10 py-5 rounded-2xl hover:from-sky-600 hover:to-blue-600 transition-all duration-300 shadow-xl hover:shadow-sky-500/30 hover:-translate-y-1 font-bold text-lg w-full justify-center"
-                >
-                  {t("flagship.cta")}
-                  <ArrowRight className="w-6 h-6" />
-                </Link>
+                <Button variant="clay" className="mt-12 w-full" asChild>
+                  <Link href="/products/reading-advantage">
+                    {t("flagship.cta")}
+                    <ArrowRight className="w-6 h-6" />
+                  </Link>
+                </Button>
               </div>
 
               {/* Image side with background matching card */}
@@ -203,7 +268,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Innovation - Horizontal scroll / card-less features */}
+      {/* Innovation - Card-based features */}
       <section className="relative py-24 bg-slate-900 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-sky-900/50 via-amber-900/50 to-orange-900/50" />
         <div
@@ -216,8 +281,15 @@ export default function Home() {
         />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-20 animate-in fade-in duration-700">
-            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+          <div className="text-center mb-20">
+            <h2
+              className="text-[44px] font-semibold mb-6 font-roobert text-white"
+              style={{
+                fontFamily: "Roobert, Arial, sans-serif",
+                fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
+                letterSpacing: "-0.88px",
+              }}
+            >
               {t("innovation.title")}
             </h2>
           </div>
@@ -240,39 +312,75 @@ export default function Home() {
                 description: t("innovation.features.2.description"),
               },
             ].map((feature, index) => (
-              <div
+              <Card
                 key={index}
-                className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-10 border border-white/10 transition-all duration-300 hover:-translate-y-3 hover:border-white/20 hover:bg-white/15 animate-in fade-in slide-in-from-bottom-8 duration-700"
-                style={{ animationDelay: `${index * 150}ms` }}
+                className="bg-white/10 border-white/10 backdrop-blur-sm hover:bg-white/15 hover:-translate-y-3"
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-sky-400 to-amber-400 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-2xl text-white">
-                  {feature.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-6">
-                  {feature.title}
-                </h3>
-                <p className="text-lg text-slate-300 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
+                <CardContent className="p-10">
+                  <div className="w-20 h-20 bg-gradient-to-br from-sky-400 to-amber-400 rounded-3xl flex items-center justify-center mb-8 shadow-2xl text-white">
+                    {feature.icon}
+                  </div>
+                  <h3
+                    className="text-[20px] font-semibold mb-6 font-roobert text-white"
+                    style={{
+                      fontFamily: "Roobert, Arial, sans-serif",
+                      fontFeatureSettings:
+                        '"ss01", "ss03", "ss10", "ss11", "ss12"',
+                      letterSpacing: "-0.4px",
+                    }}
+                  >
+                    {feature.title}
+                  </h3>
+                  <p
+                    className="text-[18px] leading-[1.6] text-slate-300 font-roobert"
+                    style={{
+                      fontFamily: "Roobert, Arial, sans-serif",
+                      fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+                    }}
+                  >
+                    {feature.description}
+                  </p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* Big 4 Quality Protocol - New Section */}
-      <section className="relative py-24 bg-gradient-to-br from-sky-50 via-white to-amber-50">
+      <section className="relative py-24 bg-warm-cream">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 animate-in fade-in duration-700">
-              <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
+            <div className="text-center mb-16">
+              <div
+                className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold mb-6 font-roobert"
+                style={{
+                  fontFamily: "Roobert, Arial, sans-serif",
+                  fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+                  letterSpacing: "1.08px",
+                  textTransform: "uppercase",
+                }}
+              >
                 <Sparkles className="w-4 h-4" />
                 {t("qualityProtocol.badge")}
               </div>
-              <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
+              <h2
+                className="text-[44px] font-semibold mb-6 font-roobert text-black"
+                style={{
+                  fontFamily: "Roobert, Arial, sans-serif",
+                  fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
+                  letterSpacing: "-0.88px",
+                }}
+              >
                 {t("qualityProtocol.title")}
               </h2>
-              <p className="text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              <p
+                className="text-[18px] text-warm-silver max-w-3xl mx-auto leading-[1.6] font-roobert"
+                style={{
+                  fontFamily: "Roobert, Arial, sans-serif",
+                  fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+                }}
+              >
                 {t("qualityProtocol.description")}
               </p>
             </div>
@@ -296,21 +404,36 @@ export default function Home() {
                   description: t("qualityProtocol.features.3.description"),
                 },
               ].map((item, index) => (
-                <div
+                <Card
                   key={item.title}
-                  className="group bg-white rounded-3xl p-8 border border-sky-100 transition-all duration-300 hover:-translate-y-2 hover:border-amber-300 hover:shadow-xl animate-in fade-in slide-in-from-bottom-8 duration-700"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className="hover:-translate-y-2 hover:border-amber-300"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-sky-400 to-amber-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                    <Target className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-4">
-                    {item.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
+                  <CardContent className="p-8">
+                    <div className="w-16 h-16 bg-gradient-to-br from-sky-400 to-amber-400 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                      <Target className="w-8 h-8 text-white" />
+                    </div>
+                    <h3
+                      className="text-[20px] font-semibold mb-4 font-roobert text-black"
+                      style={{
+                        fontFamily: "Roobert, Arial, sans-serif",
+                        fontFeatureSettings:
+                          '"ss01", "ss03", "ss10", "ss11", "ss12"',
+                        letterSpacing: "-0.4px",
+                      }}
+                    >
+                      {item.title}
+                    </h3>
+                    <p
+                      className="text-[18px] leading-[1.6] text-warm-charcoal font-roobert"
+                      style={{
+                        fontFamily: "Roobert, Arial, sans-serif",
+                        fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+                      }}
+                    >
+                      {item.description}
+                    </p>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
@@ -322,11 +445,24 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-sky-900/50 via-amber-900/50 to-slate-900" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 animate-in fade-in duration-700">
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <div className="text-center mb-16">
+              <h2
+                className="text-[44px] font-semibold mb-6 font-roobert text-white"
+                style={{
+                  fontFamily: "Roobert, Arial, sans-serif",
+                  fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
+                  letterSpacing: "-0.88px",
+                }}
+              >
                 {t("thaiSchools.title")}
               </h2>
-              <p className="text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+              <p
+                className="text-[18px] text-slate-300 max-w-3xl mx-auto leading-[1.6] font-roobert"
+                style={{
+                  fontFamily: "Roobert, Arial, sans-serif",
+                  fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+                }}
+              >
                 {t("thaiSchools.description")}
               </p>
             </div>
@@ -348,30 +484,57 @@ export default function Home() {
               ].map((item, index) => (
                 <div
                   key={item.title}
-                  className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/10 transition-all duration-300 hover:border-white/20 hover:bg-white/15 animate-in fade-in slide-in-from-bottom-8 duration-700"
-                  style={{ animationDelay: `${index * 150}ms` }}
+                  className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:border-white/20 hover:bg-white/15 transition-all duration-300"
                 >
                   <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-sky-400 rounded-2xl flex items-center justify-center mb-6 shadow-xl">
                     <Zap className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">
+                  <h3
+                    className="text-[20px] font-semibold mb-4 font-roobert text-white"
+                    style={{
+                      fontFamily: "Roobert, Arial, sans-serif",
+                      fontFeatureSettings:
+                        '"ss01", "ss03", "ss10", "ss11", "ss12"',
+                      letterSpacing: "-0.4px",
+                    }}
+                  >
                     {item.title}
                   </h3>
-                  <p className="text-slate-300 leading-relaxed">
+                  <p
+                    className="text-[18px] leading-[1.6] text-slate-300 font-roobert"
+                    style={{
+                      fontFamily: "Roobert, Arial, sans-serif",
+                      fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+                    }}
+                  >
                     {item.description}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-16 text-center animate-in fade-in duration-700 delay-300">
+            <div className="mt-16 text-center">
               <div className="inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl px-8 py-6">
                 <Sparkles className="w-8 h-8 text-amber-400" />
                 <div className="text-left">
-                  <div className="text-lg text-slate-300">
+                  <div
+                    className="text-[18px] text-slate-300 font-roobert"
+                    style={{
+                      fontFamily: "Roobert, Arial, sans-serif",
+                      fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+                    }}
+                  >
                     {t("thaiSchools.poweredBy")}
                   </div>
-                  <div className="text-2xl font-bold text-white">
+                  <div
+                    className="text-[20px] font-semibold text-white font-roobert"
+                    style={{
+                      fontFamily: "Roobert, Arial, sans-serif",
+                      fontFeatureSettings:
+                        '"ss01", "ss03", "ss10", "ss11", "ss12"',
+                      letterSpacing: "-0.4px",
+                    }}
+                  >
                     {t("thaiSchools.technology")}
                   </div>
                 </div>
@@ -393,43 +556,75 @@ export default function Home() {
         />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2
+              className="text-[60px] font-semibold mb-8 leading-tight font-roobert text-white"
+              style={{
+                fontFamily: "Roobert, Arial, sans-serif",
+                fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
+                letterSpacing: "-2.4px",
+              }}
+            >
               {t("impact.title")}
             </h2>
-            <p className="text-2xl md:text-3xl text-amber-50 leading-relaxed mb-16 max-w-3xl mx-auto">
+            <p
+              className="text-[24px] text-amber-50 leading-relaxed mb-16 max-w-3xl mx-auto font-roobert"
+              style={{
+                fontFamily: "Roobert, Arial, sans-serif",
+                fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+              }}
+            >
               {t("impact.description")}
             </p>
 
-            <Link
-              href="mailto:support@reading-advantage.com?subject=Demo Request - Reading Advantage Thailand&body=Hi team,%0A%0AI'm interested in scheduling a demo of your educational platforms. Could you please provide more information about your programs and available demo times?%0A%0AI'm particularly interested in:%0A- [Please specify which program(s) you're interested in]%0A- [Your school/organization name if applicable]%0A- [Preferred demo format: in-person, virtual, or self-guided]%0A%0ALooking forward to hearing from you!%0A%0ABest regards"
-              className="inline-flex items-center gap-4 bg-white text-slate-900 px-14 py-6 rounded-3xl hover:bg-amber-50 transition-all duration-300 shadow-2xl hover:shadow-white/30 hover:-translate-y-2 font-bold text-xl animate-in fade-in duration-700 delay-300 hover:scale-105"
-            >
-              <Mail className="w-8 h-8" />
-              {t("impact.cta")}
-            </Link>
+            <Button variant="clay-white" size="lg" asChild>
+              <Link href="mailto:support@reading-advantage.com?subject=Demo Request - Reading Advantage Thailand&body=Hi team,%0A%0AI'm interested in scheduling a demo of your educational platforms. Could you please provide more information about your programs and available demo times?%0A%0AI'm particularly interested in:%0A- [Please specify which program(s) you're interested in]%0A- [Your school/organization name if applicable]%0A- [Preferred demo format: in-person, virtual, or self-guided]%0A%0ALooking forward to hearing from you!%0A%0ABest regards">
+                <Mail className="w-8 h-8" />
+                {t("impact.cta")}
+              </Link>
+            </Button>
 
             {/* Trust badges */}
-            <div className="mt-20 flex flex-wrap justify-center gap-12 animate-in fade-in duration-700 delay-500">
+            <div className="mt-20 flex flex-wrap justify-center gap-12">
               <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2">
+                <div className="text-4xl font-bold text-white mb-2 font-roobert">
                   10,000+
                 </div>
-                <div className="text-amber-100 text-lg">
+                <div
+                  className="text-amber-100 text-lg font-roobert"
+                  style={{
+                    fontFamily: "Roobert, Arial, sans-serif",
+                    fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+                  }}
+                >
                   {t("impact.trustBadges.articles")}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2">12</div>
-                <div className="text-amber-100 text-lg">
+                <div className="text-4xl font-bold text-white mb-2 font-roobert">
+                  12
+                </div>
+                <div
+                  className="text-amber-100 text-lg font-roobert"
+                  style={{
+                    fontFamily: "Roobert, Arial, sans-serif",
+                    fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+                  }}
+                >
                   {t("impact.trustBadges.cefrLevels")}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2">
+                <div className="text-4xl font-bold text-white mb-2 font-roobert">
                   {t("impact.trustBadges.big4")}
                 </div>
-                <div className="text-amber-100 text-lg">
+                <div
+                  className="text-amber-100 text-lg font-roobert"
+                  style={{
+                    fontFamily: "Roobert, Arial, sans-serif",
+                    fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
+                  }}
+                >
                   {t("impact.trustBadges.qualityProtocol")}
                 </div>
               </div>

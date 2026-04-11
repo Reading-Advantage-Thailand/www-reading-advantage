@@ -65,41 +65,41 @@
 
 ### Task 2.1: Write Test for Homepage (Red Phase)
 
-- [ ] Create `src/app/[locale]/(marketing)/page.test.tsx`
-- [ ] Write test asserting main heading and key sections are present
-- [ ] Run `npm test` — confirm test runs (may fail)
+- [x] Create `src/app/[locale]/(marketing)/page.test.tsx`
+- [x] Write test asserting main heading and key sections are present
+- [x] Run `npm test` — confirm test runs (may fail)
 
 ### Task 2.2: Redesign Homepage Hero Section
 
-- [ ] Remove Framer Motion imports
-- [ ] Set page background to warm cream (`#faf9f7`)
-- [ ] Build inline hero with Sky 300/400 gradient (Reading Advantage brand color)
-- [ ] Apply Roobert 80px weight 600 with all 5 stylistic sets to headline
-- [ ] Subtitle at 20px weight 400, line-height 1.60, #9f9b93 text
-- [ ] Use new Button components with playful hover
-- [ ] Add Reading Advantage logo to hero
+- [x] Remove Framer Motion imports
+- [x] Set page background to warm cream (`#faf9f7`)
+- [x] Build inline hero with Sky 300/400 gradient (Reading Advantage brand color)
+- [x] Apply Roobert 80px weight 600 with all 5 stylistic sets to headline
+- [x] Subtitle at 20px weight 400, line-height 1.60, #9f9b93 text
+- [x] Use new Button components with playful hover
+- [x] Add Reading Advantage logo to hero
 
 ### Task 2.3: Redesign Homepage Feature/Content Sections
 
-- [ ] Update all sections to use warm cream backgrounds or product brand colors
-- [ Replace generic cards with new Card components
-- [ ] Apply Roobert typography with correct stylistic sets
-- [ ] Ensure all borders are oat tones (`#dad4c8`)
-- [ ] Remove Framer Motion, use `tailwindcss-animate`
-- [ ] Add appropriate spacing (`py-24` to `py-32`)
+- [x] Update all sections to use warm cream backgrounds or product brand colors
+- [x] Replace generic cards with new Card components
+- [x] Apply Roobert typography with correct stylistic sets
+- [x] Ensure all borders are oat tones (`#dad4c8`)
+- [x] Remove Framer Motion, use `tailwindcss-animate`
+- [x] Add appropriate spacing (`py-24` to `py-32`)
 
 ### Task 2.4: Redesign Homepage Stats/Results Section
 
-- [ ] Use dark gradient with Sky 900 background
-- [ ] White text on dark, Sky 300 for accent text
-- [ ] 3-column grid for stats
-- [ ] Apply proper typography
+- [x] Use dark gradient with Sky 900 background
+- [x] White text on dark, Sky 300 for accent text
+- [x] 3-column grid for stats
+- [x] Apply proper typography
 
 ### Task 2.5: Make Homepage Test Pass (Green Phase)
 
-- [ ] Run `npm test` — confirm homepage test passes
-- [ ] Run `npm run build` — confirm no TypeScript errors
-- [ ] Check for any Framer Motion imports remaining
+- [x] Run `npm test` — confirm homepage test passes
+- [x] Run `npm run build` — confirm no TypeScript errors
+- [x] Check for any Framer Motion imports remaining
 
 **Manual Verification — Phase 2:**
 
