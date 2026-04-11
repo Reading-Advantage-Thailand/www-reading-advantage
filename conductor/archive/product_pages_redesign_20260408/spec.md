@@ -18,17 +18,18 @@ This track brings all seven pages up to the same standard. Each page receives a 
    - Platform Features or Technology section
    - Results / Stats section (dark gradient, 3 stats)
    - Final CTA section
-5. Each product page has a distinct hero gradient that does not conflict with others:
-   - Math Advantage: `from-emerald-500 via-teal-500 to-emerald-600`
-   - Science Advantage: `from-violet-500 via-purple-500 to-violet-600`
-   - STEM Advantage: `from-orange-500 via-amber-500 to-orange-600`
-   - Storytime Advantage: `from-pink-500 via-rose-500 to-pink-600`
-   - Zhongwen Advantage: `from-red-500 via-rose-600 to-red-700`
-   - CodeCamp Advantage: `from-slate-700 via-slate-800 to-slate-900` (with amber accents)
-   - Tutor Advantage: `from-sky-500 via-blue-500 to-sky-600`
-6. All text remains sourced from existing locale files — no i18n keys are removed or renamed.
-7. All animations use `tailwindcss-animate` utility classes only.
-8. All pages pass `npm run build` with TypeScript strict mode enabled.
+5. Each product page uses its logo brand colors from the official palette:
+   - Math Advantage: `from-orange-300 via-orange-400 to-orange-300` (#fdba74 → #fdba74, dark #9a3412)
+   - Science Advantage: `from-rose-300 via-rose-400 to-rose-300` (#fda4af → #fda4af, dark #9f1239)
+   - STEM Advantage: `from-indigo-300 via-indigo-400 to-indigo-300` (#a5b4fc → #a5b4fc, dark #3730a3)
+   - Storytime Advantage: `from-amber-300 via-amber-400 to-amber-300` (#fcd34d → #fcd34d, dark #92400e)
+   - Zhongwen Advantage: `from-fuchsia-300 via-fuchsia-400 to-fuchsia-300` (#f0abfc → #f0abfc, dark #86198f)
+   - CodeCamp Advantage: `from-slate-700 via-slate-800 to-slate-900` (TODO: confirm logo colors)
+   - Tutor Advantage: `from-emerald-300 via-emerald-400 to-emerald-300` (#6ee7b7 → #6ee7b7, dark #065f46)
+6. Each product page displays its product logo prominently in the hero section and throughout the page where appropriate (reading-advantage-logo.svg, primary-advantage-logo.svg, etc.).
+7. All text remains sourced from existing locale files — no i18n keys are removed or renamed.
+8. All animations use `tailwindcss-animate` utility classes only.
+9. All pages pass `npm run build` with TypeScript strict mode enabled.
 
 ## Non-Functional Requirements
 
@@ -41,7 +42,8 @@ This track brings all seven pages up to the same standard. Each page receives a 
 ## Acceptance Criteria
 
 - [ ] All 7 product pages load without JavaScript errors in the browser console.
-- [ ] All 7 product pages have a visually distinct hero gradient (no two pages share the same gradient).
+- [ ] All 7 product pages use their correct logo-based brand colors (not the previously incorrect palette).
+- [ ] All 7 product pages display their product logo prominently in the hero section.
 - [ ] No Framer Motion imports remain in any product page file.
 - [ ] No emoji characters are used as icons in any product page.
 - [ ] All 7 pages render correctly in EN, TH, and ZH locales.

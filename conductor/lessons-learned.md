@@ -4,6 +4,28 @@ Retrospective insights captured after completing tracks, PR merges, and developm
 
 ---
 
+## 2026-04-11 — Blog Pagination and Content Pipeline (blog_pagination_20260408)
+
+### What Happened
+
+- Implemented static pagination for blog listing (9 posts/page) with `generateStaticParams`.
+- Added `getPaginatedPosts` utility with TDD - 6 passing tests.
+- Created `BlogPagination` client component with Previous/Next and page numbers (up to 5 visible).
+- Added `extractHeadings` utility to parse H2/H3 from MDX content - 7 passing tests.
+- Built `TableOfContents` component with IntersectionObserver scroll-spy and mobile collapsible toggle.
+- Created `getRelatedPosts` utility for tag-based related post matching - 5 passing tests.
+- Added `RelatedPosts` client component to display up to 3 related posts at bottom of blog posts.
+- All 30 tests passing; production build successful.
+
+### Lessons
+
+- `useScopedI18n` scope must match locale file structure: `components.pagination`, `pages.blog`, not just `"pagination"` or `"blog"`.
+- Client components that need i18n (`TableOfContents`, `RelatedPosts`) must be separate from server page components.
+- `extractHeadings` works on raw MDX content before MDX-to-HTML processing.
+- Testing-library queries return multiple elements across test runs if `cleanup()` is not called in `afterEach`.
+
+---
+
 ## 2026-04-10 — Remaining Product Pages Redesign (product_pages_redesign_20260408)
 
 ### What Happened

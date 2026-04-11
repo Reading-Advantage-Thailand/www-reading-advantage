@@ -5246,3 +5246,98 @@ Route (app)                                    Size  First Load JS
 ƒ  (Dynamic)  server-rendered on demand
 [0m
 Build passes. Let me commit the final changes:
+[0m$ [0mgit add -A && git commit -m "minimax-m2.7: Phase 5 - Final build check complete, all blog pagination features implemented"
+[main d272183] minimax-m2.7: Phase 5 - Final build check complete, all blog pagination features implemented
+ 4 files changed, 203 insertions(+), 3 deletions(-)
+[0m
+[0m# [0mTodos
+[x] Blog Pagination - Phase 1: Audit current blog listing implementation (Task 1.1)
+[x] Blog Pagination - Phase 1: Create getPaginatedPosts utility with TDD (Task 1.2-1.3)
+[x] Blog Pagination - Phase 1: Create paginated blog listing page (Task 1.4)
+[x] Blog Pagination - Phase 1: Build BlogPagination component (Task 1.5)
+[x] Blog Pagination - Phase 2: Reading time estimate (already implemented)
+[x] Blog Pagination - Phase 3: Table of Contents - extractHeadings utility (Task 3.1-3.2)
+[x] Blog Pagination - Phase 3: TableOfContents component (Task 3.3-3.4)
+[x] Blog Pagination - Phase 4: Related Posts - getRelatedPosts utility (Task 4.1-4.2)
+[x] Blog Pagination - Phase 4: Add Related Posts section (Task 4.3)
+[x] Blog Pagination - Phase 5: Final Build and Check
+[0m
+[0m→ [0mRead conductor/lessons-learned.md[90m [limit=50][0m
+[0m
+[0m← [0mEdit conductor/lessons-learned.md
+Index: /home/daniel-bo/Desktop/www-reading-advantage/conductor/lessons-learned.md
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/conductor/lessons-learned.md
++++ /home/daniel-bo/Desktop/www-reading-advantage/conductor/lessons-learned.md
+@@ -3,8 +3,30 @@
+ Retrospective insights captured after completing tracks, PR merges, and development milestones. Most recent entries at the top.
+ 
+ ---
+ 
++## 2026-04-11 — Blog Pagination and Content Pipeline (blog_pagination_20260408)
++
++### What Happened
++
++- Implemented static pagination for blog listing (9 posts/page) with `generateStaticParams`.
++- Added `getPaginatedPosts` utility with TDD - 6 passing tests.
++- Created `BlogPagination` client component with Previous/Next and page numbers (up to 5 visible).
++- Added `extractHeadings` utility to parse H2/H3 from MDX content - 7 passing tests.
++- Built `TableOfContents` component with IntersectionObserver scroll-spy and mobile collapsible toggle.
++- Created `getRelatedPosts` utility for tag-based related post matching - 5 passing tests.
++- Added `RelatedPosts` client component to display up to 3 related posts at bottom of blog posts.
++- All 30 tests passing; production build successful.
++
++### Lessons
++
++- `useScopedI18n` scope must match locale file structure: `components.pagination`, `pages.blog`, not just `"pagination"` or `"blog"`.
++- Client components that need i18n (`TableOfContents`, `RelatedPosts`) must be separate from server page components.
++- `extractHeadings` works on raw MDX content before MDX-to-HTML processing.
++- Testing-library queries return multiple elements across test runs if `cleanup()` is not called in `afterEach`.
++
++---
++
+ ## 2026-04-10 — Remaining Product Pages Redesign (product_pages_redesign_20260408)
+ 
+ ### What Happened
+ 
+
+[0m
+[0m→ [0mRead conductor/tech-debt.md[90m [limit=50][0m
+[0m
+[0m$ [0mgit push 2>&1
+To https://github.com/Reading-Advantage-Thailand/www-reading-advantage.git
+   b04f02a..d272183  main -> main
+[0m
+## Autonomous Run Complete - Blog Pagination Track
+
+Successfully completed the **Blog Pagination and Content Pipeline Improvements** track.
+
+### Summary of Work
+
+**Phase 1: Blog Pagination**
+- `getPaginatedPosts()` utility with TDD (6 tests)
+- Paginated blog listing page at `/blog/page/[page]` with `generateStaticParams`
+- `BlogPagination` client component with Previous/Next buttons and up to 5 page numbers
+
+**Phase 2: Reading Time**
+- Already implemented via existing `calculateReadingTime` function
+
+**Phase 3: Table of Contents**
+- `extractHeadings()` utility for parsing H2/H3 from MDX (7 tests)
+- `TableOfContents` component with IntersectionObserver scroll-spy
+- Mobile collapsible toggle using `<details>` element
+
+**Phase 4: Related Posts**
+- `getRelatedPosts()` utility for tag-based matching (5 tests)
+- `RelatedPosts` component displaying up to 3 related posts
+
+**Phase 5: Final Build**
+- All 30 tests passing
+- Production build successful
+- Changes pushed to main
+
+### Commits Made
+- `c2cd3a8` Phase 1 - Blog pagination
+- `cfe04d7` Phase 3 - Table of Contents
+- `237eb9e` Phase 4 - Related Posts  
+- `d272183` Phase 5 - Final checkpoint

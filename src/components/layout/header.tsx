@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { NavItem } from "@/config/navigation";
-import { Menu } from 'lucide-react';
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -14,51 +14,51 @@ import {
   SheetTitle,
   SheetDescription,
 } from "@/components/ui/sheet";
-import Image from 'next/image';
+import Image from "next/image";
 import { useScopedI18n } from "@/locales/client";
 import { LocaleSwitcher } from "@/switcher/locale-switcher";
 
 export function Header() {
   const h = useScopedI18n("components.common.header");
-  const n = useScopedI18n('components.common.navigation');
+  const n = useScopedI18n("components.common.navigation");
 
   const navigation: NavItem[] = [
     {
       title: n("home"),
-      href: "/"
+      href: "/",
     },
     {
       title: n("products"),
-      href: "/products"
+      href: "/products",
     },
     {
       title: n("services"),
-      href: "/services"
+      href: "/services",
     },
     {
       title: n("features"),
-      href: "/features"
+      href: "/features",
     },
     {
       title: n("pricing"),
-      href: "/pricing"
+      href: "/pricing",
     },
     {
       title: n("caseStudies"),
-      href: "/case-studies"
+      href: "/case-studies",
     },
     {
       title: n("blog"),
-      href: "/blog"
+      href: "/blog",
     },
     {
       title: n("about"),
-      href: "/about"
+      href: "/about",
     },
     {
       title: n("contact"),
-      href: "/contact"
-    }
+      href: "/contact",
+    },
   ];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -66,33 +66,41 @@ export function Header() {
 
   const renderMarketingCTA = (isMobile = false) => {
     return (
-      <div className={isMobile ? "border-t border-white/20 pt-4 mt-4" : "hidden lg:flex items-center space-x-4"}>
-        <Link
-          href="/contact"
-          className="bg-white text-slate-900 px-4 py-2 rounded-lg hover:bg-white/90 transition-colors font-medium"
-        >
-          {h("contactUs")}
-        </Link>
+      <div
+        className={
+          isMobile
+            ? "border-t border-oat-border pt-4 mt-4"
+            : "hidden lg:flex items-center space-x-4"
+        }
+      >
+        <Button variant="clay" asChild>
+          <Link href="/contact">{h("contactUs")}</Link>
+        </Button>
       </div>
     );
   };
 
   return (
-    <header className="bg-gradient-to-r from-sky-500 via-orange-500 to-amber-500 text-white header-shadow fixed w-full top-0 z-50 backdrop-blur-md">
+    <header className="bg-warm-cream border-b border-oat-border fixed w-full top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
           {/* Mobile menu button */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-sky-400">
+              <Button variant="clay-ghost" size="icon" className="lg:hidden">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">{h("openMenu")}</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="bg-gradient-to-br from-amber-500 via-orange-500 to-sky-500 text-white border-white/20">
+            <SheetContent
+              side="left"
+              className="bg-warm-cream border-r border-oat-border"
+            >
               <SheetHeader>
-                <SheetTitle className="text-white">{h("navigationMenu")}</SheetTitle>
-                <SheetDescription className="text-white/80">
+                <SheetTitle className="text-black font-roobert">
+                  {h("navigationMenu")}
+                </SheetTitle>
+                <SheetDescription className="text-warm-charcoal">
                   {h("navigationDescription")}
                 </SheetDescription>
               </SheetHeader>
@@ -102,8 +110,9 @@ export function Header() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={`text-lg px-3 py-2 rounded-lg hover:bg-white/20 transition-colors ${pathname === link.href ? 'bg-white/20' : ''
-                        }`}
+                      className={`text-lg px-3 py-2 rounded-lg hover:bg-oat-light transition-colors font-roobert font-medium ${
+                        pathname === link.href ? "bg-oat-light" : ""
+                      }`}
                       onClick={() => setIsOpen(false)}
                     >
                       {link.title}
@@ -136,12 +145,13 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-white/90 hover:text-white transition-colors relative py-2 ${pathname === link.href ? 'font-medium' : ''
-                    }`}
+                  className={`text-dark-charcoal hover:text-black transition-colors relative py-2 font-roobert font-medium text-[15px] ${
+                    pathname === link.href ? "font-semibold" : ""
+                  }`}
                 >
                   {link.title}
                   {pathname === link.href && (
-                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white/80 rounded-full" />
+                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-sky-400 rounded-full" />
                   )}
                 </Link>
               );

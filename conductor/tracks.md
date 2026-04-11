@@ -46,17 +46,15 @@ _Link: [./conductor/tracks/services_i18n_completion_20260408/](./conductor/track
 
 ---
 
-### [x] Track: Remaining Product Pages Redesign
+### [ ] Track: Complete Site Redesign
 
-**Status:** Completed
+**Status:** New
 
-**Type:** feature | **Estimated Tasks:** 22 | **Actual Tasks:** 22
+**Type:** feature | **Estimated Tasks:** 35
 
-**Description:** Bring the 7 remaining product pages (Math, Science, STEM, Storytime, Zhongwen, CodeCamp, Tutor) up to the new design language established by the Reading Advantage and Primary Advantage redesigns — inline hero sections, Lucide icons, Tailwind-only animations, product-specific gradients.
+**Description:** Complete site redesign applying the Clay-inspired design system defined in DESIGN.md across all pages, components, and layouts — warm cream backgrounds, product brand colors, Roobert typography with OpenType stylistic sets, playful hover animations, and consistent styling throughout.
 
-**Completed:** 2026-04-10
-
-_Link: [./conductor/tracks/product_pages_redesign_20260408/](./conductor/tracks/product_pages_redesign_20260408/)_
+_Link: [./conductor/tracks/complete_site_redesign_20260412/](./conductor/tracks/complete_site_redesign_20260412/)_
 
 ---
 
