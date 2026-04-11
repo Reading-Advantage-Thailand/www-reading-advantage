@@ -2,7 +2,7 @@
 
 ---
 
-## Phase 1: Design System Setup & Infrastructure
+## Phase 1: Design System Setup & Infrastructure [checkpoint: 0c9431e]
 
 ### Task 1.1: Update Tailwind Configuration with Design Tokens
 
