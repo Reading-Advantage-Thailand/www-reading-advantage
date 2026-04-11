@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { calculateReadingTime, getPaginatedPosts } from "@/lib/blog";
+import {
+  calculateReadingTime,
+  getPaginatedPosts,
+  extractHeadings,
+} from "@/lib/blog";
 
 describe("calculateReadingTime", () => {
   it("returns correct reading time for short content", () => {
@@ -159,5 +163,79 @@ describe("getPaginatedPosts", () => {
     const result = await getPaginatedPosts(1, 5, mockPosts);
     expect(result.posts).toHaveLength(5);
     expect(result.totalPages).toBe(2);
+  });
+});
+
+describe("extractHeadings", () => {
+  it("extracts H2 headings from MDX content", () => {
+    const content =
+      "# Main Title\n\n## Section One\n\nSome text\n\n## Section Two\n\nMore text";
+    const headings = extractHeadings(content);
+    expect(headings).toHaveLength(2);
+    expect(headings[0].text).toBe("Section One");
+    expect(headings[0].level).toBe(2);
+    expect(headings[1].text).toBe("Section Two");
+    expect(headings[1].level).toBe(2);
+  });
+
+  it("extracts H3 headings from MDX content", () => {
+    const content = "### Subsection\n\nText here";
+    const headings = extractHeadings(content);
+    expect(headings).toHaveLength(1);
+    expect(headings[0].text).toBe("Subsection");
+    expect(headings[0].level).toBe(3);
+  });
+
+  it("extracts both H2 and H3 headings", () => {
+    const content =
+      "## First Section\n\n### Subsection One\n\n### Subsection Two\n\n## Second Section";
+    const headings = extractHeadings(content);
+    expect(headings).toHaveLength(4);
+    expect(headings[0]).toEqual({
+      text: "First Section",
+      level: 2,
+      id: "first-section",
+    });
+    expect(headings[1]).toEqual({
+      text: "Subsection One",
+      level: 3,
+      id: "subsection-one",
+    });
+    expect(headings[2]).toEqual({
+      text: "Subsection Two",
+      level: 3,
+      id: "subsection-two",
+    });
+    expect(headings[3]).toEqual({
+      text: "Second Section",
+      level: 2,
+      id: "second-section",
+    });
+  });
+
+  it("ignores H1 headings", () => {
+    const content = "# Main Title\n\n## Section\n\n### Subsection";
+    const headings = extractHeadings(content);
+    expect(headings).toHaveLength(2);
+    expect(headings[0].level).toBe(2);
+    expect(headings[1].level).toBe(3);
+  });
+
+  it("ignores H4 and higher headings", () => {
+    const content =
+      "## Section\n\n#### Not extracted\n\n##### Also not extracted";
+    const headings = extractHeadings(content);
+    expect(headings).toHaveLength(1);
+  });
+
+  it("generates slug IDs from heading text", () => {
+    const content = "## Hello World Section";
+    const headings = extractHeadings(content);
+    expect(headings[0].id).toBe("hello-world-section");
+  });
+
+  it("handles empty content", () => {
+    const headings = extractHeadings("");
+    expect(headings).toHaveLength(0);
   });
 });

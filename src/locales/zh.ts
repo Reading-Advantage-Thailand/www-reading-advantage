@@ -18,6 +18,7 @@ import { zh as tutorPage } from "./pages/products/tutor-advantage";
 import { zh as zhongwenPage } from "./pages/products/zhongwen-advantage";
 import { zh as primaryPage } from "./pages/products/primary-advantage";
 import { zh as pricingPage } from "./pages/pricing";
+import { zh as blogPage } from "./pages/blog";
 // components
 import { zh as localeSwitcher } from "./components/locale-switcher";
 import { zh as pricingTable } from "./components/pricing-table";
@@ -42,6 +43,7 @@ export default {
     blendedLearning: blendedLearningPage,
     managedService: managedServicePage,
     pricing: pricingPage,
+    blog: blogPage,
     products: {
       overview: productsOverview,
       codecampAdvantage: codecampPage,

@@ -79,6 +79,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     return {
       slug,
       content: htmlContent,
+      rawContent: content,
       title: frontmatter.title,
       date: frontmatter.date,
       excerpt: frontmatter.excerpt,
@@ -162,4 +163,47 @@ export async function getPaginatedPosts(
     totalPages,
     currentPage: page,
   };
+}
+
+export interface Heading {
+  id: string;
+  text: string;
+  level: 2 | 3;
+}
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .trim();
+}
+
+export function extractHeadings(content: string): Heading[] {
+  const headings: Heading[] = [];
+  const lines = content.split("\n");
+
+  for (const line of lines) {
+    const h2Match = line.match(/^## (.+)$/);
+    const h3Match = line.match(/^### (.+)$/);
+
+    if (h2Match) {
+      const text = h2Match[1].trim();
+      headings.push({
+        id: slugify(text),
+        text,
+        level: 2,
+      });
+    } else if (h3Match) {
+      const text = h3Match[1].trim();
+      headings.push({
+        id: slugify(text),
+        text,
+        level: 3,
+      });
+    }
+  }
+
+  return headings;
 }

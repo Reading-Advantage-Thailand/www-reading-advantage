@@ -3841,3 +3841,779 @@ Index: /home/daniel-bo/Desktop/www-reading-advantage/src/locales/zh.ts
    Start at  22:57:38
    Duration  4.06s (transform 460ms, setup 743ms, import 1.74s, tests 1.07s, environment 6.29s)
 [0m
+[0m$ [0mgit add -A && git commit -m "minimax-m2.7: Phase 1 - Blog pagination: getPaginatedPosts, paginated blog pages, BlogPagination component"
+[main c2cd3a8] minimax-m2.7: Phase 1 - Blog pagination: getPaginatedPosts, paginated blog pages, BlogPagination component
+ 11 files changed, 4434 insertions(+), 203 deletions(-)
+ create mode 100644 src/app/[locale]/(marketing)/blog/page/[page]/page.tsx
+ create mode 100644 src/components/blog/blog-pagination.test.tsx
+ create mode 100644 src/components/blog/blog-pagination.tsx
+ create mode 100644 src/locales/components/pagination.ts
+[0m
+[0m✱ [0mGlob "**/blog/**/page.tsx"[90m 3 matches[0m
+[0m→ [0mRead src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+[0m→ [0mRead src/components/blog/blog-header.tsx
+[0m
+[0m# [0mTodos
+[x] Blog Pagination - Phase 1: Audit current blog listing implementation (Task 1.1)
+[x] Blog Pagination - Phase 1: Create getPaginatedPosts utility with TDD (Task 1.2-1.3)
+[x] Blog Pagination - Phase 1: Create paginated blog listing page (Task 1.4)
+[x] Blog Pagination - Phase 1: Build BlogPagination component (Task 1.5)
+[x] Blog Pagination - Phase 2: Reading time estimate (already implemented)
+[ ] Blog Pagination - Phase 3: Table of Contents - extractHeadings utility (Task 3.1-3.2)
+[ ] Blog Pagination - Phase 3: TableOfContents component (Task 3.3-3.4)
+[ ] Blog Pagination - Phase 4: Related Posts
+[ ] Blog Pagination - Phase 5: Final Build and Check
+[0m
+[0m→ [0mRead src/lib/blog.test.ts
+[0m
+[0m← [0mEdit src/lib/blog.test.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
+@@ -1,6 +1,10 @@
+ import { describe, it, expect } from "vitest";
+-import { calculateReadingTime, getPaginatedPosts } from "@/lib/blog";
++import {
++  calculateReadingTime,
++  getPaginatedPosts,
++  extractHeadings,
++} from "@/lib/blog";
+ 
+ describe("calculateReadingTime", () => {
+   it("returns correct reading time for short content", () => {
+     const shortContent =
+
+[0m
+[0m← [0mEdit src/lib/blog.test.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
+@@ -164,4 +164,78 @@
+     expect(result.posts).toHaveLength(5);
+     expect(result.totalPages).toBe(2);
+   });
+ });
++
++describe("extractHeadings", () => {
++  it("extracts H2 headings from MDX content", () => {
++    const content =
++      "# Main Title\n\n## Section One\n\nSome text\n\n## Section Two\n\nMore text";
++    const headings = extractHeadings(content);
++    expect(headings).toHaveLength(2);
++    expect(headings[0].text).toBe("Section One");
++    expect(headings[0].level).toBe(2);
++    expect(headings[1].text).toBe("Section Two");
++    expect(headings[1].level).toBe(2);
++  });
++
++  it("extracts H3 headings from MDX content", () => {
++    const content = "## Section\n\n### Subsection\n\nText here";
++    const headings = extractHeadings(content);
++    expect(headings).toHaveLength(1);
++    expect(headings[0].text).toBe("Subsection");
++    expect(headings[0].level).toBe(3);
++  });
++
++  it("extracts both H2 and H3 headings", () => {
++    const content =
++      "## First Section\n\n### Subsection One\n\n### Subsection Two\n\n## Second Section";
++    const headings = extractHeadings(content);
++    expect(headings).toHaveLength(4);
++    expect(headings[0]).toEqual({
++      text: "First Section",
++      level: 2,
++      id: "first-section",
++    });
++    expect(headings[1]).toEqual({
++      text: "Subsection One",
++      level: 3,
++      id: "subsection-one",
++    });
++    expect(headings[2]).toEqual({
++      text: "Subsection Two",
++      level: 3,
++      id: "subsection-two",
++    });
++    expect(headings[3]).toEqual({
++      text: "Second Section",
++      level: 2,
++      id: "second-section",
++    });
++  });
++
++  it("ignores H1 headings", () => {
++    const content = "# Main Title\n\n## Section\n\n### Subsection";
++    const headings = extractHeadings(content);
++    expect(headings).toHaveLength(2);
++    expect(headings[0].level).toBe(2);
++    expect(headings[1].level).toBe(3);
++  });
++
++  it("ignores H4 and higher headings", () => {
++    const content =
++      "## Section\n\n#### Not extracted\n\n##### Also not extracted";
++    const headings = extractHeadings(content);
++    expect(headings).toHaveLength(1);
++  });
++
++  it("generates slug IDs from heading text", () => {
++    const content = "## Hello World Section";
++    const headings = extractHeadings(content);
++    expect(headings[0].id).toBe("hello-world-section");
++  });
++
++  it("handles empty content", () => {
++    const headings = extractHeadings("");
++    expect(headings).toHaveLength(0);
++  });
++});
+
+[0m
+[0m$ [0mnpm test -- src/lib/blog.test.ts 2>&1
+> www-reading-advantage-next@0.1.0 test
+> vitest run src/lib/blog.test.ts
+
+
+ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+ ❯ src/lib/blog.test.ts (17 tests | 7 failed) 22ms
+     × extracts H2 headings from MDX content 6ms
+     × extracts H3 headings from MDX content 1ms
+     × extracts both H2 and H3 headings 1ms
+     × ignores H1 headings 1ms
+     × ignores H4 and higher headings 1ms
+     × generates slug IDs from heading text 0ms
+     × handles empty content 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/blog.test.ts > extractHeadings > extracts H2 headings from MDX content
+TypeError: extractHeadings is not a function
+ ❯ src/lib/blog.test.ts:173:22
+    171|     const content =
+    172|       "# Main Title\n\n## Section One\n\nSome text\n\n## Section Two\n…
+    173|     const headings = extractHeadings(content);
+       |                      ^
+    174|     expect(headings).toHaveLength(2);
+    175|     expect(headings[0].text).toBe("Section One");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  src/lib/blog.test.ts > extractHeadings > extracts H3 headings from MDX content
+TypeError: extractHeadings is not a function
+ ❯ src/lib/blog.test.ts:183:22
+    181|   it("extracts H3 headings from MDX content", () => {
+    182|     const content = "## Section\n\n### Subsection\n\nText here";
+    183|     const headings = extractHeadings(content);
+       |                      ^
+    184|     expect(headings).toHaveLength(1);
+    185|     expect(headings[0].text).toBe("Subsection");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  src/lib/blog.test.ts > extractHeadings > extracts both H2 and H3 headings
+TypeError: extractHeadings is not a function
+ ❯ src/lib/blog.test.ts:192:22
+    190|     const content =
+    191|       "## First Section\n\n### Subsection One\n\n### Subsection Two\n\…
+    192|     const headings = extractHeadings(content);
+       |                      ^
+    193|     expect(headings).toHaveLength(4);
+    194|     expect(headings[0]).toEqual({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  src/lib/blog.test.ts > extractHeadings > ignores H1 headings
+TypeError: extractHeadings is not a function
+ ❯ src/lib/blog.test.ts:218:22
+    216|   it("ignores H1 headings", () => {
+    217|     const content = "# Main Title\n\n## Section\n\n### Subsection";
+    218|     const headings = extractHeadings(content);
+       |                      ^
+    219|     expect(headings).toHaveLength(2);
+    220|     expect(headings[0].level).toBe(2);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  src/lib/blog.test.ts > extractHeadings > ignores H4 and higher headings
+TypeError: extractHeadings is not a function
+ ❯ src/lib/blog.test.ts:227:22
+    225|     const content =
+    226|       "## Section\n\n#### Not extracted\n\n##### Also not extracted";
+    227|     const headings = extractHeadings(content);
+       |                      ^
+    228|     expect(headings).toHaveLength(1);
+    229|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  src/lib/blog.test.ts > extractHeadings > generates slug IDs from heading text
+TypeError: extractHeadings is not a function
+ ❯ src/lib/blog.test.ts:233:22
+    231|   it("generates slug IDs from heading text", () => {
+    232|     const content = "## Hello World Section";
+    233|     const headings = extractHeadings(content);
+       |                      ^
+    234|     expect(headings[0].id).toBe("hello-world-section");
+    235|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  src/lib/blog.test.ts > extractHeadings > handles empty content
+TypeError: extractHeadings is not a function
+ ❯ src/lib/blog.test.ts:238:22
+    236|
+    237|   it("handles empty content", () => {
+    238|     const headings = extractHeadings("");
+       |                      ^
+    239|     expect(headings).toHaveLength(0);
+    240|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 10 passed (17)
+   Start at  22:59:22
+   Duration  2.04s (transform 87ms, setup 170ms, import 288ms, tests 22ms, environment 1.26s)
+[0m
+Now implementing the `extractHeadings` function:
+[0m→ [0mRead src/lib/blog.ts
+[0m
+[0m← [0mEdit src/lib/blog.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.ts
+@@ -162,4 +162,47 @@
+     totalPages,
+     currentPage: page,
+   };
+ }
++
++export interface Heading {
++  id: string;
++  text: string;
++  level: 2 | 3;
++}
++
++function slugify(text: string): string {
++  return text
++    .toLowerCase()
++    .replace(/[^a-z0-9\s-]/g, "")
++    .replace(/\s+/g, "-")
++    .replace(/-+/g, "-")
++    .trim();
++}
++
++export function extractHeadings(content: string): Heading[] {
++  const headings: Heading[] = [];
++  const lines = content.split("\n");
++
++  for (const line of lines) {
++    const h2Match = line.match(/^## (.+)$/);
++    const h3Match = line.match(/^### (.+)$/);
++
++    if (h2Match) {
++      const text = h2Match[1].trim();
++      headings.push({
++        id: slugify(text),
++        text,
++        level: 2,
++      });
++    } else if (h3Match) {
++      const text = h3Match[1].trim();
++      headings.push({
++        id: slugify(text),
++        text,
++        level: 3,
++      });
++    }
++  }
++
++  return headings;
++}
+
+[0m
+[0m$ [0mnpm test -- src/lib/blog.test.ts 2>&1
+> www-reading-advantage-next@0.1.0 test
+> vitest run src/lib/blog.test.ts
+
+
+ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+ ❯ src/lib/blog.test.ts (17 tests | 1 failed) 28ms
+     × extracts H3 headings from MDX content 12ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/blog.test.ts > extractHeadings > extracts H3 headings from MDX content
+AssertionError: expected [ { id: 'section', …(2) }, …(1) ] to have a length of 1 but got 2
+
+- Expected
++ Received
+
+- 1
++ 2
+
+ ❯ src/lib/blog.test.ts:184:22
+    182|     const content = "## Section\n\n### Subsection\n\nText here";
+    183|     const headings = extractHeadings(content);
+    184|     expect(headings).toHaveLength(1);
+       |                      ^
+    185|     expect(headings[0].text).toBe("Subsection");
+    186|     expect(headings[0].level).toBe(3);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 16 passed (17)
+   Start at  22:59:58
+   Duration  2.01s (transform 90ms, setup 170ms, import 294ms, tests 28ms, environment 1.25s)
+[0m
+[0m← [0mEdit src/lib/blog.test.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.test.ts
+@@ -178,9 +178,9 @@
+   expect(headings[1].level).toBe(2);
+ });
+ 
+ it("extracts H3 headings from MDX content", () => {
+-  const content = "## Section\n\n### Subsection\n\nText here";
++  const content = "### Subsection\n\nText here";
+   const headings = extractHeadings(content);
+   expect(headings).toHaveLength(1);
+   expect(headings[0].text).toBe("Subsection");
+   expect(headings[0].level).toBe(3);
+
+[0m
+[0m$ [0mnpm test -- src/lib/blog.test.ts 2>&1
+> www-reading-advantage-next@0.1.0 test
+> vitest run src/lib/blog.test.ts
+
+
+ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+
+ Test Files  1 passed (1)
+      Tests  17 passed (17)
+   Start at  23:00:21
+   Duration  2.16s (transform 97ms, setup 154ms, import 289ms, tests 18ms, environment 1.41s)
+[0m
+[0m$ [0mnpm test 2>&1
+> www-reading-advantage-next@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+
+ Test Files  3 passed (3)
+      Tests  25 passed (25)
+   Start at  23:00:32
+   Duration  3.79s (transform 385ms, setup 683ms, import 1.62s, tests 1.46s, environment 5.63s)
+[0m
+[0m# [0mTodos
+[x] Blog Pagination - Phase 1: Audit current blog listing implementation (Task 1.1)
+[x] Blog Pagination - Phase 1: Create getPaginatedPosts utility with TDD (Task 1.2-1.3)
+[x] Blog Pagination - Phase 1: Create paginated blog listing page (Task 1.4)
+[x] Blog Pagination - Phase 1: Build BlogPagination component (Task 1.5)
+[x] Blog Pagination - Phase 2: Reading time estimate (already implemented)
+[x] Blog Pagination - Phase 3: Table of Contents - extractHeadings utility (Task 3.1-3.2)
+[ ] Blog Pagination - Phase 3: TableOfContents component (Task 3.3-3.4)
+[ ] Blog Pagination - Phase 4: Related Posts
+[ ] Blog Pagination - Phase 5: Final Build and Check
+[0m
+[0m← [0mWrite src/components/blog/table-of-contents.tsx
+Wrote file successfully.
+[0m
+[0m$ [0mls -la src/locales/pages/
+total 140
+drwxrwxr-x 3 daniel-bo daniel-bo  4096 Feb  8 08:36 .
+drwxrwxr-x 4 daniel-bo daniel-bo  4096 Nov 10 18:15 ..
+-rw-rw-r-- 1 daniel-bo daniel-bo 18751 Jan  2 06:33 about.ts
+-rw-rw-r-- 1 daniel-bo daniel-bo 14784 Jan  2 08:05 blended-learning.ts
+-rw-rw-r-- 1 daniel-bo daniel-bo 18833 Feb  8 08:36 case-studies.ts
+-rw-rw-r-- 1 daniel-bo daniel-bo  4677 Dec 25 11:56 contact.ts
+-rw-rw-r-- 1 daniel-bo daniel-bo  6185 Jul 11  2025 feature.ts
+-rw-rw-r-- 1 daniel-bo daniel-bo 21906 Feb  8 08:36 home.ts
+-rw-rw-r-- 1 daniel-bo daniel-bo 10514 Jan  2 08:13 managed-service.ts
+-rw-rw-r-- 1 daniel-bo daniel-bo  1224 Jul 11  2025 pricing.ts
+drwxrwxr-x 2 daniel-bo daniel-bo  4096 Feb  8 08:36 products
+-rw-rw-r-- 1 daniel-bo daniel-bo 13294 Jan  2 14:11 services.ts
+[0m
+[0m✱ [0mGrep "blog\."[90m 0 matches[0m
+[0m→ [0mRead src/locales/pages/home.ts[90m [limit=50][0m
+[0m
+[0m← [0mWrite src/locales/pages/blog.ts
+Wrote file successfully.
+[0m
+[0m→ [0mRead src/locales/en.ts
+[0m
+[0m← [0mEdit src/locales/en.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/locales/en.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/locales/en.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/locales/en.ts
+@@ -17,8 +17,9 @@
+ import { en as tutorPage } from "./pages/products/tutor-advantage";
+ import { en as zhongwenPage } from "./pages/products/zhongwen-advantage";
+ import { en as primaryPage } from "./pages/products/primary-advantage";
+ import { en as pricingPage } from "./pages/pricing";
++import { en as blogPage } from "./pages/blog";
+ // components
+ import { en as localeSwitcher } from "./components/locale-switcher";
+ import { en as pricingTable } from "./components/pricing-table";
+ import { en as comparisonTable } from "./components/comparison-table";
+
+[0m
+[0m← [0mEdit src/locales/en.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/locales/en.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/locales/en.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/locales/en.ts
+@@ -42,8 +42,9 @@
+ services: servicesPage,
+ blendedLearning: blendedLearningPage,
+ managedService: managedServicePage,
+ pricing: pricingPage,
++blog: blogPage,
+ products: {
+   overview: productsOverview,
+   codecampAdvantage: codecampPage,
+   mathAdvantage: mathPage,
+
+[0m
+[0m→ [0mRead src/locales/th.ts
+[0m✗ [0medit failed
+[91m[1mError: [0mCould not find oldString in the file. It must match exactly, including whitespace, indentation, and line endings.
+[0m
+[0m← [0mEdit src/locales/th.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/locales/th.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/locales/th.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/locales/th.ts
+@@ -17,8 +17,9 @@
+ import { th as tutorPage } from "./pages/products/tutor-advantage";
+ import { th as zhongwenPage } from "./pages/products/zhongwen-advantage";
+ import { th as primaryPage } from "./pages/products/primary-advantage";
+ import { th as pricingPage } from "./pages/pricing";
++import { th as blogPage } from "./pages/blog";
+ // components
+ import { th as localeSwitcher } from "./components/locale-switcher";
+ import { th as pricingTable } from "./components/pricing-table";
+ import { th as comparisonTable } from "./components/comparison-table";
+
+[0m
+[0m← [0mEdit src/locales/th.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/locales/th.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/locales/th.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/locales/th.ts
+@@ -42,8 +42,9 @@
+ services: servicesPage,
+ blendedLearning: blendedLearningPage,
+ managedService: managedServicePage,
+ pricing: pricingPage,
++blog: blogPage,
+ products: {
+   overview: productsOverview,
+   codecampAdvantage: codecampPage,
+   mathAdvantage: mathPage,
+
+[0m
+[0m→ [0mRead src/locales/zh.ts
+[0m
+[0m← [0mEdit src/locales/zh.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/locales/zh.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/locales/zh.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/locales/zh.ts
+@@ -17,8 +17,9 @@
+ import { zh as tutorPage } from "./pages/products/tutor-advantage";
+ import { zh as zhongwenPage } from "./pages/products/zhongwen-advantage";
+ import { zh as primaryPage } from "./pages/products/primary-advantage";
+ import { zh as pricingPage } from "./pages/pricing";
++import { zh as blogPage } from "./pages/blog";
+ // components
+ import { zh as localeSwitcher } from "./components/locale-switcher";
+ import { zh as pricingTable } from "./components/pricing-table";
+ import { zh as comparisonTable } from "./components/comparison-table";
+
+[0m
+[0m← [0mEdit src/locales/zh.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/locales/zh.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/locales/zh.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/locales/zh.ts
+@@ -42,8 +42,9 @@
+ services: servicesPage,
+ blendedLearning: blendedLearningPage,
+ managedService: managedServicePage,
+ pricing: pricingPage,
++blog: blogPage,
+ products: {
+   overview: productsOverview,
+   codecampAdvantage: codecampPage,
+   mathAdvantage: mathPage,
+
+[0m
+[0m$ [0mnpm test 2>&1
+> www-reading-advantage-next@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+
+ Test Files  3 passed (3)
+      Tests  25 passed (25)
+   Start at  23:03:39
+   Duration  2.98s (transform 311ms, setup 614ms, import 1.13s, tests 725ms, environment 4.94s)
+[0m
+[0m# [0mTodos
+[x] Blog Pagination - Phase 1: Audit current blog listing implementation (Task 1.1)
+[x] Blog Pagination - Phase 1: Create getPaginatedPosts utility with TDD (Task 1.2-1.3)
+[x] Blog Pagination - Phase 1: Create paginated blog listing page (Task 1.4)
+[x] Blog Pagination - Phase 1: Build BlogPagination component (Task 1.5)
+[x] Blog Pagination - Phase 2: Reading time estimate (already implemented)
+[x] Blog Pagination - Phase 3: Table of Contents - extractHeadings utility (Task 3.1-3.2)
+[ ] Blog Pagination - Phase 3: TableOfContents component (Task 3.3-3.4)
+[ ] Blog Pagination - Phase 4: Related Posts
+[ ] Blog Pagination - Phase 5: Final Build and Check
+[0m
+[0m→ [0mRead src/types/blog.ts
+[0m
+[0m← [0mEdit src/types/blog.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/types/blog.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/types/blog.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/types/blog.ts
+@@ -1,34 +1,35 @@
+ export interface BlogPost {
+-  slug: string
+-  content: string
+-  title: string
+-  date: string
+-  excerpt: string
+-  author: string
+-  tags: string[]
+-  readingTime: string
+-  coverImage?: string
++  slug: string;
++  content: string;
++  rawContent: string;
++  title: string;
++  date: string;
++  excerpt: string;
++  author: string;
++  tags: string[];
++  readingTime: string;
++  coverImage?: string;
+ }
+ 
+ // Instead of using Omit, explicitly define the interface
+ export interface BlogListItem {
+-  slug: string
+-  title: string
+-  date: string
+-  excerpt: string
+-  author: string
+-  tags: string[]
+-  readingTime: string
+-  coverImage?: string
++  slug: string;
++  title: string;
++  date: string;
++  excerpt: string;
++  author: string;
++  tags: string[];
++  readingTime: string;
++  coverImage?: string;
+ }
+ 
+ export interface BlogHeaderProps {
+-  title: string
+-  date: string
+-  author: string
+-  readingTime: string
++  title: string;
++  date: string;
++  author: string;
++  readingTime: string;
+ }
+ 
+ export interface BlogTagsProps {
+-  tags: string[]
++  tags: string[];
+ }
+
+[0m
+[0m← [0mEdit src/lib/blog.ts
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.ts
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.ts
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/lib/blog.ts
+@@ -78,8 +78,9 @@
+ 
+ return {
+   slug,
+   content: htmlContent,
++  rawContent: content,
+   title: frontmatter.title,
+   date: frontmatter.date,
+   excerpt: frontmatter.excerpt,
+   author: frontmatter.author,
+
+[0m
+[0m→ [0mRead src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+[0m
+[0m← [0mEdit src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+@@ -1,50 +1,51 @@
+-import { getBlogPost } from "@/lib/blog"
+-import { BlogHeader } from "@/components/blog/blog-header"
+-import { BlogTags } from "@/components/blog/blog-tags"
+-import { notFound } from "next/navigation"
+-import type { Metadata } from "next"
+-import Image from "next/image"
+-import HeroSection from "@/components/marketing/hero-section"
++import { getBlogPost, extractHeadings } from "@/lib/blog";
++import { BlogHeader } from "@/components/blog/blog-header";
++import { BlogTags } from "@/components/blog/blog-tags";
++import { TableOfContents } from "@/components/blog/table-of-contents";
++import { notFound } from "next/navigation";
++import type { Metadata } from "next";
++import Image from "next/image";
++import HeroSection from "@/components/marketing/hero-section";
+ 
+ type Props = {
+-  params: Promise<{ slug: string }>
+-}
++  params: Promise<{ slug: string }>;
++};
+ 
+ export async function generateMetadata(props: Props): Promise<Metadata> {
+-  const { slug } = await props.params
+-  const post = await getBlogPost(slug)
+-  if (!post) return {}
++  const { slug } = await props.params;
++  const post = await getBlogPost(slug);
++  if (!post) return {};
+ 
+   return {
+     title: `${post.title} | Reading Advantage Blog`,
+     description: post.excerpt,
+     authors: [{ name: post.author }],
+     openGraph: {
+       title: post.title,
+       description: post.excerpt,
+-      type: 'article',
++      type: "article",
+       publishedTime: post.date,
+       authors: [post.author],
+       images: post.coverImage ? [post.coverImage] : [],
+       tags: post.tags,
+     },
+     twitter: {
+-      card: 'summary_large_image',
++      card: "summary_large_image",
+       title: post.title,
+       description: post.excerpt,
+       images: post.coverImage ? [post.coverImage] : [],
+     },
+-    metadataBase: new URL('http://localhost:3000'),
+-  }
++    metadataBase: new URL("http://localhost:3000"),
++  };
+ }
+ 
+ async function BlogPost(props: Props) {
+-  const { slug } = await props.params
+-  const post = await getBlogPost(slug)
++  const { slug } = await props.params;
++  const post = await getBlogPost(slug);
+ 
+   if (!post) {
+-    notFound()
++    notFound();
+   }
+ 
+   return (
+     <main>
+@@ -80,8 +81,8 @@
+         />
+         <BlogTags tags={post.tags} />
+       </article>
+     </main>
+-  )
++  );
+ }
+ 
+-export default BlogPost
++export default BlogPost;
+
+[0m
+[0m← [0mEdit src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+Index: /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
++++ /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/[slug]/page.tsx
+@@ -46,8 +46,10 @@
+ if (!post) {
+   notFound();
+ }
+ 
++const headings = extractHeadings(post.rawContent);
++
+ return (
+   <main>
+     <HeroSection
+       title={post.title}
+@@ -74,12 +76,19 @@
+           height={400}
+           className="w-full h-64 object-cover rounded-lg mb-8"
+         />
+       )}
+-      <div
+-        className="prose prose-lg max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-a:text-blue-600 prose-strong:text-gray-900 prose-ul:list-disc prose-ol:list-decimal"
+-        dangerouslySetInnerHTML={{ __html: post.content }}
+-      />
++      <div className="lg:grid lg:grid-cols-4 lg:gap-8">
++        <div className="lg:col-span-3">
++          <div
++            className="prose prose-lg max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-a:text-blue-600 prose-strong:text-gray-900 prose-ul:list-disc prose-ol:list-decimal"
++            dangerouslySetInnerHTML={{ __html: post.content }}
++          />
++        </div>
++        <div className="lg:col-span-1">
++          <TableOfContents headings={headings} />
++        </div>
++      </div>
+       <BlogTags tags={post.tags} />
+     </article>
+   </main>
+ );
+
+[0m
+[0m$ [0mnpm test 2>&1
+> www-reading-advantage-next@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+
+ Test Files  3 passed (3)
+      Tests  25 passed (25)
+   Start at  23:05:35
+   Duration  3.20s (transform 363ms, setup 722ms, import 1.37s, tests 801ms, environment 4.98s)
+[0m
