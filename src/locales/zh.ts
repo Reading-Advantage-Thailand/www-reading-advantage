@@ -20,54 +20,56 @@ import { zh as primaryPage } from "./pages/products/primary-advantage";
 import { zh as pricingPage } from "./pages/pricing";
 // components
 import { zh as localeSwitcher } from "./components/locale-switcher";
-import { zh as pricingTable } from './components/pricing-table';
-import { zh as comparisonTable } from './components/comparison-table';
-import { zh as contactForm } from './components/contact-form';
-import { zh as footer } from './components/common/footer';
-import { zh as header } from './components/common/header';
-import { zh as navigation } from './components/common/navigation';
-import { zh as b2b } from './components/products/b2b-solutions';
-import { zh as b2c } from './components/products/b2c-solutions';
-import { zh as tutorAdvantage } from './components/products/tutor-advantage';
+import { zh as pricingTable } from "./components/pricing-table";
+import { zh as comparisonTable } from "./components/comparison-table";
+import { zh as contactForm } from "./components/contact-form";
+import { zh as footer } from "./components/common/footer";
+import { zh as header } from "./components/common/header";
+import { zh as navigation } from "./components/common/navigation";
+import { zh as b2b } from "./components/products/b2b-solutions";
+import { zh as b2c } from "./components/products/b2c-solutions";
+import { zh as tutorAdvantage } from "./components/products/tutor-advantage";
+import { zh as pagination } from "./components/pagination";
 
 export default {
-    pages: {
-        about: aboutPage,
-        home: homePage,
-        contact: contactPage,
-        feature: featurePage,
-        caseStudies: caseStudiesPage,
-        services: servicesPage,
-        blendedLearning: blendedLearningPage,
-        managedService: managedServicePage,
-        pricing: pricingPage,
-        products: {
-            overview: productsOverview,
-            codecampAdvantage: codecampPage,
-            mathAdvantage: mathPage,
-            primaryAdvantage: primaryPage,
-            readingAdvantage: readingPage,
-            scienceAdvantage: sciencePage,
-            stemAdvantage: stemPage,
-            storytimeAdvantage: storytimePage,
-            tutorAdvantage: tutorPage,
-            zhongwenAdvantage: zhongwenPage,
-        },
+  pages: {
+    about: aboutPage,
+    home: homePage,
+    contact: contactPage,
+    feature: featurePage,
+    caseStudies: caseStudiesPage,
+    services: servicesPage,
+    blendedLearning: blendedLearningPage,
+    managedService: managedServicePage,
+    pricing: pricingPage,
+    products: {
+      overview: productsOverview,
+      codecampAdvantage: codecampPage,
+      mathAdvantage: mathPage,
+      primaryAdvantage: primaryPage,
+      readingAdvantage: readingPage,
+      scienceAdvantage: sciencePage,
+      stemAdvantage: stemPage,
+      storytimeAdvantage: storytimePage,
+      tutorAdvantage: tutorPage,
+      zhongwenAdvantage: zhongwenPage,
     },
-    components: {
-        localeSwitcher,
-        pricingTable,
-        comparisonTable,
-        contactForm,
-        products: {
-            b2bSolutions: b2b,
-            b2cSolutions: b2c,
-            tutorAdvantage,
-        },
-        common: {
-            footer,
-            header,
-            navigation,
-        },
-    }
-} as const;  
+  },
+  components: {
+    localeSwitcher,
+    pricingTable,
+    comparisonTable,
+    contactForm,
+    pagination,
+    products: {
+      b2bSolutions: b2b,
+      b2cSolutions: b2c,
+      tutorAdvantage,
+    },
+    common: {
+      footer,
+      header,
+      navigation,
+    },
+  },
+} as const;

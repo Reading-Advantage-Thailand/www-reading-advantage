@@ -129,3 +129,37 @@ export function calculateReadingTime(content: string): string {
   const minutes = Math.ceil(words / wordsPerMinute);
   return `${minutes} min read`;
 }
+
+export interface PaginatedPosts {
+  posts: BlogListItem[];
+  totalPages: number;
+  currentPage: number;
+}
+
+export async function getPaginatedPosts(
+  page: number,
+  perPage: number = 9,
+  allPosts?: BlogListItem[],
+): Promise<PaginatedPosts> {
+  const posts = allPosts ?? (await getAllBlogPosts());
+
+  if (page < 1) {
+    return {
+      posts: [],
+      totalPages: Math.ceil(posts.length / perPage),
+      currentPage: page,
+    };
+  }
+
+  const sortedPosts = [...posts].sort((a, b) => (a.date < b.date ? 1 : -1));
+  const totalPages = Math.ceil(sortedPosts.length / perPage);
+  const startIndex = (page - 1) * perPage;
+  const endIndex = startIndex + perPage;
+  const paginatedPosts = sortedPosts.slice(startIndex, endIndex);
+
+  return {
+    posts: paginatedPosts,
+    totalPages,
+    currentPage: page,
+  };
+}
