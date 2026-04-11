@@ -14,7 +14,7 @@ export function BlogPagination({
   totalPages,
   baseUrl = "/blog",
 }: BlogPaginationProps) {
-  const t = useScopedI18n("pagination");
+  const t = useScopedI18n("components.pagination");
 
   if (totalPages <= 1) {
     return null;

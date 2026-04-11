@@ -9,7 +9,7 @@ interface TableOfContentsProps {
 }
 
 export function TableOfContents({ headings }: TableOfContentsProps) {
-  const t = useScopedI18n("blog");
+  const t = useScopedI18n("pages.blog");
   const [activeId, setActiveId] = useState<string>("");
   const [isOpen, setIsOpen] = useState(false);
 

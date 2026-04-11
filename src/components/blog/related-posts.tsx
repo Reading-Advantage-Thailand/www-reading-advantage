@@ -9,7 +9,7 @@ interface RelatedPostsProps {
 }
 
 export function RelatedPosts({ posts }: RelatedPostsProps) {
-  const t = useScopedI18n("blog");
+  const t = useScopedI18n("pages.blog");
 
   if (posts.length === 0) {
     return null;
