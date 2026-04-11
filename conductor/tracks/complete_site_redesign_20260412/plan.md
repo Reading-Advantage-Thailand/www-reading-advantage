@@ -61,7 +61,7 @@
 
 ---
 
-## Phase 2: Homepage Redesign
+## Phase 2: Homepage Redesign [checkpoint: f55485c]
 
 ### Task 2.1: Write Test for Homepage (Red Phase)
 
