@@ -89,20 +89,6 @@ export default function HeroSection({
     <section
       className={`relative overflow-hidden ${gradientStyles} text-black pt-24 ${heightStyles} ${className}`}
     >
-      {/* Decorative background elements */}
-      {showDecorations && (
-        <>
-          <div
-            className="absolute top-20 left-10 w-20 h-20 bg-amber-300/40 rounded-full blur-[100px] animate-pulse-slow"
-            aria-hidden="true"
-          />
-          <div
-            className="absolute bottom-20 right-10 w-32 h-32 bg-sky-300/30 rounded-full blur-[120px]"
-            aria-hidden="true"
-          />
-        </>
-      )}
-
       <div className="container relative z-20 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
         <div className={`relative z-20 max-w-4xl ${alignmentStyles}`}>
           {/* Badge */}
