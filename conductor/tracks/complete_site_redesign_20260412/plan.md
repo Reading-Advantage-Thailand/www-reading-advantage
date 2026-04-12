@@ -119,29 +119,29 @@
 
 ### Task 3.1: Fix Reading Advantage Page
 
-- [~] Check current implementation (`src/app/[locale]/(marketing)/products/reading-advantage/page.tsx`)
-- [ ] Update hero gradient to correct Sky 300/400/900 brand colors
+- [x] Check current implementation (`src/app/[locale]/(marketing)/products/reading-advantage/page.tsx`)
+- [x] Update hero gradient to correct Sky 300/400/900 brand colors
 - [ ] Ensure Reading Advantage logo is prominently displayed
-- [ ] Remove any Framer Motion imports
+- [x] Remove any Framer Motion imports
 - [ ] Update all cards to use new Card component
-- [ ] Apply Roobert typography with stylistic sets
-- [ ] Replace emoji icons with `lucide-react`
-- [ ] Update animations to `tailwindcss-animate`
+- [x] Apply Roobert typography with stylistic sets
+- [x] Replace emoji icons with `lucide-react`
+- [x] Update animations to `tailwindcss-animate`
 
 ### Task 3.2: Fix Primary Advantage Page
 
-- [ ] Check current implementation (`src/app/[locale]/(marketing)/products/primary-advantage/page.tsx`)
-- [ ] Update hero gradient to correct Cyan 300/400/800 brand colors
+- [x] Check current implementation (`src/app/[locale]/(marketing)/products/primary-advantage/page.tsx`)
+- [x] Update hero gradient to correct Cyan 300/400/800 brand colors
 - [ ] Ensure Primary Advantage logo is prominently displayed
-- [ ] Remove any Framer Motion imports
+- [x] Remove any Framer Motion imports
 - [ ] Update all cards to use new Card component
-- [ ] Apply Roobert typography with stylistic sets
-- [ ] Replace emoji icons with `lucide-react`
-- [ ] Update animations to `tailwindcss-animate`
+- [x] Apply Roobert typography with stylistic sets
+- [x] Replace emoji icons with Lucide equivalents
+- [x] Update animations to `tailwindcss-animate`
 
 ### Task 3.3: Write and Pass Tests for Both Pages
 
-- [ ] Create `src/app/[locale]/(marketing)/products/reading-advantage/page.test.tsx`
+- [~] Create `src/app/[locale]/(marketing)/products/reading-advantage/page.test.tsx`
 - [ ] Create `src/app/[locale]/(marketing)/products/primary-advantage/page.test.tsx`
 - [ ] Write tests asserting main headings and logos are present
 - [ ] Run `npm test` — confirm both tests pass

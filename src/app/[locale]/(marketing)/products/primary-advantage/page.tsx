@@ -11,14 +11,14 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { useScopedI18n } from "@/locales/client";
-import { Mail } from "lucide-react";
+import { Mail, BookOpen, Target, Zap } from "lucide-react";
 
 export default function PrimaryAdvantage() {
   const t = useScopedI18n("pages.products.primaryAdvantage");
 
   const features = [
     {
-      icon: "📖",
+      icon: BookOpen,
       title: t("keyFeatures.features.0.title"),
       items: [
         t("keyFeatures.features.0.items.0"),
@@ -27,7 +27,7 @@ export default function PrimaryAdvantage() {
       ],
     },
     {
-      icon: "🎯",
+      icon: Target,
       title: t("keyFeatures.features.1.title"),
       items: [
         t("keyFeatures.features.1.items.0"),
@@ -36,7 +36,7 @@ export default function PrimaryAdvantage() {
       ],
     },
     {
-      icon: "🤖",
+      icon: Zap,
       title: t("keyFeatures.features.2.title"),
       items: [
         t("keyFeatures.features.2.items.0"),
@@ -80,7 +80,7 @@ export default function PrimaryAdvantage() {
   ];
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-warm-cream">
       {/* Hero Section */}
       <HeroSection
         title={t("hero.title")}
@@ -97,7 +97,7 @@ export default function PrimaryAdvantage() {
           src: "/primary-advantage logo.png",
           alt: "Primary Advantage Logo",
         }}
-        customGradient="bg-gradient-to-br from-cyan-50 via-sky-50 to-teal-50"
+        customGradient="bg-gradient-to-br from-cyan-300 via-cyan-400 to-cyan-800"
         showDecorations={true}
       />
 
@@ -118,7 +118,7 @@ export default function PrimaryAdvantage() {
                   <Card className="modern-card h-full group border-0 shadow-card hover:shadow-card-hover">
                     <CardHeader className="text-center pb-4">
                       <div className="text-5xl mb-6 flex justify-center group-hover:scale-110 transition-transform">
-                        {feature.icon}
+                        {feature.icon && <feature.icon className="w-12 h-12" />}
                       </div>
                       <CardTitle className="text-xl md:text-2xl font-bold text-gray-800 group-hover:text-cyan-700 transition-colors">
                         {feature.title}
@@ -129,7 +129,7 @@ export default function PrimaryAdvantage() {
                         {feature.items.map((item, itemIndex) => (
                           <li
                             key={item}
-                            className="flex items-start gap-3 animate-in fade-in slide-in-from-left-4 duration-300"
+                            className="flex items-start gap-3"
                             style={{
                               animationDelay: `${index * 100 + itemIndex * 50}ms`,
                             }}
@@ -193,7 +193,7 @@ export default function PrimaryAdvantage() {
                     ].map((level, index) => (
                       <div
                         key={level.level}
-                        className="text-center animate-in fade-in zoom-in-95 duration-500 hover:scale-105 transition-transform"
+                        className="text-center"
                         style={{ animationDelay: `${index * 100}ms` }}
                       >
                         <Card className="bg-gradient-to-br from-cyan-50 to-cyan-50 border-cyan-200 h-full">
@@ -264,7 +264,7 @@ export default function PrimaryAdvantage() {
 
       {/* AI Technology Section */}
       <section className="py-20 bg-gradient-to-br from-gray-900 via-cyan-900 to-gray-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-white/5 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-warm-cream/5 backdrop-blur-sm" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
             <h2 className="text-4xl font-bold text-center mb-16">
@@ -272,7 +272,7 @@ export default function PrimaryAdvantage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <div className="animate-in fade-in slide-in-from-left-8 duration-500 transition-all duration-300 hover:-translate-y-1">
-                <Card className="bg-white/10 backdrop-blur-md border border-white/20 h-full shadow-modern hover:shadow-glow">
+                <Card className="bg-warm-cream/10 backdrop-blur-md border border-white/20 h-full shadow-modern hover:shadow-glow">
                   <CardHeader className="text-center pb-4">
                     <div className="text-5xl mb-4">🧠</div>
                     <CardTitle className="text-2xl font-bold text-white">
@@ -290,7 +290,7 @@ export default function PrimaryAdvantage() {
                 className="animate-in fade-in slide-in-from-right-8 duration-500 transition-all duration-300 hover:-translate-y-1"
                 style={{ animationDelay: "100ms" }}
               >
-                <Card className="bg-white/10 backdrop-blur-md border border-white/20 h-full shadow-modern hover:shadow-glow">
+                <Card className="bg-warm-cream/10 backdrop-blur-md border border-white/20 h-full shadow-modern hover:shadow-glow">
                   <CardHeader className="text-center pb-4">
                     <div className="text-5xl mb-4">✍️</div>
                     <CardTitle className="text-2xl font-bold text-white">
@@ -311,13 +311,13 @@ export default function PrimaryAdvantage() {
 
       {/* Results Section */}
       <section className="py-20 bg-gradient-to-br from-cyan-600 via-cyan-700 to-cyan-800 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-white/5 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-warm-cream/5 backdrop-blur-sm" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
             <h2 className="text-4xl font-bold text-center mb-16">
               {t("resultsSection.heading")}
             </h2>
-            <Card className="max-w-4xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 shadow-modern-lg">
+            <Card className="max-w-4xl mx-auto bg-warm-cream/10 backdrop-blur-md border border-white/20 shadow-modern-lg">
               <CardHeader className="text-center pb-8">
                 <CardTitle className="text-3xl font-bold text-white mb-4">
                   {t("resultsSection.title")}
@@ -344,7 +344,7 @@ export default function PrimaryAdvantage() {
                   ].map((stat, index) => (
                     <div
                       key={stat.label}
-                      className="text-center animate-in fade-in zoom-in-95 duration-500 hover:scale-105 transition-transform"
+                      className="text-center"
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
                       <div className="text-5xl font-bold text-white mb-3 drop-shadow-lg">
@@ -362,7 +362,7 @@ export default function PrimaryAdvantage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-cyan-600 via-cyan-700 to-cyan-800 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-white/5 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-warm-cream/5 backdrop-blur-sm" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
             <h2 className="text-4xl font-bold mb-6">{t("cta.heading")}</h2>
@@ -372,7 +372,7 @@ export default function PrimaryAdvantage() {
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <a
                 href="mailto:support@reading-advantage.com?subject=Primary Advantage Inquiry&body=Hi team,%0A%0AI'm interested in learning more about Primary Advantage for my school/organization.%0A%0APlease provide more information about:%0A- Pricing options (100 baht per student per month)%0A- Free pilot term%0A- Technical requirements%0A%0AThank you!"
-                className="bg-white hover:bg-cyan-50 text-cyan-800 px-10 py-4 rounded-xl font-bold transition-all duration-300 shadow-modern hover:shadow-glow hover:-translate-y-1 hover:scale-105 inline-flex items-center gap-3"
+                className="bg-warm-cream hover:bg-cyan-50 text-cyan-800 px-10 py-4 rounded-xl font-bold transition-all duration-300 shadow-modern hover:shadow-glow hover:-translate-y-1 hover:scale-105 inline-flex items-center gap-3"
               >
                 {t("cta.buttons.signUp")}
                 <svg
@@ -391,7 +391,7 @@ export default function PrimaryAdvantage() {
               </a>
               <Link
                 href="/contact"
-                className="border-2 border-white hover:bg-white hover:text-cyan-800 text-white px-10 py-4 rounded-xl font-bold transition-all duration-300 hover:shadow-modern hover:-translate-y-1 hover:scale-105 inline-flex items-center gap-3"
+                className="border-2 border-white hover:bg-warm-cream hover:text-cyan-800 text-white px-10 py-4 rounded-xl font-bold transition-all duration-300 hover:shadow-modern hover:-translate-y-1 hover:scale-105 inline-flex items-center gap-3"
               >
                 {t("cta.buttons.freeTrial")}
                 <svg

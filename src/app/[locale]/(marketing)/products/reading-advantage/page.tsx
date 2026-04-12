@@ -97,19 +97,19 @@ export default function ReadingAdvantage() {
           alt: "Students at interactive display board using Reading Advantage platform",
           sizes: "(max-width: 1280px) 0px, 600px",
         }}
-        customGradient="bg-gradient-to-br from-amber-50 via-orange-50 to-sky-100"
+        customGradient="bg-gradient-to-br from-sky-300 via-sky-400 to-sky-900"
       />
 
       {/* Blended Learning - Asymmetric layout */}
-      <section className="relative py-24 bg-white" id="blended-learning">
+      <section className="relative py-24 bg-warm-cream" id="blended-learning">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-7 animate-in fade-in slide-in-from-left-8 duration-700">
+            <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 bg-sky-100 text-sky-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
                 <GraduationCap className="w-4 h-4" />
                 {t("blendedLearning.newBadge")}
               </div>
-              <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-8 leading-tight">
+              <h2 className="font-roobert text-[44px] font-semibold text-black mb-8 leading-tight">
                 {t("blendedLearning.heading")}
               </h2>
 
@@ -163,10 +163,10 @@ export default function ReadingAdvantage() {
                 <ArrowRight className="w-6 h-6" />
               </Link>
             </div>
-            <div className="lg:col-span-5 animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
+            <div className="lg:col-span-5">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-sky-100 to-blue-100 rounded-3xl blur-3xl -translate-y-4 translate-x-4" />
-                <div className="relative bg-gradient-to-br from-sky-50 to-blue-50 border border-sky-100 rounded-3xl p-6">
+                <div className="relative bg-gradient-to-br from-sky-50 to-blue-50 border border-oat-border rounded-3xl p-6">
                   <div className="space-y-6">
                     <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
                       <Image
@@ -195,10 +195,10 @@ export default function ReadingAdvantage() {
       </section>
 
       {/* Key Features - Modern card-less design */}
-      <section className="relative py-24 bg-gradient-to-br from-sky-50 via-white to-blue-50">
+      <section className="relative py-24 bg-warm-cream">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-20 animate-in fade-in duration-700">
+            <div className="text-center mb-20">
               <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
                 <span className="block bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">
                   {t("keyFeatures.heading")}
@@ -210,7 +210,7 @@ export default function ReadingAdvantage() {
               {keyFeatures.map((feature, index) => (
                 <div
                   key={feature.title}
-                  className="group relative bg-white rounded-3xl p-10 border border-sky-100 transition-all duration-300 hover:-translate-y-3 hover:border-sky-200 hover:shadow-2xl animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="group relative bg-white rounded-3xl p-10 border border-oat-border transition-all duration-300 hover:-translate-y-3 hover:border-sky-200 hover:shadow-2xl"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
                   <div className="w-20 h-20 bg-gradient-to-br from-sky-400 to-blue-500 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-2xl">
@@ -240,10 +240,10 @@ export default function ReadingAdvantage() {
       </section>
 
       {/* Games Section */}
-      <section className="relative py-24 bg-gradient-to-br from-amber-50 via-sky-50 to-white">
+      <section className="relative py-24 bg-warm-cream">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-20 animate-in fade-in duration-700">
+            <div className="text-center mb-20">
               <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
                 <Gamepad2 className="w-4 h-4" />
                 {t("games.newBadge")}
@@ -260,7 +260,7 @@ export default function ReadingAdvantage() {
               {games.map((game, index) => (
                 <div
                   key={game.title}
-                  className="group relative bg-white rounded-3xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="group relative bg-white rounded-3xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
                   <div className="relative aspect-square overflow-hidden">
@@ -292,7 +292,7 @@ export default function ReadingAdvantage() {
       <section className="relative py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16 animate-in fade-in duration-700">
+            <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
                 {t("videoSection.heading")}
               </h2>
@@ -304,7 +304,7 @@ export default function ReadingAdvantage() {
               }`}
               onClick={() => setIsVideoExpanded(!isVideoExpanded)}
             >
-              <div className="relative bg-gradient-to-br from-sky-50 to-blue-50 rounded-3xl overflow-hidden shadow-2xl border border-sky-100">
+              <div className="relative bg-gradient-to-br from-sky-50 to-blue-50 rounded-3xl overflow-hidden shadow-2xl border border-oat-border">
                 <div className="relative aspect-video rounded-t-3xl overflow-hidden">
                   <iframe
                     className="w-full h-full"
@@ -346,13 +346,13 @@ export default function ReadingAdvantage() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 animate-in fade-in duration-700">
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <div className="text-center mb-16">
+              <h2 className="font-roobert text-[44px] font-semibold text-white mb-6">
                 {t("platformFeatures.heading")}
               </h2>
             </div>
 
-            <div className="relative animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <div className="relative">
               <div className="absolute inset-0 bg-white/10 rounded-3xl blur-3xl -translate-y-4" />
               <div className="relative bg-white/5 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
                 {/* Desktop - Full width */}
@@ -444,7 +444,7 @@ export default function ReadingAdvantage() {
       <section className="relative py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="animate-in fade-in slide-in-from-left-8 duration-700">
+            <div className="">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-sky-100 to-blue-100 rounded-3xl blur-3xl -translate-y-4 -translate-x-4" />
                 <div className="relative space-y-6">
@@ -469,17 +469,17 @@ export default function ReadingAdvantage() {
                 </div>
               </div>
             </div>
-            <div className="animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
+            <div className="">
               <div className="inline-flex items-center gap-2 bg-sky-100 text-sky-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
                 <GraduationCap className="w-4 h-4" />
                 {t("teacherTools.heading")}
               </div>
-              <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-8 leading-tight">
+              <h2 className="font-roobert text-[44px] font-semibold text-black mb-8 leading-tight">
                 {t("teacherTools.heading")}
               </h2>
 
               <div className="space-y-6 mb-12">
-                <div className="bg-gradient-to-br from-sky-50 to-blue-50 rounded-2xl p-6 border border-sky-100">
+                <div className="bg-gradient-to-br from-sky-50 to-blue-50 rounded-2xl p-6 border border-oat-border">
                   <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-3">
                     <Check className="w-6 h-6 text-sky-600" />
                     {t("teacherTools.tools.0.title")}
@@ -499,7 +499,7 @@ export default function ReadingAdvantage() {
                     ))}
                   </ul>
                 </div>
-                <div className="bg-gradient-to-br from-sky-50 to-blue-50 rounded-2xl p-6 border border-sky-100">
+                <div className="bg-gradient-to-br from-sky-50 to-blue-50 rounded-2xl p-6 border border-oat-border">
                   <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-3">
                     <Check className="w-6 h-6 text-sky-600" />
                     {t("teacherTools.tools.1.title")}
@@ -526,15 +526,15 @@ export default function ReadingAdvantage() {
       </section>
 
       {/* Student Experience */}
-      <section className="relative py-24 bg-gradient-to-br from-sky-50 via-white to-blue-50">
+      <section className="relative py-24 bg-warm-cream">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="animate-in fade-in slide-in-from-left-8 duration-700">
+            <div className="">
               <div className="inline-flex items-center gap-2 bg-sky-100 text-sky-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
                 <Users className="w-4 h-4" />
                 {t("keyFeatures.features.0.title")}
               </div>
-              <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-8 leading-tight">
+              <h2 className="font-roobert text-[44px] font-semibold text-black mb-8 leading-tight">
                 {t("keyFeatures.features.2.title")}
               </h2>
 
@@ -555,7 +555,7 @@ export default function ReadingAdvantage() {
                 ].map((feat, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-2xl p-6 border border-sky-100 shadow-lg"
+                    className="bg-white rounded-2xl p-6 border border-oat-border shadow-lg"
                   >
                     <h3 className="text-lg font-bold text-slate-900 mb-2">
                       {feat.title}
@@ -565,7 +565,7 @@ export default function ReadingAdvantage() {
                 ))}
               </div>
             </div>
-            <div className="animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
+            <div className="">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-sky-100 to-blue-100 rounded-3xl blur-3xl -translate-y-4 translate-x-4" />
                 <div className="relative space-y-6">
@@ -602,8 +602,8 @@ export default function ReadingAdvantage() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 animate-in fade-in duration-700">
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <div className="text-center mb-16">
+              <h2 className="font-roobert text-[44px] font-semibold text-white mb-6">
                 {t("resultsSection.heading")}
               </h2>
               <p className="text-2xl text-sky-100 max-w-3xl mx-auto mb-8">
@@ -631,7 +631,7 @@ export default function ReadingAdvantage() {
               ].map((stat, index) => (
                 <div
                   key={stat.label}
-                  className="relative bg-white/5 backdrop-blur-sm rounded-3xl p-10 border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="relative bg-white/5 backdrop-blur-sm rounded-3xl p-10 border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
                   <div className="text-6xl font-bold text-white mb-4 drop-shadow-lg">
@@ -649,7 +649,7 @@ export default function ReadingAdvantage() {
       <section className="relative py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-20 animate-in fade-in duration-700">
+            <div className="text-center mb-20">
               <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
                 <span className="block bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">
                   {t("technicalHighlights.heading")}
@@ -682,7 +682,7 @@ export default function ReadingAdvantage() {
               ].map((feature, index) => (
                 <div
                   key={feature.title}
-                  className="group relative bg-gradient-to-br from-sky-50 to-blue-50 rounded-3xl p-8 border border-sky-100 hover:border-sky-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="group relative bg-gradient-to-br from-sky-50 to-blue-50 rounded-3xl p-8 border border-oat-border hover:border-sky-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="w-16 h-16 bg-gradient-to-br from-sky-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
@@ -716,7 +716,7 @@ export default function ReadingAdvantage() {
         />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
+          <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
               {t("cta.heading")}
             </h2>
@@ -726,7 +726,7 @@ export default function ReadingAdvantage() {
 
             <a
               href="mailto:support@reading-advantage.com?subject=Reading Advantage Inquiry&body=Hi team,%0A%0AI'm interested in learning more about Reading Advantage for my school/organization.%0A%0APlease provide more information about:%0A- Pricing options%0A- Implementation timeline%0A- Technical requirements%0A%0AThank you!"
-              className="inline-flex items-center gap-4 bg-white text-sky-700 px-14 py-6 rounded-3xl hover:bg-sky-50 transition-all duration-300 shadow-2xl hover:shadow-white/30 hover:-translate-y-2 font-bold text-xl animate-in fade-in duration-700 delay-300 hover:scale-105"
+              className="inline-flex items-center gap-4 bg-white text-sky-700 px-14 py-6 rounded-3xl hover:bg-sky-50 transition-all duration-300 shadow-2xl hover:shadow-white/30 hover:-translate-y-2 font-bold text-xl"
             >
               <Mail className="w-8 h-8" />
               {t("cta.buttons.signUp")}
@@ -741,7 +741,7 @@ export default function ReadingAdvantage() {
             </Link>
 
             {/* Trust badges */}
-            <div className="mt-20 flex flex-wrap justify-center gap-12 animate-in fade-in duration-700 delay-500">
+            <div className="mt-20 flex flex-wrap justify-center gap-12">
               <div className="text-center">
                 <div className="text-5xl font-bold text-white mb-2">
                   {t("resultsSection.stats.0.value")}
