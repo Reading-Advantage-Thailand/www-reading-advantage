@@ -194,11 +194,6 @@ export default function HeroSection({
               className={`relative ${imageSize.rounded}`}
               style={{ width: `${imageSize.width}px` }}
             >
-              {/* Background blur */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br from-amber-400/20 to-sky-400/20 blur-2xl z-0 ${imageSize.rounded}`}
-              />
-              {/* Image and fade: overlay sized by the image's natural height */}
               <div
                 className={`relative overflow-hidden z-10 ${imageSize.rounded}`}
               >
@@ -213,7 +208,6 @@ export default function HeroSection({
                   }
                   className="w-full h-auto"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent z-20" />
               </div>
             </div>
           </div>
