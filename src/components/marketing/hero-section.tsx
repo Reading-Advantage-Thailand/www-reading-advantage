@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
@@ -183,15 +182,9 @@ export default function HeroSection({
               <div
                 className={`relative overflow-hidden z-10 ${imageSize.rounded}`}
               >
-                <Image
+                <img
                   src={floatingImage.src}
                   alt={floatingImage.alt}
-                  width={imageSize.width}
-                  height={0}
-                  sizes={
-                    floatingImage.sizes ||
-                    `(max-width: 1280px) 0px, ${imageSize.width}px`
-                  }
                   className="w-full h-auto"
                 />
               </div>
