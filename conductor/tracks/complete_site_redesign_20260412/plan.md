@@ -141,11 +141,11 @@
 
 ### Task 3.3: Write and Pass Tests for Both Pages
 
-- [~] Create `src/app/[locale]/(marketing)/products/reading-advantage/page.test.tsx`
-- [ ] Create `src/app/[locale]/(marketing)/products/primary-advantage/page.test.tsx`
-- [ ] Write tests asserting main headings and logos are present
-- [ ] Run `npm test` — confirm both tests pass
-- [ ] Run `npm run build` — confirm no errors
+- [x] Create `src/app/[locale]/(marketing)/products/reading-advantage/page.test.tsx`
+- [x] Create `src/app/[locale]/(marketing)/products/primary-advantage/page.test.tsx`
+- [x] Write tests asserting main headings and logos are present
+- [x] Run `npm test` — confirm both tests pass
+- [x] Run `npm run build` — confirm no errors
 
 **Manual Verification — Phase 3:**
 
