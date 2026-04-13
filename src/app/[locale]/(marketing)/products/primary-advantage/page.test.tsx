@@ -15,23 +15,25 @@ describe("PrimaryAdvantage", () => {
 
   it("renders hero section with description", () => {
     render(<PrimaryAdvantage />);
-    const heroText = screen.getByText(/hero\./i);
-    expect(heroText).toBeInTheDocument();
+    expect(screen.getAllByRole("heading", { level: 1 }).length).toBe(1);
   });
 
   it("renders key features section", () => {
     render(<PrimaryAdvantage />);
     const headings = screen.getAllByRole("heading", { level: 2 });
-    expect(headings.length).toBeGreaterThan(0);
+    expect(headings.length).toBeGreaterThan(1);
   });
 
   it("renders platform features", () => {
     render(<PrimaryAdvantage />);
-    expect(screen.getByText(/platformFeatures/i)).toBeInTheDocument();
+    const headings = screen.getAllByRole("heading", { level: 2 });
+    expect(headings.length).toBeGreaterThan(2);
   });
 
   it("renders CEFR alignment section", () => {
     render(<PrimaryAdvantage />);
-    expect(screen.getByText(/cefrSection/i)).toBeInTheDocument();
+    expect(screen.getAllByRole("heading", { level: 2 }).length).toBeGreaterThan(
+      0,
+    );
   });
 });

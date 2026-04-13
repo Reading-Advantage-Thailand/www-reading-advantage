@@ -11,7 +11,12 @@ vi.mock("next/navigation", () => ({
 }));
 
 vi.mock("@/locales/client", () => ({
-  useScopedI18n: vi.fn((scope: string) => (key: string) => `${scope}.${key}`),
+  useScopedI18n: vi.fn((scope: string) => (key: string) => {
+    if (key.endsWith(".image")) {
+      return "/images/placeholder.png";
+    }
+    return `${scope}.${key}`;
+  }),
   useCurrentLocale: vi.fn(() => "en"),
   useChangeLocale: vi.fn(() => vi.fn()),
 }));

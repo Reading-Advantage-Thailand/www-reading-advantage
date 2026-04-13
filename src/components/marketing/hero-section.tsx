@@ -25,7 +25,6 @@ export interface HeroProps {
   height?: "tall" | "medium";
   alignment?: "left" | "center";
   customGradient?: string;
-  showDecorations?: boolean;
   className?: string;
 }
 
@@ -72,7 +71,6 @@ export default function HeroSection({
   height = "medium",
   alignment = "center",
   customGradient,
-  showDecorations = true,
   className = "",
 }: HeroProps) {
   const gradientStyles = customGradient || "bg-warm-cream";

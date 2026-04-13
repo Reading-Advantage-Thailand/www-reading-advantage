@@ -76,7 +76,6 @@ export default function BlendedLearning() {
         height="medium"
         alignment="left"
         customGradient="bg-gradient-to-br from-sky-50 via-sky-100 to-blue-100"
-        showDecorations={true}
       />
 
       {/* Overview Section */}

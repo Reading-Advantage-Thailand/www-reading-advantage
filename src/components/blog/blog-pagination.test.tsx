@@ -16,8 +16,8 @@ describe("BlogPagination", () => {
 
   it("renders previous and next links", () => {
     render(<BlogPagination currentPage={2} totalPages={5} />);
-    expect(screen.getByText("pagination.previous")).toBeDefined();
-    expect(screen.getByText("pagination.next")).toBeDefined();
+    expect(screen.getByText("components.pagination.previous")).toBeDefined();
+    expect(screen.getByText("components.pagination.next")).toBeDefined();
   });
 
   it("shows ellipsis when pages exceed 5", () => {

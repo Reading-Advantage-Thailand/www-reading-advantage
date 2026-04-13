@@ -14,7 +14,7 @@ import {
 import { useScopedI18n } from "@/locales/client";
 import HeroSection from "@/components/marketing/hero-section";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
   const t = useScopedI18n("pages.home");
@@ -82,7 +82,6 @@ export default function Home() {
           alt: "Students gathered at interactive board",
           sizes: "(max-width: 1280px) 100vw, 50vw",
         }}
-        showDecorations={true}
         customGradient="bg-warm-cream"
         className="pt-20"
       />
@@ -403,7 +402,7 @@ export default function Home() {
                   title: t("qualityProtocol.features.3.title"),
                   description: t("qualityProtocol.features.3.description"),
                 },
-              ].map((item, index) => (
+              ].map((item) => (
                 <Card
                   key={item.title}
                   className="hover:-translate-y-2 hover:border-amber-300"
@@ -481,7 +480,7 @@ export default function Home() {
                   title: t("thaiSchools.features.2.title"),
                   description: t("thaiSchools.features.2.description"),
                 },
-              ].map((item, index) => (
+              ].map((item) => (
                 <div
                   key={item.title}
                   className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:border-white/20 hover:bg-white/15 transition-all duration-300"

@@ -11,7 +11,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { useScopedI18n } from "@/locales/client";
-import { Mail, BookOpen, Target, Zap } from "lucide-react";
+import { Mail, BookOpen, Target, Zap, Brain, PenTool } from "lucide-react";
 
 export default function PrimaryAdvantage() {
   const t = useScopedI18n("pages.products.primaryAdvantage");
@@ -98,7 +98,6 @@ export default function PrimaryAdvantage() {
           alt: "Primary Advantage Logo",
         }}
         customGradient="bg-gradient-to-br from-cyan-300 via-cyan-400 to-cyan-800"
-        showDecorations={true}
       />
 
       {/* Key Features */}
@@ -274,7 +273,7 @@ export default function PrimaryAdvantage() {
               <div className="animate-in fade-in slide-in-from-left-8 duration-500 transition-all duration-300 hover:-translate-y-1">
                 <Card className="bg-warm-cream/10 backdrop-blur-md border border-white/20 h-full shadow-modern hover:shadow-glow">
                   <CardHeader className="text-center pb-4">
-                    <div className="text-5xl mb-4">🧠</div>
+                    <Brain className="w-12 h-12 text-white" />
                     <CardTitle className="text-2xl font-bold text-white">
                       {t("aiTechnology.gemini.title")}
                     </CardTitle>
@@ -292,7 +291,7 @@ export default function PrimaryAdvantage() {
               >
                 <Card className="bg-warm-cream/10 backdrop-blur-md border border-white/20 h-full shadow-modern hover:shadow-glow">
                   <CardHeader className="text-center pb-4">
-                    <div className="text-5xl mb-4">✍️</div>
+                    <PenTool className="w-12 h-12 text-white" />
                     <CardTitle className="text-2xl font-bold text-white">
                       {t("aiTechnology.gpt5.title")}
                     </CardTitle>

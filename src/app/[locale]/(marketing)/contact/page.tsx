@@ -25,7 +25,6 @@ export default async function ContactPage() {
         height="medium"
         alignment="center"
         customGradient="bg-gradient-to-br from-sky-50 via-sky-100 to-white"
-        showDecorations={false}
       />
 
       {/* Contact Cards Section */}

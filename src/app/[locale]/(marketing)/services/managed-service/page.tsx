@@ -63,7 +63,6 @@ export default function ManagedService() {
         height="medium"
         alignment="left"
         customGradient="bg-gradient-to-br from-sky-50 via-white to-amber-50"
-        showDecorations={true}
       />
 
       {/* Overview Section */}

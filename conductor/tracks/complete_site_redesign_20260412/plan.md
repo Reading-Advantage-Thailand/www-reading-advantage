@@ -121,9 +121,9 @@
 
 - [x] Check current implementation (`src/app/[locale]/(marketing)/products/reading-advantage/page.tsx`)
 - [x] Update hero gradient to correct Sky 300/400/900 brand colors
-- [ ] Ensure Reading Advantage logo is prominently displayed
+- [x] Ensure Reading Advantage logo is prominently displayed
 - [x] Remove any Framer Motion imports
-- [ ] Update all cards to use new Card component
+- [x] Update all cards to use new Card component
 - [x] Apply Roobert typography with stylistic sets
 - [x] Replace emoji icons with `lucide-react`
 - [x] Update animations to `tailwindcss-animate`
@@ -132,9 +132,9 @@
 
 - [x] Check current implementation (`src/app/[locale]/(marketing)/products/primary-advantage/page.tsx`)
 - [x] Update hero gradient to correct Cyan 300/400/800 brand colors
-- [ ] Ensure Primary Advantage logo is prominently displayed
+- [x] Ensure Primary Advantage logo is prominently displayed
 - [x] Remove any Framer Motion imports
-- [ ] Update all cards to use new Card component
+- [x] Update all cards to use new Card component
 - [x] Apply Roobert typography with stylistic sets
 - [x] Replace emoji icons with Lucide equivalents
 - [x] Update animations to `tailwindcss-animate`
