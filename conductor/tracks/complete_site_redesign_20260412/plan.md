@@ -115,7 +115,7 @@
 
 ---
 
-## Phase 3: Product Pages Redesign — Group 1 (Reading & Primary)
+## Phase 3: Product Pages Redesign — Group 1 (Reading & Primary) [checkpoint: 9868795]
 
 ### Task 3.1: Fix Reading Advantage Page
 

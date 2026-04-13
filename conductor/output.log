@@ -909,3 +909,98 @@ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
    Start at  22:43:43
    Duration  8.60s (transform 895ms, setup 1.31s, import 3.69s, tests 6.18s, environment 11.83s)
 [0m
+[0m$ [0mgit add -A && git commit -m "fix: remove unused imports/vars, replace emoji with Lucide, fix test mocks
+
+- primary-advantage: replace emoji icons (🧠✍️) with Brain and PenTool Lucide icons
+- hero-section: remove unused showDecorations prop from interface and all callers
+- home page: remove unused CardHeader/CardTitle imports, unused index vars
+- test setup: return /images/placeholder.png for .image keys to fix Next/Image validation
+- primary-advantage/reading-advantage tests: fix regex matches that returned multiple elements
+
+fixes #phase3-tasks-3.1-3.2 (Complete Site Redesign track)"
+[main 9868795] fix: remove unused imports/vars, replace emoji with Lucide, fix test mocks
+ 12 files changed, 917 insertions(+), 31 deletions(-)
+[0m
+[0m$ [0mgit push
+fatal: unable to access 'https://github.com/Reading-Advantage-Thailand/www-reading-advantage.git/': Could not resolve host: github.com
+[0m
+No network - will push when available. Let me update the lessons-learned and finalize:
+[0m→ [0mRead conductor/lessons-learned.md[90m [limit=10][0m
+[0m
+[0m← [0mEdit conductor/lessons-learned.md
+Index: /home/daniel-bo/Desktop/www-reading-advantage/conductor/lessons-learned.md
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/conductor/lessons-learned.md
++++ /home/daniel-bo/Desktop/www-reading-advantage/conductor/lessons-learned.md
+@@ -3,8 +3,28 @@
+ Retrospective insights captured after completing tracks, PR merges, and development milestones. Most recent entries at the top.
+ 
+ ---
+ 
++## 2026-04-13 — Phase 3 Fixes (Complete Site Redesign)
++
++### What Happened
++
++- Fixed Phase 3 incomplete tasks for reading-advantage and primary-advantage pages.
++- Replaced emoji icons (🧠 ✍️) in primary-advantage with Brain and PenTool Lucide equivalents.
++- Removed unused `showDecorations` prop from HeroSection interface and all 5 call sites.
++- Removed unused imports (CardHeader, CardTitle) from home page.
++- Fixed test mock to return `/images/placeholder.png` for i18n keys ending in `.image` (prevents Next/Image error on relative paths without leading `/`).
++- Fixed regex-based test assertions that matched multiple elements by using more specific queries.
++
++### Lessons
++
++- The `useScopedI18n` mock must return valid image paths for keys ending in `.image` — otherwise Next/Image rejects them at render time.
++- Regex `/hero\./i` in `getByText` can match multiple elements when the mock returns strings containing the pattern — use `getAllByRole` with count assertions instead.
++- `showDecorations` prop was declared in HeroProps but never used in the component body — always check that props are actually consumed before shipping.
++- Build errors from unused vars must be fixed before push — CI will reject.
++
++---
++
+ ## 2026-04-11 — Blog Pagination and Content Pipeline (blog_pagination_20260408)
+ 
+ ### What Happened
+ 
+
+[0m
+[0m← [0mEdit conductor/tracks/complete_site_redesign_20260412/plan.md
+Index: /home/daniel-bo/Desktop/www-reading-advantage/conductor/tracks/complete_site_redesign_20260412/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/conductor/tracks/complete_site_redesign_20260412/plan.md
++++ /home/daniel-bo/Desktop/www-reading-advantage/conductor/tracks/complete_site_redesign_20260412/plan.md
+@@ -114,9 +114,9 @@
+ 9. Check browser console — no JavaScript errors
+ 
+ ---
+ 
+-## Phase 3: Product Pages Redesign — Group 1 (Reading & Primary)
++## Phase 3: Product Pages Redesign — Group 1 (Reading & Primary) [checkpoint: 9868795]
+ 
+ ### Task 3.1: Fix Reading Advantage Page
+ 
+ - [x] Check current implementation (`src/app/[locale]/(marketing)/products/reading-advantage/page.tsx`)
+
+[0m
+[0m$ [0mnpm test -- --run && npm run build 2>&1 | tail -10
+> www-reading-advantage-next@0.1.0 test
+> vitest run --run
+
+
+ RUN  v4.1.3 /home/daniel-bo/Desktop/www-reading-advantage
+
+
+ Test Files  6 passed (6)
+      Tests  46 passed (46)
+   Start at  22:44:50
+   Duration  6.95s (transform 672ms, setup 1.06s, import 3.01s, tests 5.15s, environment 9.38s)
+
+  ├ chunks/4bd1b696-c023c6e3521b1417.js     54.2 kB
+  └ other shared chunks (total)             2.03 kB
+
+
+ƒ Middleware                                93.7 kB
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+[0m

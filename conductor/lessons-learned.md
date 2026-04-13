@@ -4,6 +4,26 @@ Retrospective insights captured after completing tracks, PR merges, and developm
 
 ---
 
+## 2026-04-13 — Phase 3 Fixes (Complete Site Redesign)
+
+### What Happened
+
+- Fixed Phase 3 incomplete tasks for reading-advantage and primary-advantage pages.
+- Replaced emoji icons (🧠 ✍️) in primary-advantage with Brain and PenTool Lucide equivalents.
+- Removed unused `showDecorations` prop from HeroSection interface and all 5 call sites.
+- Removed unused imports (CardHeader, CardTitle) from home page.
+- Fixed test mock to return `/images/placeholder.png` for i18n keys ending in `.image` (prevents Next/Image error on relative paths without leading `/`).
+- Fixed regex-based test assertions that matched multiple elements by using more specific queries.
+
+### Lessons
+
+- The `useScopedI18n` mock must return valid image paths for keys ending in `.image` — otherwise Next/Image rejects them at render time.
+- Regex `/hero\./i` in `getByText` can match multiple elements when the mock returns strings containing the pattern — use `getAllByRole` with count assertions instead.
+- `showDecorations` prop was declared in HeroProps but never used in the component body — always check that props are actually consumed before shipping.
+- Build errors from unused vars must be fixed before push — CI will reject.
+
+---
+
 ## 2026-04-11 — Blog Pagination and Content Pipeline (blog_pagination_20260408)
 
 ### What Happened
