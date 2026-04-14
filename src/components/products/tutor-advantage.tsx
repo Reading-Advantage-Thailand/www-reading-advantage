@@ -1,36 +1,36 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import Image from "next/image"
-import { Network, Brain, GraduationCap, Clock, ArrowRight } from "lucide-react"
-import { useScopedI18n } from "@/locales/client"
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import Image from "next/image";
+import { Network, Brain, GraduationCap, Clock, ArrowRight } from "lucide-react";
+import { useScopedI18n } from "@/locales/client";
 
 export default function TutorAdvantage() {
-  const t = useScopedI18n("components.products.tutorAdvantage")
+  const t = useScopedI18n("components.products.tutorAdvantage");
 
   const features = [
     {
       title: t("features.0.title"),
       description: t("features.0.description"),
-      icon: Network
+      icon: Network,
     },
     {
       title: t("features.1.title"),
       description: t("features.1.description"),
-      icon: Brain
+      icon: Brain,
     },
     {
       title: t("features.2.title"),
       description: t("features.2.description"),
-      icon: GraduationCap
+      icon: GraduationCap,
     },
     {
       title: t("features.3.title"),
       description: t("features.3.description"),
-      icon: Clock
-    }
-  ]
+      icon: Clock,
+    },
+  ];
 
   return (
     <section className="relative py-16 md:py-24 bg-gradient-to-br from-emerald-400 via-teal-400 to-emerald-500 overflow-hidden">
@@ -50,6 +50,7 @@ export default function TutorAdvantage() {
                   src="/tutor-advantage.png"
                   alt="Tutor Advantage"
                   fill
+                  sizes="10rem"
                   className="relative z-10 object-contain"
                 />
               </div>
@@ -76,7 +77,7 @@ export default function TutorAdvantage() {
                   hover:bg-white/40 hover:-translate-y-1 hover:shadow-lg transition-all duration-300
                   animate-in fade-in slide-in-from-bottom-4 duration-500
                 `}
-                style={{ animationDelay: `${300 + (index * 100)}ms` }}
+                style={{ animationDelay: `${300 + index * 100}ms` }}
               >
                 <div
                   className={`
@@ -85,10 +86,17 @@ export default function TutorAdvantage() {
                     group-hover:scale-110 transition-transform duration-300
                   `}
                 >
-                  <feature.icon className="w-7 h-7 text-white" strokeWidth={1.5} />
+                  <feature.icon
+                    className="w-7 h-7 text-white"
+                    strokeWidth={1.5}
+                  />
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-emerald-900">{feature.title}</h3>
-                <p className="text-emerald-800/90 text-sm leading-relaxed">{feature.description}</p>
+                <h3 className="text-lg font-bold mb-2 text-emerald-900">
+                  {feature.title}
+                </h3>
+                <p className="text-emerald-800/90 text-sm leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
@@ -112,7 +120,9 @@ export default function TutorAdvantage() {
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </Link>
             </Button>
-            <p className="text-emerald-800/90 text-sm font-medium">{t("joinCaption")}</p>
+            <p className="text-emerald-800/90 text-sm font-medium">
+              {t("joinCaption")}
+            </p>
           </div>
 
           {/* Decorative gradient overlay */}
@@ -120,5 +130,5 @@ export default function TutorAdvantage() {
         </div>
       </div>
     </section>
-  )
+  );
 }

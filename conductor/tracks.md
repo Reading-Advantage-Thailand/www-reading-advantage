@@ -20,31 +20,15 @@ _Link: [./conductor/tracks/hero_standardization_20260208/](./conductor/tracks/he
 
 ## Upcoming Tracks (created 2026-04-08)
 
-### [x] Track: Testing Infrastructure Setup
+### [ ] Track: Fix Missing `sizes` Props on `fill` Images
 
-**Status:** Completed
+**Status:** New
 
-**Type:** chore | **Estimated Tasks:** 18 | **Actual:** 18
+**Type:** bug | **Estimated Tasks:** 4
 
-**Description:** Install and configure Vitest + Testing Library for unit tests and Playwright for E2E, establishing the TDD foundation required by the project workflow. Currently the project has zero test files.
+**Description:** Add `sizes` prop to every `next/image` component using `fill` prop. Without `sizes`, the browser defaults to `100vw` and downloads the largest image variant even on small viewports.
 
-**Completed:** 2026-04-10
-
-_Link: [./conductor/tracks/testing_infrastructure_20260408/](./conductor/tracks/testing_infrastructure_20260408/)_
-
----
-
-### [x] Track: Services Pages i18n Completion
-
-**Status:** Completed
-
-**Type:** bug | **Estimated Tasks:** 14
-
-**Description:** Wire up the prepared Thai and Chinese locale files to blended-learning and managed-service pages, replacing all hard-coded English strings. Thai and Chinese visitors currently see English on both pages.
-
-_Link: [./conductor/tracks/services_i18n_completion_20260408/](./conductor/tracks/services_i18n_completion_20260408/)_
-
----
+_Link: [./conductor/tracks/images_sizes_prop_20260414/](./conductor/tracks/images_sizes_prop_20260414/)_
 
 ### [ ] Track: Complete Site Redesign
 

@@ -95,7 +95,6 @@ export default function ReadingAdvantage() {
         floatingImage={{
           src: "/images/students-at-board.png",
           alt: "Students at interactive display board using Reading Advantage platform",
-          sizes: "(max-width: 1280px) 0px, 600px",
         }}
         customGradient="bg-gradient-to-br from-sky-300 via-sky-400 to-sky-900"
       />

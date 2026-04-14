@@ -67,7 +67,6 @@ export default async function ProductsPage() {
         floatingImage={{
           src: "/images/small-group.png",
           alt: "Group of students using Reading Advantage platform on tablets in collaborative learning session",
-          sizes: "(max-width: 1280px) 100vw, 50vw",
         }}
         height="medium"
         alignment="left"

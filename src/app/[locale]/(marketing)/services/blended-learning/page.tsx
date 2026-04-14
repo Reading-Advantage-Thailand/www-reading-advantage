@@ -71,7 +71,6 @@ export default function BlendedLearning() {
         floatingImage={{
           src: "/images/blended-learning.png",
           alt: "Blended Learning Model",
-          sizes: "(max-width: 1280px) 100vw, 50vw",
         }}
         height="medium"
         alignment="left"
