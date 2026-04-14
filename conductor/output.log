@@ -375,3 +375,108 @@ Good. Now build:
    Start at  22:38:26
    Duration  10.13s (transform 1.14s, setup 1.68s, import 5.01s, tests 7.63s, environment 13.23s)
 [0m
+[0m$ [0mcd /home/daniel-bo/Desktop/www-reading-advantage && git add -A && git commit -m "fix: add sizes prop to tutor-advantage image, remove invalid sizes from HeroSection floatingImage props
+
+Fixes P2 tech-debt: missing sizes on fill images and invalid sizes on HeroSection floatingImage props that caused TypeScript errors.
+
+- Added sizes=\"10rem\" to tutor-advantage.tsx fill image
+- Removed invalid sizes from floatingImage in reading-advantage, products, and blended-learning pages (HeroSection uses width/height, not fill)"
+[main 0551bdd] fix: add sizes prop to tutor-advantage image, remove invalid sizes from HeroSection floatingImage props
+ 9 files changed, 1121 insertions(+), 965 deletions(-)
+ create mode 100644 conductor/review-output.log
+ create mode 100644 conductor/tracks/images_sizes_prop_20260414/plan.md
+ create mode 100644 conductor/tracks/images_sizes_prop_20260414/spec.md
+[0m
+[0m✱ [0mGrep "fill\b(?!=)"[90m in src · 0 matches[0m
+[0m✱ [0mGrep "\bfill\b(?!=)"[90m in src · 0 matches[0m
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/www-reading-advantage && rg 'fill' src --type tsx -n | rg -v 'fill="|fill="|' | head -20
+/bin/bash: line 1: rg: command not found
+/bin/bash: line 1: rg: command not found
+[0m
+[0m✱ [0mGrep "\bfill\b"[90m in src · 24 matches[0m
+All `fill` images now have `sizes` or are SVG paths (`fill="none"`). Build and tests pass. Updating docs:
+[0m→ [0mRead conductor/tech-debt.md[90m [limit=20, offset=1][0m
+[0m
+[0m← [0mEdit conductor/tech-debt.md
+Index: /home/daniel-bo/Desktop/www-reading-advantage/conductor/tech-debt.md
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/conductor/tech-debt.md
++++ /home/daniel-bo/Desktop/www-reading-advantage/conductor/tech-debt.md
+@@ -15,8 +15,10 @@
+ **Files to audit:** All product pages, case-studies page, services pages.
+ 
+ **Resolution:** Add `sizes` prop to every `fill` image. Typical values: `"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"`.
+ 
++**Status: RESOLVED** — 2026-04-14 via `images_sizes_prop_20260414`. All `fill` images now have appropriate `sizes`. Invalid `sizes` on HeroSection floatingImage props also removed (HeroSection uses width/height, not fill).
++
+ ---
+ 
+ ### [P2] Excessive client component boundaries inflate JS bundle (2026-02)
+ 
+
+[0m
+[0m→ [0mRead conductor/tech-debt.md[90m [limit=35, offset=1][0m
+[0m
+[0m← [0mEdit conductor/tech-debt.md
+Index: /home/daniel-bo/Desktop/www-reading-advantage/conductor/tech-debt.md
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/conductor/tech-debt.md
++++ /home/daniel-bo/Desktop/www-reading-advantage/conductor/tech-debt.md
+@@ -19,10 +19,14 @@
+ **Status: RESOLVED** — 2026-04-14 via `images_sizes_prop_20260414`. All `fill` images now have appropriate `sizes`. Invalid `sizes` on HeroSection floatingImage props also removed (HeroSection uses width/height, not fill).
+ 
+ ---
+ 
+-### [P2] Excessive client component boundaries inflate JS bundle (2026-02)
++## Resolved Debt
+ 
++| Item                              | Resolved In            | Date    |
++| --------------------------------- | ---------------------- | ------- |
++| `conntainer` typo on pricing page | site_refactor_20260207 | 2026-02 |
++
+ **Problem:** Several pages remain unnecessarily marked `"use client"` even after the site refactor track. Each `"use client"` boundary forces all child components into the client bundle. The current total JS weight is above target.
+ 
+ **Remaining offenders (as of 2026-02-08):**
+ 
+
+[0m
+[0m→ [0mRead conductor/tech-debt.md[90m [limit=50, offset=1][0m
+The tech-debt file got corrupted. Rewriting properly:
+[0m→ [0mRead conductor/tech-debt.md
+[0m
+[0m← [0mWrite conductor/tech-debt.md
+Wrote file successfully.
+[0m
+[0m← [0mEdit conductor/lessons-learned.md
+Index: /home/daniel-bo/Desktop/www-reading-advantage/conductor/lessons-learned.md
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/conductor/lessons-learned.md
++++ /home/daniel-bo/Desktop/www-reading-advantage/conductor/lessons-learned.md
+@@ -3,8 +3,24 @@
+ Retrospective insights captured after completing tracks, PR merges, and development milestones. Most recent entries at the top.
+ 
+ ---
+ 
++## 2026-04-14 — Fix Missing `sizes` Props on `fill` Images (images_sizes_prop_20260414)
++
++### What Happened
++
++- Top tech-debt item: `tutor-advantage.tsx` had a `fill` image without `sizes`.
++- Also found invalid `sizes` props passed via `floatingImage` to `HeroSection` — the component uses `width`/`height` props, not `fill`, so `sizes` was rejected by TypeScript on 3 pages.
++- Fixed `tutor-advantage.tsx` (added `sizes="10rem"`), removed invalid `sizes` from `reading-advantage`, `products`, and `blended-learning` pages.
++
++### Lessons
++
++- `HeroSection` internally uses `width`/`height` (not `fill`) for floatingImage, so `sizes` is never appropriate on that prop.
++- Build error "Object literal may only specify known properties" from `sizes` on a non-`fill` Image means the prop doesn't exist on that type.
++- When adding `sizes` to a track, audit the entire `floatingImage` pattern across all pages — if one page has it wrong, others likely do too.
++
++---
++
+ ## 2026-04-13 — Phase 3 Fixes (Complete Site Redesign)
+ 
+ ### What Happened
+ 
+
+[0m

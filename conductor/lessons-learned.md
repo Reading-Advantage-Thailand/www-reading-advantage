@@ -4,6 +4,22 @@ Retrospective insights captured after completing tracks, PR merges, and developm
 
 ---
 
+## 2026-04-14 — Fix Missing `sizes` Props on `fill` Images (images_sizes_prop_20260414)
+
+### What Happened
+
+- Top tech-debt item: `tutor-advantage.tsx` had a `fill` image without `sizes`.
+- Also found invalid `sizes` props passed via `floatingImage` to `HeroSection` — the component uses `width`/`height` props, not `fill`, so `sizes` was rejected by TypeScript on 3 pages.
+- Fixed `tutor-advantage.tsx` (added `sizes="10rem"`), removed invalid `sizes` from `reading-advantage`, `products`, and `blended-learning` pages.
+
+### Lessons
+
+- `HeroSection` internally uses `width`/`height` (not `fill`) for floatingImage, so `sizes` is never appropriate on that prop.
+- Build error "Object literal may only specify known properties" from `sizes` on a non-`fill` Image means the prop doesn't exist on that type.
+- When adding `sizes` to a track, audit the entire `floatingImage` pattern across all pages — if one page has it wrong, others likely do too.
+
+---
+
 ## 2026-04-13 — Phase 3 Fixes (Complete Site Redesign)
 
 ### What Happened

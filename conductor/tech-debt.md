@@ -8,16 +8,6 @@ Priority: **P1** = blocks quality/production, **P2** = degrades DX or UX, **P3**
 
 ## Open Debt
 
-### [P2] No `sizes` prop on many `fill` images (2026-02)
-
-**Problem:** Multiple `next/image` components using `layout="fill"` or the `fill` prop lack the `sizes` attribute. Without `sizes`, the browser defaults to `100vw` and downloads the largest image variant even on small viewports.
-
-**Files to audit:** All product pages, case-studies page, services pages.
-
-**Resolution:** Add `sizes` prop to every `fill` image. Typical values: `"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"`.
-
----
-
 ### [P2] Excessive client component boundaries inflate JS bundle (2026-02)
 
 **Problem:** Several pages remain unnecessarily marked `"use client"` even after the site refactor track. Each `"use client"` boundary forces all child components into the client bundle. The current total JS weight is above target.
@@ -100,3 +90,4 @@ Priority: **P1** = blocks quality/production, **P2** = degrades DX or UX, **P3**
 | Emoji icons on features page (accessibility)               | site_refactor_20260207            | 2026-02 |
 | Missing test suite — no unit/integration tests             | testing_infrastructure_20260408   | 2026-04 |
 | Services pages hard-coded English text                     | services_i18n_completion_20260408 | 2026-04 |
+| Missing `sizes` prop on `fill` images                      | images_sizes_prop_20260414        | 2026-04 |
