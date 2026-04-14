@@ -80,7 +80,6 @@ export default function Home() {
         floatingImage={{
           src: "/images/students-at-board.png",
           alt: "Students gathered at interactive board",
-          sizes: "(max-width: 1280px) 100vw, 50vw",
         }}
         customGradient="bg-warm-cream"
         className="pt-20"
@@ -310,9 +309,9 @@ export default function Home() {
                 title: t("innovation.features.2.title"),
                 description: t("innovation.features.2.description"),
               },
-            ].map((feature, index) => (
+            ].map((feature) => (
               <Card
-                key={index}
+                key={feature.title}
                 className="bg-white/10 border-white/10 backdrop-blur-sm hover:bg-white/15 hover:-translate-y-3"
               >
                 <CardContent className="p-10">

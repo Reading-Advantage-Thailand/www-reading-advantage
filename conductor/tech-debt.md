@@ -46,11 +46,11 @@ Priority: **P1** = blocks quality/production, **P2** = degrades DX or UX, **P3**
 
 ---
 
-### [P3] Tailwind config defines unused utilities (2026-02)
+### [P3] Tailwind config — verify `shadow-modern` variants (2026-04)
 
-**Problem:** `tailwind.config.ts` defines `teal-modern` gradient and custom shadows (`shadow-modern`, `shadow-glow`) that are never used in any component file. Dead config adds cognitive overhead.
+**Problem:** `tailwind.config.ts` defines custom shadows (`shadow-modern`, `shadow-glow`). Previous tech-debt entry incorrectly stated these were unused. They are used across product pages and components. `shadow-modern-lg` is used but may not be defined — needs audit.
 
-**Resolution:** Remove all unused custom Tailwind utilities from the config. Verify with a grep pass before deletion.
+**Resolution:** Verify all `shadow-*` variants used in code are defined in config. Remove any truly unused ones.
 
 ---
 
@@ -75,6 +75,14 @@ Priority: **P1** = blocks quality/production, **P2** = degrades DX or UX, **P3**
 **Problem:** The blog listing page (`/blog`) renders all posts in a single request. As content grows, this will cause slow page loads and large HTML payloads.
 
 **Resolution:** Implement page-based or cursor-based pagination. The MDX pipeline supports static generation — use `generateStaticParams` with page numbers.
+
+---
+
+### [P3] Inline SVG icons in primary-advantage CTA (2026-04)
+
+**Problem:** `primary-advantage/page.tsx` uses inline `<svg>` elements (email envelope and lightning bolt icons) in the CTA section instead of Lucide React components used everywhere else. Inconsistent icon approach.
+
+**Resolution:** Replace inline SVGs with `Mail` and `Zap` Lucide icons (already imported).
 
 ---
 
