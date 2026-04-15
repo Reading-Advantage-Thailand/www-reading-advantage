@@ -1,13 +1,11 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { Network, Brain, GraduationCap, Clock, ArrowRight } from "lucide-react";
-import { useScopedI18n } from "@/locales/client";
+import { getScopedI18n } from "@/locales/server";
 
-export default function TutorAdvantage() {
-  const t = useScopedI18n("components.products.tutorAdvantage");
+export default async function TutorAdvantage() {
+  const t = await getScopedI18n("components.products.tutorAdvantage");
 
   const features = [
     {

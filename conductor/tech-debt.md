@@ -8,18 +8,6 @@ Priority: **P1** = blocks quality/production, **P2** = degrades DX or UX, **P3**
 
 ## Open Debt
 
-### [P2] Excessive client component boundaries inflate JS bundle (2026-02)
-
-**Problem:** Several pages remain unnecessarily marked `"use client"` even after the site refactor track. Each `"use client"` boundary forces all child components into the client bundle. The current total JS weight is above target.
-
-**Remaining offenders (as of 2026-02-08):**
-
-- Product pages that only use `useScopedI18n` could be refactored to use the server-side `getScopedI18n` if the locale hook is the only reason for the client directive.
-
-**Resolution:** Audit each `"use client"` page, determine if React state or browser APIs are truly needed, and convert to server component where possible.
-
----
-
 ### [P2] Hero image inconsistency — pricing and about pages share the same unrelated crop (2026-02)
 
 **Problem:** The pricing and about pages reuse the same `students_at_computers.jpg` background image, cropped to show only hands. This looks accidental rather than intentional and reduces visual distinctiveness.
@@ -78,16 +66,17 @@ Priority: **P1** = blocks quality/production, **P2** = degrades DX or UX, **P3**
 
 ## Resolved Debt
 
-| Item                                                       | Resolved In                       | Date    |
-| ---------------------------------------------------------- | --------------------------------- | ------- |
-| `conntainer` typo on pricing page                          | site_refactor_20260207            | 2026-02 |
-| Broken `href="#"` on about page CTA                        | site_refactor_20260207            | 2026-02 |
-| `ignoreBuildErrors: true` in next.config.ts                | site_refactor_20260207            | 2026-02 |
-| Framer Motion `PageTransition` wrapper in marketing layout | site_refactor_20260207            | 2026-02 |
-| `services/page.tsx` unnecessarily `"use client"`           | site_refactor_20260207            | 2026-02 |
-| `case-studies/page.tsx` unnecessarily `"use client"`       | site_refactor_20260207            | 2026-02 |
-| `features/page.tsx` unnecessarily `"use client"`           | site_refactor_20260207            | 2026-02 |
-| Emoji icons on features page (accessibility)               | site_refactor_20260207            | 2026-02 |
-| Missing test suite — no unit/integration tests             | testing_infrastructure_20260408   | 2026-04 |
-| Services pages hard-coded English text                     | services_i18n_completion_20260408 | 2026-04 |
-| Missing `sizes` prop on `fill` images                      | images_sizes_prop_20260414        | 2026-04 |
+| Item                                                       | Resolved In                         | Date    |
+| ---------------------------------------------------------- | ----------------------------------- | ------- |
+| `conntainer` typo on pricing page                          | site_refactor_20260207              | 2026-02 |
+| Broken `href="#"` on about page CTA                        | site_refactor_20260207              | 2026-02 |
+| `ignoreBuildErrors: true` in next.config.ts                | site_refactor_20260207              | 2026-02 |
+| Framer Motion `PageTransition` wrapper in marketing layout | site_refactor_20260207              | 2026-02 |
+| `services/page.tsx` unnecessarily `"use client"`           | site_refactor_20260207              | 2026-02 |
+| `case-studies/page.tsx` unnecessarily `"use client"`       | site_refactor_20260207              | 2026-02 |
+| `features/page.tsx` unnecessarily `"use client"`           | site_refactor_20260207              | 2026-02 |
+| Emoji icons on features page (accessibility)               | site_refactor_20260207              | 2026-02 |
+| Missing test suite — no unit/integration tests             | testing_infrastructure_20260408     | 2026-04 |
+| Services pages hard-coded English text                     | services_i18n_completion_20260408   | 2026-04 |
+| Missing `sizes` prop on `fill` images                      | images_sizes_prop_20260414          | 2026-04 |
+| Excessive client component boundaries inflate JS bundle    | client_component_reduction_20260415 | 2026-04 |

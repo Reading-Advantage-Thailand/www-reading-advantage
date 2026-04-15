@@ -1,9 +1,7 @@
-"use client"
-
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import Image from "next/image"
-import { Fragment } from "react"
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import Image from "next/image";
+import { Fragment } from "react";
 import {
   BookOpen,
   Bot,
@@ -12,9 +10,9 @@ import {
   BookMarked,
   Beaker,
   type LucideIcon,
-} from "lucide-react"
-import { useScopedI18n } from "@/locales/client"
-import { ArrowRight } from "lucide-react"
+} from "lucide-react";
+import { getScopedI18n } from "@/locales/server";
+import { ArrowRight } from "lucide-react";
 
 type ProductKey =
   | "primaryAdvantage"
@@ -23,23 +21,23 @@ type ProductKey =
   | "scienceAdvantage"
   | "mathAdvantage"
   | "zhongwenAdvantage"
-  | "storytimeAdvantage"
+  | "storytimeAdvantage";
 
 interface ProductConfig {
-  key: ProductKey
-  href: string
-  bgColor: string
-  logo?: string
-  icon?: LucideIcon
-  layout?: "feature" | "standard"
-  badgeType?: "new" | "flagship"
-  badgeKey?: `products.${ProductKey}.badge`
-  gradientFrom: string
-  gradientTo: string
-  accentColor: string
+  key: ProductKey;
+  href: string;
+  bgColor: string;
+  logo?: string;
+  icon?: LucideIcon;
+  layout?: "feature" | "standard";
+  badgeType?: "new" | "flagship";
+  badgeKey?: `products.${ProductKey}.badge`;
+  gradientFrom: string;
+  gradientTo: string;
+  accentColor: string;
 }
 
-const FEATURE_INDEXES = [0, 1, 2, 3] as const
+const FEATURE_INDEXES = [0, 1, 2, 3] as const;
 
 const productConfigs = [
   {
@@ -120,34 +118,36 @@ const productConfigs = [
     gradientTo: "to-indigo-600",
     accentColor: "text-indigo-700",
   },
-] as const satisfies readonly ProductConfig[]
+] as const satisfies readonly ProductConfig[];
 
-export default function B2BSolutions() {
-  const t = useScopedI18n("components.products.b2bSolutions")
+export default async function B2BSolutions() {
+  const t = await getScopedI18n("components.products.b2bSolutions");
 
-  const products = (productConfigs as readonly ProductConfig[]).map((config) => {
-    const title = t(`products.${config.key}.title` as never)
-    const features = FEATURE_INDEXES.map((featureIndex) =>
-      t(`products.${config.key}.features.${featureIndex}` as never)
-    )
-    const gradeRange = t(`products.${config.key}.gradeRange` as never)
+  const products = (productConfigs as readonly ProductConfig[]).map(
+    (config) => {
+      const title = t(`products.${config.key}.title` as never);
+      const features = FEATURE_INDEXES.map((featureIndex) =>
+        t(`products.${config.key}.features.${featureIndex}` as never),
+      );
+      const gradeRange = t(`products.${config.key}.gradeRange` as never);
 
-    const badgeLabel = config.badgeKey
-      ? t(config.badgeKey)
-      : config.badgeType === "flagship"
-        ? t("mostPopular")
-        : config.badgeType === "new"
-          ? t(`products.${config.key}.badge` as never)
-          : undefined
+      const badgeLabel = config.badgeKey
+        ? t(config.badgeKey)
+        : config.badgeType === "flagship"
+          ? t("mostPopular")
+          : config.badgeType === "new"
+            ? t(`products.${config.key}.badge` as never)
+            : undefined;
 
-    return {
-      ...config,
-      title,
-      features,
-      gradeRange,
-      badgeLabel,
-    }
-  })
+      return {
+        ...config,
+        title,
+        features,
+        gradeRange,
+        badgeLabel,
+      };
+    },
+  );
 
   return (
     <section className="bg-white py-16 md:py-24 overflow-hidden">
@@ -167,12 +167,14 @@ export default function B2BSolutions() {
         {/* Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {products.map((product, index) => {
-            const baseDelay = index * 100
+            const baseDelay = index * 100;
             return (
               <Fragment key={product.key}>
                 <div
                   className={`${
-                    product.layout === "feature" ? "col-span-full lg:col-span-2" : ""
+                    product.layout === "feature"
+                      ? "col-span-full lg:col-span-2"
+                      : ""
                   } animate-in fade-in zoom-in-95 duration-500`}
                   style={{ animationDelay: `${baseDelay}ms` }}
                 >
@@ -206,7 +208,12 @@ export default function B2BSolutions() {
                           <div
                             className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${product.gradientFrom} ${product.gradientTo} flex items-center justify-center shadow-lg`}
                           >
-                            {product.icon && <product.icon className="w-8 h-8 text-white" strokeWidth={1.5} />}
+                            {product.icon && (
+                              <product.icon
+                                className="w-8 h-8 text-white"
+                                strokeWidth={1.5}
+                              />
+                            )}
                           </div>
                         </div>
                       )}
@@ -240,9 +247,14 @@ export default function B2BSolutions() {
                         <li
                           key={`${product.key}-${featureIndex}`}
                           className="flex items-start animate-in fade-in slide-in-from-left-4 duration-300"
-                          style={{ animationDelay: `${baseDelay + featureIndex * 50}ms` }}
+                          style={{
+                            animationDelay: `${baseDelay + featureIndex * 50}ms`,
+                          }}
                         >
-                          <ArrowRight className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5 text-slate-500" strokeWidth={2} />
+                          <ArrowRight
+                            className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5 text-slate-500"
+                            strokeWidth={2}
+                          />
                           <span className="leading-relaxed">{feature}</span>
                         </li>
                       ))}
@@ -257,14 +269,17 @@ export default function B2BSolutions() {
                           text-white px-8 py-3 rounded-xl hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300
                         `}
                       >
-                        <Link href={product.href} className="inline-flex items-center gap-2">
+                        <Link
+                          href={product.href}
+                          className="inline-flex items-center gap-2"
+                        >
                           {t("cta.learnMore")}
                           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
                       </Button>
                     </div>
 
-                     {/* Glassmorphism overlay */}
+                    {/* Glassmorphism overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-2xl pointer-events-none" />
                   </div>
                 </div>
@@ -286,17 +301,19 @@ export default function B2BSolutions() {
                       </div>
                       <div className="absolute inset-0 z-10 bg-gradient-to-br from-white/40 to-white/20" />
                       <div className="relative z-20 text-center space-y-3 bg-white/80 backdrop-blur-xs rounded-2xl px-6 py-4 shadow-modern border border-white/50">
-                        <p className="text-lg font-semibold text-slate-800">{t("seeSuccessStories")}</p>
+                        <p className="text-lg font-semibold text-slate-800">
+                          {t("seeSuccessStories")}
+                        </p>
                         <p className="text-slate-600">{t("description")}</p>
                       </div>
                     </div>
                   </div>
                 )}
               </Fragment>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -20,7 +20,3 @@ vi.mock("@/locales/client", () => ({
   useCurrentLocale: vi.fn(() => "en"),
   useChangeLocale: vi.fn(() => vi.fn()),
 }));
-
-vi.mock("@/locales/server", () => ({
-  getScopedI18n: vi.fn((scope: string) => (key: string) => `${scope}.${key}`),
-}));

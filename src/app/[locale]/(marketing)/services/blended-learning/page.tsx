@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -13,11 +11,11 @@ import {
   TrendingUp,
   GraduationCap,
 } from "lucide-react";
-import { useScopedI18n } from "@/locales/client";
+import { getScopedI18n } from "@/locales/server";
 import HeroSection from "@/components/marketing/hero-section";
 
-export default function BlendedLearning() {
-  const t = useScopedI18n("pages.blendedLearning");
+export default async function BlendedLearning() {
+  const t = await getScopedI18n("pages.blendedLearning");
   const featureIndexes = [0, 1, 2, 3, 4, 5] as const;
   const features = featureIndexes.map((featureIndex) =>
     t(`features.items.${featureIndex}`),

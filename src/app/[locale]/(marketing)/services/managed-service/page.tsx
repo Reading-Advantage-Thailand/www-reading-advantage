@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -12,11 +10,11 @@ import {
   Clock,
   TrendingUp,
 } from "lucide-react";
-import { useScopedI18n } from "@/locales/client";
+import { getScopedI18n } from "@/locales/server";
 import HeroSection from "@/components/marketing/hero-section";
 
-export default function ManagedService() {
-  const t = useScopedI18n("pages.managedService");
+export default async function ManagedService() {
+  const t = await getScopedI18n("pages.managedService");
   const featureIndexes = [0, 1, 2, 3, 4] as const;
   const managedFeatures = featureIndexes.map((featureIndex) =>
     t(`features.items.${featureIndex}`),

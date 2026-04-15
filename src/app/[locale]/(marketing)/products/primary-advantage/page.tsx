@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import HeroSection from "@/components/marketing/hero-section";
@@ -10,11 +8,11 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { useScopedI18n } from "@/locales/client";
+import { getScopedI18n } from "@/locales/server";
 import { Mail, BookOpen, Target, Zap, Brain, PenTool } from "lucide-react";
 
-export default function PrimaryAdvantage() {
-  const t = useScopedI18n("pages.products.primaryAdvantage");
+export default async function PrimaryAdvantage() {
+  const t = await getScopedI18n("pages.products.primaryAdvantage");
 
   const features = [
     {

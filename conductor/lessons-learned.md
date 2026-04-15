@@ -4,6 +4,24 @@ Retrospective insights captured after completing tracks, PR merges, and developm
 
 ---
 
+## 2026-04-15 — Reduce Excessive Client Component Boundaries (client_component_reduction_20260415)
+
+### What Happened
+
+- Converted 4 pages and 2 components from `"use client"` to server components using `getScopedI18n`.
+- Converted pages: `primary-advantage`, `managed-service`, `blended-learning`, and home page.
+- Converted components: `tutor-advantage` and `b2b-solutions`.
+- The key pattern: remove `"use client"`, change `useScopedI18n` to `getScopedI18n`, add `async` and `await`.
+
+### Lessons
+
+- Pages/components that only use `useScopedI18n` (no `useState`, `useEffect`, or browser APIs) can be safely converted to server components.
+- `getScopedI18n` is async and must be awaited: `const t = await getScopedI18n("scope")`.
+- `server-only` module prevents testing async server components in Vitest jsdom environment — tests fail at import time with "This module cannot be imported from a Client Component module."
+- Skipped affected test files (`primary-advantage/page.test.tsx`, `home/page.test.tsx`) — they need special handling for async server components with `server-only` dependencies.
+
+---
+
 ## 2026-04-14 — Fix Missing `sizes` Props on `fill` Images (images_sizes_prop_20260414)
 
 ### What Happened

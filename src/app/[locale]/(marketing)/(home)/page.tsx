@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -11,13 +9,13 @@ import {
   Zap,
   Users,
 } from "lucide-react";
-import { useScopedI18n } from "@/locales/client";
+import { getScopedI18n } from "@/locales/server";
 import HeroSection from "@/components/marketing/hero-section";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-export default function Home() {
-  const t = useScopedI18n("pages.home");
+export default async function Home() {
+  const t = await getScopedI18n("pages.home");
   const benefits = [
     t("flagship.benefits.0"),
     t("flagship.benefits.1"),

@@ -20,6 +20,16 @@ _Link: [./conductor/tracks/hero_standardization_20260208/](./conductor/tracks/he
 
 ## Upcoming Tracks (created 2026-04-08)
 
+### [ ] Track: Reduce Excessive Client Component Boundaries
+
+**Status:** New
+
+**Type:** refactor | **Estimated Tasks:** 6
+
+**Description:** Convert pages/components that only use `useScopedI18n` (no useState, useEffect, or browser APIs) from "use client" to server components using `getScopedI18n`. This reduces JS bundle size by moving static content to the server bundle.
+
+_Link: [./conductor/tracks/client_component_reduction_20260415/](./conductor/tracks/client_component_reduction_20260415/)_
+
 ### [ ] Track: Fix Missing `sizes` Props on `fill` Images
 
 **Status:** New
