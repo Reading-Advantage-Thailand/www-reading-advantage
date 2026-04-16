@@ -393,3 +393,23 @@ To https://github.com/Reading-Advantage-Thailand/www-reading-advantage.git
 [0m$ [0mgit status --short
 M conductor/output.log
 [0m
+[0m$ [0mgit add conductor/output.log && git commit -m "chore: update output log [MiniMax-M2.7]"
+[main 3a64d26] chore: update output log [MiniMax-M2.7]
+ 1 file changed, 17 insertions(+)
+[0m
+[0m$ [0mgit push
+To https://github.com/Reading-Advantage-Thailand/www-reading-advantage.git
+   4005e35..3a64d26  main -> main
+[0m
+Track complete. 
+
+**What was done:**
+- Resolved P2 tech-debt: "Hero image inconsistency — pricing and about pages share the same unrelated crop"
+- **Finding:** The debt entry was inaccurate — neither page actually had a `floatingImage` set. Both used `alignment="center"` which suppresses the floating image anyway, so they had no hero imagery at all compared to home/products pages.
+- **Fix:** Added `floatingImage` + `alignment="left"` to both pages:
+  - `pricing` → `/images/app-on-desktop.png`
+  - `about` → `/images/teacher-at-board.png`
+- Build passes, 35 tests pass
+- Commits pushed: `4005e35` (fix), `3a64d26` (output log)
+
+**New lesson added:** Always verify tech-debt descriptions against current code before implementing — descriptions can be outdated or wrong.
