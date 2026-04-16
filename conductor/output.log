@@ -376,3 +376,20 @@ Index: /home/daniel-bo/Desktop/www-reading-advantage/conductor/lessons-learned.m
  
 
 [0m
+[0m$ [0mgit add -A && git commit -m "fix: add hero images to pricing and about pages [MiniMax-M2.7]"
+[main 4005e35] fix: add hero images to pricing and about pages [MiniMax-M2.7]
+ 6 files changed, 298 insertions(+), 2290 deletions(-)
+ create mode 100644 conductor/tracks/hero_image_inconsistency_20260416/SPEC.md
+[0m
+[0m$ [0mgit log --oneline -3
+4005e35 fix: add hero images to pricing and about pages [MiniMax-M2.7]
+d55c4eb refactor: reduce client component boundaries by converting 4 pages and 2 components to server components [MiniMax-M2.7]
+9d45cf9 chore: update autonomous prompt and output log
+[0m
+[0m$ [0mgit push
+To https://github.com/Reading-Advantage-Thailand/www-reading-advantage.git
+   d55c4eb..4005e35  main -> main
+[0m
+[0m$ [0mgit status --short
+M conductor/output.log
+[0m
