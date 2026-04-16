@@ -30,8 +30,12 @@ export default async function AboutPage() {
           href: "/contact",
           variant: "primary",
         }}
+        floatingImage={{
+          src: "/images/teacher-at-board.png",
+          alt: "Reading Advantage team collaborating with teachers in Thailand",
+        }}
         height="medium"
-        alignment="center"
+        alignment="left"
       />
 
       {/* Introduction Section */}

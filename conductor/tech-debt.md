@@ -8,14 +8,6 @@ Priority: **P1** = blocks quality/production, **P2** = degrades DX or UX, **P3**
 
 ## Open Debt
 
-### [P2] Hero image inconsistency — pricing and about pages share the same unrelated crop (2026-02)
-
-**Problem:** The pricing and about pages reuse the same `students_at_computers.jpg` background image, cropped to show only hands. This looks accidental rather than intentional and reduces visual distinctiveness.
-
-**Resolution:** Source page-specific hero images for both pricing and about. Add to `public/images/` and update the `HeroSection` calls.
-
----
-
 ### [P2] `next.config.ts` only allows `localhost` as image domain (2026-02)
 
 **Problem:** The `images.domains` (or `remotePatterns`) configuration in `next.config.ts` only permits `localhost`. Any production or CDN images from external domains will fail with a 400 error.
@@ -68,6 +60,7 @@ Priority: **P1** = blocks quality/production, **P2** = degrades DX or UX, **P3**
 
 | Item                                                       | Resolved In                         | Date    |
 | ---------------------------------------------------------- | ----------------------------------- | ------- |
+| Hero image inconsistency on pricing and about pages        | hero_image_inconsistency_20260416   | 2026-04 |
 | `conntainer` typo on pricing page                          | site_refactor_20260207              | 2026-02 |
 | Broken `href="#"` on about page CTA                        | site_refactor_20260207              | 2026-02 |
 | `ignoreBuildErrors: true` in next.config.ts                | site_refactor_20260207              | 2026-02 |

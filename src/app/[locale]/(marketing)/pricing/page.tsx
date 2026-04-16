@@ -31,8 +31,12 @@ export default async function PricingPage() {
           href: "/contact",
           variant: "primary",
         }}
+        floatingImage={{
+          src: "/images/app-on-desktop.png",
+          alt: "Reading Advantage pricing dashboard on desktop showing subscription tiers",
+        }}
         height="medium"
-        alignment="center"
+        alignment="left"
       />
 
       {/* Pricing Table Section */}

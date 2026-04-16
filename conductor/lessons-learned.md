@@ -4,6 +4,25 @@ Retrospective insights captured after completing tracks, PR merges, and developm
 
 ---
 
+## 2026-04-16 — Hero Image Inconsistency Fix (hero_image_inconsistency_20260416)
+
+### What Happened
+
+- Top tech-debt item claimed pricing and about pages "reuse the same `students_at_computers.jpg`"
+- Audit revealed: **neither page actually had a `floatingImage` prop set** — both used `alignment="center"` which suppresses the floating image entirely
+- The actual problem: pricing and about were visually underwhelming compared to home/products pages which show a hero image via `floatingImage` with `alignment="left"`
+- Resolution: added `floatingImage` + `alignment="left"` to both pages using existing images:
+  - pricing → `/images/app-on-desktop.png`
+  - about → `/images/teacher-at-board.png`
+
+### Lessons
+
+- Tech-debt descriptions may be inaccurate or outdated — always verify by reading current code before implementing
+- `HeroSection` floating image only renders when `alignment="left"` (hidden at center alignment per component logic)
+- When a debt entry says two pages "share the same image," check if they share anything at all first
+
+---
+
 ## 2026-04-15 — Reduce Excessive Client Component Boundaries (client_component_reduction_20260415)
 
 ### What Happened
