@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
   BarChart3,
   Target,
-  Bot,
   Dumbbell,
   Clock,
   ArrowRight,
@@ -174,8 +173,14 @@ export default async function MathAdvantage() {
 
             {/* Illustration RIGHT (5 cols) */}
             <div className="lg:col-span-5 relative">
-              <div className="relative aspect-square rounded-[40px] overflow-hidden shadow-xl bg-gradient-to-br from-orange-50 to-amber-50 flex items-center justify-center">
-                <Bot className="w-32 h-32 text-orange-400" strokeWidth={1.5} />
+              <div className="relative aspect-square rounded-[40px] overflow-hidden shadow-xl">
+                <Image
+                  src="/images/math-advantage-hero.jpg"
+                  alt="Math Advantage platform showing AI-powered problem generation"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                />
               </div>
               <div className="absolute -top-4 -right-4">
                 <FloatingPill value="AI" label="Powered" variant="orange" size="sm" />

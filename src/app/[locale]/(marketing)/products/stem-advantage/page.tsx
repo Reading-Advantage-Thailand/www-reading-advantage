@@ -124,11 +124,11 @@ export default async function StemAdvantage() {
               <div className="lg:col-span-5 flex justify-center">
                 <div className="relative w-full max-w-md aspect-square">
                   <Image
-                    src="/stem-advantage.png"
-                    alt="STEM Advantage"
+                    src="/images/stem-advantage-hero.jpg"
+                    alt="STEM Advantage students coding and building"
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-contain rounded-3xl"
+                    className="object-cover rounded-3xl"
                   />
                 </div>
               </div>

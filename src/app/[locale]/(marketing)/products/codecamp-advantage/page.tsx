@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Code2,
@@ -70,12 +71,15 @@ export default async function CodeCampAdvantage() {
               </Link>
             </div>
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/10">
-                <div className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 flex items-center justify-center">
-                  <span className="text-5xl md:text-6xl font-bold text-white tracking-tight">
-                    CodeCamp
-                  </span>
-                </div>
+              <div className="relative w-full max-w-md aspect-square">
+                <Image
+                  src="/images/codecamp-advantage-hero.jpg"
+                  alt="CodeCamp Advantage coding workspace"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover rounded-3xl shadow-2xl"
+                  priority
+                />
               </div>
             </div>
           </div>
