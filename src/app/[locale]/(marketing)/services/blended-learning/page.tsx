@@ -4,7 +4,6 @@ import {
   ArrowRight,
   CheckCircle,
   BookOpen,
-  Users,
   Calendar,
   Zap,
   Target,
@@ -13,6 +12,7 @@ import {
 } from "lucide-react";
 import { getScopedI18n } from "@/locales/server";
 import HeroSection from "@/components/marketing/hero-section";
+import { Button } from "@/components/ui/button";
 
 export default async function BlendedLearning() {
   const t = await getScopedI18n("pages.blendedLearning");
@@ -81,11 +81,10 @@ export default async function BlendedLearning() {
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-16 items-center animate-in fade-in slide-in-from-bottom-8 duration-700">
               <div>
-                <div className="inline-flex items-center gap-2 bg-sky-100 text-sky-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
-                  <BookOpen className="w-4 h-4" />
+                <span className="uppercase tracking-widest text-xs font-semibold text-sky-600 mb-4 block">
                   {t("overview.title")}
-                </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
+                </span>
+                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight tracking-tight">
                   {t("overview.heading")}
                 </h2>
                 <p className="text-lg text-slate-600 mb-6 leading-relaxed">
@@ -105,7 +104,7 @@ export default async function BlendedLearning() {
                     width={400}
                     height={300}
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="rounded-2xl shadow-xl"
+                    className="rounded-3xl shadow-xl"
                   />
                 </div>
               </div>
@@ -119,11 +118,10 @@ export default async function BlendedLearning() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-in fade-in duration-700">
-              <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
-                <Zap className="w-4 h-4" />
+              <span className="uppercase tracking-widest text-xs font-semibold text-amber-600 mb-4 block">
                 {t("features.badge")}
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
                 {t("features.title")}
               </h2>
             </div>
@@ -152,11 +150,10 @@ export default async function BlendedLearning() {
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-16 items-center animate-in fade-in slide-in-from-bottom-8 duration-700">
               <div>
-                <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
-                  <GraduationCap className="w-4 h-4" />
+                <span className="uppercase tracking-widest text-xs font-semibold text-amber-600 mb-4 block">
                   {t("forTeachers.badge")}
-                </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
+                </span>
+                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight tracking-tight">
                   {t("forTeachers.title")}
                 </h2>
                 <p className="text-lg text-slate-600 mb-6 leading-relaxed">
@@ -194,11 +191,10 @@ export default async function BlendedLearning() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-in fade-in duration-700">
-            <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
-              <Target className="w-4 h-4" />
+            <span className="uppercase tracking-widest text-xs font-semibold text-amber-300 mb-4 block">
               {t("levels.badge")}
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight">
               {t("levels.title")}
             </h2>
             <p className="text-xl text-sky-100 mb-12 max-w-3xl mx-auto leading-relaxed">
@@ -210,7 +206,7 @@ export default async function BlendedLearning() {
               {levels.map((level, index) => (
                 <div
                   key={level}
-                  className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-white/40 transition-all duration-300 hover:bg-white/20 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-6 border border-white/20 hover:border-white/40 transition-all duration-300 hover:bg-white/20 animate-in fade-in slide-in-from-bottom-8 duration-700"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   <div className="text-3xl font-bold text-white mb-2">
@@ -233,14 +229,18 @@ export default async function BlendedLearning() {
               </div>
             </div>
 
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-4 bg-white text-slate-900 px-14 py-6 rounded-3xl hover:bg-sky-50 transition-all duration-300 shadow-2xl hover:shadow-white/30 hover:-translate-y-2 font-bold text-xl animate-in fade-in duration-700 delay-300 hover:scale-105"
+            <Button
+              variant="white"
+              size="lg"
+              className="text-xl px-14 py-6 rounded-3xl shadow-2xl hover:shadow-white/30 hover:-translate-y-2 font-bold animate-in fade-in duration-700 delay-300"
+              asChild
             >
-              <TrendingUp className="w-8 h-8" />
-              {t("levels.ctaButton")}
-              <ArrowRight className="w-8 h-8" />
-            </Link>
+              <Link href="/contact">
+                <TrendingUp className="w-8 h-8" />
+                {t("levels.ctaButton")}
+                <ArrowRight className="w-8 h-8" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -250,11 +250,10 @@ export default async function BlendedLearning() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-in fade-in duration-700">
-              <div className="inline-flex items-center gap-2 bg-sky-100 text-sky-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
-                <Users className="w-4 h-4" />
+              <span className="uppercase tracking-widest text-xs font-semibold text-sky-600 mb-4 block">
                 {t("onboarding.title")}
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
                 {t("onboarding.subtitle")}
               </h2>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
@@ -286,35 +285,43 @@ export default async function BlendedLearning() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-40 bg-gradient-to-br from-sky-500 via-blue-600 to-sky-700 text-white overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-sky-500 via-blue-600 to-sky-700 text-white overflow-hidden">
         <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-sky-400/30 rounded-full blur-[150px]" />
         <div className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-blue-400/30 rounded-full blur-[120px]" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight tracking-tight">
               {t("cta.title")}
             </h2>
             <p className="text-2xl md:text-3xl text-sky-100 leading-relaxed mb-16 max-w-3xl mx-auto">
               {t("cta.description")}
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-4 bg-white text-sky-700 px-14 py-6 rounded-3xl hover:bg-sky-50 transition-all duration-300 shadow-2xl hover:shadow-white/30 hover:-translate-y-2 font-bold text-xl animate-in fade-in duration-700 delay-300 hover:scale-105"
+              <Button
+                variant="white"
+                size="lg"
+                className="text-xl px-14 py-6 rounded-3xl shadow-2xl hover:shadow-white/30 hover:-translate-y-2 font-bold animate-in fade-in duration-700 delay-300"
+                asChild
               >
-                <Zap className="w-8 h-8" />
-                {t("cta.button1")}
-                <ArrowRight className="w-8 h-8" />
-              </Link>
-              <Link
-                href="/case-studies"
-                className="inline-flex items-center gap-4 border-2 border-white text-white px-14 py-6 rounded-3xl hover:bg-white hover:text-sky-700 transition-all duration-300 font-bold text-xl hover:scale-105"
+                <Link href="/contact">
+                  <Zap className="w-8 h-8" />
+                  {t("cta.button1")}
+                  <ArrowRight className="w-8 h-8" />
+                </Link>
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-xl px-14 py-6 rounded-3xl border-2 border-white text-white hover:bg-white hover:text-sky-700 font-bold"
+                asChild
               >
-                <Target className="w-8 h-8" />
-                {t("cta.button2")}
-                <ArrowRight className="w-8 h-8" />
-              </Link>
+                <Link href="/case-studies">
+                  <Target className="w-8 h-8" />
+                  {t("cta.button2")}
+                  <ArrowRight className="w-8 h-8" />
+                </Link>
+              </Button>
             </div>
           </div>
         </div>

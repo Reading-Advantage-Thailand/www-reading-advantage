@@ -18,6 +18,18 @@ _Link: [./conductor/tracks/hero_standardization_20260208/](./conductor/tracks/he
 
 ---
 
+### [x] Track: Marketing Pages Redesign
+
+**Status:** Completed
+
+**Type:** refactor | **Estimated Tasks:** 24 | **Actual Tasks:** 24
+
+**Description:** Apply the established brand design system (glassmorphism, asymmetric layouts, uppercase wayfinding labels, rounded-3xl cards, standard Button CTAs) to all non-product marketing pages: Home, About, Features, Pricing, Services, and Contact.
+
+_Link: [./conductor/tracks/marketing_pages_redesign_20260418/](./conductor/tracks/marketing_pages_redesign_20260418/)_
+
+---
+
 ## Archived Tracks
 
 ### [x] Track: Complete Site Redesign (Archived)

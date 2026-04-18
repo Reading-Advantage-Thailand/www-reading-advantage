@@ -29,12 +29,7 @@ export default async function Home() {
   const secondLine = titleParts.slice(3).join(" ");
 
   const heroTitle = (
-    <h1
-      className="text-[80px] font-semibold leading-tight "
-      style={{
-        letterSpacing: "-3.2px",
-      }}
-    >
+    <h1 className="text-5xl md:text-7xl lg:text-[80px] font-semibold leading-tight tracking-tight">
       <span className="block">{firstLine}</span>
       <span className="block bg-gradient-to-r from-sky-300 to-sky-500 bg-clip-text text-transparent">
         {secondLine}
@@ -43,18 +38,14 @@ export default async function Home() {
   );
 
   const heroDescription = (
-    <p
-      className="text-[20px] font-normal leading-[1.6] text-slate-400 "
-      style={{
-      }}
-    >
+    <p className="text-lg md:text-xl font-normal leading-relaxed text-slate-400">
       {t("hero.description")}
     </p>
   );
 
   return (
     <main className="overflow-x-hidden bg-sky-50">
-      {/* Hero - Using HeroSection component with Clay styling */}
+      {/* Hero - Using HeroSection component */}
       <HeroSection
         title={heroTitle}
         description={heroDescription}
@@ -86,20 +77,14 @@ export default async function Home() {
             <div className="inline-block mb-8">
               <div className="w-20 h-1 bg-gradient-to-r from-amber-400 to-sky-400 rounded-full mx-auto" />
             </div>
-            <h2
-              className="text-[44px] font-semibold mb-8 leading-tight  text-black"
-              style={{
-                letterSpacing: "-0.88px",
-              }}
-            >
+            <span className="uppercase tracking-widest text-xs font-semibold text-sky-600 mb-4 block">
+              Our Mission
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold mb-8 leading-tight text-slate-900 tracking-tight">
               {t("mission.title")}
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-sky-300 to-sky-400 rounded-full mx-auto mb-12" />
-            <p
-              className="text-[18px] leading-[1.6] text-slate-400  max-w-3xl mx-auto"
-              style={{
-              }}
-            >
+            <p className="text-base md:text-lg leading-relaxed text-slate-500 max-w-3xl mx-auto">
               {t("mission.description")}
             </p>
           </div>
@@ -113,19 +98,13 @@ export default async function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-7">
-              <h2
-                className="text-[44px] font-semibold mb-8 leading-tight  text-white"
-                style={{
-                  letterSpacing: "-0.88px",
-                }}
-              >
+              <span className="uppercase tracking-widest text-xs font-semibold text-amber-200 mb-4 block">
+                Platform Overview
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold mb-8 leading-tight text-white tracking-tight">
                 {t("overview.title")}
               </h2>
-              <p
-                className="text-[18px] leading-[1.6] text-amber-50 mb-12 "
-                style={{
-                }}
-              >
+              <p className="text-base md:text-lg leading-relaxed text-amber-50 mb-12">
                 {t("overview.description")}
               </p>
               <div className="flex flex-wrap gap-4">
@@ -146,18 +125,18 @@ export default async function Home() {
                 <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
                   <div className="grid grid-cols-1 gap-6">
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-white mb-2 ">
+                      <div className="text-4xl font-bold text-white mb-2">
                         10,000+
                       </div>
-                      <div className="text-amber-100 text-lg ">
+                      <div className="text-amber-100 text-lg">
                         {t("overview.stats.articles")}
                       </div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-white mb-2 ">
+                      <div className="text-3xl font-bold text-white mb-2">
                         {t("overview.stats.title")}
                       </div>
-                      <div className="text-amber-100 text-sm ">
+                      <div className="text-amber-100 text-sm">
                         {t("overview.stats.research")}
                       </div>
                     </div>
@@ -174,12 +153,10 @@ export default async function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2
-                className="text-[44px] font-semibold mb-6  text-black"
-                style={{
-                  letterSpacing: "-0.88px",
-                }}
-              >
+              <span className="uppercase tracking-widest text-xs font-semibold text-sky-600 mb-4 block">
+                Flagship Product
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold mb-6 text-slate-900 tracking-tight">
                 <span className="block">
                   {t("flagship.title").split(" ").slice(0, 2).join(" ")}
                 </span>
@@ -192,12 +169,7 @@ export default async function Home() {
             <div className="grid lg:grid-cols-2 gap-0 rounded-[40px] overflow-hidden shadow-xl bg-white">
               {/* Benefits side */}
               <div className="p-12 md:p-16 bg-gradient-to-br from-white to-amber-50">
-                <h3
-                  className="text-[32px] font-semibold mb-12  text-amber-800"
-                  style={{
-                    letterSpacing: "-0.64px",
-                  }}
-                >
+                <h3 className="text-2xl md:text-[32px] font-semibold mb-12 text-amber-800 tracking-tight">
                   {t("flagship.productTitle")}
                 </h3>
 
@@ -206,16 +178,11 @@ export default async function Home() {
                     <div
                       key={i}
                       className="flex items-start gap-4 p-6 rounded-2xl hover:bg-white/80 transition-all duration-300"
-                      style={{ animationDelay: `${i * 100}ms` }}
                     >
                       <div className="w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
                         <Check className="w-7 h-7 text-white" />
                       </div>
-                      <p
-                        className="text-[18px] leading-[1.6] text-slate-700 "
-                        style={{
-                        }}
-                      >
+                      <p className="text-base md:text-lg leading-relaxed text-slate-700">
                         {benefit}
                       </p>
                     </div>
@@ -259,12 +226,10 @@ export default async function Home() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-20">
-            <h2
-              className="text-[44px] font-semibold mb-6  text-white"
-              style={{
-                letterSpacing: "-0.88px",
-              }}
-            >
+            <span className="uppercase tracking-widest text-xs font-semibold text-sky-300 mb-4 block">
+              Innovation
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold mb-6 text-white tracking-tight">
               {t("innovation.title")}
             </h2>
           </div>
@@ -289,25 +254,16 @@ export default async function Home() {
             ].map((feature) => (
               <Card
                 key={feature.title}
-                className="bg-white/10 border-white/10 backdrop-blur-sm hover:bg-white/15 hover:-translate-y-3"
+                className="bg-white/10 border-white/10 backdrop-blur-sm hover:bg-white/15 hover:-translate-y-3 rounded-3xl"
               >
                 <CardContent className="p-10">
                   <div className="w-20 h-20 bg-gradient-to-br from-sky-400 to-amber-400 rounded-3xl flex items-center justify-center mb-8 shadow-2xl text-white">
                     {feature.icon}
                   </div>
-                  <h3
-                    className="text-[20px] font-semibold mb-6  text-white"
-                    style={{
-                      letterSpacing: "-0.4px",
-                    }}
-                  >
+                  <h3 className="text-xl font-semibold mb-6 text-white tracking-tight">
                     {feature.title}
                   </h3>
-                  <p
-                    className="text-[18px] leading-[1.6] text-slate-300 "
-                    style={{
-                    }}
-                  >
+                  <p className="text-base md:text-lg leading-relaxed text-slate-300">
                     {feature.description}
                   </p>
                 </CardContent>
@@ -322,29 +278,14 @@ export default async function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <div
-                className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold mb-6 "
-                style={{
-                  letterSpacing: "1.08px",
-                  textTransform: "uppercase",
-                }}
-              >
+              <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold mb-6 uppercase tracking-widest">
                 <Sparkles className="w-4 h-4" />
                 {t("qualityProtocol.badge")}
               </div>
-              <h2
-                className="text-[44px] font-semibold mb-6  text-black"
-                style={{
-                  letterSpacing: "-0.88px",
-                }}
-              >
+              <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold mb-6 text-slate-900 tracking-tight">
                 {t("qualityProtocol.title")}
               </h2>
-              <p
-                className="text-[18px] text-slate-400 max-w-3xl mx-auto leading-[1.6] "
-                style={{
-                }}
-              >
+              <p className="text-base md:text-lg text-slate-500 max-w-3xl mx-auto leading-relaxed">
                 {t("qualityProtocol.description")}
               </p>
             </div>
@@ -370,25 +311,16 @@ export default async function Home() {
               ].map((item) => (
                 <Card
                   key={item.title}
-                  className="hover:-translate-y-2 hover:border-amber-300"
+                  className="hover:-translate-y-2 hover:border-amber-300 rounded-3xl"
                 >
                   <CardContent className="p-8">
                     <div className="w-16 h-16 bg-gradient-to-br from-sky-400 to-amber-400 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                       <Target className="w-8 h-8 text-white" />
                     </div>
-                    <h3
-                      className="text-[20px] font-semibold mb-4  text-black"
-                      style={{
-                        letterSpacing: "-0.4px",
-                      }}
-                    >
+                    <h3 className="text-xl font-semibold mb-4 text-slate-900 tracking-tight">
                       {item.title}
                     </h3>
-                    <p
-                      className="text-[18px] leading-[1.6] text-slate-600 "
-                      style={{
-                      }}
-                    >
+                    <p className="text-base md:text-lg leading-relaxed text-slate-600">
                       {item.description}
                     </p>
                   </CardContent>
@@ -405,19 +337,13 @@ export default async function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2
-                className="text-[44px] font-semibold mb-6  text-white"
-                style={{
-                  letterSpacing: "-0.88px",
-                }}
-              >
+              <span className="uppercase tracking-widest text-xs font-semibold text-sky-300 mb-4 block">
+                For Thai Schools
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold mb-6 text-white tracking-tight">
                 {t("thaiSchools.title")}
               </h2>
-              <p
-                className="text-[18px] text-slate-300 max-w-3xl mx-auto leading-[1.6] "
-                style={{
-                }}
-              >
+              <p className="text-base md:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
                 {t("thaiSchools.description")}
               </p>
             </div>
@@ -444,19 +370,10 @@ export default async function Home() {
                   <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-sky-400 rounded-2xl flex items-center justify-center mb-6 shadow-xl">
                     <Zap className="w-8 h-8 text-white" />
                   </div>
-                  <h3
-                    className="text-[20px] font-semibold mb-4  text-white"
-                    style={{
-                      letterSpacing: "-0.4px",
-                    }}
-                  >
+                  <h3 className="text-xl font-semibold mb-4 text-white tracking-tight">
                     {item.title}
                   </h3>
-                  <p
-                    className="text-[18px] leading-[1.6] text-slate-300 "
-                    style={{
-                    }}
-                  >
+                  <p className="text-base md:text-lg leading-relaxed text-slate-300">
                     {item.description}
                   </p>
                 </div>
@@ -467,19 +384,10 @@ export default async function Home() {
               <div className="inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl px-8 py-6">
                 <Sparkles className="w-8 h-8 text-amber-400" />
                 <div className="text-left">
-                  <div
-                    className="text-[18px] text-slate-300 "
-                    style={{
-                    }}
-                  >
+                  <div className="text-base md:text-lg text-slate-300">
                     {t("thaiSchools.poweredBy")}
                   </div>
-                  <div
-                    className="text-[20px] font-semibold text-white "
-                    style={{
-                      letterSpacing: "-0.4px",
-                    }}
-                  >
+                  <div className="text-lg md:text-xl font-semibold text-white tracking-tight">
                     {t("thaiSchools.technology")}
                   </div>
                 </div>
@@ -502,19 +410,13 @@ export default async function Home() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2
-              className="text-[60px] font-semibold mb-8 leading-tight  text-white"
-              style={{
-                letterSpacing: "-2.4px",
-              }}
-            >
+            <span className="uppercase tracking-widest text-xs font-semibold text-white/80 mb-4 block">
+              Get Started
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-[60px] font-semibold mb-8 leading-tight text-white tracking-tight">
               {t("impact.title")}
             </h2>
-            <p
-              className="text-[24px] text-amber-50 leading-relaxed mb-16 max-w-3xl mx-auto "
-              style={{
-              }}
-            >
+            <p className="text-lg md:text-2xl text-amber-50 leading-relaxed mb-16 max-w-3xl mx-auto">
               {t("impact.description")}
             </p>
 
@@ -528,38 +430,24 @@ export default async function Home() {
             {/* Trust badges */}
             <div className="mt-20 flex flex-wrap justify-center gap-12">
               <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2 ">
+                <div className="text-4xl font-bold text-white mb-2">
                   10,000+
                 </div>
-                <div
-                  className="text-amber-100 text-lg "
-                  style={{
-                  }}
-                >
+                <div className="text-amber-100 text-lg">
                   {t("impact.trustBadges.articles")}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2 ">
-                  12
-                </div>
-                <div
-                  className="text-amber-100 text-lg "
-                  style={{
-                  }}
-                >
+                <div className="text-4xl font-bold text-white mb-2">12</div>
+                <div className="text-amber-100 text-lg">
                   {t("impact.trustBadges.cefrLevels")}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2 ">
+                <div className="text-4xl font-bold text-white mb-2">
                   {t("impact.trustBadges.big4")}
                 </div>
-                <div
-                  className="text-amber-100 text-lg "
-                  style={{
-                  }}
-                >
+                <div className="text-amber-100 text-lg">
                   {t("impact.trustBadges.qualityProtocol")}
                 </div>
               </div>

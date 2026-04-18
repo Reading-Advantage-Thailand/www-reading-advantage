@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight, Shield, Zap, Users } from "lucide-react";
 import { PricingTable } from "@/components/pricing/pricing-table";
 import HeroSection from "@/components/marketing/hero-section";
+import { Button } from "@/components/ui/button";
 import { getScopedI18n } from "@/locales/server";
 
 export const metadata: Metadata = {
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
 export default async function PricingPage() {
   const t = await getScopedI18n("pages.pricing");
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <HeroSection
         title={t("hero.title")}
         description={t("hero.description")}
@@ -39,9 +41,46 @@ export default async function PricingPage() {
         alignment="left"
       />
 
-      {/* Pricing Table Section */}
-      <section className="py-16">
+      {/* Trust Signals Strip */}
+      <section className="py-16 bg-sky-50">
         <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="bg-white rounded-3xl p-8 shadow-lg text-center hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+              <div className="w-14 h-14 bg-gradient-to-br from-sky-400 to-sky-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white shadow-lg">
+                <Shield className="w-7 h-7" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">No Hidden Fees</h3>
+              <p className="text-slate-600 text-sm">Transparent pricing with everything included</p>
+            </div>
+            <div className="bg-white rounded-3xl p-8 shadow-lg text-center hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+              <div className="w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white shadow-lg">
+                <Zap className="w-7 h-7" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Instant Setup</h3>
+              <p className="text-slate-600 text-sm">Get started in minutes, not days</p>
+            </div>
+            <div className="bg-white rounded-3xl p-8 shadow-lg text-center hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+              <div className="w-14 h-14 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white shadow-lg">
+                <Users className="w-7 h-7" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Dedicated Support</h3>
+              <p className="text-slate-600 text-sm">Expert help whenever you need it</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Table Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="uppercase tracking-widest text-xs font-semibold text-sky-600 mb-4 block">
+              Pricing Plans
+            </span>
+            <h2 className="text-4xl font-bold text-sky-900 tracking-tight">
+              Choose Your Plan
+            </h2>
+          </div>
           <PricingTable />
         </div>
       </section>
@@ -51,12 +90,12 @@ export default async function PricingPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">{t("cta.title")}</h2>
           <p className="text-xl mb-8">{t("cta.description")}</p>
-          <Link
-            href="/contact"
-            className="bg-sky-500 text-sky-50 hover:bg-sky-600 px-6 py-3 rounded-lg font-bold transition-colors inline-block"
-          >
-            {t("cta.button")}
-          </Link>
+          <Button variant="white" size="lg" asChild>
+            <Link href="/contact">
+              {t("cta.button")}
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </Button>
         </div>
       </section>
     </main>

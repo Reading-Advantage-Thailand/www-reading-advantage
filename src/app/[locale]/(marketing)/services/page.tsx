@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight, Calendar, CheckCircle, Zap } from "lucide-react";
 import { getScopedI18n } from "@/locales/server";
 import HeroSection from "@/components/marketing/hero-section";
+import { Button } from "@/components/ui/button";
 
 export default async function Services() {
   const t = await getScopedI18n("pages.services");
@@ -48,15 +49,24 @@ export default async function Services() {
       <section className="relative py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <span className="uppercase tracking-widest text-xs font-semibold text-sky-600 mb-4 block">
+                Our Services
+              </span>
+              <h2 className="text-4xl font-bold text-sky-900 tracking-tight">
+                Solutions for Every School
+              </h2>
+            </div>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service, index) => (
                 <div
                   key={service.name}
-                  className="group relative bg-gradient-to-br from-white to-sky-50 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="group relative bg-gradient-to-br from-white to-sky-50 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 animate-in fade-in slide-in-from-bottom-8"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   {/* Status Badge */}
-                  <div className="absolute top-4 right-4">
+                  <div className="absolute top-4 right-4 z-10">
                     <div
                       className={`px-3 py-1 rounded-full text-xs font-bold ${
                         service.statusBadge === "ACTIVE"
@@ -109,13 +119,12 @@ export default async function Services() {
                       ))}
                     </ul>
 
-                    <Link
-                      href={service.href}
-                      className="inline-flex items-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white px-6 py-3 rounded-xl hover:from-sky-600 hover:to-blue-700 transition-all duration-300 font-bold shadow-lg hover:shadow-xl group-hover:scale-105 w-full justify-center"
-                    >
-                      {service.cta}
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
+                    <Button className="w-full group/btn" asChild>
+                      <Link href={service.href}>
+                        {service.cta}
+                        <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                      </Link>
+                    </Button>
                   </div>
                 </div>
               ))}
@@ -136,21 +145,25 @@ export default async function Services() {
         />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
+          <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8">
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
               {t("cta.title")}
             </h2>
             <p className="text-2xl md:text-3xl text-sky-100 leading-relaxed mb-12 max-w-3xl mx-auto">
               {t("cta.description")}
             </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-4 bg-white text-sky-700 px-14 py-6 rounded-3xl hover:bg-sky-50 transition-all duration-300 shadow-2xl hover:shadow-white/30 hover:-translate-y-2 font-bold text-xl animate-in fade-in duration-700 delay-300 hover:scale-105"
+            <Button
+              variant="white"
+              size="lg"
+              className="text-xl px-14 py-6 rounded-3xl shadow-2xl hover:shadow-white/30 hover:-translate-y-2 font-bold animate-in fade-in delay-300"
+              asChild
             >
-              <Zap className="w-8 h-8" />
-              {t("cta.button")}
-              <ArrowRight className="w-8 h-8" />
-            </Link>
+              <Link href="/contact">
+                <Zap className="w-8 h-8" />
+                {t("cta.button")}
+                <ArrowRight className="w-8 h-8" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
