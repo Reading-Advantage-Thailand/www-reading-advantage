@@ -1,20 +1,39 @@
 import * as React from "react";
-
 import { cn } from "@/lib/utils";
 
-const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "rounded-3xl border border-oat-border bg-white shadow-clay transition-all duration-300 hover:-translate-y-3 hover:shadow-hard-offset",
-      className,
-    )}
-    {...props}
-  />
-));
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  borderStyle?: "solid" | "dashed" | "mixed";
+  padding?: string;
+  offset?: string;
+}
+
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  (
+    { className, borderStyle = "solid", padding, offset, ...props },
+    ref,
+  ) => {
+    const borderClasses =
+      borderStyle === "dashed"
+        ? "border-dashed"
+        : borderStyle === "mixed"
+          ? "border-dashed border-b-solid"
+          : "border-solid";
+
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "rounded-3xl border border-sky-100 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl",
+          borderClasses,
+          padding,
+          offset,
+          className,
+        )}
+        {...props}
+      />
+    );
+  },
+);
 Card.displayName = "Card";
 
 const CardHeader = React.forwardRef<
@@ -36,7 +55,7 @@ const CardTitle = React.forwardRef<
   <h3
     ref={ref}
     className={cn(
-      "font-semibold leading-none tracking-tight font-roobert",
+      "font-semibold leading-none tracking-tight",
       className,
     )}
     {...props}
@@ -50,7 +69,7 @@ const CardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-sm text-muted-foreground font-roobert", className)}
+    className={cn("text-sm text-muted-foreground", className)}
     {...props}
   />
 ));

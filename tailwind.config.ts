@@ -51,13 +51,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        warm: {
-          cream: "#faf9f7",
-        },
-        oat: {
-          border: "#dad4c8",
-          light: "#eee9df",
-        },
         sky: {
           300: "#7dd3fc",
           400: "#38bdf8",
@@ -104,9 +97,6 @@ export default {
           800: "#1e293b",
           900: "#0f172a",
         },
-        "warm-silver": "#9f9b93",
-        "warm-charcoal": "#55534e",
-        "dark-charcoal": "#333333",
         "cool-border": "#e6e8ec",
         "dark-border": "#525a69",
         "light-frost": "#eff1f3",
@@ -123,14 +113,7 @@ export default {
           "linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%)",
         "section-gradient":
           "linear-gradient(180deg, rgba(240, 249, 255, 1) 0%, rgba(224, 242, 254, 1) 100%)",
-        // Warm design gradients with sky blue brand accent
-        "hero-warm":
-          "linear-gradient(135deg, #FFFBEB 0%, #FFEDD5 40%, #E0F2FE 100%)",
-        "warm-accent": "linear-gradient(135deg, #F59E0B 0%, #F97316 100%)",
         "brand-accent": "linear-gradient(135deg, #38BDF8 0%, #0284C7 100%)",
-        "soft-warm-to-sky":
-          "linear-gradient(180deg, #FFFBEB 0%, #FFEDD5 50%, #E0F2FE 100%)",
-        "warm-innovation": "linear-gradient(180deg, #FFF7ED 0%, #E0F2FE 100%)",
       },
       boxShadow: {
         modern:
@@ -142,8 +125,7 @@ export default {
         card: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
         "card-hover":
           "0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-        clay: "0px 1px 1px rgba(0,0,0,0.1), 0px -1px 1px rgba(0,0,0,0.04) inset, 0px -0.5px 1px rgba(0,0,0,0.05)",
-        "hard-offset": "-7px 7px 0px rgb(0,0,0)",
+
       },
       backdropBlur: {
         xs: "2px",
@@ -184,10 +166,7 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      fontFamily: {
-        roobert: ["Roobert", "Arial", "sans-serif"],
-        "space-mono": ["Space Mono", "monospace"],
-      },
+
     },
   },
   plugins: [typography, animate],

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   GraduationCap,
@@ -26,38 +27,50 @@ export default async function StemAdvantage() {
   const t = await getScopedI18n("pages.products.stemAdvantage");
   return (
     <main className="overflow-x-hidden">
-      {/* Hero Section - Inline with orange/amber gradient */}
-      <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 overflow-hidden">
+      {/* Hero Section - Inline with indigo/indigo gradient */}
+      <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-indigo-300 to-indigo-800 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
         <div
-          className="absolute top-20 left-20 w-[500px] h-[500px] bg-orange-400/30 rounded-full blur-[150px]"
+          className="absolute top-20 left-20 w-[500px] h-[500px] bg-indigo-300/30 rounded-full blur-[150px]"
           aria-hidden="true"
         />
         <div
-          className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-amber-400/30 rounded-full blur-[120px]"
+          className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-indigo-400/30 rounded-full blur-[120px]"
           aria-hidden="true"
         />
         <div className="container relative z-10 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl py-24">
-          <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
-              {t("hero.comingSoon")}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
+                {t("hero.comingSoon")}
+              </div>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                {t("hero.title")}
+              </h1>
+              <p className="text-xl md:text-2xl leading-relaxed mb-4 text-indigo-50">
+                {t("hero.subtitle")}
+              </p>
+              <p className="text-lg md:text-xl leading-relaxed mb-8 text-indigo-100">
+                {t("hero.description")}
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-white text-indigo-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg hover:bg-indigo-50"
+              >
+                {t("cta.buttons.earlyAccess")}
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              {t("hero.title")}
-            </h1>
-            <p className="text-xl md:text-2xl leading-relaxed mb-4 text-orange-50">
-              {t("hero.subtitle")}
-            </p>
-            <p className="text-lg md:text-xl leading-relaxed mb-8 text-orange-100">
-              {t("hero.description")}
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-white text-orange-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg hover:bg-orange-50"
-            >
-              {t("cta.buttons.earlyAccess")}
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+            <div className="lg:col-span-5 flex justify-center">
+              <Image
+                src="/stem-advantage.png"
+                alt="STEM Advantage"
+                width={400}
+                height={400}
+                className="rounded-2xl shadow-2xl"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -67,10 +80,20 @@ export default async function StemAdvantage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-indigo-600 to-indigo-600 bg-clip-text text-transparent">
                 {t("coreFeatures.heading")}
               </span>
             </h2>
+            <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 max-w-3xl mx-auto">
+              <Image
+                src="/images/stem-advantage-hero.jpg"
+                alt="STEM Advantage"
+                width={600}
+                height={400}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="rounded-3xl shadow-xl w-full h-auto object-cover"
+              />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
@@ -103,10 +126,10 @@ export default async function StemAdvantage() {
               ].map((feature, index) => (
                 <div
                   key={feature.title}
-                  className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-10 border border-orange-100 hover:border-orange-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="bg-gradient-to-br from-indigo-50 to-indigo-50 rounded-3xl p-10 border border-indigo-100 hover:border-indigo-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                     <feature.icon
                       className="w-8 h-8 text-white"
                       strokeWidth={2}
@@ -118,7 +141,7 @@ export default async function StemAdvantage() {
                   <ul className="space-y-3">
                     {feature.points.map((point) => (
                       <li key={point.i} className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                        <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0" />
                         <span className="text-slate-600 leading-relaxed">
                           {point.text}
                         </span>
@@ -133,11 +156,11 @@ export default async function StemAdvantage() {
       </section>
 
       {/* Grade Level Breakdown */}
-      <section className="bg-gradient-to-br from-orange-50 via-amber-50 to-white py-24">
+      <section className="bg-gradient-to-br from-indigo-50 via-indigo-50 to-white py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-indigo-600 to-indigo-600 bg-clip-text text-transparent">
                 {t("gradeBreakdown.heading")}
               </span>
             </h2>
@@ -161,10 +184,10 @@ export default async function StemAdvantage() {
               ].map((level, index) => (
                 <div
                   key={level.grade}
-                  className="bg-white rounded-3xl p-10 shadow-lg border border-orange-100 hover:border-orange-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="bg-white rounded-3xl p-10 shadow-lg border border-indigo-100 hover:border-indigo-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                  <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-md">
                     <level.icon
                       className="w-7 h-7 text-white"
                       strokeWidth={2}
@@ -184,7 +207,7 @@ export default async function StemAdvantage() {
       </section>
 
       {/* Benefits */}
-      <section className="bg-gradient-to-br from-orange-600 via-amber-700 to-orange-700 text-white py-24">
+      <section className="bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-700 text-white py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
             {t("benefits.heading")}
@@ -224,7 +247,7 @@ export default async function StemAdvantage() {
                 className="bg-white/10 backdrop-blur-sm rounded-3xl p-10 border border-white/10 hover:border-white/20 transition-all duration-300 animate-in fade-in slide-in-from-bottom-8 duration-700"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className="w-14 h-14 bg-gradient-to-br from-orange-400 to-amber-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <div className="w-14 h-14 bg-gradient-to-br from-indigo-400 to-indigo-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                   <group.icon className="w-7 h-7 text-white" strokeWidth={2} />
                 </div>
                 <h3 className="text-xl font-bold mb-6 text-white">
@@ -233,8 +256,8 @@ export default async function StemAdvantage() {
                 <ul className="space-y-3">
                   {group.points.map((point) => (
                     <li key={point.i} className="flex items-start gap-3">
-                      <Check className="w-4 h-4 text-orange-300 mt-1 flex-shrink-0" />
-                      <span className="text-orange-50 leading-relaxed">
+                      <Check className="w-4 h-4 text-indigo-300 mt-1 flex-shrink-0" />
+                      <span className="text-indigo-50 leading-relaxed">
                         {point.text}
                       </span>
                     </li>
@@ -251,11 +274,11 @@ export default async function StemAdvantage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-indigo-600 to-indigo-600 bg-clip-text text-transparent">
                 {t("technicalRequirements.heading")}
               </span>
             </h2>
-            <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-10 border border-orange-100">
+            <div className="bg-gradient-to-br from-indigo-50 to-indigo-50 rounded-3xl p-10 border border-indigo-100">
               <ul className="space-y-4">
                 {[
                   { text: t("technicalRequirements.points.0"), i: 0 },
@@ -280,26 +303,26 @@ export default async function StemAdvantage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-br from-orange-600 via-amber-600 to-orange-700 text-white py-24">
+      <section className="bg-gradient-to-br from-indigo-600 via-indigo-600 to-indigo-700 text-white py-24">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700">
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
               {t("cta.heading")}
             </h2>
-            <p className="text-2xl mb-12 text-orange-100 max-w-2xl mx-auto">
+            <p className="text-2xl mb-12 text-indigo-100 max-w-2xl mx-auto">
               {t("cta.description")}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-white text-orange-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-white text-indigo-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg"
               >
                 {t("cta.buttons.earlyAccess")}
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-white hover:text-orange-700"
+                className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-white hover:text-indigo-700"
               >
                 {t("cta.buttons.partnerships")}
               </Link>

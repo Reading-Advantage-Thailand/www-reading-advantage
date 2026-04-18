@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Code2,
@@ -39,27 +40,38 @@ export default async function CodeCampAdvantage() {
           aria-hidden="true"
         />
         <div className="container relative z-10 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl py-24">
-          <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
-              <Sparkles className="w-4 h-4" />
-              {t("hero.comingSoon")}
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="lg:col-span-7 animate-in fade-in slide-in-from-bottom-8 duration-700">
+              <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
+                <Sparkles className="w-4 h-4" />
+                {t("hero.comingSoon")}
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
+                {t("hero.title")}
+              </h1>
+              <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed mb-4 text-slate-300">
+                {t("hero.subtitle")}
+              </p>
+              <p className="text-lg md:text-xl leading-relaxed mb-8 text-slate-400 max-w-2xl">
+                {t("hero.description")}
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg hover:shadow-amber-500/30"
+              >
+                {t("cta.buttons.joinWaitlist")}
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              {t("hero.title")}
-            </h1>
-            <p className="text-xl md:text-2xl leading-relaxed mb-4 text-slate-300">
-              {t("hero.subtitle")}
-            </p>
-            <p className="text-lg md:text-xl leading-relaxed mb-8 text-slate-400 max-w-2xl mx-auto">
-              {t("hero.description")}
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg hover:shadow-amber-500/30"
-            >
-              {t("cta.buttons.joinWaitlist")}
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+            <div className="lg:col-span-5 flex justify-center lg:justify-end animate-in fade-in slide-in-from-right-8 duration-1000">
+              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/10">
+                <div className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 flex items-center justify-center">
+                  <span className="text-5xl md:text-6xl font-bold text-white tracking-tight">
+                    CodeCamp
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -145,6 +157,16 @@ export default async function CodeCampAdvantage() {
           <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
             {t("technologyTracks.heading")}
           </h2>
+          <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 max-w-6xl mx-auto">
+            <Image
+              src="/images/codecamp-advantage-hero.jpg"
+              alt="CodeCamp Advantage"
+              width={600}
+              height={400}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="rounded-3xl shadow-xl w-full h-auto object-cover"
+            />
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {

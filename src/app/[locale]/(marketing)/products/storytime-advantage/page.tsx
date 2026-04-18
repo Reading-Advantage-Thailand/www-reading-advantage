@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   BookOpen,
@@ -28,39 +29,51 @@ export default async function StorytimeAdvantage() {
   const t = await getScopedI18n("pages.products.storytimeAdvantage");
   return (
     <main className="overflow-x-hidden">
-      {/* Hero Section - Inline with pink/rose gradient */}
-      <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-pink-500 via-rose-500 to-pink-600 overflow-hidden">
+      {/* Hero Section - Inline with amber gradient */}
+      <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-amber-300 to-amber-800 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
         <div
-          className="absolute top-20 left-20 w-[500px] h-[500px] bg-pink-400/30 rounded-full blur-[150px]"
+          className="absolute top-20 left-20 w-[500px] h-[500px] bg-amber-300/30 rounded-full blur-[150px]"
           aria-hidden="true"
         />
         <div
-          className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-rose-400/30 rounded-full blur-[120px]"
+          className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-amber-400/30 rounded-full blur-[120px]"
           aria-hidden="true"
         />
         <div className="container relative z-10 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl py-24">
-          <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <div className="inline-flex items-center gap-2 bg-pink-100 text-pink-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
-              <Sparkles className="w-4 h-4" />
-              {t("hero.comingSoon")}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
+                <Sparkles className="w-4 h-4" />
+                {t("hero.comingSoon")}
+              </div>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                {t("hero.title")}
+              </h1>
+              <p className="text-xl md:text-2xl leading-relaxed mb-4 text-amber-50">
+                {t("hero.subtitle")}
+              </p>
+              <p className="text-lg md:text-xl leading-relaxed mb-8 text-amber-100">
+                {t("hero.description")}
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-white text-amber-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg hover:bg-amber-50"
+              >
+                {t("cta.buttons.joinWaitlist")}
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              {t("hero.title")}
-            </h1>
-            <p className="text-xl md:text-2xl leading-relaxed mb-4 text-pink-50">
-              {t("hero.subtitle")}
-            </p>
-            <p className="text-lg md:text-xl leading-relaxed mb-8 text-pink-100">
-              {t("hero.description")}
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-white text-pink-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg hover:bg-pink-50"
-            >
-              {t("cta.buttons.joinWaitlist")}
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+            <div className="lg:col-span-5 flex justify-center">
+              <Image
+                src="/storytime-advantage.png"
+                alt="Storytime Advantage"
+                width={400}
+                height={400}
+                className="w-full max-w-md rounded-2xl shadow-2xl"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -70,10 +83,20 @@ export default async function StorytimeAdvantage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-amber-600 to-amber-600 bg-clip-text text-transparent">
                 {t("coreValue.heading")}
               </span>
             </h2>
+            <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12">
+              <Image
+                src="/images/storytime-advantage-hero.jpg"
+                alt="Storytime Advantage"
+                width={600}
+                height={400}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="rounded-3xl shadow-xl w-full h-auto object-cover"
+              />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
@@ -94,10 +117,10 @@ export default async function StorytimeAdvantage() {
               ].map((feature, index) => (
                 <div
                   key={feature.title}
-                  className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl p-10 border border-pink-100 hover:border-pink-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="bg-gradient-to-br from-amber-50 to-amber-50 rounded-3xl p-10 border border-amber-100 hover:border-amber-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg mx-auto">
+                  <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg mx-auto">
                     <feature.icon
                       className="w-8 h-8 text-white"
                       strokeWidth={2}
@@ -117,11 +140,11 @@ export default async function StorytimeAdvantage() {
       </section>
 
       {/* Key Features */}
-      <section className="bg-gradient-to-br from-pink-50 via-rose-50 to-white py-24">
+      <section className="bg-gradient-to-br from-amber-50 via-amber-50 to-white py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-amber-600 to-amber-600 bg-clip-text text-transparent">
                 {t("keyFeatures.heading")}
               </span>
             </h2>
@@ -150,10 +173,10 @@ export default async function StorytimeAdvantage() {
               ].map((feature, index) => (
                 <div
                   key={feature.title}
-                  className="bg-white rounded-3xl p-10 shadow-lg border border-pink-100 hover:border-pink-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="bg-white rounded-3xl p-10 shadow-lg border border-amber-100 hover:border-amber-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                  <div className="w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-md">
                     <feature.icon
                       className="w-7 h-7 text-white"
                       strokeWidth={2}
@@ -165,7 +188,7 @@ export default async function StorytimeAdvantage() {
                   <ul className="space-y-3">
                     {feature.points.map((point) => (
                       <li key={point.i} className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-pink-500 rounded-full mt-2 flex-shrink-0" />
+                        <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0" />
                         <span className="text-slate-600 leading-relaxed">
                           {point.text}
                         </span>
@@ -184,7 +207,7 @@ export default async function StorytimeAdvantage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-amber-600 to-amber-600 bg-clip-text text-transparent">
                 {t("teacherTools.heading")}
               </span>
             </h2>
@@ -208,10 +231,10 @@ export default async function StorytimeAdvantage() {
               ].map((tool, index) => (
                 <div
                   key={tool.title}
-                  className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl p-10 border border-pink-100 hover:border-pink-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="bg-gradient-to-br from-amber-50 to-amber-50 rounded-3xl p-10 border border-amber-100 hover:border-amber-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center mb-6 shadow-md mx-auto">
+                  <div className="w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-md mx-auto">
                     <tool.icon className="w-7 h-7 text-white" strokeWidth={2} />
                   </div>
                   <h3 className="text-xl font-bold mb-4 text-center text-slate-900">
@@ -228,11 +251,11 @@ export default async function StorytimeAdvantage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-gradient-to-br from-pink-50 via-rose-50 to-white py-24">
+      <section className="bg-gradient-to-br from-amber-50 via-amber-50 to-white py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-amber-600 to-amber-600 bg-clip-text text-transparent">
                 {t("faq.heading")}
               </span>
             </h2>
@@ -249,7 +272,7 @@ export default async function StorytimeAdvantage() {
               ].map((faq, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-3xl p-8 shadow-lg border border-pink-100 hover:border-pink-200 transition-all duration-300"
+                  className="bg-white rounded-3xl p-8 shadow-lg border border-amber-100 hover:border-amber-200 transition-all duration-300"
                 >
                   <h3 className="text-xl font-bold mb-4 text-slate-900">
                     {faq.question}
@@ -263,26 +286,26 @@ export default async function StorytimeAdvantage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-br from-pink-600 via-rose-600 to-pink-700 text-white py-24">
+      <section className="bg-gradient-to-br from-amber-600 via-amber-600 to-amber-700 text-white py-24">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700">
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
               {t("cta.heading")}
             </h2>
-            <p className="text-2xl mb-12 text-pink-100 max-w-2xl mx-auto">
+            <p className="text-2xl mb-12 text-amber-100 max-w-2xl mx-auto">
               {t("cta.description")}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-white text-pink-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-white text-amber-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg"
               >
                 {t("cta.buttons.joinWaitlist")}
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-white hover:text-pink-700"
+                className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-white hover:text-amber-700"
               >
                 {t("cta.buttons.learnMore")}
               </Link>

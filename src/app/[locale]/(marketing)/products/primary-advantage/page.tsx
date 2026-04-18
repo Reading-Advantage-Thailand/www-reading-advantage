@@ -78,7 +78,7 @@ export default async function PrimaryAdvantage() {
   ];
 
   return (
-    <main className="min-h-screen bg-warm-cream">
+    <main className="min-h-screen bg-sky-50">
       {/* Hero Section */}
       <HeroSection
         title={t("hero.title")}
@@ -95,7 +95,11 @@ export default async function PrimaryAdvantage() {
           src: "/primary-advantage logo.png",
           alt: "Primary Advantage Logo",
         }}
-        customGradient="bg-gradient-to-br from-cyan-300 via-cyan-400 to-cyan-800"
+        customGradient="bg-gradient-to-br from-cyan-400 to-cyan-800"
+        productLogo={{
+          src: "/primary-advantage logo.png",
+          alt: "Primary Advantage Logo",
+        }}
       />
 
       {/* Key Features */}
@@ -105,6 +109,16 @@ export default async function PrimaryAdvantage() {
             <h2 className="text-4xl font-bold text-center mb-16 gradient-text">
               {t("keyFeatures.heading")}
             </h2>
+            <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 max-w-3xl mx-auto">
+              <Image
+                src="/images/primary-advantage-hero.jpg"
+                alt="Primary Advantage"
+                width={600}
+                height={400}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="rounded-3xl shadow-xl w-full h-auto object-cover"
+              />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {features.map((feature, index) => (
                 <div
@@ -261,7 +275,7 @@ export default async function PrimaryAdvantage() {
 
       {/* AI Technology Section */}
       <section className="py-20 bg-gradient-to-br from-gray-900 via-cyan-900 to-gray-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-warm-cream/5 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-sky-50/5 backdrop-blur-sm" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
             <h2 className="text-4xl font-bold text-center mb-16">
@@ -269,7 +283,7 @@ export default async function PrimaryAdvantage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <div className="animate-in fade-in slide-in-from-left-8 duration-500 transition-all duration-300 hover:-translate-y-1">
-                <Card className="bg-warm-cream/10 backdrop-blur-md border border-white/20 h-full shadow-modern hover:shadow-glow">
+                <Card className="bg-sky-50/10 backdrop-blur-md border border-white/20 h-full shadow-modern hover:shadow-glow">
                   <CardHeader className="text-center pb-4">
                     <Brain className="w-12 h-12 text-white" />
                     <CardTitle className="text-2xl font-bold text-white">
@@ -287,7 +301,7 @@ export default async function PrimaryAdvantage() {
                 className="animate-in fade-in slide-in-from-right-8 duration-500 transition-all duration-300 hover:-translate-y-1"
                 style={{ animationDelay: "100ms" }}
               >
-                <Card className="bg-warm-cream/10 backdrop-blur-md border border-white/20 h-full shadow-modern hover:shadow-glow">
+                <Card className="bg-sky-50/10 backdrop-blur-md border border-white/20 h-full shadow-modern hover:shadow-glow">
                   <CardHeader className="text-center pb-4">
                     <PenTool className="w-12 h-12 text-white" />
                     <CardTitle className="text-2xl font-bold text-white">
@@ -308,13 +322,13 @@ export default async function PrimaryAdvantage() {
 
       {/* Results Section */}
       <section className="py-20 bg-gradient-to-br from-cyan-600 via-cyan-700 to-cyan-800 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-warm-cream/5 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-sky-50/5 backdrop-blur-sm" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
             <h2 className="text-4xl font-bold text-center mb-16">
               {t("resultsSection.heading")}
             </h2>
-            <Card className="max-w-4xl mx-auto bg-warm-cream/10 backdrop-blur-md border border-white/20 shadow-modern-lg">
+            <Card className="max-w-4xl mx-auto bg-sky-50/10 backdrop-blur-md border border-white/20 shadow-modern-lg">
               <CardHeader className="text-center pb-8">
                 <CardTitle className="text-3xl font-bold text-white mb-4">
                   {t("resultsSection.title")}
@@ -359,7 +373,7 @@ export default async function PrimaryAdvantage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-cyan-600 via-cyan-700 to-cyan-800 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-warm-cream/5 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-sky-50/5 backdrop-blur-sm" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
             <h2 className="text-4xl font-bold mb-6">{t("cta.heading")}</h2>
@@ -369,7 +383,7 @@ export default async function PrimaryAdvantage() {
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <a
                 href="mailto:support@reading-advantage.com?subject=Primary Advantage Inquiry&body=Hi team,%0A%0AI'm interested in learning more about Primary Advantage for my school/organization.%0A%0APlease provide more information about:%0A- Pricing options (100 baht per student per month)%0A- Free pilot term%0A- Technical requirements%0A%0AThank you!"
-                className="bg-warm-cream hover:bg-cyan-50 text-cyan-800 px-10 py-4 rounded-xl font-bold transition-all duration-300 shadow-modern hover:shadow-glow hover:-translate-y-1 hover:scale-105 inline-flex items-center gap-3"
+                className="bg-sky-50 hover:bg-cyan-50 text-cyan-800 px-10 py-4 rounded-xl font-bold transition-all duration-300 shadow-modern hover:shadow-glow hover:-translate-y-1 hover:scale-105 inline-flex items-center gap-3"
               >
                 {t("cta.buttons.signUp")}
                 <svg
@@ -388,7 +402,7 @@ export default async function PrimaryAdvantage() {
               </a>
               <Link
                 href="/contact"
-                className="border-2 border-white hover:bg-warm-cream hover:text-cyan-800 text-white px-10 py-4 rounded-xl font-bold transition-all duration-300 hover:shadow-modern hover:-translate-y-1 hover:scale-105 inline-flex items-center gap-3"
+                className="border-2 border-white hover:bg-sky-50 hover:text-cyan-800 text-white px-10 py-4 rounded-xl font-bold transition-all duration-300 hover:shadow-modern hover:-translate-y-1 hover:scale-105 inline-flex items-center gap-3"
               >
                 {t("cta.buttons.freeTrial")}
                 <svg

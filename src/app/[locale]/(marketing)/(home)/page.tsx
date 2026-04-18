@@ -30,10 +30,8 @@ export default async function Home() {
 
   const heroTitle = (
     <h1
-      className="text-[80px] font-semibold leading-tight font-roobert"
+      className="text-[80px] font-semibold leading-tight "
       style={{
-        fontFamily: "Roobert, Arial, sans-serif",
-        fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
         letterSpacing: "-3.2px",
       }}
     >
@@ -46,10 +44,8 @@ export default async function Home() {
 
   const heroDescription = (
     <p
-      className="text-[20px] font-normal leading-[1.6] text-warm-silver font-roobert"
+      className="text-[20px] font-normal leading-[1.6] text-slate-400 "
       style={{
-        fontFamily: "Roobert, Arial, sans-serif",
-        fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
       }}
     >
       {t("hero.description")}
@@ -57,7 +53,7 @@ export default async function Home() {
   );
 
   return (
-    <main className="overflow-x-hidden bg-warm-cream">
+    <main className="overflow-x-hidden bg-sky-50">
       {/* Hero - Using HeroSection component with Clay styling */}
       <HeroSection
         title={heroTitle}
@@ -79,22 +75,20 @@ export default async function Home() {
           src: "/images/students-at-board.png",
           alt: "Students gathered at interactive board",
         }}
-        customGradient="bg-warm-cream"
+        customGradient="bg-sky-50"
         className="pt-20"
       />
 
       {/* Mission - Full width, bold typography */}
-      <section className="relative py-24 bg-warm-cream">
+      <section className="relative py-24 bg-sky-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-8">
               <div className="w-20 h-1 bg-gradient-to-r from-amber-400 to-sky-400 rounded-full mx-auto" />
             </div>
             <h2
-              className="text-[44px] font-semibold mb-8 leading-tight font-roobert text-black"
+              className="text-[44px] font-semibold mb-8 leading-tight  text-black"
               style={{
-                fontFamily: "Roobert, Arial, sans-serif",
-                fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
                 letterSpacing: "-0.88px",
               }}
             >
@@ -102,10 +96,8 @@ export default async function Home() {
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-sky-300 to-sky-400 rounded-full mx-auto mb-12" />
             <p
-              className="text-[18px] leading-[1.6] text-warm-silver font-roobert max-w-3xl mx-auto"
+              className="text-[18px] leading-[1.6] text-slate-400  max-w-3xl mx-auto"
               style={{
-                fontFamily: "Roobert, Arial, sans-serif",
-                fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
               }}
             >
               {t("mission.description")}
@@ -122,26 +114,22 @@ export default async function Home() {
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-7">
               <h2
-                className="text-[44px] font-semibold mb-8 leading-tight font-roobert text-white"
+                className="text-[44px] font-semibold mb-8 leading-tight  text-white"
                 style={{
-                  fontFamily: "Roobert, Arial, sans-serif",
-                  fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
                   letterSpacing: "-0.88px",
                 }}
               >
                 {t("overview.title")}
               </h2>
               <p
-                className="text-[18px] leading-[1.6] text-amber-50 mb-12 font-roobert"
+                className="text-[18px] leading-[1.6] text-amber-50 mb-12 "
                 style={{
-                  fontFamily: "Roobert, Arial, sans-serif",
-                  fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
                 }}
               >
                 {t("overview.description")}
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button variant="clay-white" asChild>
+                <Button variant="white" asChild>
                   <Link href="/contact">
                     {t("overview.partnerCta")}
                     <ArrowRight className="w-5 h-5" />
@@ -158,18 +146,18 @@ export default async function Home() {
                 <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
                   <div className="grid grid-cols-1 gap-6">
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-white mb-2 font-roobert">
+                      <div className="text-4xl font-bold text-white mb-2 ">
                         10,000+
                       </div>
-                      <div className="text-amber-100 text-lg font-roobert">
+                      <div className="text-amber-100 text-lg ">
                         {t("overview.stats.articles")}
                       </div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-white mb-2 font-roobert">
+                      <div className="text-3xl font-bold text-white mb-2 ">
                         {t("overview.stats.title")}
                       </div>
-                      <div className="text-amber-100 text-sm font-roobert">
+                      <div className="text-amber-100 text-sm ">
                         {t("overview.stats.research")}
                       </div>
                     </div>
@@ -182,15 +170,13 @@ export default async function Home() {
       </section>
 
       {/* Flagship - Diagonal split layout */}
-      <section className="relative py-24 bg-warm-cream" id="products">
+      <section className="relative py-24 bg-sky-50" id="products">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2
-                className="text-[44px] font-semibold mb-6 font-roobert text-black"
+                className="text-[44px] font-semibold mb-6  text-black"
                 style={{
-                  fontFamily: "Roobert, Arial, sans-serif",
-                  fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
                   letterSpacing: "-0.88px",
                 }}
               >
@@ -203,15 +189,12 @@ export default async function Home() {
               </h2>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-0 rounded-[40px] overflow-hidden shadow-clay bg-white">
+            <div className="grid lg:grid-cols-2 gap-0 rounded-[40px] overflow-hidden shadow-xl bg-white">
               {/* Benefits side */}
               <div className="p-12 md:p-16 bg-gradient-to-br from-white to-amber-50">
                 <h3
-                  className="text-[32px] font-semibold mb-12 font-roobert text-amber-800"
+                  className="text-[32px] font-semibold mb-12  text-amber-800"
                   style={{
-                    fontFamily: "Roobert, Arial, sans-serif",
-                    fontFeatureSettings:
-                      '"ss01", "ss03", "ss10", "ss11", "ss12"',
                     letterSpacing: "-0.64px",
                   }}
                 >
@@ -229,10 +212,8 @@ export default async function Home() {
                         <Check className="w-7 h-7 text-white" />
                       </div>
                       <p
-                        className="text-[18px] leading-[1.6] text-slate-700 font-roobert"
+                        className="text-[18px] leading-[1.6] text-slate-700 "
                         style={{
-                          fontFamily: "Roobert, Arial, sans-serif",
-                          fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
                         }}
                       >
                         {benefit}
@@ -241,7 +222,7 @@ export default async function Home() {
                   ))}
                 </div>
 
-                <Button variant="clay" className="mt-12 w-full" asChild>
+                <Button variant="default" className="mt-12 w-full" asChild>
                   <Link href="/products/reading-advantage">
                     {t("flagship.cta")}
                     <ArrowRight className="w-6 h-6" />
@@ -279,10 +260,8 @@ export default async function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-20">
             <h2
-              className="text-[44px] font-semibold mb-6 font-roobert text-white"
+              className="text-[44px] font-semibold mb-6  text-white"
               style={{
-                fontFamily: "Roobert, Arial, sans-serif",
-                fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
                 letterSpacing: "-0.88px",
               }}
             >
@@ -317,21 +296,16 @@ export default async function Home() {
                     {feature.icon}
                   </div>
                   <h3
-                    className="text-[20px] font-semibold mb-6 font-roobert text-white"
+                    className="text-[20px] font-semibold mb-6  text-white"
                     style={{
-                      fontFamily: "Roobert, Arial, sans-serif",
-                      fontFeatureSettings:
-                        '"ss01", "ss03", "ss10", "ss11", "ss12"',
                       letterSpacing: "-0.4px",
                     }}
                   >
                     {feature.title}
                   </h3>
                   <p
-                    className="text-[18px] leading-[1.6] text-slate-300 font-roobert"
+                    className="text-[18px] leading-[1.6] text-slate-300 "
                     style={{
-                      fontFamily: "Roobert, Arial, sans-serif",
-                      fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
                     }}
                   >
                     {feature.description}
@@ -344,15 +318,13 @@ export default async function Home() {
       </section>
 
       {/* Big 4 Quality Protocol - New Section */}
-      <section className="relative py-24 bg-warm-cream">
+      <section className="relative py-24 bg-sky-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <div
-                className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold mb-6 font-roobert"
+                className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold mb-6 "
                 style={{
-                  fontFamily: "Roobert, Arial, sans-serif",
-                  fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
                   letterSpacing: "1.08px",
                   textTransform: "uppercase",
                 }}
@@ -361,20 +333,16 @@ export default async function Home() {
                 {t("qualityProtocol.badge")}
               </div>
               <h2
-                className="text-[44px] font-semibold mb-6 font-roobert text-black"
+                className="text-[44px] font-semibold mb-6  text-black"
                 style={{
-                  fontFamily: "Roobert, Arial, sans-serif",
-                  fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
                   letterSpacing: "-0.88px",
                 }}
               >
                 {t("qualityProtocol.title")}
               </h2>
               <p
-                className="text-[18px] text-warm-silver max-w-3xl mx-auto leading-[1.6] font-roobert"
+                className="text-[18px] text-slate-400 max-w-3xl mx-auto leading-[1.6] "
                 style={{
-                  fontFamily: "Roobert, Arial, sans-serif",
-                  fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
                 }}
               >
                 {t("qualityProtocol.description")}
@@ -409,21 +377,16 @@ export default async function Home() {
                       <Target className="w-8 h-8 text-white" />
                     </div>
                     <h3
-                      className="text-[20px] font-semibold mb-4 font-roobert text-black"
+                      className="text-[20px] font-semibold mb-4  text-black"
                       style={{
-                        fontFamily: "Roobert, Arial, sans-serif",
-                        fontFeatureSettings:
-                          '"ss01", "ss03", "ss10", "ss11", "ss12"',
                         letterSpacing: "-0.4px",
                       }}
                     >
                       {item.title}
                     </h3>
                     <p
-                      className="text-[18px] leading-[1.6] text-warm-charcoal font-roobert"
+                      className="text-[18px] leading-[1.6] text-slate-600 "
                       style={{
-                        fontFamily: "Roobert, Arial, sans-serif",
-                        fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
                       }}
                     >
                       {item.description}
@@ -443,20 +406,16 @@ export default async function Home() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2
-                className="text-[44px] font-semibold mb-6 font-roobert text-white"
+                className="text-[44px] font-semibold mb-6  text-white"
                 style={{
-                  fontFamily: "Roobert, Arial, sans-serif",
-                  fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
                   letterSpacing: "-0.88px",
                 }}
               >
                 {t("thaiSchools.title")}
               </h2>
               <p
-                className="text-[18px] text-slate-300 max-w-3xl mx-auto leading-[1.6] font-roobert"
+                className="text-[18px] text-slate-300 max-w-3xl mx-auto leading-[1.6] "
                 style={{
-                  fontFamily: "Roobert, Arial, sans-serif",
-                  fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
                 }}
               >
                 {t("thaiSchools.description")}
@@ -486,21 +445,16 @@ export default async function Home() {
                     <Zap className="w-8 h-8 text-white" />
                   </div>
                   <h3
-                    className="text-[20px] font-semibold mb-4 font-roobert text-white"
+                    className="text-[20px] font-semibold mb-4  text-white"
                     style={{
-                      fontFamily: "Roobert, Arial, sans-serif",
-                      fontFeatureSettings:
-                        '"ss01", "ss03", "ss10", "ss11", "ss12"',
                       letterSpacing: "-0.4px",
                     }}
                   >
                     {item.title}
                   </h3>
                   <p
-                    className="text-[18px] leading-[1.6] text-slate-300 font-roobert"
+                    className="text-[18px] leading-[1.6] text-slate-300 "
                     style={{
-                      fontFamily: "Roobert, Arial, sans-serif",
-                      fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
                     }}
                   >
                     {item.description}
@@ -514,20 +468,15 @@ export default async function Home() {
                 <Sparkles className="w-8 h-8 text-amber-400" />
                 <div className="text-left">
                   <div
-                    className="text-[18px] text-slate-300 font-roobert"
+                    className="text-[18px] text-slate-300 "
                     style={{
-                      fontFamily: "Roobert, Arial, sans-serif",
-                      fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
                     }}
                   >
                     {t("thaiSchools.poweredBy")}
                   </div>
                   <div
-                    className="text-[20px] font-semibold text-white font-roobert"
+                    className="text-[20px] font-semibold text-white "
                     style={{
-                      fontFamily: "Roobert, Arial, sans-serif",
-                      fontFeatureSettings:
-                        '"ss01", "ss03", "ss10", "ss11", "ss12"',
                       letterSpacing: "-0.4px",
                     }}
                   >
@@ -554,26 +503,22 @@ export default async function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2
-              className="text-[60px] font-semibold mb-8 leading-tight font-roobert text-white"
+              className="text-[60px] font-semibold mb-8 leading-tight  text-white"
               style={{
-                fontFamily: "Roobert, Arial, sans-serif",
-                fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
                 letterSpacing: "-2.4px",
               }}
             >
               {t("impact.title")}
             </h2>
             <p
-              className="text-[24px] text-amber-50 leading-relaxed mb-16 max-w-3xl mx-auto font-roobert"
+              className="text-[24px] text-amber-50 leading-relaxed mb-16 max-w-3xl mx-auto "
               style={{
-                fontFamily: "Roobert, Arial, sans-serif",
-                fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
               }}
             >
               {t("impact.description")}
             </p>
 
-            <Button variant="clay-white" size="lg" asChild>
+            <Button variant="white" size="lg" asChild>
               <Link href="mailto:support@reading-advantage.com?subject=Demo Request - Reading Advantage Thailand&body=Hi team,%0A%0AI'm interested in scheduling a demo of your educational platforms. Could you please provide more information about your programs and available demo times?%0A%0AI'm particularly interested in:%0A- [Please specify which program(s) you're interested in]%0A- [Your school/organization name if applicable]%0A- [Preferred demo format: in-person, virtual, or self-guided]%0A%0ALooking forward to hearing from you!%0A%0ABest regards">
                 <Mail className="w-8 h-8" />
                 {t("impact.cta")}
@@ -583,42 +528,36 @@ export default async function Home() {
             {/* Trust badges */}
             <div className="mt-20 flex flex-wrap justify-center gap-12">
               <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2 font-roobert">
+                <div className="text-4xl font-bold text-white mb-2 ">
                   10,000+
                 </div>
                 <div
-                  className="text-amber-100 text-lg font-roobert"
+                  className="text-amber-100 text-lg "
                   style={{
-                    fontFamily: "Roobert, Arial, sans-serif",
-                    fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
                   }}
                 >
                   {t("impact.trustBadges.articles")}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2 font-roobert">
+                <div className="text-4xl font-bold text-white mb-2 ">
                   12
                 </div>
                 <div
-                  className="text-amber-100 text-lg font-roobert"
+                  className="text-amber-100 text-lg "
                   style={{
-                    fontFamily: "Roobert, Arial, sans-serif",
-                    fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
                   }}
                 >
                   {t("impact.trustBadges.cefrLevels")}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2 font-roobert">
+                <div className="text-4xl font-bold text-white mb-2 ">
                   {t("impact.trustBadges.big4")}
                 </div>
                 <div
-                  className="text-amber-100 text-lg font-roobert"
+                  className="text-amber-100 text-lg "
                   style={{
-                    fontFamily: "Roobert, Arial, sans-serif",
-                    fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
                   }}
                 >
                   {t("impact.trustBadges.qualityProtocol")}

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   BookOpen,
@@ -35,38 +36,50 @@ export default async function ZhongwenAdvantage() {
   return (
     <main className="overflow-x-hidden">
       {/* Hero Section - Inline with red/rose gradient */}
-      <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-red-500 via-rose-600 to-red-700 overflow-hidden">
+      <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-fuchsia-300 to-fuchsia-800 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
         <div
-          className="absolute top-20 left-20 w-[500px] h-[500px] bg-red-400/30 rounded-full blur-[150px]"
+          className="absolute top-20 left-20 w-[500px] h-[500px] bg-fuchsia-300/30 rounded-full blur-[150px]"
           aria-hidden="true"
         />
         <div
-          className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-rose-400/30 rounded-full blur-[120px]"
+          className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-fuchsia-400/30 rounded-full blur-[120px]"
           aria-hidden="true"
         />
         <div className="container relative z-10 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl py-24">
-          <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <div className="inline-flex items-center gap-2 bg-red-100 text-red-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
-              <Sparkles className="w-4 h-4" />
-              {t("badge")}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 bg-fuchsia-100 text-fuchsia-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
+                <Sparkles className="w-4 h-4" />
+                {t("badge")}
+              </div>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                {t("title")}
+              </h1>
+              <p className="text-xl md:text-2xl leading-relaxed mb-4 text-fuchsia-50">
+                {t("subtitle")}
+              </p>
+              <p className="text-lg md:text-xl leading-relaxed mb-8 text-fuchsia-100">
+                {t("description")}
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-white text-fuchsia-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg hover:bg-fuchsia-50"
+              >
+                {t("ctaButton")}
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              {t("title")}
-            </h1>
-            <p className="text-xl md:text-2xl leading-relaxed mb-4 text-red-50">
-              {t("subtitle")}
-            </p>
-            <p className="text-lg md:text-xl leading-relaxed mb-8 text-red-100">
-              {t("description")}
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-white text-red-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg hover:bg-red-50"
-            >
-              {t("ctaButton")}
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+            <div className="lg:col-span-5 flex justify-center">
+              <Image
+                src="/zhongwen-advantage.png"
+                alt="Zhongwen Advantage"
+                width={400}
+                height={400}
+                className="rounded-2xl shadow-2xl"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -76,7 +89,7 @@ export default async function ZhongwenAdvantage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-red-600 to-rose-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-fuchsia-600 to-fuchsia-600 bg-clip-text text-transparent">
                 Key Features
               </span>
             </h2>
@@ -112,10 +125,10 @@ export default async function ZhongwenAdvantage() {
               ].map((feature, index) => (
                 <div
                   key={feature.title}
-                  className="bg-gradient-to-br from-red-50 to-rose-50 rounded-3xl p-10 border border-red-100 hover:border-red-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="bg-gradient-to-br from-fuchsia-50 to-fuchsia-50 rounded-3xl p-10 border border-fuchsia-100 hover:border-fuchsia-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg mx-auto">
+                  <div className="w-16 h-16 bg-gradient-to-br from-fuchsia-500 to-fuchsia-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg mx-auto">
                     <feature.icon
                       className="w-8 h-8 text-white"
                       strokeWidth={2}
@@ -127,7 +140,7 @@ export default async function ZhongwenAdvantage() {
                   <ul className="space-y-3">
                     {feature.points.map((point, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
+                        <div className="w-2 h-2 bg-fuchsia-500 rounded-full mt-2 flex-shrink-0" />
                         <span className="text-slate-600 leading-relaxed">
                           {point}
                         </span>
@@ -142,14 +155,24 @@ export default async function ZhongwenAdvantage() {
       </section>
 
       {/* Interactive Learning */}
-      <section className="bg-gradient-to-br from-red-50 via-rose-50 to-white py-24">
+      <section className="bg-gradient-to-br from-fuchsia-50 via-fuchsia-50 to-white py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-red-600 to-rose-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-fuchsia-600 to-fuchsia-600 bg-clip-text text-transparent">
                 Interactive Learning Elements
               </span>
             </h2>
+            <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12">
+              <Image
+                src="/images/zhongwen-advantage-hero.jpg"
+                alt="Zhongwen Advantage"
+                width={600}
+                height={400}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="rounded-3xl shadow-xl w-full h-auto object-cover"
+              />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 {
@@ -167,10 +190,10 @@ export default async function ZhongwenAdvantage() {
               ].map((feature, index) => (
                 <div
                   key={feature.title}
-                  className="bg-white rounded-3xl p-10 shadow-lg border border-red-100 hover:border-red-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="bg-white rounded-3xl p-10 shadow-lg border border-fuchsia-100 hover:border-fuchsia-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                  <div className="w-14 h-14 bg-gradient-to-br from-fuchsia-500 to-fuchsia-600 rounded-2xl flex items-center justify-center mb-6 shadow-md">
                     <feature.icon
                       className="w-7 h-7 text-white"
                       strokeWidth={2}
@@ -194,7 +217,7 @@ export default async function ZhongwenAdvantage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-red-600 to-rose-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-fuchsia-600 to-fuchsia-600 bg-clip-text text-transparent">
                 For Educators
               </span>
             </h2>
@@ -220,10 +243,10 @@ export default async function ZhongwenAdvantage() {
               ].map((feature, index) => (
                 <div
                   key={feature.title}
-                  className="bg-gradient-to-br from-red-50 to-rose-50 rounded-3xl p-10 border border-red-100 hover:border-red-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  className="bg-gradient-to-br from-fuchsia-50 to-fuchsia-50 rounded-3xl p-10 border border-fuchsia-100 hover:border-fuchsia-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl flex items-center justify-center mb-6 shadow-md mx-auto">
+                  <div className="w-14 h-14 bg-gradient-to-br from-fuchsia-500 to-fuchsia-600 rounded-2xl flex items-center justify-center mb-6 shadow-md mx-auto">
                     <feature.icon
                       className="w-7 h-7 text-white"
                       strokeWidth={2}
@@ -243,11 +266,11 @@ export default async function ZhongwenAdvantage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-gradient-to-br from-red-50 via-rose-50 to-white py-24">
+      <section className="bg-gradient-to-br from-fuchsia-50 via-fuchsia-50 to-white py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-red-600 to-rose-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-fuchsia-600 to-fuchsia-600 bg-clip-text text-transparent">
                 Frequently Asked Questions
               </span>
             </h2>
@@ -266,7 +289,7 @@ export default async function ZhongwenAdvantage() {
               ].map((faq, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-3xl p-8 shadow-lg border border-red-100 hover:border-red-200 transition-all duration-300"
+                  className="bg-white rounded-3xl p-8 shadow-lg border border-fuchsia-100 hover:border-fuchsia-200 transition-all duration-300"
                 >
                   <h3 className="text-xl font-bold mb-4 text-slate-900">
                     {faq.question}
@@ -280,7 +303,7 @@ export default async function ZhongwenAdvantage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-br from-red-600 via-rose-600 to-red-700 text-white py-24">
+      <section className="bg-gradient-to-br from-fuchsia-600 via-fuchsia-600 to-fuchsia-700 text-white py-24">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-bold mb-6">
@@ -290,20 +313,20 @@ export default async function ZhongwenAdvantage() {
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
               Be First to Experience Zhongwen Advantage
             </h2>
-            <p className="text-2xl mb-12 text-red-100 max-w-2xl mx-auto">
+            <p className="text-2xl mb-12 text-fuchsia-100 max-w-2xl mx-auto">
               Join our waitlist for early access and exclusive updates
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-white text-red-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-white text-fuchsia-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg"
               >
                 Join Waitlist
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-white hover:text-red-700"
+                className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-white hover:text-fuchsia-700"
               >
                 Learn More
               </Link>

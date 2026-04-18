@@ -18,6 +18,18 @@ _Link: [./conductor/tracks/hero_standardization_20260208/](./conductor/tracks/he
 
 ---
 
+## Archived Tracks
+
+### [x] Track: Complete Site Redesign (Archived)
+
+**Status:** Archived — Replaced by Product Brand Refresh 2026-04-18
+
+**Reason:** Implemented incorrect Clay design system (warm cream, Roobert font, broken animations) that violated product guidelines. Color schemes were incorrect and product logos missing.
+
+_Link: [./conductor/archive/complete_site_redesign_20260412_archived/](./conductor/archive/complete_site_redesign_20260412_archived/)_
+
+---
+
 ## Upcoming Tracks (created 2026-04-08)
 
 ### [ ] Track: Reduce Excessive Client Component Boundaries
@@ -40,15 +52,27 @@ _Link: [./conductor/tracks/client_component_reduction_20260415/](./conductor/tra
 
 _Link: [./conductor/tracks/images_sizes_prop_20260414/](./conductor/tracks/images_sizes_prop_20260414/)_
 
-### [ ] Track: Complete Site Redesign
+### [x] Track: Product Brand Refresh
 
-**Status:** New
+**Status:** Completed
 
-**Type:** feature | **Estimated Tasks:** 35
+**Type:** feature | **Estimated Tasks:** 28 | **Actual Tasks:** 28
 
-**Description:** Complete site redesign applying the Clay-inspired design system defined in DESIGN.md across all pages, components, and layouts — warm cream backgrounds, product brand colors, Roobert typography with OpenType stylistic sets, playful hover animations, and consistent styling throughout.
+**Description:** Align all 9 product pages with actual brand identity: correct hero gradients per product specifications, product logos in hero sections, sky-50 base theme, glassmorphism cards, and Geist typography per product guidelines. Replaces the archived Clay design system track.
 
-_Link: [./conductor/tracks/complete_site_redesign_20260412/](./conductor/tracks/complete_site_redesign_20260412/)_
+_Link: [./conductor/tracks/product_brand_refresh_20260418/](./conductor/tracks/product_brand_refresh_20260418/)_
+
+---
+
+### [~] Track: Product Page Structure Redesign
+
+**Status:** In Progress
+
+**Type:** feature | **Estimated Tasks:** 36
+
+**Description:** Redesign all 9 product pages with unique, distinctive layouts that break the repetitive AI-slop template pattern. Uses asymmetric splits, full-width color rooms, overlapping sections, dashed borders, and generous radius per Clay-inspired design principles while maintaining correct brand colors.
+
+_Link: [./conductor/tracks/product_page_structure_redesign_20260418/](./conductor/tracks/product_page_structure_redesign_20260418/)_
 
 ---
 

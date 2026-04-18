@@ -22,6 +22,10 @@ export interface HeroProps {
     src: string;
     alt: string;
   };
+  productLogo?: {
+    src: string;
+    alt: string;
+  };
   height?: "tall" | "medium";
   alignment?: "left" | "center";
   customGradient?: string;
@@ -56,139 +60,176 @@ const getHeightStyles = (height: NonNullable<HeroProps["height"]>): string => {
   return height === "tall" ? "min-h-[85vh]" : "min-h-[70vh]";
 };
 
-const getAlignmentStyles = (
-  alignment: NonNullable<HeroProps["alignment"]>,
-): string => {
-  return alignment === "center" ? "text-center mx-auto" : "text-left";
-};
-
 export default function HeroSection({
   title,
   description,
   ctaButton,
   badge,
   floatingImage,
+  productLogo,
   height = "medium",
   alignment = "center",
   customGradient,
   className = "",
 }: HeroProps) {
-  const gradientStyles = customGradient || "bg-warm-cream";
+  const gradientStyles = customGradient || "bg-sky-50";
   const heightStyles = getHeightStyles(height);
-  const alignmentStyles = getAlignmentStyles(alignment);
-
-  const imageSize =
-    height === "tall"
-      ? { width: 600, rounded: "rounded-[40px]" }
-      : { width: 500, rounded: "rounded-[32px]" };
+  const isCenter = alignment === "center";
 
   return (
     <section
       className={`relative overflow-hidden ${gradientStyles} text-black pt-24 ${heightStyles} ${className}`}
     >
       <div className="container relative z-20 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
-        <div className={`relative z-20 max-w-4xl ${alignmentStyles}`}>
-          {/* Badge */}
-          {badge && (
-            <div
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-6 ${getBadgeVariantStyles(badge.variant || "amber", badge.customColor)}`}
-            >
-              {badge.icon && <span className="w-5 h-5">{badge.icon}</span>}
-              <span
-                className="text-sm font-semibold font-roobert"
-                style={{
-                  fontFamily: "Roobert, Arial, sans-serif",
-                  fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
-                  letterSpacing: "1.08px",
-                  textTransform: "uppercase",
-                }}
-              >
-                {badge.text}
-              </span>
-            </div>
-          )}
-
-          {/* Title */}
-          {typeof title === "string" ? (
-            <h1
-              className="text-5xl md:text-6xl lg:text-8xl font-bold mb-6 leading-tight font-roobert"
-              style={{
-                fontFamily: "Roobert, Arial, sans-serif",
-                fontFeatureSettings: '"ss01", "ss03", "ss10", "ss11", "ss12"',
-                letterSpacing: "-3.2px",
-              }}
-            >
-              {title}
-            </h1>
-          ) : (
-            <div className="mb-6">{title}</div>
-          )}
-
-          {/* Description */}
-          {typeof description === "string" ? (
-            <p
-              className="text-xl md:text-2xl lg:text-3xl leading-relaxed mb-8 text-warm-silver font-roobert"
-              style={{
-                fontFamily: "Roobert, Arial, sans-serif",
-                fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
-              }}
-            >
-              {description}
-            </p>
-          ) : (
-            <div
-              className="text-xl md:text-2xl lg:text-3xl leading-relaxed mb-8 text-warm-silver font-roobert"
-              style={{
-                fontFamily: "Roobert, Arial, sans-serif",
-                fontFeatureSettings: '"ss03", "ss10", "ss11", "ss12"',
-              }}
-            >
-              {description}
-            </div>
-          )}
-
-          {/* CTA Button */}
-          {ctaButton && (
-            <Button
-              variant={
-                ctaButton.variant === "white"
-                  ? "clay-white"
-                  : ctaButton.variant === "outline"
-                    ? "clay-ghost"
-                    : "clay"
-              }
-              size="lg"
-              asChild
-            >
-              <Link href={ctaButton.href}>
-                {ctaButton.text}
-                {ctaButton.icon && (
-                  <span className="w-5 h-5">{ctaButton.icon}</span>
-                )}
-              </Link>
-            </Button>
-          )}
-        </div>
-
-        {/* Floating Image - Only shown when alignment="left" and on xl screens */}
-        {floatingImage && alignment === "left" && (
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden xl:block z-10 pointer-events-none">
-            <div
-              className={`relative ${imageSize.rounded}`}
-              style={{ width: `${imageSize.width}px` }}
-            >
+        {isCenter && !productLogo ? (
+          /* Center-aligned layout (original) */
+          <div className="relative z-20 max-w-4xl text-center mx-auto">
+            {/* Badge */}
+            {badge && (
               <div
-                className={`relative overflow-hidden z-10 ${imageSize.rounded}`}
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-6 ${getBadgeVariantStyles(badge.variant || "amber", badge.customColor)}`}
               >
-                <Image
-                  src={floatingImage.src}
-                  alt={floatingImage.alt}
-                  width={imageSize.width}
-                  height={imageSize.width}
-                  className="w-full h-auto"
-                />
+                {badge.icon && <span className="w-5 h-5">{badge.icon}</span>}
+                <span className="text-sm font-semibold tracking-widest uppercase">
+                  {badge.text}
+                </span>
               </div>
+            )}
+
+            {/* Title */}
+            {typeof title === "string" ? (
+              <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold mb-6 leading-tight tracking-tight">
+                {title}
+              </h1>
+            ) : (
+              <div className="mb-6">{title}</div>
+            )}
+
+            {/* Description */}
+            {typeof description === "string" ? (
+              <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed mb-8 text-slate-400">
+                {description}
+              </p>
+            ) : (
+              <div className="text-xl md:text-2xl lg:text-3xl leading-relaxed mb-8 text-slate-400">
+                {description}
+              </div>
+            )}
+
+            {/* CTA Button */}
+            {ctaButton && (
+              <Button
+                variant={
+                  ctaButton.variant === "white"
+                    ? "white"
+                    : ctaButton.variant === "outline"
+                      ? "outline"
+                      : "default"
+                }
+                size="lg"
+                asChild
+              >
+                <Link href={ctaButton.href}>
+                  {ctaButton.text}
+                  {ctaButton.icon && (
+                    <span className="w-5 h-5">{ctaButton.icon}</span>
+                  )}
+                </Link>
+              </Button>
+            )}
+          </div>
+        ) : (
+          /* Left-aligned layout with optional logo (asymmetric) */
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[50vh]">
+            {/* Text Content */}
+            <div className={`lg:col-span-7 ${productLogo ? "xl:col-span-7" : ""} z-20`}>
+              {/* Badge */}
+              {badge && (
+                <div
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm mb-6 ${getBadgeVariantStyles(badge.variant || "amber", badge.customColor)}`}
+                >
+                  {badge.icon && <span className="w-5 h-5">{badge.icon}</span>}
+                  <span className="text-sm font-semibold tracking-widest uppercase">
+                    {badge.text}
+                  </span>
+                </div>
+              )}
+
+              {/* Title */}
+              {typeof title === "string" ? (
+                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight tracking-tight">
+                  {title}
+                </h1>
+              ) : (
+                <div className="mb-6">{title}</div>
+              )}
+
+              {/* Description */}
+              {typeof description === "string" ? (
+                <p className="text-lg md:text-xl lg:text-2xl leading-relaxed mb-8 text-white/90 max-w-2xl">
+                  {description}
+                </p>
+              ) : (
+                <div className="text-lg md:text-xl lg:text-2xl leading-relaxed mb-8 text-white/90 max-w-2xl">
+                  {description}
+                </div>
+              )}
+
+              {/* CTA Button */}
+              {ctaButton && (
+                <Button
+                  variant={
+                    ctaButton.variant === "white"
+                      ? "white"
+                      : ctaButton.variant === "outline"
+                        ? "outline"
+                        : "default"
+                  }
+                  size="lg"
+                  asChild
+                >
+                  <Link href={ctaButton.href}>
+                    {ctaButton.text}
+                    {ctaButton.icon && (
+                      <span className="w-5 h-5">{ctaButton.icon}</span>
+                    )}
+                  </Link>
+                </Button>
+              )}
             </div>
+
+            {/* Product Logo */}
+            {productLogo && (
+              <div className="lg:col-span-5 xl:col-span-5 flex justify-center lg:justify-end z-20">
+                <div className="animate-in fade-in slide-in-from-right-8 duration-1000">
+                  <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-4 shadow-2xl">
+                    <Image
+                      src={productLogo.src}
+                      alt={productLogo.alt}
+                      width={350}
+                      height={350}
+                      className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 object-contain rounded-2xl"
+                      priority
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Legacy Floating Image (fallback) */}
+            {!productLogo && floatingImage && (
+              <div className="hidden xl:block lg:col-span-5 z-10">
+                <div className="relative rounded-[32px] overflow-hidden shadow-2xl">
+                  <Image
+                    src={floatingImage.src}
+                    alt={floatingImage.alt}
+                    width={500}
+                    height={500}
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>

@@ -18,23 +18,26 @@ describe("ReadingAdvantage", () => {
     expect(screen.getAllByRole("heading", { level: 1 }).length).toBe(1);
   });
 
-  it("renders blended learning section", () => {
+  it("renders horizontal game strip", () => {
     render(<ReadingAdvantage />);
-    const headings = screen.getAllByRole("heading", { level: 2 });
-    expect(headings.length).toBeGreaterThan(2);
+    const strip = document.querySelector("[data-testid='games-strip']");
+    expect(strip).toBeInTheDocument();
   });
 
-  it("renders key features", () => {
+  it("renders floating stat pills (not a grid)", () => {
     render(<ReadingAdvantage />);
-    expect(screen.getAllByRole("heading", { level: 2 }).length).toBeGreaterThan(
-      0,
-    );
+    const pills = document.querySelectorAll("[data-testid='stat-pill']");
+    expect(pills.length).toBeGreaterThanOrEqual(3);
   });
 
-  it("renders platform features", () => {
+  it("renders overlapping sections", () => {
     render(<ReadingAdvantage />);
-    expect(screen.getAllByRole("heading", { level: 2 }).length).toBeGreaterThan(
-      1,
-    );
+    const overlaps = document.querySelectorAll("[data-testid='overlapping-section']");
+    expect(overlaps.length).toBeGreaterThanOrEqual(1);
+  });
+
+  it("renders platform features color room", () => {
+    render(<ReadingAdvantage />);
+    expect(screen.getAllByRole("heading", { level: 2 }).length).toBeGreaterThan(1);
   });
 });
