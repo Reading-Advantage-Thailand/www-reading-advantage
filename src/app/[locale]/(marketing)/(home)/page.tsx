@@ -1,21 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Check,
-  ArrowRight,
-  Mail,
-  Sparkles,
-  Target,
-  Zap,
-  Users,
-} from "lucide-react";
+import { ArrowRight, Mail, Check } from "lucide-react";
 import { getScopedI18n } from "@/locales/server";
-import HeroSection from "@/components/marketing/hero-section";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 
+/**
+ * Home page — rewritten April 2026.
+ *
+ * Design language: Clay-inspired warm cream (#faf9f7) canvas with a single
+ * product accent (sky-500 / sky-900 for Reading Advantage). Roobert type,
+ * oat borders (#dad4c8), playful hover (rotateZ + hard offset shadow).
+ *
+ * Structural changes vs. previous version:
+ *   - 8 sections → 5
+ *   - Mission + Overview merged into the hero as evidence stats
+ *   - Innovation + Big 4 merged into "How it works"
+ *   - Amber / orange / slate / rose palette mix removed — sky only
+ *   - Single CTA verb ("Book a demo") repeated instead of 4 different asks
+ *   - Gradient-text headlines, blurred color blobs, and decorative icon
+ *     gradients removed in favor of honest typography and oat rules
+ *
+ * See: conductor/DESIGN.md for the full rationale + tokens.
+ */
 export default async function Home() {
   const t = await getScopedI18n("pages.home");
+
   const benefits = [
     t("flagship.benefits.0"),
     t("flagship.benefits.1"),
@@ -23,188 +32,112 @@ export default async function Home() {
     t("flagship.benefits.3"),
   ];
 
-  // Create split title for gradient effect
-  const titleParts = t("hero.title").split(" ");
-  const firstLine = titleParts.slice(0, 3).join(" ");
-  const secondLine = titleParts.slice(3).join(" ");
+  const howItWorks = [
+    {
+      title: t("qualityProtocol.features.0.title"),
+      description: t("qualityProtocol.features.0.description"),
+    },
+    {
+      title: t("qualityProtocol.features.1.title"),
+      description: t("qualityProtocol.features.1.description"),
+    },
+    {
+      title: t("qualityProtocol.features.2.title"),
+      description: t("qualityProtocol.features.2.description"),
+    },
+    {
+      title: t("qualityProtocol.features.3.title"),
+      description: t("qualityProtocol.features.3.description"),
+    },
+  ];
 
-  const heroTitle = (
-    <h1 className="text-5xl md:text-7xl lg:text-[80px] font-semibold leading-tight tracking-tight">
-      <span className="block">{firstLine}</span>
-      <span className="block bg-gradient-to-r from-sky-300 to-sky-500 bg-clip-text text-transparent">
-        {secondLine}
-      </span>
-    </h1>
-  );
-
-  const heroDescription = (
-    <p className="text-lg md:text-xl font-normal leading-relaxed text-slate-400">
-      {t("hero.description")}
-    </p>
-  );
+  const thaiFeatures = [
+    {
+      title: t("thaiSchools.features.0.title"),
+      description: t("thaiSchools.features.0.description"),
+    },
+    {
+      title: t("thaiSchools.features.1.title"),
+      description: t("thaiSchools.features.1.description"),
+    },
+    {
+      title: t("thaiSchools.features.2.title"),
+      description: t("thaiSchools.features.2.description"),
+    },
+  ];
 
   return (
-    <main className="overflow-x-hidden bg-sky-50">
-      {/* Hero - Using HeroSection component */}
-      <HeroSection
-        title={heroTitle}
-        description={heroDescription}
-        height="tall"
-        alignment="left"
-        badge={{
-          text: t("hero.cta"),
-          icon: <Sparkles className="w-4 h-4" />,
-          variant: "sky",
-        }}
-        ctaButton={{
-          text: t("hero.cta"),
-          href: "/products",
-          variant: "primary",
-          icon: <ArrowRight className="w-6 h-6" />,
-        }}
-        floatingImage={{
-          src: "/images/students-at-board.png",
-          alt: "Students gathered at interactive board",
-        }}
-        customGradient="bg-sky-50"
-        className="pt-20"
-      />
-
-      {/* Mission - Full width, bold typography */}
-      <section className="relative py-24 bg-sky-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block mb-8">
-              <div className="w-20 h-1 bg-gradient-to-r from-amber-400 to-sky-400 rounded-full mx-auto" />
-            </div>
-            <span className="uppercase tracking-widest text-xs font-semibold text-sky-600 mb-4 block">
-              Our Mission
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold mb-8 leading-tight text-slate-900 tracking-tight">
-              {t("mission.title")}
-            </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-sky-300 to-sky-400 rounded-full mx-auto mb-12" />
-            <p className="text-base md:text-lg leading-relaxed text-slate-500 max-w-3xl mx-auto">
-              {t("mission.description")}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Overview - Asymmetric layout with image */}
-      <section className="relative py-24 bg-gradient-to-br from-sky-600 via-orange-600 to-amber-700 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-16 items-center">
+    <main className="overflow-x-hidden bg-[#faf9f7] text-black">
+      {/* ─────────────────────────────────────────────────────────────
+          HERO — evidence-led, single CTA, warm cream canvas
+         ───────────────────────────────────────────────────────────── */}
+      <section className="relative pt-28 md:pt-36 pb-24 md:pb-32">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-7">
-              <span className="uppercase tracking-widest text-xs font-semibold text-amber-200 mb-4 block">
-                Platform Overview
-              </span>
-              <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold mb-8 leading-tight text-white tracking-tight">
-                {t("overview.title")}
-              </h2>
-              <p className="text-base md:text-lg leading-relaxed text-amber-50 mb-12">
-                {t("overview.description")}
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700 mb-8">
+                {t("hero.eyebrow")}
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button variant="white" asChild>
+              <h1 className="text-5xl md:text-6xl lg:text-[80px] font-semibold leading-[1.02] tracking-[-0.03em] text-black mb-8">
+                {t("hero.title")}
+              </h1>
+              <p className="text-lg md:text-xl leading-relaxed text-[#55534e] max-w-xl mb-10">
+                {t("hero.description")}
+              </p>
+
+              <div className="flex flex-wrap items-center gap-6">
+                <Button size="lg" variant="default" asChild>
                   <Link href="/contact">
-                    {t("overview.partnerCta")}
+                    {t("hero.cta")}
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 </Button>
+                <Link
+                  href="/products/reading-advantage"
+                  className="text-sm font-medium text-black border-b border-[#dad4c8] pb-0.5 hover:border-sky-500 transition-colors"
+                >
+                  {t("hero.secondaryCta")} →
+                </Link>
               </div>
-            </div>
-            <div className="lg:col-span-5">
-              <div className="relative">
-                <div
-                  className="absolute inset-0 bg-white/20 rounded-3xl blur-3xl -translate-y-4 translate-x-4"
-                  aria-hidden="true"
-                />
-                <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
-                  <div className="grid grid-cols-1 gap-6">
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-white mb-2">
-                        10,000+
-                      </div>
-                      <div className="text-amber-100 text-lg">
-                        {t("overview.stats.articles")}
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-white mb-2">
-                        {t("overview.stats.title")}
-                      </div>
-                      <div className="text-amber-100 text-sm">
-                        {t("overview.stats.research")}
-                      </div>
-                    </div>
-                  </div>
+
+              {/* Evidence bar — the old Overview stats, promoted to hero */}
+              <dl className="mt-16 grid grid-cols-3 gap-6 pt-8 border-t border-[#dad4c8] max-w-xl">
+                <div>
+                  <dd className="text-3xl md:text-4xl font-semibold tracking-tight text-black">
+                    +9.5
+                  </dd>
+                  <dt className="text-xs uppercase tracking-wider text-[#9f9b93] mt-2">
+                    {t("hero.stats.gain")}
+                  </dt>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Flagship - Diagonal split layout */}
-      <section className="relative py-24 bg-sky-50" id="products">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <span className="uppercase tracking-widest text-xs font-semibold text-sky-600 mb-4 block">
-                Flagship Product
-              </span>
-              <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold mb-6 text-slate-900 tracking-tight">
-                <span className="block">
-                  {t("flagship.title").split(" ").slice(0, 2).join(" ")}
-                </span>
-                <span className="block bg-gradient-to-r from-sky-400 to-sky-500 bg-clip-text text-transparent">
-                  {t("flagship.title").split(" ").slice(2).join(" ")}
-                </span>
-              </h2>
-            </div>
-
-            <div className="grid lg:grid-cols-2 gap-0 rounded-[40px] overflow-hidden shadow-xl bg-white">
-              {/* Benefits side */}
-              <div className="p-12 md:p-16 bg-gradient-to-br from-white to-amber-50">
-                <h3 className="text-2xl md:text-[32px] font-semibold mb-12 text-amber-800 tracking-tight">
-                  {t("flagship.productTitle")}
-                </h3>
-
-                <div className="space-y-6">
-                  {benefits.map((benefit, i) => (
-                    <div
-                      key={i}
-                      className="flex items-start gap-4 p-6 rounded-2xl hover:bg-white/80 transition-all duration-300"
-                    >
-                      <div className="w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <Check className="w-7 h-7 text-white" />
-                      </div>
-                      <p className="text-base md:text-lg leading-relaxed text-slate-700">
-                        {benefit}
-                      </p>
-                    </div>
-                  ))}
+                <div>
+                  <dd className="text-3xl md:text-4xl font-semibold tracking-tight text-black">
+                    10K+
+                  </dd>
+                  <dt className="text-xs uppercase tracking-wider text-[#9f9b93] mt-2">
+                    {t("hero.stats.articles")}
+                  </dt>
                 </div>
+                <div>
+                  <dd className="text-3xl md:text-4xl font-semibold tracking-tight text-black">
+                    12
+                  </dd>
+                  <dt className="text-xs uppercase tracking-wider text-[#9f9b93] mt-2">
+                    {t("hero.stats.levels")}
+                  </dt>
+                </div>
+              </dl>
+            </div>
 
-                <Button variant="default" className="mt-12 w-full" asChild>
-                  <Link href="/products/reading-advantage">
-                    {t("flagship.cta")}
-                    <ArrowRight className="w-6 h-6" />
-                  </Link>
-                </Button>
-              </div>
-
-              {/* Image side with background matching card */}
-              <div className="relative min-h-[500px] bg-gradient-to-br from-white to-amber-50 flex items-center justify-center p-8">
+            <div className="lg:col-span-5 hidden lg:block">
+              <div className="relative rounded-3xl overflow-hidden border border-[#dad4c8] bg-white shadow-[rgba(0,0,0,0.1)_0px_1px_1px,rgba(0,0,0,0.04)_0px_-1px_1px_inset,rgba(0,0,0,0.05)_0px_-0.5px_1px]">
                 <Image
-                  src="/images/students-with-app.png"
-                  alt="Students using Reading Advantage app on tablets and computers in classroom"
-                  width={600}
-                  height={500}
-                  className="relative z-10 object-contain"
+                  src="/images/reading-advantage-demo.png"
+                  alt="Reading Advantage student dashboard"
+                  width={720}
+                  height={720}
+                  className="w-full h-auto"
+                  priority
                 />
               </div>
             </div>
@@ -212,246 +145,158 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Innovation - Card-based features */}
-      <section className="relative py-24 bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-sky-900/50 via-amber-900/50 to-orange-900/50" />
-        <div
-          className="absolute top-0 left-1/4 w-96 h-96 bg-sky-500/10 rounded-full blur-[100px]"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute bottom-0 right-1/4 w-80 h-80 bg-amber-500/10 rounded-full blur-[80px]"
-          aria-hidden="true"
-        />
+      {/* ─────────────────────────────────────────────────────────────
+          FLAGSHIP — what it is, who it's for
+         ───────────────────────────────────────────────────────────── */}
+      <section id="products" className="py-24 md:py-32 border-t border-[#dad4c8]">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
+            <header className="lg:col-span-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700 mb-6">
+                {t("flagship.eyebrow")}
+              </p>
+              <h2 className="text-4xl md:text-5xl font-semibold leading-[1.05] tracking-[-0.02em] text-black mb-6">
+                {t("flagship.title")}
+              </h2>
+              <p className="text-base md:text-lg leading-relaxed text-[#55534e] mb-10">
+                {t("flagship.description")}
+              </p>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-20">
-            <span className="uppercase tracking-widest text-xs font-semibold text-sky-300 mb-4 block">
-              Innovation
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold mb-6 text-white tracking-tight">
-              {t("innovation.title")}
-            </h2>
-          </div>
+              <Button variant="default" asChild>
+                <Link href="/products/reading-advantage">
+                  {t("flagship.cta")}
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </Button>
+            </header>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                icon: <Zap className="w-10 h-10" />,
-                title: t("innovation.features.0.title"),
-                description: t("innovation.features.0.description"),
-              },
-              {
-                icon: <Target className="w-10 h-10" />,
-                title: t("innovation.features.1.title"),
-                description: t("innovation.features.1.description"),
-              },
-              {
-                icon: <Users className="w-10 h-10" />,
-                title: t("innovation.features.2.title"),
-                description: t("innovation.features.2.description"),
-              },
-            ].map((feature) => (
-              <Card
-                key={feature.title}
-                className="bg-white/10 border-white/10 backdrop-blur-sm hover:bg-white/15 hover:-translate-y-3 rounded-3xl"
-              >
-                <CardContent className="p-10">
-                  <div className="w-20 h-20 bg-gradient-to-br from-sky-400 to-amber-400 rounded-3xl flex items-center justify-center mb-8 shadow-2xl text-white">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-6 text-white tracking-tight">
-                    {feature.title}
-                  </h3>
-                  <p className="text-base md:text-lg leading-relaxed text-slate-300">
-                    {feature.description}
+            <ul className="lg:col-span-7 space-y-5">
+              {benefits.map((benefit, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-5 p-6 bg-white border border-[#dad4c8] rounded-2xl"
+                >
+                  <span
+                    className="flex-shrink-0 w-10 h-10 rounded-full bg-sky-100 text-sky-900 flex items-center justify-center font-semibold text-sm"
+                    aria-hidden="true"
+                  >
+                    <Check className="w-5 h-5" />
+                  </span>
+                  <p className="text-base md:text-lg leading-relaxed text-black">
+                    {benefit}
                   </p>
-                </CardContent>
-              </Card>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          HOW IT WORKS — the Big 4 Quality Protocol
+          (merged from the old Innovation + Quality Protocol sections)
+         ───────────────────────────────────────────────────────────── */}
+      <section className="py-24 md:py-32 bg-white border-y border-[#dad4c8]">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <header className="max-w-2xl mb-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700 mb-6">
+              {t("howItWorks.eyebrow")}
+            </p>
+            <h2 className="text-4xl md:text-5xl font-semibold leading-[1.05] tracking-[-0.02em] text-black mb-6">
+              {t("howItWorks.title")}
+            </h2>
+            <p className="text-base md:text-lg leading-relaxed text-[#55534e]">
+              {t("howItWorks.description")}
+            </p>
+          </header>
+
+          <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#dad4c8] border border-[#dad4c8] rounded-2xl overflow-hidden">
+            {howItWorks.map((item, i) => (
+              <li
+                key={item.title}
+                className="bg-white p-8 flex flex-col gap-4"
+              >
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+                  0{i + 1}
+                </span>
+                <h3 className="text-xl font-semibold tracking-tight text-black">
+                  {item.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-[#55534e]">
+                  {item.description}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          FOR THAI PRIVATE SCHOOLS — the "loud" section (sky-900)
+         ───────────────────────────────────────────────────────────── */}
+      <section className="py-24 md:py-32 bg-sky-900 text-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <header className="max-w-2xl mb-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300 mb-6">
+              {t("thaiSchools.eyebrow")}
+            </p>
+            <h2 className="text-4xl md:text-5xl font-semibold leading-[1.05] tracking-[-0.02em] text-white mb-6">
+              {t("thaiSchools.title")}
+            </h2>
+            <p className="text-base md:text-lg leading-relaxed text-sky-100">
+              {t("thaiSchools.description")}
+            </p>
+          </header>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {thaiFeatures.map((item, i) => (
+              <article
+                key={item.title}
+                className="border border-sky-700 rounded-2xl p-8 bg-sky-900/40 backdrop-blur-sm"
+              >
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300 mb-6 block">
+                  Challenge 0{i + 1}
+                </span>
+                <h3 className="text-xl font-semibold tracking-tight text-white mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-sky-100">
+                  {item.description}
+                </p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Big 4 Quality Protocol - New Section */}
-      <section className="relative py-24 bg-sky-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold mb-6 uppercase tracking-widest">
-                <Sparkles className="w-4 h-4" />
-                {t("qualityProtocol.badge")}
-              </div>
-              <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold mb-6 text-slate-900 tracking-tight">
-                {t("qualityProtocol.title")}
-              </h2>
-              <p className="text-base md:text-lg text-slate-500 max-w-3xl mx-auto leading-relaxed">
-                {t("qualityProtocol.description")}
-              </p>
-            </div>
+      {/* ─────────────────────────────────────────────────────────────
+          CTA — single ask, time-boxed, repeated verb from the hero
+         ───────────────────────────────────────────────────────────── */}
+      <section className="py-24 md:py-32">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700 mb-6">
+            {t("impact.eyebrow")}
+          </p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-[-0.02em] text-black mb-8">
+            {t("impact.title")}
+          </h2>
+          <p className="text-lg md:text-xl leading-relaxed text-[#55534e] mb-12 max-w-2xl mx-auto">
+            {t("impact.description")}
+          </p>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  title: t("qualityProtocol.features.0.title"),
-                  description: t("qualityProtocol.features.0.description"),
-                },
-                {
-                  title: t("qualityProtocol.features.1.title"),
-                  description: t("qualityProtocol.features.1.description"),
-                },
-                {
-                  title: t("qualityProtocol.features.2.title"),
-                  description: t("qualityProtocol.features.2.description"),
-                },
-                {
-                  title: t("qualityProtocol.features.3.title"),
-                  description: t("qualityProtocol.features.3.description"),
-                },
-              ].map((item) => (
-                <Card
-                  key={item.title}
-                  className="hover:-translate-y-2 hover:border-amber-300 rounded-3xl"
-                >
-                  <CardContent className="p-8">
-                    <div className="w-16 h-16 bg-gradient-to-br from-sky-400 to-amber-400 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                      <Target className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-4 text-slate-900 tracking-tight">
-                      {item.title}
-                    </h3>
-                    <p className="text-base md:text-lg leading-relaxed text-slate-600">
-                      {item.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Technology & Target Market - New Section */}
-      <section className="relative py-24 bg-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-sky-900/50 via-amber-900/50 to-slate-900" />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <span className="uppercase tracking-widest text-xs font-semibold text-sky-300 mb-4 block">
-                For Thai Schools
-              </span>
-              <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold mb-6 text-white tracking-tight">
-                {t("thaiSchools.title")}
-              </h2>
-              <p className="text-base md:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                {t("thaiSchools.description")}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  title: t("thaiSchools.features.0.title"),
-                  description: t("thaiSchools.features.0.description"),
-                },
-                {
-                  title: t("thaiSchools.features.1.title"),
-                  description: t("thaiSchools.features.1.description"),
-                },
-                {
-                  title: t("thaiSchools.features.2.title"),
-                  description: t("thaiSchools.features.2.description"),
-                },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:border-white/20 hover:bg-white/15 transition-all duration-300"
-                >
-                  <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-sky-400 rounded-2xl flex items-center justify-center mb-6 shadow-xl">
-                    <Zap className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-4 text-white tracking-tight">
-                    {item.title}
-                  </h3>
-                  <p className="text-base md:text-lg leading-relaxed text-slate-300">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-16 text-center">
-              <div className="inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl px-8 py-6">
-                <Sparkles className="w-8 h-8 text-amber-400" />
-                <div className="text-left">
-                  <div className="text-base md:text-lg text-slate-300">
-                    {t("thaiSchools.poweredBy")}
-                  </div>
-                  <div className="text-lg md:text-xl font-semibold text-white tracking-tight">
-                    {t("thaiSchools.technology")}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Impact - Final bold CTA */}
-      <section className="relative py-24 bg-gradient-to-br from-amber-500 via-orange-500 to-sky-600 overflow-hidden">
-        <div
-          className="absolute top-20 left-20 w-[500px] h-[500px] bg-amber-400/30 rounded-full blur-[150px]"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-sky-400/30 rounded-full blur-[120px]"
-          aria-hidden="true"
-        />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <span className="uppercase tracking-widest text-xs font-semibold text-white/80 mb-4 block">
-              Get Started
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-[60px] font-semibold mb-8 leading-tight text-white tracking-tight">
-              {t("impact.title")}
-            </h2>
-            <p className="text-lg md:text-2xl text-amber-50 leading-relaxed mb-16 max-w-3xl mx-auto">
-              {t("impact.description")}
-            </p>
-
-            <Button variant="white" size="lg" asChild>
-              <Link href="mailto:support@reading-advantage.com?subject=Demo Request - Reading Advantage Thailand&body=Hi team,%0A%0AI'm interested in scheduling a demo of your educational platforms. Could you please provide more information about your programs and available demo times?%0A%0AI'm particularly interested in:%0A- [Please specify which program(s) you're interested in]%0A- [Your school/organization name if applicable]%0A- [Preferred demo format: in-person, virtual, or self-guided]%0A%0ALooking forward to hearing from you!%0A%0ABest regards">
-                <Mail className="w-8 h-8" />
+          <div className="flex flex-wrap justify-center items-center gap-6">
+            <Button size="lg" variant="default" asChild>
+              <Link href="/contact">
+                <Mail className="w-5 h-5" />
                 {t("impact.cta")}
               </Link>
             </Button>
-
-            {/* Trust badges */}
-            <div className="mt-20 flex flex-wrap justify-center gap-12">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2">
-                  10,000+
-                </div>
-                <div className="text-amber-100 text-lg">
-                  {t("impact.trustBadges.articles")}
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2">12</div>
-                <div className="text-amber-100 text-lg">
-                  {t("impact.trustBadges.cefrLevels")}
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2">
-                  {t("impact.trustBadges.big4")}
-                </div>
-                <div className="text-amber-100 text-lg">
-                  {t("impact.trustBadges.qualityProtocol")}
-                </div>
-              </div>
-            </div>
+            <Link
+              href="/products/reading-advantage"
+              className="text-sm font-medium text-black border-b border-[#dad4c8] pb-0.5 hover:border-sky-500 transition-colors"
+            >
+              {t("impact.secondaryCta")} →
+            </Link>
           </div>
         </div>
       </section>

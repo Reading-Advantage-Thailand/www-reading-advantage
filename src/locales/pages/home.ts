@@ -1,10 +1,16 @@
 export const en = {
     hero: {
-        title: "Empowering Education Through AI Innovation",
+        eyebrow: "Reading Advantage · Thailand",
+        title: "Twice-weekly extensive reading, proven to outperform grammar instruction.",
         description:
-            "Transform your educational outcomes with AI-powered tools already supporting pioneering schools across Southeast Asia.",
-        cta: "Discover Your Solution",
-        secondaryCta: "Get Started",
+            "The turnkey extensive reading platform for Thai private schools. AI-curated articles, real classroom data, and a fidelity protocol that holds the line — so teachers can spend less time planning and more time responding to the students in front of them.",
+        cta: "Book a 20-min demo",
+        secondaryCta: "See the research",
+        stats: {
+            gain: "pts vs. grammar instruction (Aka 2019)",
+            articles: "AI-curated articles",
+            levels: "CEFR levels",
+        },
     },
     mission: {
         title: "Student Success Is Our Mission",
@@ -23,7 +29,10 @@ export const en = {
         },
     },
     flagship: {
-        title: "Experience the Advantage",
+        eyebrow: "Flagship product",
+        title: "Reading Advantage, twice a week.",
+        description:
+            "A reading block students actually want to show up for, and a dashboard that tells you — not in a vibe, but in data — whether it's working.",
         productTitle: "Reading Advantage",
         benefits: {
             0: "Boost reading comprehension with twice-weekly extensive reading backed by Aka (2019) research. Studies show extensive reading outperforms grammar instruction (~+9.5 points on reading tests).",
@@ -31,7 +40,7 @@ export const en = {
             2: "Track reading growth with dashboards that clearly surface comprehension, vocabulary, and fluency trends for every class and learner.",
             3: "Keep readers motivated with student-choice activities and immediate comprehension feedback during every session.",
         },
-        cta: "Start Your Success Story",
+        cta: "Open the product page",
     },
     innovation: {
         title: "Research-Backed AI Innovation",
@@ -52,6 +61,12 @@ export const en = {
                     "Monitor growth with comprehension checks, vocabulary insights, and fluency benchmarks that keep instruction student-centered.",
             },
         },
+    },
+    howItWorks: {
+        eyebrow: "How it works",
+        title: "The Big 4 Quality Protocol.",
+        description:
+            "The system is the expert. Four simple fidelity rules — derived from pilot classrooms across Thailand — that produce international results when they're kept, and noise when they're not.",
     },
     qualityProtocol: {
         badge: "QUALITY GUARANTEE",
@@ -77,8 +92,10 @@ export const en = {
         },
     },
     thaiSchools: {
-        title: "Built for Thai Private Schools",
-        description: "Empower your Thai teachers to deliver Native-Standard English, addressing your unique challenges.",
+        eyebrow: "For Thai private schools",
+        title: "Built for the constraints you actually have.",
+        description:
+            "Not a Western curriculum bolted onto a Thai schedule. Designed with teacher shortages, 30+ student classrooms, and limited devices as first principles, not afterthoughts.",
         features: {
             0: {
                 title: "Teacher Shortage",
@@ -97,10 +114,12 @@ export const en = {
         technology: "Google Gemini & GPT-5 AI",
     },
     impact: {
-        title: "Ready to Transform Your Institution?",
+        eyebrow: "Ready to see it",
+        title: "Twenty minutes. Your students' data, on your screen.",
         description:
-            "Join pioneering schools across Southeast Asia modernizing reading instruction with our extensive reading platform. Spend less time on paperwork and more time responding to the student data and needs surfaced by our reports.",
-        cta: "Schedule a Demo",
+            "We'll walk through your current reading block, show you exactly what the teacher and admin dashboards surface, and answer whether this is a fit — no pressure, no slides.",
+        cta: "Book a 20-min demo",
+        secondaryCta: "Read the research first",
         trustBadges: {
             articles: "AI-Curated Articles",
             cefrLevels: "CEFR Levels",
@@ -112,11 +131,17 @@ export const en = {
 
 export const th = {
     hero: {
-        title: "ยกระดับการศึกษาด้วยนวัตกรรม AI",
+        eyebrow: "Reading Advantage · ประเทศไทย",
+        title: "การอ่านกว้างสัปดาห์ละสองครั้ง พิสูจน์แล้วว่าได้ผลดีกว่าการสอนไวยากรณ์",
         description:
-            "ยกระดับผลสัมฤทธิ์ทางการเรียนของคุณด้วยเครื่องมือ AI ที่สนับสนุนโรงเรียนบุกเบิกทั่วเอเชียตะวันออกเฉียงใต้อยู่แล้ว",
-        cta: "ค้นพบโซลูชันของคุณ",
-        secondaryCta: "เริ่มต้นใช้งาน",
+            "แพลตฟอร์มการอ่านกว้างแบบครบวงจรสำหรับโรงเรียนเอกชนไทย บทความที่คัดสรรโดย AI ข้อมูลห้องเรียนจริง และโปรโตคอลความเที่ยงธรรมที่รักษามาตรฐาน — เพื่อให้ครูใช้เวลาน้อยลงกับการวางแผนและมากขึ้นกับการตอบสนองนักเรียนตรงหน้า",
+        cta: "จองสาธิต 20 นาที",
+        secondaryCta: "ดูงานวิจัย",
+        stats: {
+            gain: "คะแนนเทียบกับการสอนไวยากรณ์ (Aka 2019)",
+            articles: "บทความที่คัดสรรโดย AI",
+            levels: "ระดับ CEFR",
+        },
     },
     mission: {
         title: "ภารกิจของเราคือความสำเร็จของนักเรียน",
@@ -135,7 +160,10 @@ export const th = {
         },
     },
     flagship: {
-        title: "สัมผัสข้อได้เปรียบ",
+        eyebrow: "ผลิตภัณฑ์หลัก",
+        title: "Reading Advantage สัปดาห์ละสองครั้ง",
+        description:
+            "คาบการอ่านที่นักเรียนอยากเข้าจริงๆ และแดชบอร์ดที่บอกคุณ — ไม่ใช่จากความรู้สึก แต่จากข้อมูล — ว่ามันได้ผลหรือไม่",
         productTitle: "Reading Advantage",
         benefits: {
             0: "เพิ่มความเข้าใจการอ่านด้วยการอ่านกว้างสัปดาห์ละสองครั้งที่มีงานวิจัยรองรับจาก Aka (2019) งานวิจัยแสดงว่าการอ่านกว้างให้ผลดีกว่าการสอนไวยากรณ์ (~+9.5 คะแนนในการทดสอบการอ่าน)",
@@ -143,7 +171,7 @@ export const th = {
             2: "ติดตามการเติบโตด้านการอ่านด้วยแดชบอร์ดที่แสดงแนวโน้มความเข้าใจ คำศัพท์ และความคล่องของทุกห้องและทุกคนอย่างชัดเจน",
             3: "รักษาแรงจูงใจของผู้เรียนด้วยกิจกรรมที่เลือกเองและข้อเสนอแนะความเข้าใจแบบทันทีในทุกครั้ง",
         },
-        cta: "เริ่มต้นเรื่องราวความสำเร็จของคุณ",
+        cta: "เปิดหน้าผลิตภัณฑ์",
     },
     innovation: {
         title: "นวัตกรรม AI ที่พิสูจน์ด้วยงานวิจัย",
@@ -164,6 +192,12 @@ export const th = {
                     "ติดตามความก้าวหน้าด้วยการตรวจความเข้าใจ มุมมองคำศัพท์ และตัวชี้วัดความคล่องที่รักษาการสอนให้ยึดนักเรียนเป็นศูนย์กลาง",
             },
         },
+    },
+    howItWorks: {
+        eyebrow: "วิธีการทำงาน",
+        title: "โปรโตคอลคุณภาพ The Big 4",
+        description:
+            "ระบบคือผู้เชี่ยวชาญ กฎความเที่ยงธรรมสี่ข้อง่ายๆ — ที่ได้มาจากห้องเรียนนำร่องทั่วประเทศไทย — ที่ให้ผลลัพธ์ระดับสากลเมื่อปฏิบัติตาม และไม่ได้ผลเมื่อไม่ทำ",
     },
     qualityProtocol: {
         badge: "รับประกันคุณภาพ",
@@ -189,8 +223,10 @@ export const th = {
         },
     },
     thaiSchools: {
-        title: "สร้างขึ้นสำหรับโรงเรียนเอกชนไทย",
-        description: "เสริมพลังครูไทยของคุณให้สามารถสอนภาษาอังกฤษในระดับมาตรฐานเจ้าของภาษา โดยแก้ไขความท้าทายเฉพาะของคุณ",
+        eyebrow: "สำหรับโรงเรียนเอกชนไทย",
+        title: "สร้างขึ้นสำหรับข้อจำกัดที่คุณมีจริงๆ",
+        description:
+            "ไม่ใช่หลักสูตรตะวันตกที่ยัดใส่ตารางเรียนไทย ออกแบบโดยมีปัญหาขาดแคลนครู ห้องเรียน 30+ คน และอุปกรณ์จำกัดเป็นหลักการตั้งต้น ไม่ใช่สิ่งที่คิดทีหลัง",
         features: {
             0: {
                 title: "การขาดแคลนครู",
@@ -209,10 +245,12 @@ export const th = {
         technology: "Google Gemini & GPT-5 AI",
     },
     impact: {
-        title: "พร้อมที่จะเปลี่ยนแปลงสถาบันของคุณหรือยัง?",
+        eyebrow: "พร้อมที่จะเห็นแล้ว",
+        title: "ยี่สิบนาที ข้อมูลนักเรียนของคุณ บนหน้าจอของคุณ",
         description:
-            "เข้าร่วมโรงเรียนบุกเบิกทั่วเอเชียตะวันออกเฉียงใต้ที่ยกระดับการสอนการอ่านด้วยแพลตฟอร์มของเรา ใช้เวลาน้อยลงกับงานเอกสารและมากขึ้นกับการตอบสนองข้อมูลและความต้องการของนักเรียนจากรายงาน",
-        cta: "นัดหมายการสาธิต",
+            "เราจะพาดูคาบการอ่านปัจจุบันของคุณ แสดงให้เห็นว่าแดชบอร์ดครูและผู้บริหารแสดงอะไรบ้าง และตอบว่าเหมาะหรือไม่ — ไม่มีแรงกดดัน ไม่มีสไลด์",
+        cta: "จองสาธิต 20 นาที",
+        secondaryCta: "อ่านงานวิจัยก่อน",
         trustBadges: {
             articles: "บทความที่คัดสรรโดย AI",
             cefrLevels: "ระดับ CEFR",
@@ -224,11 +262,17 @@ export const th = {
 
 export const zh = {
     hero: {
-        title: "通过AI创新提升教育",
+        eyebrow: "Reading Advantage · 泰国",
+        title: "每周两次泛读，已证明优于语法教学。",
         description:
-            "使用已服务东南亚领先学校的 AI 工具提升教学成果",
-        cta: "探索您的解决方案",
-        secondaryCta: "开始使用",
+            "专为泰国私立学校打造的一站式泛读平台。AI精选文章、真实课堂数据和保真度协议确保质量——让教师减少备课时间，把更多精力放在眼前的学生身上。",
+        cta: "预约20分钟演示",
+        secondaryCta: "查看研究",
+        stats: {
+            gain: "分 vs. 语法教学 (Aka 2019)",
+            articles: "AI精选文章",
+            levels: "CEFR级别",
+        },
     },
     mission: {
         title: "学生的成功就是我们的使命",
@@ -247,7 +291,10 @@ export const zh = {
         },
     },
     flagship: {
-        title: "体验优势",
+        eyebrow: "旗舰产品",
+        title: "Reading Advantage，每周两次。",
+        description:
+            "学生真正想参加的阅读课，以及用数据——而非感觉——告诉你是否有效的仪表板。",
         productTitle: "Reading Advantage",
         benefits: {
             0: "每周两次的泛读实践有Aka (2019)研究支持。研究显示泛读比语法教学效果更好（阅读测试分数提升约+9.5分）",
@@ -255,7 +302,7 @@ export const zh = {
             2: "利用仪表板清晰呈现每个班级和学生的理解、词汇与流利度趋势，追踪阅读成长",
             3: "通过学生自主选择的活动与即时理解反馈，在每次练习中保持阅读动力",
         },
-        cta: "开启您的成功故事",
+        cta: "打开产品页面",
     },
     innovation: {
         title: "以研究为基础的 AI 创新",
@@ -274,6 +321,12 @@ export const zh = {
                 description: "通过理解检查、词汇洞察和流利度基准监测成长，让教学始终以学生为核心",
             },
         },
+    },
+    howItWorks: {
+        eyebrow: "工作原理",
+        title: "Big 4 质量协议。",
+        description:
+            "系统即专家。四条简单的保真度规则——源自泰国各地的试点课堂——遵循时产出国际化成果，不遵循则只有噪音。",
     },
     qualityProtocol: {
         badge: "质量保证",
@@ -299,8 +352,10 @@ export const zh = {
         },
     },
     thaiSchools: {
-        title: "专为泰国私立学校打造",
-        description: "赋能您的泰国教师提供母语级英语，解决您独特的挑战",
+        eyebrow: "专为泰国私立学校",
+        title: "为你实际面临的限制而建。",
+        description:
+            "不是把西方课程硬塞进泰国课表。教师短缺、30+学生的教室和有限设备是设计的首要原则，而非事后补救。",
         features: {
             0: {
                 title: "师资短缺",
@@ -319,10 +374,12 @@ export const zh = {
         technology: "Google Gemini & GPT-5 AI",
     },
     impact: {
-        title: "准备好转变您的机构了吗？",
+        eyebrow: "准备好了吗",
+        title: "二十分钟。你学生的数据，在你的屏幕上。",
         description:
-            "与东南亚的先锋学校一起，借助我们的泛读平台升级阅读教学。把时间从纸面工作中解放出来，更多关注报告呈现的学生数据与需求",
-        cta: "安排演示",
+            "我们将一起回顾你目前的阅读课，展示教师和管理员仪表板呈现的内容，并回答是否适合——没有压力，没有幻灯片。",
+        cta: "预约20分钟演示",
+        secondaryCta: "先看研究",
         trustBadges: {
             articles: "AI 精选文章",
             cefrLevels: "CEFR 级别",
