@@ -12,6 +12,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import { getScopedI18n } from "@/locales/server";
+import { OverlappingSection } from "@/components/ui/overlapping-section";
+import { FAQAccordion } from "@/components/ui/faq-accordion";
 
 export const metadata: Metadata = {
   title:
@@ -27,6 +29,71 @@ export const metadata: Metadata = {
 
 export default async function StorytimeAdvantage() {
   const t = await getScopedI18n("pages.products.storytimeAdvantage");
+
+  const keyFeatures = [
+    {
+      icon: BookOpen,
+      title: t("keyFeatures.features.0.title"),
+      points: [
+        t("keyFeatures.features.0.points.0"),
+        t("keyFeatures.features.0.points.1"),
+        t("keyFeatures.features.0.points.2"),
+        t("keyFeatures.features.0.points.3"),
+      ],
+    },
+    {
+      icon: FileText,
+      title: t("keyFeatures.features.1.title"),
+      points: [
+        t("keyFeatures.features.1.points.0"),
+        t("keyFeatures.features.1.points.1"),
+        t("keyFeatures.features.1.points.2"),
+        t("keyFeatures.features.1.points.3"),
+      ],
+    },
+  ];
+
+  const teacherResources = [
+    {
+      icon: FileText,
+      title: t("teacherTools.tools.0.title"),
+      description: t("teacherTools.tools.0.description"),
+    },
+    {
+      icon: Users,
+      title: t("teacherTools.tools.1.title"),
+      description: t("teacherTools.tools.1.description"),
+    },
+    {
+      icon: BarChart3,
+      title: t("teacherTools.tools.2.title"),
+      description: t("teacherTools.tools.2.description"),
+    },
+  ];
+
+  const faqItems = [
+    {
+      question: t("faq.questions.0.question"),
+      answer: t("faq.questions.0.answer"),
+    },
+    {
+      question: t("faq.questions.1.question"),
+      answer: t("faq.questions.1.answer"),
+    },
+    {
+      question: t("faq.questions.2.question"),
+      answer: t("faq.questions.2.answer"),
+    },
+    {
+      question: t("faq.questions.3.question"),
+      answer: t("faq.questions.3.answer"),
+    },
+    {
+      question: t("faq.questions.4.question"),
+      answer: t("faq.questions.4.answer"),
+    },
+  ];
+
   return (
     <main className="overflow-x-hidden">
       {/* Hero Section - Inline with amber gradient */}
@@ -41,7 +108,7 @@ export default async function StorytimeAdvantage() {
           aria-hidden="true"
         />
         <div className="container relative z-10 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center animate-in fade-in slide-in-from-bottom-8 duration-700">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
                 <Sparkles className="w-4 h-4" />
@@ -78,103 +145,23 @@ export default async function StorytimeAdvantage() {
         </div>
       </section>
 
-      {/* Core Value Proposition */}
-      <section className="bg-white py-24">
+      {/* Full-Width Color Room (Amber) - Key Features */}
+      <section className="bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-amber-600 to-amber-600 bg-clip-text text-transparent">
-                {t("coreValue.heading")}
-              </span>
+            <p className="uppercase tracking-widest text-xs font-semibold text-amber-100 mb-6 text-center">
+              KEY FEATURES
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white">
+              {t("keyFeatures.heading")}
             </h2>
-            <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12">
-              <Image
-                src="/images/storytime-advantage-hero.jpg"
-                alt="Storytime Advantage"
-                width={600}
-                height={400}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="rounded-3xl shadow-xl w-full h-auto object-cover"
-              />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: BookOpen,
-                  title: t("coreValue.features.0.title"),
-                  description: t("coreValue.features.0.description"),
-                },
-                {
-                  icon: Scale,
-                  title: t("coreValue.features.1.title"),
-                  description: t("coreValue.features.1.description"),
-                },
-                {
-                  icon: Handshake,
-                  title: t("coreValue.features.2.title"),
-                  description: t("coreValue.features.2.description"),
-                },
-              ].map((feature, index) => (
+            <div className="grid md:grid-cols-2 gap-0 max-w-5xl mx-auto">
+              {keyFeatures.map((feature, index) => (
                 <div
                   key={feature.title}
-                  className="bg-gradient-to-br from-amber-50 to-amber-50 rounded-3xl p-10 border border-amber-100 hover:border-amber-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
-                  style={{ animationDelay: `${index * 150}ms` }}
-                >
-                  <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg mx-auto">
-                    <feature.icon
-                      className="w-8 h-8 text-white"
-                      strokeWidth={2}
-                    />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4 text-center text-slate-900">
-                    {feature.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed text-center">
-                    {feature.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Key Features */}
-      <section className="bg-gradient-to-br from-amber-50 via-amber-50 to-white py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-amber-600 to-amber-600 bg-clip-text text-transparent">
-                {t("keyFeatures.heading")}
-              </span>
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                {
-                  icon: BookOpen,
-                  title: t("keyFeatures.features.0.title"),
-                  points: [
-                    { text: t("keyFeatures.features.0.points.0"), i: 0 },
-                    { text: t("keyFeatures.features.0.points.1"), i: 1 },
-                    { text: t("keyFeatures.features.0.points.2"), i: 2 },
-                    { text: t("keyFeatures.features.0.points.3"), i: 3 },
-                  ],
-                },
-                {
-                  icon: FileText,
-                  title: t("keyFeatures.features.1.title"),
-                  points: [
-                    { text: t("keyFeatures.features.1.points.0"), i: 0 },
-                    { text: t("keyFeatures.features.1.points.1"), i: 1 },
-                    { text: t("keyFeatures.features.1.points.2"), i: 2 },
-                    { text: t("keyFeatures.features.1.points.3"), i: 3 },
-                  ],
-                },
-              ].map((feature, index) => (
-                <div
-                  key={feature.title}
-                  className="bg-white rounded-3xl p-10 shadow-lg border border-amber-100 hover:border-amber-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
-                  style={{ animationDelay: `${index * 150}ms` }}
+                  className={`bg-white rounded-3xl p-12 shadow-xl ${
+                    index === 0 ? "relative z-10" : "-ml-6 relative z-0"
+                  }`}
                 >
                   <div className="w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-md">
                     <feature.icon
@@ -182,15 +169,15 @@ export default async function StorytimeAdvantage() {
                       strokeWidth={2}
                     />
                   </div>
-                  <h3 className="text-xl font-bold mb-6 text-slate-900">
+                  <h3 className="text-2xl font-bold mb-6 text-slate-900">
                     {feature.title}
                   </h3>
-                  <ul className="space-y-3">
-                    {feature.points.map((point) => (
-                      <li key={point.i} className="flex items-start gap-3">
+                  <ul className="space-y-4">
+                    {feature.points.map((point, i) => (
+                      <li key={i} className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0" />
                         <span className="text-slate-600 leading-relaxed">
-                          {point.text}
+                          {point}
                         </span>
                       </li>
                     ))}
@@ -202,93 +189,136 @@ export default async function StorytimeAdvantage() {
         </div>
       </section>
 
-      {/* Teacher Tools */}
+      {/* Asymmetric 7/5 - K-3 Curriculum */}
       <section className="bg-white py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-amber-600 to-amber-600 bg-clip-text text-transparent">
-                {t("teacherTools.heading")}
-              </span>
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: FileText,
-                  title: t("teacherTools.tools.0.title"),
-                  description: t("teacherTools.tools.0.description"),
-                },
-                {
-                  icon: Users,
-                  title: t("teacherTools.tools.1.title"),
-                  description: t("teacherTools.tools.1.description"),
-                },
-                {
-                  icon: BarChart3,
-                  title: t("teacherTools.tools.2.title"),
-                  description: t("teacherTools.tools.2.description"),
-                },
-              ].map((tool, index) => (
+            <p className="uppercase tracking-widest text-xs font-semibold text-amber-600 mb-6">
+              K-3 CURRICULUM
+            </p>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-7">
+                <h2 className="text-4xl md:text-5xl font-bold mb-8 text-slate-900">
+                  {t("coreValue.heading")}
+                </h2>
+                <div className="space-y-8">
+                  {[
+                    {
+                      icon: BookOpen,
+                      title: t("coreValue.features.0.title"),
+                      description: t("coreValue.features.0.description"),
+                    },
+                    {
+                      icon: Scale,
+                      title: t("coreValue.features.1.title"),
+                      description: t("coreValue.features.1.description"),
+                    },
+                    {
+                      icon: Handshake,
+                      title: t("coreValue.features.2.title"),
+                      description: t("coreValue.features.2.description"),
+                    },
+                  ].map((item) => (
+                    <div key={item.title} className="flex gap-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+                        <item.icon className="w-6 h-6 text-white" strokeWidth={2} />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold mb-2 text-slate-900">
+                          {item.title}
+                        </h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="lg:col-span-5">
                 <div
-                  key={tool.title}
-                  className="bg-gradient-to-br from-amber-50 to-amber-50 rounded-3xl p-10 border border-amber-100 hover:border-amber-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
-                  style={{ animationDelay: `${index * 150}ms` }}
+                  data-testid="dashed-frame"
+                  className="border-2 border-dashed border-amber-400 rounded-3xl p-2"
+                >
+                  <Image
+                    src="/images/storytime-advantage-hero.jpg"
+                    alt="Storytime Advantage Classroom"
+                    width={600}
+                    height={400}
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="rounded-2xl w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Overlapping Section - Teacher Resources */}
+      <OverlappingSection
+        data-testid="overlapping-section"
+        background="bg-amber-50"
+        overlapAmount="-mt-20"
+        topRadius="rounded-t-[40px]"
+      >
+        <div className="container mx-auto px-4 py-24">
+          <div className="max-w-6xl mx-auto">
+            <p className="uppercase tracking-widest text-xs font-semibold text-amber-600 mb-6 text-center">
+              TEACHER RESOURCES
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-slate-900">
+              {t("teacherTools.heading")}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {teacherResources.map((resource, index) => (
+                <div
+                  key={resource.title}
+                  data-testid="staggered-card"
+                  className={`bg-white rounded-3xl p-10 shadow-lg border border-amber-100 hover:border-amber-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 ${
+                    index === 1 ? "mt-5" : ""
+                  }`}
                 >
                   <div className="w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-md mx-auto">
-                    <tool.icon className="w-7 h-7 text-white" strokeWidth={2} />
+                    <resource.icon
+                      className="w-7 h-7 text-white"
+                      strokeWidth={2}
+                    />
                   </div>
                   <h3 className="text-xl font-bold mb-4 text-center text-slate-900">
-                    {tool.title}
+                    {resource.title}
                   </h3>
                   <p className="text-slate-600 leading-relaxed text-center">
-                    {tool.description}
+                    {resource.description}
                   </p>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </section>
+      </OverlappingSection>
 
-      {/* FAQ Section */}
-      <section className="bg-gradient-to-br from-amber-50 via-amber-50 to-white py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-amber-600 to-amber-600 bg-clip-text text-transparent">
-                {t("faq.heading")}
-              </span>
-            </h2>
-            <div className="space-y-6">
-              {[
-                {
-                  question: t("faq.questions.0.question"),
-                  answer: t("faq.questions.0.answer"),
-                },
-                {
-                  question: t("faq.questions.1.question"),
-                  answer: t("faq.questions.1.answer"),
-                },
-              ].map((faq, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-3xl p-8 shadow-lg border border-amber-100 hover:border-amber-200 transition-all duration-300"
-                >
-                  <h3 className="text-xl font-bold mb-4 text-slate-900">
-                    {faq.question}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* FAQ Accordion */}
+      <section className="bg-white py-24">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <p className="uppercase tracking-widest text-xs font-semibold text-amber-600 mb-6 text-center">
+            FREQUENTLY ASKED QUESTIONS
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-slate-900">
+            {t("faq.heading")}
+          </h2>
+          <FAQAccordion
+            data-testid="faq-accordion"
+            variant="amber"
+            items={faqItems}
+          />
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Final CTA */}
       <section className="bg-gradient-to-br from-amber-600 via-amber-600 to-amber-700 text-white py-24">
         <div className="container mx-auto px-4 text-center">
-          <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700">
+          <div className="max-w-4xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
               {t("cta.heading")}
             </h2>

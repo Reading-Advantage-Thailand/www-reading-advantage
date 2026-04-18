@@ -13,6 +13,9 @@ import {
   Sparkles,
 } from "lucide-react";
 import { getScopedI18n } from "@/locales/server";
+import { OverlappingSection } from "@/components/ui/overlapping-section";
+import { LargeImageBreak } from "@/components/ui/large-image-break";
+import { Card } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Science Advantage - Reading Advantage Thailand",
@@ -79,216 +82,258 @@ export default async function ScienceAdvantage() {
         </div>
       </section>
 
-      {/* Core Value Proposition */}
-      <section className="bg-white py-24">
+      {/* Core Value Proposition — Full-Width Color Room (Rose) */}
+      <section className="bg-gradient-to-br from-rose-500 via-rose-600 to-rose-700 py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-5xl md:text-6xl font-bold mb-12">
-              <span className="bg-gradient-to-r from-rose-600 to-rose-600 bg-clip-text text-transparent">
-                {t("coreValue.heading")}
-              </span>
+          <div className="max-w-6xl mx-auto">
+            <span className="uppercase tracking-widest text-xs font-semibold text-rose-100 block mb-4">
+              WHY SCIENCE ADVANTAGE
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-16">
+              {t("coreValue.heading")}
             </h2>
-            <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 max-w-3xl mx-auto">
-              <Image
-                src="/images/science-advantage-hero.jpg"
-                alt="Science Advantage"
-                width={600}
-                height={400}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="rounded-3xl shadow-xl w-full h-auto object-cover"
-              />
-            </div>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="p-10 rounded-3xl bg-gradient-to-br from-rose-50 to-rose-50 border border-rose-100 hover:border-rose-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3">
-                <div className="w-16 h-16 bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg mx-auto">
+              <Card
+                padding="p-12"
+                className="rounded-[40px] bg-white/10 backdrop-blur-sm border-rose-200/30 text-white hover:-translate-y-2 hover:shadow-2xl"
+                data-testid="value-card"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-rose-300 to-rose-400 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                   <BookOpen className="w-8 h-8 text-white" strokeWidth={2} />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-slate-900">
+                <h3 className="text-2xl font-bold mb-4">
                   {t("coreValue.features.0.title")}
                 </h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-rose-50 leading-relaxed">
                   {t("coreValue.features.0.description")}
                 </p>
-              </div>
-              <div className="p-10 rounded-3xl bg-gradient-to-br from-rose-50 to-rose-50 border border-rose-100 hover:border-rose-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3">
-                <div className="w-16 h-16 bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg mx-auto">
+              </Card>
+              <Card
+                padding="p-12"
+                className="rounded-[40px] bg-white/10 backdrop-blur-sm border-rose-200/30 text-white hover:-translate-y-2 hover:shadow-2xl"
+                data-testid="value-card"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-rose-300 to-rose-400 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                   <Target className="w-8 h-8 text-white" strokeWidth={2} />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-slate-900">
+                <h3 className="text-2xl font-bold mb-4">
                   {t("coreValue.features.1.title")}
                 </h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-rose-50 leading-relaxed">
                   {t("coreValue.features.1.description")}
                 </p>
-              </div>
-              <div className="p-10 rounded-3xl bg-gradient-to-br from-rose-50 to-rose-50 border border-rose-100 hover:border-rose-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3">
-                <div className="w-16 h-16 bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg mx-auto">
+              </Card>
+              <Card
+                padding="p-12"
+                className="rounded-[40px] bg-white/10 backdrop-blur-sm border-rose-200/30 text-white hover:-translate-y-2 hover:shadow-2xl"
+                data-testid="value-card"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-rose-300 to-rose-400 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                   <RefreshCw className="w-8 h-8 text-white" strokeWidth={2} />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-slate-900">
+                <h3 className="text-2xl font-bold mb-4">
                   {t("coreValue.features.2.title")}
                 </h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-rose-50 leading-relaxed">
                   {t("coreValue.features.2.description")}
                 </p>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Large Image Break */}
+      <LargeImageBreak
+        src="/images/science-advantage-hero.jpg"
+        alt="Science Advantage"
+        overlayPosition="center"
+        data-testid="image-break"
+        overlayText={
+          <div>
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              {t("coreValue.heading")}
+            </h3>
+            <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+              {t("hero.subtitle")}
+            </p>
+          </div>
+        }
+      />
+
+      {/* NGSS Aligned Features — Asymmetric 7/5 */}
+      <section className="bg-white py-24">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <span className="uppercase tracking-widest text-xs font-semibold text-rose-600 block mb-4">
+              NGSS ALIGNED
+            </span>
+            <div className="grid lg:grid-cols-12 gap-12 items-start">
+              <div className="lg:col-span-7">
+                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                  {t("keyFeatures.heading")}
+                </h2>
+                <p className="text-lg text-slate-600 leading-relaxed mb-8">
+                  {t("hero.description")}
+                </p>
+              </div>
+              <div className="lg:col-span-5 space-y-8">
+                {[
+                  {
+                    icon: BookOpen,
+                    title: t("keyFeatures.features.0.title"),
+                    points: [
+                      t("keyFeatures.features.0.points.0"),
+                      t("keyFeatures.features.0.points.1"),
+                      t("keyFeatures.features.0.points.2"),
+                      t("keyFeatures.features.0.points.3"),
+                    ],
+                  },
+                  {
+                    icon: RefreshCw,
+                    title: t("keyFeatures.features.1.title"),
+                    points: [
+                      t("keyFeatures.features.1.points.0"),
+                      t("keyFeatures.features.1.points.1"),
+                      t("keyFeatures.features.1.points.2"),
+                      t("keyFeatures.features.1.points.3"),
+                    ],
+                  },
+                  {
+                    icon: Microscope,
+                    title: t("keyFeatures.features.2.title"),
+                    points: [
+                      t("keyFeatures.features.2.points.0"),
+                      t("keyFeatures.features.2.points.1"),
+                      t("keyFeatures.features.2.points.2"),
+                      t("keyFeatures.features.2.points.3"),
+                    ],
+                  },
+                ].map((feature) => (
+                  <div
+                    key={feature.title}
+                    className="bg-gradient-to-br from-rose-50 to-white rounded-3xl p-8 border border-rose-100"
+                  >
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center shadow-md">
+                        <feature.icon
+                          className="w-6 h-6 text-white"
+                          strokeWidth={2}
+                        />
+                      </div>
+                      <h3 className="text-xl font-bold text-slate-900">
+                        {feature.title}
+                      </h3>
+                    </div>
+                    <ul className="space-y-3">
+                      {feature.points.map((point, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <Check className="w-5 h-5 text-rose-500 mt-0.5 flex-shrink-0" />
+                          <span className="text-slate-600 leading-relaxed">
+                            {point.replace(/^[✓•]\s*/, "")}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Key Features */}
-      <section className="bg-gradient-to-br from-rose-50 via-rose-50 to-white py-24">
+      {/* Target Audience — 2-column editorial layout */}
+      <section className="bg-slate-50 py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-            <span className="bg-gradient-to-r from-rose-600 to-rose-600 bg-clip-text text-transparent">
-              {t("keyFeatures.heading")}
+          <div className="max-w-6xl mx-auto">
+            <span className="uppercase tracking-widest text-xs font-semibold text-slate-500 block mb-4">
+              BUILT FOR
             </span>
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                icon: BookOpen,
-                title: t("keyFeatures.features.0.title"),
-                points: [
-                  { text: t("keyFeatures.features.0.points.0"), i: 0 },
-                  { text: t("keyFeatures.features.0.points.1"), i: 1 },
-                  { text: t("keyFeatures.features.0.points.2"), i: 2 },
-                  { text: t("keyFeatures.features.0.points.3"), i: 3 },
-                ],
-              },
-              {
-                icon: RefreshCw,
-                title: t("keyFeatures.features.1.title"),
-                points: [
-                  { text: t("keyFeatures.features.1.points.0"), i: 0 },
-                  { text: t("keyFeatures.features.1.points.1"), i: 1 },
-                  { text: t("keyFeatures.features.1.points.2"), i: 2 },
-                  { text: t("keyFeatures.features.1.points.3"), i: 3 },
-                ],
-              },
-              {
-                icon: Microscope,
-                title: t("keyFeatures.features.2.title"),
-                points: [
-                  { text: t("keyFeatures.features.2.points.0"), i: 0 },
-                  { text: t("keyFeatures.features.2.points.1"), i: 1 },
-                  { text: t("keyFeatures.features.2.points.2"), i: 2 },
-                  { text: t("keyFeatures.features.2.points.3"), i: 3 },
-                ],
-              },
-            ].map((feature, index) => (
-              <div
-                key={feature.title}
-                className="bg-white rounded-3xl p-10 shadow-lg border border-rose-100 hover:border-rose-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <div className="w-14 h-14 bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl flex items-center justify-center mb-6 shadow-md">
-                  <feature.icon
-                    className="w-7 h-7 text-white"
-                    strokeWidth={2}
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-6 text-slate-900">
-                  {feature.title}
-                </h3>
-                <ul className="space-y-3">
-                  {feature.points.map((point) => (
-                    <li key={point.i} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-rose-500 rounded-full mt-2 flex-shrink-0" />
-                      <span className="text-slate-600 leading-relaxed">
-                        {point.text.replace(/^[✓•]\s*/, "")}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-16">
+              {t("targetAudience.heading")}
+            </h2>
+            <div
+              className="grid md:grid-cols-2 gap-8"
+              data-testid="editorial-layout"
+            >
+              {[
+                {
+                  icon: GraduationCap,
+                  title: t("targetAudience.audiences.0.title"),
+                  points: [
+                    t("targetAudience.audiences.0.points.0"),
+                    t("targetAudience.audiences.0.points.1"),
+                    t("targetAudience.audiences.0.points.2"),
+                    t("targetAudience.audiences.0.points.3"),
+                  ],
+                },
+                {
+                  icon: Atom,
+                  title: t("targetAudience.audiences.1.title"),
+                  points: [
+                    t("targetAudience.audiences.1.points.0"),
+                    t("targetAudience.audiences.1.points.1"),
+                    t("targetAudience.audiences.1.points.2"),
+                    t("targetAudience.audiences.1.points.3"),
+                  ],
+                },
+                {
+                  icon: Sparkles,
+                  title: t("targetAudience.audiences.2.title"),
+                  points: [
+                    t("targetAudience.audiences.2.points.0"),
+                    t("targetAudience.audiences.2.points.1"),
+                    t("targetAudience.audiences.2.points.2"),
+                    t("targetAudience.audiences.2.points.3"),
+                  ],
+                },
+              ].map((audience) => (
+                <Card
+                  key={audience.title}
+                  padding="p-10"
+                  className="bg-white border-slate-100 hover:border-rose-200 hover:shadow-xl"
+                >
+                  <div className="w-14 h-14 bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                    <audience.icon
+                      className="w-7 h-7 text-white"
+                      strokeWidth={2}
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-slate-900">
+                    {audience.title}
+                  </h3>
+                  <ul className="space-y-3">
+                    {audience.points.map((point, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <Check className="w-4 h-4 text-rose-500 mt-1 flex-shrink-0" />
+                        <span className="text-slate-600 leading-relaxed">
+                          {point.replace(/^[•]\s*/, "")}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Target Audience */}
-      <section className="bg-gradient-to-br from-rose-800 via-rose-900 to-rose-900 text-white py-24">
-        <div className="container mx-auto px-4">
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-            {t("targetAudience.heading")}
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                icon: GraduationCap,
-                title: t("targetAudience.audiences.0.title"),
-                points: [
-                  { text: t("targetAudience.audiences.0.points.0"), i: 0 },
-                  { text: t("targetAudience.audiences.0.points.1"), i: 1 },
-                  { text: t("targetAudience.audiences.0.points.2"), i: 2 },
-                  { text: t("targetAudience.audiences.0.points.3"), i: 3 },
-                ],
-              },
-              {
-                icon: Atom,
-                title: t("targetAudience.audiences.1.title"),
-                points: [
-                  { text: t("targetAudience.audiences.1.points.0"), i: 0 },
-                  { text: t("targetAudience.audiences.1.points.1"), i: 1 },
-                  { text: t("targetAudience.audiences.1.points.2"), i: 2 },
-                  { text: t("targetAudience.audiences.1.points.3"), i: 3 },
-                ],
-              },
-              {
-                icon: Sparkles,
-                title: t("targetAudience.audiences.2.title"),
-                points: [
-                  { text: t("targetAudience.audiences.2.points.0"), i: 0 },
-                  { text: t("targetAudience.audiences.2.points.1"), i: 1 },
-                  { text: t("targetAudience.audiences.2.points.2"), i: 2 },
-                  { text: t("targetAudience.audiences.2.points.3"), i: 3 },
-                ],
-              },
-            ].map((audience, index) => (
-              <div
-                key={audience.title}
-                className="bg-white/5 backdrop-blur-sm rounded-3xl p-10 border border-white/10 hover:border-white/20 transition-all duration-300 animate-in fade-in slide-in-from-bottom-8 duration-700"
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <div className="w-14 h-14 bg-gradient-to-br from-rose-400 to-rose-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                  <audience.icon
-                    className="w-7 h-7 text-white"
-                    strokeWidth={2}
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-6 text-white">
-                  {audience.title}
-                </h3>
-                <ul className="space-y-3">
-                  {audience.points.map((point) => (
-                    <li key={point.i} className="flex items-start gap-3">
-                      <Check className="w-4 h-4 text-rose-300 mt-1 flex-shrink-0" />
-                      <span className="text-rose-100 leading-relaxed">
-                        {point.text.replace(/^[•]\s*/, "")}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Waitlist Section */}
-      <section
-        id="waitlist"
-        className="bg-gradient-to-br from-white via-rose-50 to-white py-24"
+      {/* Overlapping Waitlist Card */}
+      <OverlappingSection
+        overlapAmount="-mt-12"
+        background="bg-gradient-to-br from-white via-rose-50 to-white"
+        topRadius="rounded-t-[40px]"
+        data-testid="overlapping-section"
       >
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 py-24">
           <div className="max-w-2xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-rose-100 text-rose-800 px-4 py-2 rounded-full text-sm font-bold mb-6">
               <Sparkles className="w-4 h-4" />
               {t("hero.comingSoon")}
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-slate-900">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
               {t("waitlist.heading")}
             </h2>
             <p className="text-xl text-slate-600 mb-12 max-w-xl mx-auto">
@@ -311,7 +356,7 @@ export default async function ScienceAdvantage() {
             </div>
           </div>
         </div>
-      </section>
+      </OverlappingSection>
     </main>
   );
 }

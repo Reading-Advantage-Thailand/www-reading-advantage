@@ -11,6 +11,9 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { getScopedI18n } from "@/locales/server";
+import { OverlappingSection } from "@/components/ui/overlapping-section";
+import { StepFlow } from "@/components/ui/step-flow";
+import { Card } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "STEM Advantage - Reading Advantage Thailand",
@@ -27,7 +30,7 @@ export default async function StemAdvantage() {
   const t = await getScopedI18n("pages.products.stemAdvantage");
   return (
     <main className="overflow-x-hidden">
-      {/* Hero Section - Inline with indigo/indigo gradient */}
+      {/* Hero Section - Inline with indigo gradient */}
       <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-indigo-300 to-indigo-800 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
         <div
@@ -75,225 +78,234 @@ export default async function StemAdvantage() {
         </div>
       </section>
 
-      {/* Core Features */}
+      {/* Grade Level Breakdown — Full-Width Color Room (Indigo) */}
+      <section className="bg-gradient-to-br from-indigo-500 via-indigo-600 to-indigo-700 py-24">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <span className="uppercase tracking-widest text-xs font-semibold text-indigo-100 block mb-4">
+              GRADE LEVELS
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-16">
+              {t("gradeBreakdown.heading")}
+            </h2>
+            <StepFlow
+              variant="indigo"
+              data-testid="grade-timeline"
+              steps={[
+                {
+                  title: t("gradeBreakdown.grades.0.grade"),
+                  description: t("gradeBreakdown.grades.0.description"),
+                  icon: <GraduationCap className="w-7 h-7" />,
+                },
+                {
+                  title: t("gradeBreakdown.grades.1.grade"),
+                  description: t("gradeBreakdown.grades.1.description"),
+                  icon: <Code2 className="w-7 h-7" />,
+                },
+                {
+                  title: t("gradeBreakdown.grades.2.grade"),
+                  description: t("gradeBreakdown.grades.2.description"),
+                  icon: <Cpu className="w-7 h-7" />,
+                },
+              ]}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* 75% Coding, 25% STEM — Asymmetric 5/7 (Reversed) */}
       <section className="bg-white py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-indigo-600 to-indigo-600 bg-clip-text text-transparent">
-                {t("coreFeatures.heading")}
-              </span>
-            </h2>
-            <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 max-w-3xl mx-auto">
-              <Image
-                src="/images/stem-advantage-hero.jpg"
-                alt="STEM Advantage"
-                width={600}
-                height={400}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="rounded-3xl shadow-xl w-full h-auto object-cover"
-              />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: Code2,
-                  title: t("coreFeatures.features.0.title"),
-                  points: [
-                    { text: t("coreFeatures.features.0.points.0"), i: 0 },
-                    { text: t("coreFeatures.features.0.points.1"), i: 1 },
-                    { text: t("coreFeatures.features.0.points.2"), i: 2 },
-                  ],
-                },
-                {
-                  icon: Cpu,
-                  title: t("coreFeatures.features.1.title"),
-                  points: [
-                    { text: t("coreFeatures.features.1.points.0"), i: 0 },
-                    { text: t("coreFeatures.features.1.points.1"), i: 1 },
-                    { text: t("coreFeatures.features.1.points.2"), i: 2 },
-                  ],
-                },
-                {
-                  icon: BookOpen,
-                  title: t("coreFeatures.features.2.title"),
-                  points: [
-                    { text: t("coreFeatures.features.2.points.0"), i: 0 },
-                    { text: t("coreFeatures.features.2.points.1"), i: 1 },
-                    { text: t("coreFeatures.features.2.points.2"), i: 2 },
-                  ],
-                },
-              ].map((feature, index) => (
-                <div
-                  key={feature.title}
-                  className="bg-gradient-to-br from-indigo-50 to-indigo-50 rounded-3xl p-10 border border-indigo-100 hover:border-indigo-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
-                  style={{ animationDelay: `${index * 150}ms` }}
-                >
-                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                    <feature.icon
-                      className="w-8 h-8 text-white"
-                      strokeWidth={2}
-                    />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-6 text-slate-900">
-                    {feature.title}
-                  </h3>
-                  <ul className="space-y-3">
-                    {feature.points.map((point) => (
-                      <li key={point.i} className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-slate-600 leading-relaxed">
-                          {point.text}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+            <span className="uppercase tracking-widest text-xs font-semibold text-indigo-600 block mb-4">
+              75% CODING, 25% STEM
+            </span>
+            <div className="grid lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-5 flex justify-center">
+                <div className="relative w-full max-w-md aspect-square">
+                  <Image
+                    src="/stem-advantage.png"
+                    alt="STEM Advantage"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-contain rounded-3xl"
+                  />
                 </div>
-              ))}
+              </div>
+              <div className="lg:col-span-7">
+                <div className="mb-8">
+                  <span
+                    className="text-[80px] md:text-[96px] font-bold leading-none text-indigo-600 block"
+                    data-testid="oversized-stat"
+                  >
+                    75%
+                  </span>
+                  <span className="text-2xl md:text-3xl font-bold text-slate-900">
+                    {t("coreFeatures.heading")}
+                  </span>
+                </div>
+                <p className="text-lg text-slate-600 leading-relaxed mb-8">
+                  {t("hero.description")}
+                </p>
+                <div className="space-y-6">
+                  {[
+                    {
+                      icon: Code2,
+                      title: t("coreFeatures.features.0.title"),
+                      points: [
+                        t("coreFeatures.features.0.points.0"),
+                        t("coreFeatures.features.0.points.1"),
+                        t("coreFeatures.features.0.points.2"),
+                      ],
+                    },
+                    {
+                      icon: Cpu,
+                      title: t("coreFeatures.features.1.title"),
+                      points: [
+                        t("coreFeatures.features.1.points.0"),
+                        t("coreFeatures.features.1.points.1"),
+                        t("coreFeatures.features.1.points.2"),
+                      ],
+                    },
+                    {
+                      icon: BookOpen,
+                      title: t("coreFeatures.features.2.title"),
+                      points: [
+                        t("coreFeatures.features.2.points.0"),
+                        t("coreFeatures.features.2.points.1"),
+                        t("coreFeatures.features.2.points.2"),
+                      ],
+                    },
+                  ].map((feature) => (
+                    <div
+                      key={feature.title}
+                      className="flex items-start gap-4"
+                    >
+                      <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
+                        <feature.icon
+                          className="w-6 h-6 text-white"
+                          strokeWidth={2}
+                        />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold text-slate-900 mb-1">
+                          {feature.title}
+                        </h4>
+                        <p className="text-slate-600 leading-relaxed">
+                          {feature.points.join(" • ")}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Grade Level Breakdown */}
-      <section className="bg-gradient-to-br from-indigo-50 via-indigo-50 to-white py-24">
-        <div className="container mx-auto px-4">
+      {/* Benefits — Overlapping Section */}
+      <OverlappingSection
+        overlapAmount="-mt-20"
+        background="bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800"
+        topRadius="rounded-t-[40px]"
+        data-testid="overlapping-section"
+      >
+        <div className="container mx-auto px-4 py-24">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-indigo-600 to-indigo-600 bg-clip-text text-transparent">
-                {t("gradeBreakdown.heading")}
-              </span>
+            <span className="uppercase tracking-widest text-xs font-semibold text-indigo-100 block mb-4">
+              BENEFITS
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-16">
+              {t("benefits.heading")}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  grade: t("gradeBreakdown.grades.0.grade"),
-                  description: t("gradeBreakdown.grades.0.description"),
-                  icon: GraduationCap,
+                  icon: Zap,
+                  title: t("benefits.groups.0.title"),
+                  points: [
+                    t("benefits.groups.0.points.0"),
+                    t("benefits.groups.0.points.1"),
+                    t("benefits.groups.0.points.2"),
+                  ],
+                  borderStyle: "solid" as const,
                 },
                 {
-                  grade: t("gradeBreakdown.grades.1.grade"),
-                  description: t("gradeBreakdown.grades.1.description"),
-                  icon: Code2,
+                  icon: BookOpen,
+                  title: t("benefits.groups.1.title"),
+                  points: [
+                    t("benefits.groups.1.points.0"),
+                    t("benefits.groups.1.points.1"),
+                    t("benefits.groups.1.points.2"),
+                  ],
+                  borderStyle: "dashed" as const,
                 },
                 {
-                  grade: t("gradeBreakdown.grades.2.grade"),
-                  description: t("gradeBreakdown.grades.2.description"),
                   icon: Cpu,
+                  title: t("benefits.groups.2.title"),
+                  points: [
+                    t("benefits.groups.2.points.0"),
+                    t("benefits.groups.2.points.1"),
+                    t("benefits.groups.2.points.2"),
+                  ],
+                  borderStyle: "solid" as const,
                 },
-              ].map((level, index) => (
-                <div
-                  key={level.grade}
-                  className="bg-white rounded-3xl p-10 shadow-lg border border-indigo-100 hover:border-indigo-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-in fade-in slide-in-from-bottom-8 duration-700"
-                  style={{ animationDelay: `${index * 150}ms` }}
+              ].map((group) => (
+                <Card
+                  key={group.title}
+                  borderStyle={group.borderStyle}
+                  padding="p-10"
+                  className="bg-white/10 backdrop-blur-sm border-indigo-200/30 text-white hover:-translate-y-1 hover:shadow-xl"
+                  data-testid="benefit-card"
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-md">
-                    <level.icon
+                  <div className="w-14 h-14 bg-gradient-to-br from-indigo-400 to-indigo-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                    <group.icon
                       className="w-7 h-7 text-white"
                       strokeWidth={2}
                     />
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-slate-900">
-                    {level.grade}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    {level.description}
-                  </p>
-                </div>
+                  <h3 className="text-xl font-bold mb-4">{group.title}</h3>
+                  <ul className="space-y-3">
+                    {group.points.map((point, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <Check className="w-4 h-4 text-indigo-300 mt-1 flex-shrink-0" />
+                        <span className="text-indigo-50 leading-relaxed">
+                          {point}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </Card>
               ))}
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-700 text-white py-24">
-        <div className="container mx-auto px-4">
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-            {t("benefits.heading")}
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                icon: Zap,
-                title: t("benefits.groups.0.title"),
-                points: [
-                  { text: t("benefits.groups.0.points.0"), i: 0 },
-                  { text: t("benefits.groups.0.points.1"), i: 1 },
-                  { text: t("benefits.groups.0.points.2"), i: 2 },
-                ],
-              },
-              {
-                icon: BookOpen,
-                title: t("benefits.groups.1.title"),
-                points: [
-                  { text: t("benefits.groups.1.points.0"), i: 0 },
-                  { text: t("benefits.groups.1.points.1"), i: 1 },
-                  { text: t("benefits.groups.1.points.2"), i: 2 },
-                ],
-              },
-              {
-                icon: Cpu,
-                title: t("benefits.groups.2.title"),
-                points: [
-                  { text: t("benefits.groups.2.points.0"), i: 0 },
-                  { text: t("benefits.groups.2.points.1"), i: 1 },
-                  { text: t("benefits.groups.2.points.2"), i: 2 },
-                ],
-              },
-            ].map((group, index) => (
-              <div
-                key={group.title}
-                className="bg-white/10 backdrop-blur-sm rounded-3xl p-10 border border-white/10 hover:border-white/20 transition-all duration-300 animate-in fade-in slide-in-from-bottom-8 duration-700"
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <div className="w-14 h-14 bg-gradient-to-br from-indigo-400 to-indigo-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                  <group.icon className="w-7 h-7 text-white" strokeWidth={2} />
-                </div>
-                <h3 className="text-xl font-bold mb-6 text-white">
-                  {group.title}
-                </h3>
-                <ul className="space-y-3">
-                  {group.points.map((point) => (
-                    <li key={point.i} className="flex items-start gap-3">
-                      <Check className="w-4 h-4 text-indigo-300 mt-1 flex-shrink-0" />
-                      <span className="text-indigo-50 leading-relaxed">
-                        {point.text}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      </OverlappingSection>
 
       {/* Technical Requirements */}
       <section className="bg-white py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-indigo-600 to-indigo-600 bg-clip-text text-transparent">
-                {t("technicalRequirements.heading")}
-              </span>
+            <span className="uppercase tracking-widest text-xs font-semibold text-slate-500 block mb-4">
+              TECHNICAL REQUIREMENTS
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-12">
+              {t("technicalRequirements.heading")}
             </h2>
-            <div className="bg-gradient-to-br from-indigo-50 to-indigo-50 rounded-3xl p-10 border border-indigo-100">
-              <ul className="space-y-4">
+            <div className="bg-gradient-to-br from-indigo-50 to-white rounded-3xl p-10 border border-indigo-100">
+              <ul className="space-y-6">
                 {[
-                  { text: t("technicalRequirements.points.0"), i: 0 },
-                  { text: t("technicalRequirements.points.1"), i: 1 },
-                  { text: t("technicalRequirements.points.2"), i: 2 },
-                  { text: t("technicalRequirements.points.3"), i: 3 },
-                ].map((requirement) => (
-                  <li
-                    key={requirement.i}
-                    className="flex items-center gap-4 text-lg"
-                  >
-                    <div className="w-8 h-8 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
-                      <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                  t("technicalRequirements.points.0"),
+                  t("technicalRequirements.points.1"),
+                  t("technicalRequirements.points.2"),
+                  t("technicalRequirements.points.3"),
+                ].map((requirement, i) => (
+                  <li key={i} className="flex items-center gap-4 text-lg">
+                    <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
+                      <Check className="w-5 h-5 text-white" strokeWidth={3} />
                     </div>
-                    <span className="text-slate-700">{requirement.text}</span>
+                    <span className="text-slate-700">{requirement}</span>
                   </li>
                 ))}
               </ul>
@@ -302,14 +314,14 @@ export default async function StemAdvantage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Final CTA */}
       <section className="bg-gradient-to-br from-indigo-600 via-indigo-600 to-indigo-700 text-white py-24">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {t("cta.heading")}
             </h2>
-            <p className="text-2xl mb-12 text-indigo-100 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl mb-12 text-indigo-100 max-w-2xl mx-auto">
               {t("cta.description")}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
