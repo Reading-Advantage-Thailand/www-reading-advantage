@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Bot,
-  BookOpen,
-  GraduationCap,
   Microscope,
   Handshake,
   Gem,
@@ -230,7 +228,7 @@ export default async function TutorAdvantage() {
                   description: t("platformFeatures.features.5.description"),
                   padding: "p-12",
                 },
-              ].map((feature, index) => (
+              ].map((feature) => (
                 <Card
                   key={feature.title}
                   padding={feature.padding}

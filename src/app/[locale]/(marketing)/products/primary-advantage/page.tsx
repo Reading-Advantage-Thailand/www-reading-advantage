@@ -6,7 +6,7 @@ import { FloatingPill } from "@/components/ui/floating-pill";
 import { StepFlow } from "@/components/ui/step-flow";
 import { Card, CardContent } from "@/components/ui/card";
 import { getScopedI18n } from "@/locales/server";
-import { Mail, BookOpen, Target, Zap, Brain, PenTool } from "lucide-react";
+import { Mail, BookOpen, Target, Zap } from "lucide-react";
 
 export default async function PrimaryAdvantage() {
   const t = await getScopedI18n("pages.products.primaryAdvantage");
@@ -172,7 +172,7 @@ export default async function PrimaryAdvantage() {
                 {t("keyFeatures.heading")}
               </h2>
               <div className="space-y-8">
-                {features.map((feature, index) => (
+                {features.map((feature) => (
                   <div key={feature.title} className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center flex-shrink-0 shadow-lg">
                       <feature.icon className="w-6 h-6 text-white" />

@@ -3,9 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  BookOpen,
   Zap,
-  Target,
   Mail,
   ArrowRight,
   Check,
@@ -15,7 +13,6 @@ import {
   Users,
   GraduationCap,
   FileText,
-  Gamepad2,
 } from "lucide-react";
 import { useScopedI18n } from "@/locales/client";
 import HeroSection from "@/components/marketing/hero-section";
@@ -25,36 +22,6 @@ import { HorizontalStrip } from "@/components/ui/horizontal-strip";
 
 export default function ReadingAdvantage() {
   const t = useScopedI18n("pages.products.readingAdvantage");
-
-  const keyFeatures = [
-    {
-      icon: BookOpen,
-      title: t("keyFeatures.features.0.title"),
-      items: [
-        t("keyFeatures.features.0.items.0"),
-        t("keyFeatures.features.0.items.1"),
-        t("keyFeatures.features.0.items.2"),
-      ],
-    },
-    {
-      icon: Target,
-      title: t("keyFeatures.features.1.title"),
-      items: [
-        t("keyFeatures.features.1.items.0"),
-        t("keyFeatures.features.1.items.1"),
-        t("keyFeatures.features.1.items.2"),
-      ],
-    },
-    {
-      icon: Zap,
-      title: t("keyFeatures.features.2.title"),
-      items: [
-        t("keyFeatures.features.2.items.0"),
-        t("keyFeatures.features.2.items.1"),
-        t("keyFeatures.features.2.items.2"),
-      ],
-    },
-  ];
 
   const games = [
     {

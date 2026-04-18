@@ -35,51 +35,57 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ZhongwenAdvantage() {
   const heroT = await getScopedI18n("pages.products.zhongwenAdvantage.hero");
-  const t = await getScopedI18n("pages.products.zhongwenAdvantage");
 
   const interactiveFeatures = [
     {
       icon: PenTool,
-      title: t("interactiveLearning.features.0.title"),
-      description: t("interactiveLearning.features.0.description"),
+      title: "Character Mastery",
+      description:
+        "Advanced stroke recognition technology with real-time feedback helps students perfect their handwriting.",
     },
     {
       icon: MessageCircle,
-      title: t("interactiveLearning.features.1.title"),
-      description: t("interactiveLearning.features.1.description"),
+      title: "Pronunciation Perfect",
+      description:
+        "Tone recognition exercises with AI-powered feedback ensure accurate spoken Chinese.",
     },
   ];
 
   const educatorFeatures = [
     {
       icon: Users,
-      title: t("educatorFeatures.features.0.title"),
-      description: t("educatorFeatures.features.0.description"),
+      title: "Class Management",
+      description:
+        "Comprehensive tools for tracking and managing student progress across all skill levels.",
     },
     {
       icon: BarChart3,
-      title: t("educatorFeatures.features.1.title"),
-      description: t("educatorFeatures.features.1.description"),
+      title: "Progress Tracking",
+      description: "Detailed analytics and performance insights for every student.",
     },
     {
       icon: FileText,
-      title: t("educatorFeatures.features.2.title"),
-      description: t("educatorFeatures.features.2.description"),
+      title: "Custom Content",
+      description:
+        "Create and assign customized learning materials tailored to your curriculum.",
     },
   ];
 
   const faqItems = [
     {
-      question: t("faq.questions.0.question"),
-      answer: t("faq.questions.0.answer"),
+      question: "When will Zhongwen Advantage launch?",
+      answer:
+        "Our platform is scheduled to launch in early 2025. Join our waitlist for early access opportunities.",
     },
     {
-      question: t("faq.questions.1.question"),
-      answer: t("faq.questions.1.answer"),
+      question: "What are the technical requirements?",
+      answer:
+        "Zhongwen Advantage will be accessible on any modern web browser, with mobile apps available for iOS and Android.",
     },
     {
-      question: t("faq.questions.2.question"),
-      answer: t("faq.questions.2.answer"),
+      question: "Does it support both simplified and traditional characters?",
+      answer:
+        "Yes, our platform supports both simplified and traditional Chinese characters to accommodate different learning needs.",
     },
   ];
 
@@ -138,11 +144,11 @@ export default async function ZhongwenAdvantage() {
       <section className="bg-gradient-to-br from-fuchsia-500 via-fuchsia-600 to-fuchsia-700 py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <p className="uppercase tracking-widest text-xs font-semibold text-fuchsia-100 mb-6 text-center">
+            <span className="uppercase tracking-widest text-xs font-semibold text-fuchsia-100 mb-4 block text-center">
               LEVEL MAPPING
-            </p>
+            </span>
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white">
-              {t("levelMapping.heading")}
+              Dual-Level Learning System
             </h2>
             <div
               data-testid="level-mapping"
@@ -155,7 +161,7 @@ export default async function ZhongwenAdvantage() {
                     <BookOpen className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-white">
-                    {t("levelMapping.columns.0.title")}
+                    Reading Advantage
                   </h3>
                 </div>
                 <div className="space-y-3">
@@ -165,14 +171,14 @@ export default async function ZhongwenAdvantage() {
                       className="flex items-center justify-between bg-white/10 rounded-xl px-4 py-3"
                     >
                       <span className="text-white font-medium">
-                        {t("levelMapping.columns.0.levelPrefix")} {level}
+                        Level {level}
                       </span>
                       <ArrowRight className="w-4 h-4 text-fuchsia-200" />
                     </div>
                   ))}
                 </div>
                 <div className="mt-4 text-center text-fuchsia-200 text-sm">
-                  {t("levelMapping.columns.0.mapsTo")}
+                  Maps to HSK 1-3
                 </div>
               </div>
 
@@ -183,7 +189,7 @@ export default async function ZhongwenAdvantage() {
                     <Bot className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-white">
-                    {t("levelMapping.columns.1.title")}
+                    AI Progression
                   </h3>
                 </div>
                 <div className="space-y-3">
@@ -193,14 +199,14 @@ export default async function ZhongwenAdvantage() {
                       className="flex items-center justify-between bg-white/10 rounded-xl px-4 py-3"
                     >
                       <span className="text-white font-medium">
-                        {t("levelMapping.columns.1.levelPrefix")} {level}
+                        Level {level}
                       </span>
                       <ArrowRight className="w-4 h-4 text-fuchsia-200" />
                     </div>
                   ))}
                 </div>
                 <div className="mt-4 text-center text-fuchsia-200 text-sm">
-                  {t("levelMapping.columns.1.mapsTo")}
+                  Maps to HSK 4-6
                 </div>
               </div>
 
@@ -210,9 +216,7 @@ export default async function ZhongwenAdvantage() {
                   <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
                     <BookMarked className="w-5 h-5 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">
-                    {t("levelMapping.columns.2.title")}
-                  </h3>
+                  <h3 className="text-xl font-bold text-white">HSK Levels</h3>
                 </div>
                 <div className="space-y-3">
                   {[1, 2, 3, 4, 5, 6].map((level) => (
@@ -221,13 +225,13 @@ export default async function ZhongwenAdvantage() {
                       className="bg-white/10 rounded-xl px-4 py-3 text-center"
                     >
                       <span className="text-white font-medium">
-                        {t("levelMapping.columns.2.levelPrefix")} {level}
+                        HSK {level}
                       </span>
                     </div>
                   ))}
                 </div>
                 <div className="mt-4 text-center text-fuchsia-200 text-sm">
-                  {t("levelMapping.columns.2.mapsTo")}
+                  Standardized Certification
                 </div>
               </div>
             </div>
@@ -243,25 +247,25 @@ export default async function ZhongwenAdvantage() {
         overlayText={
           <div>
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {t("imageBreak.title")}
+              Master Chinese with Confidence
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
                 <BookOpen className="w-6 h-6 text-fuchsia-300 mb-2" />
                 <p className="text-white font-medium text-sm">
-                  {t("imageBreak.highlights.0")}
+                  Extensive reading library
                 </p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
                 <Bot className="w-6 h-6 text-fuchsia-300 mb-2" />
                 <p className="text-white font-medium text-sm">
-                  {t("imageBreak.highlights.1")}
+                  AI-powered tutoring
                 </p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
                 <Globe className="w-6 h-6 text-fuchsia-300 mb-2" />
                 <p className="text-white font-medium text-sm">
-                  {t("imageBreak.highlights.2")}
+                  Cultural immersion content
                 </p>
               </div>
             </div>
@@ -274,22 +278,24 @@ export default async function ZhongwenAdvantage() {
       <section className="bg-white py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <p className="uppercase tracking-widest text-xs font-semibold text-fuchsia-600 mb-6">
+            <span className="uppercase tracking-widest text-xs font-semibold text-fuchsia-600 mb-4 block">
               INTERACTIVE LEARNING
-            </p>
+            </span>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7">
                 <h2 className="text-4xl md:text-5xl font-bold mb-8 text-slate-900">
-                  {t("interactiveLearning.heading")}
+                  Engaging, Adaptive Learning Experience
                 </h2>
                 <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                  {t("interactiveLearning.description")}
+                  Our interactive learning system combines cutting-edge technology
+                  with proven pedagogical methods to deliver an unparalleled
+                  Chinese learning experience.
                 </p>
                 <div className="space-y-4">
                   {[
-                    t("interactiveLearning.points.0"),
-                    t("interactiveLearning.points.1"),
-                    t("interactiveLearning.points.2"),
+                    "Real-time stroke recognition for handwriting practice",
+                    "AI-powered tone feedback for pronunciation mastery",
+                    "Personalized learning paths based on HSK standards",
                   ].map((point, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <div className="w-2 h-2 bg-fuchsia-500 rounded-full mt-2 flex-shrink-0" />
@@ -329,11 +335,11 @@ export default async function ZhongwenAdvantage() {
       <section className="bg-gradient-to-br from-fuchsia-50 via-fuchsia-50 to-white py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <p className="uppercase tracking-widest text-xs font-semibold text-fuchsia-600 mb-6 text-center">
+            <span className="uppercase tracking-widest text-xs font-semibold text-fuchsia-600 mb-4 block text-center">
               FOR EDUCATORS
-            </p>
+            </span>
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-slate-900">
-              {t("educatorFeatures.heading")}
+              Powerful Tools for Teachers
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {educatorFeatures.map((feature) => (
@@ -365,28 +371,28 @@ export default async function ZhongwenAdvantage() {
         <div className="container mx-auto px-4 max-w-3xl">
           <div data-testid="combined-faq-waitlist" className="space-y-16">
             <div>
-              <p className="uppercase tracking-widest text-xs font-semibold text-fuchsia-600 mb-6 text-center">
+              <span className="uppercase tracking-widest text-xs font-semibold text-fuchsia-600 mb-4 block text-center">
                 QUESTIONS?
-              </p>
+              </span>
               <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-slate-900">
-                {t("faq.heading")}
+                Frequently Asked Questions
               </h2>
               <FAQAccordion variant="fuchsia" items={faqItems} />
             </div>
 
             <div className="bg-gradient-to-br from-fuchsia-50 to-white rounded-3xl p-10 border border-fuchsia-100">
               <h3 className="text-2xl font-bold text-center mb-4 text-slate-900">
-                {t("waitlist.heading")}
+                Join the Waitlist
               </h3>
               <p className="text-slate-600 text-center mb-8">
-                {t("waitlist.description")}
+                Be the first to experience Zhongwen Advantage when we launch.
               </p>
               <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
                 <div className="relative flex-1">
                   <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                   <input
                     type="email"
-                    placeholder={t("waitlist.emailPlaceholder")}
+                    placeholder="Enter your email"
                     className="w-full pl-12 pr-4 py-4 rounded-2xl border border-fuchsia-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:border-transparent"
                   />
                 </div>
@@ -394,7 +400,7 @@ export default async function ZhongwenAdvantage() {
                   type="submit"
                   className="inline-flex items-center justify-center gap-2 bg-fuchsia-600 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 hover:bg-fuchsia-700 hover:-translate-y-1 shadow-lg"
                 >
-                  {t("waitlist.submitButton")}
+                  Subscribe
                   <ArrowRight className="w-5 h-5" />
                 </button>
               </form>
@@ -407,29 +413,28 @@ export default async function ZhongwenAdvantage() {
       <section className="bg-gradient-to-br from-fuchsia-600 via-fuchsia-600 to-fuchsia-700 text-white py-24">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-bold mb-6">
-              <Globe className="w-4 h-4" />
-              {t("cta.badge")}
-            </div>
+            <span className="uppercase tracking-widest text-xs font-semibold text-fuchsia-100 mb-4 block">
+              GET STARTED
+            </span>
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              {t("cta.heading")}
+              Start Your Chinese Learning Journey
             </h2>
             <p className="text-2xl mb-12 text-fuchsia-100 max-w-2xl mx-auto">
-              {t("cta.description")}
+              Join our waitlist and be the first to experience the future of Chinese education.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 bg-white text-fuchsia-700 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg"
               >
-                {t("cta.button")}
+                Join Waitlist
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:bg-white hover:text-fuchsia-700"
               >
-                {t("cta.secondaryButton")}
+                Learn More
               </Link>
             </div>
           </div>

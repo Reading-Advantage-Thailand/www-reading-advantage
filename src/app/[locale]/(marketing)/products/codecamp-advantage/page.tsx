@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   Code2,
@@ -12,7 +11,6 @@ import {
   GitBranch,
   Container,
   Rocket,
-  Monitor,
 } from "lucide-react";
 import { getScopedI18n } from "@/locales/server";
 import { OverlappingSection } from "@/components/ui/overlapping-section";
@@ -187,11 +185,11 @@ export default async function CodeCampAdvantage() {
                   className="border-slate-200 bg-gradient-to-br from-slate-50 to-white"
                 >
                   <div className="font-mono text-xs text-slate-400 mb-2">
-                    $ git commit -m "init"
+                    $ git commit -m &quot;init&quot;
                   </div>
                   <div className="font-mono text-sm text-slate-700">
                     <span className="text-amber-600">const</span> project ={" "}
-                    <span className="text-green-600">"Portfolio Site"</span>;
+                    <span className="text-green-600">&quot;Portfolio Site&quot;</span>;
                   </div>
                   <div className="mt-3 text-slate-600 text-sm">
                     Start with real-world projects from day one.
@@ -240,7 +238,7 @@ export default async function CodeCampAdvantage() {
           { name: "GitHub", icon: <GitBranch className="w-8 h-8" /> },
           { name: "Docker", icon: <Container className="w-8 h-8" /> },
           { name: "Vercel", icon: <Rocket className="w-8 h-8" /> },
-        ].map((tech, index) => (
+        ].map((tech) => (
           <div
             key={tech.name}
             className="snap-start flex-shrink-0 w-[200px] bg-slate-800/50 backdrop-blur-sm rounded-3xl p-6 border border-slate-700 hover:border-amber-500/30 transition-all duration-300 hover:-translate-y-2 text-center"
