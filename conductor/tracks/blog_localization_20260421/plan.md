@@ -31,18 +31,18 @@ Goal: Reorganize content and update UI to use new utilities.
 ## Phase 3: Post Page Enhancements
 Goal: Finalize the localized experience on individual post pages.
 
-- [ ] Task: Update `src/app/[locale]/(marketing)/blog/[slug]/page.tsx` for locale-aware rendering.
-    - [ ] Pass `locale` to `getBlogPost` and `getAllBlogPosts` (which feeds `getRelatedPosts`). Note: `getRelatedPosts` itself is a pure filter and does not need a `locale` param — thread locale into the upstream `getAllBlogPosts` call instead.
-    - [ ] Update metadata generation to be locale-aware.
-- [ ] Task: Implement Localized Breadcrumbs.
-    - [ ] Create `src/components/blog/blog-breadcrumbs.tsx`.
-    - [ ] Integrate into `[slug]/page.tsx`.
-- [ ] Task: Localize Reading Time display.
-    - [ ] Change `calculateReadingTime` in `lib/blog.ts` to return `number` (raw minute count) instead of the hardcoded English string `"${minutes} min read"`.
-    - [ ] Update the `BlogPost` type in `src/types/blog.ts` to reflect the new type (`readingTime: number`).
-    - [ ] Update all call sites that render `readingTime` (e.g., `blog-card.tsx`) to use the `readingTime` i18n key from `src/locales/pages/blog.ts` with the count interpolation.
-    - [ ] Update existing tests that assert on the old string format.
-- [ ] Task: Conductor - User Manual Verification 'Post Page Enhancements' (Protocol in workflow.md)
+- [x] Task: Update `src/app/[locale]/(marketing)/blog/[slug]/page.tsx` for locale-aware rendering. [09d25c0]
+    - [x] Pass `locale` to `getBlogPost` and `getAllBlogPosts` (which feeds `getRelatedPosts`). Note: `getRelatedPosts` itself is a pure filter and does not need a `locale` param — thread locale into the upstream `getAllBlogPosts` call instead.
+    - [x] Update metadata generation to be locale-aware.
+- [x] Task: Implement Localized Breadcrumbs. [09d25c0]
+    - [x] Create `src/components/blog/blog-breadcrumbs.tsx`.
+    - [x] Integrate into `[slug]/page.tsx`.
+- [x] Task: Localize Reading Time display. [09d25c0]
+    - [x] Change `calculateReadingTime` in `lib/blog.ts` to return `number` (raw minute count) instead of the hardcoded English string `"${minutes} min read"`.
+    - [x] Update the `BlogPost` type in `src/types/blog.ts` to reflect the new type (`readingTime: number`).
+    - [x] Update all call sites that render `readingTime` (e.g., `blog-card.tsx`) to use the `readingTime` i18n key from `src/locales/pages/blog.ts` with the count interpolation.
+    - [x] Update existing tests that assert on the old string format.
+- [x] Task: Conductor - User Manual Verification 'Post Page Enhancements' (Protocol in workflow.md)
 
 ## Phase 4: Final Validation & SEO
 Goal: Ensure everything works as expected across all supported languages.
