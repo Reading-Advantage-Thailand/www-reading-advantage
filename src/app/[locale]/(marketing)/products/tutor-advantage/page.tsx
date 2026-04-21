@@ -35,16 +35,17 @@ export default async function TutorAdvantage() {
   return (
     <main className="overflow-x-hidden">
       {/* Hero Section - Inline with emerald gradient */}
-      <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-emerald-300 to-emerald-800 overflow-hidden">
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        <Image
+          src="/images/hero-tutor-advantage.jpg"
+          alt="AI-powered digital tutoring dashboard"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-300 to-emerald-800 opacity-90" />
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
-        <div
-          className="absolute top-20 left-20 w-[500px] h-[500px] bg-emerald-300/30 rounded-full blur-[150px]"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-emerald-400/30 rounded-full blur-[120px]"
-          aria-hidden="true"
-        />
         <div className="container relative z-10 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl py-24">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-7">

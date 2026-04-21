@@ -1,6 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export interface HeroProps {
@@ -23,6 +25,10 @@ export interface HeroProps {
     alt: string;
   };
   productLogo?: {
+    src: string;
+    alt: string;
+  };
+  backgroundImage?: {
     src: string;
     alt: string;
   };
@@ -67,6 +73,7 @@ export default function HeroSection({
   badge,
   floatingImage,
   productLogo,
+  backgroundImage,
   height = "medium",
   alignment = "center",
   customGradient,
@@ -75,11 +82,49 @@ export default function HeroSection({
   const gradientStyles = customGradient || "bg-sky-50";
   const heightStyles = getHeightStyles(height);
   const isCenter = alignment === "center";
+  const bgRef = useRef<HTMLDivElement>(null);
+  const [parallaxY, setParallaxY] = useState(0);
+
+  useEffect(() => {
+    if (!backgroundImage) return;
+    const handleScroll = () => {
+      if (!bgRef.current) return;
+      const rect = bgRef.current.getBoundingClientRect();
+      const scrollProgress = -rect.top * 0.3;
+      setParallaxY(scrollProgress);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [backgroundImage]);
 
   return (
     <section
-      className={`relative overflow-hidden ${gradientStyles} text-black pt-24 ${heightStyles} ${className}`}
+      className={`relative overflow-hidden text-black pt-24 ${heightStyles} ${className}`}
     >
+      {/* Background image with parallax */}
+      {backgroundImage && (
+        <div
+          ref={bgRef}
+          className="absolute inset-0 z-0"
+        >
+          <Image
+            src={backgroundImage.src}
+            alt={backgroundImage.alt}
+            fill
+            sizes="100vw"
+            className="object-cover transition-transform will-change-transform"
+            style={{ transform: `translateY(${parallaxY}px) scale(1.1)` }}
+            priority
+          />
+        </div>
+      )}
+
+      {/* Gradient overlay — solid when no bg image, semi-transparent when bg image present */}
+      <div
+        className={`absolute inset-0 ${gradientStyles} ${backgroundImage ? "opacity-90" : ""}`}
+        style={{ zIndex: backgroundImage ? 10 : 0 }}
+      />
+
       <div className="container relative z-20 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
         {isCenter && !productLogo ? (
           /* Center-aligned layout (original) */

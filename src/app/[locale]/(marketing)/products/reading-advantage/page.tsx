@@ -69,6 +69,10 @@ export default function ReadingAdvantage() {
           src: "/reading-advantage.jpg",
           alt: "Reading Advantage Logo",
         }}
+        backgroundImage={{
+          src: "/images/hero-reading-advantage.jpg",
+          alt: "Student engaging with digital reading platform",
+        }}
       />
 
       {/* Platform Features — Full-Width Color Room (Sky) */}

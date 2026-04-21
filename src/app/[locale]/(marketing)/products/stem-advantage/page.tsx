@@ -31,16 +31,17 @@ export default async function StemAdvantage() {
   return (
     <main className="overflow-x-hidden">
       {/* Hero Section - Inline with indigo gradient */}
-      <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-indigo-300 to-indigo-800 overflow-hidden">
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        <Image
+          src="/images/hero-stem-advantage.jpg"
+          alt="Digital STEM workspace"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-300 to-indigo-800 opacity-90" />
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
-        <div
-          className="absolute top-20 left-20 w-[500px] h-[500px] bg-indigo-300/30 rounded-full blur-[150px]"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-indigo-400/30 rounded-full blur-[120px]"
-          aria-hidden="true"
-        />
         <div className="container relative z-10 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl py-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center animate-in fade-in slide-in-from-bottom-8 duration-700">
             <div className="lg:col-span-7">

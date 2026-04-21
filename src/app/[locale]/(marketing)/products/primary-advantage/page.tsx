@@ -116,6 +116,10 @@ export default async function PrimaryAdvantage() {
           src: "/primary-advantage logo.png",
           alt: "Primary Advantage Logo",
         }}
+        backgroundImage={{
+          src: "/images/hero-primary-advantage.jpg",
+          alt: "Children using English learning apps",
+        }}
       />
 
       {/* CEFR Aligned — Full-Width Color Room */}
