@@ -1,6 +1,6 @@
 # Implementation Plan: Blog Localization and Navigation Resilience
 
-## Phase 1: Infrastructure & Global Utilities
+## Phase 1: Infrastructure & Global Utilities [checkpoint: fe2b16e]
 Goal: Setup the foundational helpers for locale-aware fetching and navigation.
 
 - [x] Task: Create `src/components/common/localized-link.tsx` to handle automatic locale prefixing. [00f97d7]
@@ -12,7 +12,7 @@ Goal: Setup the foundational helpers for locale-aware fetching and navigation.
     - [x] Update `getAllBlogTags` to accept and forward `locale` — it calls `getAllBlogPosts()` internally and will silently serve English-only tags otherwise.
     - [x] Implement fallback logic to `en` if requested locale file is missing.
     - [x] Update existing unit tests to account for locale parameters.
-- [~] Task: Conductor - User Manual Verification 'Infrastructure & Global Utilities' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Infrastructure & Global Utilities' (Protocol in workflow.md) [fe2b16e]
 
 ## Phase 2: Content Migration & Component Updates
 Goal: Reorganize content and update UI to use new utilities.
