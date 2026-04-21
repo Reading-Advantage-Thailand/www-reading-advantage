@@ -44,7 +44,7 @@ Goal: Finalize the localized experience on individual post pages.
     - [x] Update existing tests that assert on the old string format.
 - [x] Task: Conductor - User Manual Verification 'Post Page Enhancements' (Protocol in workflow.md)
 
-## Phase 4: Final Validation & SEO
+## Phase 4: Final Validation & SEO [checkpoint: 153d2cd]
 Goal: Ensure everything works as expected across all supported languages.
 
 - [x] Task: Verify fallback behavior across all locales.
@@ -53,4 +53,4 @@ Goal: Ensure everything works as expected across all supported languages.
     - [x] Identify all occurrences of hardcoded `http://localhost:3000`. (None remaining — grep confirmed 0 matches.)
     - [x] Refactor to use `process.env.NEXT_PUBLIC_APP_URL`. (Done in blog/page.tsx, page/[page]/page.tsx, [slug]/page.tsx.)
 - [x] Task: Final automated test run and code coverage check. (83/83 tests passing, build clean.)
-- [~] Task: Conductor - User Manual Verification 'Final Validation & SEO' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Final Validation & SEO' (Protocol in workflow.md) [153d2cd]
