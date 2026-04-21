@@ -4,6 +4,10 @@ import { BlogCard } from "@/components/blog/blog-card";
 import { BlogListItem } from "@/types/blog";
 import HeroSection from "@/components/marketing/hero-section";
 
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
 export const metadata: Metadata = {
   title: "Blog | Reading Advantage",
   description:
@@ -22,11 +26,12 @@ export const metadata: Metadata = {
       "Educational insights, learning strategies, and updates from Reading Advantage",
     images: ["/images/reading-advantage-demo.png"],
   },
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"),
 };
 
-export default async function BlogPage() {
-  const allPosts = await getAllPosts();
+export default async function BlogPage({ params }: PageProps) {
+  const { locale } = await params;
+  const allPosts = await getAllPosts(locale as "en" | "th" | "zh");
   const { posts } = await getPaginatedPosts(1, 9, allPosts);
 
   return (
@@ -44,7 +49,7 @@ export default async function BlogPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post: BlogListItem) => (
-            <BlogCard key={post.slug} post={post} />
+            <BlogCard key={post.slug} post={post} locale={locale} />
           ))}
         </div>
       </div>

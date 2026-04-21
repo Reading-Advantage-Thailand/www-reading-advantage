@@ -37,15 +37,15 @@ export async function generateMetadata({
       description: `Educational insights, learning strategies, and updates from Reading Advantage. Page ${pageNumber}.`,
       images: ["/images/reading-advantage-demo.png"],
     },
-    metadataBase: new URL("http://localhost:3000"),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"),
   };
 }
 
 export default async function BlogPaginatedPage({ params }: PageProps) {
-  const { page } = await params;
+  const { locale, page } = await params;
   const pageNumber = parseInt(page, 10);
 
-  const allPosts = await getAllPosts();
+  const allPosts = await getAllPosts(locale as "en" | "th" | "zh");
   const { posts } = await getPaginatedPosts(pageNumber, 9, allPosts);
 
   return (
@@ -63,7 +63,7 @@ export default async function BlogPaginatedPage({ params }: PageProps) {
       <div className="container mx-auto px-4 py-8">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post: BlogListItem) => (
-            <BlogCard key={post.slug} post={post} />
+            <BlogCard key={post.slug} post={post} locale={locale} />
           ))}
         </div>
       </div>

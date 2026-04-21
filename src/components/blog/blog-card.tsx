@@ -1,12 +1,22 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { BlogListItem } from '@/types/blog'
+import Image from "next/image";
+import { BlogListItem } from "@/types/blog";
+import { LocalizedLink } from "@/components/common/localized-link";
+import { getScopedI18n } from "@/locales/server";
 
 interface BlogCardProps {
-  post: BlogListItem
+  post: BlogListItem;
+  locale?: string;
 }
 
-export function BlogCard({ post }: BlogCardProps) {
+export async function BlogCard({ post, locale = "en" }: BlogCardProps) {
+  const t = await getScopedI18n("pages.blog");
+
+  const formattedDate = new Intl.DateTimeFormat(locale, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(new Date(post.date));
+
   return (
     <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
       {post.coverImage && (
@@ -22,14 +32,14 @@ export function BlogCard({ post }: BlogCardProps) {
       )}
       <div className="p-6">
         <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-          <span>{post.date}</span>
+          <span>{formattedDate}</span>
           <span>•</span>
-          <span>{post.readingTime}</span>
+          <span>{t("readingTime", { count: post.readingTime })}</span>
         </div>
         <h2 className="text-2xl font-bold mb-2">
-          <Link href={`/blog/${post.slug}`} className="hover:underline">
+          <LocalizedLink href={`/blog/${post.slug}`} className="hover:underline">
             {post.title}
-          </Link>
+          </LocalizedLink>
         </h2>
         <p className="text-muted-foreground mb-4">{post.excerpt}</p>
         <div className="flex items-center gap-2">
@@ -44,5 +54,5 @@ export function BlogCard({ post }: BlogCardProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }
