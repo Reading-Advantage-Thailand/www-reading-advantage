@@ -1,12 +1,12 @@
 # Implementation Plan: 30-Day Marketing Blog Posts Generation
 
 ## Phase 1: Validation Script & Setup
-- [ ] Task: Write a test script to validate that all generated blog posts have valid YAML frontmatter, corresponding localized versions, and that the referenced cover images exist.
-- [ ] Task: Review existing blog format and define the prompt templates for `mmx` generation.
+- [x] Task: Write a test script to validate that all generated blog posts have valid YAML frontmatter, corresponding localized versions, and that the referenced cover images exist.
+- [x] Task: Review existing blog format and define the prompt templates for `mmx` generation.
 - [ ] Task: Conductor - User Manual Verification 'Validation Script & Setup' (Protocol in workflow.md)
 
 ## Phase 2: Generation of Days 1-10
-- [ ] Task: Generate English & Thai text and 16:9 images for Days 1-10 using `mmx`. Save to appropriate directories.
+- [~] Task: Generate English & Thai text and 16:9 images for Days 1-10 using `mmx`. Save to appropriate directories. (Day 1 complete)
 - [ ] Task: Conductor - User Manual Verification 'Generation of Days 1-10' (Protocol in workflow.md)
 
 ## Phase 3: Generation of Days 11-20
