@@ -156,5 +156,10 @@ _Link: [./conductor/tracks/bazarr_ui_cloning_20260214/](./conductor/tracks/bazar
 
 ---
 
-## [ ] Track: Blog Localization and Navigation Resilience
+## [~] Track: Blog Localization and Navigation Resilience
 *Link: [./tracks/blog_localization_20260421/](./tracks/blog_localization_20260421/)*
+
+---
+
+- [ ] **Track: Generate 30 blog posts localized into English and Thai using the mmx cli tool with the create-image-mmx skill.**
+*Link: [./tracks/blog_marketing_generation_20260421/](./tracks/blog_marketing_generation_20260421/)*
