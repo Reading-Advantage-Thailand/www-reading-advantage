@@ -17,16 +17,16 @@ Goal: Setup the foundational helpers for locale-aware fetching and navigation.
 ## Phase 2: Content Migration & Component Updates
 Goal: Reorganize content and update UI to use new utilities.
 
-- [ ] Task: Reorganize blog post directory structure.
-    - [ ] Move existing posts from `posts/` to `posts/en/`.
-    - [ ] Create placeholder post in `posts/th/` for testing.
-- [ ] Task: Update Blog listing pages to pass locale to data fetchers.
-    - [ ] Update `src/app/[locale]/(marketing)/blog/page.tsx` — add `{ params: { locale } }` to the page props (currently the function accepts no args) and thread `locale` into all data fetcher calls.
-    - [ ] Update `src/app/[locale]/(marketing)/blog/page/[page]/page.tsx` — same pattern.
-- [ ] Task: Update Blog UI components to use `LocalizedLink` and localized dates.
-    - [ ] Update `src/components/blog/blog-card.tsx`.
-    - [ ] Update `src/components/blog/blog-pagination.tsx`.
-- [ ] Task: Conductor - User Manual Verification 'Content Migration & Component Updates' (Protocol in workflow.md)
+- [x] Task: Reorganize blog post directory structure. [030ef47]
+    - [x] Move existing posts from `posts/` to `posts/en/`.
+    - [x] Create placeholder post in `posts/th/` for testing.
+- [x] Task: Update Blog listing pages to pass locale to data fetchers. [ffc089c]
+    - [x] Update `src/app/[locale]/(marketing)/blog/page.tsx` — add `{ params: { locale } }` to the page props (currently the function accepts no args) and thread `locale` into all data fetcher calls.
+    - [x] Update `src/app/[locale]/(marketing)/blog/page/[page]/page.tsx` — same pattern.
+- [x] Task: Update Blog UI components to use `LocalizedLink` and localized dates. [ffc089c]
+    - [x] Update `src/components/blog/blog-card.tsx`.
+    - [x] Update `src/components/blog/blog-pagination.tsx`.
+- [x] Task: Conductor - User Manual Verification 'Content Migration & Component Updates' (Protocol in workflow.md)
 
 ## Phase 3: Post Page Enhancements
 Goal: Finalize the localized experience on individual post pages.
