@@ -156,7 +156,14 @@ _Link: [./conductor/tracks/bazarr_ui_cloning_20260214/](./conductor/tracks/bazar
 
 ---
 
-## [~] Track: Blog Localization and Navigation Resilience
+## [x] Track: Blog Localization and Navigation Resilience
+
+**Status:** Completed
+
+**Type:** feature | **Estimated Tasks:** 16 | **Actual Tasks:** 18
+
+**Description:** Locale-aware blog system: posts organized in `posts/{locale}/` dirs with `en/` fallback, `LocalizedLink` for locale-prefixed navigation, async server components using `getScopedI18n`, `Intl.DateTimeFormat` for locale dates, `BlogBreadcrumbs`, and comprehensive frontmatter validation test suite.
+
 *Link: [./tracks/blog_localization_20260421/](./tracks/blog_localization_20260421/)*
 
 ---

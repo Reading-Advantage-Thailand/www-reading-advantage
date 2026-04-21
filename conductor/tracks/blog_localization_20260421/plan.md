@@ -53,4 +53,9 @@ Goal: Ensure everything works as expected across all supported languages.
     - [x] Identify all occurrences of hardcoded `http://localhost:3000`. (None remaining — grep confirmed 0 matches.)
     - [x] Refactor to use `process.env.NEXT_PUBLIC_APP_URL`. (Done in blog/page.tsx, page/[page]/page.tsx, [slug]/page.tsx.)
 - [x] Task: Final automated test run and code coverage check. (83/83 tests passing, build clean.)
+- [x] Task: Add comprehensive blog post frontmatter validation test suite. [aa08b2e]
+    - [x] Create `src/lib/blog-posts-validation.test.ts` — real-fs validation of all .md files across all locale dirs.
+    - [x] Fix stale `readingTime` string frontmatter in all 4 English posts (removed; auto-calculated at runtime).
+    - [x] Replace bare `---` horizontal rules with `* * *` in ai-education-evolution.md and future-education-ai.md.
+    - 151/151 tests passing.
 - [x] Task: Conductor - User Manual Verification 'Final Validation & SEO' (Protocol in workflow.md) [153d2cd]
