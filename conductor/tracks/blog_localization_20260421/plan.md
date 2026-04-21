@@ -28,7 +28,7 @@ Goal: Reorganize content and update UI to use new utilities.
     - [x] Update `src/components/blog/blog-pagination.tsx`.
 - [x] Task: Conductor - User Manual Verification 'Content Migration & Component Updates' (Protocol in workflow.md)
 
-## Phase 3: Post Page Enhancements
+## Phase 3: Post Page Enhancements [checkpoint: 6c49b61]
 Goal: Finalize the localized experience on individual post pages.
 
 - [x] Task: Update `src/app/[locale]/(marketing)/blog/[slug]/page.tsx` for locale-aware rendering. [09d25c0]
