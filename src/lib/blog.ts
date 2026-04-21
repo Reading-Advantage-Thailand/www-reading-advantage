@@ -116,23 +116,30 @@ export async function getBlogPost(
 export async function getAllBlogPosts(
   locale: SupportedLocale = "en",
 ): Promise<BlogListItem[]> {
-  const dir = postsDirectory(locale);
-  let fileNames: string[];
-  try {
-    fileNames = fs.readdirSync(dir);
-  } catch {
-    fileNames = fs.readdirSync(postsDirectory("en"));
+  // Build a deduplicated slug set: canonical en/ list + any locale-only extras
+  const enFiles = fs.readdirSync(postsDirectory("en")).filter((f) => f.endsWith(".md"));
+  const enSlugs = new Set(enFiles.map((f) => f.replace(/\.md$/, "")));
+
+  let localeOnlySlugs: Set<string> = new Set();
+  if (locale !== "en") {
+    try {
+      const localeFiles = fs.readdirSync(postsDirectory(locale)).filter((f) => f.endsWith(".md"));
+      localeOnlySlugs = new Set(
+        localeFiles.map((f) => f.replace(/\.md$/, "")).filter((s) => !enSlugs.has(s)),
+      );
+    } catch {
+      // locale directory doesn't exist — only en/ posts will be shown
+    }
   }
 
+  const allSlugs = [...enSlugs, ...localeOnlySlugs];
+
   const allPostsData = await Promise.all(
-    fileNames
-      .filter((fileName) => fileName.endsWith(".md"))
-      .map(async (fileName) => {
-        const slug = fileName.replace(/\.md$/, "");
-        const post = await getBlogPost(slug, locale);
-        if (!post) throw new Error(`Failed to load post ${slug}`);
-        return post;
-      }),
+    allSlugs.map(async (slug) => {
+      const post = await getBlogPost(slug, locale);
+      if (!post) throw new Error(`Failed to load post ${slug}`);
+      return post;
+    }),
   );
 
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
