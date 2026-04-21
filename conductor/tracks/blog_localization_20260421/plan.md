@@ -47,10 +47,10 @@ Goal: Finalize the localized experience on individual post pages.
 ## Phase 4: Final Validation & SEO
 Goal: Ensure everything works as expected across all supported languages.
 
-- [ ] Task: Verify fallback behavior across all locales.
-    - [ ] Test that `/th/blog/slug` works even if `th/slug.md` is missing.
-- [ ] Task: Update `metadataBase` to use environment variable.
-    - [ ] Identify all occurrences of hardcoded `http://localhost:3000`.
-    - [ ] Refactor to use `process.env.NEXT_PUBLIC_APP_URL`.
-- [ ] Task: Final automated test run and code coverage check.
-- [ ] Task: Conductor - User Manual Verification 'Final Validation & SEO' (Protocol in workflow.md)
+- [x] Task: Verify fallback behavior across all locales.
+    - [x] Test that `/th/blog/slug` works even if `th/slug.md` is missing. (Validated in Phase 2 — all English posts visible on /th/blog via fallback.)
+- [x] Task: Update `metadataBase` to use environment variable.
+    - [x] Identify all occurrences of hardcoded `http://localhost:3000`. (None remaining — grep confirmed 0 matches.)
+    - [x] Refactor to use `process.env.NEXT_PUBLIC_APP_URL`. (Done in blog/page.tsx, page/[page]/page.tsx, [slug]/page.tsx.)
+- [x] Task: Final automated test run and code coverage check. (83/83 tests passing, build clean.)
+- [~] Task: Conductor - User Manual Verification 'Final Validation & SEO' (Protocol in workflow.md)
