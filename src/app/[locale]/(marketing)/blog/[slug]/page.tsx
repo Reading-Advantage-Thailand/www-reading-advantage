@@ -5,21 +5,23 @@ import {
   getRelatedPosts,
 } from "@/lib/blog";
 import { BlogHeader } from "@/components/blog/blog-header";
+import { BlogBreadcrumbs } from "@/components/blog/blog-breadcrumbs";
 import { BlogTags } from "@/components/blog/blog-tags";
 import { TableOfContents } from "@/components/blog/table-of-contents";
 import { RelatedPosts } from "@/components/blog/related-posts";
+import { getScopedI18n } from "@/locales/server";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
 import HeroSection from "@/components/marketing/hero-section";
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-  const { slug } = await props.params;
-  const post = await getBlogPost(slug);
+  const { locale, slug } = await props.params;
+  const post = await getBlogPost(slug, locale as "en" | "th" | "zh");
   if (!post) return {};
 
   return {
@@ -41,27 +43,28 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       description: post.excerpt,
       images: post.coverImage ? [post.coverImage] : [],
     },
-    metadataBase: new URL("http://localhost:3000"),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"),
   };
 }
 
 async function BlogPost(props: Props) {
-  const { slug } = await props.params;
-  const post = await getBlogPost(slug);
+  const { locale, slug } = await props.params;
+  const post = await getBlogPost(slug, locale as "en" | "th" | "zh");
 
   if (!post) {
     notFound();
   }
 
+  const t = await getScopedI18n("pages.blog");
   const headings = extractHeadings(post.rawContent);
-  const allPosts = await getAllPosts();
+  const allPosts = await getAllPosts(locale as "en" | "th" | "zh");
   const relatedPosts = getRelatedPosts(post.slug, post.tags, allPosts, 3);
 
   return (
     <main>
       <HeroSection
         title={post.title}
-        description={`${post.author} • ${post.readingTime}`}
+        description={`${post.author} • ${t("readingTime", { count: post.readingTime })}`}
         ctaButton={{
           text: "Back to Blog",
           href: "/blog",
@@ -70,11 +73,13 @@ async function BlogPost(props: Props) {
         height="medium"
       />
       <article className="container mx-auto px-4 py-8">
+        <BlogBreadcrumbs postTitle={post.title} />
         <BlogHeader
           title={post.title}
           date={post.date}
           author={post.author}
           readingTime={post.readingTime}
+          locale={locale}
         />
         {post.coverImage && (
           <Image
@@ -97,7 +102,7 @@ async function BlogPost(props: Props) {
           </div>
         </div>
         <BlogTags tags={post.tags} />
-        <RelatedPosts posts={relatedPosts} />
+        <RelatedPosts posts={relatedPosts} locale={locale} />
       </article>
     </main>
   );
