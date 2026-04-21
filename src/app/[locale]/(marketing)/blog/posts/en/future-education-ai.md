@@ -5,7 +5,6 @@ excerpt: "As Arizona approves the first AI-only charter school, Reading Advantag
 coverImage: "/blog/future-education-ai.webp"
 author: "Reading Advantage Research Team"
 tags: ["Education Innovation", "AI Learning", "Bilingual Education"]
-readingTime: "6 min read"
 ---
 
 [Thai version available below | มีเวอร์ชันภาษาไทยด้านล่าง]
@@ -51,7 +50,7 @@ Similar to how Thai private schools operate with partial government funding, our
 
 As we approach the 2025-2026 school year launch, Reading Advantage is positioned to lead this educational transformation. The approval of models like Unbound Academy demonstrates that AI-powered education isn't just a future possibility - it's already here. By combining these technological advances with deep understanding of Thai educational needs, we're creating a system that truly serves all students.
 
----
+* * *
 
 # อนาคตของการศึกษา: การเรียนรู้ด้วย AI ในประเทศไทยและก้าวต่อไป
 

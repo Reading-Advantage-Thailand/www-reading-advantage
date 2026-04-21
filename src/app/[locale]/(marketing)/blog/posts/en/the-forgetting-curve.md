@@ -5,7 +5,6 @@ excerpt: "Explore the fascinating science of memory, why our brains forget infor
 coverImage: "/blog/the-forgetting-curve.webp"
 author: "Reading Advantage Research Team"
 tags: ["Memory Science", "Learning Theory", "Cognitive Psychology"]
-readingTime: "4 min read"
 ---
 
 Why do we seem to forget new information so quickly? Whether you're learning a language, studying for an exam, or trying to remember names at a networking event, understanding how our memory works can help us learn more effectively.

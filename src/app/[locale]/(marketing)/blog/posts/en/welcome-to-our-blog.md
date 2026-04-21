@@ -5,7 +5,6 @@ excerpt: "Welcome to the Reading Advantage blog where we share insights about ed
 coverImage: "/images/reading-advantage-demo.png"
 author: "Reading Advantage Team"
 tags: ["Welcome", "Education", "Learning"]
-readingTime: "4 min read"
 ---
 
 # Welcome to Our Blog
