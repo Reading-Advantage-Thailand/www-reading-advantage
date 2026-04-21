@@ -32,7 +32,7 @@ conductor/
 ├── tech-debt.md
 ├── autonomous_prompt.md       ← Hard-linked from advantage-games/conductor/
 ├── review-prompt.md           ← Hard-linked from advantage-games/conductor/
-├── REFACTOR.md                ← Audit findings (Feb 2026) referenced by site_refactor track
+├── REFACTOR.md                ← Audit findings (Feb 2026) referenced by track
 ├── code_styleguides/
 │   ├── general.md
 │   ├── html-css.md
@@ -51,7 +51,7 @@ conductor/
 
 ## Current Status (as of 2026-04-08)
 
-- **Completed:** Site-wide refactor addressing performance, accessibility, and code quality (site_refactor_20260207)
+- **Completed:** Site-wide refactor addressing performance, accessibility, and code quality
 - **In Queue:** Services page finalization, Hero standardization, product page redesigns
 - **Platform:** 9 product landing pages live, multilingual (EN/TH/ZH), deployed to Cloud Run
 

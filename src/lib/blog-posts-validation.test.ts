@@ -130,6 +130,13 @@ describe("blog post frontmatter — optional fields", () => {
         expect(post.data.coverImage as string).toMatch(/^\//);
       }
     });
+
+    it(`${label}: coverImage if present must exist on disk`, () => {
+      if (post.data.coverImage !== undefined) {
+        const imgPath = path.join(process.cwd(), "public", post.data.coverImage as string);
+        expect(fs.existsSync(imgPath)).toBe(true);
+      }
+    });
   }
 });
 
