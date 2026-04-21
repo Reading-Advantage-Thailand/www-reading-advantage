@@ -14,7 +14,7 @@ Goal: Setup the foundational helpers for locale-aware fetching and navigation.
     - [x] Update existing unit tests to account for locale parameters.
 - [x] Task: Conductor - User Manual Verification 'Infrastructure & Global Utilities' (Protocol in workflow.md) [fe2b16e]
 
-## Phase 2: Content Migration & Component Updates
+## Phase 2: Content Migration & Component Updates [checkpoint: 12d1779]
 Goal: Reorganize content and update UI to use new utilities.
 
 - [x] Task: Reorganize blog post directory structure. [030ef47]
