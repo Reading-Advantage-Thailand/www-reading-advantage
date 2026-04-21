@@ -153,3 +153,8 @@ _Link: [./conductor/tracks/radarr_ui_cloning_20260214/](./conductor/tracks/radar
 **Plan:** 13 Phases (85 Tasks) - TDD approach with >80% coverage target
 
 _Link: [./conductor/tracks/bazarr_ui_cloning_20260214/](./conductor/tracks/bazarr_ui_cloning_20260214/)_
+
+---
+
+## [ ] Track: Blog Localization and Navigation Resilience
+*Link: [./tracks/blog_localization_20260421/](./tracks/blog_localization_20260421/)*
