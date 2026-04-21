@@ -7,7 +7,7 @@ export interface BlogPost {
   excerpt: string;
   author: string;
   tags: string[];
-  readingTime: string;
+  readingTime: number;
   coverImage?: string;
 }
 
@@ -19,7 +19,7 @@ export interface BlogListItem {
   excerpt: string;
   author: string;
   tags: string[];
-  readingTime: string;
+  readingTime: number;
   coverImage?: string;
 }
 
@@ -27,7 +27,7 @@ export interface BlogHeaderProps {
   title: string;
   date: string;
   author: string;
-  readingTime: string;
+  readingTime: number;
 }
 
 export interface BlogTagsProps {

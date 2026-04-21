@@ -9,10 +9,16 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { BlogPost, BlogListItem } from "@/types/blog";
 
-const postsDirectory = path.join(
+const postsBaseDirectory = path.join(
   process.cwd(),
   "src/app/[locale]/(marketing)/blog/posts",
 );
+
+type SupportedLocale = "en" | "th" | "zh";
+
+export function postsDirectory(locale: SupportedLocale = "en"): string {
+  return path.join(postsBaseDirectory, locale);
+}
 
 interface BlogFrontmatter {
   title: string;
@@ -20,7 +26,7 @@ interface BlogFrontmatter {
   excerpt: string;
   author: string;
   tags: string[];
-  readingTime?: string;
+  readingTime?: number;
   coverImage?: string;
 }
 
@@ -52,59 +58,78 @@ function validateFrontmatter(data: unknown): BlogFrontmatter {
     excerpt: d.excerpt,
     author: d.author,
     tags: tags.map(String),
-    readingTime: typeof d.readingTime === "string" ? d.readingTime : undefined,
+    readingTime: typeof d.readingTime === "number" ? d.readingTime : undefined,
     coverImage: typeof d.coverImage === "string" ? d.coverImage : undefined,
   };
 }
 
-export async function getBlogPost(slug: string): Promise<BlogPost | null> {
+async function parseBlogFile(fullPath: string, slug: string): Promise<BlogPost> {
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  const frontmatter = validateFrontmatter(data);
+  const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkHtml, { sanitize: false })
+    .use(rehypeSlug)
+    .use(rehypeAutolinkHeadings)
+    .process(content);
+
+  const htmlContent = processedContent.toString();
+  const readingTime = frontmatter.readingTime ?? calculateReadingTime(content);
+
+  return {
+    slug,
+    content: htmlContent,
+    rawContent: content,
+    title: frontmatter.title,
+    date: frontmatter.date,
+    excerpt: frontmatter.excerpt,
+    author: frontmatter.author,
+    tags: frontmatter.tags,
+    readingTime,
+    coverImage: frontmatter.coverImage,
+  };
+}
+
+export async function getBlogPost(
+  slug: string,
+  locale: SupportedLocale = "en",
+): Promise<BlogPost | null> {
   try {
-    const fullPath = path.join(postsDirectory, `${slug}.md`);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const { data, content } = matter(fileContents);
-
-    const frontmatter = validateFrontmatter(data);
-    const processedContent = await unified()
-      .use(remarkParse)
-      .use(remarkGfm) // Add GitHub Flavored Markdown support
-      .use(remarkHtml, { sanitize: false }) // Disable sanitization to allow custom HTML
-      .use(rehypeSlug) // Add IDs to headings
-      .use(rehypeAutolinkHeadings) // Add anchor links to headings
-      .process(content);
-
-    const htmlContent = processedContent.toString();
-    const readingTime =
-      frontmatter.readingTime || calculateReadingTime(content);
-
-    return {
-      slug,
-      content: htmlContent,
-      rawContent: content,
-      title: frontmatter.title,
-      date: frontmatter.date,
-      excerpt: frontmatter.excerpt,
-      author: frontmatter.author,
-      tags: frontmatter.tags,
-      readingTime,
-      coverImage: frontmatter.coverImage,
-    };
+    const localePath = path.join(postsDirectory(locale), `${slug}.md`);
+    try {
+      fs.readFileSync(localePath);
+      return await parseBlogFile(localePath, slug);
+    } catch {
+      if (locale === "en") return null;
+      const enPath = path.join(postsDirectory("en"), `${slug}.md`);
+      return await parseBlogFile(enPath, slug);
+    }
   } catch (error) {
     console.error(`Error getting blog post ${slug}:`, error);
     return null;
   }
 }
 
-// Alias for getAllBlogPosts to maintain compatibility
-export const getAllPosts = getAllBlogPosts;
+export async function getAllBlogPosts(
+  locale: SupportedLocale = "en",
+): Promise<BlogListItem[]> {
+  const dir = postsDirectory(locale);
+  let fileNames: string[];
+  try {
+    fileNames = fs.readdirSync(dir);
+  } catch {
+    fileNames = fs.readdirSync(postsDirectory("en"));
+  }
 
-export async function getAllBlogPosts(): Promise<BlogListItem[]> {
-  const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = await Promise.all(
     fileNames
       .filter((fileName) => fileName.endsWith(".md"))
       .map(async (fileName) => {
         const slug = fileName.replace(/\.md$/, "");
-        const post = await getBlogPost(slug);
+        const post = await getBlogPost(slug, locale);
         if (!post) throw new Error(`Failed to load post ${slug}`);
         return post;
       }),
@@ -113,22 +138,24 @@ export async function getAllBlogPosts(): Promise<BlogListItem[]> {
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export async function getAllBlogTags(): Promise<string[]> {
-  const posts = await getAllBlogPosts();
+export async function getAllBlogTags(
+  locale: SupportedLocale = "en",
+): Promise<string[]> {
+  const posts = await getAllBlogPosts(locale);
   const tags = new Set<string>();
-
   posts.forEach((post) => {
     post.tags.forEach((tag) => tags.add(tag));
   });
-
   return Array.from(tags);
 }
 
-export function calculateReadingTime(content: string): string {
+// Alias for getAllBlogPosts to maintain compatibility
+export const getAllPosts = getAllBlogPosts;
+
+export function calculateReadingTime(content: string): number {
   const wordsPerMinute = 200;
   const words = content.trim().split(/\s+/).length;
-  const minutes = Math.ceil(words / wordsPerMinute);
-  return `${minutes} min read`;
+  return Math.ceil(words / wordsPerMinute);
 }
 
 export interface PaginatedPosts {
@@ -190,18 +217,10 @@ export function extractHeadings(content: string): Heading[] {
 
     if (h2Match) {
       const text = h2Match[1].trim();
-      headings.push({
-        id: slugify(text),
-        text,
-        level: 2,
-      });
+      headings.push({ id: slugify(text), text, level: 2 });
     } else if (h3Match) {
       const text = h3Match[1].trim();
-      headings.push({
-        id: slugify(text),
-        text,
-        level: 3,
-      });
+      headings.push({ id: slugify(text), text, level: 3 });
     }
   }
 

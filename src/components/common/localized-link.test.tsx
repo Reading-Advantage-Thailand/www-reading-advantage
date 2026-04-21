@@ -7,9 +7,13 @@ vi.mock("@/locales/client", () => ({
   useCurrentLocale: () => mockUseCurrentLocale(),
 }));
 
+vi.mock("@/config/locale-config", () => ({
+  localeConfig: { locales: ["en", "th", "zh"], defaultLocale: "en" },
+}));
+
 vi.mock("next/link", () => ({
   default: ({ href, children, ...props }: { href: string; children: React.ReactNode; [key: string]: unknown }) => (
-    <a href={href} {...props}>
+    <a href={typeof href === "string" ? href : String(href)} {...props}>
       {children}
     </a>
   ),
@@ -33,13 +37,20 @@ describe("LocalizedLink", () => {
   it("prepends locale to root path", async () => {
     const { LocalizedLink } = await import("@/components/common/localized-link");
     render(<LocalizedLink href="/">Home</LocalizedLink>);
-    expect(screen.getByRole("link")).toHaveAttribute("href", "/en/");
+    expect(screen.getByRole("link")).toHaveAttribute("href", "/en");
   });
 
   it("does not double-prepend when href already starts with the locale", async () => {
     const { LocalizedLink } = await import("@/components/common/localized-link");
     render(<LocalizedLink href="/en/blog">Blog</LocalizedLink>);
     expect(screen.getByRole("link")).toHaveAttribute("href", "/en/blog");
+  });
+
+  it("does not double-prepend for any supported locale", async () => {
+    mockUseCurrentLocale.mockReturnValue("th");
+    const { LocalizedLink } = await import("@/components/common/localized-link");
+    render(<LocalizedLink href="/th/blog">Blog</LocalizedLink>);
+    expect(screen.getByRole("link")).toHaveAttribute("href", "/th/blog");
   });
 
   it("does not modify absolute URLs", async () => {
