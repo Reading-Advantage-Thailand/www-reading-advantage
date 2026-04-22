@@ -28,6 +28,7 @@ interface BlogFrontmatter {
   tags: string[];
   readingTime?: number;
   coverImage?: string;
+  product?: string;
 }
 
 function validateFrontmatter(data: unknown): BlogFrontmatter {
@@ -60,6 +61,7 @@ function validateFrontmatter(data: unknown): BlogFrontmatter {
     tags: tags.map(String),
     readingTime: typeof d.readingTime === "number" ? d.readingTime : undefined,
     coverImage: typeof d.coverImage === "string" ? d.coverImage : undefined,
+    product: typeof d.product === "string" ? d.product : undefined,
   };
 }
 
@@ -90,6 +92,7 @@ async function parseBlogFile(fullPath: string, slug: string): Promise<BlogPost> 
     tags: frontmatter.tags,
     readingTime,
     coverImage: frontmatter.coverImage,
+    product: frontmatter.product,
   };
 }
 

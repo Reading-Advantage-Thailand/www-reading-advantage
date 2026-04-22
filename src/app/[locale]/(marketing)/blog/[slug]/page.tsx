@@ -9,6 +9,8 @@ import { BlogBreadcrumbs } from "@/components/blog/blog-breadcrumbs";
 import { BlogTags } from "@/components/blog/blog-tags";
 import { TableOfContents } from "@/components/blog/table-of-contents";
 import { RelatedPosts } from "@/components/blog/related-posts";
+import { ProductCTA } from "@/components/blog/product-cta";
+import { ContactCTA } from "@/components/blog/contact-cta";
 import { getScopedI18n } from "@/locales/server";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -96,6 +98,8 @@ async function BlogPost(props: Props) {
               className="prose prose-lg max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-a:text-blue-600 prose-strong:text-gray-900 prose-ul:list-disc prose-ol:list-decimal"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
+            <ProductCTA product={post.product} locale={locale} />
+            <ContactCTA locale={locale} />
           </div>
           <div className="lg:col-span-1">
             <TableOfContents headings={headings} />

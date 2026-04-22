@@ -9,6 +9,7 @@ export interface BlogPost {
   tags: string[];
   readingTime: number;
   coverImage?: string;
+  product?: string;
 }
 
 // Instead of using Omit, explicitly define the interface
@@ -21,6 +22,7 @@ export interface BlogListItem {
   tags: string[];
   readingTime: number;
   coverImage?: string;
+  product?: string;
 }
 
 export interface BlogHeaderProps {
