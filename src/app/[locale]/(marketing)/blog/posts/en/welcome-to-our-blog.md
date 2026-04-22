@@ -3,6 +3,7 @@ title: "Welcome to Our Blog"
 date: "2024-01-10"
 excerpt: "Welcome to the Reading Advantage blog where we share insights about education and learning"
 coverImage: "/images/reading-advantage-demo.png"
+product: "/products"
 author: "Reading Advantage Team"
 tags: ["Welcome", "Education", "Learning"]
 ---

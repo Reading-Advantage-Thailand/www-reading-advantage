@@ -2,6 +2,7 @@
 title: ยินดีต้อนรับสู่บล็อก Reading Advantage
 date: "2024-01-15"
 excerpt: บทความแรกของเราในภาษาไทย ทดสอบระบบการจัดการเนื้อหาหลายภาษา
+product: "/products"
 author: ทีม Reading Advantage
 tags: ["ภาษาไทย", "การศึกษา"]
 ---
