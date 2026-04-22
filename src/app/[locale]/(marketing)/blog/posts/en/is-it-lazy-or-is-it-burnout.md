@@ -4,7 +4,8 @@ date: "2026-04-22"
 excerpt: "Understanding the 'Brain Burnout' (ภาวะสมองล้า) trend in Thai students and how to reset."
 coverImage: "/blog/day01-lazy-or-burnout_001.jpg"
 author: "Reading Advantage Marketing Team"
-tags: ["Brain Burnout", "Student Wellness", "Mental Health", "Math/Science Advantage", "Parenting Tips"]
+product: "/products/math-advantage"
+tags: ["Brain Burnout", "Student Wellness", "Mental Health", "Math Advantage", "Parenting Tips"]
 readingTime: 6
 ---
 
@@ -86,7 +87,7 @@ When children feel burned out, the pressure of "getting it right" becomes paraly
 
 Traditional one-size-fits-all practice often worsens burnout. If a child is struggling, repetitive drilling of the same content intensifies exhaustion without building understanding. Look for learning platforms that **adapt to your child's actual level** — starting where they are, moving at their pace, and keeping engagement high through personalization.
 
-This is where **Math/Science Advantage** can make a meaningful difference. Our AI-powered adaptive learning platform is designed with your child's cognitive wellbeing in mind. It identifies exactly where your student is struggling, creates a personalized learning path that doesn't overwhelm, and builds confidence through steady, appropriate progress. Learning feels achievable again — not impossible.
+This is where **Math Advantage** can make a meaningful difference. Our AI-powered adaptive learning platform is designed with your child's cognitive wellbeing in mind. It identifies exactly where your student is struggling, creates a personalized learning path that doesn't overwhelm, and builds confidence through steady, appropriate progress. Learning feels achievable again — not impossible.
 
 ### 7. Watch for the Signs and Act Early
 

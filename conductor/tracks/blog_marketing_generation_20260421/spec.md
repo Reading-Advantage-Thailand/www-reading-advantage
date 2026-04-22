@@ -14,6 +14,7 @@ This track focuses on generating all 30 blog posts outlined in the `conductor/ma
   - `author`: "Reading Advantage Marketing Team" (or similar).
   - `tags`: Relevant tags.
   - `readingTime`: Estimated reading time.
+  - `product`: Absolute path to the relevant product/service page (e.g., `/products/math-advantage`). Must match the Advantage Page column in `conductor/marketing_plan_30_days.md`.
 - **File Location:** 
   - English posts: `src/app/[locale]/(marketing)/blog/posts/en/`
   - Thai posts: `src/app/[locale]/(marketing)/blog/posts/th/`

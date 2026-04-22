@@ -18,6 +18,7 @@ Generate one marketing blog post per day from the 30-Day "Advantage" Blog Market
    - English: `src/app/[locale]/(marketing)/blog/posts/en/{slug}.md`
    - Thai: `src/app/[locale]/(marketing)/blog/posts/th/{slug}.md`
    - Image: `public/blog/{filename}.jpg` or `.webp`
+   - Frontmatter must include `product` field matching the Advantage Page in `conductor/marketing_plan_30_days.md`
 6. Run the validation test: `npx vitest run src/lib/blog-posts-validation.test.ts`
 7. Fix any validation failures.
 8. Commit with a descriptive message referencing the day number and track.
