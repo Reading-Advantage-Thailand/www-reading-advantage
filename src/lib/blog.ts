@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import GithubSlugger from "github-slugger";
 import { BlogPost, BlogListItem } from "@/types/blog";
 
 const postsBaseDirectory = path.join(
@@ -208,18 +209,10 @@ export interface Heading {
   level: 2 | 3;
 }
 
-function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-")
-    .trim();
-}
-
 export function extractHeadings(content: string): Heading[] {
   const headings: Heading[] = [];
   const lines = content.split("\n");
+  const slugger = new GithubSlugger();
 
   for (const line of lines) {
     const h2Match = line.match(/^## (.+)$/);
@@ -227,10 +220,10 @@ export function extractHeadings(content: string): Heading[] {
 
     if (h2Match) {
       const text = h2Match[1].trim();
-      headings.push({ id: slugify(text), text, level: 2 });
+      headings.push({ id: slugger.slug(text), text, level: 2 });
     } else if (h3Match) {
       const text = h3Match[1].trim();
-      headings.push({ id: slugify(text), text, level: 3 });
+      headings.push({ id: slugger.slug(text), text, level: 3 });
     }
   }
 
