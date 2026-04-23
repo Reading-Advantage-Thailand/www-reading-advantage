@@ -4,6 +4,27 @@ Retrospective insights captured after completing tracks, PR merges, and developm
 
 ---
 
+## 2026-04-23 — Blog-to-Video Pipeline Setup (blog_video_generation_20260423)
+
+### What Happened
+
+- Validated Thai TTS using `mmx speech synthesize` with default voice on a Thai blog sentence. Output was clear and acceptable at 128kbps MP3.
+- Installed Revideo dependencies (`@revideo/cli`, `@revideo/core`, `@revideo/2d`, `@revideo/renderer`, `@revideo/ui`, `tsx`).
+- Created `revideo/project.ts` and `revideo/scenes/blog-video.tsx` for 9:16 TikTok-style composition.
+- Created `scripts/generate-blog-video.ts` pipeline script that: parses markdown with `gray-matter`, generates TikTok script via `mmx text chat`, generates narration via `mmx speech`, generates segment images via `mmx image`, and renders via `@revideo/renderer`.
+- Fixed `makeScene2D` call signature: requires a string name as the first argument (`makeScene2D('scene-name', function* (view) {...})`). Documentation examples omitting the name are incorrect for this version.
+- Rendering currently blocked by ffmpeg export format resolution — `visuals.undefined` filename suggests `format` is not being derived from `outFile` extension correctly when exporter options lack an explicit `format` key.
+
+### Lessons
+
+- `mmx text chat` returns structured JSON with `content[].text` and often wraps JSON arrays in markdown code blocks. Must strip ```json fences before parsing.
+- `makeScene2D` has a required `name` parameter in Revideo 0.10.4. Calling it with only a generator function causes `config` to be undefined, leading to "The thread is not available in the current context" at runtime.
+- Revideo `.ts` project files must NOT contain JSX — only `.tsx` scene files should have JSX. Esbuild in Vite will not transform JSX in `.ts` files.
+- When using `@revideo/core/ffmpeg` exporter, explicitly set `options.format` (e.g., `mp4`) in the project settings, or ensure `outFile` has a valid extension that `validate-settings.js` can parse. Otherwise `ffmpeg_1.extensions[format]` resolves to `undefined`.
+- `renderVideo()` settings should include `puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox', '--single-process'] }` for headless environments.
+
+---
+
 ## 2026-04-16 — Hero Image Inconsistency Fix (hero_image_inconsistency_20260416)
 
 ### What Happened

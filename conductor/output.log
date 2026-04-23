@@ -1,7 +1,15 @@
-Now I have the full context. Let me check the current state of the workspace and the blog marketing track plan.
-Now let me check what blog posts already exist and what Day we need to generate next.
-I can see:
-- Day 1 post exists: `is-it-lazy-or-is-it-burnout.md` (in both EN and TH)
-- Day 2-10 posts are missing
+[0m
+> build · k2p6
+[0m
+[0m✱ [0mGlob "**/autonomous_prompt.md"[90m 1 match[0m
+[0m→ [0mRead conductor/autonomous_prompt.md
+Found the autonomous conductor prompt at `conductor/autonomous_prompt.md`. 
 
-According to the plan, I need to generate **Day 2** next. Let me commit the pending changes first, then generate Day 2's content.
+This is an unattended run protocol that:
+1. Loads conductor context (tracks, tech-debt, lessons-learned)
+2. Commits any dirty workspace, finishes in-progress work
+3. Implements one phase with TDD (Red-Green-Refactor)
+4. Verifies tests and build
+5. Updates docs and commits checkpoint
+
+Should I execute this autonomous workflow?

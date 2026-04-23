@@ -10,7 +10,7 @@ _Link: [./conductor/tracks/services_development_20260114/](./conductor/tracks/se
 
 ## [x] Track: Site-Wide Refactor — Appearance, Performance & Code Quality
 
-_Link: [./conductor/tracks/site_refactor_20260207/](./conductor/tracks/site_refactor_20260207/)_
+_Link: [./conductor/archive/site_refactor_20260207/](./conductor/archive/site_refactor_20260207/)_
 
 ## [ ] Track: Hero Section Standardization
 
@@ -26,7 +26,7 @@ _Link: [./conductor/tracks/hero_standardization_20260208/](./conductor/tracks/he
 
 **Description:** Apply the established brand design system (glassmorphism, asymmetric layouts, uppercase wayfinding labels, rounded-3xl cards, standard Button CTAs) to all non-product marketing pages: Home, About, Features, Pricing, Services, and Contact.
 
-_Link: [./conductor/tracks/marketing_pages_redesign_20260418/](./conductor/tracks/marketing_pages_redesign_20260418/)_
+_Link: [./conductor/archive/marketing_pages_redesign_20260418/](./conductor/archive/marketing_pages_redesign_20260418/)_
 
 ---
 
@@ -72,7 +72,7 @@ _Link: [./conductor/tracks/images_sizes_prop_20260414/](./conductor/tracks/image
 
 **Description:** Align all 9 product pages with actual brand identity: correct hero gradients per product specifications, product logos in hero sections, sky-50 base theme, glassmorphism cards, and Geist typography per product guidelines. Replaces the archived Clay design system track.
 
-_Link: [./conductor/tracks/product_brand_refresh_20260418/](./conductor/tracks/product_brand_refresh_20260418/)_
+_Link: [./conductor/archive/product_brand_refresh_20260418/](./conductor/archive/product_brand_refresh_20260418/)_
 
 ---
 
@@ -84,7 +84,7 @@ _Link: [./conductor/tracks/product_brand_refresh_20260418/](./conductor/tracks/p
 
 **Description:** Redesign all 9 product pages with unique, distinctive layouts that break the repetitive AI-slop template pattern. Uses asymmetric splits, full-width color rooms, overlapping sections, dashed borders, and generous radius per Clay-inspired design principles while maintaining correct brand colors.
 
-_Link: [./conductor/tracks/product_page_structure_redesign_20260418/](./conductor/tracks/product_page_structure_redesign_20260418/)_
+_Link: [./conductor/archive/product_page_structure_redesign_20260418/](./conductor/archive/product_page_structure_redesign_20260418/)_
 
 ---
 
@@ -164,7 +164,7 @@ _Link: [./conductor/tracks/bazarr_ui_cloning_20260214/](./conductor/tracks/bazar
 
 **Description:** Locale-aware blog system: posts organized in `posts/{locale}/` dirs with `en/` fallback, `LocalizedLink` for locale-prefixed navigation, async server components using `getScopedI18n`, `Intl.DateTimeFormat` for locale dates, `BlogBreadcrumbs`, and comprehensive frontmatter validation test suite.
 
-*Link: [./tracks/blog_localization_20260421/](./tracks/blog_localization_20260421/)*
+*Link: [./archive/blog_localization_20260421/](./archive/blog_localization_20260421/)*
 
 ---
 
@@ -176,7 +176,19 @@ _Link: [./conductor/tracks/bazarr_ui_cloning_20260214/](./conductor/tracks/bazar
 
 **Description:** Create Day 2 blog post for the 30-Day "Advantage" Blog Marketing Campaign analyzing Thailand's declining PISA scores and positioning Reading Advantage as the solution to the reading comprehension crisis.
 
-_Link: [./tracks/blog_day02_pisa_crisis_20260423/](./tracks/blog_day02_pisa_crisis_20260423/)_
+_Link: [./archive/blog_day02_pisa_crisis_20260423/](./archive/blog_day02_pisa_crisis_20260423/)_
+
+---
+
+### [~] Track: Blog-to-Video Generation Pipeline
+
+**Status:** In Progress
+
+**Type:** feature | **Estimated Tasks:** 12
+
+**Description:** Create a TikTok-style engagement video generation pipeline that summarizes blog posts into 1-2 minute videos using mmx (audio/images/video) and Revideo (composition). Thai TTS validated. Revideo installed. Scene composition and pipeline script drafted. Rendering blocked on ffmpeg export format issue.
+
+_Link: [./tracks/blog_video_generation_20260423/](./tracks/blog_video_generation_20260423/)*
 
 ---
 

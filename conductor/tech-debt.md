@@ -8,6 +8,18 @@ Priority: **P1** = blocks quality/production, **P2** = degrades DX or UX, **P3**
 
 ## Open Debt
 
+### [P1] Revideo renderer EOF crash on long exports (2026-04)
+
+**Problem:** Long-form blog video renders fail near completion with `Input stream error: stream.push() after EOF` from `@revideo/renderer`, even after fixing exporter format and scene-path issues. This makes end-to-end Revideo rendering non-deterministic for 60s+ timelines in `blog_video_generation_20260423`.
+
+**Current Mitigation:** Keep Revideo as primary path, but fall back to deterministic ffmpeg assembly (`--force-ffmpeg-fallback`) or automatic fallback on Revideo failure. The fallback uses generated segment images + narration audio + subtitle burn-in to produce a valid 9:16 MP4.
+
+**Target Resolution:** Root-cause Revideo exporter EOF failure and remove fallback dependency once stable long-form rendering is verified.
+
+**Blocked Track:** `blog_video_generation_20260423` Phase 2/3 quality gates.
+
+---
+
 ### [P2] `next.config.ts` only allows `localhost` as image domain (2026-02)
 
 **Problem:** The `images.domains` (or `remotePatterns`) configuration in `next.config.ts` only permits `localhost`. Any production or CDN images from external domains will fail with a 400 error.
