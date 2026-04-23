@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
         hostname: '**',
       },
     ],
+    unoptimized: true,
   },
 
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
