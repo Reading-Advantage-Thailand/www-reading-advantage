@@ -168,5 +168,17 @@ _Link: [./conductor/tracks/bazarr_ui_cloning_20260214/](./conductor/tracks/bazar
 
 ---
 
+## [~] Track: Day 2 Blog Post — The PISA Crisis
+
+**Status:** In Progress
+
+**Type:** feature | **Estimated Tasks:** 6
+
+**Description:** Create Day 2 blog post for the 30-Day "Advantage" Blog Marketing Campaign analyzing Thailand's declining PISA scores and positioning Reading Advantage as the solution to the reading comprehension crisis.
+
+_Link: [./tracks/blog_day02_pisa_crisis_20260423/](./tracks/blog_day02_pisa_crisis_20260423/)_
+
+---
+
 - [ ] **Track: Generate 30 blog posts localized into English and Thai using the mmx cli tool with the create-image-mmx skill.**
 *Link: [./tracks/blog_marketing_generation_20260421/](./tracks/blog_marketing_generation_20260421/)*
