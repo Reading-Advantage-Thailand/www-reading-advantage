@@ -6,7 +6,7 @@
 - [ ] Task: Conductor - User Manual Verification 'Validation Script & Setup' (Protocol in workflow.md)
 
 ## Phase 2: Generation of Days 1-10
-- [~] Task: Generate English & Thai text and 16:9 images for Days 1-10 using `mmx`. Save to appropriate directories. (Day 1 complete)
+- [~] Task: Generate English & Thai text and 16:9 images for Days 1-10 using `mmx`. Save to appropriate directories. (Days 1-4 complete)
 - [ ] Task: Conductor - User Manual Verification 'Generation of Days 1-10' (Protocol in workflow.md)
 
 ## Phase 3: Generation of Days 11-20
