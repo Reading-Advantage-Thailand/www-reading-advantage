@@ -21,9 +21,16 @@ Generate one marketing blog post per day from the 30-Day "Advantage" Blog Market
    - Frontmatter must include `product` field matching the Advantage Page in `conductor/marketing_plan_30_days.md`
 6. Run the validation test: `npx vitest run src/lib/blog-posts-validation.test.ts`
 7. Fix any validation failures.
-8. Commit with a descriptive message referencing the day number and track.
-9. Push to `main`.
-10. Update `conductor/tracks/blog_marketing_generation_20260421/plan.md` to mark the day's task as complete.
+8. Generate the Thai video from the day's Thai markdown file:
+   - `npx tsx scripts/generate-blog-video.ts "src/app/[locale]/(marketing)/blog/posts/th/{slug}.md"`
+9. Verify the Thai video artifact before commit:
+   - Confirm output exists in `public/videos/{thai-slug}.mp4`.
+   - Confirm audio stream exists:
+     - `ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=nw=1:nk=1 "public/videos/{thai-slug}.mp4"`
+   - Confirm duration alignment between narration and final video is within 1.0 second.
+10. Commit with a descriptive message referencing the day number and track.
+11. Push to `main`.
+12. Update `conductor/tracks/blog_marketing_generation_20260421/plan.md` to mark the day's task as complete.
 
 ## Quality Gates
 - All 102+ validation tests must pass before commit.
@@ -31,6 +38,9 @@ Generate one marketing blog post per day from the 30-Day "Advantage" Blog Market
 - Both EN and TH versions must share the same slug.
 - Image must exist on disk and be referenced by `coverImage` in frontmatter.
 - Word count target: 800–1000 words per post.
+- Thai video must be generated from the Thai post in the same run.
+- Thai video must include an audio stream.
+- Thai video and narration durations must be aligned (delta <= 1.0 second).
 
 ## Out of Scope
 - Do not modify blog UI, routing, or rendering logic.

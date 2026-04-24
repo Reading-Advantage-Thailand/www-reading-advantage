@@ -11,7 +11,7 @@
 - [x] Task: Implement mmx text chat integration for TikTok-style script generation with JSON output parsing.
 - [x] Task: Implement mmx speech synthesize integration for narration audio.
 - [x] Task: Implement mmx image generate integration for per-segment background images (9:16).
-- [~] Task: Debug and fix Revideo rendering issues (scene naming, JSX transformation, ffmpeg export format).
+- [x] Task: Fix Revideo rendering for production use (1-2 minute videos). Re-added upscale step from 540×960 → 1080×1920 before narration mux and verified end-to-end output metadata (`1080x1920` H.264 + AAC) via `ffprobe`.
 - [ ] Task: Conductor - User Manual Verification 'Pipeline Script Development' (Protocol in workflow.md)
 
 ## Phase 3: Video Composition Polish

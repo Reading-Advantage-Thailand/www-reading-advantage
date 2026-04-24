@@ -15,6 +15,55 @@ type VideoSegment = {
   imagePath: string;
 };
 
+function wrapOverlayText(text: string, maxCharsPerLine: number, maxLines: number): string {
+  const cleaned = text.replace(/\s+/g, ' ').trim();
+  if (!cleaned) {
+    return '';
+  }
+
+  const charCount = (value: string) => Array.from(value).length;
+  let tokens: string[];
+
+  if (typeof Intl !== 'undefined' && typeof Intl.Segmenter !== 'undefined') {
+    const segmenter = new Intl.Segmenter('th', {granularity: 'word'});
+    const segmented = Array.from(segmenter.segment(cleaned), part => part.segment).filter(Boolean);
+    tokens = segmented.length > 0 ? segmented : cleaned.split(/(\s+)/).filter(Boolean);
+  } else {
+    tokens = cleaned.split(/(\s+)/).filter(Boolean);
+  }
+
+  if (tokens.length === 1 && !/\s/.test(tokens[0])) {
+    tokens = Array.from(tokens[0]);
+  }
+
+  const lines: string[] = [];
+  let currentLine = '';
+
+  for (const token of tokens) {
+    const nextLine = `${currentLine}${token}`;
+    if (currentLine && charCount(nextLine) > maxCharsPerLine) {
+      lines.push(currentLine.trim());
+      currentLine = token.trimStart();
+    } else {
+      currentLine = nextLine;
+    }
+  }
+
+  if (currentLine.trim()) {
+    lines.push(currentLine.trim());
+  }
+
+  if (lines.length > maxLines) {
+    const trimmed = lines.slice(0, maxLines);
+    const lastLine = trimmed[maxLines - 1];
+    const clipped = Array.from(lastLine).slice(0, Math.max(0, maxCharsPerLine - 1)).join('').trimEnd();
+    trimmed[maxLines - 1] = `${clipped}…`;
+    return trimmed.join('\n');
+  }
+
+  return lines.join('\n');
+}
+
 export default makeScene2D('blog-video', function* (view) {
   const scene = useScene();
   const logoPath = String(scene.variables.get('logoPath', 'images/logo.jpg')());
@@ -25,6 +74,8 @@ export default makeScene2D('blog-video', function* (view) {
   const outroDuration = Number(scene.variables.get('outroDuration', 3)()) || 3;
   const narrationDuration = Number(scene.variables.get('narrationDuration', 60)()) || 60;
   const brandColor = String(scene.variables.get('brandColor', '#2563eb')());
+  const wrappedTitle = wrapOverlayText(title, 22, 3);
+  const wrappedCtaText = wrapOverlayText(ctaText, 22, 3);
 
   let segments: VideoSegment[] = [];
   if (Array.isArray(rawSegments)) {
@@ -64,14 +115,15 @@ export default makeScene2D('blog-video', function* (view) {
       />
       <Txt
         ref={introTitleRef}
-        text={title}
-        fontSize={72}
+        text={wrappedTitle}
+        fontSize={62}
         fontWeight={700}
         fill="#ffffff"
         textAlign="center"
-        width={900}
+        width={860}
         x={0}
         y={300}
+        lineHeight={76}
         opacity={0}
       />
     </Layout>,
@@ -83,7 +135,7 @@ export default makeScene2D('blog-video', function* (view) {
     introTitleRef().opacity(1, 0.8, easeOutCubic),
     introTitleRef().y(280, 0.8, easeOutCubic),
   );
-  yield* waitFor(Math.max(0.5, introDuration - 1.5));
+  yield* waitFor(Math.max(0.2, introDuration - 1.3));
   yield* all(
     introLogoRef().opacity(0, 0.5, easeInOutCubic),
     introTitleRef().opacity(0, 0.5, easeInOutCubic),
@@ -92,6 +144,10 @@ export default makeScene2D('blog-video', function* (view) {
 
   // Content segments
   for (const segment of safeSegments) {
+    const wrappedSegmentText = wrapOverlayText(segment.text, 24, 4);
+    const fadeInDuration = Math.min(0.6, Math.max(0.2, segmentDuration * 0.2));
+    const fadeOutDuration = Math.min(0.5, Math.max(0.2, segmentDuration * 0.2));
+    const holdDuration = Math.max(0.2, segmentDuration - fadeInDuration - fadeOutDuration);
     const segmentLayoutRef = createRef<Layout>();
     const imgRef = createRef<Img>();
     const overlayRef = createRef<Rect>();
@@ -116,8 +172,8 @@ export default makeScene2D('blog-video', function* (view) {
         />
         <Rect
           ref={textBgRef}
-          width={960}
-          height={220}
+          width={940}
+          height={300}
           fill={brandColor}
           x={0}
           y={620}
@@ -126,35 +182,37 @@ export default makeScene2D('blog-video', function* (view) {
         />
         <Txt
           ref={textRef}
-          text={segment.text}
-          fontSize={52}
+          text={wrappedSegmentText}
+          fontSize={44}
           fontWeight={700}
           fill="#ffffff"
           textAlign="center"
-          width={900}
+          width={840}
           x={0}
           y={620}
-          lineHeight={74}
+          lineHeight={58}
           opacity={0}
         />
       </Layout>,
     );
 
+    imgRef().scale(1.08);
     yield* all(
-      imgRef().opacity(1, 0.6, easeOutCubic),
-      imgRef().scale(1.08, 0).to(1, segmentDuration, linear),
-      overlayRef().opacity(1, 0.6, easeOutCubic),
-      textBgRef().opacity(0.9, 0.5, easeOutCubic),
-      textRef().opacity(1, 0.5, easeOutCubic),
-      textRef().y(600, 0.5, easeOutCubic),
+      imgRef().opacity(1, fadeInDuration, easeOutCubic),
+      overlayRef().opacity(1, fadeInDuration, easeOutCubic),
+      textBgRef().opacity(0.9, fadeInDuration, easeOutCubic),
+      textRef().opacity(1, fadeInDuration, easeOutCubic),
+      textRef().y(600, fadeInDuration, easeOutCubic),
     );
-
-    yield* waitFor(Math.max(0.6, segmentDuration - 1.1));
     yield* all(
-      imgRef().opacity(0, 0.5, easeInOutCubic),
-      overlayRef().opacity(0, 0.5, easeInOutCubic),
-      textBgRef().opacity(0, 0.5, easeInOutCubic),
-      textRef().opacity(0, 0.5, easeInOutCubic),
+      imgRef().scale(1, holdDuration, linear),
+      waitFor(holdDuration),
+    );
+    yield* all(
+      imgRef().opacity(0, fadeOutDuration, easeInOutCubic),
+      overlayRef().opacity(0, fadeOutDuration, easeInOutCubic),
+      textBgRef().opacity(0, fadeOutDuration, easeInOutCubic),
+      textRef().opacity(0, fadeOutDuration, easeInOutCubic),
     );
     segmentLayoutRef().remove();
   }
@@ -180,15 +238,15 @@ export default makeScene2D('blog-video', function* (view) {
       />
       <Txt
         ref={outroTextRef}
-        text={ctaText}
-        fontSize={62}
+        text={wrappedCtaText}
+        fontSize={56}
         fontWeight={700}
         fill="#ffffff"
         textAlign="center"
-        width={900}
+        width={860}
         x={0}
         y={220}
-        lineHeight={84}
+        lineHeight={72}
         opacity={0}
       />
     </Layout>,
@@ -201,7 +259,7 @@ export default makeScene2D('blog-video', function* (view) {
     outroTextRef().opacity(1, 0.8, easeOutCubic),
     outroTextRef().y(190, 0.8, easeOutCubic),
   );
-  yield* waitFor(Math.max(0.5, outroDuration - 1));
+  yield* waitFor(Math.max(0.2, outroDuration - 1.3));
   yield* all(
     outroBgRef().opacity(0, 0.5, easeInOutCubic),
     outroLogoRef().opacity(0, 0.5, easeInOutCubic),

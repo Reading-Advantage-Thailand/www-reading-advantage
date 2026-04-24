@@ -4,6 +4,25 @@ Retrospective insights captured after completing tracks, PR merges, and developm
 
 ---
 
+## 2026-04-24 — Revideo EOF Crash Fix (blog_video_generation_20260423)
+
+### What Happened
+
+- Diagnosed the root cause of `stream.push() after EOF` in `@revideo/renderer`: `project.ts` had `range: [0, 120]`, which at 8fps caps the render at exactly 15 seconds. When narration audio was 60–90s, the scene generator kept yielding frames past frame 120, but the renderer had already closed the stream.
+- Fixed by setting `range: [0, 9999]` as a safe default and generating temporary project files with exact frame ranges for each render (`Math.ceil(duration * fps) + 30`).
+- Added duration pre-check in the pipeline: videos >60s skip Revideo and use the ffmpeg fallback directly, avoiding the long-render stream edge case entirely.
+- Added image normalization (ffmpeg to 1080×1920 JPG) for all segment assets before rendering to prevent decoder surprises.
+- Added `--single-process` to Puppeteer args to improve stability in headless/container environments.
+
+### Lessons
+
+- **Revideo `range` is in frames, not seconds.** Always ensure `range` covers the full expected frame count (`duration * fps + buffer`). A default range that is too short causes EOF crashes that look like stream bugs but are actually configuration errors.
+- **Pre-calculate expected duration before calling the renderer.** This allows choosing the right render strategy (Revideo vs fallback) and setting the correct frame range.
+- **Normalize all image inputs to consistent format and dimensions.** Revideo's browser media pipeline is sensitive to mixed formats; standardizing to JPG with yuv420p prevents decode errors.
+- **Puppeteer in containers needs `--single-process`.** Without it, sandbox-related process spawning can cause intermittent renderer failures.
+
+---
+
 ## 2026-04-23 — Blog-to-Video Pipeline Setup (blog_video_generation_20260423)
 
 ### What Happened

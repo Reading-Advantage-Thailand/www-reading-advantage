@@ -7,7 +7,9 @@ export default makeProject({
     shared: {
       size: {x: 1080, y: 1920},
       background: '#0a0a0a',
-      range: [0, 120],
+      // Safe upper bound; actual duration is controlled by scene generator.
+      // Short renders use a temporary project file with an exact frame range.
+      range: [0, 9999],
     },
     rendering: {
       fps: 8,

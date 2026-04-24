@@ -105,6 +105,134 @@ function toRevideoAssetPath(assetPath: string): string {
   return normalizedPath.replace(/^\/+/, '');
 }
 
+function createTempProjectFile(workDir: string, rangeEnd: number): string {
+  // Place temp project in revideo/ so Vite can resolve ./scenes/blog-video correctly
+  const projectPath = path.resolve('revideo', `temp-project-${path.basename(workDir)}.ts`);
+  const content = `import {makeProject} from '@revideo/core';
+import blogVideo from './scenes/blog-video';
+
+export default makeProject({
+  scenes: [blogVideo],
+  settings: {
+    shared: {
+      size: {x: 1080, y: 1920},
+      background: '#0a0a0a',
+      range: [0, ${rangeEnd}],
+    },
+    rendering: {
+      fps: 8,
+      resolutionScale: 0.5,
+      exporter: {
+        name: '@revideo/core/ffmpeg',
+        options: {
+          format: 'mp4',
+        },
+      },
+    },
+    preview: {
+      fps: 8,
+      resolutionScale: 0.5,
+    },
+  },
+});
+`;
+  fs.writeFileSync(projectPath, content);
+  return projectPath;
+}
+
+function normalizeImageForRender(inputPath: string, outputPath: string): string {
+  // Ensure consistent 1080x1920 JPG for Revideo to avoid decoder surprises
+  runCommand(
+    `ffmpeg -loglevel error -y -i "${inputPath}" -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920" -q:v 2 "${outputPath}"`
+  );
+  return outputPath;
+}
+
+function findFirstImageFile(rootDir: string): string | null {
+  const allowedExts = new Set(['.png', '.jpg', '.jpeg', '.webp', '.avif']);
+  const queue: string[] = [rootDir];
+
+  while (queue.length > 0) {
+    const current = queue.shift();
+    if (!current || !fs.existsSync(current)) {
+      continue;
+    }
+
+    const entries = fs.readdirSync(current, {withFileTypes: true});
+    for (const entry of entries) {
+      const absoluteEntryPath = path.join(current, entry.name);
+      if (entry.isDirectory()) {
+        queue.push(absoluteEntryPath);
+        continue;
+      }
+
+      if (allowedExts.has(path.extname(entry.name).toLowerCase())) {
+        return absoluteEntryPath;
+      }
+    }
+  }
+
+  return null;
+}
+
+function resolveCoverImagePath(coverImage: string | undefined, blogAbsPath: string): string | null {
+  if (!coverImage) {
+    return null;
+  }
+
+  const trimmed = coverImage.trim();
+  if (!trimmed || trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+    return null;
+  }
+
+  if (trimmed.startsWith('/')) {
+    const publicPath = path.resolve(PUBLIC_DIR_ABS, trimmed.replace(/^\/+/, ''));
+    return fs.existsSync(publicPath) ? publicPath : null;
+  }
+
+  const candidates = [
+    path.resolve(path.dirname(blogAbsPath), trimmed),
+    path.resolve(PUBLIC_DIR_ABS, trimmed),
+  ];
+
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  return null;
+}
+
+function createSegmentFallbackImage({
+  segmentImgDir,
+  segmentIndex,
+  coverImageAbsPath,
+}: {
+  segmentImgDir: string;
+  segmentIndex: number;
+  coverImageAbsPath: string | null;
+}): string {
+  const fallbackSources = [
+    coverImageAbsPath,
+    path.resolve(PUBLIC_DIR_ABS, FALLBACK_IMAGE_PATH),
+  ].filter((value): value is string => Boolean(value));
+  const outputAbsPath = path.resolve(segmentImgDir, 'scene.jpg');
+
+  for (const sourceAbsPath of fallbackSources) {
+    try {
+      normalizeImageForRender(sourceAbsPath, outputAbsPath);
+      return outputAbsPath;
+    } catch (error) {
+      console.warn(
+        `   Failed to normalize fallback source for segment ${segmentIndex + 1}: ${sourceAbsPath}`,
+      );
+    }
+  }
+
+  throw new Error(`Unable to prepare fallback image for segment ${segmentIndex + 1}`);
+}
+
 function formatSrtTime(totalSeconds: number): string {
   const safeSeconds = Math.max(0, totalSeconds);
   const hours = Math.floor(safeSeconds / 3600);
@@ -201,6 +329,16 @@ function cleanupRunArtifacts({
       }
     }
   }
+
+  // Clean up temp Revideo project files
+  const revideoDir = path.resolve('revideo');
+  if (fs.existsSync(revideoDir)) {
+    for (const entry of fs.readdirSync(revideoDir)) {
+      if (entry.startsWith('temp-project-') && entry.endsWith('.ts')) {
+        fs.rmSync(path.join(revideoDir, entry), {force: true});
+      }
+    }
+  }
 }
 
 function muxWithNarration({
@@ -239,9 +377,38 @@ function muxWithNarration({
     visualsForMux = paddedVisualsPath;
   }
 
+  if (
+    audioDuration &&
+    visualsDuration &&
+    visualsDuration > audioDuration + minVisualLeadSeconds
+  ) {
+    const targetDuration = audioDuration + minVisualLeadSeconds;
+    const trimmedVisualsPath = path.join(
+      path.dirname(visualsPath),
+      `visuals-trimmed-${Date.now()}.mp4`,
+    );
+    runCommand(
+      `ffmpeg -loglevel error -y -i "${visualsForMux}" -t ${targetDuration.toFixed(3)} -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p "${trimmedVisualsPath}"`
+    );
+    visualsForMux = trimmedVisualsPath;
+  }
+
   runCommand(
-    `ffmpeg -loglevel error -y -i "${visualsForMux}" -i "${audioAbsPath}" -c:v copy -c:a aac -shortest "${outputPath}"`
+    `ffmpeg -loglevel error -y -i "${visualsForMux}" -i "${audioAbsPath}" -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest -movflags +faststart "${outputPath}"`
   );
+}
+
+function upscaleVisualsForDelivery({
+  inputPath,
+  outputPath,
+}: {
+  inputPath: string;
+  outputPath: string;
+}): string {
+  runCommand(
+    `ffmpeg -loglevel error -y -i "${inputPath}" -vf "scale=1080:1920:flags=lanczos" -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p "${outputPath}"`
+  );
+  return outputPath;
 }
 
 function renderFallbackVideo({
@@ -410,6 +577,7 @@ Respond with valid JSON only. Example:
   // ========== STEP 3: Generate background images with mmx image ==========
   // Revideo assets must resolve from public/ to avoid browser media loading failures.
   const imagePaths: string[] = [];
+  const coverImageAbsPath = resolveCoverImagePath(meta.coverImage, blogAbsPath);
 
   if (!skipAssets) {
     console.log('\n🖼️  Generating background images...');
@@ -422,48 +590,43 @@ Respond with valid JSON only. Example:
         runCommand(
           `timeout 120s mmx image generate --prompt "${imagePrompt.replace(/"/g, '\\"')}" --aspect-ratio 9:16 --n 1 --out-dir ${segmentImgDir} --out-prefix seg --quiet`
         );
-        // Find the generated image
-        const files = fs.readdirSync(segmentImgDir).filter(f => f.endsWith('.png') || f.endsWith('.jpg') || f.endsWith('.jpeg'));
-        if (files.length > 0) {
-          const imgAbsPath = path.resolve(segmentImgDir, files[0]);
-          const normalizedImageAbsPath = path.resolve(segmentImgDir, 'scene.jpg');
-          try {
-            runCommand(
-              `ffmpeg -loglevel error -y -i "${imgAbsPath}" -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920" -q:v 2 "${normalizedImageAbsPath}"`
-            );
-          } catch (error) {
-            console.warn(`   Failed to normalize segment ${i + 1} image, using original file.`);
-          }
-
-          const finalImageAbsPath = fs.existsSync(normalizedImageAbsPath)
-            ? normalizedImageAbsPath
-            : imgAbsPath;
-          const imagePath = toRevideoAssetPath(finalImageAbsPath);
-          imagePaths.push(imagePath);
-          console.log(`   Segment ${i + 1}: ${imagePath}`);
-        } else {
+        const generatedImageAbsPath = findFirstImageFile(segmentImgDir);
+        if (!generatedImageAbsPath) {
           throw new Error('No image generated');
         }
+
+        const normalizedImageAbsPath = path.resolve(segmentImgDir, 'scene.jpg');
+        normalizeImageForRender(generatedImageAbsPath, normalizedImageAbsPath);
+        const imagePath = toRevideoAssetPath(normalizedImageAbsPath);
+        imagePaths.push(imagePath);
+        console.log(`   Segment ${i + 1}: ${imagePath}`);
       } catch (e) {
-        console.warn(`   Failed to generate image for segment ${i + 1}, using fallback.`);
-        imagePaths.push(FALLBACK_IMAGE_PATH);
+        console.warn(`   Failed to generate image for segment ${i + 1}, using fallback image.`);
+        const fallbackImageAbsPath = createSegmentFallbackImage({
+          segmentImgDir,
+          segmentIndex: i,
+          coverImageAbsPath,
+        });
+        imagePaths.push(toRevideoAssetPath(fallbackImageAbsPath));
       }
     }
   } else {
     console.log('\n⏭️  Skipping image generation (--skip-assets)');
     for (let i = 0; i < segments.length; i++) {
-      imagePaths.push(FALLBACK_IMAGE_PATH);
+      const segmentImgDir = path.join(assetPublicAbsDir, `segment-${i}`);
+      fs.mkdirSync(segmentImgDir, {recursive: true});
+      const fallbackImageAbsPath = createSegmentFallbackImage({
+        segmentImgDir,
+        segmentIndex: i,
+        coverImageAbsPath,
+      });
+      imagePaths.push(toRevideoAssetPath(fallbackImageAbsPath));
     }
   }
 
   // ========== STEP 4: Render video with Revideo ==========
   if (!skipRender) {
     console.log('\n🎬 Rendering video with Revideo...');
-
-    const videoSegments: Segment[] = segments.map((text, i) => ({
-      text,
-      imagePath: imagePaths[i],
-    }));
 
     const ctaText = 'อ่านบทความฉบับเต็มได้ในลิงก์ด้านล่าง!';
     const outputFileName = `${slug}.mp4`;
@@ -496,6 +659,22 @@ Respond with valid JSON only. Example:
       }
     }
 
+    // Calculate expected duration to decide render strategy
+    const introDuration = 3;
+    const outroDuration = 3;
+    const segmentCount = Math.max(1, segments.length);
+    const contentDuration = Math.max(
+      segmentCount * 4,
+      narrationDuration - introDuration - outroDuration,
+    );
+    const expectedDurationSeconds = introDuration + contentDuration + outroDuration;
+    console.log(`   Expected video duration: ~${expectedDurationSeconds.toFixed(1)}s`);
+
+    const videoSegments: Segment[] = segments.map((text, i) => ({
+      text,
+      imagePath: imagePaths[i] ?? FALLBACK_IMAGE_PATH,
+    }));
+
     const renderWithFfmpegFallback = () => {
       const introDuration = 3;
       const outroDuration = 3;
@@ -524,11 +703,14 @@ Respond with valid JSON only. Example:
 
       const clips: FallbackClip[] = [
         { imageAbsPath: introLogoFrame, text: meta.title || 'Reading Advantage', duration: introDuration },
-        ...videoSegments.map(segment => ({
-          imageAbsPath: path.resolve('public', segment.imagePath),
-          text: segment.text,
-          duration: perSegmentDuration,
-        })),
+        ...videoSegments.map(segment => {
+          const publicPath = path.resolve('public', segment.imagePath);
+          return {
+            imageAbsPath: fs.existsSync(publicPath) ? publicPath : path.resolve(segment.imagePath),
+            text: segment.text,
+            duration: perSegmentDuration,
+          };
+        }),
         { imageAbsPath: outroLogoFrame, text: ctaText, duration: outroDuration },
       ];
 
@@ -549,8 +731,14 @@ Respond with valid JSON only. Example:
       renderWithFfmpegFallback();
     } else {
       try {
+        // Use a temporary project file with an exact frame range to prevent
+        // the renderer from signalling EOF before the scene generator finishes.
+        const fps = 8;
+        const rangeEnd = Math.ceil(expectedDurationSeconds * fps) + 30;
+        const tempProjectPath = createTempProjectFile(workDir, rangeEnd);
+
         const renderedPath = await renderVideo({
-          projectFile: path.resolve('revideo/project.ts'),
+          projectFile: tempProjectPath,
           variables: {
             logoPath: FALLBACK_IMAGE_PATH,
             title: meta.title,
@@ -567,22 +755,23 @@ Respond with valid JSON only. Example:
             outDir: renderOutDirAbs,
             logProgress: true,
             puppeteer: {
-              args: ['--no-sandbox', '--disable-setuid-sandbox'],
+              args: ['--no-sandbox', '--disable-setuid-sandbox', '--single-process'],
             },
           },
         });
 
         let sourceOutputPath = path.resolve(renderedPath);
+        const scaledOutputPath = path.join(renderOutDirAbs, `render-scaled-${runId}.mp4`);
+        sourceOutputPath = upscaleVisualsForDelivery({
+          inputPath: sourceOutputPath,
+          outputPath: scaledOutputPath,
+        });
 
         if (finalAudioPath) {
           const audioAbsForMerge = path.resolve('public', finalAudioPath);
           const mergedOutputPath = path.join(renderOutDirAbs, `merged-${runId}.mp4`);
-          const scaledOutputPath = path.join(renderOutDirAbs, `scaled-${runId}.mp4`);
-          runCommand(
-            `ffmpeg -loglevel error -y -i "${sourceOutputPath}" -vf "scale=1080:1920" -c:v libx264 -preset veryfast -crf 23 -pix_fmt yuv420p "${scaledOutputPath}"`
-          );
           muxWithNarration({
-            visualsPath: scaledOutputPath,
+            visualsPath: sourceOutputPath,
             audioAbsPath: audioAbsForMerge,
             outputPath: mergedOutputPath,
           });
