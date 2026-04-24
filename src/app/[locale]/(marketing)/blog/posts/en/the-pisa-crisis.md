@@ -130,6 +130,5 @@ The PISA scores are a symptom. The disease is reading comprehension.
 
 **Cure the reading, and the math will follow.**
 
----
 
 *Reading Advantage is committed to improving literacy outcomes for Thai students through AI-powered personalized reading instruction. Learn more about how we can help your child build the reading foundation they need for success in every subject.*

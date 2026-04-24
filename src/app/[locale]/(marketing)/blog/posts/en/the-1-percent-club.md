@@ -145,6 +145,5 @@ The question is whether they'll have the opportunity to learn before the gap bec
 
 **The 1% isn't a club you have to be born into. It's a club you can code your way into.**
 
----
 
 *CodeCamp Advantage is Thailand's premier coding education program for young learners. We teach students not just to use technology, but to understand and create it. Learn more about how we can prepare your child for the digital future.*
