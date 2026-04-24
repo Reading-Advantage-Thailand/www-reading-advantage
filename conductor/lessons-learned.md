@@ -4,6 +4,25 @@ Retrospective insights captured after completing tracks, PR merges, and developm
 
 ---
 
+## 2026-04-25 — Day 4 Blog Post Generation (blog_marketing_generation_20260421)
+
+### What Happened
+
+- Generated Day 4 blog post ("1 District 1 Quality School") in English using mmx text chat successfully (~1200 words).
+- Thai text generation via mmx produced truncated output twice (only ~100-200 words, incomplete). Had to write Thai version manually based on English content.
+- Validation tests failed on existing Day 2-3 posts due to `---` horizontal rules in markdown body conflicting with frontmatter delimiter validation.
+- Attempted to fix with `sed` accidentally removed frontmatter delimiters from Day 4 posts, requiring manual restoration.
+- Video generation pipeline worked correctly: 44s Thai video rendered at 1080×1920 with AAC audio.
+
+### Lessons
+
+- **Always verify mmx output length and completeness.** Thai generation especially may truncate; check word count and ending before accepting.
+- **Never use `---` horizontal rules in blog post bodies.** The validation test treats bare `---` lines as potential frontmatter errors. Use `***` or avoid horizontal rules entirely.
+- **Be extremely careful with sed on markdown files.** Pattern matching `---` will match frontmatter delimiters too. Use line-specific edits or avoid sed for markdown fixes.
+- **The video pipeline is stable.** Revideo + ffmpeg upscale + mux workflow consistently produces valid 1080×1920 h264+AAC output.
+
+---
+
 ## 2026-04-24 — Revideo EOF Crash Fix (blog_video_generation_20260423)
 
 ### What Happened
