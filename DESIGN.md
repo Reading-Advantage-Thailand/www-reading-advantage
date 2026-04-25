@@ -10,10 +10,24 @@ colors:
   muted: "#F1F5F9"
   destructive: "#EF4444"
   border: "#E2E8F0"
-  sky-300: "#7DD3FC"
   sky-400: "#38BDF8"
   sky-500: "#0EA5E9"
   sky-900: "#0C4A6E"
+  indigo-300: "#A5B4FC"
+  indigo-800: "#3730A3"
+  indigo-900: "#312E81"
+  rose-300: "#FDA4AF"
+  rose-800: "#9F1239"
+  orange-300: "#FDBA74"
+  orange-800: "#9A3412"
+  fuchsia-300: "#F0ABFC"
+  fuchsia-800: "#86198F"
+  emerald-300: "#6EE7B7"
+  emerald-800: "#065F46"
+  amber-300: "#FCD34D"
+  amber-800: "#92400E"
+  cyan-400: "#22D3EE"
+  cyan-800: "#155E75"
   slate-700: "#334155"
   slate-800: "#1E293B"
   slate-900: "#0F172A"
@@ -119,11 +133,15 @@ This design system provides a modern, clean, and professional aesthetic for the 
 - **Muted (#F1F5F9):** Background for muted elements.
 - **Border (#E2E8F0):** Standard border color.
 
-### Extended Palette (Sky)
-- **Sky 300 (#7DD3FC):** Soft highlights.
-- **Sky 400 (#38BDF8):** Bright accents.
-- **Sky 500 (#0EA5E9):** Primary brand accent.
-- **Sky 900 (#0C4A6E):** Deep contrast.
+### Product-Specific Palettes
+- **Reading Advantage (Sky):** Sky 400 (#38BDF8), Sky 900 (#0C4A6E). Logo uses Sky 500 and Indigo 900.
+- **STEM Advantage (Indigo):** Indigo 300 (#A5B4FC), Indigo 800 (#3730A3).
+- **Science Advantage (Rose):** Rose 300 (#FDA4AF), Rose 800 (#9F1239).
+- **Math Advantage (Orange):** Orange 300 (#FDBA74), Orange 800 (#9A3412).
+- **Zhongwen Advantage (Fuchsia):** Fuchsia 300 (#F0ABFC), Fuchsia 800 (#86198F).
+- **Tutor Advantage (Emerald):** Emerald 300 (#6EE7B7), Emerald 800 (#065F46).
+- **Storytime Advantage (Amber):** Amber 300 (#FCD34D), Amber 800 (#92400E).
+- **Primary Advantage (Cyan):** Cyan 400 (#22D3EE), Cyan 800 (#155E75).
 
 ### Specialized UI Colors
 - **Cool Border (#E6E8EC):** Used for subtle UI dividers.
