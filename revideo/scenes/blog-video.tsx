@@ -74,6 +74,7 @@ export default makeScene2D('blog-video', function* (view) {
   const outroDuration = Number(scene.variables.get('outroDuration', 3)()) || 3;
   const narrationDuration = Number(scene.variables.get('narrationDuration', 60)()) || 60;
   const brandColor = String(scene.variables.get('brandColor', '#2563eb')());
+  const rawSegmentDurations = scene.variables.get('segmentDurations', [] as number[] | string)();
   const wrappedTitle = wrapOverlayText(title, 22, 3);
   const wrappedCtaText = wrapOverlayText(ctaText, 22, 3);
 
@@ -91,10 +92,32 @@ export default makeScene2D('blog-video', function* (view) {
     }
   }
 
+  let segmentDurations: number[] = [];
+  if (Array.isArray(rawSegmentDurations)) {
+    segmentDurations = rawSegmentDurations as number[];
+  } else if (typeof rawSegmentDurations === 'string') {
+    try {
+      const parsed = JSON.parse(rawSegmentDurations);
+      if (Array.isArray(parsed)) {
+        segmentDurations = parsed as number[];
+      }
+    } catch (error) {
+      // Ignore parse failures.
+    }
+  }
+
   const safeSegments = segments.length > 0 ? segments : [{text: title, imagePath: logoPath}];
-  const totalDuration = Math.max(20, narrationDuration);
-  const contentDuration = Math.max(safeSegments.length * 4, totalDuration - introDuration - outroDuration);
-  const segmentDuration = contentDuration / safeSegments.length;
+
+  // Use per-segment durations if provided, otherwise fall back to equal division
+  const safeSegmentDurations: number[] = safeSegments.map((_, i) => {
+    if (segmentDurations[i] && Number.isFinite(segmentDurations[i]) && segmentDurations[i] > 0) {
+      return segmentDurations[i];
+    }
+    // Fallback: equal division based on narrationDuration
+    const totalDuration = Math.max(20, narrationDuration);
+    const contentDuration = Math.max(safeSegments.length * 4, totalDuration - introDuration - outroDuration);
+    return contentDuration / safeSegments.length;
+  });
 
   // Intro
   const introLayoutRef = createRef<Layout>();
@@ -143,7 +166,9 @@ export default makeScene2D('blog-video', function* (view) {
   introLayoutRef().remove();
 
   // Content segments
-  for (const segment of safeSegments) {
+  for (let segIdx = 0; segIdx < safeSegments.length; segIdx++) {
+    const segment = safeSegments[segIdx];
+    const segmentDuration = safeSegmentDurations[segIdx];
     const wrappedSegmentText = wrapOverlayText(segment.text, 24, 4);
     const fadeInDuration = Math.min(0.6, Math.max(0.2, segmentDuration * 0.2));
     const fadeOutDuration = Math.min(0.5, Math.max(0.2, segmentDuration * 0.2));

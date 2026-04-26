@@ -40,3 +40,9 @@ yarn-error.log*
 next-env.d.ts
 .aider*
 .env
+
+# Video generation temp files
+.revideo-output/
+tmp/
+music_*.mp3
+revideo/temp-*.ts
