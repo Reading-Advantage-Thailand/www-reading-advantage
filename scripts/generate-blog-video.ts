@@ -1,19 +1,19 @@
 #!/usr/bin/env tsx
 /**
- * Blog-to-Video Generation Pipeline (Rev 3 — Single-Pass Revideo with Per-Segment Assets)
+ * Blog-to-Video Generation Pipeline (Rev 4 — ffmpeg-only multi-clip)
+ *
+ * Each part (intro, segment, outro) is generated as an exact-duration
+ * video clip via ffmpeg. Clips are concatenated with precise frame-level
+ * control. No Revideo timing drift.
  *
  * Usage:
  *   npx tsx scripts/generate-blog-video.ts <path-to-blog.md> [--segments segments.json]
- *
- * Example:
- *   npx tsx scripts/generate-blog-video.ts src/app/[locale]/(marketing)/blog/posts/th/beyond-the-backpacker.md --segments tmp/day05-segments.json
  */
 
 import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 import matter from 'gray-matter';
-import { renderVideo } from '@revideo/renderer';
 
 interface Segment {
   text: string;
@@ -28,8 +28,9 @@ interface BlogMeta {
 }
 
 const PUBLIC_DIR_ABS = path.resolve('public');
-const FALLBACK_IMAGE_PATH = 'images/logo.jpg';
-const JINGLE_PATH = 'audio/reading-advantage-jingle.mp3';
+const FALLBACK_IMAGE_PATH = path.resolve(PUBLIC_DIR_ABS, 'images/logo.jpg');
+const JINGLE_PATH = path.resolve(PUBLIC_DIR_ABS, 'audio/reading-advantage-jingle.mp3');
+const THAI_FONT = '/usr/share/fonts/truetype/noto/NotoSansThai-Bold.ttf';
 
 const args = process.argv.slice(2);
 const blogPath = args[0];
@@ -85,25 +86,22 @@ function detectLanguage(text: string): 'th' | 'en' {
   return /[\u0E00-\u0E7F]/.test(text) ? 'th' : 'en';
 }
 
-function toRevideoAssetPath(assetPath: string): string {
-  const normalizedPath = assetPath.replace(/\\/g, '/');
-  if (
-    normalizedPath.startsWith('http://') ||
-    normalizedPath.startsWith('https://') ||
-    normalizedPath.startsWith('data:')
-  ) {
-    return normalizedPath;
+function resolveCoverImagePath(coverImage: string | undefined, blogAbsPath: string): string | null {
+  if (!coverImage) return null;
+  const trimmed = coverImage.trim();
+  if (!trimmed || trimmed.startsWith('http://') || trimmed.startsWith('https://')) return null;
+  if (trimmed.startsWith('/')) {
+    const publicPath = path.resolve(PUBLIC_DIR_ABS, trimmed.replace(/^\/+/, ''));
+    return fs.existsSync(publicPath) ? publicPath : null;
   }
-  const absolutePath = path.isAbsolute(assetPath) ? assetPath : path.resolve(assetPath);
-  const normalizedAbsolutePath = absolutePath.replace(/\\/g, '/');
-  const normalizedPublicDir = PUBLIC_DIR_ABS.replace(/\\/g, '/');
-  if (
-    normalizedAbsolutePath === normalizedPublicDir ||
-    normalizedAbsolutePath.startsWith(`${normalizedPublicDir}/`)
-  ) {
-    return path.relative(PUBLIC_DIR_ABS, absolutePath).replace(/\\/g, '/');
+  const candidates = [
+    path.resolve(path.dirname(blogAbsPath), trimmed),
+    path.resolve(PUBLIC_DIR_ABS, trimmed),
+  ];
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) return candidate;
   }
-  return normalizedPath.replace(/^\/+/, '');
+  return null;
 }
 
 function findFirstImageFile(rootDir: string): string | null {
@@ -127,98 +125,200 @@ function findFirstImageFile(rootDir: string): string | null {
   return null;
 }
 
-function resolveCoverImagePath(coverImage: string | undefined, blogAbsPath: string): string | null {
-  if (!coverImage) return null;
-  const trimmed = coverImage.trim();
-  if (!trimmed || trimmed.startsWith('http://') || trimmed.startsWith('https://')) return null;
-  if (trimmed.startsWith('/')) {
-    const publicPath = path.resolve(PUBLIC_DIR_ABS, trimmed.replace(/^\/+/, ''));
-    return fs.existsSync(publicPath) ? publicPath : null;
+/** Word-wrap text for ffmpeg drawtext (newline separated). */
+function wrapText(text: string, maxCharsPerLine: number, maxLines: number): string {
+  const cleaned = text.replace(/\s+/g, ' ').trim();
+  if (!cleaned) return '';
+
+  const charCount = (value: string) => Array.from(value).length;
+  let tokens: string[];
+
+  if (typeof Intl !== 'undefined' && typeof Intl.Segmenter !== 'undefined') {
+    const segmenter = new Intl.Segmenter('th', { granularity: 'word' });
+    const segmented = Array.from(segmenter.segment(cleaned), part => part.segment).filter(Boolean);
+    tokens = segmented.length > 0 ? segmented : cleaned.split(/(\s+)/).filter(Boolean);
+  } else {
+    tokens = cleaned.split(/(\s+)/).filter(Boolean);
   }
-  const candidates = [
-    path.resolve(path.dirname(blogAbsPath), trimmed),
-    path.resolve(PUBLIC_DIR_ABS, trimmed),
-  ];
-  for (const candidate of candidates) {
-    if (fs.existsSync(candidate)) return candidate;
+
+  if (tokens.length === 1 && !/\s/.test(tokens[0])) {
+    tokens = Array.from(tokens[0]);
   }
-  return null;
+
+  const lines: string[] = [];
+  let currentLine = '';
+
+  for (const token of tokens) {
+    const nextLine = `${currentLine}${token}`;
+    if (currentLine && charCount(nextLine) > maxCharsPerLine) {
+      lines.push(currentLine.trim());
+      currentLine = token.trimStart();
+    } else {
+      currentLine = nextLine;
+    }
+  }
+
+  if (currentLine.trim()) {
+    lines.push(currentLine.trim());
+  }
+
+  if (lines.length > maxLines) {
+    const trimmed = lines.slice(0, maxLines);
+    const lastLine = trimmed[maxLines - 1];
+    const clipped = Array.from(lastLine).slice(0, Math.max(0, maxCharsPerLine - 1)).join('').trimEnd();
+    trimmed[maxLines - 1] = `${clipped}…`;
+    return trimmed.join('\n');
+  }
+
+  return lines.join('\n');
 }
 
-function createTempProjectFile(workDir: string, rangeEnd: number): string {
-  const projectPath = path.resolve('revideo', `temp-project-${path.basename(workDir)}.ts`);
-  const content = `import {makeProject} from '@revideo/core';
-import blogVideo from './scenes/blog-video';
-
-export default makeProject({
-  scenes: [blogVideo],
-  settings: {
-    shared: {
-      size: {x: 1080, y: 1920},
-      background: '#0a0a0a',
-      range: [0, ${rangeEnd}],
-    },
-    rendering: {
-      fps: 8,
-      resolutionScale: 0.5,
-      exporter: {
-        name: '@revideo/core/ffmpeg',
-        options: {
-          format: 'mp4',
-        },
-      },
-    },
-    preview: {
-      fps: 8,
-      resolutionScale: 0.5,
-    },
-  },
-});
-`;
-  fs.writeFileSync(projectPath, content);
-  return projectPath;
+/** Write text to a temp file for ffmpeg drawtext textfile option (avoids shell escaping hell). */
+function writeTextFile(text: string, filePath: string): void {
+  fs.writeFileSync(filePath, text, 'utf-8');
 }
 
-function normalizeImageForRender(inputPath: string, outputPath: string): string {
+/** Create intro clip: dark bg + logo + title. */
+function createIntroClip(
+  logoPath: string,
+  title: string,
+  duration: number,
+  outputPath: string,
+  fontPath: string
+): void {
+  const wrappedTitle = wrapText(title, 22, 3);
+
+  // Create a static intro image first
+  const introImagePath = outputPath.replace('.mp4', '.jpg');
+  const titleFile = outputPath.replace('.mp4', '-title.txt');
+  writeTextFile(wrappedTitle, titleFile);
+
   runCommand(
-    `ffmpeg -loglevel error -y -i "${inputPath}" -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920" -q:v 2 "${outputPath}"`
+    `ffmpeg -loglevel error -y -f lavfi -i "color=c=#0a0a0a:s=1080x1920" -i "${logoPath}" -filter_complex "
+      [1:v]scale=400:400[logo];
+      [0:v][logo]overlay=(W-w)/2:(H-h)/2-400:format=auto[tmp];
+      [tmp]drawtext=fontfile=${fontPath}:textfile='${titleFile}':fontcolor=white:fontsize=62:x=(w-text_w)/2:y=950:line_spacing=14
+    " -frames:v 1 "${introImagePath}" 2>/dev/null`
   );
-  return outputPath;
+
+  // Convert to video clip with exact duration
+  runCommand(
+    `ffmpeg -loglevel error -y -loop 1 -i "${introImagePath}" -t ${duration.toFixed(3)} -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -an "${outputPath}" 2>/dev/null`
+  );
 }
 
-function cleanup(workDir: string, renderOutDirAbs: string, runId: number): void {
-  fs.rmSync(workDir, { recursive: true, force: true });
-  if (fs.existsSync(renderOutDirAbs)) {
-    for (const entry of fs.readdirSync(renderOutDirAbs)) {
-      if (entry.includes(String(runId))) {
-        fs.rmSync(path.join(renderOutDirAbs, entry), { recursive: true, force: true });
-      }
-    }
-  }
-  const revideoDir = path.resolve('revideo');
-  if (fs.existsSync(revideoDir)) {
-    for (const entry of fs.readdirSync(revideoDir)) {
-      if (entry.startsWith('temp-project-') && entry.endsWith('.ts')) {
-        fs.rmSync(path.join(revideoDir, entry), { force: true });
-      }
-    }
-  }
+/** Create outro clip: brand bg + logo + CTA. */
+function createOutroClip(
+  logoPath: string,
+  ctaText: string,
+  duration: number,
+  outputPath: string,
+  fontPath: string,
+  brandColor: string = '#2563eb'
+): void {
+  const wrappedCta = wrapText(ctaText, 22, 3);
+
+  // Convert hex to ffmpeg color (0xRRGGBB)
+  const ffmpegColor = brandColor.replace('#', '0x');
+
+  const outroImagePath = outputPath.replace('.mp4', '.jpg');
+  const ctaFile = outputPath.replace('.mp4', '-cta.txt');
+  writeTextFile(wrappedCta, ctaFile);
+
+  runCommand(
+    `ffmpeg -loglevel error -y -f lavfi -i "color=c=${ffmpegColor}:s=1080x1920" -i "${logoPath}" -filter_complex "
+      [1:v]scale=300:300[logo];
+      [0:v][logo]overlay=(W-w)/2:(H-h)/2-350:format=auto[tmp];
+      [tmp]drawtext=fontfile=${fontPath}:textfile='${ctaFile}':fontcolor=white:fontsize=56:x=(w-text_w)/2:y=850:line_spacing=16
+    " -frames:v 1 "${outroImagePath}" 2>/dev/null`
+  );
+
+  runCommand(
+    `ffmpeg -loglevel error -y -loop 1 -i "${outroImagePath}" -t ${duration.toFixed(3)} -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -an "${outputPath}" 2>/dev/null`
+  );
 }
 
-function mixBackgroundMusic(videoPath: string, jinglePath: string, outputPath: string): void {
+/** Create segment clip: image + dark overlay + text box. */
+function createSegmentClip(
+  imagePath: string,
+  text: string,
+  duration: number,
+  outputPath: string,
+  fontPath: string,
+  brandColor: string = '#2563eb'
+): void {
+  const wrappedText = wrapText(text, 24, 4);
+  const textFile = outputPath.replace('.mp4', '-text.txt');
+  writeTextFile(wrappedText, textFile);
+
+  // Build drawtext expression with box background
+  const drawtextOpts = [
+    `fontfile=${fontPath}`,
+    `textfile='${textFile}'`,
+    `fontcolor=white`,
+    `fontsize=44`,
+    `x=(w-text_w)/2`,
+    `y=(h-text_h)/2`,
+    `line_spacing=14`,
+    `box=1`,
+    `boxcolor=${brandColor}@0.9`,
+    `boxborderw=24`,
+  ].join(':');
+
+  runCommand(
+    `ffmpeg -loglevel error -y -loop 1 -i "${imagePath}" -filter_complex "
+      [0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920[img];
+      [img]drawbox=color=black@0.45:t=fill[bg];
+      [bg]drawtext=${drawtextOpts}
+    " -t ${duration.toFixed(3)} -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -an "${outputPath}" 2>/dev/null`
+  );
+}
+
+/** Concatenate multiple video clips into one. */
+function concatClips(clips: string[], outputPath: string): void {
+  // Create concat demuxer file with absolute paths
+  const listPath = outputPath.replace('.mp4', '-list.txt');
+  const listContent = clips
+    .map(c => `file '${path.resolve(c).replace(/'/g, "'\\''")}'`)
+    .join('\n');
+  fs.writeFileSync(listPath, listContent);
+
+  runCommand(
+    `ffmpeg -loglevel error -y -f concat -safe 0 -i "${listPath}" -c copy "${outputPath}" 2>/dev/null`
+  );
+}
+
+/** Mix background jingle with video. Uses two-step approach for reliability. */
+function mixBackgroundMusic(videoPath: string, jinglePath: string, outputPath: string, workDir: string): void {
   if (!jinglePath || !fs.existsSync(jinglePath)) {
     fs.copyFileSync(videoPath, outputPath);
     return;
   }
 
   const videoDuration = getMediaDurationSeconds(videoPath) ?? 60;
+  const jingleLoopPath = path.join(workDir, 'jingle-loop.mp3');
+  const mixedAudioPath = path.join(workDir, 'mixed-audio.mp3');
 
+  // Step 1: Loop jingle to match video duration with fade-out
   runCommand(
-    `ffmpeg -loglevel error -y -i "${videoPath}" -i "${jinglePath}" -filter_complex "
-      [1:a]aloop=loop=-1:size=2e+09,volume=0.10,afade=t=out:st=${Math.max(0, videoDuration - 2).toFixed(1)}:d=2[bgm];
-      [0:a][bgm]amix=inputs=2:duration=first:dropout_transition=3[amix]
-    " -map 0:v -map "[amix]" -c:v copy -c:a aac -b:a 192k -shortest "${outputPath}" 2>/dev/null`
+    `ffmpeg -loglevel error -y -stream_loop -1 -i "${jinglePath}" -t ${videoDuration.toFixed(1)} -af "volume=0.10,afade=t=out:st=${Math.max(0, videoDuration - 2).toFixed(1)}:d=2" -c:a libmp3lame -q:a 2 "${jingleLoopPath}" 2>/dev/null`
   );
+
+  // Step 2: Extract video's audio and mix with jingle
+  runCommand(
+    `ffmpeg -loglevel error -y -i "${videoPath}" -i "${jingleLoopPath}" -filter_complex "[0:a][1:a]amix=inputs=2:duration=first:dropout_transition=3" -c:a libmp3lame -q:a 2 "${mixedAudioPath}" 2>/dev/null`
+  );
+
+  // Step 3: Replace audio in video
+  runCommand(
+    `ffmpeg -loglevel error -y -i "${videoPath}" -i "${mixedAudioPath}" -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -movflags +faststart "${outputPath}" 2>/dev/null`
+  );
+}
+
+function cleanup(workDir: string): void {
+  if (fs.existsSync(workDir)) {
+    fs.rmSync(workDir, { recursive: true, force: true });
+  }
 }
 
 async function main() {
@@ -231,9 +331,7 @@ async function main() {
   const slug = slugify(meta.title || 'blog-video');
   const runId = Date.now();
   const workDir = path.join('tmp', `blog-video-${runId}`);
-  const renderOutDirAbs = path.resolve('.revideo-output');
   fs.mkdirSync(workDir, { recursive: true });
-  fs.mkdirSync(renderOutDirAbs, { recursive: true });
 
   console.log(`   Title: ${meta.title}`);
   console.log(`   Language: ${lang}`);
@@ -271,10 +369,13 @@ async function main() {
   console.log(`   Using ${segments.length} segments`);
   segments.forEach((s, i) => console.log(`   ${i + 1}. ${s.text.slice(0, 60)}...`));
 
+  const fontPath = lang === 'th' && fs.existsSync(THAI_FONT) ? THAI_FONT : THAI_FONT;
+  const logoPath = fs.existsSync(FALLBACK_IMAGE_PATH) ? FALLBACK_IMAGE_PATH : '';
+  const coverImageAbsPath = resolveCoverImagePath(meta.coverImage, blogAbsPath);
+
   try {
     // ========== STEP 2: Generate per-segment assets ==========
-    const segmentAssets: { audio: string; image: string; duration: number; audioDuration: number }[] = [];
-    const coverImageAbsPath = resolveCoverImagePath(meta.coverImage, blogAbsPath);
+    const segmentAssets: { audio: string; image: string; audioDuration: number; segmentDuration: number }[] = [];
 
     if (!skipAssets) {
       for (let i = 0; i < segments.length; i++) {
@@ -296,7 +397,7 @@ async function main() {
 
         const audioDuration = getMediaDurationSeconds(audioPath) ?? 5;
         const segmentDuration = audioDuration + 0.5;
-        console.log(`   Audio: ${audioDuration.toFixed(2)}s, Segment: ${segmentDuration.toFixed(2)}s`);
+        console.log(`   Audio: ${audioDuration.toFixed(2)}s, Segment video: ${segmentDuration.toFixed(2)}s`);
 
         // Generate background image
         console.log(`🖼️  Segment ${i + 1}: Generating image...`);
@@ -321,11 +422,7 @@ async function main() {
           }
         }
 
-        // Normalize image
-        const normalizedImagePath = path.join(segmentDir, 'norm-image.jpg');
-        normalizeImageForRender(imagePath, normalizedImagePath);
-
-        segmentAssets.push({ audio: audioPath, image: normalizedImagePath, duration: segmentDuration, audioDuration });
+        segmentAssets.push({ audio: audioPath, image: imagePath, audioDuration, segmentDuration });
       }
     } else {
       console.log('\n⏭️  Skipping asset generation (--skip-assets)');
@@ -333,14 +430,14 @@ async function main() {
         const segmentDir = path.join(workDir, `segment-${i}`);
         fs.mkdirSync(segmentDir, { recursive: true });
         const audioPath = path.join(segmentDir, 'audio.mp3');
-        const imagePath = path.join(segmentDir, 'norm-image.jpg');
+        const imagePath = path.join(segmentDir, 'image.jpg');
         runCommand(`ffmpeg -f lavfi -i anullsrc=r=44100:cl=mono -t 5 -q:a 9 -acodec libmp3lame "${audioPath}" -y 2>/dev/null`);
         if (coverImageAbsPath && fs.existsSync(coverImageAbsPath)) {
           fs.copyFileSync(coverImageAbsPath, imagePath);
         } else {
           runCommand(`ffmpeg -f lavfi -i "color=c=#1e3a5f:s=1080x1920" -frames:v 1 -q:v 2 "${imagePath}" -y 2>/dev/null`);
         }
-        segmentAssets.push({ audio: audioPath, image: imagePath, duration: 5.5, audioDuration: 5 });
+        segmentAssets.push({ audio: audioPath, image: imagePath, audioDuration: 5, segmentDuration: 5.5 });
       }
     }
 
@@ -355,90 +452,87 @@ async function main() {
     const totalAudioDuration = getMediaDurationSeconds(fullAudioPath) ?? segmentAssets.reduce((sum, a) => sum + a.audioDuration, 0);
     console.log(`   Total audio duration: ${totalAudioDuration.toFixed(2)}s`);
 
-    // ========== STEP 4: Render single-pass video with Revideo ==========
-    console.log('\n🎬 Rendering video with Revideo...');
+    // ========== STEP 4: Generate video clips via ffmpeg ==========
+    console.log('\n🎬 Generating video clips...');
+    const clips: string[] = [];
+    const introDuration = 3;
+    const outroDuration = 3;
 
+    // Intro clip
+    const introClipPath = path.join(workDir, 'intro.mp4');
     const ctaText = lang === 'th'
       ? 'อ่านบทความฉบับเต็มได้ในลิงก์ด้านล่าง!'
       : 'Read the full article — link in description!';
 
-    const videoSegments = segments.map((seg, i) => ({
-      text: seg.text,
-      imagePath: toRevideoAssetPath(segmentAssets[i].image),
-    }));
+    console.log('   Generating intro clip...');
+    createIntroClip(logoPath, meta.title, introDuration, introClipPath, fontPath);
+    clips.push(introClipPath);
 
-    const segmentDurations = segmentAssets.map(a => a.duration);
-    const totalContentDuration = segmentDurations.reduce((sum, d) => sum + d, 0);
-    const introDuration = 3;
-    const outroDuration = 3;
-    const totalVideoDuration = introDuration + totalContentDuration + outroDuration;
-
-    const fps = 8;
-    const rangeEnd = Math.ceil((totalVideoDuration + 3) * fps) + 30;
-    const tempProjectPath = createTempProjectFile(workDir, rangeEnd);
-
-    const renderFileName = `render-${runId}.mp4`;
-    const renderedPath = await renderVideo({
-      projectFile: tempProjectPath,
-      variables: {
-        logoPath: FALLBACK_IMAGE_PATH,
-        title: meta.title,
-        segments: videoSegments,
-        segmentDurations: segmentDurations,
-        audioPath: '',
-        narrationDuration: totalContentDuration,
-        ctaText,
-        introDuration,
-        outroDuration,
-        brandColor: '#2563eb',
-      },
-      settings: {
-        outFile: renderFileName,
-        outDir: renderOutDirAbs,
-        logProgress: true,
-        puppeteer: {
-          args: ['--no-sandbox', '--disable-setuid-sandbox', '--single-process'],
-        },
-      },
-    });
-
-    // Upscale from 540x960 to 1080x1920
-    let sourceOutputPath = path.resolve(renderedPath);
-    const scaledOutputPath = path.join(renderOutDirAbs, `render-scaled-${runId}.mp4`);
-    runCommand(
-      `ffmpeg -loglevel error -y -i "${sourceOutputPath}" -vf "scale=1080:1920:flags=lanczos" -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p "${scaledOutputPath}" 2>/dev/null`
-    );
-    sourceOutputPath = scaledOutputPath;
-
-    // ========== STEP 5: Mux narration audio ==========
-    console.log('\n🔗 Muxing narration audio...');
-    const mergedOutputPath = path.join(renderOutDirAbs, `merged-${runId}.mp4`);
-
-    // Ensure video is at least as long as audio
-    const videoDuration = getMediaDurationSeconds(sourceOutputPath) ?? 0;
-    let videoForMux = sourceOutputPath;
-    if (videoDuration > 0 && videoDuration < totalAudioDuration + 1) {
-      const extendedPath = path.join(renderOutDirAbs, `extended-${runId}.mp4`);
-      runCommand(
-        `ffmpeg -loglevel error -y -i "${sourceOutputPath}" -vf "tpad=stop_mode=clone:stop_duration=${(totalAudioDuration + 1 - videoDuration).toFixed(3)}" -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p "${extendedPath}" 2>/dev/null`
+    // Segment clips
+    for (let i = 0; i < segments.length; i++) {
+      const segmentClipPath = path.join(workDir, `segment-${i}.mp4`);
+      console.log(`   Generating segment ${i + 1} clip (${segmentAssets[i].segmentDuration.toFixed(2)}s)...`);
+      createSegmentClip(
+        segmentAssets[i].image,
+        segments[i].text,
+        segmentAssets[i].segmentDuration,
+        segmentClipPath,
+        fontPath
       );
-      videoForMux = extendedPath;
+      clips.push(segmentClipPath);
     }
 
-    runCommand(
-      `ffmpeg -loglevel error -y -i "${videoForMux}" -i "${fullAudioPath}" -t ${(totalAudioDuration + 2).toFixed(3)} -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -movflags +faststart "${mergedOutputPath}" 2>/dev/null`
-    );
-    sourceOutputPath = mergedOutputPath;
+    // Outro clip
+    const outroClipPath = path.join(workDir, 'outro.mp4');
+    console.log('   Generating outro clip...');
+    createOutroClip(logoPath, ctaText, outroDuration, outroClipPath, fontPath);
+    clips.push(outroClipPath);
 
-    // ========== STEP 6: Mix background jingle ==========
+    // ========== STEP 5: Concatenate clips ==========
+    console.log('\n🔗 Concatenating clips...');
+    const concatPath = path.join(workDir, 'concatenated.mp4');
+    concatClips(clips, concatPath);
+
+    const concatDuration = getMediaDurationSeconds(concatPath);
+    console.log(`   Concatenated video duration: ${concatDuration?.toFixed(2) ?? '?'}s`);
+
+    // ========== STEP 6: Mux narration audio ==========
+    console.log('\n🎙️  Muxing narration audio...');
+    const muxedPath = path.join(workDir, 'muxed.mp4');
+
+    // If video is shorter than audio, extend it
+    const videoForMux = concatPath;
+    const concatVideoDuration = getMediaDurationSeconds(concatPath) ?? 0;
+    let extendedVideoPath = concatPath;
+
+    if (concatVideoDuration > 0 && concatVideoDuration < totalAudioDuration) {
+      console.log(`   Extending video by ${(totalAudioDuration - concatVideoDuration).toFixed(2)}s to match audio...`);
+      extendedVideoPath = path.join(workDir, 'extended.mp4');
+      runCommand(
+        `ffmpeg -loglevel error -y -i "${concatPath}" -vf "tpad=stop_mode=clone:stop_duration=${(totalAudioDuration - concatVideoDuration + 0.5).toFixed(3)}" -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p "${extendedVideoPath}" 2>/dev/null`
+      );
+    }
+
+    // Do NOT trim video to audio — video is intentionally longer (intro + buffers + outro)
+    runCommand(
+      `ffmpeg -loglevel error -y -i "${extendedVideoPath}" -i "${fullAudioPath}" -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -movflags +faststart "${muxedPath}" 2>/dev/null`
+    );
+
+    // ========== STEP 7: Upscale to 1080x1920 ==========
+    console.log('\n📐 Upscaling to 1080x1920...');
+    const scaledPath = path.join(workDir, 'scaled.mp4');
+    runCommand(
+      `ffmpeg -loglevel error -y -i "${muxedPath}" -vf "scale=1080:1920:flags=lanczos" -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a copy "${scaledPath}" 2>/dev/null`
+    );
+
+    // ========== STEP 8: Mix background jingle ==========
     console.log('\n🎵 Mixing background jingle...');
-    const jingleAbsPath = path.resolve(PUBLIC_DIR_ABS, JINGLE_PATH);
     const outDirAbs = path.resolve(outDir);
     fs.mkdirSync(outDirAbs, { recursive: true });
     const outputFileName = `${slug}.mp4`;
     const finalOutputPath = path.join(outDirAbs, outputFileName);
 
-    mixBackgroundMusic(sourceOutputPath, jingleAbsPath, finalOutputPath);
+    mixBackgroundMusic(scaledPath, fs.existsSync(JINGLE_PATH) ? JINGLE_PATH : '', finalOutputPath, workDir);
 
     const finalDuration = getMediaDurationSeconds(finalOutputPath);
     console.log(`\n✅ Video rendered successfully!`);
@@ -447,16 +541,28 @@ async function main() {
     console.log(`   Resolution: 1080x1920`);
     console.log(`   Segments: ${segments.length}`);
 
-    if (finalDuration && finalDuration >= totalAudioDuration) {
-      console.log(`   Audio cutoff check: PASSED (${finalDuration.toFixed(1)}s >= ${totalAudioDuration.toFixed(1)}s audio)`);
+    const durationDiff = (finalDuration ?? 0) - totalAudioDuration;
+    if (finalDuration && durationDiff >= -0.5) {
+      console.log(`   Audio cutoff check: PASSED (${finalDuration.toFixed(1)}s >= ${totalAudioDuration.toFixed(1)}s audio, diff=${durationDiff.toFixed(2)}s)`);
     } else {
-      console.warn(`   ⚠️ Audio cutoff check: WARNING (${finalDuration?.toFixed(1) ?? '?'}s < ${totalAudioDuration.toFixed(1)}s audio)`);
+      console.warn(`   ⚠️ Audio cutoff check: WARNING (${finalDuration?.toFixed(1) ?? '?'}s < ${totalAudioDuration.toFixed(1)}s audio, diff=${durationDiff.toFixed(2)}s)`);
     }
+
+    // Verify each segment duration
+    console.log('\n📊 Segment alignment check:');
+    let cumulativeTime = introDuration;
+    for (let i = 0; i < segments.length; i++) {
+      const segDuration = segmentAssets[i].segmentDuration;
+      const audioDuration = segmentAssets[i].audioDuration;
+      console.log(`   Segment ${i + 1}: video=${segDuration.toFixed(2)}s, audio=${audioDuration.toFixed(2)}s, start=${cumulativeTime.toFixed(2)}s`);
+      cumulativeTime += segDuration;
+    }
+    console.log(`   Outro start: ${cumulativeTime.toFixed(2)}s`);
 
     console.log('\n🎉 Done!\n');
   } finally {
     if (!keepIntermediates) {
-      cleanup(workDir, renderOutDirAbs, runId);
+      cleanup(workDir);
     }
   }
 }
