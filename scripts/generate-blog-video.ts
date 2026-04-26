@@ -1,10 +1,12 @@
 #!/usr/bin/env tsx
 /**
- * Blog-to-Video Generation Pipeline (Rev 5 — Hybrid: Revideo intro/outro + ffmpeg segments)
+ * Blog-to-Video Generation Pipeline (Rev 6 — Revideo with ffmpeg fallback)
  *
- * - Intro: Revideo animated scene (logo bounce, title slide-up)
+ * - Intro: Revideo animated scene (logo bounce, title slide-up) — falls back to
+ *   ffmpeg static frame with fade if Revideo times out
  * - Segments: ffmpeg with Ken Burns zoompan, bottom-third subtitles, fade in/out
- * - Outro: Revideo animated scene (brand bg, logo bounce, CTA slide-up)
+ * - Outro: Revideo animated scene (brand bg, logo bounce, CTA slide-up) — falls back
+ *   to ffmpeg static frame with fade if Revideo times out
  * - Assembly: ffmpeg concat + mux + jingle mix
  *
  * Usage:
@@ -133,6 +135,18 @@ function wrapText(text: string, maxCharsPerLine: number, maxLines: number): stri
   if (!cleaned) return '';
 
   const charCount = (value: string) => Array.from(value).length;
+
+  // Force-break any token that exceeds maxCharsPerLine into char chunks
+  function chunkToken(token: string): string[] {
+    if (charCount(token) <= maxCharsPerLine) return [token];
+    const chars = Array.from(token);
+    const chunks: string[] = [];
+    for (let i = 0; i < chars.length; i += maxCharsPerLine) {
+      chunks.push(chars.slice(i, i + maxCharsPerLine).join(''));
+    }
+    return chunks;
+  }
+
   let tokens: string[];
 
   if (typeof Intl !== 'undefined' && typeof Intl.Segmenter !== 'undefined') {
@@ -143,18 +157,21 @@ function wrapText(text: string, maxCharsPerLine: number, maxLines: number): stri
     tokens = cleaned.split(/(\s+)/).filter(Boolean);
   }
 
-  if (tokens.length === 1 && !/\s/.test(tokens[0])) {
-    tokens = Array.from(tokens[0]);
+  // Flatten: force-break oversized tokens, drop pure-whitespace tokens
+  const flatTokens: string[] = [];
+  for (const token of tokens) {
+    if (!token.trim()) continue;
+    flatTokens.push(...chunkToken(token));
   }
 
   const lines: string[] = [];
   let currentLine = '';
 
-  for (const token of tokens) {
+  for (const token of flatTokens) {
     const nextLine = `${currentLine}${token}`;
     if (currentLine && charCount(nextLine) > maxCharsPerLine) {
       lines.push(currentLine.trim());
-      currentLine = token.trimStart();
+      currentLine = token;
     } else {
       currentLine = nextLine;
     }
@@ -215,77 +232,138 @@ export default makeProject({
   return projectPath;
 }
 
-/** Render intro clip via Revideo. */
+/** Render intro clip. Tries Revideo first, falls back to ffmpeg on timeout. */
 async function renderIntroClip(
   logoPath: string,
   title: string,
   duration: number,
   outputPath: string,
-  workDir: string
+  workDir: string,
+  fontPath: string = THAI_FONT
 ): Promise<void> {
-  const fps = 8;
-  const rangeEnd = Math.ceil(duration * fps);
-  const projectPath = createRevideoProjectFile(workDir, 'intro', rangeEnd);
+  // Try Revideo first
+  try {
+    const fps = 8;
+    const rangeEnd = Math.ceil(duration * fps);
+    const projectPath = createRevideoProjectFile(workDir, 'intro', rangeEnd);
 
-  const renderedPath = await renderVideo({
-    projectFile: projectPath,
-    variables: {
-      logoPath: path.relative(PUBLIC_DIR_ABS, logoPath).replace(/\\/g, '/'),
-      title,
-      introDuration: duration,
-    },
-    settings: {
-      outFile: path.basename(outputPath),
-      outDir: path.dirname(outputPath),
-      logProgress: false,
-      puppeteer: {
-        args: ['--no-sandbox', '--disable-setuid-sandbox', '--single-process'],
-      },
-    },
-  });
+    const renderedPath = await Promise.race([
+      renderVideo({
+        projectFile: projectPath,
+        variables: {
+          logoPath: path.relative(PUBLIC_DIR_ABS, logoPath).replace(/\\/g, '/'),
+          title,
+          introDuration: duration,
+        },
+        settings: {
+          outFile: path.basename(outputPath),
+          outDir: path.dirname(outputPath),
+          logProgress: false,
+          puppeteer: {
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--single-process'],
+          },
+        },
+      }),
+      new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error('Revideo timeout')), 120000)
+      ),
+    ]);
 
-  // Move rendered file to expected path
-  const actualRendered = path.join(path.dirname(outputPath), path.basename(renderedPath));
-  if (actualRendered !== outputPath) {
-    fs.renameSync(actualRendered, outputPath);
+    const actualRendered = path.join(path.dirname(outputPath), path.basename(renderedPath));
+    if (actualRendered !== outputPath) {
+      fs.renameSync(actualRendered, outputPath);
+    }
+    console.log('   Intro: Revideo render succeeded');
+    return;
+  } catch (err: any) {
+    console.warn(`   Revideo intro failed (${err.message}), falling back to ffmpeg...`);
   }
+
+  // FFmpeg fallback: static frame with fade in/out
+  const titleFile = path.join(workDir, 'intro-title.txt');
+  const normalizedTitle = title.replace(/\\n/g, '\n');
+  writeTextFile(normalizedTitle, titleFile);
+
+  const framePath = path.join(workDir, 'intro-frame.jpg');
+  runCommand(
+    `ffmpeg -loglevel error -y -f lavfi -i "color=c=#0a0a0a:s=1080x1920" -i "${logoPath}" -filter_complex "
+      [1:v]scale=400:400[logo];
+      [0:v][logo]overlay=(W-w)/2:(H-h)/2-400:format=auto[tmp];
+      [tmp]drawtext=fontfile=${fontPath}:textfile='${titleFile}':fontcolor=white:fontsize=62:x=(w-text_w)/2:y=950:line_spacing=14
+    " -frames:v 1 "${framePath}" 2>/dev/null`
+  );
+
+  runCommand(
+    `ffmpeg -loglevel error -y -loop 1 -i "${framePath}" -filter_complex "fade=t=in:st=0:d=0.8,fade=t=out:st=${(duration - 0.8).toFixed(1)}:d=0.8" -t ${duration} -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -an "${outputPath}" 2>/dev/null`
+  );
 }
 
-/** Render outro clip via Revideo. */
+/** Render outro clip. Tries Revideo first, falls back to ffmpeg on timeout. */
 async function renderOutroClip(
   logoPath: string,
   ctaText: string,
   duration: number,
   outputPath: string,
   workDir: string,
-  brandColor: string = '#2563eb'
+  brandColor: string = '#2563eb',
+  fontPath: string = THAI_FONT
 ): Promise<void> {
-  const fps = 8;
-  const rangeEnd = Math.ceil(duration * fps);
-  const projectPath = createRevideoProjectFile(workDir, 'outro', rangeEnd);
+  // Try Revideo first
+  try {
+    const fps = 8;
+    const rangeEnd = Math.ceil(duration * fps);
+    const projectPath = createRevideoProjectFile(workDir, 'outro', rangeEnd);
 
-  const renderedPath = await renderVideo({
-    projectFile: projectPath,
-    variables: {
-      logoPath: path.relative(PUBLIC_DIR_ABS, logoPath).replace(/\\/g, '/'),
-      ctaText,
-      outroDuration: duration,
-      brandColor,
-    },
-    settings: {
-      outFile: path.basename(outputPath),
-      outDir: path.dirname(outputPath),
-      logProgress: false,
-      puppeteer: {
-        args: ['--no-sandbox', '--disable-setuid-sandbox', '--single-process'],
-      },
-    },
-  });
+    const renderedPath = await Promise.race([
+      renderVideo({
+        projectFile: projectPath,
+        variables: {
+          logoPath: path.relative(PUBLIC_DIR_ABS, logoPath).replace(/\\/g, '/'),
+          ctaText,
+          outroDuration: duration,
+          brandColor,
+        },
+        settings: {
+          outFile: path.basename(outputPath),
+          outDir: path.dirname(outputPath),
+          logProgress: false,
+          puppeteer: {
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--single-process'],
+          },
+        },
+      }),
+      new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error('Revideo timeout')), 120000)
+      ),
+    ]);
 
-  const actualRendered = path.join(path.dirname(outputPath), path.basename(renderedPath));
-  if (actualRendered !== outputPath) {
-    fs.renameSync(actualRendered, outputPath);
+    const actualRendered = path.join(path.dirname(outputPath), path.basename(renderedPath));
+    if (actualRendered !== outputPath) {
+      fs.renameSync(actualRendered, outputPath);
+    }
+    console.log('   Outro: Revideo render succeeded');
+    return;
+  } catch (err: any) {
+    console.warn(`   Revideo outro failed (${err.message}), falling back to ffmpeg...`);
   }
+
+  // FFmpeg fallback: static frame with fade in/out
+  const ctaFile = path.join(workDir, 'outro-cta.txt');
+  const normalizedCta = ctaText.replace(/\\n/g, '\n');
+  writeTextFile(normalizedCta, ctaFile);
+
+  const framePath = path.join(workDir, 'outro-frame.jpg');
+  runCommand(
+    `ffmpeg -loglevel error -y -f lavfi -i "color=c=${brandColor}:s=1080x1920" -i "${logoPath}" -filter_complex "
+      [1:v]scale=300:300[logo];
+      [0:v][logo]overlay=(W-w)/2:(H-h)/2-350:format=auto[tmp];
+      [tmp]drawtext=fontfile=${fontPath}:textfile='${ctaFile}':fontcolor=white:fontsize=56:x=(w-text_w)/2:y=850:line_spacing=16
+    " -frames:v 1 "${framePath}" 2>/dev/null`
+  );
+
+  runCommand(
+    `ffmpeg -loglevel error -y -loop 1 -i "${framePath}" -filter_complex "fade=t=in:st=0:d=0.8,fade=t=out:st=${(duration - 0.8).toFixed(1)}:d=0.8" -t ${duration} -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -an "${outputPath}" 2>/dev/null`
+  );
 }
 
 /** Create segment clip with Ken Burns zoom, bottom text, fade in/out. */
@@ -297,7 +375,7 @@ function createSegmentClip(
   fontPath: string,
   brandColor: string = '#2563eb'
 ): void {
-  const wrappedText = wrapText(text, 26, 3);
+  const wrappedText = wrapText(text, 20, 3);
   const textFile = outputPath.replace('.mp4', '-text.txt');
   writeTextFile(wrappedText, textFile);
 
@@ -310,8 +388,9 @@ function createSegmentClip(
   const zoompanFilter = `zoompan=z='1.08-0.08*in/${totalFrames}':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)',scale=1080:1920:flags=lanczos`;
 
   // Dark overlay + bottom text with box + fade
+  // Margins: boxborderw=12 + max text width ~20 chars * ~42px = 840px → box ~864px → centered with ~108px margin each side
   const overlayFilter = `drawbox=color=black@0.40:t=fill`;
-  const textFilter = `drawtext=fontfile=${fontPath}:textfile='${textFile}':fontcolor=white:fontsize=42:box=1:boxcolor=${brandColor}@0.85:boxborderw=20:x=(w-text_w)/2:y=(h-text_h-80):line_spacing=12`;
+  const textFilter = `drawtext=fontfile=${fontPath}:textfile='${textFile}':fontcolor=white:fontsize=42:box=1:boxcolor=${brandColor}@0.85:boxborderw=12:x=(w-text_w)/2:y=(h-text_h-80):line_spacing=12`;
   const fadeFilter = `fade=t=in:st=0:d=${fadeDuration},fade=t=out:st=${fadeOutStart.toFixed(3)}:d=${fadeDuration}`;
 
   runCommand(
@@ -517,7 +596,7 @@ async function main() {
 
     console.log('\n🎬 Rendering intro via Revideo...');
     const introClipPath = path.join(workDir, 'intro.mp4');
-    await renderIntroClip(logoPath, meta.title, introDuration, introClipPath, workDir);
+    await renderIntroClip(logoPath, meta.title, introDuration, introClipPath, workDir, fontPath);
     clips.push(introClipPath);
 
     // ========== STEP 5: Generate segment clips via ffmpeg ==========
@@ -541,7 +620,7 @@ async function main() {
     const ctaText = lang === 'th'
       ? 'อ่านบทความฉบับเต็มได้ในลิงก์ด้านล่าง!'
       : 'Read the full article — link in description!';
-    await renderOutroClip(logoPath, ctaText, outroDuration, outroClipPath, workDir);
+    await renderOutroClip(logoPath, ctaText, outroDuration, outroClipPath, workDir, '#2563eb', fontPath);
     clips.push(outroClipPath);
 
     // ========== STEP 7: Concatenate clips ==========
