@@ -34,7 +34,7 @@ interface BlogMeta {
 const PUBLIC_DIR_ABS = path.resolve('public');
 const FALLBACK_IMAGE_PATH = path.resolve(PUBLIC_DIR_ABS, 'images/logo.jpg');
 const JINGLE_PATH = path.resolve(PUBLIC_DIR_ABS, 'audio/reading-advantage-jingle.mp3');
-const THAI_FONT = '/usr/share/fonts/truetype/noto/NotoSansThai-Bold.ttf';
+const THAI_FONT = '/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf';
 
 const args = process.argv.slice(2);
 const blogPath = args[0];
@@ -198,6 +198,55 @@ function writeTextFile(text: string, filePath: string): void {
 }
 
 /** Create a temporary Revideo project file for intro or outro. */
+function calculateIntroFontSize(title: string): number {
+  const len = Array.from(title).length;
+  if (len > 70) return 48;
+  if (len > 50) return 54;
+  return 62;
+}
+
+function wrapTitleForRevideo(title: string, maxCharsPerLine: number): string {
+  const chars = Array.from(title);
+  const lines: string[] = [];
+  let currentLine = '';
+
+  for (let i = 0; i < chars.length; i++) {
+    const char = chars[i];
+
+    if (char === '\n') {
+      lines.push(currentLine);
+      currentLine = '';
+      continue;
+    }
+
+    if (currentLine.length >= maxCharsPerLine) {
+      let breakAt = -1;
+      for (let j = currentLine.length - 1; j >= Math.max(0, currentLine.length - 10); j--) {
+        if (currentLine[j] === ' ') {
+          breakAt = j;
+          break;
+        }
+      }
+
+      if (breakAt > 0) {
+        lines.push(currentLine.slice(0, breakAt));
+        currentLine = currentLine.slice(breakAt + 1) + char;
+      } else {
+        lines.push(currentLine);
+        currentLine = char;
+      }
+    } else {
+      currentLine += char;
+    }
+  }
+
+  if (currentLine) {
+    lines.push(currentLine);
+  }
+
+  return lines.join('\n');
+}
+
 function createRevideoProjectFile(workDir: string, sceneName: 'intro' | 'outro', rangeEnd: number): string {
   const projectPath = path.resolve('revideo', `temp-${sceneName}-${path.basename(workDir)}.ts`);
   const content = `import {makeProject} from '@revideo/core';
@@ -247,13 +296,18 @@ async function renderIntroClip(
     const rangeEnd = Math.ceil(duration * fps);
     const projectPath = createRevideoProjectFile(workDir, 'intro', rangeEnd);
 
+    const titleFontSize = calculateIntroFontSize(title);
+    const maxCharsPerLine = titleFontSize <= 48 ? 20 : titleFontSize <= 54 ? 22 : 25;
+    const wrappedTitle = wrapTitleForRevideo(title, maxCharsPerLine);
+
     const renderedPath = await Promise.race([
       renderVideo({
         projectFile: projectPath,
         variables: {
           logoPath: path.relative(PUBLIC_DIR_ABS, logoPath).replace(/\\/g, '/'),
-          title,
+          title: wrappedTitle,
           introDuration: duration,
+          titleFontSize,
         },
         settings: {
           outFile: path.basename(outputPath),
@@ -322,6 +376,7 @@ async function renderOutroClip(
           ctaText,
           outroDuration: duration,
           brandColor,
+          ctaFontSize: 56,
         },
         settings: {
           outFile: path.basename(outputPath),
@@ -506,7 +561,7 @@ async function main() {
   console.log(`   Using ${segments.length} segments`);
   segments.forEach((s, i) => console.log(`   ${i + 1}. ${s.text.slice(0, 60)}...`));
 
-  const fontPath = lang === 'th' && fs.existsSync(THAI_FONT) ? THAI_FONT : THAI_FONT;
+  const fontPath = fs.existsSync(THAI_FONT) ? THAI_FONT : '';
   const logoPath = fs.existsSync(FALLBACK_IMAGE_PATH) ? FALLBACK_IMAGE_PATH : '';
   const coverImageAbsPath = resolveCoverImagePath(meta.coverImage, blogAbsPath);
 

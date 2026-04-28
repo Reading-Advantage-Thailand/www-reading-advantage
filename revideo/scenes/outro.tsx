@@ -7,6 +7,7 @@ export default makeScene2D('outro', function* (view) {
   const ctaText = String(scene.variables.get('ctaText', 'Read the full blog - link in description!')());
   const outroDuration = Number(scene.variables.get('outroDuration', 3)()) || 3;
   const brandColor = String(scene.variables.get('brandColor', '#2563eb')());
+  const ctaFontSize = Number(scene.variables.get('ctaFontSize', 56)()) || 56;
 
   const layoutRef = createRef<Layout>();
   const bgRef = createRef<Rect>();
@@ -29,7 +30,7 @@ export default makeScene2D('outro', function* (view) {
       <Txt
         ref={textRef}
         text={ctaText}
-        fontSize={56}
+        fontSize={ctaFontSize}
         fontWeight={700}
         fill="#ffffff"
         textAlign="center"

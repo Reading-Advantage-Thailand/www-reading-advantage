@@ -6,6 +6,7 @@ export default makeScene2D('intro', function* (view) {
   const logoPath = String(scene.variables.get('logoPath', 'images/logo.jpg')());
   const title = String(scene.variables.get('title', 'Blog Title')());
   const introDuration = Number(scene.variables.get('introDuration', 3)()) || 3;
+  const titleFontSize = Number(scene.variables.get('titleFontSize', 62)()) || 62;
 
   const layoutRef = createRef<Layout>();
   const logoRef = createRef<Img>();
@@ -27,7 +28,7 @@ export default makeScene2D('intro', function* (view) {
       <Txt
         ref={titleRef}
         text={title}
-        fontSize={62}
+        fontSize={titleFontSize}
         fontWeight={700}
         fill="#ffffff"
         textAlign="center"
