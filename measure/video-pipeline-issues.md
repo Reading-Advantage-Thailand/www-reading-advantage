@@ -32,3 +32,18 @@
 - The pipeline needs to be run **only** through the script, not manually
 - Background execution needs to be approved so the script can run to completion (it needs ~8–12 minutes for 5 segments)
 - Each video needs end-to-end playback verification before commit
+
+---
+
+## FIXED (2026-04-29)
+
+### Architecture Rewrite
+- **Root cause:** Video and audio were generated independently, then muxed at the end. This guaranteed sync issues.
+- **Fix:** Each segment's video is now rendered WITH its audio already embedded. Intro/outro get silent audio tracks. All clips are concatenated with audio/video already paired.
+
+### Specific Fixes Applied
+1. **Thai text wrapping:** Dynamic `maxCharsPerLine` based on font size and frame width: `floor((1080 * 0.85) / (fontSize * 0.6))`
+2. **Audio/video sync:** Eliminated by design — each segment is self-contained
+3. **Jingle mixing:** Simplified — no more padding/extraction, direct amix with jingle (both same duration)
+4. **Image prompts:** Hardened to reject charts, graphs, diagrams, numbers, UI elements. Only real-world scenes allowed.
+5. **Verification:** Post-render check compares video and audio durations, reports PASS/FAIL

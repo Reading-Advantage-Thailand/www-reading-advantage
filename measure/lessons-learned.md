@@ -4,6 +4,29 @@ Retrospective insights captured after completing tracks, PR merges, and developm
 
 ---
 
+## 2026-04-29 — Video Pipeline Architecture Fix (video_pipeline_fix_20260429)
+
+### What Happened
+
+- Retrospective revealed the pipeline had a fundamental architecture flaw: video and audio were generated independently, then muxed at the end. This caused constant sync issues.
+- The correct architecture: each segment's video is rendered WITH its audio already embedded. Intro/outro get silent audio tracks. All clips are then concatenated — audio/video already paired.
+- Key changes made:
+  1. `createSegmentClip` now accepts `audioPath` and muxes it during clip creation
+  2. Intro/outro get silent audio tracks (both Revideo and ffmpeg fallback paths)
+  3. Removed Steps 3 (audio concat) and 8 (audio mux) from main()
+  4. `mixBackgroundMusic` simplified — no more padding/extraction, direct amix with jingle
+  5. Thai text wrapping fixed with dynamic maxCharsPerLine based on font size and frame width
+  6. Image prompts hardened to reject charts, graphs, diagrams, and request only situational images
+
+### Lessons
+
+- **Architecture matters more than bug fixes.** The sync issues weren't individual bugs — they were symptoms of a fundamentally wrong approach. Rendering video and audio separately then muxing at the end guarantees alignment problems.
+- **Self-contained segments eliminate sync.** When each segment has its audio embedded, concat just works. No complex duration matching, no padding, no amix tricks.
+- **Thai text wrapping needs font-size-aware character limits.** At 62px, Thai characters are ~50px wide. 25 chars = 1250px overflows 1080px. Dynamic calculation: `maxChars = floor((frameWidth * 0.85) / (fontSize * 0.6))`.
+- **amix=duration=first works when inputs match.** The truncation bug was caused by mismatched durations (video container vs audio stream). When both inputs are same duration, amix works correctly.
+
+---
+
 ## 2026-04-25 — Day 4 Blog Post Generation (blog_marketing_generation_20260421)
 
 ### What Happened

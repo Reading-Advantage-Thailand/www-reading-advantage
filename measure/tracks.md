@@ -192,6 +192,18 @@ _Link: [./tracks/blog_video_generation_20260423/](./tracks/blog_video_generation
 
 ---
 
+### [x] Track: Video Pipeline Structural Fixes
+
+**Status:** Complete
+
+**Type:** bug | **Estimated Tasks:** 12
+
+**Description:** Fix structural bugs in generate-blog-video.ts: Thai text bleeding in intro/outro fallback, audio/video length mismatch, jingle mixing truncation, and image text enforcement. Makes pipeline work reliably without manual intervention.
+
+_Link: [./archive/video_pipeline_fix_20260429/](./archive/video_pipeline_fix_20260429/)_
+
+---
+
 - [ ] **Track: Generate 30 blog posts localized into English and Thai using the mmx cli tool with the create-image-mmx skill.**
 *Link: [./tracks/blog_marketing_generation_20260421/](./tracks/blog_marketing_generation_20260421/)*
 - [x] **Track: Visual Refresh: Define Unique Identity**
