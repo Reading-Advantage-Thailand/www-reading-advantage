@@ -86,6 +86,21 @@ function getMediaDurationSeconds(filePath: string): number | null {
   return null;
 }
 
+function getAudioStreamDurationSeconds(filePath: string): number | null {
+  try {
+    const output = runCommand(
+      `ffprobe -v error -select_streams a:0 -show_entries stream=duration -of default=nokey=1:noprint_wrappers=1 "${filePath}"`
+    ).trim();
+    const duration = Number(output);
+    if (Number.isFinite(duration) && duration > 0) {
+      return duration;
+    }
+  } catch (error) {
+    console.warn(`   Failed to read audio stream duration for ${filePath}`);
+  }
+  return null;
+}
+
 function detectLanguage(text: string): 'th' | 'en' {
   return /[\u0E00-\u0E7F]/.test(text) ? 'th' : 'en';
 }
@@ -334,16 +349,18 @@ async function renderIntroClip(
   }
 
   // FFmpeg fallback: static frame with fade in/out
+  const titleFontSize = calculateIntroFontSize(title);
+  const titleMaxChars = titleFontSize <= 48 ? 20 : titleFontSize <= 54 ? 22 : 25;
+  const wrappedTitle = wrapText(title, titleMaxChars, 4);
   const titleFile = path.join(workDir, 'intro-title.txt');
-  const normalizedTitle = title.replace(/\\n/g, '\n');
-  writeTextFile(normalizedTitle, titleFile);
+  writeTextFile(wrappedTitle, titleFile);
 
   const framePath = path.join(workDir, 'intro-frame.jpg');
   runCommand(
     `ffmpeg -loglevel error -y -f lavfi -i "color=c=#0a0a0a:s=1080x1920" -i "${logoPath}" -filter_complex "
       [1:v]scale=400:400[logo];
       [0:v][logo]overlay=(W-w)/2:(H-h)/2-400:format=auto[tmp];
-      [tmp]drawtext=fontfile=${fontPath}:textfile='${titleFile}':fontcolor=white:fontsize=62:x=(w-text_w)/2:y=950:line_spacing=14
+      [tmp]drawtext=fontfile=${fontPath}:textfile='${titleFile}':fontcolor=white:fontsize=${titleFontSize}:x=(w-text_w)/2:y=950:line_spacing=14
     " -frames:v 1 "${framePath}" 2>/dev/null`
   );
 
@@ -403,9 +420,9 @@ async function renderOutroClip(
   }
 
   // FFmpeg fallback: static frame with fade in/out
+  const wrappedCta = wrapText(ctaText, 20, 3);
   const ctaFile = path.join(workDir, 'outro-cta.txt');
-  const normalizedCta = ctaText.replace(/\\n/g, '\n');
-  writeTextFile(normalizedCta, ctaFile);
+  writeTextFile(wrappedCta, ctaFile);
 
   const framePath = path.join(workDir, 'outro-frame.jpg');
   runCommand(
@@ -471,7 +488,7 @@ function concatClips(clips: string[], outputPath: string): void {
   );
 }
 
-/** Mix background jingle with video. Uses two-step approach for reliability. */
+/** Mix background jingle with video. Pads narration audio to match video duration first. */
 function mixBackgroundMusic(videoPath: string, jinglePath: string, outputPath: string, workDir: string): void {
   if (!jinglePath || !fs.existsSync(jinglePath)) {
     fs.copyFileSync(videoPath, outputPath);
@@ -480,21 +497,27 @@ function mixBackgroundMusic(videoPath: string, jinglePath: string, outputPath: s
 
   const videoDuration = getMediaDurationSeconds(videoPath) ?? 60;
   const jingleLoopPath = path.join(workDir, 'jingle-loop.mp3');
+  const paddedAudioPath = path.join(workDir, 'padded-audio.mp3');
   const mixedAudioPath = path.join(workDir, 'mixed-audio.mp3');
 
-  // Step 1: Loop jingle to match video duration with fade-out
+  // Step 1: Extract video's audio and pad with silence to match video duration exactly
+  runCommand(
+    `ffmpeg -loglevel error -y -i "${videoPath}" -vn -af "apad" -c:a libmp3lame -q:a 2 "${paddedAudioPath}" 2>/dev/null`
+  );
+
+  // Step 2: Loop jingle to match video duration with fade-out
   runCommand(
     `ffmpeg -loglevel error -y -stream_loop -1 -i "${jinglePath}" -t ${videoDuration.toFixed(1)} -af "volume=0.10,afade=t=out:st=${Math.max(0, videoDuration - 2).toFixed(1)}:d=2" -c:a libmp3lame -q:a 2 "${jingleLoopPath}" 2>/dev/null`
   );
 
-  // Step 2: Extract video's audio and mix with jingle
+  // Step 3: Mix padded narration audio with jingle
   runCommand(
-    `ffmpeg -loglevel error -y -i "${videoPath}" -i "${jingleLoopPath}" -filter_complex "[0:a][1:a]amix=inputs=2:duration=first:dropout_transition=3" -c:a libmp3lame -q:a 2 "${mixedAudioPath}" 2>/dev/null`
+    `ffmpeg -loglevel error -y -i "${paddedAudioPath}" -i "${jingleLoopPath}" -filter_complex "[0:a][1:a]amix=inputs=2:duration=first:dropout_transition=3" -c:a libmp3lame -q:a 2 "${mixedAudioPath}" 2>/dev/null`
   );
 
-  // Step 3: Replace audio in video
+  // Step 4: Replace audio in video
   runCommand(
-    `ffmpeg -loglevel error -y -i "${videoPath}" -i "${mixedAudioPath}" -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -movflags +faststart "${outputPath}" 2>/dev/null`
+    `ffmpeg -loglevel error -y -i "${videoPath}" -i "${mixedAudioPath}" -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest -movflags +faststart "${outputPath}" 2>/dev/null`
   );
 }
 
@@ -728,10 +751,11 @@ async function main() {
     console.log(`   Resolution: 1080x1920`);
     console.log(`   Segments: ${segments.length}`);
 
-    if (finalDuration && finalDuration >= totalAudioDuration - 0.5) {
-      console.log(`   Audio cutoff check: PASSED (${finalDuration.toFixed(1)}s >= ${totalAudioDuration.toFixed(1)}s audio)`);
+    const finalAudioDuration = getAudioStreamDurationSeconds(finalOutputPath);
+    if (finalAudioDuration && finalAudioDuration >= totalAudioDuration - 0.5) {
+      console.log(`   Audio cutoff check: PASSED (${finalAudioDuration.toFixed(1)}s audio >= ${totalAudioDuration.toFixed(1)}s narration)`);
     } else {
-      console.warn(`   ⚠️ Audio cutoff check: WARNING (${finalDuration?.toFixed(1) ?? '?'}s < ${totalAudioDuration.toFixed(1)}s audio)`);
+      console.warn(`   ⚠️ Audio cutoff check: WARNING (${finalAudioDuration?.toFixed(1) ?? '?'}s audio < ${totalAudioDuration.toFixed(1)}s narration)`);
     }
 
     // Segment alignment report
