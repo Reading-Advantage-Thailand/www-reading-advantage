@@ -346,7 +346,7 @@ async function renderIntroClip(
     // Revideo output is video-only — add silent audio track for concat compatibility
     const withAudioPath = path.join(workDir, 'intro-with-audio.mp4');
     runCommand(
-      `ffmpeg -loglevel error -y -i "${outputPath}" -f lavfi -i "anullsrc=r=44100:cl=stereo" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -t ${duration} "${withAudioPath}" 2>/dev/null`
+      `ffmpeg -loglevel error -y -i "${outputPath}" -f lavfi -i "anullsrc=r=32000:cl=mono" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -t ${duration} "${withAudioPath}" 2>/dev/null`
     );
     fs.renameSync(withAudioPath, outputPath);
 
@@ -376,7 +376,7 @@ async function renderIntroClip(
   );
 
   runCommand(
-    `ffmpeg -loglevel error -y -loop 1 -i "${framePath}" -f lavfi -i "anullsrc=r=44100:cl=stereo" -filter_complex "[0:v]fade=t=in:st=0:d=0.8,fade=t=out:st=${(duration - 0.8).toFixed(1)}:d=0.8[v]" -map "[v]" -map 1:a -t ${duration} -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "${outputPath}" 2>/dev/null`
+    `ffmpeg -loglevel error -y -loop 1 -i "${framePath}" -f lavfi -i "anullsrc=r=32000:cl=mono" -filter_complex "[0:v]fade=t=in:st=0:d=0.8,fade=t=out:st=${(duration - 0.8).toFixed(1)}:d=0.8[v]" -map "[v]" -map 1:a -t ${duration} -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "${outputPath}" 2>/dev/null`
   );
 }
 
@@ -428,7 +428,7 @@ async function renderOutroClip(
     // Revideo output is video-only — add silent audio track for concat compatibility
     const withAudioPath = path.join(workDir, 'outro-with-audio.mp4');
     runCommand(
-      `ffmpeg -loglevel error -y -i "${outputPath}" -f lavfi -i "anullsrc=r=44100:cl=stereo" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -t ${duration} "${withAudioPath}" 2>/dev/null`
+      `ffmpeg -loglevel error -y -i "${outputPath}" -f lavfi -i "anullsrc=r=32000:cl=mono" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -t ${duration} "${withAudioPath}" 2>/dev/null`
     );
     fs.renameSync(withAudioPath, outputPath);
 
@@ -457,7 +457,7 @@ async function renderOutroClip(
   );
 
   runCommand(
-    `ffmpeg -loglevel error -y -loop 1 -i "${framePath}" -f lavfi -i "anullsrc=r=44100:cl=stereo" -filter_complex "[0:v]fade=t=in:st=0:d=0.8,fade=t=out:st=${(duration - 0.8).toFixed(1)}:d=0.8[v]" -map "[v]" -map 1:a -t ${duration} -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "${outputPath}" 2>/dev/null`
+    `ffmpeg -loglevel error -y -loop 1 -i "${framePath}" -f lavfi -i "anullsrc=r=32000:cl=mono" -filter_complex "[0:v]fade=t=in:st=0:d=0.8,fade=t=out:st=${(duration - 0.8).toFixed(1)}:d=0.8[v]" -map "[v]" -map 1:a -t ${duration} -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "${outputPath}" 2>/dev/null`
   );
 }
 
@@ -520,7 +520,7 @@ function mixBackgroundMusic(videoPath: string, jinglePath: string, outputPath: s
   }
 
   const videoDuration = getMediaDurationSeconds(videoPath) ?? 60;
-  const jingleLoopPath = path.join(workDir, 'jingle-loop.mp3');
+  const jingleLoopPath = path.join(workDir, 'jingle-loop.m4a');
 
   // Loop jingle to match video duration with fade-out
   runCommand(
@@ -629,7 +629,7 @@ async function main() {
           );
         } catch (e) {
           console.warn(`   Failed to generate audio, creating silent audio.`);
-          runCommand(`ffmpeg -f lavfi -i anullsrc=r=44100:cl=mono -t 5 -q:a 9 -acodec libmp3lame "${audioPath}" -y 2>/dev/null`);
+          runCommand(`ffmpeg -f lavfi -i anullsrc=r=32000:cl=mono -t 5 -q:a 9 -acodec libmp3lame "${audioPath}" -y 2>/dev/null`);
         }
 
         const audioDuration = getMediaDurationSeconds(audioPath) ?? 5;
@@ -668,7 +668,7 @@ async function main() {
         fs.mkdirSync(segmentDir, { recursive: true });
         const audioPath = path.join(segmentDir, 'audio.mp3');
         const imagePath = path.join(segmentDir, 'image.jpg');
-        runCommand(`ffmpeg -f lavfi -i anullsrc=r=44100:cl=mono -t 5 -q:a 9 -acodec libmp3lame "${audioPath}" -y 2>/dev/null`);
+        runCommand(`ffmpeg -f lavfi -i anullsrc=r=32000:cl=mono -t 5 -q:a 9 -acodec libmp3lame "${audioPath}" -y 2>/dev/null`);
         if (coverImageAbsPath && fs.existsSync(coverImageAbsPath)) {
           fs.copyFileSync(coverImageAbsPath, imagePath);
         } else {
