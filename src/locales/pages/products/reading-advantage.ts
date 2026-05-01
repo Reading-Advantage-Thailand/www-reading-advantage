@@ -77,11 +77,11 @@ export const en = {
         ],
     },
     resultsSection: {
-        heading: "Proven Results",
+        heading: "Evidence-Based Methodology",
         title: "Research-Backed Success",
-        description: "Students using extensive reading programs like Reading Advantage show an average of 1.48 years equivalent progress in middle-proficiency groups.",
+        description: "Extensive reading instruction outperforms traditional grammar instruction. A controlled one-year study (Aka, 2019) demonstrated measurable gains in reading comprehension.",
         stats: [
-            { value: "1.48x", label: "Progress Rate" },
+            { value: "+9.5 pts", label: "Reading Score Gain (Aka, 2019)" },
             { value: "3000+", label: "Articles Available" },
             { value: "60+", label: "New Articles Daily" },
         ],
@@ -244,11 +244,11 @@ export const th = {
         ],
     },
     resultsSection: {
-        heading: "ผลลัพธ์ที่พิสูจน์ได้",
+        heading: "ระเบียบวิธีที่อิงหลักฐานเชิงประจักษ์",
         title: "ความสำเร็จที่ได้รับการสนับสนุนจากการวิจัย",
-        description: "นักเรียนที่ใช้โปรแกรมการอ่านแบบกว้างขวางเช่น Reading Advantage มีความก้าวหน้าเฉลี่ยเทียบเท่ากับ 1.48 ปีในกลุ่มระดับกลาง",
+        description: "การสอนการอ่านแบบกว้างมีประสิทธิภาพเหนือกว่าการสอนไวยากรณ์แบบดั้งเดิม การศึกษาควบคุมระยะเวลาหนึ่งปี (Aka, 2019) แสดงให้เห็นถึงการพัฒนาด้านความเข้าใจในการอ่านที่วัดได้",
         stats: [
-            { value: "1.48x", label: "อัตราความก้าวหน้า" },
+            { value: "+9.5 คะแนน", label: "คะแนนการอ่านที่เพิ่มขึ้น (Aka, 2019)" },
             { value: "3000+", label: "บทความที่มีอยู่" },
             { value: "60+", label: "บทความใหม่ทุกวัน" },
         ],
@@ -411,11 +411,11 @@ export const zh = {
         ],
     },
     resultsSection: {
-        heading: "经验证的成果",
-        title: "基于研究的成功",
-        description: "使用广泛阅读项目（如 Reading Advantage）的学生，在中等水平组中平均表现出相当于 1.48 年的进步。",
+        heading: "基于证据的方法",
+        title: "有研究支持的成功",
+        description: "广泛阅读教学优于传统的语法教学。一项为期一年的对照研究 (Aka, 2019) 证明了阅读理解方面可衡量的进步。",
         stats: [
-            { value: "1.48x", label: "进步率" },
+            { value: "+9.5 分", label: "阅读成绩提升 (Aka, 2019)" },
             { value: "3000+", label: "可用文章" },
             { value: "60+", label: "每日新增文章" },
         ],

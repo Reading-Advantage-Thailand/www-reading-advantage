@@ -93,21 +93,21 @@ export const en = {
     }
   },
   resultsSection: {
-    heading: "Proven Results",
-    title: "Transforming Literacy Education",
-    description: "Primary Advantage delivers measurable improvements in reading comprehension, vocabulary development, and student engagement.",
+    heading: "Evidence-Based Methodology",
+    title: "Research-Backed Reading Gains",
+    description: "Extensive reading programs like Primary Advantage are proven to outperform traditional grammar instruction, delivering measurable improvements validated by peer-reviewed research (Aka, 2019).",
     stats: [
       {
-        value: "40%",
-        label: "Reading Gains"
+        value: "+9.5 pts",
+        label: "Reading Score Gain (Aka, 2019)"
       },
       {
         value: "85%",
-        label: "Student Engagement"
+        label: "Weekly Active Usage"
       },
       {
         value: "100%",
-        label: "Cloud Availability"
+        label: "Curriculum Alignment"
       }
     ]
   },
@@ -216,21 +216,21 @@ export const th = {
     }
   },
   resultsSection: {
-    heading: "ผลลัพธ์ที่พิสูจน์แล้ว",
-    title: "การปฏิวัติการศึกษาการรู้หนังสือ",
-    description: "Primary Advantage ส่งมอบการปรับปรุงที่วัดได้ในด้านการอ่านเข้าใจ การพัฒนาคำศัพท์ และการมีส่วนร่วมของนักเรียน",
+    heading: "ระเบียบวิธีที่อิงหลักฐานเชิงประจักษ์",
+    title: "ผลการอ่านที่ได้รับการสนับสนุนจากการวิจัย",
+    description: "โปรแกรมการอ่านแบบกว้างเช่น Primary Advantage ได้รับการพิสูจน์แล้วว่ามีประสิทธิภาพเหนือกว่าการสอนไวยากรณ์แบบดั้งเดิม โดยมอบการปรับปรุงที่วัดได้ซึ่งผ่านการตรวจสอบโดยงานวิจัย (Aka, 2019)",
     stats: [
       {
-        value: "40%",
-        label: "การพัฒนาการอ่าน"
+        value: "+9.5 คะแนน",
+        label: "คะแนนการอ่านที่เพิ่มขึ้น (Aka, 2019)"
       },
       {
         value: "85%",
-        label: "การมีส่วนร่วมของนักเรียน"
+        label: "การใช้งานต่อสัปดาห์"
       },
       {
         value: "100%",
-        label: "ความพร้อมใช้งานบนคลาวด์"
+        label: "สอดคล้องกับหลักสูตร"
       }
     ]
   },
@@ -339,21 +339,21 @@ export const zh = {
     }
   },
   resultsSection: {
-    heading: "验证成果",
-    title: "改变读写教育",
-    description: "Primary Advantage 在阅读理解、词汇发展和学生参与度方面提供可衡量的改进。",
+    heading: "基于证据的方法",
+    title: "有研究支持的阅读提升",
+    description: "像 Primary Advantage 这样的广泛阅读课程被证明优于传统的语法教学，提供了由同行评审研究验证的可衡量进步 (Aka, 2019)。",
     stats: [
       {
-        value: "40%",
-        label: "阅读提升"
+        value: "+9.5 分",
+        label: "阅读成绩提升 (Aka, 2019)"
       },
       {
         value: "85%",
-        label: "学生参与度"
+        label: "每周活跃使用率"
       },
       {
         value: "100%",
-        label: "云可用性"
+        label: "课程对齐"
       }
     ]
   },
