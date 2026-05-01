@@ -536,6 +536,7 @@ function mixBackgroundMusic(videoPath: string, jinglePath: string, outputPath: s
 
 function cleanup(workDir: string): void {
   if (fs.existsSync(workDir)) {
+    console.log(`   Cleaning up ${workDir}`);
     fs.rmSync(workDir, { recursive: true, force: true });
   }
   // Clean up temp Revideo project files
@@ -549,7 +550,26 @@ function cleanup(workDir: string): void {
   }
 }
 
+/** Clean up stale blog-video directories older than 1 hour from tmp/. */
+function cleanupStaleTmp(): void {
+  const tmpDir = path.resolve('tmp');
+  if (!fs.existsSync(tmpDir)) return;
+  const oneHourAgo = Date.now() - 3600_000;
+  for (const entry of fs.readdirSync(tmpDir)) {
+    if (!entry.startsWith('blog-video-')) continue;
+    const dirPath = path.join(tmpDir, entry);
+    try {
+      const stat = fs.statSync(dirPath);
+      if (stat.isDirectory() && stat.mtimeMs < oneHourAgo) {
+        console.log(`   Removing stale tmp: ${dirPath}`);
+        fs.rmSync(dirPath, { recursive: true, force: true });
+      }
+    } catch {}
+  }
+}
+
 async function main() {
+  cleanupStaleTmp();
   console.log(`\n📄 Parsing blog: ${blogAbsPath}`);
   const raw = fs.readFileSync(blogAbsPath, 'utf-8');
   const parsed = matter(raw);
@@ -564,12 +584,24 @@ async function main() {
   console.log(`   Title: ${meta.title}`);
   console.log(`   Language: ${lang}`);
 
-  // ========== STEP 1: Load or generate segments ==========
+  // ========== STEP 1: Load segments ==========
   let segments: Segment[] = [];
 
-  if (segmentsPath && fs.existsSync(segmentsPath)) {
-    console.log(`\n📋 Loading segments from ${segmentsPath}`);
-    const segmentsRaw = fs.readFileSync(segmentsPath, 'utf-8');
+  // Resolve segments path: explicit flag → auto-discover next to blog file
+  let resolvedSegmentsPath = segmentsPath;
+  if (!resolvedSegmentsPath) {
+    const blogDir = path.dirname(blogAbsPath);
+    const blogBasename = path.basename(blogAbsPath, '.md');
+    const autoPath = path.join(blogDir, `${blogBasename}-segments.json`);
+    if (fs.existsSync(autoPath)) {
+      resolvedSegmentsPath = autoPath;
+      console.log(`\n📋 Auto-discovered segments: ${autoPath}`);
+    }
+  }
+
+  if (resolvedSegmentsPath && fs.existsSync(resolvedSegmentsPath)) {
+    console.log(`\n📋 Loading segments from ${resolvedSegmentsPath}`);
+    const segmentsRaw = fs.readFileSync(resolvedSegmentsPath, 'utf-8');
     const parsedSegments = JSON.parse(segmentsRaw);
     if (Array.isArray(parsedSegments)) {
       segments = parsedSegments
@@ -582,28 +614,36 @@ async function main() {
   }
 
   if (segments.length === 0) {
-    console.log('\n⚠️ No segments provided. Falling back to blog paragraph extraction.');
-    const paragraphs = parsed.content
-      .replace(/#{1,6}\s+/g, '')
-      .split(/\n\s*\n/)
-      .map(s => s.replace(/[#*_\-]/g, ' ').trim())
-      .filter(s => s.length > 20 && s.length < 200);
-    segments = paragraphs.slice(0, 10).map(text => ({
-      text: text.slice(0, 150),
-      imageDescription: `A cinematic educational illustration related to: ${meta.title}. No text, no words, no letters.`,
-    }));
+    console.error('\n❌ No segments found. Provide a segments JSON file via:');
+    console.error(`   --segments <path>`);
+    console.error(`   OR place it at: ${path.dirname(blogAbsPath)}/${path.basename(blogAbsPath, '.md')}-segments.json`);
+    console.error(`   Format: [{"text": "...", "imageDescription": "..."}, ...]`);
+    process.exit(1);
   }
 
   console.log(`   Using ${segments.length} segments`);
   segments.forEach((s, i) => console.log(`   ${i + 1}. ${s.text.slice(0, 60)}...`));
 
-  // Validate image descriptions don't contain prohibited terms
-  const prohibitedTerms = ['chart', 'graph', 'diagram', 'text', 'sign', 'label', 'number', 'ui', 'screen'];
+  // Sanitize image descriptions: strip prohibited terms and replace with safe alternatives
+  const prohibitedTerms = ['chart', 'graph', 'diagram', 'text', 'words', 'letters', 'sign', 'label', 'number', 'ui', 'screen', 'whiteboard'];
   segments.forEach((s, i) => {
     const lower = s.imageDescription.toLowerCase();
     const found = prohibitedTerms.filter(t => lower.includes(t));
     if (found.length > 0) {
-      console.warn(`   ⚠️ Segment ${i + 1} image description contains: ${found.join(', ')}. May produce images with unwanted elements.`);
+      console.warn(`   ⚠️ Segment ${i + 1}: stripping prohibited terms [${found.join(', ')}] from image description`);
+      // Remove sentences/phrases containing prohibited terms
+      s.imageDescription = s.imageDescription
+        .split(/[.!]/)
+        .filter(part => {
+          const pLower = part.toLowerCase();
+          return !prohibitedTerms.some(t => pLower.includes(t));
+        })
+        .join('.')
+        .trim();
+      // If sanitization removed everything, use a generic safe description
+      if (!s.imageDescription) {
+        s.imageDescription = 'A warm, colorful scene with people in a modern educational setting, natural lighting, no objects with writing';
+      }
     }
   });
 
@@ -640,7 +680,7 @@ async function main() {
         // Generate background image
         console.log(`🖼️  Segment ${i + 1}: Generating image...`);
         const imagePath = path.join(segmentDir, 'image.jpg');
-        const imagePrompt = `${segment.imageDescription}. Bright colors, modern cinematic style, 9:16 vertical composition. MUST NOT contain: text, words, letters, signs, labels, charts, graphs, diagrams, numbers, UI elements, screens. ONLY show: real-world scenes with people, places, activities, objects, nature.`;
+        const imagePrompt = `PHOTOREALISTIC SCENE ONLY. Absolutely NO text, writing, letters, words, numbers, signs, labels, charts, graphs, diagrams, UI, screens, or books with visible text anywhere in the image. Scene: ${segment.imageDescription}. Bright colors, modern cinematic style, 9:16 vertical composition. Real-world scene only: people, places, nature, objects. Nothing with writing on it.`;
         try {
           runCommand(
             `timeout 120s mmx image generate --prompt "${imagePrompt.replace(/"/g, '\\"')}" --aspect-ratio 9:16 --n 1 --out-dir ${segmentDir} --out-prefix img --quiet`
