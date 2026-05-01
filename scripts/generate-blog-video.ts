@@ -488,14 +488,15 @@ function createSegmentClip(
   const textFilter = `drawtext=fontfile=${fontPath}:textfile='${textFile}':fontcolor=white:fontsize=42:box=1:boxcolor=${brandColor}@0.85:boxborderw=12:x=(w-text_w)/2:y=(h-text_h-80):line_spacing=12`;
   const fadeFilter = `fade=t=in:st=0:d=${fadeDuration},fade=t=out:st=${fadeOutStart.toFixed(3)}:d=${fadeDuration}`;
 
-  // Generate video with embedded audio — audio and video are paired from the start
+  // Generate video with embedded audio — pad audio to exact video duration so concat has no gaps
+  const videoDuration = totalFrames / fps;
   runCommand(
     `ffmpeg -loglevel error -y -loop 1 -i "${imagePath}" -i "${audioPath}" -filter_complex "
       [0:v]${zoompanFilter}[scaled];
       [scaled]${overlayFilter}[dark];
       [dark]${textFilter}[txt];
       [txt]${fadeFilter}
-    " -t ${duration.toFixed(3)} -r ${fps} -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "${outputPath}" 2>/dev/null`
+    " -af "apad=whole_dur=${videoDuration.toFixed(3)}" -t ${videoDuration.toFixed(3)} -r ${fps} -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "${outputPath}" 2>/dev/null`
   );
 }
 
@@ -633,7 +634,7 @@ async function main() {
         }
 
         const audioDuration = getMediaDurationSeconds(audioPath) ?? 5;
-        const segmentDuration = audioDuration + 0.5;
+        const segmentDuration = audioDuration;
         console.log(`   Audio: ${audioDuration.toFixed(2)}s, Segment video: ${segmentDuration.toFixed(2)}s`);
 
         // Generate background image
@@ -674,7 +675,7 @@ async function main() {
         } else {
           runCommand(`ffmpeg -f lavfi -i "color=c=#1e3a5f:s=1080x1920" -frames:v 1 -q:v 2 "${imagePath}" -y 2>/dev/null`);
         }
-        segmentAssets.push({ audio: audioPath, image: imagePath, audioDuration: 5, segmentDuration: 5.5 });
+        segmentAssets.push({ audio: audioPath, image: imagePath, audioDuration: 5, segmentDuration: 5 });
       }
     }
 
