@@ -112,49 +112,7 @@ _Link: [./measure/tracks/seo_metadata_audit_20260408/](./measure/tracks/seo_meta
 
 ---
 
-## UI Reference App Cloning Tracks
 
-### [ ] Track: Prowlarr UI Cloning
-
-**Status:** Spec Complete ✅ | Plan Complete ✅
-
-**Description:** Clone the Prowlarr indexer manager UI with comprehensive views, components, and features for managing 500+ torrent trackers and usenet indexers
-
-**Plan:** 10 Phases (81 Tasks) - TDD approach with >80% coverage target
-
-_Link: [./measure/tracks/prowlarr_ui_cloning_20260214/](./measure/tracks/prowlarr_ui_cloning_20260214/)_
-
-### [ ] Track: Sonarr UI Cloning
-
-**Status:** Spec Complete ✅ | Plan Complete ✅
-
-**Description:** Clone the Sonarr TV series PVR UI with comprehensive views, components, and features for managing series, episodes, downloads, and quality profiles
-
-**Plan:** 11 Phases (83 Tasks) - TDD approach with >80% coverage target
-
-_Link: [./measure/tracks/sonarr_ui_cloning_20260214/](./measure/tracks/sonarr_ui_cloning_20260214/)_
-
-### [ ] Track: Radarr UI Cloning
-
-**Status:** Spec Complete ✅ | Plan Complete ✅
-
-**Description:** Clone the Radarr movie collection manager UI with comprehensive views, components, and features for managing movies, downloads, and quality profiles
-
-**Plan:** 11 Phases (80 Tasks) - TDD approach with >80% coverage target
-
-_Link: [./measure/tracks/radarr_ui_cloning_20260214/](./measure/tracks/radarr_ui_cloning_20260214/)_
-
-### [ ] Track: Bazarr UI Cloning
-
-**Status:** Spec Complete ✅ | Plan Complete ✅
-
-**Description:** Clone the Bazarr subtitle manager UI with comprehensive views, components, and features for managing subtitles for TV series and movies
-
-**Plan:** 13 Phases (85 Tasks) - TDD approach with >80% coverage target
-
-_Link: [./measure/tracks/bazarr_ui_cloning_20260214/](./measure/tracks/bazarr_ui_cloning_20260214/)_
-
----
 
 ## [x] Track: Blog Localization and Navigation Resilience
 
