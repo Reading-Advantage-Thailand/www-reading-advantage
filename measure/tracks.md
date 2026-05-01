@@ -179,3 +179,8 @@ _Link: [./archive/video_pipeline_fix_20260429/](./archive/video_pipeline_fix_202
 - [ ] **Track: Blog Pagination**
   *Link: [./tracks/blog_pagination_20260426/](./tracks/blog_pagination_20260426/)*
   Implement static pagination with generateStaticParams for growing content.
+
+---
+
+- [ ] **Track: Phase 2 Marketing Blog Generation (Days 31-60)**
+  *Link: [./tracks/blog_marketing_phase2_20260501/](./tracks/blog_marketing_phase2_20260501/)*
