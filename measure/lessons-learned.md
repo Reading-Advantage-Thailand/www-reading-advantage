@@ -4,6 +4,23 @@ Retrospective insights captured after completing tracks, PR merges, and developm
 
 ---
 
+## 2026-05-02 — MiMo V2.5 TTS Thai Language Test
+
+### What Happened
+
+- Tested MiMo V2.5 TTS (`mimo-v2.5-tts` with `Mia` voice) against mmx (MiniMax `speech-2.8-hd`) using Thai blog content from Day 10.
+- Same text (~300 chars of Thai narration): mmx produced 39s of clear audio; MiMo produced 1.4s (2 syllables) before cutting off.
+- MiMo preset voices are designed for Chinese and English only — Thai is not a supported language.
+- MiMo scripts required patching: hardcoded `api.xiaomimimo.com` endpoint fails with token-plan keys. Fixed by reading `MIMO_BASE_URL` env var, defaulting to standard endpoint. Token-plan keys use `token-plan-cn.xiaomimimo.com/v1`.
+
+### Lessons
+
+- **MiMo V2.5 TTS does not support Thai.** Preset voices (`Mia`, `Chloe`, `Milo`, `Dean`) only handle Chinese and English. Thai input produces 1-2 syllables of garbled output then stops. Use mmx (MiniMax) for Thai TTS.
+- **MiMo token-plan keys require `MIMO_BASE_URL` override.** The skill scripts default to `api.xiaomimimo.com` which rejects token-plan keys. Export `MIMO_BASE_URL=https://token-plan-cn.xiaomimimo.com/v1` (or `sgp`/`ams` depending on region). Check `opencode.json` for the correct `baseURL` your coding model uses.
+- **Always test TTS with target language before committing to a pipeline.** A model that handles Chinese/English well may completely fail on tonal languages like Thai.
+
+---
+
 ## 2026-04-29 — Video Pipeline Architecture Fix (video_pipeline_fix_20260429)
 
 ### What Happened
