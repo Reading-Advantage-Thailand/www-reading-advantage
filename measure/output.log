@@ -2,8 +2,7 @@
 > build · k2p6
 [0m
 [0m→ [0mRead measure/blog_prompt.md
-I see you've shared the autonomous blog generation prompt. What would you like me to do?
+[0m→ [0mRead measure/blog_prompt.md
+This is the autonomous daily blog/video generation prompt for Measure. It outlines a 5-step workflow for generating one day's marketing content (EN + TH blog posts, social hooks, hero image, segments JSON, and video) for days 31-60 of the marketing plan.
 
-- Execute it and generate today's content?
-- Review or modify the prompt?
-- Something else?
+What would you like me to do with this — execute the next day's generation, review the plan, or something else?
