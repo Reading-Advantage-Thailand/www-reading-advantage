@@ -15,6 +15,7 @@
 - [~] Task: Generate English & Thai text, 16:9 images, segments JSON, and vertical videos for Days 31-40.
   - Per day: EN post, TH post, cover image, `<slug>-segments.json` next to TH post, Thai video via pipeline.
   - [x] Day 31 (2026-05-05): The Tutoring Epidemic / วิกฤตเรียนพิเศษ — EN post, TH post, hero image, segments JSON, Thai video generated.
+  - [x] Day 32 (2026-05-06): Why 12 Years of English Fails / เรียนอังกฤษ 12 ปี ทำไมพูดไม่ได้ — EN post, TH post, hero image, segments JSON, Thai video generated.
 - [ ] Task: Measure - User Manual Verification 'Generation of Days 31-40' (Protocol in workflow.md)
 
 ## Phase 3: Generation of Days 41-50

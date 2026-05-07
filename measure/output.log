@@ -2,7 +2,933 @@
 > build · k2p6
 [0m
 [0m→ [0mRead measure/blog_prompt.md
-[0m→ [0mRead measure/blog_prompt.md
-This is the autonomous daily blog/video generation prompt for Measure. It outlines a 5-step workflow for generating one day's marketing content (EN + TH blog posts, social hooks, hero image, segments JSON, and video) for days 31-60 of the marketing plan.
+[0m→ [0mSkill "measure"
+[0m→ [0mRead measure/tracks.md
+[0m✱ [0mGlob "src/app/[locale]/(marketing)/blog/posts/en/*.md"[90m 0 matches[0m
+[0m✱ [0mGlob "src/app/**/blog/posts/en/*.md"[90m 19 matches[0m
+[0m✱ [0mGlob "src/app/**/blog/posts/th/*.md"[90m 17 matches[0m
+[0m→ [0mRead measure/tracks/blog_marketing_phase2_20260501/plan.md
+[0m→ [0mRead measure/marketing_plan_day_31_to_60.md
+[0m→ [0mRead measure/lessons-learned.md
+[0m→ [0mRead measure/tracks/blog_marketing_phase2_20260501/spec.md
+[0m→ [0mRead src/app/[locale]/(marketing)/blog/posts/en/the-tutoring-epidemic.md
+[0m→ [0mRead src/app/[locale]/(marketing)/blog/posts/th/the-tutoring-epidemic.md
+[0m→ [0mRead src/app/[locale]/(marketing)/blog/posts/th/the-tutoring-epidemic-segments.json
+[0m→ [0mRead scripts/generate-blog-video.ts[90m [limit=100][0m
+[0m✱ [0mGlob "public/videos/*the-tutoring-epidemic*"[90m 1 match[0m
+[0m
+[0m# [0mTodos
+[ ] Generate Day 32 English blog post (Why 12 Years of English Fails)
+[ ] Generate Day 32 Thai blog post (เรียนอังกฤษ 12 ปี ทำไมพูดไม่ได้)
+[ ] Generate hero image for Day 32
+[ ] Generate segments JSON for Day 32 video
+[ ] Run video generation pipeline for Day 32
+[ ] Validate generated content and run build
+[ ] Update plan.md and commit
+[0m
+[0m→ [0mSkill "create-text-mmx"
+[0m
+[0m$ [0mmmx text chat --message "Write a compelling, educational blog post of approximately 1200-1500 words for an educational technology company called Reading Advantage. The blog post should be titled 'Why 12 Years of English Fails: Breaking the Grammar-Translation Cycle and Focusing on Functional Fluency' and target Thai parents who are frustrated that their children have studied English for 12 years but still cannot speak confidently.
 
-What would you like me to do with this — execute the next day's generation, review the plan, or something else?
+The post should:
+- Open with a relatable scenario (e.g., a teenager freezing when a foreigner asks for directions)
+- Explain WHY traditional Thai English education fails (grammar-translation method, lack of authentic input, fear of mistakes, no functional practice)
+- Discuss the cognitive science of language acquisition (comprehensible input, output hypothesis, affective filter)
+- Contrast memorization-based learning with communicative competence
+- Introduce Primary Advantage as the solution that focuses on functional fluency from day one
+- Include specific teaching methodologies that work (immersion, task-based learning, speaking-first approach)
+- Close with a call to action to try Primary Advantage
+
+Format: Use markdown with H2 sections. Write in an authoritative but empathetic tone. No horizontal rules (---). Include the product link /products/primary-advantage. The author is 'Reading Advantage Marketing Team'. Date is 2026-05-06. Excerpt: 'Thai students study English for 12 years but still cannot speak. Here is why the system fails and how to fix it.' Tags: ['English Learning', 'Thai Education', 'Primary Advantage', 'Language Acquisition', 'Parent Guide']. Reading time: 7 minutes." --system "You are an expert educational content writer. Write authoritative, well-researched blog posts that help parents understand education issues and position Reading Advantage products as solutions." --output json
+{
+  "id": "064c29a052f590a84967c1590b754ee4",
+  "type": "message",
+  "role": "assistant",
+  "model": "MiniMax-M2.7",
+  "content": [
+    {
+      "thinking": "The user wants me to write a complete, publication-ready blog post for Reading Advantage. Let me carefully follow all the specifications and style guidance provided.\n\nKey requirements:\n- Title: 'Why 12 Years of English Fails: Breaking the Grammar-Translation Cycle and Focusing on Functional Fluency'\n- Target audience: Thai parents frustrated their children can't speak English despite 12 years of study\n- Length: 1200-1500 words\n- Format: Markdown with H2 sections, no horizontal rules\n- Opening: Relatable scenario (teenager freezing when foreigner asks for directions)\n- Structure: Hook → Why traditional education fails → Cognitive science → Memorization vs. communicative competence → Product introduction → Specific methodologies → CTA\n- Tone: Authoritative but empathetic\n- Author: Reading Advantage Marketing Team\n- Date: 2026-05-06\n- Excerpt: 'Thai students study English for 12 years but still cannot speak. Here is why the system fails and how to fix it.'\n- Tags: ['English Learning', 'Thai Education', 'Primary Advantage', 'Language Acquisition', 'Parent Guide']\n- Reading time: 7 minutes\n- Include product link: /products/primary-advantage\n\nI need to:\n1. Open with a vivid, emotionally resonant scene\n2. Explain the grammar-translation method failure\n3. Explain why traditional Thai English education fails\n4. Include cognitive science (comprehensible input, output hypothesis, affective filter)\n5. Contrast memorization-based learning with communicative competence\n6. Introduce Primary Advantage as the solution\n7. Include specific teaching methodologies (immersion, task-based learning, speaking-first approach)\n8. Strong CTA\n9. Authoritative but empathetic throughout\n10. 1200-1500 words\n\nLet me write this out now, making sure it's in the 1200-1500 word range.\n",
+      "signature": "70ad6781e89de4d4ff00c4b4e008c2a34cd576514c9e3d32d1138dc8be71c455",
+      "type": "thinking"
+    },
+    {
+      "text": "# Why 12 Years of English Fails: Breaking the Grammar-Translation Cycle and Focusing on Functional Fluency\n\n**Published on May 6, 2026 | By Reading Advantage Marketing Team | 7 min read**\n\n*Thai students study English for 12 years but still cannot speak. Here is why the system fails and how to fix it.*\n\n---\n\n## The Scene That Haunts Every Thai Parent\n\nImagine this: Your thirteen-year-old daughter is walking through a mall in Bangkok when a friendly tourist approaches her, smiling, and asks, \"Excuse me, do you know where the nearest BTS station is?\"\n\nYour daughter freezes. Her eyes dart away. She mumbles something—maybe \"I don't know\"—and hurries in the opposite direction. She has studied English since she was six years old. She has memorized vocabulary lists, conjugation charts, and grammar rules for over a decade. She can probably pass a written exam with flying colors.\n\nAnd yet, when a stranger needs simple directions, she cannot respond.\n\nThis scene plays out countless times across Thailand every single day. It is the quiet shame that haunts Thai students—and their parents. We invest enormous time, money, and emotional energy into our children's English education. We hire tutors, buy workbooks, and send them to language schools. Yet when real communication is required, our children fall silent.\n\nThe question that begs to be asked is this: **Is the problem our children, or is it the system?**\n\n## The Grammar-Translation Method: A Legacy of Failure\n\nTo understand why Thai students struggle despite years of study, we must first understand how most English instruction in Thailand actually works. The dominant methodology for decades has been the **grammar-translation method**—an approach rooted in the 18th and 19th centuries that prioritizes written grammar analysis and translation between languages over oral communication.\n\nIn a typical grammar-translation classroom, students learn English by:\n\n- **Memorizing grammar rules** and applying them to fill-in-the-blank exercises\n- **Translating sentences** back and forth between English and Thai\n- **Studying vocabulary lists** out of context, often without hearing pronunciation\n- **Reading passages** for comprehension without producing language themselves\n- **Taking written tests** that reward correct grammar over functional ability\n\nThis method creates students who are remarkably skilled at *analyzing* English but completely unprepared to *use* it. They have internalized that English is an academic subject—a set of rules to be memorized and tested—rather than a living language meant for communication.\n\nThe problem is compounded by a profound **lack of authentic input**. Most Thai students spend the majority of their English study time reading textbooks written by non-native speakers, filled with artificial dialogues that never occur in real life. They rarely hear natural English speech, colloquial expressions, or the rhythms of actual conversation. When they do encounter native speakers—or real English media—they are overwhelmed because the language they studied looks and sounds nothing like the English they were promised.\n\n## Why Students Stay Silent: The Fear Factor\n\nThere is another force at work that is rarely discussed openly: **the fear of making mistakes**.\n\nIn traditional Thai classrooms, English is evaluated on correctness. One grammatical error on a test means lost points. One mispronounced word invites correction in front of classmates. Over time, students develop a powerful emotional filter against speaking. They would rather say nothing than risk humiliation.\n\nThis fear becomes a self-reinforcing cycle. Because students rarely practice speaking, they never develop fluency. Because they lack fluency, they fear mistakes. Because they fear mistakes, they avoid speaking. Because they avoid speaking, they never develop fluency. The cycle repeats year after year, class after class.\n\nBy the time Thai students reach high school, many have developed such profound anxiety around English communication that they actively avoid any situation that might require them to speak. This is not a character flaw. It is the predictable outcome of a system that has never prioritized functional practice.\n\n## What Cognitive Science Tells Us About Language Acquisition\n\nFor decades, educational researchers have understood exactly why the grammar-translation method fails. Their findings, now well-established in the field of second language acquisition, reveal a stark gap between how languages are best learned and how they are typically taught.\n\n**Stephen Krashen's influential theory of comprehensible input** demonstrates that language acquisition occurs when learners are exposed to input that is slightly beyond their current level—the famous \"i + 1\" principle. We acquire languages naturally when we understand messages, not when we analyze grammar rules. A child does not learn their first language by studying syntax charts; they learn it by being immersed in meaningful communication.\n\n**The output hypothesis**, developed by Merrill Swain, further shows that producing language—speaking and writing—is not merely the result of acquisition but an active contributor to it. When students struggle to express meaning, they are forced to notice gaps in their knowledge and push their processing abilities further. Output is not a byproduct of learning; it is a mechanism of learning.\n\n**Krashen's affective filter hypothesis** explains why emotional factors like anxiety and motivation directly impact acquisition success. When students feel stressed, embarrassed, or unmotivated, their affective filter rises, blocking input from reaching the language acquisition device. Conversely, when learners feel safe, engaged, and motivated, the filter lowers and acquisition accelerates.\n\nTraditional Thai English education systematically violates all three principles. Students receive minimal comprehensible input. They produce language rarely, and when they do, it is under high-pressure conditions designed to trigger anxiety. The affective filter remains high throughout their educational journey, blocking the very acquisition they desperately need.\n\n## Memorization Versus Communicative Competence\n\nThe contrast between traditional learning and true communicative competence could not be more stark.\n\nA student trained in grammar-translation methods can tell you that \"if I were you, I would study harder\" uses the subjunctive mood to express a hypothetical. They can identify the conditional structure, name its components, and conjugate it correctly on a test. Yet if someone says this phrase to them in natural conversation, they may not even recognize it. And if they wanted to express a polite suggestion, they would likely struggle to produce it spontaneously.\n\nA student with communicative competence does not think about grammar structures. They simply communicate. They understand idioms, register, and natural flow. They can handle ambiguity, ask for clarification, and convey meaning effectively even when their vocabulary is limited. They are, in the most important sense, a *user* of the language rather than an analyst of it.\n\nCommunicative competence is what enables a Thai student to help that tourist find the BTS station. It is what allows them to video-call a future employer, participate in a university seminar, or simply enjoy an English-language film without subtitles. It is the goal that twelve years of education should achieve but rarely does.\n\n## Primary Advantage: Functional Fluency From Day One\n\nThis is precisely the gap that **Primary Advantage** was designed to fill.\n\nReading Advantage developed Primary Advantage with a fundamental different principle: **functional fluency from the very first lesson**. Rather than treating English as an academic subject to be studied, we treat it as a communication tool to be acquired through immersive, speaking-first practice.\n\nOur approach is grounded in the cognitive science of language acquisition and built around three core pillars:\n\n### Immersive Input\n\nEvery Primary Advantage lesson surrounds students with comprehensible, meaningful English. Our classrooms use 90% English immersion from day one, with carefully scaffolded instruction that ensures students understand what they hear. We expose learners to authentic speech patterns, natural pacing, and real-world contexts that textbooks simply cannot provide.\n\n### Speaking-First Methodology\n\nWe eliminate the silent period that traditional methods create. Students begin speaking from their very first lesson—not reciting memorized phrases, but expressing real meaning in real contexts. Our task-based learning activities require communication to succeed, creating authentic motivation to produce language. Every lesson includes structured speaking practice designed to build confidence alongside competence.\n\n### Low-Affective-Filter Environment\n\nPrimary Advantage classrooms are explicitly designed to lower anxiety and encourage risk-taking. We celebrate mistakes as learning opportunities rather than failures. Positive reinforcement, supportive peer groups, and progressive skill-building ensure that students feel safe to speak, experiment, and grow.\n\n## What This Means for Your Child\n\nThe results speak for themselves. Students in the Primary Advantage program do not spend years memorizing grammar rules. Within weeks, they are engaging in simple conversations. Within months, they are expressing opinions, asking questions, and navigating real communication situations. By the time they complete the program, they have the functional fluency that twelve years of traditional education should have provided—and rarely did.\n\nYour daughter will not freeze when a tourist approaches her. She will not need to translate in her head before responding. She will not feel ashamed of her accent or afraid of making mistakes.\n\nShe will simply *communicate*—because that is what English is for.\n\n## Ready to Break the Cycle?\n\nIf you are a Thai parent who has watched your child struggle through twelve years of English education without gaining the ability to speak confidently, we understand your frustration. You are not alone, and it is not your child's fault. The system failed them—but that system is not the only option.\n\n**Primary Advantage** offers a different path: a scientifically-grounded approach that prioritizes functional fluency, real communication, and measurable results. Our methodology has helped thousands of Thai students finally acquire the English skills they need for their futures.\n\nYour child's next English class can be the one that changes everything.\n\n**Explore Primary Advantage today** and discover what functional fluency really looks like. Because twelve years is enough. It is time for your child to finally start *speaking*.\n\n---\n\n*Tags: English Learning, Thai Education, Primary Advantage, Language Acquisition, Parent Guide*",
+      "type": "text"
+    }
+  ],
+  "usage": {
+    "input_tokens": 360,
+    "output_tokens": 2346,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+  },
+  "stop_reason": "end_turn",
+  "base_resp": {
+    "status_code": 0,
+    "status_msg": "success"
+  }
+}
+[0m
+[0m$ [0mcat << 'EOF' > /home/daniel-bo/Desktop/www-reading-advantage/src/app/\[locale\]/\(marketing\)/blog/posts/en/why-12-years-of-english-fails.md
+---
+title: "Why 12 Years of English Fails: Breaking the Grammar-Translation Cycle and Focusing on Functional Fluency"
+date: "2026-05-06"
+excerpt: "Thai students study English for 12 years but still cannot speak. Here is why the system fails and how to fix it."
+coverImage: "/blog/day32-why-12-years-of-english-fails_001.jpg"
+author: "Reading Advantage Marketing Team"
+product: "/products/primary-advantage"
+tags: ["English Learning", "Thai Education", "Primary Advantage", "Language Acquisition", "Parent Guide"]
+readingTime: 7
+---
+
+# Why 12 Years of English Fails: Breaking the Grammar-Translation Cycle and Focusing on Functional Fluency
+
+Imagine this: Your thirteen-year-old daughter is walking through a mall in Bangkok when a friendly tourist approaches her, smiling, and asks, "Excuse me, do you know where the nearest BTS station is?"
+
+Your daughter freezes. Her eyes dart away. She mumbles something—maybe "I don't know"—and hurries in the opposite direction. She has studied English since she was six years old. She has memorized vocabulary lists, conjugation charts, and grammar rules for over a decade. She can probably pass a written exam with flying colors.
+
+And yet, when a stranger needs simple directions, she cannot respond.
+
+This scene plays out countless times across Thailand every single day. It is the quiet shame that haunts Thai students—and their parents. We invest enormous time, money, and emotional energy into our children's English education. We hire tutors, buy workbooks, and send them to language schools. Yet when real communication is required, our children fall silent.
+
+The question that begs to be asked is this: **Is the problem our children, or is it the system?**
+
+## The Grammar-Translation Method: A Legacy of Failure
+
+To understand why Thai students struggle despite years of study, we must first understand how most English instruction in Thailand actually works. The dominant methodology for decades has been the **grammar-translation method**—an approach rooted in the 18th and 19th centuries that prioritizes written grammar analysis and translation between languages over oral communication.
+
+In a typical grammar-translation classroom, students learn English by:
+
+- **Memorizing grammar rules** and applying them to fill-in-the-blank exercises
+- **Translating sentences** back and forth between English and Thai
+- **Studying vocabulary lists** out of context, often without hearing pronunciation
+- **Reading passages** for comprehension without producing language themselves
+- **Taking written tests** that reward correct grammar over functional ability
+
+This method creates students who are remarkably skilled at *analyzing* English but completely unprepared to *use* it. They have internalized that English is an academic subject—a set of rules to be memorized and tested—rather than a living language meant for communication.
+
+The problem is compounded by a profound **lack of authentic input**. Most Thai students spend the majority of their English study time reading textbooks written by non-native speakers, filled with artificial dialogues that never occur in real life. They rarely hear natural English speech, colloquial expressions, or the rhythms of actual conversation. When they do encounter native speakers—or real English media—they are overwhelmed because the language they studied looks and sounds nothing like the English they were promised.
+
+## Why Students Stay Silent: The Fear Factor
+
+There is another force at work that is rarely discussed openly: **the fear of making mistakes**.
+
+In traditional Thai classrooms, English is evaluated on correctness. One grammatical error on a test means lost points. One mispronounced word invites correction in front of classmates. Over time, students develop a powerful emotional filter against speaking. They would rather say nothing than risk humiliation.
+
+This fear becomes a self-reinforcing cycle. Because students rarely practice speaking, they never develop fluency. Because they lack fluency, they fear mistakes. Because they fear mistakes, they avoid speaking. Because they avoid speaking, they never develop fluency. The cycle repeats year after year, class after class.
+
+By the time Thai students reach high school, many have developed such profound anxiety around English communication that they actively avoid any situation that might require them to speak. This is not a character flaw. It is the predictable outcome of a system that has never prioritized functional practice.
+
+## What Cognitive Science Tells Us About Language Acquisition
+
+For decades, educational researchers have understood exactly why the grammar-translation method fails. Their findings, now well-established in the field of second language acquisition, reveal a stark gap between how languages are best learned and how they are typically taught.
+
+**Stephen Krashen's influential theory of comprehensible input** demonstrates that language acquisition occurs when learners are exposed to input that is slightly beyond their current level—the famous "i + 1" principle. We acquire languages naturally when we understand messages, not when we analyze grammar rules. A child does not learn their first language by studying syntax charts; they learn it by being immersed in meaningful communication.
+
+**The output hypothesis**, developed by Merrill Swain, further shows that producing language—speaking and writing—is not merely the result of acquisition but an active contributor to it. When students struggle to express meaning, they are forced to notice gaps in their knowledge and push their processing abilities further. Output is not a byproduct of learning; it is a mechanism of learning.
+
+**Krashen's affective filter hypothesis** explains why emotional factors like anxiety and motivation directly impact acquisition success. When students feel stressed, embarrassed, or unmotivated, their affective filter rises, blocking input from reaching the language acquisition device. Conversely, when learners feel safe, engaged, and motivated, the filter lowers and acquisition accelerates.
+
+Traditional Thai English education systematically violates all three principles. Students receive minimal comprehensible input. They produce language rarely, and when they do, it is under high-pressure conditions designed to trigger anxiety. The affective filter remains high throughout their educational journey, blocking the very acquisition they desperately need.
+
+## Memorization Versus Communicative Competence
+
+The contrast between traditional learning and true communicative competence could not be more stark.
+
+A student trained in grammar-translation methods can tell you that "if I were you, I would study harder" uses the subjunctive mood to express a hypothetical. They can identify the conditional structure, name its components, and conjugate it correctly on a test. Yet if someone says this phrase to them in natural conversation, they may not even recognize it. And if they wanted to express a polite suggestion, they would likely struggle to produce it spontaneously.
+
+A student with communicative competence does not think about grammar structures. They simply communicate. They understand idioms, register, and natural flow. They can handle ambiguity, ask for clarification, and convey meaning effectively even when their vocabulary is limited. They are, in the most important sense, a *user* of the language rather than an analyst of it.
+
+Communicative competence is what enables a Thai student to help that tourist find the BTS station. It is what allows them to video-call a future employer, participate in a university seminar, or simply enjoy an English-language film without subtitles. It is the goal that twelve years of education should achieve but rarely does.
+
+## Primary Advantage: Functional Fluency From Day One
+
+This is precisely the gap that **Primary Advantage** was designed to fill.
+
+Reading Advantage developed Primary Advantage with a fundamental different principle: **functional fluency from the very first lesson**. Rather than treating English as an academic subject to be studied, we treat it as a communication tool to be acquired through immersive, speaking-first practice.
+
+Our approach is grounded in the cognitive science of language acquisition and built around three core pillars:
+
+### Immersive Input
+
+Every Primary Advantage lesson surrounds students with comprehensible, meaningful English. Our classrooms use 90% English immersion from day one, with carefully scaffolded instruction that ensures students understand what they hear. We expose learners to authentic speech patterns, natural pacing, and real-world contexts that textbooks simply cannot provide.
+
+### Speaking-First Methodology
+
+We eliminate the silent period that traditional methods create. Students begin speaking from their very first lesson—not reciting memorized phrases, but expressing real meaning in real contexts. Our task-based learning activities require communication to succeed, creating authentic motivation to produce language. Every lesson includes structured speaking practice designed to build confidence alongside competence.
+
+### Low-Affective-Filter Environment
+
+Primary Advantage classrooms are explicitly designed to lower anxiety and encourage risk-taking. We celebrate mistakes as learning opportunities rather than failures. Positive reinforcement, supportive peer groups, and progressive skill-building ensure that students feel safe to speak, experiment, and grow.
+
+## What This Means for Your Child
+
+The results speak for themselves. Students in the Primary Advantage program do not spend years memorizing grammar rules. Within weeks, they are engaging in simple conversations. Within months, they are expressing opinions, asking questions, and navigating real communication situations. By the time they complete the program, they have the functional fluency that twelve years of traditional education should have provided—and rarely did.
+
+Your daughter will not freeze when a tourist approaches her. She will not need to translate in her head before responding. She will not feel ashamed of her accent or afraid of making mistakes.
+
+She will simply *communicate*—because that is what English is for.
+
+## Ready to Break the Cycle?
+
+If you are a Thai parent who has watched your child struggle through twelve years of English education without gaining the ability to speak confidently, we understand your frustration. You are not alone, and it is not your child's fault. The system failed them—but that system is not the only option.
+
+**Primary Advantage** offers a different path: a scientifically-grounded approach that prioritizes functional fluency, real communication, and measurable results. Our methodology has helped thousands of Thai students finally acquire the English skills they need for their futures.
+
+Your child's next English class can be the one that changes everything.
+
+**Explore Primary Advantage today** and discover what functional fluency really looks like. Because twelve years is enough. It is time for your child to finally start *speaking*.
+EOF
+(no output)
+[0m
+[0m$ [0mmmx text chat --message "Translate the following English blog post into Thai. The translation should be natural, compelling, and culturally appropriate for Thai parents. Maintain the same structure, tone (authoritative but empathetic), and length (approximately 1200-1500 words). The Thai title should be: 'เรียนอังกฤษ 12 ปี ทำไมพูดไม่ได้: การทำลายวงจรแปล-ไวยากรณ์ และเน้นความคล่องแคล่วเชิงปฏิบัติ'
+
+Important:
+- Write in natural, fluent Thai that parents can relate to
+- Keep all section headers in Thai
+- Maintain the product mentions (Primary Advantage = Primary Advantage)
+- Keep the call to action structure
+- The author is 'Reading Advantage Marketing Team'
+- Date is '2026-05-06'
+- Excerpt: 'นักเรียนไทยเรียนภาษาอังกฤษมา 12 ปี แต่ยังพูดไม่ได้ นี่คือเหตุผลที่ระบบล้มเหลวและวิธีแก้ไข'
+- Cover image: /blog/day32-why-12-years-of-english-fails_001.jpg
+- Product: /products/primary-advantage
+- Tags: ["การเรียนภาษาอังกฤษ", "การศึกษาไทย", "Primary Advantage", "การซึมซับภาษา", "คู่มือผู้ปกครอง"]
+- Reading time: 7
+
+Here is the English content to translate:
+
+---
+
+# Why 12 Years of English Fails: Breaking the Grammar-Translation Cycle and Focusing on Functional Fluency
+
+Imagine this: Your thirteen-year-old daughter is walking through a mall in Bangkok when a friendly tourist approaches her, smiling, and asks, \"Excuse me, do you know where the nearest BTS station is?\"
+
+Your daughter freezes. Her eyes dart away. She mumbles something—maybe \"I don't know\"—and hurries in the opposite direction. She has studied English since she was six years old. She has memorized vocabulary lists, conjugation charts, and grammar rules for over a decade. She can probably pass a written exam with flying colors.
+
+And yet, when a stranger needs simple directions, she cannot respond.
+
+This scene plays out countless times across Thailand every single day. It is the quiet shame that haunts Thai students—and their parents. We invest enormous time, money, and emotional energy into our children's English education. We hire tutors, buy workbooks, and send them to language schools. Yet when real communication is required, our children fall silent.
+
+The question that begs to be asked is this: **Is the problem our children, or is it the system?**
+
+## The Grammar-Translation Method: A Legacy of Failure
+
+To understand why Thai students struggle despite years of study, we must first understand how most English instruction in Thailand actually works. The dominant methodology for decades has been the **grammar-translation method**—an approach rooted in the 18th and 19th centuries that prioritizes written grammar analysis and translation between languages over oral communication.
+
+In a typical grammar-translation classroom, students learn English by:
+
+- **Memorizing grammar rules** and applying them to fill-in-the-blank exercises
+- **Translating sentences** back and forth between English and Thai
+- **Studying vocabulary lists** out of context, often without hearing pronunciation
+- **Reading passages** for comprehension without producing language themselves
+- **Taking written tests** that reward correct grammar over functional ability
+
+This method creates students who are remarkably skilled at *analyzing* English but completely unprepared to *use* it. They have internalized that English is an academic subject—a set of rules to be memorized and tested—rather than a living language meant for communication.
+
+The problem is compounded by a profound **lack of authentic input**. Most Thai students spend the majority of their English study time reading textbooks written by non-native speakers, filled with artificial dialogues that never occur in real life. They rarely hear natural English speech, colloquial expressions, or the rhythms of actual conversation. When they do encounter native speakers—or real English media—they are overwhelmed because the language they studied looks and sounds nothing like the English they were promised.
+
+## Why Students Stay Silent: The Fear Factor
+
+There is another force at work that is rarely discussed openly: **the fear of making mistakes**.
+
+In traditional Thai classrooms, English is evaluated on correctness. One grammatical error on a test means lost points. One mispronounced word invites correction in front of classmates. Over time, students develop a powerful emotional filter against speaking. They would rather say nothing than risk humiliation.
+
+This fear becomes a self-reinforcing cycle. Because students rarely practice speaking, they never develop fluency. Because they lack fluency, they fear mistakes. Because they fear mistakes, they avoid speaking. Because they avoid speaking, they never develop fluency. The cycle repeats year after year, class after class.
+
+By the time Thai students reach high school, many have developed such profound anxiety around English communication that they actively avoid any situation that might require them to speak. This is not a character flaw. It is the predictable outcome of a system that has never prioritized functional practice.
+
+## What Cognitive Science Tells Us About Language Acquisition
+
+For decades, educational researchers have understood exactly why the grammar-translation method fails. Their findings, now well-established in the field of second language acquisition, reveal a stark gap between how languages are best learned and how they are typically taught.
+
+**Stephen Krashen's influential theory of comprehensible input** demonstrates that language acquisition occurs when learners are exposed to input that is slightly beyond their current level—the famous \"i + 1\" principle. We acquire languages naturally when we understand messages, not when we analyze grammar rules. A child does not learn their first language by studying syntax charts; they learn it by being immersed in meaningful communication.
+
+**The output hypothesis**, developed by Merrill Swain, further shows that producing language—speaking and writing—is not merely the result of acquisition but an active contributor to it. When students struggle to express meaning, they are forced to notice gaps in their knowledge and push their processing abilities further. Output is not a byproduct of learning; it is a mechanism of learning.
+
+**Krashen's affective filter hypothesis** explains why emotional factors like anxiety and motivation directly impact acquisition success. When students feel stressed, embarrassed, or unmotivated, their affective filter rises, blocking input from reaching the language acquisition device. Conversely, when learners feel safe, engaged, and motivated, the filter lowers and acquisition accelerates.
+
+Traditional Thai English education systematically violates all three principles. Students receive minimal comprehensible input. They produce language rarely, and when they do, it is under high-pressure conditions designed to trigger anxiety. The affective filter remains high throughout their educational journey, blocking the very acquisition they desperately need.
+
+## Memorization Versus Communicative Competence
+
+The contrast between traditional learning and true communicative competence could not be more stark.
+
+A student trained in grammar-translation methods can tell you that \"if I were you, I would study harder\" uses the subjunctive mood to express a hypothetical. They can identify the conditional structure, name its components, and conjugate it correctly on a test. Yet if someone says this phrase to them in natural conversation, they may not even recognize it. And if they wanted to express a polite suggestion, they would likely struggle to produce it spontaneously.
+
+A student with communicative competence does not think about grammar structures. They simply communicate. They understand idioms, register, and natural flow. They can handle ambiguity, ask for clarification, and convey meaning effectively even when their vocabulary is limited. They are, in the most important sense, a *user* of the language rather than an analyst of it.
+
+Communicative competence is what enables a Thai student to help that tourist find the BTS station. It is what allows them to video-call a future employer, participate in a university seminar, or simply enjoy an English-language film without subtitles. It is the goal that twelve years of education should achieve but rarely does.
+
+## Primary Advantage: Functional Fluency From Day One
+
+This is precisely the gap that **Primary Advantage** was designed to fill.
+
+Reading Advantage developed Primary Advantage with a fundamental different principle: **functional fluency from the very first lesson**. Rather than treating English as an academic subject to be studied, we treat it as a communication tool to be acquired through immersive, speaking-first practice.
+
+Our approach is grounded in the cognitive science of language acquisition and built around three core pillars:
+
+### Immersive Input
+
+Every Primary Advantage lesson surrounds students with comprehensible, meaningful English. Our classrooms use 90% English immersion from day one, with carefully scaffolded instruction that ensures students understand what they hear. We expose learners to authentic speech patterns, natural pacing, and real-world contexts that textbooks simply cannot provide.
+
+### Speaking-First Methodology
+
+We eliminate the silent period that traditional methods create. Students begin speaking from their very first lesson—not reciting memorized phrases, but expressing real meaning in real contexts. Our task-based learning activities require communication to succeed, creating authentic motivation to produce language. Every lesson includes structured speaking practice designed to build confidence alongside competence.
+
+### Low-Affective-Filter Environment
+
+Primary Advantage classrooms are explicitly designed to lower anxiety and encourage risk-taking. We celebrate mistakes as learning opportunities rather than failures. Positive reinforcement, supportive peer groups, and progressive skill-building ensure that students feel safe to speak, experiment, and grow.
+
+## What This Means for Your Child
+
+The results speak for themselves. Students in the Primary Advantage program do not spend years memorizing grammar rules. Within weeks, they are engaging in simple conversations. Within months, they are expressing opinions, asking questions, and navigating real communication situations. By the time they complete the program, they have the functional fluency that twelve years of traditional education should have provided—and rarely did.
+
+Your daughter will not freeze when a tourist approaches her. She will not need to translate in her head before responding. She will not feel ashamed of her accent or afraid of making mistakes.
+
+She will simply *communicate*—because that is what English is for.
+
+## Ready to Break the Cycle?
+
+If you are a Thai parent who has watched your child struggle through twelve years of English education without gaining the ability to speak confidently, we understand your frustration. You are not alone, and it is not your child's fault. The system failed them—but that system is not the only option.
+
+**Primary Advantage** offers a different path: a scientifically-grounded approach that prioritizes functional fluency, real communication, and measurable results. Our methodology has helped thousands of Thai students finally acquire the English skills they need for their futures.
+
+Your child's next English class can be the one that changes everything.
+
+**Explore Primary Advantage today** and discover what functional fluency really looks like. Because twelve years is enough. It is time for your child to finally start *speaking*." --system "You are a professional Thai translator specializing in educational content. Translate naturally while maintaining academic rigor and emotional resonance for Thai parents." --output json
+{
+  "id": "064c2a1023aa4b56d0aba5b1bd4aeaf9",
+  "type": "message",
+  "role": "assistant",
+  "model": "MiniMax-M2.7",
+  "content": [
+    {
+      "thinking": "The user wants me to translate a blog post from English into Thai. I need to create a complete, natural Thai translation with all the specified metadata and formatting requirements. Let me proceed with creating the translation.\n\nThe content should be:\n- Natural, fluent Thai that Thai parents can relate to\n- Authoritative but empathetic tone\n- Approximately 1200-1500 words\n- All section headers in Thai\n- Keep product mentions as Primary Advantage\n- Maintain call to action structure\n- All metadata as specified\n\nLet me write the translation now.",
+      "signature": "a5b0969429f72cf87e585c17f3c5ae1641050e6904e58dd84cbf608525cf58d3",
+      "type": "thinking"
+    },
+    {
+      "text": "```json\n{\n  \"id\": \"blog-why-12-years-of-english-fails-th\",\n  \"title\": \"เรียนอังกฤษ 12 ปี ทำไมพูดไม่ได้: การทำลายวงจรแปล-ไวยากรณ์ และเน้นความคล่องแคล่วเชิงปฏิบัติ\",\n  \"slug\": \"day32-why-12-years-of-english-fails\",\n  \"date\": \"2026-05-06\",\n  \"author\": \"Reading Advantage Marketing Team\",\n  \"excerpt\": \"นักเรียนไทยเรียนภาษาอังกฤษมา 12 ปี แต่ยังพูดไม่ได้ นี่คือเหตุผลที่ระบบล้มเหลวและวิธีแก้ไข\",\n  \"cover_image\": \"/blog/day32-why-12-years-of-english-fails_001.jpg\",\n  \"product\": \"/products/primary-advantage\",\n  \"tags\": [\"การเรียนภาษาอังกฤษ\", \"การศึกษาไทย\", \"Primary Advantage\", \"ความคล่องแคล่วทางภาษา\"],\n  \"content\": \"## ความจริงที่ไม่มีใครอยากยอมรับ\n\nลองนึกภาพดูนะคะ... ลูกของคุณเรียนภาษาอังกฤษมาตั้งแต่อนุบาล ผ่านประถม มัธยม รวมแล้วเกือบ 12 ปี คุณจ่ายค่าสนามเรียนพิเศษไปเป็นแสน ซื้อหนังสือเยอะแยะ แต่พอถึงเวลาพูดคุยกับชาวต่างชาติ... ลูกกลับยืนนิ่ง ไม่รู้จะเริ่มพูดยังไง\n\nเจอแบบนี้บ่อยๆ จนเริ่มสงสัยว่า \"เรียนมาตั้งนาน เรียนอะไรอยู่?\"\n\nคำตอบคือ: ระบบการศึกษาของเรากำลังสอนเด็กให้เป็น \"นักแปล\" ไม่ใช่ \"ผู้ใช้ภาษา\"\n\n## โครงสร้างที่ทำให้เด็กไทยติดกับดัก\n\n### การสอนแบบแปลตั้งแต่ต้น\n\nเวลาครูสอนภาษาอังกฤษในห้องเรียน สิ่งแรกที่ทำคือ \"แปล\" นักเรียนต้องแปลก่อนว่า vocab นี้แปลว่าอะไร แปลวว sentence นี้แปลเป็นไทยยังไง แล้วค่อยไปเรียน grammar ว่าตรงไหนต้องเติม S/V agreement\n\nพอมาเจอชาวต่างชาติ สมองของเด็กจะทำงานเป็น:\n\n1. ฟังภาษาอังกฤษ\n2. แปลเป็นไทยในหัว\n3. คิดคำตอบเป็นไทย\n4. แปลกลับเป็นอังกฤษ\n5. พูดออกไป\n\nทีนี้ กว่าจะคิดถึงขั้นตอนที่ 5 คนเขาพูดไปแล้ว 3 รอบ เด็กเรายังติดอยู่ที่ขั้นตอนที่ 2-3 อยู่เลย\n\n### ไวยากรณ์ซึ่งเป็นหลักแหล่ง\n\nไวยากรณ์ภาษาอังกฤษเป็นเรื่องสำคัญ ไม่ต้องสงสัย แต่ปัญหาคือเราให้ความสำคัญกับมันมากเกินไปจนกลายเป็นเป้าหมายหลักแทนที่จะเป็นเครื่องมือ\n\nเด็กไทยจำ tenses ได้ดีมาก รู้จัก Present Perfect แปลว่าอะไร แต่พอถามว่า \"เมื่อวานคุณทำอะไร?\" กลับตอบไม่ได้เพราะนึกไม่ออกว่าจะใช้ Past Simple ยังไง\n\nนั่นเพราะพวกเขาเรียนไวยากรณ์ในฐานะ \"กฎที่ต้องจำ\" ไม่ใช่ในฐานะ \"เครื่องมือที่ใช้สื่อสาร\"\n\n### ห้องเรียนที่ไม่มีโอกาสพูดจริง\n\nในห้องเรียนภาษาอังกฤษทั่วไป ครูหนึ่งคนสอนเด็ก 30-40 คน ถ้าแต่ละคนพูดคนละ 2 นาที ก็ต้องใช้เวลาชั่วโมงกว่าจะครบรอบ ครูเลยต้องเน้นสอนทฤษฎีมากกว่าให้ฝึกพูดจริง\n\nผลคือ เด็กรู้เรื่องแกรมม่าดี แต่ไม่เคยมีโอกาสใช้ในสถานการณ์จริง พอถึงเวลาพูดจริงก็ต้อง \"สร้างประโยคจากศูนย์\" ซึ่งต้องใช้พลังสมองมหาศาลและทำให้เกิดความเครียดสูง\n\n## วงจรที่ทำให้ปัญหาซ้ำรอย\n\nนี่คือสิ่งที่เรียกว่า \"vicious cycle\" หรือวงจรที่ทำให้ปัญหาไม่มีทางจบ:\n\n1. **เด็กไม่พูดเพราะกลัวผิด** - กลัว grammar ผิด กลัวศัพท์ไม่ถูก กลัวถูกหัวเราะ\n2. **ไม่พูดก็ไม่พัฒนา** - พอไม่ได้ฝึกพูด ความชำนาญก็ไม่เกิด\n3. **ไม่พัฒนาก็ยิ่งกลัว** - ยิ่งไม่เกิดความชำนาญ ยิ่งรู้สึกว่าตัวเองไม่เก่ง\n4. **ยิ่งกลัวก็ยิ่งไม่พูด** - วนกลับไปที่ข้อ 1 อีกครั้ง\n\nวงจรนี้ไม่มีวันจบตราบใดที่เรายังเน้นแต่ทฤษฎีและแปล โดยไม่ให้เด็กได้ลงมือทำจริง\n\n## ทางออกที่พิสูจน์แล้วว่าได้ผล\n\n### การเรียนแบบ \"เน้นความคล่องแคล่ว\" (Fluency-First Approach)\n\nวิธีนี้ต่างจากการเรียนแบบดั้งเดิมตรงที่:\n\n- **เริ่มจากการสื่อสารก่อน** - เราไม่ต้องรู้ grammar ครบถ้วนถึงจะพูดได้ แค่มีคำศัพท์พื้นฐานกับความกล้าก็พูดได้แล้ว\n- **Grammar เป็นเครื่องมือ ไม่ใช่เป้าหมาย** - เราสอน grammar ตอนที่เด็กต้องการใช้จริงๆ ผ่านสถานการณ์จริง ไม่ใช่แยกออกมาสอนเป็นบทๆ\n- **เน้นการฟังและพูดก่อน** - ให้สมองคุ้นเคยกับเสียงและจังหวะของภาษาก่อน ค่อยไปเชื่อมโยงกับตัวอักษรทีหลัง\n\n### การสร้างสภาพแวดล้อมที่ปลอดภัย\n\nเด็กต้องรู้สึกว่าการพูดผิดเป็นเรื่องปกติและเป็นส่วนหนึ่งของการเรียนรู้ ห้องเรียนที่ดีต้องมีลักษณะ:\n\n- **ไม่มีการวิจารณ์** - ไม่มีใครหัวเราะเพื่อนเมื่อเขาพูดผิด\n- **เฉลิมฉลองความพยายาม** - ชื่นชมเด็กที่กล้าพูดมากกว่าเด็กที่พูดถูกทุกครั้ง\n- **เปิดโอกาสให้พูดซ้ำๆ** - ฝึกจนเริ่มเป็นความเคยธรรมชาติ\n\n### การเชื่อมโยงกับชีวิตจริง\n\nการเรียนภาษาต้องมีความหมายกับเด็ก ถ้าเขารู้ว่า \"ภาษาอังกฤษที่เรียนวันนี้ พรุ่งนี้จะใช้ตอนดูหนัง/เล่นเกม/คุยกับเพื่อนในค่ายภาษา\" เขาจะมีแรงจูงใจในการเรียนมากขึ้น\n\n## ความแตกต่างที่คุณจะเริ่มเห็น\n\nเมื่อเปลี่ยนวิธีการเรียน เด็กจะเริ่มเปลี่ยนแปลงในหลายด้าน:\n\n**ความมั่นใจ** - เด็กจะกล้าพูดมากขึ้นเพราะรู้ว่าไม่มีใครจะหัวเราะ และผิดก็ไม่เป็นไร\n\n**ความเป็นธรรมชาติ** - เด็กจะเริ่มคิดเป็นภาษาอังกฤษ ไม่ใช่แปลไทยเป็นอังกฤษในหัวอีกต่อไป\n\n**ความสนุก** - การเรียนที่เน้นการสื่อสารจะสนุกกว่าการท่องศัพท์และทำแบบฝึกหัดเกี่ยวกับ tenses มาก\n\n**ผลลัพธ์ที่ยั่งยืน** - ความรู้ที่ได้จากการใช้จริงจะจำได้นานกว่าความรู้ที่ได้จากการท่องจำอย่างเดียว\n\n## ถึงเวลาตัดสินใจแล้ว\n\nการเปลี่ยนวิธีการเรียนไม่ใช่เรื่องง่าย และก็ไม่ใช่เรื่องยากเกินไปเช่นกัน สิ่งสำคัญคือการเริ่มต้นด้วยความเข้าใจว่า \"ระบบเดิมมันมีปัญหา\" และ \"มีทางเลือกอื่นที่ดีกว่า\"\n\nถ้าคุณพร้อมให้ลูกหลุดพ้",
+      "type": "text"
+    }
+  ],
+  "usage": {
+    "input_tokens": 419,
+    "output_tokens": 4096,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+  },
+  "stop_reason": "max_tokens",
+  "base_resp": {
+    "status_code": 0,
+    "status_msg": "success"
+  }
+}
+[0m
+[0m$ [0mmmx text chat --message "เขียนบล็อกโพสต์ภาษาไทยเกี่ยวกับการเรียนภาษาอังกฤษในไทยที่ล้มเหลว ชื่อเรื่อง: 'เรียนอังกฤษ 12 ปี ทำไมพูดไม่ได้: การทำลายวงจรแปล-ไวยากรณ์ และเน้นความคล่องแคล่วเชิงปฏิบัติ'
+
+เนื้อหาควรมี:
+- ฉากเปิด: เด็กไทยวัย 13 ปีเจอนักท่องเที่ยวต่างชาติในห้าง ถามทางไป BTS แต่เด็กตอบไม่ได้แม้เรียนมา 12 ปี
+- อธิบายปัญหาการสอนแบบแปล-ไวยากรณ์ (grammar-translation method)
+- อธิบายว่าทำไมเด็กถึงกลัวพูด (fear of mistakes, vicious cycle)
+- อธิบายหลักการทางวิทยาศาสตร์: comprehensible input, output hypothesis, affective filter
+- เปรียบเทียบการท่องจำ vs communicative competence
+- แนะนำ Primary Advantage เป็นทางออก เน้น 3 หลักการ: Immersive Input, Speaking-First, Low-Affective-Filter
+- ปิดท้ายด้วย CTA ให้ลอง Primary Advantage
+
+เขียนให้มีความยาวประมาณ 1200-1500 คำ โทน: เข้าใจผู้ปกครองแต่ให้ความรู้ที่เป็นวิทยาศาสตร์ ใช้ markdown มีหัวข้อ H2 H3 ไม่ใช้ --- ในบทความ
+
+ข้อมูล metadata:
+- วันที่: 2026-05-06
+- ผู้เขียน: Reading Advantage Marketing Team
+- บทคัดย่อ: นักเรียนไทยเรียนภาษาอังกฤษมา 12 ปี แต่ยังพูดไม่ได้ นี่คือเหตุผลที่ระบบล้มเหลวและวิธีแก้ไข
+- รูปปก: /blog/day32-why-12-years-of-english-fails_001.jpg
+- สินค้า: /products/primary-advantage
+- แท็ก: การเรียนภาษาอังกฤษ, การศึกษาไทย, Primary Advantage, การซึมซับภาษา, คู่มือผู้ปกครอง
+- เวลาอ่าน: 7 นาที" --system "คุณเป็นนักเขียนบล็อกด้านการศึกษาที่เข้าใจผู้ปกครองไทย สามารถอธิบายเรื่องยากให้เข้าใจง่าย แต่ยังคงความน่าเชื่อถือทางวิชาการ" --output json
+{
+  "id": "064c2a60537a4f74ca707c0346fb9d9a",
+  "type": "message",
+  "role": "assistant",
+  "model": "MiniMax-M2.7",
+  "content": [
+    {
+      "thinking": "The user wants me to write a Thai language blog post about the failure of English language education in Thailand. Let me create this post following all the specifications provided.\n\nLet me write this in Thai, approximately 1200-1500 words, with proper markdown headings (H2, H3), no horizontal rules, engaging tone that's empathetic to parents but scientifically grounded.",
+      "signature": "db9203c9f4f00a6f4bd556134adff25e4dfedbf544ee1c4196964d420525083a",
+      "type": "thinking"
+    },
+    {
+      "text": "# เรียนอังกฤษ 12 ปี ทำไมพูดไม่ได้: การทำลายวงจรแปล-ไวยากรณ์ และเน้นความคล่องแคล่วเชิงปฏิบัติ\n\n**บทคัดย่อ:** นักเรียนไทยเรียนภาษาอังกฤษมา 12 ปี แต่ยังพูดไม่ได้ นี่คือเหตุผลที่ระบบล้มเหลวและวิธีแก้ไข\n\n---\n\n## ฉากเปิด: ตอนนั้นเด็กอายุ 13 ปี\n\nลองนึกภาพตามนะครับ — วันหยุดเสาร์ที่ห้างสยามพารากอน เด็กผู้หญิงวัย 13 ปียืนอยู่ในความวุ่นวายของห้างใหญ่ นักท่องเที่ยวต่างชาติเดินมาถามเธอว่า **\"Excuse me, where is the BTS station?\"**\n\nเด็กคนนั้นเรียนภาษาอังกฤษมา 12 ปีแล้ว เธอผ่านข้อสอบ O-Net มาแล้ว เธอแต่งประโยคภาษาอังกฤษได้ถูกต้องบนกระดาษ แต่พอถึงเวลาจริง เธออึ้งไปเพียงแป๊บเดียว ก่อนจะส่ายหัวแล้วหนีไปอย่างรวดเร็ว\n\nเหตุการณ์แบบนี้เกิดขึ้นทุกวันในประเทศไทย และมันสะท้อนปัญหาที่ลึกกว่าที่หลายคนคิด\n\n**เด็กไทยไม่ได้ \"ไม่เก่ง\" ภาษาอังกฤษ — เด็กไทยถูกสอนในวิธีที่ไม่มีทางพูดได้จริงตั้งแต่แรก**\n\n---\n\n## ปัญหา: ระบบที่สอนให้ \"แปล\" ไม่ใช่ \"สื่อสาร\"\n\nวิธีการสอนภาษาอังกฤษในโรงเรียนไทยส่วนใหญ่ยังคงยึดแนวที่เรียกว่า **Grammar-Translation Method** หรือ \"การสอนแบบแปล-ไวยากรณ์\" ซึ่งเป็นวิธีที่มีมาตั้งแต่ศตวรรษที่ 19\n\nลักษณะเด่นของวิธีนี้คือ:\n\n- เน้นการแปลประโยคภาษาไทยเป็นภาษาอังกฤษ\n- เน้นการจำไวยากรณ์และโครงสร้างทางไวยากรณ์\n- ตรวจสอบความถูกต้องทางไวยากรณ์เป็นหลัก\n- มีการใช้ภาษาแม่เป็นตัวกลางเสมอ\n\nยกตัวอย่างเช่น ในชั้นเรียน เด็กจะได้อ่านประโยคว่า **\"The cat is sitting on the table\"** แล้วต้องแปลกลับเป็น \"แมวกำลังนั่งอยู่บนโต๊ะ\" พร้อมอธิบายว่า \"is sitting\" คือกริยากำลังที่ใช้ \"to be + V-ing\"\n\nแต่เมื่อนักท่องเที่ยวถามว่า **\"Can you tell me where the BTS is?\"** เด็กไม่มีกรอบความคิดรองรับสถานการณ์จริง เพราะไม่เคยฝึกฟัง พูด ในบริบทที่เป็นธรรมชาติ\n\n---\n\n## ทำไมเด็กถึงกลัวพูด: วงจรอุบาทว์ที่ทำลายความมั่นใจ\n\nนอกจากปัญหาเรื่องวิธีการสอนแล้ว ยังมีปัจจัยทางจิตวิทยาที่สำคัญที่ทำให้เด็กไทยไม่กล้าพูดภาษาอังกฤษ\n\n### วงจรแห่งความกลัว (The Fear Cycle)\n\n1. **เรียนแบบแปล** → เด็กคุ้นเคยกับการคิดเป็นภาษาไทยก่อนเสมอ\n2. **ไม่เคยฝึกพูดในสถานการณ์จริง** → ขาดความมั่นใจ\n3. **กลัวพูดผิด** → รู้สึกอายเพื่อนและครู\n4. **หลีกเลี่ยงการพูด** → ไม่ได้ฝึก\n5. **ยิ่งไม่ฝึก ยิ่งไม่พูดได้** → กลัวมากขึ้น → วนซ้ำ\n\nวงจรนี้เริ่มต้นตั้งแต่ประถม และมันแทบไม่มีทางหลุดออกไปได้ ถ้าเด็กยังเรียนในระบบเดิม\n\n### Affective Filter: เมื่อความเครียดปิดกั้นการเรียนรู้\n\nนักจิตวิทยาภาษาอย่าง **Stephen Krashen** พัฒนาแนวคิดที่เรียกว่า **Affective Filter** หรือ \"ตัวกรองทางอารมณ์\"\n\nพูดง่ายๆ คือ เมื่อคนเราเครียด กลัว หรืออาย สมองจะปิดกั้นการรับข้อมูลใหม่ — แม้จะเจอคำศัพท์หรือประโยคใหม่เข้ามาก็ตาม สมองจะไม่รับเข้าไป\n\n**เด็กไทยที่กลัวพูดผิดต่อหน้าเพื่อน คือเด็กที่มี affective filter สูงมาก** ไม่ว่าครูจะสอนดีแค่ไหน สมองก็จะปิดกั้นการเรียนรู้\n\n---\n\n## หลักการทางวิทยาศาสตร์ที่ถูกต้อง\n\nข่าวดีคือ มีงานวิจัยมากมายในสาขาภาษาศาสตร์ประยุกต์ที่อธิบายอย่างชัดเจนว่า คนเราเรียนภาษาที่สองได้อย่างไร\n\n### Comprehensible Input: การรับข้อมูลที่เข้าใจได้\n\n**Krashen** กล่าวว่าการเรียนภาษาจะเกิดขึ้นเมื่อเราได้รับ \"input ที่เข้าใจได้\" หรือ comprehensible input\n\nนั่นหมายความว่า เด็กต้องได้ยินและอ่านภาษาอังกฤษในระดับที่ \"พอเข้าใจ\" — ไม่ง่ายเกินไปจนน่าเบื่อ ไม่ยากเกินไปจนท้อ\n\n**สูตรสำคัญคือ i + 1** — ให้ input ที่สูงกว่าระดับปัจจุบันของเด็กเล็กน้อย คือพอให้สมองได้เรียนรู้สิ่งใหม่ แต่ไม่ทำให้สมองท้อง\n\n### Output Hypothesis: การพูดออกมาสำคัญเท่าการฟัง\n\n**Swain** เสนอว่าการพูดและเขียนออกมา หรือ output นั้นสำคัญไม่แพ้การฟังและอ่าน เพราะ:\n\n- การพูดช่วยให้สมองประมวลผลภาษาจริง\n- การพูดช่วยระบุจุดที่ตัวเองยังไม่เข้าใจ\n- การพูดฝึกให้สมองสร้าง automaticity หรือความเคยชิน\n\nนั่นคือ ไม่ใช่แค่ \"รับเข้า\" แต่ต้อง \"ส่งออก\" ด้วย\n\n---\n\n## ท่องจำ vs Communicative Competence\n\nผู้ปกครองหลายคนสังเกตว่าเด็กจำศัพท์ได้เก่ง แต่ใช้ไม่ได้ — จำ \"abandon\" แปลว่า \"ละทิ้ง\" ได้ แต่พอจะพูดว่า \"เขาลาออก\" กลับบอกไม่ได้ว่าใช้คำไหน\n\nนี่คือความแตกต่างระหว่าง:\n\n| การท่องจำ | Communicative Competence |\n|---|---|\n| จำคำแปลเป็นรายคำ | ใช้ภาษาในบริบทจริง |\n| เน้นความถูกต้องบนกระดาษ | เน้นการสื่อสารได้ตามเป้าหมาย |\n| ขาดความยืดหยุ่น | ปรับใช้ได้หลายสถานการณ์ |\n| ใช้ได้ในห้องสอบเท่านั้น | ใช้ได้ในชีวิตจริง |\n\n**Communicative Competence** คือความสามารถในการใช้ภาษาเพื่อสื่อสารในสถานการณ์จริง — ซึ่งเป็นสิ่งที่ระบบการศึกษาไทยยังไม่ได้วัดและไม่ได้พัฒนา\n\n---\n\n## Primary Advantage: ทางออกที่ออกแบบมาตามหลักวิทยาศาสตร์\n\nจากปัญหาทั้งหมดที่กล่าวมา **Primary Advantage** จึงถูกออกแบบมาให้ตรงจุดกับวิธีที่สมองเรียนภาษาได้ดีจริง โดยยึด 3 หลักการหลัก:\n\n### หลักการที่ 1: Immersive Input — การซึมซับภาษาแบบเต็มรูปแบบ\n\nแทนที่จะแปลไปมา หลักสูตรนี้ให้เด็กได้สัมผัสภาษาอังกฤษในบริบทที่เข้าใจได้ตลอดเวลา ไม่ว่าจะเป็นเนื้อหาที่เกี่ยวข้องกับชีวิตจริง สถานการณ์ที่เป็นธรรมชาติ และการสนทนาที่มีความหมาย\n\nเด็กไม่ได้ \"นั่งเรียนภาษาอังกฤษ\" แต่ได้ \"ใช้ภาษาอังกฤษในการเรียนรู้สิ่งต่างๆ\" — ซึ่งตรงกับหลัก Comprehensible Input ของ Krashen อย่างตรงจุด\n\n### หลักการที่ 2:",
+      "type": "text"
+    }
+  ],
+  "usage": {
+    "input_tokens": 1055,
+    "output_tokens": 4096,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+  },
+  "stop_reason": "max_tokens",
+  "base_resp": {
+    "status_code": 0,
+    "status_msg": "success"
+  }
+}
+[0m
+[0m$ [0mmmx text chat --message "Continue the Thai blog post from where it left off. The last sentence was:
+
+### หลักการที่ 2:
+
+Continue writing about:
+- หลักการที่ 2: Speaking-First Methodology — ให้เด็กเริ่มพูดตั้งแต่วันแรก ไม่ใช่แค่ท่องประโยค แต่สร้างความหมายจริง ใช้ task-based learning ที่ต้องสื่อสารเพื่อทำภารกิจสำเร็จ
+- หลักการที่ 3: Low-Affective-Filter Environment — สร้างบรรยากาศที่ไม่ตัดคะแนนความผิดพลาด สนับสนุนให้กล้าลองผิดลองถูก ใช้ positive reinforcement
+
+Then write sections about:
+- What This Means for Your Child: ผลลัพธ์ที่เห็นได้ชัด เด็กเริ่มพูดได้ภายใน weeks แสดงความคิดเห็นได้ใน months ไม่ต้องแปลในหัวอีกต่อไป
+- Ready to Break the Cycle?: CTA ให้ลอง Primary Advantage บอกว่าระบบเก่าล้มเหลวลูกแล้ว แต่มีทางเลือกอื่น ให้ลูกเริ่มพูดได้จริง
+
+Keep the same tone: empathetic but scientifically authoritative. Write approximately 500-600 more words to complete the article." --system "คุณเป็นนักเขียนบล็อกด้านการศึกษา สานต่อบทความภาษาไทยให้สมบูรณ์" --output json
+{
+  "id": "064c2a9e47de3751ab8e5fdc3fdf4f3d",
+  "type": "message",
+  "role": "assistant",
+  "model": "MiniMax-M2.7",
+  "content": [
+    {
+      "thinking": "The user wants me to continue a Thai blog post from where it left off. The last sentence was \"### หลักการที่ 2:\" and I need to continue with:\n\n1. หลักการที่ 2: Speaking-First Methodology\n2. หลักการที่ 3: Low-Affective-Filter Environment\n3. What This Means for Your Child section\n4. CTA section (Ready to Break the Cycle?)\n\nThe tone should be empathetic but scientifically authoritative, approximately 500-600 more words.\n\nLet me write this continuation in Thai, maintaining the blog's voice and structure.",
+      "signature": "27e4791aff90e656beb0d609e9b11816324232e5cbd95e4dfa5cd5f2bddb727b",
+      "type": "thinking"
+    },
+    {
+      "text": "### หลักการที่ 2: Speaking-First Methodology\n\nหลายครอบครัวคุ้นเคยกับวิธีการแบบดั้งเดิมที่เริ่มจากการท่องคำศัพท์ อ่านไวยากรณ์ แล้วจึงค่อยพูด นี่คือเหตุผลว่าทำไมเด็กจำนวนมากถึง \"พูดไม่ได้สักที\" — เพราะพวกเขาถูกสอนให้ *รู้* ภาษา แต่ไม่เคยถูกสอนให้ *ใช้* ภาษา\n\nSpeaking-First Methodology พลิกสมมติฐานนี้ เราให้เด็กเริ่มพูดตั้งแต่วันแรก ไม่ใช่การท่องประโยคแบบจำข้างเครื่อง แต่เป็นการสร้างความหมายจริงผ่าน **Task-Based Learning** — เด็กได้รับภารกิจที่ต้องสื่อสารเพื่อทำให้สำเร็จ เช่น สั่งอาหารในร้าน แนะนำเพื่อน หรืออธิบายว่าต้องการอะไร\n\nทำไมวิธีนี้ได้ผล? เพราะสมองถูกออกแบบมาให้เรียนรู้ภาษาผ่านการใช้งานจริง ไม่ใช่การวิเคราะห์กฎเกณฑ์ เมื่อเด็กต้อง *จำเป็น* ต้องสื่อสารเพื่อให้ได้สิ่งที่ต้องการ สมองจะจัดการเรียนรู้อย่างเป็นธรรมชาติที่สุด\n\n### หลักการที่ 3: Low-Affective-Filter Environment\n\nถ้าคุณเคยพยายามพูดภาษาที่สามหน้าคนแปลกหน้า แล้วรู้สึกว่าถูกตัดสินทุกครั้งที่พูดผิด คุณจะเข้าใจว่า \"Affective Filter\" คืออะไร นี่คือกำแพงทางอารมณ์ที่บล็อกการเรียนรู้ — เมื่อเด็กกลัวผิดพลาด เขาจะไม่กล้าลองพูด ยิ่งไม่กล้าพูด ยิ่งไม่ได้ฝึก ยิ่งไม่ได้ฝึก ก็ยิ่งกลัวมากขึ้น\n\nในห้องเรียนที่มี Low-Affective-Filter เราสร้างบรรยากาศที่ปลอดภัยทางอารมณ์ — ไม่มีการตัดคะแนนความผิดพลาด ไม่มีการขำขัง ไม่มีการแก้ไขอย่างรุนแรง ทุกความพยายามในการสื่อสารได้รับการเสริมกำลัง ครูที่ผ่านการฝึกอบรมจะใช้ **Positive Reinforcement** อย่างเหมาะสม ชี้ให้เห็นว่าเด็กทำอะไรได้ดี และช่วยแนะนำอย่างนุ่มนวลเมื่อต้องการปรับปรุง\n\nผลที่ได้คือเด็กกล้าที่จะลอง กล้าที่จะผิด กล้าที่จะถาม — และนั่นคือรากฐานของการเรียนรู้ที่แท้จริง\n\n---\n\n## What This Means for Your Child\n\nผลลัพธ์ที่เห็นได้ชัดไม่ใช่แค่คะแนนสอบที่ดีขึ้น (แม้ว่ามันจะเกิดขึ้นด้วย) แต่คือการเปลี่ยนแปลงในวิธีที่เด็ก **รู้สึก** เกี่ยวกับภาษาอังกฤษ\n\n**ภายในไม่กี่สัปดาห์** — คุณจะเริ่มเห็นเด็กพูดประโยคง่ายๆ ได้ด้วยตัวเอง ไม่ใช่ท่องจำ แต่เป็นการผสมผสานคำที่เรียนรู้มาเพื่อสื่อสารสิ่งที่ต้องการ\n\n**ภายในไม่กี่เดือน** — เด็กจะเริ่มแสดงความคิดเห็น เล่าความรู้สึก และโต้ตอบเป็นธรรมชาติมากขึ้น ไม่ต้องแปลในหัวอีกต่อไป — ภาษาจะเริ่มอยู่ใน \"ชั้นผิวน้ำ\" ของความคิด ไม่ใช่ต้องขุดลึกทุกครั้งที่ต้องพูด\n\nนี่คือความแตกต่างระหว่างเด็กที่ \"เรียน\" ภาษาอังกฤษ กับเด็กที่ \"ใช้\" ภาษาอังกฤษได้จริง\n\n---\n\n## Ready to Break the Cycle?\n\nถ้าลูกของคุณเคยเรียนภาษาอังกฤษมาหลายปีแต่ยังพูดไม่ได้ ถ้าคุณเริ่มสงสัยว่าระบบการศึกษาแบบเดิมกำลังล้มเหลวกับลูกของคุณ — คุณไม่ได้คิดไปเอง\n\nระบบเดิมไม่ได้ผิดเพราะครูไม่ดี หรือเด็กไม่ขยัน แต่เพราะมันออกแบบมาผิดหลักการ มันสอนเด็กให้กลัวการพูด แทนที่จะกล้าพูด มันทำให้เด็กเรียนรู้แบบ passive แทนที่จะใช้ภาษาอย่าง active\n\n**มีทางเลือกอื่น** และมันเริ่มต้นง่ายๆ วันนี้\n\nที่ **Primary Advantage** เราออกแบบหลักสูตรที่อิงหลักการทางวิทยาศาสตร์เหล่านี้ — Comprehensible Input, Speaking-First, และ Low-Affective-Filter Environment — เพื่อให้ลูกของคุณเริ่มพูดได้จริง ไม่ใช่แค่สอบผ่าน\n\n**ลองเรียนฟรี 1 ครั้ง** แล้วสังเกตด้วยตัวเองว่าลูกเปลี่ยนได้แค่ไหน เพราะทุกเด็กสามารถพูดภาษาอังกฤษได้ — ถ้าเราสอนกันถูกวิธี",
+      "type": "text"
+    }
+  ],
+  "usage": {
+    "input_tokens": 556,
+    "output_tokens": 2653
+  },
+  "stop_reason": "end_turn",
+  "base_resp": {
+    "status_code": 0,
+    "status_msg": ""
+  }
+}
+[0m
+[0m$ [0mcat << 'EOF' > /home/daniel-bo/Desktop/www-reading-advantage/src/app/\[locale\]/\(marketing\)/blog/posts/th/why-12-years-of-english-fails.md
+---
+title: "เรียนอังกฤษ 12 ปี ทำไมพูดไม่ได้: การทำลายวงจรแปล-ไวยากรณ์ และเน้นความคล่องแคล่วเชิงปฏิบัติ"
+date: "2026-05-06"
+excerpt: "นักเรียนไทยเรียนภาษาอังกฤษมา 12 ปี แต่ยังพูดไม่ได้ นี่คือเหตุผลที่ระบบล้มเหลวและวิธีแก้ไข"
+coverImage: "/blog/day32-why-12-years-of-english-fails_001.jpg"
+author: "Reading Advantage Marketing Team"
+product: "/products/primary-advantage"
+tags: ["การเรียนภาษาอังกฤษ", "การศึกษาไทย", "Primary Advantage", "การซึมซับภาษา", "คู่มือผู้ปกครอง"]
+readingTime: 7
+---
+
+# เรียนอังกฤษ 12 ปี ทำไมพูดไม่ได้: การทำลายวงจรแปล-ไวยากรณ์ และเน้นความคล่องแคล่วเชิงปฏิบัติ
+
+## ฉากเปิด: ตอนนั้นเด็กอายุ 13 ปี
+
+ลองนึกภาพตามนะครับ — วันหยุดเสาร์ที่ห้างสยามพารากอน เด็กผู้หญิงวัย 13 ปียืนอยู่ในความวุ่นวายของห้างใหญ่ นักท่องเที่ยวต่างชาติเดินมาถามเธอว่า **"Excuse me, where is the BTS station?"**
+
+เด็กคนนั้นเรียนภาษาอังกฤษมา 12 ปีแล้ว เธอผ่านข้อสอบ O-Net มาแล้ว เธอแต่งประโยคภาษาอังกฤษได้ถูกต้องบนกระดาษ แต่พอถึงเวลาจริง เธออึ้งไปเพียงแป๊บเดียว ก่อนจะส่ายหัวแล้วหนีไปอย่างรวดเร็ว
+
+เหตุการณ์แบบนี้เกิดขึ้นทุกวันในประเทศไทย และมันสะท้อนปัญหาที่ลึกกว่าที่หลายคนคิด
+
+**เด็กไทยไม่ได้ "ไม่เก่ง" ภาษาอังกฤษ — เด็กไทยถูกสอนในวิธีที่ไม่มีทางพูดได้จริงตั้งแต่แรก**
+
+## ปัญหา: ระบบที่สอนให้ "แปล" ไม่ใช่ "สื่อสาร"
+
+วิธีการสอนภาษาอังกฤษในโรงเรียนไทยส่วนใหญ่ยังคงยึดแนวที่เรียกว่า **Grammar-Translation Method** หรือ "การสอนแบบแปล-ไวยากรณ์" ซึ่งเป็นวิธีที่มีมาตั้งแต่ศตวรรษที่ 19
+
+ลักษณะเด่นของวิธีนี้คือ:
+
+- เน้นการแปลประโยคภาษาไทยเป็นภาษาอังกฤษ
+- เน้นการจำไวยากรณ์และโครงสร้างทางไวยากรณ์
+- ตรวจสอบความถูกต้องทางไวยากรณ์เป็นหลัก
+- มีการใช้ภาษาแม่เป็นตัวกลางเสมอ
+
+ยกตัวอย่างเช่น ในชั้นเรียน เด็กจะได้อ่านประโยคว่า **"The cat is sitting on the table"** แล้วต้องแปลกลับเป็น "แมวกำลังนั่งอยู่บนโต๊ะ" พร้อมอธิบายว่า "is sitting" คือกริยากำลังที่ใช้ "to be + V-ing"
+
+แต่เมื่อนักท่องเที่ยวถามว่า **"Can you tell me where the BTS is?"** เด็กไม่มีกรอบความคิดรองรับสถานการณ์จริง เพราะไม่เคยฝึกฟัง พูด ในบริบทที่เป็นธรรมชาติ
+
+## ทำไมเด็กถึงกลัวพูด: วงจรอุบาทว์ที่ทำลายความมั่นใจ
+
+นอกจากปัญหาเรื่องวิธีการสอนแล้ว ยังมีปัจจัยทางจิตวิทยาที่สำคัญที่ทำให้เด็กไทยไม่กล้าพูดภาษาอังกฤษ
+
+### วงจรแห่งความกลัว (The Fear Cycle)
+
+1. **เรียนแบบแปล** → เด็กคุ้นเคยกับการคิดเป็นภาษาไทยก่อนเสมอ
+2. **ไม่เคยฝึกพูดในสถานการณ์จริง** → ขาดความมั่นใจ
+3. **กลัวพูดผิด** → รู้สึกอายเพื่อนและครู
+4. **หลีกเลี่ยงการพูด** → ไม่ได้ฝึก
+5. **ยิ่งไม่ฝึก ยิ่งไม่พูดได้** → กลัวมากขึ้น → วนซ้ำ
+
+วงจรนี้เริ่มต้นตั้งแต่ประถม และมันแทบไม่มีทางหลุดออกไปได้ ถ้าเด็กยังเรียนในระบบเดิม
+
+### Affective Filter: เมื่อความเครียดปิดกั้นการเรียนรู้
+
+นักจิตวิทยาภาษาอย่าง **Stephen Krashen** พัฒนาแนวคิดที่เรียกว่า **Affective Filter** หรือ "ตัวกรองทางอารมณ์"
+
+พูดง่ายๆ คือ เมื่อคนเราเครียด กลัว หรืออาย สมองจะปิดกั้นการรับข้อมูลใหม่ — แม้จะเจอคำศัพท์หรือประโยคใหม่เข้ามาก็ตาม สมองจะไม่รับเข้าไป
+
+**เด็กไทยที่กลัวพูดผิดต่อหน้าเพื่อน คือเด็กที่มี affective filter สูงมาก** ไม่ว่าครูจะสอนดีแค่ไหน สมองก็จะปิดกั้นการเรียนรู้
+
+## หลักการทางวิทยาศาสตร์ที่ถูกต้อง
+
+ข่าวดีคือ มีงานวิจัยมากมายในสาขาภาษาศาสตร์ประยุกต์ที่อธิบายอย่างชัดเจนว่า คนเราเรียนภาษาที่สองได้อย่างไร
+
+### Comprehensible Input: การรับข้อมูลที่เข้าใจได้
+
+**Krashen** กล่าวว่าการเรียนภาษาจะเกิดขึ้นเมื่อเราได้รับ "input ที่เข้าใจได้" หรือ comprehensible input
+
+นั่นหมายความว่า เด็กต้องได้ยินและอ่านภาษาอังกฤษในระดับที่ "พอเข้าใจ" — ไม่ง่ายเกินไปจนน่าเบื่อ ไม่ยากเกินไปจนท้อ
+
+**สูตรสำคัญคือ i + 1** — ให้ input ที่สูงกว่าระดับปัจจุบันของเด็กเล็กน้อย คือพอให้สมองได้เรียนรู้สิ่งใหม่ แต่ไม่ทำให้สมองท้อง
+
+### Output Hypothesis: การพูดออกมาสำคัญเท่าการฟัง
+
+**Swain** เสนอว่าการพูดและเขียนออกมา หรือ output นั้นสำคัญไม่แพ้การฟังและอ่าน เพราะ:
+
+- การพูดช่วยให้สมองประมวลผลภาษาจริง
+- การพูดช่วยระบุจุดที่ตัวเองยังไม่เข้าใจ
+- การพูดฝึกให้สมองสร้าง automaticity หรือความเคยชิน
+
+นั่นคือ ไม่ใช่แค่ "รับเข้า" แต่ต้อง "ส่งออก" ด้วย
+
+## ท่องจำ vs Communicative Competence
+
+ผู้ปกครองหลายคนสังเกตว่าเด็กจำศัพท์ได้เก่ง แต่ใช้ไม่ได้ — จำ "abandon" แปลว่า "ละทิ้ง" ได้ แต่พอจะพูดว่า "เขาลาออก" กลับบอกไม่ได้ว่าใช้คำไหน
+
+นี่คือความแตกต่างระหว่าง:
+
+| การท่องจำ | Communicative Competence |
+|---|---|
+| จำคำแปลเป็นรายคำ | ใช้ภาษาในบริบทจริง |
+| เน้นความถูกต้องบนกระดาษ | เน้นการสื่อสารได้ตามเป้าหมาย |
+| ขาดความยืดหยุ่น | ปรับใช้ได้หลายสถานการณ์ |
+| ใช้ได้ในห้องสอบเท่านั้น | ใช้ได้ในชีวิตจริง |
+
+**Communicative Competence** คือความสามารถในการใช้ภาษาเพื่อสื่อสารในสถานการณ์จริง — ซึ่งเป็นสิ่งที่ระบบการศึกษาไทยยังไม่ได้วัดและไม่ได้พัฒนา
+
+## Primary Advantage: ทางออกที่ออกแบบมาตามหลักวิทยาศาสตร์
+
+จากปัญหาทั้งหมดที่กล่าวมา **Primary Advantage** จึงถูกออกแบบมาให้ตรงจุดกับวิธีที่สมองเรียนภาษาได้ดีจริง โดยยึด 3 หลักการหลัก:
+
+### หลักการที่ 1: Immersive Input — การซึมซับภาษาแบบเต็มรูปแบบ
+
+แทนที่จะแปลไปมา หลักสูตรนี้ให้เด็กได้สัมผัสภาษาอังกฤษในบริบทที่เข้าใจได้ตลอดเวลา ไม่ว่าจะเป็นเนื้อหาที่เกี่ยวข้องกับชีวิตจริง สถานการณ์ที่เป็นธรรมชาติ และการสนทนาที่มีความหมาย
+
+เด็กไม่ได้ "นั่งเรียนภาษาอังกฤษ" แต่ได้ "ใช้ภาษาอังกฤษในการเรียนรู้สิ่งต่างๆ" — ซึ่งตรงกับหลัก Comprehensible Input ของ Krashen อย่างตรงจุด
+
+### หลักการที่ 2: Speaking-First Methodology
+
+หลายครอบครัวคุ้นเคยกับวิธีการแบบดั้งเดิมที่เริ่มจากการท่องคำศัพท์ อ่านไวยากรณ์ แล้วจึงค่อยพูด นี่คือเหตุผลว่าทำไมเด็กจำนวนมากถึง "พูดไม่ได้สักที" — เพราะพวกเขาถูกสอนให้ *รู้* ภาษา แต่ไม่เคยถูกสอนให้ *ใช้* ภาษา
+
+Speaking-First Methodology พลิกสมมติฐานนี้ เราให้เด็กเริ่มพูดตั้งแต่วันแรก ไม่ใช่การท่องประโยคแบบจำข้างเครื่อง แต่เป็นการสร้างความหมายจริงผ่าน **Task-Based Learning** — เด็กได้รับภารกิจที่ต้องสื่อสารเพื่อทำให้สำเร็จ เช่น สั่งอาหารในร้าน แนะนำเพื่อน หรืออธิบายว่าต้องการอะไร
+
+ทำไมวิธีนี้ได้ผล? เพราะสมองถูกออกแบบมาให้เรียนรู้ภาษาผ่านการใช้งานจริง ไม่ใช่การวิเคราะห์กฎเกณฑ์ เมื่อเด็กต้อง *จำเป็น* ต้องสื่อสารเพื่อให้ได้สิ่งที่ต้องการ สมองจะจัดการเรียนรู้อย่างเป็นธรรมชาติที่สุด
+
+### หลักการที่ 3: Low-Affective-Filter Environment
+
+ถ้าคุณเคยพยายามพูดภาษาที่สามหน้าคนแปลกหน้า แล้วรู้สึกว่าถูกตัดสินทุกครั้งที่พูดผิด คุณจะเข้าใจว่า "Affective Filter" คืออะไร นี่คือกำแพงทางอารมณ์ที่บล็อกการเรียนรู้ — เมื่อเด็กกลัวผิดพลาด เขาจะไม่กล้าลองพูด ยิ่งไม่กล้าพูด ยิ่งไม่ได้ฝึก ยิ่งไม่ได้ฝึก ก็ยิ่งกลัวมากขึ้น
+
+ในห้องเรียนที่มี Low-Affective-Filter เราสร้างบรรยากาศที่ปลอดภัยทางอารมณ์ — ไม่มีการตัดคะแนนความผิดพลาด ไม่มีการขำขัง ไม่มีการแก้ไขอย่างรุนแรง ทุกความพยายามในการสื่อสารได้รับการเสริมกำลัง ครูที่ผ่านการฝึกอบรมจะใช้ **Positive Reinforcement** อย่างเหมาะสม ชี้ให้เห็นว่าเด็กทำอะไรได้ดี และช่วยแนะนำอย่างนุ่มนวลเมื่อต้องการปรับปรุง
+
+ผลที่ได้คือเด็กกล้าที่จะลอง กล้าที่จะผิด กล้าที่จะถาม — และนั่นคือรากฐานของการเรียนรู้ที่แท้จริง
+
+## What This Means for Your Child
+
+ผลลัพธ์ที่เห็นได้ชัดไม่ใช่แค่คะแนนสอบที่ดีขึ้น (แม้ว่ามันจะเกิดขึ้นด้วย) แต่คือการเปลี่ยนแปลงในวิธีที่เด็ก **รู้สึก** เกี่ยวกับภาษาอังกฤษ
+
+**ภายในไม่กี่สัปดาห์** — คุณจะเริ่มเห็นเด็กพูดประโยคง่ายๆ ได้ด้วยตัวเอง ไม่ใช่ท่องจำ แต่เป็นการผสมผสานคำที่เรียนรู้มาเพื่อสื่อสารสิ่งที่ต้องการ
+
+**ภายในไม่กี่เดือน** — เด็กจะเริ่มแสดงความคิดเห็น เล่าความรู้สึก และโต้ตอบเป็นธรรมชาติมากขึ้น ไม่ต้องแปลในหัวอีกต่อไป — ภาษาจะเริ่มอยู่ใน "ชั้นผิวน้ำ" ของความคิด ไม่ใช่ต้องขุดลึกทุกครั้งที่ต้องพูด
+
+นี่คือความแตกต่างระหว่างเด็กที่ "เรียน" ภาษาอังกฤษ กับเด็กที่ "ใช้" ภาษาอังกฤษได้จริง
+
+## Ready to Break the Cycle?
+
+ถ้าลูกของคุณเคยเรียนภาษาอังกฤษมาหลายปีแต่ยังพูดไม่ได้ ถ้าคุณเริ่มสงสัยว่าระบบการศึกษาแบบเดิมกำลังล้มเหลวกับลูกของคุณ — คุณไม่ได้คิดไปเอง
+
+ระบบเดิมไม่ได้ผิดเพราะครูไม่ดี หรือเด็กไม่ขยัน แต่เพราะมันออกแบบมาผิดหลักการ มันสอนเด็กให้กลัวการพูด แทนที่จะกล้าพูด มันทำให้เด็กเรียนรู้แบบ passive แทนที่จะใช้ภาษาอย่าง active
+
+**มีทางเลือกอื่น** และมันเริ่มต้นง่ายๆ วันนี้
+
+ที่ **Primary Advantage** เราออกแบบหลักสูตรที่อิงหลักการทางวิทยาศาสตร์เหล่านี้ — Comprehensible Input, Speaking-First, และ Low-Affective-Filter Environment — เพื่อให้ลูกของคุณเริ่มพูดได้จริง ไม่ใช่แค่สอบผ่าน
+
+**ลองเรียนฟรี 1 ครั้ง** แล้วสังเกตด้วยตัวเองว่าลูกเปลี่ยนได้แค่ไหน เพราะทุกเด็กสามารถพูดภาษาอังกฤษได้ — ถ้าเราสอนกันถูกวิธี
+EOF
+(no output)
+[0m
+[0m→ [0mSkill "create-image-mmx"
+[0m
+[0m$ [0mmmx image generate --prompt "A frustrated Thai student sitting at a desk covered with English textbooks and grammar worksheets, looking confused and overwhelmed, while a confident student in the background is having a lively conversation with a foreign teacher, bright modern classroom setting with warm lighting, photorealistic, high quality, 16:9 aspect ratio, educational environment" --aspect-ratio 16:9 --n 1 --out-dir public/blog --out-prefix day32-why-12-years-of-english-fails_001 --quiet
+{
+  "saved": [
+    "public/blog/day32-why-12-years-of-english-fails_001_001.jpg"
+  ]
+}
+[0m
+[0m$ [0mcat << 'EOF' > /home/daniel-bo/Desktop/www-reading-advantage/src/app/\[locale\]/\(marketing\)/blog/posts/th/why-12-years-of-english-fails-segments.json
+[
+  {
+    "text": "ลูกคุณเรียนอังกฤษมา 12 ปี แต่พอเจอฝรั่งถามทาง กลับตอบไม่ได้!",
+    "imageDescription": "A young Thai student in school uniform freezing with a panicked expression while a friendly foreign tourist asks for directions in a busy Bangkok shopping mall"
+  },
+  {
+    "text": "ปัญหาคือระบบการศึกษาสอนให้แปล ไม่ใช่สื่อสาร",
+    "imageDescription": "A classroom scene showing a teacher writing grammar rules on a blackboard while students look bored and confused, traditional Thai school setting with wooden desks"
+  },
+  {
+    "text": "เด็กถูกสอนให้กลัวผิดพลาด จนไม่กล้าพูด",
+    "imageDescription": "A shy Thai student looking down at their desk with red embarrassed cheeks while classmates laugh in the background, emotional school scene"
+  },
+  {
+    "text": "วิทยาศาสตร์พิสูจน์แล้วว่าสมองเรียนภาษาผ่านการใช้จริง",
+    "imageDescription": "A glowing human brain with neural pathways lighting up, surrounded by floating English words and symbols, scientific visualization with blue and orange colors"
+  },
+  {
+    "text": "การพูดออกมาสำคัญเท่ากับการฟัง ต้องฝึกทั้งคู่",
+    "imageDescription": "Two children having an animated conversation in a bright colorful classroom, one speaking confidently while the other listens attentively, positive learning environment"
+  },
+  {
+    "text": "ท่องจำศัพท์ได้ แต่ใช้ในชีวิตจริงไม่ได้ ก็ไร้ประโยชน์",
+    "imageDescription": "A student staring at a vocabulary test with a confused expression while real world situations like ordering food and asking directions float around them as transparent ghostly images"
+  },
+  {
+    "text": "Primary Advantage ให้เด็กเริ่มพูดตั้งแต่วันแรก",
+    "imageDescription": "A confident young Thai student raising their hand enthusiastically in a modern bright classroom with a supportive teacher smiling, active learning environment"
+  },
+  {
+    "text": "เรียนแบบ Task-Based ที่ต้องใช้ภาษาเพื่อทำภารกิจสำเร็จ",
+    "imageDescription": "Children working together in groups on a fun project in a colorful classroom, collaborating and communicating actively, hands-on learning activity"
+  },
+  {
+    "text": "บรรยากาศปลอดภัย ไม่ตัดคะแนนความผิด ให้กล้าลอง",
+    "imageDescription": "A warm supportive classroom scene with a teacher giving a thumbs up to a student who tried to answer, encouraging positive reinforcement, soft warm lighting"
+  },
+  {
+    "text": "ลองฟรี 1 ครั้ง แล้วดูว่าลูกคุณเปลี่ยนได้แค่ไหน!",
+    "imageDescription": "A happy Thai family smiling together, parents hugging their child who looks confident and proud, bright hopeful atmosphere with warm golden sunlight"
+  }
+]
+EOF
+(no output)
+[0m
+[0m# [0mTodos
+[x] Generate Day 32 English blog post (Why 12 Years of English Fails)
+[x] Generate Day 32 Thai blog post (เรียนอังกฤษ 12 ปี ทำไมพูดไม่ได้)
+[x] Generate hero image for Day 32
+[x] Generate segments JSON for Day 32 video
+[ ] Run video generation pipeline for Day 32
+[ ] Validate generated content and run build
+[ ] Update plan.md and commit
+[0m
+[0m$ [0mnpx tsx scripts/generate-blog-video.ts src/app/\[locale\]/\(marketing\)/blog/posts/th/why-12-years-of-english-fails.md
+📄 Parsing blog: /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/posts/th/why-12-years-of-english-fails.md
+   Title: เรียนอังกฤษ 12 ปี ทำไมพูดไม่ได้: การทำลายวงจรแปล-ไวยากรณ์ และเน้นความคล่องแคล่วเชิงปฏิบัติ
+   Language: th
+
+📋 Auto-discovered segments: /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/posts/th/why-12-years-of-english-fails-segments.json
+
+📋 Loading segments from /home/daniel-bo/Desktop/www-reading-advantage/src/app/[locale]/(marketing)/blog/posts/th/why-12-years-of-english-fails-segments.json
+   Using 10 segments
+   1. ลูกคุณเรียนอังกฤษมา 12 ปี แต่พอเจอฝรั่งถามทาง กลับตอบไม่ได้!...
+   2. ปัญหาคือระบบการศึกษาสอนให้แปล ไม่ใช่สื่อสาร...
+   3. เด็กถูกสอนให้กลัวผิดพลาด จนไม่กล้าพูด...
+   4. วิทยาศาสตร์พิสูจน์แล้วว่าสมองเรียนภาษาผ่านการใช้จริง...
+   5. การพูดออกมาสำคัญเท่ากับการฟัง ต้องฝึกทั้งคู่...
+   6. ท่องจำศัพท์ได้ แต่ใช้ในชีวิตจริงไม่ได้ ก็ไร้ประโยชน์...
+   7. Primary Advantage ให้เด็กเริ่มพูดตั้งแต่วันแรก...
+   8. เรียนแบบ Task-Based ที่ต้องใช้ภาษาเพื่อทำภารกิจสำเร็จ...
+   9. บรรยากาศปลอดภัย ไม่ตัดคะแนนความผิด ให้กล้าลอง...
+   10. ลองฟรี 1 ครั้ง แล้วดูว่าลูกคุณเปลี่ยนได้แค่ไหน!...
+
+🎙️  Segment 1: Generating audio...
+> timeout 120s mmx speech synthesize --text "ลูกคุณเรียนอังกฤษมา 12 ปี แต่พอเจอฝรั่งถามทาง กลับตอบไม่ได้!" --out tmp/blog-video-1778186346563/segment-0/audio.mp3 --quiet
+   ⚠️ Segment 4: stripping prohibited terms [words] from image description
+> ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 "tmp/blog-video-1778186346563/segment-0/audio.mp3"
+   Audio: 5.83s, Segment video: 5.83s
+🖼️  Segment 1: Generating image...
+> timeout 120s mmx image generate --prompt "PHOTOREALISTIC SCENE ONLY. Absolutely NO text, writing, letters, words, numbers, signs, labels, charts, graphs, diagrams, UI, screens, or books with visible text anywhere in the image. Scene: A young Thai student in school uniform freezing with a panicked expression while a friendly foreign tourist asks for directions in a busy Bangkok shopping mall. Bright colors, modern cinematic style, 9:16 vertical composition. Real-world scene only: people, places, nature, objects. Nothing with writing on it." --aspect-ratio 9:16 --n 1 --out-dir tmp/blog-video-1778186346563/segment-0 --out-prefix img --quiet
+
+🎙️  Segment 2: Generating audio...
+> timeout 120s mmx speech synthesize --text "ปัญหาคือระบบการศึกษาสอนให้แปล ไม่ใช่สื่อสาร" --out tmp/blog-video-1778186346563/segment-1/audio.mp3 --quiet
+> ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 "tmp/blog-video-1778186346563/segment-1/audio.mp3"
+   Audio: 3.67s, Segment video: 3.67s
+🖼️  Segment 2: Generating image...
+> timeout 120s mmx image generate --prompt "PHOTOREALISTIC SCENE ONLY. Absolutely NO text, writing, letters, words, numbers, signs, labels, charts, graphs, diagrams, UI, screens, or books with visible text anywhere in the image. Scene: A classroom scene showing a teacher writing grammar rules on a blackboard while students look bored and confused, traditional Thai school setting with wooden desks. Bright colors, modern cinematic style, 9:16 vertical composition. Real-world scene only: people, places, nature, objects. Nothing with writing on it." --aspect-ratio 9:16 --n 1 --out-dir tmp/blog-video-1778186346563/segment-1 --out-prefix img --quiet
+
+🎙️  Segment 3: Generating audio...
+> timeout 120s mmx speech synthesize --text "เด็กถูกสอนให้กลัวผิดพลาด จนไม่กล้าพูด" --out tmp/blog-video-1778186346563/segment-2/audio.mp3 --quiet
+> ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 "tmp/blog-video-1778186346563/segment-2/audio.mp3"
+   Audio: 2.88s, Segment video: 2.88s
+🖼️  Segment 3: Generating image...
+> timeout 120s mmx image generate --prompt "PHOTOREALISTIC SCENE ONLY. Absolutely NO text, writing, letters, words, numbers, signs, labels, charts, graphs, diagrams, UI, screens, or books with visible text anywhere in the image. Scene: A shy Thai student looking down at their desk with red embarrassed cheeks while classmates laugh in the background, emotional school scene. Bright colors, modern cinematic style, 9:16 vertical composition. Real-world scene only: people, places, nature, objects. Nothing with writing on it." --aspect-ratio 9:16 --n 1 --out-dir tmp/blog-video-1778186346563/segment-2 --out-prefix img --quiet
+
+🎙️  Segment 4: Generating audio...
+> timeout 120s mmx speech synthesize --text "วิทยาศาสตร์พิสูจน์แล้วว่าสมองเรียนภาษาผ่านการใช้จริง" --out tmp/blog-video-1778186346563/segment-3/audio.mp3 --quiet
+> ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 "tmp/blog-video-1778186346563/segment-3/audio.mp3"
+   Audio: 4.54s, Segment video: 4.54s
+🖼️  Segment 4: Generating image...
+> timeout 120s mmx image generate --prompt "PHOTOREALISTIC SCENE ONLY. Absolutely NO text, writing, letters, words, numbers, signs, labels, charts, graphs, diagrams, UI, screens, or books with visible text anywhere in the image. Scene: A warm, colorful scene with people in a modern educational setting, natural lighting, no objects with writing. Bright colors, modern cinematic style, 9:16 vertical composition. Real-world scene only: people, places, nature, objects. Nothing with writing on it." --aspect-ratio 9:16 --n 1 --out-dir tmp/blog-video-1778186346563/segment-3 --out-prefix img --quiet
+
+🎙️  Segment 5: Generating audio...
+> timeout 120s mmx speech synthesize --text "การพูดออกมาสำคัญเท่ากับการฟัง ต้องฝึกทั้งคู่" --out tmp/blog-video-1778186346563/segment-4/audio.mp3 --quiet
+> ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 "tmp/blog-video-1778186346563/segment-4/audio.mp3"
+   Audio: 4.39s, Segment video: 4.39s
+🖼️  Segment 5: Generating image...
+> timeout 120s mmx image generate --prompt "PHOTOREALISTIC SCENE ONLY. Absolutely NO text, writing, letters, words, numbers, signs, labels, charts, graphs, diagrams, UI, screens, or books with visible text anywhere in the image. Scene: Two children having an animated conversation in a bright colorful classroom, one speaking confidently while the other listens attentively, positive learning environment. Bright colors, modern cinematic style, 9:16 vertical composition. Real-world scene only: people, places, nature, objects. Nothing with writing on it." --aspect-ratio 9:16 --n 1 --out-dir tmp/blog-video-1778186346563/segment-4 --out-prefix img --quiet
+
+🎙️  Segment 6: Generating audio...
+> timeout 120s mmx speech synthesize --text "ท่องจำศัพท์ได้ แต่ใช้ในชีวิตจริงไม่ได้ ก็ไร้ประโยชน์" --out tmp/blog-video-1778186346563/segment-5/audio.mp3 --quiet
+> ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 "tmp/blog-video-1778186346563/segment-5/audio.mp3"
+   Audio: 4.14s, Segment video: 4.14s
+🖼️  Segment 6: Generating image...
+> timeout 120s mmx image generate --prompt "PHOTOREALISTIC SCENE ONLY. Absolutely NO text, writing, letters, words, numbers, signs, labels, charts, graphs, diagrams, UI, screens, or books with visible text anywhere in the image. Scene: A student staring at a vocabulary test with a confused expression while real world situations like ordering food and asking directions float around them as transparent ghostly images. Bright colors, modern cinematic style, 9:16 vertical composition. Real-world scene only: people, places, nature, objects. Nothing with writing on it." --aspect-ratio 9:16 --n 1 --out-dir tmp/blog-video-1778186346563/segment-5 --out-prefix img --quiet
+
+🎙️  Segment 7: Generating audio...
+> timeout 120s mmx speech synthesize --text "Primary Advantage ให้เด็กเริ่มพูดตั้งแต่วันแรก" --out tmp/blog-video-1778186346563/segment-6/audio.mp3 --quiet
+> ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 "tmp/blog-video-1778186346563/segment-6/audio.mp3"
+   Audio: 3.67s, Segment video: 3.67s
+🖼️  Segment 7: Generating image...
+> timeout 120s mmx image generate --prompt "PHOTOREALISTIC SCENE ONLY. Absolutely NO text, writing, letters, words, numbers, signs, labels, charts, graphs, diagrams, UI, screens, or books with visible text anywhere in the image. Scene: A confident young Thai student raising their hand enthusiastically in a modern bright classroom with a supportive teacher smiling, active learning environment. Bright colors, modern cinematic style, 9:16 vertical composition. Real-world scene only: people, places, nature, objects. Nothing with writing on it." --aspect-ratio 9:16 --n 1 --out-dir tmp/blog-video-1778186346563/segment-6 --out-prefix img --quiet
+
+🎙️  Segment 8: Generating audio...
+> timeout 120s mmx speech synthesize --text "เรียนแบบ Task-Based ที่ต้องใช้ภาษาเพื่อทำภารกิจสำเร็จ" --out tmp/blog-video-1778186346563/segment-7/audio.mp3 --quiet
+> ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 "tmp/blog-video-1778186346563/segment-7/audio.mp3"
+   Audio: 3.85s, Segment video: 3.85s
+🖼️  Segment 8: Generating image...
+> timeout 120s mmx image generate --prompt "PHOTOREALISTIC SCENE ONLY. Absolutely NO text, writing, letters, words, numbers, signs, labels, charts, graphs, diagrams, UI, screens, or books with visible text anywhere in the image. Scene: Children working together in groups on a fun project in a colorful classroom, collaborating and communicating actively, hands-on learning activity. Bright colors, modern cinematic style, 9:16 vertical composition. Real-world scene only: people, places, nature, objects. Nothing with writing on it." --aspect-ratio 9:16 --n 1 --out-dir tmp/blog-video-1778186346563/segment-7 --out-prefix img --quiet
+
+🎙️  Segment 9: Generating audio...
+> timeout 120s mmx speech synthesize --text "บรรยากาศปลอดภัย ไม่ตัดคะแนนความผิด ให้กล้าลอง" --out tmp/blog-video-1778186346563/segment-8/audio.mp3 --quiet
+> ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 "tmp/blog-video-1778186346563/segment-8/audio.mp3"
+   Audio: 4.32s, Segment video: 4.32s
+🖼️  Segment 9: Generating image...
+> timeout 120s mmx image generate --prompt "PHOTOREALISTIC SCENE ONLY. Absolutely NO text, writing, letters, words, numbers, signs, labels, charts, graphs, diagrams, UI, screens, or books with visible text anywhere in the image. Scene: A warm supportive classroom scene with a teacher giving a thumbs up to a student who tried to answer, encouraging positive reinforcement, soft warm lighting. Bright colors, modern cinematic style, 9:16 vertical composition. Real-world scene only: people, places, nature, objects. Nothing with writing on it." --aspect-ratio 9:16 --n 1 --out-dir tmp/blog-video-1778186346563/segment-8 --out-prefix img --quiet
+
+🎙️  Segment 10: Generating audio...
+> timeout 120s mmx speech synthesize --text "ลองฟรี 1 ครั้ง แล้วดูว่าลูกคุณเปลี่ยนได้แค่ไหน!" --out tmp/blog-video-1778186346563/segment-9/audio.mp3 --quiet
+> ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 "tmp/blog-video-1778186346563/segment-9/audio.mp3"
+   Audio: 3.42s, Segment video: 3.42s
+🖼️  Segment 10: Generating image...
+> timeout 120s mmx image generate --prompt "PHOTOREALISTIC SCENE ONLY. Absolutely NO text, writing, letters, words, numbers, signs, labels, charts, graphs, diagrams, UI, screens, or books with visible text anywhere in the image. Scene: A happy Thai family smiling together, parents hugging their child who looks confident and proud, bright hopeful atmosphere with warm golden sunlight. Bright colors, modern cinematic style, 9:16 vertical composition. Real-world scene only: people, places, nature, objects. Nothing with writing on it." --aspect-ratio 9:16 --n 1 --out-dir tmp/blog-video-1778186346563/segment-9 --out-prefix img --quiet
+
+🎬 Rendering intro...
+Worker 0: JSHandle:finished downloading
+> ffmpeg -loglevel error -y -i "tmp/blog-video-1778186346563/intro.mp4" -f lavfi -i "anullsrc=r=32000:cl=mono" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -t 3 "tmp/blog-video-1778186346563/intro-with-audio.mp4" 2>/dev/null
+   Intro: Revideo render succeeded
+
+🎬 Generating segment clips with Ken Burns + audio...
+   Segment 1 (5.83s)...
+> ffmpeg -loglevel error -y -loop 1 -i "tmp/blog-video-1778186346563/segment-0/image.jpg" -i "tmp/blog-video-1778186346563/segment-0/audio.mp3" -filter_complex "
+      [0:v]zoompan=z='1.08-0.08*in/146':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)',scale=1080:1920:flags=lanczos[scaled];
+      [scaled]drawbox=color=black@0.40:t=fill[dark];
+      [dark]drawtext=fontfile=/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf:textfile='tmp/blog-video-1778186346563/segment-0-text.txt':fontcolor=white:fontsize=42:box=1:boxcolor=#2563eb@0.85:boxborderw=12:x=(w-text_w)/2:y=(h-text_h-80):line_spacing=12[txt];
+      [txt]fade=t=in:st=0:d=0.5,fade=t=out:st=5.332:d=0.5
+    " -af "apad=whole_dur=5.840" -t 5.840 -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "tmp/blog-video-1778186346563/segment-0.mp4" 2>/dev/null
+   Segment 2 (3.67s)...
+> ffmpeg -loglevel error -y -loop 1 -i "tmp/blog-video-1778186346563/segment-1/image.jpg" -i "tmp/blog-video-1778186346563/segment-1/audio.mp3" -filter_complex "
+      [0:v]zoompan=z='1.08-0.08*in/92':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)',scale=1080:1920:flags=lanczos[scaled];
+      [scaled]drawbox=color=black@0.40:t=fill[dark];
+      [dark]drawtext=fontfile=/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf:textfile='tmp/blog-video-1778186346563/segment-1-text.txt':fontcolor=white:fontsize=42:box=1:boxcolor=#2563eb@0.85:boxborderw=12:x=(w-text_w)/2:y=(h-text_h-80):line_spacing=12[txt];
+      [txt]fade=t=in:st=0:d=0.5,fade=t=out:st=3.172:d=0.5
+    " -af "apad=whole_dur=3.680" -t 3.680 -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "tmp/blog-video-1778186346563/segment-1.mp4" 2>/dev/null
+   Segment 3 (2.88s)...
+> ffmpeg -loglevel error -y -loop 1 -i "tmp/blog-video-1778186346563/segment-2/image.jpg" -i "tmp/blog-video-1778186346563/segment-2/audio.mp3" -filter_complex "
+      [0:v]zoompan=z='1.08-0.08*in/72':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)',scale=1080:1920:flags=lanczos[scaled];
+      [scaled]drawbox=color=black@0.40:t=fill[dark];
+      [dark]drawtext=fontfile=/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf:textfile='tmp/blog-video-1778186346563/segment-2-text.txt':fontcolor=white:fontsize=42:box=1:boxcolor=#2563eb@0.85:boxborderw=12:x=(w-text_w)/2:y=(h-text_h-80):line_spacing=12[txt];
+      [txt]fade=t=in:st=0:d=0.5,fade=t=out:st=2.380:d=0.5
+    " -af "apad=whole_dur=2.880" -t 2.880 -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "tmp/blog-video-1778186346563/segment-2.mp4" 2>/dev/null
+   Segment 4 (4.54s)...
+> ffmpeg -loglevel error -y -loop 1 -i "tmp/blog-video-1778186346563/segment-3/image.jpg" -i "tmp/blog-video-1778186346563/segment-3/audio.mp3" -filter_complex "
+      [0:v]zoompan=z='1.08-0.08*in/114':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)',scale=1080:1920:flags=lanczos[scaled];
+      [scaled]drawbox=color=black@0.40:t=fill[dark];
+      [dark]drawtext=fontfile=/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf:textfile='tmp/blog-video-1778186346563/segment-3-text.txt':fontcolor=white:fontsize=42:box=1:boxcolor=#2563eb@0.85:boxborderw=12:x=(w-text_w)/2:y=(h-text_h-80):line_spacing=12[txt];
+      [txt]fade=t=in:st=0:d=0.5,fade=t=out:st=4.036:d=0.5
+    " -af "apad=whole_dur=4.560" -t 4.560 -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "tmp/blog-video-1778186346563/segment-3.mp4" 2>/dev/null
+   Segment 5 (4.39s)...
+> ffmpeg -loglevel error -y -loop 1 -i "tmp/blog-video-1778186346563/segment-4/image.jpg" -i "tmp/blog-video-1778186346563/segment-4/audio.mp3" -filter_complex "
+      [0:v]zoompan=z='1.08-0.08*in/110':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)',scale=1080:1920:flags=lanczos[scaled];
+      [scaled]drawbox=color=black@0.40:t=fill[dark];
+      [dark]drawtext=fontfile=/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf:textfile='tmp/blog-video-1778186346563/segment-4-text.txt':fontcolor=white:fontsize=42:box=1:boxcolor=#2563eb@0.85:boxborderw=12:x=(w-text_w)/2:y=(h-text_h-80):line_spacing=12[txt];
+      [txt]fade=t=in:st=0:d=0.5,fade=t=out:st=3.892:d=0.5
+    " -af "apad=whole_dur=4.400" -t 4.400 -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "tmp/blog-video-1778186346563/segment-4.mp4" 2>/dev/null
+   Segment 6 (4.14s)...
+> ffmpeg -loglevel error -y -loop 1 -i "tmp/blog-video-1778186346563/segment-5/image.jpg" -i "tmp/blog-video-1778186346563/segment-5/audio.mp3" -filter_complex "
+      [0:v]zoompan=z='1.08-0.08*in/104':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)',scale=1080:1920:flags=lanczos[scaled];
+      [scaled]drawbox=color=black@0.40:t=fill[dark];
+      [dark]drawtext=fontfile=/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf:textfile='tmp/blog-video-1778186346563/segment-5-text.txt':fontcolor=white:fontsize=42:box=1:boxcolor=#2563eb@0.85:boxborderw=12:x=(w-text_w)/2:y=(h-text_h-80):line_spacing=12[txt];
+      [txt]fade=t=in:st=0:d=0.5,fade=t=out:st=3.640:d=0.5
+    " -af "apad=whole_dur=4.160" -t 4.160 -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "tmp/blog-video-1778186346563/segment-5.mp4" 2>/dev/null
+   Segment 7 (3.67s)...
+> ffmpeg -loglevel error -y -loop 1 -i "tmp/blog-video-1778186346563/segment-6/image.jpg" -i "tmp/blog-video-1778186346563/segment-6/audio.mp3" -filter_complex "
+      [0:v]zoompan=z='1.08-0.08*in/92':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)',scale=1080:1920:flags=lanczos[scaled];
+      [scaled]drawbox=color=black@0.40:t=fill[dark];
+      [dark]drawtext=fontfile=/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf:textfile='tmp/blog-video-1778186346563/segment-6-text.txt':fontcolor=white:fontsize=42:box=1:boxcolor=#2563eb@0.85:boxborderw=12:x=(w-text_w)/2:y=(h-text_h-80):line_spacing=12[txt];
+      [txt]fade=t=in:st=0:d=0.5,fade=t=out:st=3.172:d=0.5
+    " -af "apad=whole_dur=3.680" -t 3.680 -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "tmp/blog-video-1778186346563/segment-6.mp4" 2>/dev/null
+   Segment 8 (3.85s)...
+> ffmpeg -loglevel error -y -loop 1 -i "tmp/blog-video-1778186346563/segment-7/image.jpg" -i "tmp/blog-video-1778186346563/segment-7/audio.mp3" -filter_complex "
+      [0:v]zoompan=z='1.08-0.08*in/97':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)',scale=1080:1920:flags=lanczos[scaled];
+      [scaled]drawbox=color=black@0.40:t=fill[dark];
+      [dark]drawtext=fontfile=/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf:textfile='tmp/blog-video-1778186346563/segment-7-text.txt':fontcolor=white:fontsize=42:box=1:boxcolor=#2563eb@0.85:boxborderw=12:x=(w-text_w)/2:y=(h-text_h-80):line_spacing=12[txt];
+      [txt]fade=t=in:st=0:d=0.5,fade=t=out:st=3.352:d=0.5
+    " -af "apad=whole_dur=3.880" -t 3.880 -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "tmp/blog-video-1778186346563/segment-7.mp4" 2>/dev/null
+   Segment 9 (4.32s)...
+> ffmpeg -loglevel error -y -loop 1 -i "tmp/blog-video-1778186346563/segment-8/image.jpg" -i "tmp/blog-video-1778186346563/segment-8/audio.mp3" -filter_complex "
+      [0:v]zoompan=z='1.08-0.08*in/108':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)',scale=1080:1920:flags=lanczos[scaled];
+      [scaled]drawbox=color=black@0.40:t=fill[dark];
+      [dark]drawtext=fontfile=/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf:textfile='tmp/blog-video-1778186346563/segment-8-text.txt':fontcolor=white:fontsize=42:box=1:boxcolor=#2563eb@0.85:boxborderw=12:x=(w-text_w)/2:y=(h-text_h-80):line_spacing=12[txt];
+      [txt]fade=t=in:st=0:d=0.5,fade=t=out:st=3.820:d=0.5
+    " -af "apad=whole_dur=4.320" -t 4.320 -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "tmp/blog-video-1778186346563/segment-8.mp4" 2>/dev/null
+   Segment 10 (3.42s)...
+> ffmpeg -loglevel error -y -loop 1 -i "tmp/blog-video-1778186346563/segment-9/image.jpg" -i "tmp/blog-video-1778186346563/segment-9/audio.mp3" -filter_complex "
+      [0:v]zoompan=z='1.08-0.08*in/86':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)',scale=1080:1920:flags=lanczos[scaled];
+      [scaled]drawbox=color=black@0.40:t=fill[dark];
+      [dark]drawtext=fontfile=/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf:textfile='tmp/blog-video-1778186346563/segment-9-text.txt':fontcolor=white:fontsize=42:box=1:boxcolor=#2563eb@0.85:boxborderw=12:x=(w-text_w)/2:y=(h-text_h-80):line_spacing=12[txt];
+      [txt]fade=t=in:st=0:d=0.5,fade=t=out:st=2.920:d=0.5
+    " -af "apad=whole_dur=3.440" -t 3.440 -r 25 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a aac -b:a 192k "tmp/blog-video-1778186346563/segment-9.mp4" 2>/dev/null
+
+🎬 Rendering outro...
+Worker 0: JSHandle:finished downloading
+> ffmpeg -loglevel error -y -i "tmp/blog-video-1778186346563/outro.mp4" -f lavfi -i "anullsrc=r=32000:cl=mono" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -t 3 "tmp/blog-video-1778186346563/outro-with-audio.mp4" 2>/dev/null
+   Outro: Revideo render succeeded
+
+🔗 Concatenating clips...
+> ffmpeg -loglevel error -y -f concat -safe 0 -i "tmp/blog-video-1778186346563/concatenated-list.txt" -c copy "tmp/blog-video-1778186346563/concatenated.mp4" 2>/dev/null
+> ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 "tmp/blog-video-1778186346563/concatenated.mp4"
+> ffprobe -v error -select_streams a:0 -show_entries stream=duration -of default=nokey=1:noprint_wrappers=1 "tmp/blog-video-1778186346563/concatenated.mp4"
+   Concatenated video: 47.12s, audio: 47.00s
+
+📐 Upscaling to 1080x1920...
+> ffmpeg -loglevel error -y -i "tmp/blog-video-1778186346563/concatenated.mp4" -vf "scale=1080:1920:flags=lanczos" -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a copy "tmp/blog-video-1778186346563/scaled.mp4" 2>/dev/null
+
+🎵 Mixing background jingle...
+> ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 "tmp/blog-video-1778186346563/scaled.mp4"
+> ffmpeg -loglevel error -y -stream_loop -1 -i "/home/daniel-bo/Desktop/www-reading-advantage/public/audio/reading-advantage-jingle.mp3" -t 47.4 -af "volume=0.10,afade=t=out:st=45.4:d=2" -c:a aac -b:a 192k "tmp/blog-video-1778186346563/jingle-loop.m4a" 2>/dev/null
+> ffmpeg -loglevel error -y -i "tmp/blog-video-1778186346563/scaled.mp4" -i "tmp/blog-video-1778186346563/jingle-loop.m4a" -filter_complex "[0:a][1:a]amix=inputs=2:duration=first:dropout_transition=3[mixed]" -map 0:v -map "[mixed]" -c:v copy -c:a aac -b:a 192k -movflags +faststart "/home/daniel-bo/Desktop/www-reading-advantage/public/videos/เรียนอังกฤษ-12-ปี-ทำไมพูดไม่ได้-การทำลายวงจรแปล-ไวยากรณ์-และเน้นความคล่องแคล่วเชิงปฏิบัติ.mp4" 2>/dev/null
+> ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 "/home/daniel-bo/Desktop/www-reading-advantage/public/videos/เรียนอังกฤษ-12-ปี-ทำไมพูดไม่ได้-การทำลายวงจรแปล-ไวยากรณ์-และเน้นความคล่องแคล่วเชิงปฏิบัติ.mp4"
+> ffprobe -v error -select_streams a:0 -show_entries stream=duration -of default=nokey=1:noprint_wrappers=1 "/home/daniel-bo/Desktop/www-reading-advantage/public/videos/เรียนอังกฤษ-12-ปี-ทำไมพูดไม่ได้-การทำลายวงจรแปล-ไวยากรณ์-และเน้นความคล่องแคล่วเชิงปฏิบัติ.mp4"
+
+✅ Video rendered successfully!
+   Output: /home/daniel-bo/Desktop/www-reading-advantage/public/videos/เรียนอังกฤษ-12-ปี-ทำไมพูดไม่ได้-การทำลายวงจรแปล-ไวยากรณ์-และเน้นความคล่องแคล่วเชิงปฏิบัติ.mp4
+   Video duration: 47.4s
+   Audio duration: 47.0s
+   Resolution: 1080x1920
+   Segments: 10
+   Audio/video sync: PASSED (0.37s difference)
+
+🎉 Done!
+
+   Cleaning up tmp/blog-video-1778186346563
+[0m
+[0m$ [0mmv /home/daniel-bo/Desktop/www-reading-advantage/public/videos/เรียนอังกฤษ-12-ปี-ทำไมพูดไม่ได้-การทำลายวงจรแปล-ไวยากรณ์-และเน้นความคล่องแคล่วเชิงปฏิบัติ.mp4 /home/daniel-bo/Desktop/www-reading-advantage/public/videos/day32-why-12-years-of-english-fails-th.mp4
+(no output)
+[0m
+[0m# [0mTodos
+[x] Generate Day 32 English blog post (Why 12 Years of English Fails)
+[x] Generate Day 32 Thai blog post (เรียนอังกฤษ 12 ปี ทำไมพูดไม่ได้)
+[x] Generate hero image for Day 32
+[x] Generate segments JSON for Day 32 video
+[x] Run video generation pipeline for Day 32
+[ ] Validate generated content and run build
+[ ] Update plan.md and commit
+[0m
+[0m$ [0mls -la src/app/\[locale\]/\(marketing\)/blog/posts/en/why-12-years-of-english-fails.md src/app/\[locale\]/\(marketing\)/blog/posts/th/why-12-years-of-english-fails.md src/app/\[locale\]/\(marketing\)/blog/posts/th/why-12-years-of-english-fails-segments.json public/blog/day32-why-12-years-of-english-fails_001_001.jpg public/videos/day32-why-12-years-of-english-fails-th.mp4
+-rw-rw-r-- 1 daniel-bo daniel-bo  243680 May  8 04:38 public/blog/day32-why-12-years-of-english-fails_001_001.jpg
+-rw-rw-r-- 1 daniel-bo daniel-bo 6404092 May  8 04:44 public/videos/day32-why-12-years-of-english-fails-th.mp4
+-rw-rw-r-- 1 daniel-bo daniel-bo   11132 May  8 04:32 src/app/[locale]/(marketing)/blog/posts/en/why-12-years-of-english-fails.md
+-rw-rw-r-- 1 daniel-bo daniel-bo   19483 May  8 04:38 src/app/[locale]/(marketing)/blog/posts/th/why-12-years-of-english-fails.md
+-rw-rw-r-- 1 daniel-bo daniel-bo    3438 May  8 04:38 src/app/[locale]/(marketing)/blog/posts/th/why-12-years-of-english-fails-segments.json
+[0m
+[0m$ [0mnpm run build
+> www-reading-advantage-next@0.1.0 build
+> next build
+
+ ⚠ The config property `experimental.turbo` is deprecated. Move this setting to `config.turbopack` or run `npx @next/codemod@latest next-experimental-turbo-to-turbopack .`
+   ▲ Next.js 15.5.9
+
+   Creating an optimized production build ...
+
+warn - The class `duration-[3000ms]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `duration-&lsqb;3000ms&rsqb;` to silence this warning.
+
+warn - The class `duration-[4000ms]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `duration-&lsqb;4000ms&rsqb;` to silence this warning.
+ ✓ Compiled successfully in 7.0s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/3) ...
+ ✓ Generating static pages (3/3)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                    Size  First Load JS
+┌ ○ /_not-found                               995 B         103 kB
+├ ƒ /[locale]                                 186 B         110 kB
+├ ƒ /[locale]/about                           128 B         120 kB
+├ ƒ /[locale]/blog                          2.78 kB         123 kB
+├ ƒ /[locale]/blog/[slug]                   3.44 kB         123 kB
+├ ● /[locale]/blog/page/[page]              2.78 kB         123 kB
+├ ƒ /[locale]/case-studies                    127 B         120 kB
+├ ƒ /[locale]/contact                       3.62 kB         120 kB
+├ ƒ /[locale]/features                      6.64 kB         123 kB
+├ ƒ /[locale]/pricing                       6.28 kB         123 kB
+├ ƒ /[locale]/products                      4.04 kB         125 kB
+├ ƒ /[locale]/products/codecamp-advantage     186 B         110 kB
+├ ƒ /[locale]/products/math-advantage         186 B         110 kB
+├ ƒ /[locale]/products/primary-advantage      128 B         120 kB
+├ ƒ /[locale]/products/reading-advantage    6.31 kB         127 kB
+├ ƒ /[locale]/products/science-advantage      186 B         110 kB
+├ ƒ /[locale]/products/stem-advantage         186 B         110 kB
+├ ƒ /[locale]/products/storytime-advantage   1.5 kB         118 kB
+├ ƒ /[locale]/products/tutor-advantage        186 B         110 kB
+├ ƒ /[locale]/products/zhongwen-advantage    1.5 kB         118 kB
+├ ƒ /[locale]/services                        128 B         120 kB
+├ ƒ /[locale]/services/blended-learning       128 B         120 kB
+└ ƒ /[locale]/services/managed-service        128 B         120 kB
++ First Load JS shared by all                102 kB
+  ├ chunks/255-9e211aa68d587ed7.js          45.8 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js     54.2 kB
+  └ other shared chunks (total)             2.04 kB
+
+
+ƒ Middleware                                95.3 kB
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+[0m
+[0m# [0mTodos
+[x] Generate Day 32 English blog post (Why 12 Years of English Fails)
+[x] Generate Day 32 Thai blog post (เรียนอังกฤษ 12 ปี ทำไมพูดไม่ได้)
+[x] Generate hero image for Day 32
+[x] Generate segments JSON for Day 32 video
+[x] Run video generation pipeline for Day 32
+[x] Validate generated content and run build
+[ ] Update plan.md and commit
+[0m
+[0m← [0mEdit measure/tracks/blog_marketing_phase2_20260501/plan.md
+Index: /home/daniel-bo/Desktop/www-reading-advantage/measure/tracks/blog_marketing_phase2_20260501/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/www-reading-advantage/measure/tracks/blog_marketing_phase2_20260501/plan.md
++++ /home/daniel-bo/Desktop/www-reading-advantage/measure/tracks/blog_marketing_phase2_20260501/plan.md
+@@ -14,8 +14,9 @@
+ ## Phase 2: Generation of Days 31-40
+ - [~] Task: Generate English & Thai text, 16:9 images, segments JSON, and vertical videos for Days 31-40.
+   - Per day: EN post, TH post, cover image, `<slug>-segments.json` next to TH post, Thai video via pipeline.
+   - [x] Day 31 (2026-05-05): The Tutoring Epidemic / วิกฤตเรียนพิเศษ — EN post, TH post, hero image, segments JSON, Thai video generated.
++  - [x] Day 32 (2026-05-06): Why 12 Years of English Fails / เรียนอังกฤษ 12 ปี ทำไมพูดไม่ได้ — EN post, TH post, hero image, segments JSON, Thai video generated.
+ - [ ] Task: Measure - User Manual Verification 'Generation of Days 31-40' (Protocol in workflow.md)
+ 
+ ## Phase 3: Generation of Days 41-50
+ - [ ] Task: Generate English & Thai text, 16:9 images, segments JSON, and vertical videos for Days 41-50.
+
+[0m
