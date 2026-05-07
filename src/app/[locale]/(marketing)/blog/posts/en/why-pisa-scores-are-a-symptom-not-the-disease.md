@@ -1,6 +1,6 @@
 ---
 title: "Why PISA Scores Are a Symptom, Not the Disease"
-date: "2026-05-06"
+date: "2026-05-08"
 excerpt: "Thailand's low PISA scores dominate education headlines, but they reveal a deeper crisis: a curriculum designed for memorization rather than comprehension in a world that demands critical thinking."
 coverImage: "/blog/day15-pisa-symptom_001.jpg"
 author: "Reading Advantage Marketing Team"

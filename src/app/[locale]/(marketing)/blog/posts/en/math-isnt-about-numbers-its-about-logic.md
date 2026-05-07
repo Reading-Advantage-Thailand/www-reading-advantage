@@ -1,6 +1,6 @@
 ---
 title: "Math Isn't About Numbers, It's About Logic"
-date: "2026-05-06"
+date: "2026-05-07"
 excerpt: "Why the belief 'I'm not good at math' is a myth — and how shifting to a logical thinking mindset unlocks mathematical confidence for Thai students."
 coverImage: "/blog/day14-math-logic_001.jpg"
 author: "Reading Advantage Marketing Team"
