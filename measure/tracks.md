@@ -162,8 +162,9 @@ _Link: [./archive/video_pipeline_fix_20260429/](./archive/video_pipeline_fix_202
 
 ---
 
-- [ ] **Track: Generate 30 blog posts localized into English and Thai using the mmx cli tool with the create-image-mmx skill.**
-*Link: [./tracks/blog_marketing_generation_20260421/](./tracks/blog_marketing_generation_20260421/)*
+- [~] **Track: Generate 30 blog posts localized into English and Thai using the mmx cli tool with the create-image-mmx skill.**
+  *Status: In Progress — Days 1-15 generated*
+  *Link: [./tracks/blog_marketing_generation_20260421/](./tracks/blog_marketing_generation_20260421/)*
 - [x] **Track: Visual Refresh: Define Unique Identity**
   *Link: [./archive/visual_refresh_20260425/](./archive/visual_refresh_20260425/)*
   *Status: Complete*
@@ -183,6 +184,7 @@ _Link: [./archive/video_pipeline_fix_20260429/](./archive/video_pipeline_fix_202
 ---
 
 - [ ] **Track: Phase 2 Marketing Blog Generation (Days 31-60)**
+  *Status: Not Started — Day 32 image fixed; awaiting formal kickoff*
   *Link: [./tracks/blog_marketing_phase2_20260501/](./tracks/blog_marketing_phase2_20260501/)*
 
 ---
