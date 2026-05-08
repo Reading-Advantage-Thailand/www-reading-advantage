@@ -15,9 +15,13 @@
 - [ ] Task: Measure - User Manual Verification 'Generation of Days 1-10' (Protocol in workflow.md)
 
 ## Phase 3: Generation of Days 11-20
-- [~] Task: Generate English & Thai text, 16:9 images, segments JSON, and vertical videos for Days 11-20. (Day 11 complete) [checkpoint: 30829ea]
+- [x] Task: Generate English & Thai text, 16:9 images, segments JSON, and vertical videos for Days 11-20. [checkpoint: 30829ea]
   - Per day: EN post, TH post, cover image, `<slug>-segments.json` next to TH post, Thai video
 - [x] Task: Generate Day 11 (The 'Gifted' Trap) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
+- [x] Task: Generate Day 12 (5 Skills Every Thai Graduate Needs by 2030) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
+- [x] Task: Generate Day 13 (The Managed School: A Success Story) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
+- [x] Task: Generate Day 14 (Math isn't about Numbers, it's about Logic) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
+- [x] Task: Generate Day 15 (Why PISA Scores are a Symptom, Not the Disease) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
 - [ ] Task: Measure - User Manual Verification 'Generation of Days 11-20' (Protocol in workflow.md)
 
 ## Phase 4: Generation of Days 21-30

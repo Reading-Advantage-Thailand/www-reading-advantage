@@ -184,7 +184,7 @@ _Link: [./archive/video_pipeline_fix_20260429/](./archive/video_pipeline_fix_202
 ---
 
 - [ ] **Track: Phase 2 Marketing Blog Generation (Days 31-60)**
-  *Status: Not Started — Day 32 image fixed; awaiting formal kickoff*
+  *Status: BLOCKED — Phase 1 (`blog_marketing_generation_20260421`) must be 100% complete (Days 1-30) before starting. Do NOT work on this track.*
   *Link: [./tracks/blog_marketing_phase2_20260501/](./tracks/blog_marketing_phase2_20260501/)*
 
 ---

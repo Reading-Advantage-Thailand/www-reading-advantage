@@ -9,6 +9,7 @@ All development runs through the **Measure** spec-driven development framework e
 3. Follow the workflow defined in `measure/workflow.md`
 
 Key reference files:
+- `measure/current_directive.md` — **START HERE for any marketing/blog/video work.** Single source of truth for current phase and next day.
 - `measure/tracks.md` — Active work registry
 - `measure/tracks/<track_id>/plan.md` — Task checklist
 - `measure/product.md` — Product vision
@@ -17,6 +18,14 @@ Key reference files:
 - `measure/tech-debt.md` — Known shortcuts
 
 Never start significant work without an active track. Always update `measure/tracks.md` and the current track's `plan.md` before and after work.
+
+### Marketing Content Generation Rule
+If the user asks for blog posts, TikTok videos, or any marketing content generation:
+1. **MANDATORY:** Read `measure/current_directive.md` FIRST before any other file.
+2. **MANDATORY:** Verify the exact day/phase listed in the CURRENT STATUS block.
+3. **FORBIDDEN:** Do NOT assume Phase 2 is active. Phase 2 is blocked until Phase 1 Days 1-30 are 100% complete.
+4. **MANDATORY:** Read the track's `spec.md` and `plan.md` for the phase listed in `current_directive.md`.
+5. Only after steps 1-4 are complete may you begin generation.
 
 
 
