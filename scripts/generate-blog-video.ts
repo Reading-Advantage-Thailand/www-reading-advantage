@@ -577,6 +577,7 @@ async function main() {
   const lang = detectLanguage(meta.title || '');
 
   const slug = slugify(meta.title || 'blog-video');
+  const blogBasename = path.basename(blogAbsPath, '.md');
   const runId = Date.now();
   const workDir = path.join('tmp', `blog-video-${runId}`);
   fs.mkdirSync(workDir, { recursive: true });
@@ -774,7 +775,7 @@ async function main() {
     console.log('\n🎵 Mixing background jingle...');
     const outDirAbs = path.resolve(outDir);
     fs.mkdirSync(outDirAbs, { recursive: true });
-    const outputFileName = `${slug}.mp4`;
+    const outputFileName = `${blogBasename}-th.mp4`;
     const finalOutputPath = path.join(outDirAbs, outputFileName);
 
     mixBackgroundMusic(scaledPath, fs.existsSync(JINGLE_PATH) ? JINGLE_PATH : '', finalOutputPath, workDir);
