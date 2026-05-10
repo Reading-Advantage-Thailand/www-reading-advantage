@@ -26,7 +26,9 @@
 
 ## Phase 4: Generation of Days 21-30
 - [x] Task: Generate Day 16 (The 'Play-Based' Learning Lie) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
-- [ ] Task: Generate English & Thai text, 16:9 images, segments JSON, and vertical videos for Days 21-30.
+- [x] Task: Generate Day 17 (Coding for Non-Coders) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
+- [x] Task: Generate Day 18 (The Future of the 'Quality School') — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
+- [ ] Task: Generate English & Thai text, 16:9 images, segments JSON, and vertical videos for Days 19-30.
   - Per day: EN post, TH post, cover image, `<slug>-segments.json` next to TH post, Thai video
 - [ ] Task: Measure - User Manual Verification 'Generation of Days 21-30' (Protocol in workflow.md)
 
