@@ -32,7 +32,8 @@
 - [x] Task: Generate Day 20 (The Science of Curiosity) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
 - [x] Task: Generate Day 21 (Digital Safety: More than just a Password) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
 - [x] Task: Generate Day 22 (The ROI of Education) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
-- [ ] Task: Generate English & Thai text, 16:9 images, segments JSON, and vertical videos for Days 23-30.
+- [x] Task: Generate Day 23 (Why Your School Needs an 'Advantage') — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
+- [ ] Task: Generate English & Thai text, 16:9 images, segments JSON, and vertical videos for Days 24-30.
   - Per day: EN post, TH post, cover image, `<slug>-segments.json` next to TH post, Thai video
 - [ ] Task: Measure - User Manual Verification 'Generation of Days 21-30' (Protocol in workflow.md)
 
