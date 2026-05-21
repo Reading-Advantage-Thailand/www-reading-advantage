@@ -189,5 +189,17 @@ _Link: [./archive/video_pipeline_fix_20260429/](./archive/video_pipeline_fix_202
 
 ---
 
+## [~] Track: Mastery Advantage Showcase
+
+**Status:** In Progress — Phases 1-4 complete, Phase 5 (build/verify) pending
+
+**Type:** feature | **Estimated Tasks:** 14 | **Completed:** 11
+
+**Description:** Reposition the website to surface Mastery Advantage as the proprietary adaptive engine powering all 9 products. Rewrite landing page hero with the MA knowledge graph SVG, add a dedicated `/mastery-advantage` page with animated marketing SVGs, embed locale-aware product SVGs on all 9 product pages, and add CodeCamp Advantage to the B2B product grid.
+
+_Link: [./tracks/mastery_advantage_showcase_20260521/](./tracks/mastery_advantage_showcase_20260521/)_
+
+---
+
 - [ ] **Track: PR and Website Strategic Alignment**
   *Link: [./tracks/pr_website_alignment_20260501/](./tracks/pr_website_alignment_20260501/)*

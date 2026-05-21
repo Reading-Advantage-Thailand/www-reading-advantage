@@ -18,6 +18,8 @@ import { OverlappingSection } from "@/components/ui/overlapping-section";
 import { HorizontalStrip } from "@/components/ui/horizontal-strip";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { MarketingSvg } from "@/components/marketing/marketing-svg";
+import type { Locale } from "@/config/locale-config";
 
 export const metadata: Metadata = {
   title: "CodeCamp Advantage - Reading Advantage Thailand",
@@ -30,7 +32,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function CodeCampAdvantage() {
+export default async function CodeCampAdvantage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   const t = await getScopedI18n("pages.products.codecampAdvantage");
 
   return (
@@ -80,6 +87,35 @@ export default async function CodeCampAdvantage() {
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover rounded-3xl shadow-2xl"
                   priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Adaptive Learning Path — SVG Visualization */}
+      <section className="py-24 bg-white border-y border-[#dad4c8]">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div className="lg:col-span-5">
+              <span className="uppercase tracking-widest text-xs font-semibold text-fuchsia-600 mb-4 block">
+                Adaptive Engine
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                Coding paths, adapted to every student&apos;s pace
+              </h2>
+              <p className="text-base md:text-lg leading-relaxed text-slate-600">
+                Powered by Mastery Advantage — the KST + SRS engine that maps every coding skill and schedules practice at the perfect moment.
+              </p>
+            </div>
+            <div className="lg:col-span-7">
+              <div className="relative rounded-3xl overflow-hidden border border-[#dad4c8] bg-white shadow-lg">
+                <MarketingSvg
+                  baseName="ra-marketing-codecamp-advantage"
+                  locale={locale as Locale}
+                  className="w-full h-auto"
+                  alt="CodeCamp Advantage adaptive learning visualization"
                 />
               </div>
             </div>
