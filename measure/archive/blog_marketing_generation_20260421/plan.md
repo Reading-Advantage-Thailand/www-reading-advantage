@@ -38,8 +38,8 @@
 - [x] Task: Generate Day 26 (The Demographic Crisis and Your School) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
 - [x] Task: Generate Day 27 (Tutors vs. Mentors) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
 - [x] Task: Generate Day 28 (The 2026 Tech Stack for Students) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
-- [ ] Task: Generate English & Thai text, 16:9 images, segments JSON, and vertical videos for Days 29-30.
-  - Per day: EN post, TH post, cover image, `<slug>-segments.json` next to TH post, Thai video
+- [x] Task: Generate Day 29 (Case Study: The Bilingual Breakthrough) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
+- [ ] Task: Generate Day 30 (Your Advantage Starts Today) — EN post, TH post, 16:9 cover image, segments JSON, and vertical video
 - [ ] Task: Measure - User Manual Verification 'Generation of Days 21-30' (Protocol in workflow.md)
 
 ## Phase 5: Final Validation
