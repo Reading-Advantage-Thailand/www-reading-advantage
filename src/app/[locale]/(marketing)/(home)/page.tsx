@@ -2,15 +2,13 @@ import Link from "next/link";
 import { ArrowRight, Mail, GitBranch, Clock, Target } from "lucide-react";
 import { getScopedI18n } from "@/locales/server";
 import { Button } from "@/components/ui/button";
-import { MarketingSvg } from "@/components/marketing/marketing-svg";
-import type { Locale } from "@/config/locale-config";
-
+import { MasteryAdvantageGraph } from "@/components/marketing/mastery-advantage-graph";
 export default async function Home({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  await params;
   const t = await getScopedI18n("pages.home");
 
   const thaiFeatures = [
@@ -105,12 +103,7 @@ export default async function Home({
 
             <div className="lg:col-span-5 hidden lg:block">
               <div className="relative rounded-3xl overflow-hidden border border-[#dad4c8] bg-white shadow-[rgba(0,0,0,0.1)_0px_1px_1px,rgba(0,0,0,0.04)_0px_-1px_1px_inset,rgba(0,0,0,0.05)_0px_-0.5px_1px]">
-                <MarketingSvg
-                  baseName="mastery-advantage-graph"
-                  locale={locale as Locale}
-                  className="w-full h-auto"
-                  alt="Mastery Advantage knowledge graph"
-                />
+                <MasteryAdvantageGraph className="w-full h-auto" />
               </div>
             </div>
           </div>
