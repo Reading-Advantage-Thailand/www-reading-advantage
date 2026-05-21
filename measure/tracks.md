@@ -14,7 +14,7 @@ _Link: [./measure/archive/site_refactor_20260207/](./measure/archive/site_refact
 
 ## [ ] Track: Hero Section Standardization
 
-_Link: [./measure/tracks/hero_standardization_20260208/](./measure/tracks/hero_standardization_20260208/)_
+_Link: [./measure/archive/hero_standardization_20260208/](./measure/archive/hero_standardization_20260208/)_
 
 ---
 
@@ -52,7 +52,7 @@ _Link: [./measure/archive/complete_site_redesign_20260412_archived/](./measure/a
 
 **Description:** Convert pages/components that only use `useScopedI18n` (no useState, useEffect, or browser APIs) from "use client" to server components using `getScopedI18n`. This reduces JS bundle size by moving static content to the server bundle.
 
-_Link: [./measure/tracks/client_component_reduction_20260415/](./measure/tracks/client_component_reduction_20260415/)_
+_Link: [./measure/archive/client_component_reduction_20260415/](./measure/archive/client_component_reduction_20260415/)_
 
 ### [ ] Track: Fix Missing `sizes` Props on `fill` Images
 
@@ -96,7 +96,7 @@ _Link: [./measure/archive/product_page_structure_redesign_20260418/](./measure/a
 
 **Description:** Add static pagination (9 posts/page) to the blog listing, a floating table of contents to post pages, related-post recommendations driven by tag matching, and reading-time estimates.
 
-_Link: [./measure/tracks/blog_pagination_20260408/](./measure/tracks/blog_pagination_20260408/)_
+_Link: [./measure/archive/blog_pagination_20260408/](./measure/archive/blog_pagination_20260408/)_
 
 ---
 
@@ -146,7 +146,7 @@ _Link: [./archive/blog_day02_pisa_crisis_20260423/](./archive/blog_day02_pisa_cr
 
 **Description:** Create a TikTok-style engagement video generation pipeline that summarizes blog posts into 1-2 minute videos using mmx (audio/images/video) and Revideo (composition). Thai TTS validated. Revideo installed. Scene composition and pipeline script drafted. Rendering blocked on ffmpeg export format issue.
 
-_Link: [./tracks/blog_video_generation_20260423/](./tracks/blog_video_generation_20260423/)*
+_Link: [./archive/blog_video_generation_20260423/](./archive/blog_video_generation_20260423/)*
 
 ---
 
@@ -164,13 +164,13 @@ _Link: [./archive/video_pipeline_fix_20260429/](./archive/video_pipeline_fix_202
 
 - [~] **Track: Generate 30 blog posts localized into English and Thai using the mmx cli tool with the create-image-mmx skill.**
   *Status: In Progress — Days 1-15 generated*
-  *Link: [./tracks/blog_marketing_generation_20260421/](./tracks/blog_marketing_generation_20260421/)*
+  *Link: [./archive/blog_marketing_generation_20260421/](./archive/blog_marketing_generation_20260421/)*
 - [x] **Track: Visual Refresh: Define Unique Identity**
   *Link: [./archive/visual_refresh_20260425/](./archive/visual_refresh_20260425/)*
   *Status: Complete*
 
 - [ ] **Track: Production Image Domains**
-  *Link: [./tracks/production_image_domains_20260426/](./tracks/production_image_domains_20260426/)*
+  *Link: [./archive/production_image_domains_20260426/](./archive/production_image_domains_20260426/)*
   Add production/CDN domains to remotePatterns in next.config.ts.
 
 - [ ] **Track: CSS Utility Consolidation**
