@@ -138,13 +138,13 @@ _Link: [./archive/blog_day02_pisa_crisis_20260423/](./archive/blog_day02_pisa_cr
 
 ---
 
-### [~] Track: Blog-to-Video Generation Pipeline
+### [x] Track: Blog-to-Video Generation Pipeline [created: 2026-04-23, completed: 2026-04-29]
 
-**Status:** In Progress
+**Status:** Complete
 
 **Type:** feature | **Estimated Tasks:** 12
 
-**Description:** Create a TikTok-style engagement video generation pipeline that summarizes blog posts into 1-2 minute videos using mmx (audio/images/video) and Revideo (composition). Thai TTS validated. Revideo installed. Scene composition and pipeline script drafted. Rendering blocked on ffmpeg export format issue.
+**Description:** Create a TikTok-style engagement video generation pipeline that summarizes blog posts into 1-2 minute videos using mmx (audio/images/video) and Revideo (composition). Thai TTS validated. Revideo installed. Scene composition and pipeline script drafted. Rendering blocked on ffmpeg export format issue. *Track archived 2026-04-29.*
 
 _Link: [./archive/blog_video_generation_20260423/](./archive/blog_video_generation_20260423/)*
 
