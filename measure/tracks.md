@@ -12,7 +12,7 @@ _Link: [./measure/tracks/services_development_20260114/](./measure/tracks/servic
 
 _Link: [./measure/archive/site_refactor_20260207/](./measure/archive/site_refactor_20260207/)_
 
-## [ ] Track: Hero Section Standardization
+## [x] Track: Hero Section Standardization
 
 _Link: [./measure/archive/hero_standardization_20260208/](./measure/archive/hero_standardization_20260208/)_
 
@@ -44,7 +44,7 @@ _Link: [./measure/archive/complete_site_redesign_20260412_archived/](./measure/a
 
 ## Upcoming Tracks (created 2026-04-08)
 
-### [ ] Track: Reduce Excessive Client Component Boundaries
+### [x] Track: Reduce Excessive Client Component Boundaries
 
 **Status:** New
 
@@ -88,7 +88,7 @@ _Link: [./measure/archive/product_page_structure_redesign_20260418/](./measure/a
 
 ---
 
-### [ ] Track: Blog Pagination and Content Pipeline Improvements
+### [x] Track: Blog Pagination and Content Pipeline Improvements
 
 **Status:** Spec Complete | Plan Complete
 
@@ -169,7 +169,7 @@ _Link: [./archive/video_pipeline_fix_20260429/](./archive/video_pipeline_fix_202
   *Link: [./archive/visual_refresh_20260425/](./archive/visual_refresh_20260425/)*
   *Status: Complete*
 
-- [ ] **Track: Production Image Domains**
+- [x] **Track: Production Image Domains**
   *Link: [./archive/production_image_domains_20260426/](./archive/production_image_domains_20260426/)*
   Add production/CDN domains to remotePatterns in next.config.ts.
 
