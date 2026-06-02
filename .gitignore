@@ -46,3 +46,4 @@ next-env.d.ts
 tmp/
 music_*.mp3
 revideo/temp-*.ts
+graph.db

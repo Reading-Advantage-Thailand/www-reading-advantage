@@ -2,22 +2,7 @@
 
 ## Measure Workflow
 
-All development runs through the **Measure** spec-driven development framework exclusively. At the start of every session:
-
-1. Load the `measure` skill
-2. Read `measure/index.md` to understand the project context
-3. Follow the workflow defined in `measure/workflow.md`
-
-Key reference files:
-- `measure/current_directive.md` — **START HERE for any marketing/blog/video work.** Single source of truth for current phase and next day.
-- `measure/tracks.md` — Active work registry
-- `measure/tracks/<track_id>/plan.md` — Task checklist
-- `measure/product.md` — Product vision
-- `measure/tech-stack.md` — Technology choices
-- `measure/lessons-learned.md` — Project memory
-- `measure/tech-debt.md` — Known shortcuts
-
-Never start significant work without an active track. Always update `measure/tracks.md` and the current track's `plan.md` before and after work.
+Load the `measure` skill and read `measure/index.md` before starting work.
 
 ### Marketing Content Generation Rule
 If the user asks for blog posts, TikTok videos, or any marketing content generation:
@@ -27,7 +12,13 @@ If the user asks for blog posts, TikTok videos, or any marketing content generat
 4. **MANDATORY:** Read the track's `spec.md` and `plan.md` for the phase listed in `current_directive.md`.
 5. Only after steps 1-4 are complete may you begin generation.
 
+## Documentation Standards
 
+Use JSDoc for all exported functions. Describe params and returns without repeating TypeScript types.
+
+## Codebase Graph
+
+This project uses `build-graph`. Load the `build-graph` skill for commands.
 
 ## Purpose
 Provide guardrails for AI/human collaborator pairs adopting the git-workflow migration.
@@ -65,4 +56,3 @@ Provide guardrails for AI/human collaborator pairs adopting the git-workflow mig
 - GitHub discussions/issues for async updates.
 - PR comments for technical review.
 - Shared migration report (`docs/migration/<date>-migration.md`) for ongoing findings.
-
