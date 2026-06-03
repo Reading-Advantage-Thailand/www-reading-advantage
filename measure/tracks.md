@@ -203,3 +203,7 @@ _Link: [./tracks/mastery_advantage_showcase_20260521/](./tracks/mastery_advantag
 
 - [ ] **Track: PR and Website Strategic Alignment**
   *Link: [./tracks/pr_website_alignment_20260501/](./tracks/pr_website_alignment_20260501/)*
+
+- [ ] **Track: Lead Capture Form with Spam Protection and Analytics**
+  *Link: [./tracks/lead_capture_form_20260604/](./tracks/lead_capture_form_20260604/)*
+  Implement a central contact/lead capture form with honeypot spam protection, rate limiting, and analytics event tracking.
